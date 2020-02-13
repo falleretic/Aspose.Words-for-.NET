@@ -8,9 +8,9 @@ applicationhost.config
 bin/
 * Out*
 * out*
-* _out*
-* _out_*
-* _Out_*
+*_out*
+*_out_*
+*_Out_*
 *.ldb
 Thumbs.db
 _ReSharper*/

@@ -404,6 +404,7 @@
     <Compile Include="Rendering-Printing\RenderShape.cs" />
     <Compile Include="Rendering-Printing\SaveAsMultipageTiff.cs" />
     <Compile Include="Rendering-Printing\ResourceSteamFontSourceExample.cs" />
+    <Compile Include="TestDataHelper.cs" />
     <Compile Include="Viewers-Visualizers\Document-Explorer\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>

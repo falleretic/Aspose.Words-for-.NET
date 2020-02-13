@@ -1122,7 +1122,6 @@ namespace ApiExamples
             //ExFor:ShapeBase.IsLayoutInCell
             //ExFor:MsWordVersion
             //ExSummary:Shows how to display the shape, inside a table or outside of it.
-            //Document doc = new Document(MyDir + "Shape.LayoutInCell.docx");
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 

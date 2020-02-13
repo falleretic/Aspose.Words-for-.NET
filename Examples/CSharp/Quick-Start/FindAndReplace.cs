@@ -6,16 +6,12 @@ using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
-    class FindAndReplace
+    internal class FindAndReplace : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_QuickStart();
-            string fileName = "ReplaceSimple.doc";
-
             // Open the document.
-            Document doc = new Document(dataDir + fileName);
+            Document doc = new Document(QuickStartDir + "ReplaceSimple.doc");
 
             // Check the text of the document
             Console.WriteLine("Original document text: " + doc.Range.Text);
@@ -26,11 +22,10 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
             // Check the replacement was made.
             Console.WriteLine("Document text after replace: " + doc.Range.Text);
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             // Save the modified document.
-            doc.Save(dataDir);
+            doc.Save(ArtifactsDir + "ReplaceSimple.doc");
 
-            Console.WriteLine("\nText found and replaced successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nText found and replaced successfully.");
         }
     }
 }

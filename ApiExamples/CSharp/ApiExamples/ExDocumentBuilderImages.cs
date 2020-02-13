@@ -75,7 +75,7 @@ namespace ApiExamples
             //ExEnd
         }
 
-        #if NETFRAMEWORK
+#if NETFRAMEWORK
         [Test]
         public void InsertImageFromImageClass()
         {

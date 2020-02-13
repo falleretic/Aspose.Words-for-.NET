@@ -31,7 +31,7 @@ using Aspose.Words.Examples.CSharp.Programming_Documents.Web_Extensions;
 
 namespace Aspose.Words.Examples.CSharp
 {
-    class RunExamples
+    internal class RunExamples
     {
         [STAThread]
         public static void Main()
@@ -39,7 +39,7 @@ namespace Aspose.Words.Examples.CSharp
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
 
-            //Uncomment the one you want to try out
+            // Uncomment the one you want to try out
 
             // =====================================================
             // =====================================================
@@ -57,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp
 
             // QuickStart.AppendDocuments.Run();
             // QuickStart.ApplyLicense.Run();
-            // QuickStart.FindAndReplace.Run();
+             QuickStart.FindAndReplace.Run();
             // QuickStart.HelloWorld.Run();
             // QuickStart.UpdateFields.Run();
             // QuickStart.WorkingWithNodes.Run();
@@ -416,163 +416,163 @@ namespace Aspose.Words.Examples.CSharp
             // SettingBackgroundColor.Run();
             // BuildOptions.RemoveEmptyParagraphs();
 
-            //Stop before exiting
+            // Stop before exiting
             Console.WriteLine("\n\nProgram Finished. Press any key to exit....");
             Console.ReadKey();
         }
 
-        public static String GetDataDir_LINQ()
+        public static string GetDataDir_LINQ()
         {
             return Path.GetFullPath(GetDataDir_Data() + "LINQ/");
         }
 
-        public static String GetDataDir_Database()
+        public static string GetDataDir_Database()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Database/");
         }
 
-        public static String GetDataDir_LoadingAndSaving()
+        public static string GetDataDir_LoadingAndSaving()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Loading-and-Saving/");
         }
 
-        public static String GetDataDir_JoiningAndAppending()
+        public static string GetDataDir_JoiningAndAppending()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Joining-Appending/");
         }
 
-        public static String GetDataDir_WorkingWithList()
+        public static string GetDataDir_WorkingWithList()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Lists/");
         }
 
-        public static String GetDataDir_FindAndReplace()
+        public static string GetDataDir_FindAndReplace()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Find-Replace/");
         }
 
-        public static String GetDataDir_ConvertUtil()
+        public static string GetDataDir_ConvertUtil()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/ConvertUtil/");
         }
 
-        public static String GetDataDir_WorkingWithBookmarks()
+        public static string GetDataDir_WorkingWithBookmarks()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Bookmarks/");
         }
 
-        public static String GetDataDir_WorkingWithComments()
+        public static string GetDataDir_WorkingWithComments()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Comments/");
         }
 
-        public static String GetDataDir_WorkingWithDocument()
+        public static string GetDataDir_WorkingWithDocument()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Document/");
         }
 
-        public static String GetDataDir_WorkingWithShapes()
+        public static string GetDataDir_WorkingWithShapes()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Shapes/");
         }
 
-        public static String GetDataDir_WorkingWithFields()
+        public static string GetDataDir_WorkingWithFields()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Fields/");
         }
 
-        public static String GetDataDir_WorkingWithHyperlink()
+        public static string GetDataDir_WorkingWithHyperlink()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Hyperlink/");
         }
 
-        public static String GetDataDir_WorkingWithCharts()
+        public static string GetDataDir_WorkingWithCharts()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Charts/");
         }
 
-        public static String GetDataDir_WorkingWithOnlineVideo()
+        public static string GetDataDir_WorkingWithOnlineVideo()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Video/");
         }
 
-        public static String GetDataDir_WorkingWithNode()
+        public static string GetDataDir_WorkingWithNode()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Node/");
         }
 
-        public static String GetDataDir_WorkingWithTheme()
+        public static string GetDataDir_WorkingWithTheme()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Theme/");
         }
 
-        public static String GetDataDir_WorkingWithRanges()
+        public static string GetDataDir_WorkingWithRanges()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Ranges/");
         }
 
-        public static String GetDataDir_WorkingWithStructuredDocumentTag()
+        public static string GetDataDir_WorkingWithStructuredDocumentTag()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/StructuredDocumentTag/");
         }
 
-        public static String GetDataDir_WorkingWithImages()
+        public static string GetDataDir_WorkingWithImages()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Images/");
         }
 
-        public static String GetDataDir_WorkingWithStyles()
+        public static string GetDataDir_WorkingWithStyles()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Styles/");
         }
 
-        public static String GetDataDir_WorkingWithTables()
+        public static string GetDataDir_WorkingWithTables()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Tables/");
         }
 
-        public static String GetDataDir_WorkingWithSignature()
+        public static string GetDataDir_WorkingWithSignature()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Signature/");
         }
 
-        public static String GetDataDir_WorkingWithSections()
+        public static string GetDataDir_WorkingWithSections()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/Sections/");
         }
 
-        public static String GetDataDir_WorkingWithWebExtensions()
+        public static string GetDataDir_WorkingWithWebExtensions()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Programming-Documents/WebExtensions/");
         }
 
-        public static String GetDataDir_MailMergeAndReporting()
+        public static string GetDataDir_MailMergeAndReporting()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Mail-Merge/");
         }
 
-        public static String GetDataDir_QuickStart()
+        public static string GetDataDir_QuickStart()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Quick-Start/");
         }
 
-        public static String GetDataDir_RenderingAndPrinting()
+        public static string GetDataDir_RenderingAndPrinting()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Rendering-Printing/");
         }
 
-        public static String GetDataDir_ViewersAndVisualizers()
+        public static string GetDataDir_ViewersAndVisualizers()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Viewers-Visualizers/");
         }
 
         private static string GetDataDir_Data()
         {
-            var parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
+            DirectoryInfo parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
             string startDirectory = null;
             if (parent != null)
             {
-                var directoryInfo = parent.Parent;
+                DirectoryInfo directoryInfo = parent.Parent;
                 if (directoryInfo != null)
                 {
                     startDirectory = directoryInfo.FullName;
@@ -586,7 +586,7 @@ namespace Aspose.Words.Examples.CSharp
             return Path.Combine(startDirectory, "Data\\");
         }
 
-        public static string GetOutputFilePath(String inputFilePath)
+        public static string GetOutputFilePath(string inputFilePath)
         {
             string extension = Path.GetExtension(inputFilePath);
             string filename = Path.GetFileNameWithoutExtension(inputFilePath);
