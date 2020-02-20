@@ -1,9 +1,5 @@
 ﻿using Aspose.Words.Saving;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -13,6 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
+
             UseFontFromTargetMachine(dataDir);
             WriteAllCSSrulesinSingleFile(dataDir);
         }
@@ -30,7 +27,9 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Save the document to disk.
             doc.Save(dataDir, options);
             // ExEnd:UseFontFromTargetMachine
-            Console.WriteLine("\nFonts from target machine are used in saved HtmlFixed file.\nFile saved at " + dataDir);
+
+            Console.WriteLine("\nFonts from target machine are used in saved HtmlFixed file.\nFile saved at " +
+                              dataDir);
         }
 
         static void WriteAllCSSrulesinSingleFile(string dataDir)
@@ -49,6 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Save the document to disk.
             doc.Save(dataDir, options);
             // ExEnd:WriteAllCSSrulesinSingleFile
+
             Console.WriteLine("\nWrite all CSS rules in single file successfully.\nFile saved at " + dataDir);
         }
     }

@@ -25,11 +25,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                 if (shape.HasImage)
                 {
                     string imageFileName = string.Format(
-                        "Image.ExportImages.{0}_out{1}", imageIndex, FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType));
+                        "Image.ExportImages.{0}_out{1}", imageIndex,
+                        FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType));
                     shape.ImageData.Save(dataDir + imageFileName);
                     imageIndex++;
                 }
             }
+
             // ExEnd:ExtractImagesToFiles
             Console.WriteLine("\nAll images extracted from document.");
         }

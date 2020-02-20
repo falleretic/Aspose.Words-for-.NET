@@ -34,6 +34,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // ExEnd:FindAndHighlight
             Console.WriteLine("\nText highlighted successfully.\nFile saved at " + dataDir);
         }
+
         // ExStart:ReplaceEvaluatorFindAndHighlight
         private class ReplaceEvaluatorFindAndHighlight : IReplacingCallback
         {
@@ -49,7 +50,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
                 // The first (and may be the only) run can contain text before the match, 
                 // In this case it is necessary to split the run.
                 if (e.MatchOffset > 0)
-                    currentNode = SplitRun((Run)currentNode, e.MatchOffset);
+                    currentNode = SplitRun((Run) currentNode, e.MatchOffset);
 
                 // This array is used to store all nodes of the match for further highlighting.
                 ArrayList runs = new ArrayList();
@@ -69,14 +70,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
                     do
                     {
                         currentNode = currentNode.NextSibling;
-                    }
-                    while ((currentNode != null) && (currentNode.NodeType != NodeType.Run));
+                    } while ((currentNode != null) && (currentNode.NodeType != NodeType.Run));
                 }
 
                 // Split the last run that contains the match if there is any text left.
                 if ((currentNode != null) && (remainingLength > 0))
                 {
-                    SplitRun((Run)currentNode, remainingLength);
+                    SplitRun((Run) currentNode, remainingLength);
                     runs.Add(currentNode);
                 }
 
@@ -88,6 +88,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
                 return ReplaceAction.Skip;
             }
         }
+
         // ExEnd:ReplaceEvaluatorFindAndHighlight
         // ExStart:SplitRun
         /// <summary>
@@ -96,12 +97,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
         /// </summary>
         private static Run SplitRun(Run run, int position)
         {
-            Run afterRun = (Run)run.Clone(true);
+            Run afterRun = (Run) run.Clone(true);
             afterRun.Text = run.Text.Substring(position);
             run.Text = run.Text.Substring(0, position);
             run.ParentNode.InsertAfter(afterRun, run);
             return afterRun;
         }
+
         // ExEnd:SplitRun
     }
 }

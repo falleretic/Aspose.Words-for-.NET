@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -20,7 +19,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Get paragraph you want to append this merge field to
-            Paragraph para = (Paragraph)doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
             // Move cursor to this paragraph
             builder.MoveTo(para);
@@ -29,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // { ADDRESSBLOCK \\c 1 \\d \\e Test2 \\f Test3 \\l \"Test 4\" }
 
             // Create instance of FieldAddressBlock class and lets build the above field code
-            FieldAddressBlock field = (FieldAddressBlock)builder.InsertField(FieldType.FieldAddressBlock, false);
+            FieldAddressBlock field = (FieldAddressBlock) builder.InsertField(FieldType.FieldAddressBlock, false);
 
             // { ADDRESSBLOCK \\c 1" }
             field.IncludeCountryOrRegionName = "1";
@@ -53,7 +52,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             doc.Save(dataDir);
 
             // ExEnd:InsertMailMergeAddressBlockFieldUsingDOM
-            Console.WriteLine("\nMail Merge address block field using DOM inserted successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nMail Merge address block field using DOM inserted successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿
-using System.IO;
-
+﻿using System.IO;
 using Aspose.Words;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

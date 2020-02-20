@@ -1,9 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using Aspose.Words;
 using Aspose.Words.Layout;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
 {
     class ChangeTOCTabStops
@@ -17,12 +17,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
             string fileName = "Document.TableOfContents.doc";
             // Open the document.
             Document doc = new Document(dataDir + fileName);
-        
+
             // Iterate through all paragraphs in the document
             foreach (Paragraph para in doc.GetChildNodes(NodeType.Paragraph, true))
             {
                 // Check if this paragraph is formatted using the TOC result based styles. This is any style between TOC and TOC9.
-                if (para.ParagraphFormat.Style.StyleIdentifier >= StyleIdentifier.Toc1 && para.ParagraphFormat.Style.StyleIdentifier <= StyleIdentifier.Toc9)
+                if (para.ParagraphFormat.Style.StyleIdentifier >= StyleIdentifier.Toc1 &&
+                    para.ParagraphFormat.Style.StyleIdentifier <= StyleIdentifier.Toc9)
                 {
                     // Get the first tab used in this paragraph, this should be the tab used to align the page numbers.
                     TabStop tab = para.ParagraphFormat.TabStops[0];
@@ -35,9 +36,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
             }
 
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            doc.Save(dataDir);            
+            doc.Save(dataDir);
             // ExEnd:ChangeTOCTabStops 
-            Console.WriteLine("\nPosition of the right tab stop in TOC related paragraphs modified successfully.\nFile saved at " + dataDir);
-        }        
+            Console.WriteLine(
+                "\nPosition of the right tab stop in TOC related paragraphs modified successfully.\nFile saved at " +
+                dataDir);
+        }
     }
 }

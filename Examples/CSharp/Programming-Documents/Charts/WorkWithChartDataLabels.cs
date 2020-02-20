@@ -77,7 +77,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(dataDir + "Demo.docx");
             // ExEnd:DefaultOptionsForDataLabels
-            Console.WriteLine("\nDefault options for data labels of chart series created successfully.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDefault options for data labels of chart series created successfully.\nFile saved at " + dataDir);
         }
     }
 }

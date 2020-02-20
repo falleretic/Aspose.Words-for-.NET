@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             Document doc = new Document(dataDir + "Table.Document.doc");
 
             // Retrieve the first table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             if (table.TextWrapping == TextWrapping.Around)
             {

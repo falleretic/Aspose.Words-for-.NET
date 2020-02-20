@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using System.Text;
@@ -34,6 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Console.WriteLine(myConverter.GetText());
             // ExEnd:ExtractContentUsingDocumentVisitor
         }
+
         // ExStart:MyDocToTxtWriter
         /// <summary>
         /// Simple implementation of saving a document in the plain text format. Implemented as a Visitor.
@@ -143,7 +143,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 return VisitorAction.SkipThisNode;
             }
 
-
             /// <summary>
             /// Adds text to the current output. Honours the enabled/disabled output flag.
             /// </summary>
@@ -156,6 +155,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             private readonly StringBuilder mBuilder;
             private bool mIsSkipText;
         }
+
         // ExEnd:MyDocToTxtWriter
     }
 }

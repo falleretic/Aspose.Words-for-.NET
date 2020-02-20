@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using System.Collections;
@@ -31,9 +30,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     variables = variables + "Name: " + name + "," + "Value: {1}" + value;
                 }
             }
+
             // ExEnd:GetVariables
             Console.WriteLine("\nDocument have following variables " + variables);
         }
-        
     }
 }

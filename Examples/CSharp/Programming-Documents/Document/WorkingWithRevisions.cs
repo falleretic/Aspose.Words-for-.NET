@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Layout;
@@ -51,6 +50,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 if (paragraphs[i].IsMoveToRevision)
                     Console.WriteLine("The paragraph {0} has been moved (inserted).", i);
             }
+
             // ExEnd:GetRevisionTypes
         }
 
@@ -64,6 +64,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 Console.WriteLine("{0}, {1}:", group.Author, group.RevisionType);
                 Console.WriteLine(group.Text);
             }
+
             // ExEnd:GetRevisionGroups
         }
 
@@ -112,6 +113,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 Console.WriteLine("Revision text: " + revision.ParentNode.ToString(SaveFormat.Text));
                 Console.WriteLine(groupText);
             }
+
             // ExEnd:GetRevisionGroupDetails
         }
 
@@ -128,7 +130,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             {
                 if (revision.ParentNode.NodeType == NodeType.Paragraph)
                 {
-                    Paragraph paragraph = (Paragraph)revision.ParentNode;
+                    Paragraph paragraph = (Paragraph) revision.ParentNode;
                     if (paragraph.IsListItem)
                     {
                         // Print revised version of LabelString and ListLevel.
@@ -137,6 +139,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     }
                 }
             }
+
             // ExEnd:AccessRevisedVersion
         }
     }

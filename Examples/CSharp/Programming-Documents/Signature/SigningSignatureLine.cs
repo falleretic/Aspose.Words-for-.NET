@@ -14,12 +14,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithSignature();
-            
+
             if (!File.Exists(dataDir + "signature.pfx"))
             {
                 Console.WriteLine("Certificate file does not exist.");
                 return;
             }
+
             SimpleDocumentSigning(dataDir);
             SigningEncryptedDocument(dataDir);
             CreatingAndSigningNewSignatureLine(dataDir);
@@ -28,17 +29,19 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             CreateNewSignatureLineAndSetProviderID(dataDir);
         }
 
-        public static void SimpleDocumentSigning(String dataDir)
+        public static void SimpleDocumentSigning(string dataDir)
         {
             // ExStart:SimpleDocumentSigning
             CertificateHolder certHolder = CertificateHolder.Create(dataDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.Signed_out.docx", certHolder);
+            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.Signed_out.docx",
+                certHolder);
 
             // ExEnd:SimpleDocumentSigning
-            Console.WriteLine("\nDocument is signed successfully.\nFile saved at " + dataDir + "Document.Signed_out.docx");
+            Console.WriteLine("\nDocument is signed successfully.\nFile saved at " + dataDir +
+                              "Document.Signed_out.docx");
         }
 
-        public static void SigningEncryptedDocument(String dataDir)
+        public static void SigningEncryptedDocument(string dataDir)
         {
             // ExStart:SigningEncryptedDocument
 
@@ -46,13 +49,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             signOptions.DecryptionPassword = "decryptionPassword";
 
             CertificateHolder certHolder = CertificateHolder.Create(dataDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.EncryptedDocument_out.docx", certHolder, signOptions);
+            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.EncryptedDocument_out.docx",
+                certHolder, signOptions);
             // ExEnd:SigningEncryptedDocument
-            Console.WriteLine("\nDocument is signed with successfully.\nFile saved at " + dataDir + "Document.EncryptedDocument_out.docx");
-
+            Console.WriteLine("\nDocument is signed with successfully.\nFile saved at " + dataDir +
+                              "Document.EncryptedDocument_out.docx");
         }
 
-        public static void CreatingAndSigningNewSignatureLine(String dataDir)
+        public static void CreatingAndSigningNewSignatureLine(string dataDir)
         {
             // ExStart:CreatingAndSigningNewSignatureLine
             Document doc = new Document();
@@ -65,34 +69,40 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             signOptions.SignatureLineImage = File.ReadAllBytes(dataDir + "SignatureImage.emf");
 
             CertificateHolder certHolder = CertificateHolder.Create(dataDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(dataDir + "Document.NewSignatureLine.docx", dataDir + "Document.NewSignatureLine.docx_out.docx", certHolder, signOptions);
+            DigitalSignatureUtil.Sign(dataDir + "Document.NewSignatureLine.docx",
+                dataDir + "Document.NewSignatureLine.docx_out.docx", certHolder, signOptions);
             // ExEnd:CreatingAndSigningNewSignatureLine
 
-            Console.WriteLine("\nDocument is created and Signed with new SignatureLine successfully.\nFile saved at " + dataDir + "Document.NewSignatureLine.docx_out.docx");
+            Console.WriteLine("\nDocument is created and Signed with new SignatureLine successfully.\nFile saved at " +
+                              dataDir + "Document.NewSignatureLine.docx_out.docx");
         }
 
-        public static void SigningExistingSignatureLine(String dataDir)
+        public static void SigningExistingSignatureLine(string dataDir)
         {
             // ExStart:SigningExistingSignatureLine
             Document doc = new Document(dataDir + "Document.Signed.docx");
-            SignatureLine signatureLine = ((Shape)doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
+            SignatureLine signatureLine =
+                ((Shape) doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
 
             SignOptions signOptions = new SignOptions();
             signOptions.SignatureLineId = signatureLine.Id;
             signOptions.SignatureLineImage = File.ReadAllBytes(dataDir + "SignatureImage.emf");
 
             CertificateHolder certHolder = CertificateHolder.Create(dataDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.Signed.ExistingSignatureLine.docx", certHolder, signOptions);
+            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx",
+                dataDir + "Document.Signed.ExistingSignatureLine.docx", certHolder, signOptions);
             // ExEnd:SigningExistingSignatureLine
 
-            Console.WriteLine("\nDocument is signed with existing SignatureLine successfully.\nFile saved at " + dataDir + "Document.Signed.ExistingSignatureLine.docx");
+            Console.WriteLine("\nDocument is signed with existing SignatureLine successfully.\nFile saved at " +
+                              dataDir + "Document.Signed.ExistingSignatureLine.docx");
         }
-        
-        public static void SetSignatureProviderID(String dataDir)
+
+        public static void SetSignatureProviderID(string dataDir)
         {
             // ExStart:SetSignatureProviderID
             Document doc = new Document(dataDir + "Document.Signed.docx");
-            SignatureLine signatureLine = ((Shape)doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
+            SignatureLine signatureLine =
+                ((Shape) doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
 
             //Set signature and signature line provider ID
             SignOptions signOptions = new SignOptions();
@@ -100,14 +110,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             signOptions.SignatureLineId = signatureLine.Id;
 
             CertificateHolder certHolder = CertificateHolder.Create(dataDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.Signed_out.docx", certHolder, signOptions);
+            DigitalSignatureUtil.Sign(dataDir + "Document.Signed.docx", dataDir + "Document.Signed_out.docx",
+                certHolder, signOptions);
 
             // ExEnd:SetSignatureProviderID
 
-            Console.WriteLine("\nProvider ID of signature is set successfully.\nFile saved at " + dataDir + "Document.Signed_out.docx");
+            Console.WriteLine("\nProvider ID of signature is set successfully.\nFile saved at " + dataDir +
+                              "Document.Signed_out.docx");
         }
 
-        public static void CreateNewSignatureLineAndSetProviderID(String dataDir)
+        public static void CreateNewSignatureLineAndSetProviderID(string dataDir)
         {
             // ExStart:CreateNewSignatureLineAndSetProviderID
             Document doc = new Document(dataDir + "Document.Signed.docx");
@@ -122,12 +134,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             signOptions.ProviderId = signatureLine.ProviderId;
 
             CertificateHolder certHolder = CertificateHolder.Create(dataDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(dataDir + "Document.Signed_out.docx", dataDir + "Document.Signed_out.docx", certHolder, signOptions);
+            DigitalSignatureUtil.Sign(dataDir + "Document.Signed_out.docx", dataDir + "Document.Signed_out.docx",
+                certHolder, signOptions);
 
             // ExEnd:CreateNewSignatureLineAndSetProviderID
 
-            Console.WriteLine("\nCreate new signature line and set provider ID successfully.\nFile saved at " + dataDir + "Document.Signed_out.docx");
+            Console.WriteLine("\nCreate new signature line and set provider ID successfully.\nFile saved at " +
+                              dataDir + "Document.Signed_out.docx");
         }
-
     }
 }

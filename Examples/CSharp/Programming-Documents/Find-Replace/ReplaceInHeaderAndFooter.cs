@@ -62,7 +62,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             doc.Range.Replace(new Regex("(header|footer)"), "", options);
         }
-        
+
         private class ReplaceLog : IReplacingCallback
         {
             public ReplaceAction Replacing(ReplacingArgs args)
@@ -83,6 +83,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             private readonly StringBuilder _textBuilder = new StringBuilder();
         }
+
         // ExEnd:ShowChangesForHeaderAndFooterOrders
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 
@@ -34,6 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 if (footer != null)
                     footer.Remove();
             }
+
             dataDir = dataDir + "HeaderFooter.RemoveFooters_out.doc";
 
             // Save the document.

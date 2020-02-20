@@ -1,6 +1,4 @@
-﻿
-using System.IO;
-
+﻿using System.IO;
 using Aspose.Words;
 using System;
 

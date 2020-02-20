@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
@@ -22,12 +21,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             builder.CurrentParagraph.AppendChild(comment);
             comment.Paragraphs.Add(new Paragraph(doc));
             comment.FirstParagraph.Runs.Add(new Run(doc, "Comment text."));
-           
+
             dataDir = dataDir + "Comments_out.doc";
             // Save the document.
             doc.Save(dataDir);
             // ExEnd:AddComments
             Console.WriteLine("\nComments added successfully.\nFile saved at " + dataDir);
-        }        
+        }
     }
 }

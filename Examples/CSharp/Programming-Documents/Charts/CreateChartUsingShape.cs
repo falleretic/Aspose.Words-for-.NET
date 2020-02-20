@@ -37,6 +37,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             // ExEnd:CreateChartUsingShape
             Console.WriteLine("\nSimple line chart created successfully.\nFile saved at " + dataDir);
         }
-        
     }
 }

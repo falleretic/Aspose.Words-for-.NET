@@ -1,7 +1,7 @@
 ﻿using System;
-using Aspose.Words;
 using Aspose.Words.Loading;
 using System.Net;
+
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
     //ExStart:ImageLoadingWithCredentialsHandler
@@ -11,6 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         {
             mWebClient = new WebClient();
         }
+
         public ResourceLoadingAction ResourceLoading(ResourceLoadingArgs args)
         {
             if (args.ResourceType == ResourceType.Image)
@@ -29,10 +30,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 
                 return ResourceLoadingAction.UserProvided;
             }
-            else
-            {
-                return ResourceLoadingAction.Default;
-            }
+
+            return ResourceLoadingAction.Default;
         }
 
         private WebClient mWebClient;

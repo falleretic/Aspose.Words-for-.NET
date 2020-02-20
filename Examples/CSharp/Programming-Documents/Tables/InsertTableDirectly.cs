@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Drawing;
@@ -61,6 +60,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:InsertTableDirectly
             Console.WriteLine("\nTable using notes inserted successfully.\nFile saved at " + dataDir);
         }
-        
     }
 }

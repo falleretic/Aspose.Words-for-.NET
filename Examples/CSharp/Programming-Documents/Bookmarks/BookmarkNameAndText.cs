@@ -29,6 +29,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             // ExEnd:BookmarkNameAndText
             Console.WriteLine("\nBookmark text and name get and set successfully." + dataDir);
         }
-        
     }
 }

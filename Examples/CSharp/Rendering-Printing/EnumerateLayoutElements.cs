@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Drawing;
-
 using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
@@ -14,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "TestFile.EnumerateLayout.docx");
 
@@ -143,7 +141,6 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 // Stop after all elements on the page have been procesed.
                 if (it.Type == LayoutEntityType.Page)
                     return;
-
             } while (it.MovePrevious());
         }
 

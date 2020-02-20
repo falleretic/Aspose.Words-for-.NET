@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Markup;
@@ -29,6 +28,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             doc.Save(dataDir);
             // ExEnd:RichTextBoxContentControl
             Console.WriteLine("\nRich text box type content control created successfully.\nFile saved at " + dataDir);
-        }        
+        }
     }
 }

@@ -43,8 +43,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             ArrayList runs = FindAndSplitMatchRuns(args);
 
             // Create DocumentBuilder which is used to insert the field.
-            DocumentBuilder builder = new DocumentBuilder((Document)args.MatchNode.Document);
-            builder.MoveTo((Run)runs[runs.Count - 1]);
+            DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
+            builder.MoveTo((Run) runs[runs.Count - 1]);
 
             // Calculate the name of the field from the FieldType enumeration by removing the first instance of "Field" from the text. 
             // This works for almost all of the field types.
@@ -73,7 +73,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // The first (and may be the only) run can contain text before the match, 
             // In this case it is necessary to split the run.
             if (args.MatchOffset > 0)
-                currentNode = SplitRun((Run)currentNode, args.MatchOffset);
+                currentNode = SplitRun((Run) currentNode, args.MatchOffset);
 
             // This array is used to store all nodes of the match for further removing.
             ArrayList runs = new ArrayList();
@@ -93,14 +93,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
                 do
                 {
                     currentNode = currentNode.NextSibling;
-                }
-                while ((currentNode != null) && (currentNode.NodeType != NodeType.Run));
+                } while ((currentNode != null) && (currentNode.NodeType != NodeType.Run));
             }
 
             // Split the last run that contains the match if there is any text left.
             if ((currentNode != null) && (remainingLength > 0))
             {
-                SplitRun((Run)currentNode, remainingLength);
+                SplitRun((Run) currentNode, remainingLength);
                 runs.Add(currentNode);
             }
 
@@ -113,12 +112,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
         /// </summary>
         private Run SplitRun(Run run, int position)
         {
-            Run afterRun = (Run)run.Clone(true);
+            Run afterRun = (Run) run.Clone(true);
             afterRun.Text = run.Text.Substring(position);
             run.Text = run.Text.Substring(0, position);
             run.ParentNode.InsertAfter(afterRun, run);
             return afterRun;
-
         }
 
         private FieldType mFieldType;

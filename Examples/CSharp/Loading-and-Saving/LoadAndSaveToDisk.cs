@@ -1,8 +1,4 @@
-﻿
-using System.IO;
-
-using Aspose.Words;
-using System;
+﻿using System;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -15,6 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_QuickStart();
             string fileName = "Document.doc";
+            
             // Load the document from the absolute path on disk.
             Document doc = new Document(dataDir + fileName);
             // ExEnd:OpenDocument
@@ -22,6 +19,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Save the document as DOCX document.");
             doc.Save(dataDir);
             // ExEnd:LoadAndSave
+
             Console.WriteLine("\nExisting document loaded and saved successfully.\nFile saved at " + dataDir);
         }
     }

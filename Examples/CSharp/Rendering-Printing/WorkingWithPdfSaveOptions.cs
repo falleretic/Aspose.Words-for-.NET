@@ -21,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             ConversionToPDF17(dataDir);
         }
 
-        public static void EscapeUriInPdf(String dataDir)
+        public static void EscapeUriInPdf(string dataDir)
         {
             // ExStart:EscapeUriInPdf
             // The path to the documents directory.
@@ -36,7 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             Console.WriteLine("\nFile saved at " + dataDir);
         }
 
-        public static void ExportHeaderFooterBookmarks(String dataDir)
+        public static void ExportHeaderFooterBookmarks(string dataDir)
         {
             // ExStart:ExportHeaderFooterBookmarks
             // The path to the documents directory.
@@ -53,17 +53,17 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             Console.WriteLine("\nFile saved at " + dataDir);
         }
 
-        public static void ScaleWmfFontsToMetafileSize(String dataDir)
+        public static void ScaleWmfFontsToMetafileSize(string dataDir)
         {
             // ExStart:ScaleWmfFontsToMetafileSize
             // The path to the documents directory.
             Document doc = new Document(dataDir + "MetafileRendering.docx");
 
             MetafileRenderingOptions metafileRenderingOptions =
-                       new MetafileRenderingOptions
-                       {
-                           ScaleWmfFontsToMetafileSize = false
-                       };
+                new MetafileRenderingOptions
+                {
+                    ScaleWmfFontsToMetafileSize = false
+                };
 
             // If Aspose.Words cannot correctly render some of the metafile records to vector graphics then Aspose.Words renders this metafile to a bitmap. 
             PdfSaveOptions options = new PdfSaveOptions { MetafileRenderingOptions = metafileRenderingOptions };
@@ -73,7 +73,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // ExEnd:ScaleWmfFontsToMetafileSize
             Console.WriteLine("\nFonts as metafile are rendered to its default size in PDF. File saved at " + dataDir);
         }
-        
+
         public static void AdditionalTextPositioning(string dataDir)
         {
             // ExStart:AdditionalTextPositioning

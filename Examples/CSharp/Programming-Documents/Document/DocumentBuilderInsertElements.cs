@@ -25,6 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             InsertOleObjectwithOlePackage(dataDir);
             GetAccessToOLEObjectRawData(dataDir);
         }
+
         public static void InsertTextInputFormField(string dataDir)
         {
             // ExStart:DocumentBuilderInsertTextInputFormField
@@ -35,8 +36,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertTextInputFormField_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertTextInputFormField
-            Console.WriteLine("\nText input form field using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nText input form field using DocumentBuilder inserted successfully into a document.\nFile saved at " +
+                dataDir);
         }
+
         public static void InsertCheckBoxFormField(string dataDir)
         {
             // ExStart:DocumentBuilderInsertCheckBoxFormField
@@ -47,8 +51,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertCheckBoxFormField_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertCheckBoxFormField
-            Console.WriteLine("\nCheckbox form field using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nCheckbox form field using DocumentBuilder inserted successfully into a document.\nFile saved at " +
+                dataDir);
         }
+
         public static void InsertComboBoxFormField(string dataDir)
         {
             // ExStart:DocumentBuilderInsertComboBoxFormField
@@ -60,8 +67,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertComboBoxFormField_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertComboBoxFormField
-            Console.WriteLine("\nCombobox form field using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nCombobox form field using DocumentBuilder inserted successfully into a document.\nFile saved at " +
+                dataDir);
         }
+
         public static void InsertHtml(string dataDir)
         {
             // ExStart:DocumentBuilderInsertHtml
@@ -76,8 +86,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertHtml_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertHtml
-            Console.WriteLine("\nHTML using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine("\nHTML using DocumentBuilder inserted successfully into a document.\nFile saved at " +
+                              dataDir);
         }
+
         public static void InsertHyperlink(string dataDir)
         {
             // ExStart:DocumentBuilderInsertHyperlink
@@ -99,8 +111,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertHyperlink_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertHyperlink
-            Console.WriteLine("\nHyperlink using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nHyperlink using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
         }
+
         public static void InsertTableOfContents(string dataDir)
         {
             // ExStart:DocumentBuilderInsertTableOfContents
@@ -147,8 +161,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertTableOfContents_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertTableOfContents
-            Console.WriteLine("\nTable of contents using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nTable of contents using DocumentBuilder inserted successfully into a document.\nFile saved at " +
+                dataDir);
         }
+
         public static void InsertOleObject(string dataDir)
         {
             // ExStart:DocumentBuilderInsertOleObject
@@ -158,9 +175,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertOleObject_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertOleObject
-            Console.WriteLine("\nOleObject using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nOleObject using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
         }
-
 
         public static void InsertOleObjectwithOlePackage(string dataDir)
         {
@@ -177,9 +194,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 dataDir = dataDir + "DocumentBuilderInsertOleObjectOlePackage_out.doc";
                 doc.Save(dataDir);
             }
-            
+
             // ExEnd:InsertOleObjectwithOlePackage
-            Console.WriteLine("\nOleObject using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nOleObject using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
         }
 
         public static void GetAccessToOLEObjectRawData(string dataDir)
@@ -187,8 +205,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExStart:GetAccessToOLEObjectRawData
             // Load document with OLE object.
             Document doc = new Document(dataDir + "DocumentBuilderInsertTextInputFormField_out.doc");
-            
-            Shape oleShape = (Shape)doc.GetChild(NodeType.Shape, 0, true);
+
+            Shape oleShape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             byte[] oleRawData = oleShape.OleFormat.GetRawData();
             // ExEnd:GetAccessToOLEObjectRawData
         }

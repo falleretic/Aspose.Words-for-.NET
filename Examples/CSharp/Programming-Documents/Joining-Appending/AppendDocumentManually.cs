@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
@@ -37,7 +36,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             // Save the joined document
             dstDoc.Save(dataDir);
             // ExEnd:AppendDocumentManually
-            Console.WriteLine("\nDocument appended successfully with manual append operation.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument appended successfully with manual append operation.\nFile saved at " + dataDir);
         }
     }
 }

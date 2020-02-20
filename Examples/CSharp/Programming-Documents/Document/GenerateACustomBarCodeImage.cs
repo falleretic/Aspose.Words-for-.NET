@@ -8,7 +8,6 @@ using Aspose.BarCode.Generation;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-
     class GenerateACustomBarCodeImage
     {
         public static void Run()
@@ -43,7 +42,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 throw new Exception("Error! Incorrect height - " + heightInTwipsString + ".");
 
             // Convert to mm
-            return (float)(heightInTwips * 25.4 / 1440);
+            return (float) (heightInTwips * 25.4 / 1440);
         }
 
         /// <summary>
@@ -168,9 +167,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             {
                 generator.Parameters.Barcode.AutoSizeMode = AutoSizeMode.Nearest;
                 generator.Parameters.Barcode.BarCodeWidth.Millimeters *= scale;
-                generator.Parameters.Barcode.BarCodeHeight.Millimeters = generator.Parameters.Barcode.BarCodeWidth.Millimeters;
+                generator.Parameters.Barcode.BarCodeHeight.Millimeters =
+                    generator.Parameters.Barcode.BarCodeWidth.Millimeters;
                 xdim = generator.Parameters.Barcode.BarCodeHeight.Millimeters / 25;
-                generator.Parameters.Barcode.XDimension.Millimeters = generator.Parameters.Barcode.BarHeight.Millimeters = xdim;
+                generator.Parameters.Barcode.XDimension.Millimeters =
+                    generator.Parameters.Barcode.BarHeight.Millimeters = xdim;
             }
 
             if (parameters.ScalingFactor != null)
@@ -179,19 +180,23 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 generator.Parameters.Barcode.BarCodeHeight.Millimeters *= scalingFactor;
                 if (encodeType == EncodeTypes.QR)
                 {
-                    generator.Parameters.Barcode.BarCodeWidth.Millimeters = generator.Parameters.Barcode.BarCodeHeight.Millimeters;
-                    generator.Parameters.Barcode.XDimension.Millimeters = generator.Parameters.Barcode.BarHeight.Millimeters = xdim * scalingFactor;
+                    generator.Parameters.Barcode.BarCodeWidth.Millimeters =
+                        generator.Parameters.Barcode.BarCodeHeight.Millimeters;
+                    generator.Parameters.Barcode.XDimension.Millimeters =
+                        generator.Parameters.Barcode.BarHeight.Millimeters = xdim * scalingFactor;
                 }
 
                 generator.Parameters.Barcode.AutoSizeMode = AutoSizeMode.Nearest;
             }
+
             return generator.GenerateBarCodeImage();
         }
-        
+
         public Image GetOldBarcodeImage(Fields.BarcodeParameters parameters)
         {
             throw new NotImplementedException();
         }
     }
+
     // ExEnd:GenerateACustomBarCodeImage_IBarcodeGenerator
 }

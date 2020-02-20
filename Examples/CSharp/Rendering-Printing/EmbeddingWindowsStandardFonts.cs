@@ -4,6 +4,7 @@ using System.Reflection;
 using Aspose.Words.Fonts;
 using Aspose.Words;
 using Aspose.Words.Saving;
+
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class EmbeddingWindowsStandardFonts
@@ -12,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:AvoidEmbeddingCoreFonts
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "Rendering.doc");
 
@@ -27,6 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             Console.WriteLine("\nAvoid embedded core fonts setup successfully.\nFile saved at " + outPath);
             SkipEmbeddedArialAndTimesRomanFonts(doc, dataDir);
         }
+
         private static void SkipEmbeddedArialAndTimesRomanFonts(Document doc, string dataDir)
         {
             // ExStart:SkipEmbeddedArialAndTimesRomanFonts
@@ -39,7 +41,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // The output PDF will be saved without embedding standard windows fonts.
             doc.Save(dataDir);
             // ExEnd:SkipEmbeddedArialAndTimesRomanFonts
-            Console.WriteLine("\nEmbedded arial and times new roman fonts are skipped successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nEmbedded arial and times new roman fonts are skipped successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class RemoveRowsFromTable
@@ -20,7 +21,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             string fileName = "RemoveTableRows.doc";
             Document doc = new Document(dataDir + fileName);
             DataSet data = new DataSet();
-            doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions | MailMergeCleanupOptions.RemoveEmptyTableRows;
+            doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions |
+                                           MailMergeCleanupOptions.RemoveEmptyTableRows;
             doc.MailMerge.MergeDuplicateRegions = true;
             doc.MailMerge.ExecuteWithRegions(data);
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);

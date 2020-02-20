@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Aspose.Words;
 using System.IO;
 using Aspose.Words.Saving;
 
@@ -13,7 +11,6 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // ExStart:SpecifySaveOption            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
             string fileName = "TestFile RenderShape.docx";
 
             Document doc = new Document(dataDir + fileName);
@@ -34,12 +31,9 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
             dataDir = dataDir + "Document.SaveWithOptions_out.html";
             doc.Save(dataDir, options);
-
             // ExEnd:SpecifySaveOption
 
             Console.WriteLine("\nSave option specified successfully.\nFile saved at " + dataDir);
-
         }
     }
-
 }

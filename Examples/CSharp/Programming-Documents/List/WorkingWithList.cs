@@ -20,7 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
             SetRestartAtEachSection(dataDir);
         }
 
-        public static void SetRestartAtEachSection(String dataDir)
+        public static void SetRestartAtEachSection(string dataDir)
         {
             // ExStart:SetRestartAtEachSection
             Document doc = new Document();
@@ -38,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
 
             for (int i = 1; i < 45; i++)
             {
-                builder.Writeln(String.Format("List Item {0}", i));
+                builder.Writeln(string.Format("List Item {0}", i));
 
                 // Insert section break.
                 if (i == 15)
@@ -57,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
             Console.WriteLine("\nDocument is saved successfully.\nFile saved at " + dataDir);
         }
 
-        public static void SpecifyListLevel(String dataDir)
+        public static void SpecifyListLevel(string dataDir)
         {
             // ExStart:SpecifyListLevel
             Document doc = new Document();
@@ -97,8 +97,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
             Console.WriteLine("\nDocument is saved successfully.\nFile saved at " + dataDir);
         }
 
-
-        public static void RestartListNumber(String dataDir)
+        public static void RestartListNumber(string dataDir)
         {
             // ExStart:RestartListNumber
             Document doc = new Document();

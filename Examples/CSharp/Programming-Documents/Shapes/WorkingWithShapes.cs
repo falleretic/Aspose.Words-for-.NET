@@ -33,7 +33,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             //Free-floating shape insertion.
-            Shape shape = builder.InsertShape(ShapeType.TextBox, RelativeHorizontalPosition.Page, 100, RelativeVerticalPosition.Page, 100, 50, 50, WrapType.None);
+            Shape shape = builder.InsertShape(ShapeType.TextBox, RelativeHorizontalPosition.Page, 100,
+                RelativeVerticalPosition.Page, 100, 50, 50, WrapType.None);
             shape.Rotation = 30.0;
 
             builder.Writeln();
@@ -80,7 +81,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             Shape watermark = new Shape(doc, ShapeType.TextPlainText);
             watermark.RelativeHorizontalPosition = RelativeHorizontalPosition.Page;
             watermark.RelativeVerticalPosition = RelativeVerticalPosition.Page;
-            watermark.IsLayoutInCell = true; // Display the shape outside of table cell if it will be placed into a cell.
+            watermark.IsLayoutInCell =
+                true; // Display the shape outside of table cell if it will be placed into a cell.
 
             watermark.Width = 300;
             watermark.Height = 70;
@@ -151,6 +153,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             {
                 textBoxShape.TextBox.VerticalAnchor = TextBoxAnchor.Bottom;
             }
+
             doc.Save(dataDir + "VerticalAnchor_out.docx");
             // ExEnd:SpecifyVerticalAnchor
         }
@@ -177,7 +180,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             Document doc = new Document();
 
             DocumentBuilder builder = new DocumentBuilder(doc);
-            Shape shape = builder.InsertOleObjectAsIcon(dataDir + "embedded.xlsx", false, dataDir + "icon.ico", "My embedded file");
+            Shape shape = builder.InsertOleObjectAsIcon(dataDir + "embedded.xlsx", false, dataDir + "icon.ico",
+                "My embedded file");
 
             doc.Save(dataDir + "EmbeddeWithIcon_out.docx");
 

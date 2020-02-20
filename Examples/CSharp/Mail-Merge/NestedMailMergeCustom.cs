@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Collections;
 using Aspose.Words.MailMerging;
+
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class NestedMailMergeCustom
@@ -32,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             CustomerMailMergeDataSource customersDataSource = new CustomerMailMergeDataSource(customers);
 
             // Now you can pass your data source into Aspose.Words.
-            doc.MailMerge.ExecuteWithRegions(customersDataSource);          
+            doc.MailMerge.ExecuteWithRegions(customersDataSource);
 
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             doc.Save(dataDir);
@@ -83,7 +84,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             public new Customer this[int index]
             {
-                get { return (Customer)base[index]; }
+                get { return (Customer) base[index]; }
                 set { base[index] = value; }
             }
         }
@@ -122,7 +123,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             public new Order this[int index]
             {
-                get { return (Order)base[index]; }
+                get { return (Order) base[index]; }
                 set { base[index] = value; }
             }
         }
@@ -172,7 +173,6 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                         return false;
                 }
             }
-
 
             /// <summary>
             /// A standard implementation for moving to a next record in a collection.

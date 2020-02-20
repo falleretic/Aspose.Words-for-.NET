@@ -1,23 +1,23 @@
-
 namespace DocumentExplorerExample
 {
-	/// <summary>
-	/// Shows an About form for this application.
-	/// </summary>
-	public class AboutForm : System.Windows.Forms.Form 
-	{
+    /// <summary>
+    /// Shows an About form for this application.
+    /// </summary>
+    public class AboutForm : System.Windows.Forms.Form
+    {
+        #region Windows Form Designer generated code
 
-		#region Windows Form Designer generated code
+        private System.ComponentModel.Container components = null;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
 
-		private System.ComponentModel.Container components = null;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label2;
-
-		private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -29,7 +29,7 @@ namespace DocumentExplorerExample
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = ((System.Drawing.Image) (resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(8, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 132);
@@ -39,7 +39,8 @@ namespace DocumentExplorerExample
             // 
             // Label1
             // 
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(144, 4);
             this.label1.Name = "label1";
@@ -51,7 +52,8 @@ namespace DocumentExplorerExample
             // Label2
             // 
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(144, 120);
             this.label2.Name = "label2";
@@ -102,19 +104,26 @@ namespace DocumentExplorerExample
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
 
-		}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
 
-		protected override void Dispose( bool disposing ) {
-			if( disposing ) {if(components != null) {components.Dispose();}}
-			base.Dispose( disposing );
-		}
+            base.Dispose(disposing);
+        }
 
-		#endregion
+        #endregion
 
-		public AboutForm() 
-		{
-			InitializeComponent();
-		}
-	}
+        public AboutForm()
+        {
+            InitializeComponent();
+        }
+    }
 }

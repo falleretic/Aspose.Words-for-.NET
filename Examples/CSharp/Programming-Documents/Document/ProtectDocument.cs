@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 
@@ -8,7 +7,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     class ProtectDocument
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             dataDir = dataDir + "ProtectDocument.doc";
@@ -17,6 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             UnProtect(dataDir);
             GetProtectionType(dataDir);
         }
+
         /// <summary>
         /// Shows how to protect document
         /// </summary>
@@ -28,8 +28,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             doc.Protect(ProtectionType.AllowOnlyFormFields, "password");
             // ExEnd:ProtectDocument
             Console.WriteLine("\nDocument protected successfully.");
-          
         }
+
         /// <summary>
         /// Shows how to unprotect document
         /// </summary>
@@ -42,6 +42,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:UnProtectDocument
             Console.WriteLine("\nDocument unprotected successfully.");
         }
+
         /// <summary>
         /// Shows how to get protection type
         /// </summary>

@@ -8,13 +8,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sectio
     {
         public static void Run()
         {
-            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithSections() + "Section.AddRemove.doc";
             AddSection(dataDir);
             DeleteSection(dataDir);
             DeleteAllSections(dataDir);
         }
+
         /// <summary>
         /// Shows how to add a section to the end of the document.
         /// </summary>
@@ -27,6 +27,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sectio
             // ExEnd:AddSection
             Console.WriteLine("\nSection added successfully to the end of the document.");
         }
+
         /// <summary>
         /// Shows how to remove a section at the specified index.
         /// </summary>
@@ -38,6 +39,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sectio
             // ExEnd:DeleteSection
             Console.WriteLine("\nSection deleted successfully at 0 index.");
         }
+
         /// <summary>
         /// Shows how to remove all sections from a document.
         /// </summary>

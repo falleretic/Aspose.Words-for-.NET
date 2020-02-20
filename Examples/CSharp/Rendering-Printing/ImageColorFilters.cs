@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Drawing;
 using Aspose.Words;
@@ -14,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             // Open the document.
             Document doc = new Document(string.Format("{0}{1}", dataDir, "TestFile.Colors.docx"));
@@ -26,7 +25,6 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             SaveBlackWhiteTIFFwithRLE(doc, dataDir, true);
             ExposeThresholdControlForTiffBinarization(dataDir);
         }
-
 
         private static void SaveColorTIFFwithLZW(Document doc, string dataDir, float brightness, float contrast)
         {
@@ -44,7 +42,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Save multipage color TIFF.
             doc.Save(string.Format("{0}{1}", dataDir, "Result Colors.tiff"), imgOpttiff);
 
-            Console.WriteLine("\nDocument converted to TIFF successfully with Colors.\nFile saved at " + dataDir + "Result Colors.tiff");
+            Console.WriteLine("\nDocument converted to TIFF successfully with Colors.\nFile saved at " + dataDir +
+                              "Result Colors.tiff");
         }
 
         private static void SaveGrayscaleTIFFwithLZW(Document doc, string dataDir, float brightness, float contrast)
@@ -66,7 +65,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Save multipage grayscale TIFF.
             doc.Save(string.Format("{0}{1}", dataDir, "Result Grayscale.tiff"), imgOpttiff);
 
-            Console.WriteLine("\nDocument converted to TIFF successfully with Gray scale.\nFile saved at " + dataDir + "Result Grayscale.tiff");
+            Console.WriteLine("\nDocument converted to TIFF successfully with Gray scale.\nFile saved at " + dataDir +
+                              "Result Grayscale.tiff");
         }
 
         private static void SaveBlackWhiteTIFFwithLZW(Document doc, string dataDir, bool highSensitivity)
@@ -94,7 +94,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Save multipage TIFF.
             doc.Save(string.Format("{0}{1}", dataDir, "result black and white.tiff"), imgOpttiff);
 
-            Console.WriteLine("\nDocument converted to TIFF successfully with black and white.\nFile saved at " + dataDir + "Result black and white.tiff");
+            Console.WriteLine("\nDocument converted to TIFF successfully with black and white.\nFile saved at " +
+                              dataDir + "Result black and white.tiff");
         }
 
         private static void SaveBlackWhiteTIFFwithCITT4(Document doc, string dataDir, bool highSensitivity)
@@ -124,7 +125,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Save multipage TIFF.
             doc.Save(string.Format("{0}{1}", dataDir, "result Ccitt4.tiff"), imgOpttiff);
 
-            Console.WriteLine("\nDocument converted to TIFF successfully with black and white and Ccitt4 compression.\nFile saved at " + dataDir + "Result Ccitt4.tiff");
+            Console.WriteLine(
+                "\nDocument converted to TIFF successfully with black and white and Ccitt4 compression.\nFile saved at " +
+                dataDir + "Result Ccitt4.tiff");
         }
 
         private static void SaveBlackWhiteTIFFwithRLE(Document doc, string dataDir, bool highSensitivity)
@@ -154,7 +157,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Save multipage TIFF grayscale with low bright and contrast
             doc.Save(string.Format("{0}{1}", dataDir, "result Rle.tiff"), imgOpttiff);
 
-            Console.WriteLine("\nDocument converted to TIFF successfully with black and white and Rle compression.\nFile saved at " + dataDir + "Result Rle.tiff");
+            Console.WriteLine(
+                "\nDocument converted to TIFF successfully with black and white and Rle compression.\nFile saved at " +
+                dataDir + "Result Rle.tiff");
         }
 
         private static void SaveImageToOnebitPerPixel(Document doc, string dataDir)
@@ -169,7 +174,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             dataDir = dataDir + "Format1bppIndexed_Out.Png";
             doc.Save(dataDir, opt);
             // ExEnd:SaveImageToOnebitPerPixel   
-            Console.WriteLine("\nDocument converted to PNG successfully with 1 bit per pixel.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument converted to PNG successfully with 1 bit per pixel.\nFile saved at " + dataDir);
         }
 
         private static void ExposeThresholdControlForTiffBinarization(string dataDir)

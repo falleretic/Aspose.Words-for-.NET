@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
 
-            CleanupParagraphsWithPunctuationMarks(dataDir);  
+            CleanupParagraphsWithPunctuationMarks(dataDir);
         }
 
         public static void CleanupParagraphsWithPunctuationMarks(string dataDir)
@@ -34,7 +34,9 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             doc.Save(dataDir);
             // ExEnd:CleanupParagraphsWithPunctuationMarks
 
-            Console.WriteLine("\nMail merge performed with cleanup paragraphs having punctuation marks successfully.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nMail merge performed with cleanup paragraphs having punctuation marks successfully.\nFile saved at " +
+                dataDir);
         }
     }
 }

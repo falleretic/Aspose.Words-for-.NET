@@ -55,6 +55,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderBuildTable
             Console.WriteLine("\nTable build successfully using DocumentBuilder.\nFile saved at " + dataDir);
-        }     
+        }
     }
 }

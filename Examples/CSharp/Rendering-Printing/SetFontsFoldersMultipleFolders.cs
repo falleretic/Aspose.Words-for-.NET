@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using Aspose.Words.Fonts;
@@ -14,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:SetFontsFoldersMultipleFolders
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "Rendering.doc");
             FontSettings FontSettings = new FontSettings();

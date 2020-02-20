@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Markup;
@@ -11,13 +10,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     class UpdateContentControls
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            SetCurrentStateOfCheckBox(dataDir);   
+            SetCurrentStateOfCheckBox(dataDir);
             // Shows how to modify content controls of type plain text box, drop down list and picture.
             ModifyContentControls(dataDir);
         }
+
         public static void SetCurrentStateOfCheckBox(string dataDir)
         {
             // ExStart:SetCurrentStateOfCheckBox
@@ -26,7 +26,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             DocumentBuilder builder = new DocumentBuilder(doc);
             // Get the first content control from the document
-            StructuredDocumentTag SdtCheckBox = (StructuredDocumentTag)doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            StructuredDocumentTag SdtCheckBox =
+                (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
 
             // StructuredDocumentTag.Checked property gets/sets current state of the Checkbox SDT
             if (SdtCheckBox.SdtType == SdtType.Checkbox)
@@ -37,6 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:SetCurrentStateOfCheckBox
             Console.WriteLine("\nCurrent state fo checkbox setup successfully.\nFile saved at " + dataDir);
         }
+
         public static void ModifyContentControls(string dataDir)
         {
             // ExStart:ModifyContentControls
@@ -59,7 +61,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 }
                 else if (sdt.SdtType == SdtType.Picture)
                 {
-                    Shape shape = (Shape)sdt.GetChild(NodeType.Shape, 0, true);
+                    Shape shape = (Shape) sdt.GetChild(NodeType.Shape, 0, true);
                     if (shape.HasImage)
                     {
                         shape.ImageData.SetImage(dataDir + "Watermark.png");
@@ -71,7 +73,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "ModifyContentControls_out.docx";
             doc.Save(dataDir);
             // ExEnd:ModifyContentControls
-            Console.WriteLine("\nPlain text box, drop down list and picture content modified successfully.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nPlain text box, drop down list and picture content modified successfully.\nFile saved at " +
+                dataDir);
         }
     }
 }

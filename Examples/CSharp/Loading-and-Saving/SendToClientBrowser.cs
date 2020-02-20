@@ -1,7 +1,4 @@
-﻿
-using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -10,7 +7,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void Run()
         {
             // ExStart:SendToClientBrowser
-           
+
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
 
@@ -21,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // The Aspose.Words .NET 2.0 DLL must be used instead.
             doc.Save(dataDir);
             // ExEnd:SendToClientBrowser
+
             Console.WriteLine("\nDocument send to client browser successfully.\nFile saved at " + dataDir);
         }
     }

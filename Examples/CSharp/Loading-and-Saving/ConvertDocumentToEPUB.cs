@@ -1,8 +1,6 @@
-﻿
-using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using Aspose.Words.Saving;
+
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class ConvertDocumentToEPUB
@@ -38,9 +36,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Export the document as an EPUB file.
             doc.Save(dataDir + "Document.EpubConversion_out.epub", saveOptions);
             // ExEnd:ConvertDocumentToEPUB
+
             ConvertDocumentToEPUBUsingDefaultSaveOption();
             Console.WriteLine("\nDocument converted to EPUB successfully.");
         }
+
         // ExStart:ConvertDocumentToEPUBUsingDefaultSaveOption
         public static void ConvertDocumentToEPUBUsingDefaultSaveOption()
         {
@@ -53,6 +53,5 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             doc.Save(dataDir + "Document.EpubConversionUsingDefaultSaveOption_out.epub");
         }
         // ExEnd:ConvertDocumentToEPUBUsingDefaultSaveOption
-            
     }
 }

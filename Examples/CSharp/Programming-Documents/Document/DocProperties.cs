@@ -1,14 +1,14 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Properties;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocProperties
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             // Enumerates through all built-in and custom properties in a document.
@@ -21,6 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             RemovePersonalInformation(dataDir);
             ConfiguringLinkToContent(dataDir);
         }
+
         public static void EnumerateProperties(string dataDir)
         {
             // ExStart:EnumerateProperties            
@@ -37,6 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 Console.WriteLine("{0} : {1}", prop.Name, prop.Value);
             // ExEnd:EnumerateProperties
         }
+
         public static void CustomAdd(string dataDir)
         {
             // ExStart:CustomAdd            
@@ -50,8 +52,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 props.Add("Authorized Revision", doc.BuiltInDocumentProperties.RevisionNumber);
                 props.Add("Authorized Amount", 123.45);
             }
+
             // ExEnd:CustomAdd
         }
+
         public static void CustomRemove(string dataDir)
         {
             // ExStart:CustomRemove            
@@ -59,6 +63,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             doc.CustomDocumentProperties.Remove("Authorized Date");
             // ExEnd:CustomRemove
         }
+
         public static void RemovePersonalInformation(string dataDir)
         {
             // ExStart:RemovePersonalInformation            
@@ -68,8 +73,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "RemovePersonalInformation_out.docx";
             doc.Save(dataDir);
             // ExEnd:RemovePersonalInformation
-            Console.WriteLine("\nPersonal information has removed from document successfully.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nPersonal information has removed from document successfully.\nFile saved at " + dataDir);
         }
+
         public static void ConfiguringLinkToContent(string dataDir)
         {
             // ExStart:ConfiguringLinkToContent            

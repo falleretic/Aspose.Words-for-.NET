@@ -3,6 +3,7 @@ using Aspose.Words;
 using System;
 using Aspose.Words.Tables;
 using Aspose.Words.Drawing;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class CreateHeaderFooterUsingDocBuilder
@@ -43,7 +44,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // Insert absolutely positioned image into the top/left corner of the header.
             // Distance from the top/left edges of the page is set to 10 points.
             string imageFileName = dataDir + "Aspose.Words.gif";
-            builder.InsertImage(imageFileName, RelativeHorizontalPosition.Page, 10, RelativeVerticalPosition.Page, 10, 50, 50, WrapType.Through);
+            builder.InsertImage(imageFileName, RelativeHorizontalPosition.Page, 10, RelativeVerticalPosition.Page, 10,
+                50, 50, WrapType.Through);
 
             builder.ParagraphFormat.Alignment = ParagraphAlignment.Right;
             // Specify another header title for other pages.
@@ -123,22 +125,23 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             row.FirstCell.CellFormat.PreferredWidth = PreferredWidth.FromPercent(100 / 3);
             row.LastCell.CellFormat.PreferredWidth = PreferredWidth.FromPercent(100 * 2 / 3);
 
-            
 
             dataDir = dataDir + "HeaderFooter.Primer_out.doc";
             // Save the resulting document.
             doc.Save(dataDir);
             // ExEnd:CreateHeaderFooterUsingDocBuilder
 
-            Console.WriteLine("\nHeader and footer created successfully using document builder.\nFile saved at " + dataDir);
+            Console.WriteLine("\nHeader and footer created successfully using document builder.\nFile saved at " +
+                              dataDir);
         }
+
         // ExStart:CopyHeadersFootersFromPreviousSection
         /// <summary>
         /// Clones and copies headers/footers form the previous section to the specified section.
         /// </summary>
         private static void CopyHeadersFootersFromPreviousSection(Section section)
         {
-            Section previousSection = (Section)section.PreviousSibling;
+            Section previousSection = (Section) section.PreviousSibling;
 
             if (previousSection == null)
                 return;
@@ -148,6 +151,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             foreach (HeaderFooter headerFooter in previousSection.HeadersFooters)
                 section.HeadersFooters.Add(headerFooter.Clone(true));
         }
+
         // ExEnd:CopyHeadersFootersFromPreviousSection
     }
 }

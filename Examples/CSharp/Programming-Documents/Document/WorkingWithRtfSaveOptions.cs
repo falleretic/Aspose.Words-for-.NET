@@ -30,6 +30,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:SavingImagesAsWmf
             Console.WriteLine("\nThe document saved successfully.\nFile saved at " + dataDir);
         }
-
     }
 }

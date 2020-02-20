@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.IO;
-
-using Aspose.Words;
-using Aspose.Words.Tables;
-using System.Diagnostics;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -43,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 // ExStart:DetectFileFormat
                 // Check the file format and move the file to the appropriate folder.
                 FileFormatInfo info = FileFormatUtil.DetectFileFormat(fileName);
-                
+
                 // Display the document type.
                 switch (info.LoadFormat)
                 {
@@ -119,6 +114,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 }
             }
             // ExEnd:CheckFormatCompatibility
+
             Console.WriteLine("\nChecked the format of all documents successfully.");
         }
     }

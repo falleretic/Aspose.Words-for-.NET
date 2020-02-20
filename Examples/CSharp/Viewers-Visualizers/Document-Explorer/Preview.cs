@@ -1,4 +1,3 @@
-
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using Aspose.Words;
@@ -6,19 +5,19 @@ using Aspose.Words.Rendering;
 
 namespace DocumentExplorerExample
 {
-	/// <summary>
-	/// Provides a utility method to print preview and print an Aspose.Words document.
-	/// </summary>
-	internal class Preview
-	{
-	    /// <summary>
-	    /// No ctor.
-	    /// </summary>
-	    private Preview()
-	    {
-	    }
-	    
-	    /// <summary>
+    /// <summary>
+    /// Provides a utility method to print preview and print an Aspose.Words document.
+    /// </summary>
+    internal class Preview
+    {
+        /// <summary>
+        /// No ctor.
+        /// </summary>
+        private Preview()
+        {
+        }
+
+        /// <summary>
         /// A utility method to print preview and print an Aspose.Words document.
         /// </summary>
         internal static void Execute(Document document)
@@ -27,7 +26,7 @@ namespace DocumentExplorerExample
             Cursor cursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
 
-	        PrintPreviewDialog previewDlg = new PrintPreviewDialog();
+            PrintPreviewDialog previewDlg = new PrintPreviewDialog();
 
             // Initialize the Print Dialog with the number of pages in the document.
             PrintDialog printDlg = new PrintDialog();
@@ -43,7 +42,7 @@ namespace DocumentExplorerExample
 
             // Interesting, but PrintDialog will not show and will always return cancel
             // If you run this application in 64-bit mode.
-	        if (!printDlg.ShowDialog().Equals(DialogResult.OK))
+            if (!printDlg.ShowDialog().Equals(DialogResult.OK))
                 return;
 
             // Create the Aspose.Words' implementation of the .NET print document 
@@ -56,6 +55,5 @@ namespace DocumentExplorerExample
 
             previewDlg.ShowDialog();
         }
-
     }
 }

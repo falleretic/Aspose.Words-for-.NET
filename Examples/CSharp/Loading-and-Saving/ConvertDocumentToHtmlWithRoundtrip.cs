@@ -1,8 +1,6 @@
-﻿
-using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using Aspose.Words.Saving;
+
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class ConvertDocumentToHtmlWithRoundtrip
@@ -22,7 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Whether to write the roundtrip information when saving to HTML, MHTML or EPUB.
             // Default value is true for HTML and false for MHTML and EPUB.
             options.ExportRoundtripInformation = true;
-            
+
             doc.Save(dataDir + "ExportRoundtripInformation_out.html", options);
             // ExEnd:ConvertDocumentToHtmlWithRoundtrip
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
@@ -29,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             // Extract the information about the comments of the "ks" author.
             foreach (string comment in ExtractComments(doc, "ks"))
                 Console.Write(comment);
-            
+
             //Read the comment's reply and resolve them.
             CommentResolvedandReplies(doc);
 
@@ -43,6 +42,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             // ExEnd:ProcessComments
             Console.WriteLine("\nComments extracted and removed successfully.\nFile saved at " + dataDir);
         }
+
         // ExStart:ExtractComments
         static ArrayList ExtractComments(Document doc)
         {
@@ -52,10 +52,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             // Look through all comments and gather information about them.
             foreach (Comment comment in comments)
             {
-                collectedComments.Add(comment.Author + " " + comment.DateTime + " " + comment.ToString(SaveFormat.Text));
+                collectedComments.Add(comment.Author + " " + comment.DateTime + " " +
+                                      comment.ToString(SaveFormat.Text));
             }
+
             return collectedComments;
         }
+
         // ExEnd:ExtractComments
         // ExStart:ExtractCommentsByAuthor
         static ArrayList ExtractComments(Document doc, string authorName)
@@ -67,10 +70,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             foreach (Comment comment in comments)
             {
                 if (comment.Author == authorName)
-                    collectedComments.Add(comment.Author + " " + comment.DateTime + " " + comment.ToString(SaveFormat.Text));
+                    collectedComments.Add(comment.Author + " " + comment.DateTime + " " +
+                                          comment.ToString(SaveFormat.Text));
             }
+
             return collectedComments;
         }
+
         // ExEnd:ExtractCommentsByAuthor
         // ExStart:RemoveComments
         static void RemoveComments(Document doc)
@@ -80,6 +86,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             // Remove all comments.
             comments.Clear();
         }
+
         // ExEnd:RemoveComments
         // ExStart:RemoveCommentsByAuthor
         static void RemoveComments(Document doc, string authorName)
@@ -89,7 +96,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             // Look through all comments and remove those written by the authorName author.
             for (int i = comments.Count - 1; i >= 0; i--)
             {
-                Comment comment = (Comment)comments[i];
+                Comment comment = (Comment) comments[i];
                 if (comment.Author == authorName)
                     comment.Remove();
             }
@@ -100,7 +107,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
         static void CommentResolvedandReplies(Document doc)
         {
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            Comment parentComment = (Comment)comments[0];
+            Comment parentComment = (Comment) comments[0];
 
             foreach (Comment childComment in parentComment.Replies)
             {
@@ -112,6 +119,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
                 childComment.Done = true;
             }
         }
+
         // ExEnd:CommentResolvedandReplies
     }
 }

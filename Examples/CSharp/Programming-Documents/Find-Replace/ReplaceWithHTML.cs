@@ -29,7 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new ReplaceWithHtmlEvaluator(options);
 
-            doc.Range.Replace(new Regex(@" <CustomerName>,"), String.Empty, options);
+            doc.Range.Replace(new Regex(@" <CustomerName>,"), string.Empty, options);
 
             // Save the modified document.
             doc.Save(dataDir + "Range.ReplaceWithInsertHtml.doc");
@@ -48,7 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
             /// </summary>
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs args)
             {
-                DocumentBuilder builder = new DocumentBuilder((Document)args.MatchNode.Document);
+                DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
                 builder.MoveTo(args.MatchNode);
 
                 // Replace '<CustomerName>' text with a red bold name.
@@ -60,7 +60,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             private readonly FindReplaceOptions mOptions;
         }
-        // ExEnd:ReplaceWithHtml
 
+        // ExEnd:ReplaceWithHtml
     }
 }

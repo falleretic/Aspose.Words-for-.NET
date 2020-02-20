@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -12,20 +11,21 @@ using System.Linq;
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
     // ExStart:FieldsHelper
-	public class FieldsHelper  
-	{
-		/// <summary>
-		/// Converts any fields of the specified type found in the descendants of the node into static text.
-		/// </summary>
-		/// <param name="compositeNode">The node in which all descendants of the specified FieldType will be converted to static text.</param>
-		/// <param name="targetFieldType">The FieldType of the field to convert to static text.</param>
-		public static void ConvertFieldsToStaticText(CompositeNode compositeNode, FieldType targetFieldType)
-		{
-			compositeNode.Range.Fields.Cast<Field>().Where(f => f.Type == targetFieldType).ToList().ForEach(f => f.Unlink());
-		}
-	}
-	// ExEnd:FieldsHelper	
-	
+    public class FieldsHelper
+    {
+        /// <summary>
+        /// Converts any fields of the specified type found in the descendants of the node into static text.
+        /// </summary>
+        /// <param name="compositeNode">The node in which all descendants of the specified FieldType will be converted to static text.</param>
+        /// <param name="targetFieldType">The FieldType of the field to convert to static text.</param>
+        public static void ConvertFieldsToStaticText(CompositeNode compositeNode, FieldType targetFieldType)
+        {
+            compositeNode.Range.Fields.Cast<Field>().Where(f => f.Type == targetFieldType).ToList()
+                .ForEach(f => f.Unlink());
+        }
+    }
+    // ExEnd:FieldsHelper	
+
     public class FieldsHelper_DocumentVisitor : DocumentVisitor
     {
         /// <summary>
@@ -39,9 +39,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             FieldsHelper_DocumentVisitor helper = new FieldsHelper_DocumentVisitor(targetFieldType);
             compositeNode.Accept(helper);
 
-            Debug.Assert(originalNodeText.Equals(compositeNode.ToString(SaveFormat.Text)), "Error: Text of the node converted differs from the original"); // ExSkip
+            Debug.Assert(originalNodeText.Equals(compositeNode.ToString(SaveFormat.Text)),
+                "Error: Text of the node converted differs from the original"); // ExSkip
             foreach (Node node in compositeNode.GetChildNodes(NodeType.Any, true)) // ExSkip
-                Debug.Assert(!(node is FieldChar && ((FieldChar)node).FieldType.Equals(targetFieldType)), "Error: A field node that should be removed still remains."); // ExSkip         
+                Debug.Assert(!(node is FieldChar && ((FieldChar) node).FieldType.Equals(targetFieldType)),
+                    "Error: A field node that should be removed still remains."); // ExSkip         
         }
 
         private FieldsHelper_DocumentVisitor(FieldType targetFieldType)
@@ -88,7 +90,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             if (fieldEnd.FieldType.Equals(mTargetFieldType))
                 fieldEnd.Remove();
             else
-                CheckDepthAndRemoveNode(fieldEnd); // This removes the field end if it's inside a field that is being converted.
+                CheckDepthAndRemoveNode(
+                    fieldEnd); // This removes the field end if it's inside a field that is being converted.
 
             return VisitorAction.Continue;
         }
@@ -117,7 +120,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
                 while (paragraph.HasChildNodes)
                 {
                     mNodesToSkip.Add(paragraph.LastChild);
-                    ((Paragraph)nextParagraph).PrependChild(paragraph.LastChild);
+                    ((Paragraph) nextParagraph).PrependChild(paragraph.LastChild);
                 }
 
                 paragraph.Remove();

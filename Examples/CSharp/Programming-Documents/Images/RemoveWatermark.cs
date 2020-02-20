@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
     {
         // ExStart:RemoveWatermark
         public static void Run()
-        {          
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithImages();
             string fileName = "RemoveWatermark.docx";
@@ -38,5 +38,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             }
         }
     }
+
     // ExEnd:RemoveWatermark
 }

@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Fields;
@@ -12,7 +11,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         // ExStart:RemoveTOCFromDocument
         public static void Run()
         {
-            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithStyles();
 
@@ -25,9 +23,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "Document.TableOfContentsRemoveToc_out.doc";
             // Save the output.
             doc.Save(dataDir);
-            
+
             Console.WriteLine("\nSpecified TOC from a document removed successfully.\nFile saved at " + dataDir);
         }
+
         /// <summary>
         /// Removes the specified table of contents field from the document.
         /// </summary>
@@ -56,7 +55,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             bool isRemoving = true;
             // Get the FieldStart of the specified TOC.
-            Node currentNode = (Node)fieldStarts[index];
+            Node currentNode = (Node) fieldStarts[index];
 
             while (isRemoving)
             {
@@ -68,7 +67,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 // Of the current TOC and we can stop here.
                 if (currentNode.NodeType == NodeType.FieldEnd)
                 {
-                    FieldEnd fieldEnd = (FieldEnd)currentNode;
+                    FieldEnd fieldEnd = (FieldEnd) currentNode;
                     if (fieldEnd.FieldType == FieldType.FieldTOC)
                         isRemoving = false;
                 }
@@ -80,8 +79,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 node.Remove();
             }
         }
+
         // ExEnd:RemoveTOCFromDocument
     }
-
-
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Aspose.Words.Rendering;
 using Aspose.Words;
 using System.Windows.Forms;
+
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class PrintMultiplePagesOnOneSheet
@@ -53,11 +54,11 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // ExEnd:ActivePrintPreviewDialog
             // ExEnd:PrintMultiplePagesOnOneSheet
         }
-        
     }
+
     // ExStart:MultipagePrintDocument
     class MultipagePrintDocument : PrintDocument
-    // ExEnd:MultipagePrintDocument
+        // ExEnd:MultipagePrintDocument
     {
         // The data and state fields of the custom PrintDocument class.
         // ExStart:DataAndStaticFields        
@@ -66,7 +67,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         private readonly bool mPrintPageBorders;
         private Size mPaperSize;
         private int mCurrentPage;
+
         private int mPageTo;
+
         // ExEnd:DataAndStaticFields
         /// <summary>
         /// The constructor of the custom PrintDocument class.
@@ -81,6 +84,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             mPagesPerSheet = pagesPerSheet;
             mPrintPageBorders = printPageBorders;
         }
+
         // ExEnd:MultipagePrintDocumentConstructor
         /// <summary>
         /// The overridden method OnBeginPrint, which is called before the first page of the document prints.
@@ -107,12 +111,12 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Store the size of the paper, selected by user, taking into account the paper orientation.
             if (PrinterSettings.DefaultPageSettings.Landscape)
                 mPaperSize = new Size(PrinterSettings.DefaultPageSettings.PaperSize.Height,
-                                      PrinterSettings.DefaultPageSettings.PaperSize.Width);
+                    PrinterSettings.DefaultPageSettings.PaperSize.Width);
             else
                 mPaperSize = new Size(PrinterSettings.DefaultPageSettings.PaperSize.Width,
-                                      PrinterSettings.DefaultPageSettings.PaperSize.Height);
-
+                    PrinterSettings.DefaultPageSettings.PaperSize.Height);
         }
+
         // ExEnd:OnBeginPrint
         /// <summary>
         /// Generates the printed page from the specified number of the document pages.
@@ -150,7 +154,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 float thumbTop = rowIdx * thumbSize.Height;
                 // Render the document page to the Graphics object using calculated coordinates and thumbnail placeholder size.
                 // The useful return value is the scale at which the page was rendered.
-                float scale = mDocument.RenderToSize(pageIndex, e.Graphics, thumbLeft, thumbTop, thumbSize.Width, thumbSize.Height);
+                float scale = mDocument.RenderToSize(pageIndex, e.Graphics, thumbLeft, thumbTop, thumbSize.Width,
+                    thumbSize.Height);
 
                 // Draw the page borders (the page thumbnail could be smaller than the thumbnail placeholder size).
                 if (mPrintPageBorders)
@@ -158,7 +163,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                     // Get the real 100% size of the page in points.
                     SizeF pageSize = mDocument.GetPageInfo(pageIndex).SizeInPoints;
                     // Draw the border around the scaled page using the known scale factor.
-                    e.Graphics.DrawRectangle(Pens.Black, thumbLeft, thumbTop, pageSize.Width * scale, pageSize.Height * scale);
+                    e.Graphics.DrawRectangle(Pens.Black, thumbLeft, thumbTop, pageSize.Width * scale,
+                        pageSize.Height * scale);
 
                     // Draws the border around the thumbnail placeholder.
                     e.Graphics.DrawRectangle(Pens.Red, thumbLeft, thumbTop, thumbSize.Width, thumbSize.Height);
@@ -169,6 +175,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             mCurrentPage = mCurrentPage + mPagesPerSheet;
             e.HasMorePages = (mCurrentPage <= mPageTo);
         }
+
         // ExEnd:OnPrintPage
         /// <summary>
         /// Converts hundredths of inches to points.
@@ -176,8 +183,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         // ExStart:HundredthsInchToPoint
         private static float HundredthsInchToPoint(float value)
         {
-            return (float)ConvertUtil.InchToPoint(value / 100);
+            return (float) ConvertUtil.InchToPoint(value / 100);
         }
+
         // ExEnd:HundredthsInchToPoint
         /// <summary>
         /// Defines the number of columns and rows depending on the pagesPerSheet number and the page orientation.
@@ -189,19 +197,35 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Define the number of the columns and rows on the sheet for the Landscape-oriented paper.
             switch (pagesPerSheet)
             {
-                case 16: size = new Size(4, 4); break;
-                case 9: size = new Size(3, 3); break;
-                case 8: size = new Size(4, 2); break;
-                case 6: size = new Size(3, 2); break;
-                case 4: size = new Size(2, 2); break;
-                case 2: size = new Size(2, 1); break;
-                default: size = new Size(1, 1); break;
+                case 16:
+                    size = new Size(4, 4);
+                    break;
+                case 9:
+                    size = new Size(3, 3);
+                    break;
+                case 8:
+                    size = new Size(4, 2);
+                    break;
+                case 6:
+                    size = new Size(3, 2);
+                    break;
+                case 4:
+                    size = new Size(2, 2);
+                    break;
+                case 2:
+                    size = new Size(2, 1);
+                    break;
+                default:
+                    size = new Size(1, 1);
+                    break;
             }
+
             // Switch the width and height if the paper is in the Portrait orientation.
             if (mPaperSize.Width < mPaperSize.Height)
                 return new Size(size.Height, size.Width);
             return size;
         }
+
         // ExEnd:GetThumbCount
     }
 }

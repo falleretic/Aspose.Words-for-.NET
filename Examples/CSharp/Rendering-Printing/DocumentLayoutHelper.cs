@@ -1,7 +1,5 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Tables;
@@ -16,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             string fileName = "TestFile.docx";
             Document doc = new Document(dataDir + fileName);
@@ -51,7 +49,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Header and footer).
             Console.WriteLine();
             Console.WriteLine("The lines of the second paragraph:");
-            foreach (RenderedLine paragraphLine in layoutDoc.GetLayoutEntitiesOfNode(doc.FirstSection.Body.Paragraphs[1]))
+            foreach (RenderedLine paragraphLine in layoutDoc.GetLayoutEntitiesOfNode(
+                doc.FirstSection.Body.Paragraphs[1]))
             {
                 Console.WriteLine(string.Format("\"{0}\"", paragraphLine.Text.Trim()));
                 Console.WriteLine(paragraphLine.Rectangle.ToString());
@@ -88,10 +87,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public LayoutCollection<RenderedPage> Pages
         {
-            get
-            {
-                return GetChildNodes<RenderedPage>();
-            }
+            get { return GetChildNodes<RenderedPage>(); }
         }
 
         /// <summary>
@@ -117,7 +113,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 // There is no table entity in rendered output so manually check if rows belong to a table node.
                 if (entity.Type == LayoutEntityType.Row)
                 {
-                    RenderedRow row = (RenderedRow)entity;
+                    RenderedRow row = (RenderedRow) entity;
                     if (row.Table == node)
                         entities.Add(entity);
                 }
@@ -165,12 +161,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                         {
                             if (mLayoutToNodeLookup.ContainsKey(span.LayoutObject))
                             {
-                                if (span.Kind == "PARAGRAPH" || span.Kind == "ROW" || span.Kind == "CELL" || span.Kind == "SECTION")
+                                if (span.Kind == "PARAGRAPH" || span.Kind == "ROW" || span.Kind == "CELL" ||
+                                    span.Kind == "SECTION")
                                 {
                                     Node node = mLayoutToNodeLookup[span.LayoutObject];
 
                                     if (node.NodeType == NodeType.Row)
-                                        node = ((Row)node).LastCell.LastParagraph;
+                                        node = ((Row) node).LastCell.LastParagraph;
 
                                     foreach (RenderedLine collectedLine in collectedLines)
                                         collectedLine.SetParentNode(node);
@@ -201,8 +198,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
         private LayoutCollector mLayoutCollector;
         private LayoutEnumerator mEnumerator;
+
         private static Dictionary<object, Node> mLayoutToNodeLookup =
-                new Dictionary<object, Node>();
+            new Dictionary<object, Node>();
     }
 
     /// <summary>
@@ -210,17 +208,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
     /// </summary>
     public abstract class LayoutEntity
     {
-        protected LayoutEntity() { }
+        protected LayoutEntity()
+        {
+        }
 
         /// <summary>
         /// Gets the 1-based index of a page which contains the rendered entity.
         /// </summary>
         public int PageIndex
         {
-            get
-            {
-                return mPageIndex;
-            }
+            get { return mPageIndex; }
         }
 
         /// <summary>
@@ -228,10 +225,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public RectangleF Rectangle
         {
-            get
-            {
-                return mRectangle;
-            }
+            get { return mRectangle; }
         }
 
         /// <summary>
@@ -239,10 +233,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public LayoutEntityType Type
         {
-            get
-            {
-                return mType;
-            }
+            get { return mType; }
         }
 
         /// <summary>
@@ -267,10 +258,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public LayoutEntity Parent
         {
-            get
-            {
-                return mParent;
-            }
+            get { return mParent; }
         }
 
         /// <summary>
@@ -279,10 +267,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <remarks>This property may return null for spans that originate from Run nodes or nodes that are inside the header or footer.</remarks>
         public virtual Node ParentNode
         {
-            get
-            {
-                return mParentNode;
-            }
+            get { return mParentNode; }
         }
 
         /// <summary>
@@ -296,11 +281,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Reserved for internal use.
         /// </summary>
-        internal object LayoutObject
-        {
-            get;
-            set;
-        }
+        internal object LayoutObject { get; set; }
 
         /// <summary>
         /// Reserved for internal use.
@@ -383,7 +364,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                     childList.Add(entity);
 
                 if (isDeep)
-                    childList.AddRange((IEnumerable<LayoutEntity>)entity.GetChildEntities(type, true));
+                    childList.AddRange((IEnumerable<LayoutEntity>) entity.GetChildEntities(type, true));
             }
 
             return new LayoutCollection<LayoutEntity>(childList);
@@ -397,7 +378,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             foreach (LayoutEntity entity in mChildEntities)
             {
                 if (entity.GetType() == obj.GetType())
-                    childList.Add((T)entity);
+                    childList.Add((T) entity);
             }
 
             return new LayoutCollection<T>(childList);
@@ -490,10 +471,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public int Count
         {
-            get
-            {
-                return mBaseList.Count;
-            }
+            get { return mBaseList.Count; }
         }
 
         private List<T> mBaseList;
@@ -507,12 +485,18 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the lines of a story.
         /// </summary>
-        public LayoutCollection<RenderedLine> Lines { get { return GetChildNodes<RenderedLine>(); } }
+        public LayoutCollection<RenderedLine> Lines
+        {
+            get { return GetChildNodes<RenderedLine>(); }
+        }
 
         /// <summary>
         /// Provides access to the row entities of a table.
         /// </summary>
-        public LayoutCollection<RenderedRow> Rows { get { return GetChildNodes<RenderedRow>(); } }
+        public LayoutCollection<RenderedRow> Rows
+        {
+            get { return GetChildNodes<RenderedRow>(); }
+        }
     }
 
     /// <summary>
@@ -525,10 +509,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public override string Text
         {
-            get
-            {
-                return base.Text + Environment.NewLine;
-            }
+            get { return base.Text + Environment.NewLine; }
         }
 
         /// <summary>
@@ -537,16 +518,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <remarks>This property may return null for some lines such as those inside the header or footer.</remarks>
         public Paragraph Paragraph
         {
-            get
-            {
-                return (Paragraph)ParentNode;
-            }
+            get { return (Paragraph) ParentNode; }
         }
 
         /// <summary>
         /// Provides access to the spans of the line.
         /// </summary>
-        public LayoutCollection<RenderedSpan> Spans { get { return GetChildNodes<RenderedSpan>(); } }
+        public LayoutCollection<RenderedSpan> Spans
+        {
+            get { return GetChildNodes<RenderedSpan>(); }
+        }
     }
 
     /// <summary>
@@ -555,7 +536,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
     /// </summary>
     public class RenderedSpan : LayoutEntity
     {
-        public RenderedSpan() { }
+        public RenderedSpan()
+        {
+        }
 
         internal RenderedSpan(string text)
         {
@@ -570,10 +553,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// May have either a BOOKMARKSTART or BOOKMARKEND kind.</remarks>
         public string Kind
         {
-            get
-            {
-                return mKind;
-            }
+            get { return mKind; }
         }
 
         /// <summary>
@@ -581,10 +561,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public override string Text
         {
-            get
-            {
-                return mText;
-            }
+            get { return mText; }
         }
 
         /// <summary>
@@ -593,10 +570,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <remarks>This property returns null for spans that originate from Run nodes or nodes that are inside the header or footer.</remarks>
         public override Node ParentNode
         {
-            get
-            {
-                return mParentNode;
-            }
+            get { return mParentNode; }
         }
 
         private string mText;
@@ -612,10 +586,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public string Kind
         {
-            get
-            {
-                return mKind;
-            }
+            get { return mKind; }
         }
     }
 
@@ -627,27 +598,33 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the columns of the page.
         /// </summary>
-        public LayoutCollection<RenderedColumn> Columns { get { return GetChildNodes<RenderedColumn>(); } }
+        public LayoutCollection<RenderedColumn> Columns
+        {
+            get { return GetChildNodes<RenderedColumn>(); }
+        }
 
         /// <summary>
         /// Provides access to the header and footers of the page.
         /// </summary>
-        public LayoutCollection<RenderedHeaderFooter> HeaderFooters { get { return GetChildNodes<RenderedHeaderFooter>(); } }
+        public LayoutCollection<RenderedHeaderFooter> HeaderFooters
+        {
+            get { return GetChildNodes<RenderedHeaderFooter>(); }
+        }
 
         /// <summary>
         /// Provides access to the comments of the page.
         /// </summary>
-        public LayoutCollection<RenderedComment> Comments { get { return GetChildNodes<RenderedComment>(); } }
+        public LayoutCollection<RenderedComment> Comments
+        {
+            get { return GetChildNodes<RenderedComment>(); }
+        }
 
         /// <summary>
         /// Returns the section that corresponds to the layout entity.  
         /// </summary>
         public Section Section
         {
-            get
-            {
-                return (Section)ParentNode;
-            }
+            get { return (Section) ParentNode; }
         }
 
         /// <summary>
@@ -657,7 +634,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             get
             {
-                return Columns.First.GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Section);
+                return Columns.First.GetChildEntities(LayoutEntityType.Line, true).First.ParentNode
+                    .GetAncestor(NodeType.Section);
             }
         }
     }
@@ -670,7 +648,10 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the cells of the row.
         /// </summary>
-        public LayoutCollection<RenderedCell> Cells { get { return GetChildNodes<RenderedCell>(); } }
+        public LayoutCollection<RenderedCell> Cells
+        {
+            get { return GetChildNodes<RenderedCell>(); }
+        }
 
         /// <summary>
         /// Returns the row that corresponds to the layout entity.  
@@ -678,10 +659,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <remarks>This property may return null for some rows such as those inside the header or footer.</remarks>
         public Row Row
         {
-            get
-            {
-                return (Row)ParentNode;
-            }
+            get { return (Row) ParentNode; }
         }
 
         /// <summary>
@@ -690,10 +668,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <remarks>This property may return null for some tables such as those inside the header or footer.</remarks>
         public Table Table
         {
-            get
-            {
-                return Row != null ? Row.ParentTable : null;
-            }
+            get { return Row != null ? Row.ParentTable : null; }
         }
 
         /// <summary>
@@ -718,27 +693,33 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the footnotes of the page.
         /// </summary>
-        public LayoutCollection<RenderedFootnote> Footnotes { get { return GetChildNodes<RenderedFootnote>(); } }
+        public LayoutCollection<RenderedFootnote> Footnotes
+        {
+            get { return GetChildNodes<RenderedFootnote>(); }
+        }
 
         /// <summary>
         /// Provides access to the endnotes of the page.
         /// </summary>
-        public LayoutCollection<RenderedEndnote> Endnotes { get { return GetChildNodes<RenderedEndnote>(); } }
+        public LayoutCollection<RenderedEndnote> Endnotes
+        {
+            get { return GetChildNodes<RenderedEndnote>(); }
+        }
 
         /// <summary>
         /// Provides access to the note separators of the page.
         /// </summary>
-        public LayoutCollection<RenderedNoteSeparator> NoteSeparators { get { return GetChildNodes<RenderedNoteSeparator>(); } }
+        public LayoutCollection<RenderedNoteSeparator> NoteSeparators
+        {
+            get { return GetChildNodes<RenderedNoteSeparator>(); }
+        }
 
         /// <summary>
         /// Returns the body that corresponds to the layout entity.  
         /// </summary>
         public Body Body
         {
-            get
-            {
-                return (Body)ParentNode;
-            }
+            get { return (Body) ParentNode; }
         }
 
         /// <summary>
@@ -746,10 +727,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public override Node ParentNode
         {
-            get
-            {
-                return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Body);
-            }
+            get { return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Body); }
         }
     }
 
@@ -764,10 +742,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <remarks>This property may return null for some cells such as those inside the header or footer.</remarks>
         public Cell Cell
         {
-            get
-            {
-                return (Cell)ParentNode;
-            }
+            get { return (Cell) ParentNode; }
         }
 
         /// <summary>
@@ -796,10 +771,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public Footnote Footnote
         {
-            get
-            {
-                return (Footnote)ParentNode;
-            }
+            get { return (Footnote) ParentNode; }
         }
 
         /// <summary>
@@ -824,10 +796,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public Footnote Endnote
         {
-            get
-            {
-                return (Footnote)ParentNode;
-            }
+            get { return (Footnote) ParentNode; }
         }
 
         /// <summary>
@@ -876,10 +845,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public Comment Comment
         {
-            get
-            {
-                return (Comment)ParentNode;
-            }
+            get { return (Comment) ParentNode; }
         }
 
         /// <summary>
@@ -887,10 +853,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public override Node ParentNode
         {
-            get
-            {
-                return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Comment);
-            }
+            get { return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Comment); }
         }
     }
 
@@ -904,10 +867,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         public Footnote Footnote
         {
-            get
-            {
-                return (Footnote)ParentNode;
-            }
+            get { return (Footnote) ParentNode; }
         }
 
         /// <summary>

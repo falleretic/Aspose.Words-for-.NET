@@ -38,20 +38,19 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             for (int page = 1; page <= doc.PageCount; page++)
             {
                 Document pageDoc = splitter.GetDocumentOfPage(page);
-                pageDoc.Save(Path.Combine(outFolder, string.Format("{0} - page{1} Out{2}", fileName, page, extensionName)));
+                pageDoc.Save(Path.Combine(outFolder,
+                    string.Format("{0} - page{1} Out{2}", fileName, page, extensionName)));
             }
         }
 
         public static void SplitAllDocumentsToPages(string folderName)
         {
-
             string[] fileNames = Directory.GetFiles(folderName, "*.doc?", SearchOption.TopDirectoryOnly);
 
             foreach (string fileName in fileNames)
             {
                 SplitDocumentToPages(fileName);
             }
-
         }
     }
 
@@ -109,8 +108,9 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         /// </returns>
         public Document GetDocumentOfPageRange(int startIndex, int endIndex)
         {
-            Document result = (Document)this.Document.Clone(false);
-            foreach (var section in this.pageNumberFinder.RetrieveAllNodesOnPages(startIndex, endIndex, NodeType.Section))
+            Document result = (Document) this.Document.Clone(false);
+            foreach (var section in this.pageNumberFinder.RetrieveAllNodesOnPages(startIndex, endIndex,
+                NodeType.Section))
             {
                 result.AppendChild(result.ImportNode(section, true));
             }
@@ -161,8 +161,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public int GetPage(Node node)
         {
             return this.nodeStartPageLookup.ContainsKey(node)
-                       ? this.nodeStartPageLookup[node]
-                       : this.collector.GetStartPageIndex(node);
+                ? this.nodeStartPageLookup[node]
+                : this.collector.GetStartPageIndex(node);
         }
 
         /// <summary>
@@ -177,8 +177,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public int GetPageEnd(Node node)
         {
             return this.nodeEndPageLookup.ContainsKey(node)
-                       ? this.nodeEndPageLookup[node]
-                       : this.collector.GetEndPageIndex(node);
+                ? this.nodeEndPageLookup[node]
+                : this.collector.GetEndPageIndex(node);
         }
 
         /// <summary>
@@ -361,7 +361,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         /// </summary>
         private static Run SplitRun(Run run, int position)
         {
-            Run afterRun = (Run)run.Clone(true);
+            Run afterRun = (Run) run.Clone(true);
             afterRun.Text = run.Text.Substring(position);
             run.Text = run.Text.Substring(0, position);
             run.ParentNode.InsertAfter(afterRun, run);
@@ -434,7 +434,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
         public override VisitorAction VisitSectionStart(Section section)
         {
-            Section previousSection = (Section)section.PreviousSibling;
+            Section previousSection = (Section) section.PreviousSibling;
 
             // If there is a previous section attempt to copy any linked header footers otherwise they will not appear in an 
             // extracted document if the previous section is missing.
@@ -444,14 +444,16 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 if (!section.PageSetup.RestartPageNumbering)
                 {
                     section.PageSetup.RestartPageNumbering = true;
-                    section.PageSetup.PageStartingNumber = previousSection.PageSetup.PageStartingNumber + this.pageNumberFinder.PageSpan(previousSection);
+                    section.PageSetup.PageStartingNumber = previousSection.PageSetup.PageStartingNumber +
+                                                           this.pageNumberFinder.PageSpan(previousSection);
                 }
 
                 foreach (HeaderFooter previousHeaderFooter in previousHeaderFooters)
                 {
                     if (section.HeadersFooters[previousHeaderFooter.HeaderFooterType] == null)
                     {
-                        HeaderFooter newHeaderFooter = (HeaderFooter)previousHeaderFooters[previousHeaderFooter.HeaderFooterType].Clone(true);
+                        HeaderFooter newHeaderFooter =
+                            (HeaderFooter) previousHeaderFooters[previousHeaderFooter.HeaderFooterType].Clone(true);
                         section.HeadersFooters.Add(newHeaderFooter);
                     }
                 }
@@ -493,7 +495,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public override VisitorAction VisitParagraphEnd(Paragraph paragraph)
         {
             // If paragraph contains only section break, add fake run into 
-            if (paragraph.IsEndOfSection && paragraph.ChildNodes.Count == 1 && paragraph.ChildNodes[0].GetText() == "\f")
+            if (paragraph.IsEndOfSection && paragraph.ChildNodes.Count == 1 &&
+                paragraph.ChildNodes[0].GetText() == "\f")
             {
                 var run = new Run(paragraph.Document);
                 paragraph.AppendChild(run);
@@ -507,10 +510,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 // as the paragraph is supposed to be part of the item before.
                 if (paragraph.IsListItem)
                 {
-                    Double textPosition = clonePara.ListFormat.ListLevel.TextPosition;
+                    double textPosition = clonePara.ListFormat.ListLevel.TextPosition;
                     clonePara.ListFormat.RemoveNumbers();
                     clonePara.ParagraphFormat.LeftIndent = textPosition;
                 }
+
                 // Reset spacing of split paragraphs in tables as additional spacing may cause them to look different.
                 if (paragraph.IsInCell)
                 {
@@ -528,7 +532,9 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             {
                 cloneSection.PageSetup.SectionStart = SectionStart.NewPage;
                 cloneSection.PageSetup.RestartPageNumbering = true;
-                cloneSection.PageSetup.PageStartingNumber = section.PageSetup.PageStartingNumber + (section.Document.IndexOf(cloneSection) - section.Document.IndexOf(section));
+                cloneSection.PageSetup.PageStartingNumber = section.PageSetup.PageStartingNumber +
+                                                            (section.Document.IndexOf(cloneSection) -
+                                                             section.Document.IndexOf(section));
                 cloneSection.PageSetup.DifferentFirstPageHeaderFooter = false;
 
                 // corrects page break on end of the section
@@ -539,13 +545,16 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             SplitPageBreakCorrector.ProcessSection(section);
 
             // Add new page numbering for the body of the section as well.
-            this.pageNumberFinder.AddPageNumbersForNode(section.Body, this.pageNumberFinder.GetPage(section), this.pageNumberFinder.GetPageEnd(section));
+            this.pageNumberFinder.AddPageNumbersForNode(section.Body, this.pageNumberFinder.GetPage(section),
+                this.pageNumberFinder.GetPageEnd(section));
             return VisitorAction.Continue;
         }
 
         private VisitorAction ContinueIfCompositeAcrossPageElseSkip(CompositeNode composite)
         {
-            return (this.pageNumberFinder.PageSpan(composite) > 1) ? VisitorAction.Continue : VisitorAction.SkipThisNode;
+            return (this.pageNumberFinder.PageSpan(composite) > 1)
+                ? VisitorAction.Continue
+                : VisitorAction.SkipThisNode;
         }
 
         private List<Node> SplitComposite(CompositeNode composite)
@@ -566,8 +575,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             var splitList = new List<Node>();
             int startingPage = this.pageNumberFinder.GetPage(node);
             Node[] childNodes = node.NodeType == NodeType.Section
-                                    ? ((Section)node).Body.ChildNodes.ToArray()
-                                    : node.ChildNodes.ToArray();
+                ? ((Section) node).Body.ChildNodes.ToArray()
+                : node.ChildNodes.ToArray();
             foreach (Node childNode in childNodes)
             {
                 int pageNum = this.pageNumberFinder.GetPage(childNode);
@@ -598,7 +607,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
         private CompositeNode SplitCompositeAtNode(CompositeNode baseNode, Node targetNode)
         {
-            CompositeNode cloneNode = (CompositeNode)baseNode.Clone(false);
+            CompositeNode cloneNode = (CompositeNode) baseNode.Clone(false);
             Node node = targetNode;
             int currentPageNum = this.pageNumberFinder.GetPage(baseNode);
 
@@ -608,8 +617,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 CompositeNode composite = cloneNode;
                 if (baseNode.NodeType == NodeType.Section)
                 {
-                    cloneNode = (CompositeNode)baseNode.Clone(true);
-                    Section section = (Section)cloneNode;
+                    cloneNode = (CompositeNode) baseNode.Clone(true);
+                    Section section = (Section) cloneNode;
                     section.Body.RemoveAllChildren();
                     composite = section.Body;
                 }
@@ -632,10 +641,10 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                     if (pageNum == targetPageNum)
                     {
                         if (cloneNode.NodeType == NodeType.Row)
-                            ((Row)cloneNode).EnsureMinimum();
+                            ((Row) cloneNode).EnsureMinimum();
 
                         if (cloneNode.NodeType == NodeType.Cell)
-                            ((Cell)cloneNode).EnsureMinimum();
+                            ((Cell) cloneNode).EnsureMinimum();
 
                         cloneNode.LastChild.Remove();
                         cloneNode.AppendChild(childNode);
@@ -645,7 +654,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                         cloneNode.AppendChild(childNode.Clone(false));
                         if (cloneNode.LastChild.NodeType != NodeType.Cell)
                         {
-                            ((CompositeNode)cloneNode.LastChild).AppendChild(((CompositeNode)childNode).FirstChild.Clone(false));
+                            ((CompositeNode) cloneNode.LastChild).AppendChild(
+                                ((CompositeNode) childNode).FirstChild.Clone(false));
                         }
                     }
                 }
@@ -686,7 +696,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 return;
             }
 
-            var run = lastBody.GetChildNodes(NodeType.Run, true).OfType<Run>().FirstOrDefault(p => p.Text.EndsWith(PageBreakStr));
+            var run = lastBody.GetChildNodes(NodeType.Run, true).OfType<Run>()
+                .FirstOrDefault(p => p.Text.EndsWith(PageBreakStr));
 
             if (run != null)
             {
@@ -698,7 +709,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
         public static void RemovePageBreakFromParagraph(Paragraph paragraph)
         {
-            Run run = (Run)paragraph.FirstChild;
+            Run run = (Run) paragraph.FirstChild;
             if (run.Text.Equals(PageBreakStr))
             {
                 paragraph.RemoveChild(run);
@@ -713,7 +724,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 return;
             }
 
-            Run run = (Run)lastNode;
+            Run run = (Run) lastNode;
             RemovePageBreak(run);
         }
 

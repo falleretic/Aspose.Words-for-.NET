@@ -19,13 +19,26 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
                     CultureInfo culture = new CultureInfo(name, false);
                     DateTimeFormatInfo format = culture.DateTimeFormat;
 
-                    format.MonthNames = new[] { "месяц 1", "месяц 2", "месяц 3", "месяц 4", "месяц 5", "месяц 6", "месяц 7", "месяц 8", "месяц 9", "месяц 10", "месяц 11", "месяц 12", "" };
+                    format.MonthNames = new[]
+                    {
+                        "месяц 1", "месяц 2", "месяц 3", "месяц 4", "месяц 5", "месяц 6", "месяц 7", "месяц 8",
+                        "месяц 9", "месяц 10", "месяц 11", "месяц 12", ""
+                    };
                     format.MonthGenitiveNames = format.MonthNames;
-                    format.AbbreviatedMonthNames = new[] { "мес 1", "мес 2", "мес 3", "мес 4", "мес 5", "мес 6", "мес 7", "мес 8", "мес 9", "мес 10", "мес 11", "мес 12", "" };
+                    format.AbbreviatedMonthNames = new[]
+                    {
+                        "мес 1", "мес 2", "мес 3", "мес 4", "мес 5", "мес 6", "мес 7", "мес 8", "мес 9", "мес 10",
+                        "мес 11", "мес 12", ""
+                    };
                     format.AbbreviatedMonthGenitiveNames = format.AbbreviatedMonthNames;
 
-                    format.DayNames = new[] { "день недели 7", "день недели 1", "день недели 2", "день недели 3", "день недели 4", "день недели 5", "день недели 6" };
-                    format.AbbreviatedDayNames = new[] { "день 7", "день 1", "день 2", "день 3", "день 4", "день 5", "день 6" };
+                    format.DayNames = new[]
+                    {
+                        "день недели 7", "день недели 1", "день недели 2", "день недели 3", "день недели 4",
+                        "день недели 5", "день недели 6"
+                    };
+                    format.AbbreviatedDayNames = new[]
+                        { "день 7", "день 1", "день 2", "день 3", "день 4", "день 5", "день 6" };
                     format.ShortestDayNames = new[] { "д7", "д1", "д2", "д3", "д4", "д5", "д6" };
 
                     format.AMDesignator = "До полудня";
@@ -45,5 +58,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             }
         }
     }
+
     // ExEnd:FieldUpdateCultureProviderGetCulture   
 }

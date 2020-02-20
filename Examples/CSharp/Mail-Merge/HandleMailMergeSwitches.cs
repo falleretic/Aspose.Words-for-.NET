@@ -56,5 +56,6 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
         }
     }
+
     // ExEnd:HandleMailMergeSwitches
 }

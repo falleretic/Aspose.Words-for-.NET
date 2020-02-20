@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -37,7 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             // Create a watermark shape. This will be a WordArt shape. 
             // You are free to try other shape types as watermarks.
             Shape watermark = new Shape(doc, ShapeType.TextPlainText);
-            watermark.Name= "WaterMark";
+            watermark.Name = "WaterMark";
             // Set up the text of the watermark.
             watermark.TextPath.Text = watermarkText;
             watermark.TextPath.FontFamily = "Arial";
@@ -71,7 +70,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             }
         }
 
-        private static void InsertWatermarkIntoHeader(Paragraph watermarkPara, Section sect, HeaderFooterType headerType)
+        private static void InsertWatermarkIntoHeader(Paragraph watermarkPara, Section sect,
+            HeaderFooterType headerType)
         {
             HeaderFooter header = sect.HeadersFooters[headerType];
 
@@ -86,5 +86,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             header.AppendChild(watermarkPara.Clone(true));
         }
     }
+
     // ExEnd:AddWatermark
 }

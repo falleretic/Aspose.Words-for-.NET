@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
@@ -20,9 +18,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.DigitalSignatureDetails = new PdfDigitalSignatureDetails(
-            CertificateHolder.Create(dataDir + "CioSrv1.pfx", "cinD96..arellA"),"reason","location",DateTime.Now);
-            doc.Save(dataDir + @"DigitallySignedPdfUsingCertificateHolder.Signed_out.pdf", options);                      
+                CertificateHolder.Create(dataDir + "CioSrv1.pfx", "cinD96..arellA"), "reason", "location",
+                DateTime.Now);
+            doc.Save(dataDir + @"DigitallySignedPdfUsingCertificateHolder.Signed_out.pdf", options);
             // ExEnd:DigitallySignedPdfUsingCertificateHolder
+
             Console.WriteLine("\nDigitally signed PDF file created successfully.\nFile saved at " + dataDir);
         }
     }

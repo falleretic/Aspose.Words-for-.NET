@@ -37,6 +37,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             // ExEnd:CreateBookmark
             Console.WriteLine("\nBookmark created successfully.\nFile saved at " + dataDir);
         }
-        
     }
 }

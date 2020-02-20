@@ -4,6 +4,7 @@ using System.Reflection;
 using Aspose.Words.Fonts;
 using Aspose.Words;
 using Aspose.Words.Saving;
+
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class EmbeddedFontsInPDF
@@ -12,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:EmbeddAllFonts
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "Rendering.doc");
 
@@ -28,6 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             Console.WriteLine("\nAll Fonts embedded successfully.\nFile saved at " + outPath);
             EmbeddSubsetFonts(doc, dataDir);
         }
+
         private static void EmbeddSubsetFonts(Document doc, string dataDir)
         {
             // ExStart:EmbeddSubsetFonts

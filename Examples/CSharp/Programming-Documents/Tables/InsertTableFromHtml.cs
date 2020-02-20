@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Drawing;
@@ -39,6 +38,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
             Console.WriteLine("\nTable inserted successfully from html.\nFile saved at " + dataDir);
         }
-        
     }
 }

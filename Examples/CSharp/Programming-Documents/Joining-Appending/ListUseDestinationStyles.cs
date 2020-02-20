@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Fields;
 using System.Text;
@@ -43,7 +42,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
                         // The current paragraph.
                         if (newLists.Contains(listId))
                         {
-                            currentList = (List)newLists[listId];
+                            currentList = (List) newLists[listId];
                         }
                         else
                         {
@@ -65,7 +64,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             // Save the combined document to disk.            
             dstDoc.Save(dataDir);
             // ExEnd:ListUseDestinationStyles
-            Console.WriteLine("\nDocument appended successfully without continuing any list numberings.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument appended successfully without continuing any list numberings.\nFile saved at " + dataDir);
         }
     }
 }

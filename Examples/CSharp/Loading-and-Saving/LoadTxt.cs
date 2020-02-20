@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
-
-using Aspose.Words;
-using Aspose.Words.Tables;
-using System.Diagnostics;
-using Aspose.Words.MailMerging;
-using Aspose.Words.Saving;
-using System.Text;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -18,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // ExStart:LoadTxt
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-            
+
             // The encoding of the text file is automatically detected.
             Document doc = new Document(dataDir + "LoadTxt.txt");
 
@@ -26,6 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "LoadTxt_out.docx";
             doc.Save(dataDir);
             // ExEnd:LoadTxt
+
             Console.WriteLine("\nText document loaded successfully.\nFile saved at " + dataDir);
         }
     }

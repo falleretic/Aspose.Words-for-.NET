@@ -30,14 +30,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
             // Append text with another style.
             builder.ParagraphFormat.StyleName = paraStyle.Name;
             builder.Write("This is text with some other formatting ");
-             
+
             dataDir = dataDir + "InsertStyleSeparator_out.doc";
 
             // Save the document to disk.
             doc.Save(dataDir);
             // ExEnd:ParagraphInsertStyleSeparator 
-            
-            Console.WriteLine("\nApplied different paragraph styles to two different parts of a text line successfully.\nFile saved at " + dataDir);
+
+            Console.WriteLine(
+                "\nApplied different paragraph styles to two different parts of a text line successfully.\nFile saved at " +
+                dataDir);
         }
     }
 }

@@ -16,13 +16,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             string dataDir = RunExamples.GetDataDir_WorkingWithFields();
             Document doc = new Document(dataDir + "in.doc");
             // Get paragraph you want to append this INCLUDETEXT field to
-            Paragraph para = (Paragraph)doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
             // We want to insert an INCLUDETEXT field like this:
             // { INCLUDETEXT  "file path" }
 
             // Create instance of FieldAsk class and lets build the above field code
-            FieldIncludeText fieldIncludeText = (FieldIncludeText)para.AppendField(FieldType.FieldIncludeText, false);
+            FieldIncludeText fieldIncludeText = (FieldIncludeText) para.AppendField(FieldType.FieldIncludeText, false);
             fieldIncludeText.BookmarkName = "bookmark";
             fieldIncludeText.SourceFullName = dataDir + @"IncludeText.docx";
 
@@ -35,7 +35,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             doc.Save(dataDir);
 
             // ExEnd:InsertFieldIncludeTextWithoutDocumentBuilder
-            Console.WriteLine("\nIncludeText field without using document builder inserted successfully.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nIncludeText field without using document builder inserted successfully.\nFile saved at " + dataDir);
         }
     }
 }

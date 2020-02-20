@@ -11,7 +11,6 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
     {
         public static void Run()
         {
-
             AWords.License license = new AWords.License();
 
             // This line attempts to set a license from several locations relative to the executable and Aspose.Words.dll.

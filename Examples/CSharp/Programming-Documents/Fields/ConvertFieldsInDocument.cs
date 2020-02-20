@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -26,7 +25,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Save the document with fields transformed to disk.
             doc.Save(dataDir);
             // ExEnd:ConvertFieldsInDocument
-            Console.WriteLine("\nConverted fields to static text in the document successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nConverted fields to static text in the document successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

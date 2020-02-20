@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
@@ -32,7 +31,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             // Save the joined document to PDF.
             dstDoc.Save(dataDir);
             // ExEnd:UpdatePageLayout
-            Console.WriteLine("\nDocument appended successfully with updated page layout after appending the document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument appended successfully with updated page layout after appending the document.\nFile saved at " +
+                dataDir);
         }
     }
 }

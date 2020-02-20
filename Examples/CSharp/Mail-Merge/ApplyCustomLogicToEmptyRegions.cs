@@ -18,7 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // ExStart:ApplyCustomLogicToEmptyRegions
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
 
             string fileName = "TestFile.doc";
             // Open the document.
@@ -44,7 +44,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             // Save the output document to disk.
             doc.Save(dataDir + "TestFile.CustomLogicEmptyRegions1_out.doc");
-            
+
             // Reload the original merged document.
             doc = mergedDoc.Clone();
 
@@ -62,10 +62,11 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             ExecuteCustomLogicOnEmptyRegions(doc, new EmptyRegionsHandler(), regions);
             // ExEnd:ContactDetails 
             dataDir = dataDir + "TestFile.CustomLogicEmptyRegions3_out.doc";
-            doc.Save(dataDir );
+            doc.Save(dataDir);
 
             Console.WriteLine("\nMail merge performed successfully.\nFile saved at " + dataDir);
         }
+
         // ExStart:CreateDataSourceFromDocumentRegions
         /// <summary>
         /// Returns a DataSet object containing a DataTable for the unmerged regions in the specified document.
@@ -100,12 +101,14 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
                         dataSet.Tables.Add(table);
                     }
+
                     tableName = null;
                 }
             }
 
             return dataSet;
         }
+
         // ExEnd:CreateDataSourceFromDocumentRegions
         // ExStart:ExecuteCustomLogicOnEmptyRegions
         /// <summary>
@@ -116,7 +119,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         /// <param name="handler">The handler which implements the IFieldMergingCallback interface and defines the logic to be applied to each unmerged region.</param>
         public static void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler)
         {
-            ExecuteCustomLogicOnEmptyRegions(doc, handler, null); // Pass null to handle all regions found in the document.
+            ExecuteCustomLogicOnEmptyRegions(doc, handler,
+                null); // Pass null to handle all regions found in the document.
         }
 
         /// <summary>
@@ -126,7 +130,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         /// <param name="doc">The document containing unused regions</param>
         /// <param name="handler">The handler which implements the IFieldMergingCallback interface and defines the logic to be applied to each unmerged region.</param>
         /// <param name="regionsList">A list of strings corresponding to the region names that are to be handled by the supplied handler class. Other regions encountered will not be handled and are removed automatically.</param>
-        public static void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler, ArrayList regionsList)
+        public static void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler,
+            ArrayList regionsList)
         {
             // Certain regions can be skipped from applying logic to by not adding the table name inside the CreateEmptyDataSource method.
             // Enable this cleanup option so any regions which are not handled by the user's logic are removed automatically.
@@ -140,6 +145,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // To be called for each field in the unmerged regions.
             doc.MailMerge.ExecuteWithRegions(CreateDataSourceFromDocumentRegions(doc, regionsList));
         }
+
         // ExEnd:ExecuteCustomLogicOnEmptyRegions
         // ExStart:EmptyRegionsHandler 
         public class EmptyRegionsHandler : IFieldMergingCallback
@@ -163,7 +169,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 // Before the table is a heading paragraph and if so remove that too.
                 if (args.TableName == "Suppliers")
                 {
-                    Table table = (Table)args.Field.Start.GetAncestor(NodeType.Table);
+                    Table table = (Table) args.Field.Start.GetAncestor(NodeType.Table);
 
                     // Check if the table has been removed from the document already.
                     if (table.ParentNode != null)
@@ -171,7 +177,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                         // Try to find the paragraph which precedes the table before the table is removed from the document.
                         if (table.PreviousSibling != null && table.PreviousSibling.NodeType == NodeType.Paragraph)
                         {
-                            Paragraph previousPara = (Paragraph)table.PreviousSibling;
+                            Paragraph previousPara = (Paragraph) table.PreviousSibling;
                             if (IsHeadingParagraph(previousPara))
                                 previousPara.Remove();
                         }
@@ -186,7 +192,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             /// </summary>
             private bool IsHeadingParagraph(Paragraph para)
             {
-                return (para.ParagraphFormat.StyleIdentifier >= StyleIdentifier.Heading1 && para.ParagraphFormat.StyleIdentifier <= StyleIdentifier.Heading9);
+                return (para.ParagraphFormat.StyleIdentifier >= StyleIdentifier.Heading1 &&
+                        para.ParagraphFormat.StyleIdentifier <= StyleIdentifier.Heading9);
             }
 
             public void ImageFieldMerging(ImageFieldMergingArgs args)
@@ -203,7 +210,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             /// </summary>
             public void FieldMerging(FieldMergingArgs args)
             {
-                 // ExStart:RemoveExtraParagraphs
+                // ExStart:RemoveExtraParagraphs
                 // Store the parent paragraph of the current field for easy access.
                 Paragraph parentParagraph = args.Field.Start.ParentParagraph;
 
@@ -214,7 +221,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                     // Called for the first field encountered in a region. This can be used to execute logic on the first field
                     // In the region without needing to hard code the field name. Often the base logic is applied to the first field and 
                     // Different logic for other fields. The rest of the fields in the region will have a null FieldValue.
-                    if ((string)args.FieldValue == "FirstField")
+                    if ((string) args.FieldValue == "FirstField")
                     {
                         FindReplaceOptions options = new FindReplaceOptions();
                         // Remove the "Name:" tag from the start of the paragraph
@@ -231,12 +238,13 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                             parentParagraph.Remove();
                     }
                 }
+
                 // ExEnd:RemoveExtraParagraphs
                 // ExStart:MergeAllCells
                 // Replace the unused region in the table with a "no records" message and merge all cells into one.
                 if (args.TableName == "Suppliers")
                 {
-                    if ((string)args.FieldValue == "FirstField")
+                    if ((string) args.FieldValue == "FirstField")
                     {
                         // We will use the first paragraph to display our message. Make it centered within the table. The other fields in other cells 
                         // within the table will be merged and won't be displayed so we don't need to do anything else with them.
@@ -245,15 +253,19 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                     }
 
                     // Merge the cells of the table together. 
-                    Cell cell = (Cell)parentParagraph.GetAncestor(NodeType.Cell);
+                    Cell cell = (Cell) parentParagraph.GetAncestor(NodeType.Cell);
                     if (cell != null)
                     {
                         if (cell.IsFirstCell)
-                            cell.CellFormat.HorizontalMerge = CellMerge.First; // If this cell is the first cell in the table then the merge is started using "CellMerge.First".
+                            cell.CellFormat.HorizontalMerge =
+                                CellMerge
+                                    .First; // If this cell is the first cell in the table then the merge is started using "CellMerge.First".
                         else
-                            cell.CellFormat.HorizontalMerge = CellMerge.Previous; // Otherwise the merge is continued using "CellMerge.Previous".
+                            cell.CellFormat.HorizontalMerge =
+                                CellMerge.Previous; // Otherwise the merge is continued using "CellMerge.Previous".
                     }
                 }
+
                 // ExEnd:MergeAllCells
             }
 
@@ -288,7 +300,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             // Add the data to the tables.
             storeDetails.Rows.Add("0", "Hungry Coyote Import Store", "2732 Baker Blvd", "Eugene", "USA");
-            storeDetails.Rows.Add("1", "Great Lakes Food Market", "City Center Plaza, 516 Main St.", "San Francisco", "USA");
+            storeDetails.Rows.Add("1", "Great Lakes Food Market", "City Center Plaza, 516 Main St.", "San Francisco",
+                "USA");
 
             // Add data to the child table only for the first record.
             contactDetails.Rows.Add("0", "Thomas Hardy", "(206) 555-9857 ext 237");
@@ -303,18 +316,23 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             return data;
         }
+
         private static DataTable orderTable = null;
         private static DataTable itemTable = null;
-        private static void  DisableForeignKeyConstraints(DataSet dataSet)
-        {           
+
+        private static void DisableForeignKeyConstraints(DataSet dataSet)
+        {
             // ExStart:DisableForeignKeyConstraints
-            dataSet.Relations.Add(new DataRelation("OrderToItem", orderTable.Columns["Order_Id"], itemTable.Columns["Order_Id"], false));
+            dataSet.Relations.Add(new DataRelation("OrderToItem", orderTable.Columns["Order_Id"],
+                itemTable.Columns["Order_Id"], false));
             // ExEnd:DisableForeignKeyConstraints
         }
+
         private static void CreateDataRelation(DataSet dataSet)
         {
             // ExStart:CreateDataRelation
-            dataSet.Relations.Add(new DataRelation("OrderToItem", orderTable.Columns["Order_Id"], itemTable.Columns["Order_Id"]));
+            dataSet.Relations.Add(new DataRelation("OrderToItem", orderTable.Columns["Order_Id"],
+                itemTable.Columns["Order_Id"]));
             // ExEnd:CreateDataRelation
         }
     }

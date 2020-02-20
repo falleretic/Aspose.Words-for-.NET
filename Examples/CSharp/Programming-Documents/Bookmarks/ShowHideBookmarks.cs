@@ -22,8 +22,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             // ExEnd:ShowHideBookmarks_call
             //Console.WriteLine("\nBookmark by name is " + bookmark1.Name + " and bookmark by index is " + bookmark2.Name);
         }
+
         // ExStart:ShowHideBookmarks
-        public static void ShowHideBookmarkedContent(Document doc, String bookmarkName, bool showHide)
+        public static void ShowHideBookmarkedContent(Document doc, string bookmarkName, bool showHide)
         {
             DocumentBuilder builder = new DocumentBuilder(doc);
             Bookmark bm = doc.Range.Bookmarks[bookmarkName];
@@ -66,12 +67,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
                 currentNode = nextNode;
             }
 
-            doc.MailMerge.Execute(new String[] { bookmarkName }, new Object[] { showHide });
+            doc.MailMerge.Execute(new string[] { bookmarkName }, new object[] { showHide });
 
             //MailMerge can be avoided by using the following
             //builder.MoveToMergeField(bookmarkName);
             //builder.Write(showHide ? "true" : "false");
         }
+
         // ExEnd:ShowHideBookmarks
     }
 }

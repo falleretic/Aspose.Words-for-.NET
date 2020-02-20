@@ -23,9 +23,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             MetaCharactersInSearchPattern(dataDir);
             ReplaceTextContaingMetaCharacters(dataDir);
         }
+
         public static void MetaCharactersInSearchPattern(string dataDir)
         {
-
             // ExStart:MetaCharactersInSearchPattern
             // Initialize a Document.
             Document doc = new Document();
@@ -44,12 +44,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             builder.InsertBreak(BreakType.PageBreak);
             builder.Writeln("This is Line 2");
 
-            doc.Range.Replace("This is Line 1&mThis is Line 2", "Page break is replaced with new text.", findReplaceOptions);
+            doc.Range.Replace("This is Line 1&mThis is Line 2", "Page break is replaced with new text.",
+                findReplaceOptions);
 
             dataDir = dataDir + "MetaCharactersInSearchPattern_out.docx";
             doc.Save(dataDir);
             // ExEnd:MetaCharactersInSearchPattern
-            Console.WriteLine("\nFind and Replace text using meta-characters has done successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nFind and Replace text using meta-characters has done successfully.\nFile saved at " +
+                              dataDir);
         }
 
         public static void ReplaceTextContaingMetaCharacters(string dataDir)
@@ -78,8 +80,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             dataDir = dataDir + "ReplaceTextContaingMetaCharacters_out.docx";
             doc.Save(dataDir);
             // ExEnd:ReplaceTextContaingMetaCharacters
-            Console.WriteLine("\nFind and Replace text using meta-characters has done successfully.\nFile saved at " + dataDir);
-
+            Console.WriteLine("\nFind and Replace text using meta-characters has done successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

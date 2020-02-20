@@ -18,7 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             SetMeasureUnitForODT(dataDir);
         }
 
-        public static void UpdateLastSavedTimeProperty(String dataDir)
+        public static void UpdateLastSavedTimeProperty(string dataDir)
         {
             // ExStart:UpdateLastSavedTimeProperty
             Document doc = new Document(dataDir + "Document.doc");

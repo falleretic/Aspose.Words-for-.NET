@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -12,6 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
+
             RecognizeUtf8Text(dataDir);
         }
 
@@ -26,6 +23,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "RecognizeUtf8Text_out.rtf";
             doc.Save(dataDir);
             //ExEnd:RecognizeUtf8Text
+
             Console.WriteLine("\nUTF8 text has recognized successfully.\nFile saved at " + dataDir);
         }
     }

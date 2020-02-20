@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
@@ -10,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ
         public Manager Manager { get; set; }
         public Client Client { get; set; }
         public float Price { get; set; }
-        public DateTime Date { get; set; }   
+        public DateTime Date { get; set; }
     }
     // ExEnd:Contract 
 }

@@ -21,7 +21,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_Appending
             options.KeepSourceNumbering = true;
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.UseDestinationStyles, options);
             // ExEnd:AppendWithImportFormatOptions
-            Console.WriteLine("\nDocument appended successfully with keep source numbering option.\nFile saved at " + dataDir);
+            Console.WriteLine("\nDocument appended successfully with keep source numbering option.\nFile saved at " +
+                              dataDir);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         {
             // ExStart:SetFootNoteColumns
             Document doc = new Document(dataDir + "TestFile.docx");
-            
+
             //Specify the number of columns with which the footnotes area is formatted. 
             doc.FootnoteOptions.Columns = 3;
             dataDir = dataDir + "TestFile_Out.doc";
@@ -47,6 +47,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:SetFootnoteAndEndNotePosition      
             Console.WriteLine("\nFootnote number of columns set successfully.\nFile saved at " + dataDir);
         }
+
         private static void SetEndnoteOptions(string dataDir)
         {
             // ExStart:SetEndnoteOptions

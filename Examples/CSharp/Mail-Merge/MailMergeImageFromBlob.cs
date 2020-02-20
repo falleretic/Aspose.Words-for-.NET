@@ -18,14 +18,15 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // ExStart:MailMergeImageFromBlob            
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
             Document doc = new Document(dataDir + "MailMerge.MergeImage.doc");
 
             // Set up the event handler for image fields.
             doc.MailMerge.FieldMergingCallback = new HandleMergeImageFieldFromBlob();
 
             // Open a database connection.
-            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + RunExamples.GetDataDir_Database()+"Northwind.mdb";
+            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + RunExamples.GetDataDir_Database() +
+                                "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
@@ -43,6 +44,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // ExEnd:MailMergeImageFromBlob
             Console.WriteLine("\nMail merge image from blob performed successfully.\nFile saved at " + dataDir);
         }
+
         // ExStart:HandleMergeImageFieldFromBlob 
         public class HandleMergeImageFieldFromBlob : IFieldMergingCallback
         {
@@ -58,11 +60,12 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs e)
             {
                 // The field value is a byte array, just cast it and create a stream on it.
-                MemoryStream imageStream = new MemoryStream((byte[])e.FieldValue);
+                MemoryStream imageStream = new MemoryStream((byte[]) e.FieldValue);
                 // Now the mail merge engine will retrieve the image from the stream.
                 e.ImageStream = imageStream;
             }
         }
+
         // ExEnd:HandleMergeImageFieldFromBlob
     }
 }

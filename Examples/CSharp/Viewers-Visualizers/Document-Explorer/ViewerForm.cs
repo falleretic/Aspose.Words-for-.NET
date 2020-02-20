@@ -7,136 +7,139 @@ using Aspose.Words.Rendering;
 
 namespace DocumentExplorerExample
 {
-	/// <summary>
-	/// A simple form to show a Word document using Aspose.Words.Viewer.
-	/// </summary>
-	public class ViewerForm : System.Windows.Forms.Form
-	{
-		private System.ComponentModel.IContainer components;
-		private System.Windows.Forms.MainMenu mainMenu;
-		private System.Windows.Forms.MenuItem fileMenuItem;
-		private System.Windows.Forms.MenuItem fileOpenMenuItem;
-		private System.Windows.Forms.MenuItem filePrintMenuItem;
-		private System.Windows.Forms.MenuItem separator1MenuItem;
-		private System.Windows.Forms.MenuItem fileExitMenuItem;
-		private System.Windows.Forms.MenuItem navigationPreviousPageMenuItem;
-		private System.Windows.Forms.MenuItem navigationNextPageMenuItem;
-		private System.Windows.Forms.ToolBar toolBar;
-		private System.Windows.Forms.ToolBarButton fileOpenButton;
-		private System.Windows.Forms.ToolBarButton filePrintButton;
-		private System.Windows.Forms.ToolBarButton separator1;
-		private System.Windows.Forms.ToolBarButton navigationPreviousPageButton;
-		private System.Windows.Forms.ToolBarButton navigationNextPageButton;
-		private System.Windows.Forms.ImageList toolBarImages;
-		private System.Windows.Forms.StatusBar statusBar;
-		private System.Windows.Forms.MenuItem separator2;
-		private System.Windows.Forms.ToolBarButton navigationFirstPageButton;
-		private System.Windows.Forms.ToolBarButton navigationLastPageButton;
-		private System.Windows.Forms.MenuItem navigationFirstPageMenuItem;
-		private System.Windows.Forms.MenuItem navigationLastPageMenuItem;
-		private System.Windows.Forms.OpenFileDialog openFileDialog;
-		private System.Windows.Forms.Panel mainPanel;
-		private System.Windows.Forms.PictureBox docPagePictureBox;
-		private System.Windows.Forms.MenuItem separator3;
-		private System.Windows.Forms.MenuItem navigationGoToPageMenuItem;
-		private System.Windows.Forms.ToolBarButton navigationGoToPageButton;
-		private Document mDocument;
+    /// <summary>
+    /// A simple form to show a Word document using Aspose.Words.Viewer.
+    /// </summary>
+    public class ViewerForm : System.Windows.Forms.Form
+    {
+        private System.ComponentModel.IContainer components;
+        private System.Windows.Forms.MainMenu mainMenu;
+        private System.Windows.Forms.MenuItem fileMenuItem;
+        private System.Windows.Forms.MenuItem fileOpenMenuItem;
+        private System.Windows.Forms.MenuItem filePrintMenuItem;
+        private System.Windows.Forms.MenuItem separator1MenuItem;
+        private System.Windows.Forms.MenuItem fileExitMenuItem;
+        private System.Windows.Forms.MenuItem navigationPreviousPageMenuItem;
+        private System.Windows.Forms.MenuItem navigationNextPageMenuItem;
+        private System.Windows.Forms.ToolBar toolBar;
+        private System.Windows.Forms.ToolBarButton fileOpenButton;
+        private System.Windows.Forms.ToolBarButton filePrintButton;
+        private System.Windows.Forms.ToolBarButton separator1;
+        private System.Windows.Forms.ToolBarButton navigationPreviousPageButton;
+        private System.Windows.Forms.ToolBarButton navigationNextPageButton;
+        private System.Windows.Forms.ImageList toolBarImages;
+        private System.Windows.Forms.StatusBar statusBar;
+        private System.Windows.Forms.MenuItem separator2;
+        private System.Windows.Forms.ToolBarButton navigationFirstPageButton;
+        private System.Windows.Forms.ToolBarButton navigationLastPageButton;
+        private System.Windows.Forms.MenuItem navigationFirstPageMenuItem;
+        private System.Windows.Forms.MenuItem navigationLastPageMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.PictureBox docPagePictureBox;
+        private System.Windows.Forms.MenuItem separator3;
+        private System.Windows.Forms.MenuItem navigationGoToPageMenuItem;
+        private System.Windows.Forms.ToolBarButton navigationGoToPageButton;
+        private Document mDocument;
         private System.Windows.Forms.MenuItem viewMenuItem;
         private int mPageNumber;
 
-		public ViewerForm()
-		{
-			InitializeComponent();
-		}
+        public ViewerForm()
+        {
+            InitializeComponent();
+        }
 
-		/// <summary>
-		/// Gets or sets the Document to render.
-		/// </summary>
-		public Document Document
-		{
-			get { return mDocument; }
-			set
-			{
-				mDocument = value;
+        /// <summary>
+        /// Gets or sets the Document to render.
+        /// </summary>
+        public Document Document
+        {
+            get { return mDocument; }
+            set
+            {
+                mDocument = value;
                 mPageNumber = 1;
-				UpdatePage();
-			}
-		}
+                UpdatePage();
+            }
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
 
-		private void OpenDocument()
-		{
+            base.Dispose(disposing);
+        }
+
+        private void OpenDocument()
+        {
             if (openFileDialog.ShowDialog().Equals(DialogResult.OK))
             {
-            	try
-            	{
-					Document = new Document(openFileDialog.FileName);
-					Text = string.Format("Aspose.Words Rendering Demo - {0}", Path.GetFileNameWithoutExtension(openFileDialog.FileName));
-            	}
-				catch (Exception e)
-            	{
-            		MessageBox.Show(string.Format("Unable to load file {0}. {1}", openFileDialog.FileName, e.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            	}
+                try
+                {
+                    Document = new Document(openFileDialog.FileName);
+                    Text = string.Format("Aspose.Words Rendering Demo - {0}",
+                        Path.GetFileNameWithoutExtension(openFileDialog.FileName));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(string.Format("Unable to load file {0}. {1}", openFileDialog.FileName, e.Message),
+                        Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-		}
-	    
-	    private void PrintPreview()
-	    {
+        }
+
+        private void PrintPreview()
+        {
             Preview.Execute(mDocument);
         }
 
-		private void MoveToPreviousPage()
-		{
+        private void MoveToPreviousPage()
+        {
             mPageNumber--;
-			UpdatePage();
-		}
+            UpdatePage();
+        }
 
-		private void MoveToNextPage()
-		{
+        private void MoveToNextPage()
+        {
             mPageNumber++;
-			UpdatePage();
-		}
+            UpdatePage();
+        }
 
-		private void MoveToFirstPage()
-		{
+        private void MoveToFirstPage()
+        {
             mPageNumber = 1;
-			UpdatePage();
-		}
+            UpdatePage();
+        }
 
-		private void MoveToLastPage()
-		{
+        private void MoveToLastPage()
+        {
             mPageNumber = mDocument.PageCount;
-			UpdatePage();
-		}
+            UpdatePage();
+        }
 
-		private void GoToPage()
-		{
-			GoToPageForm form = new GoToPageForm();
+        private void GoToPage()
+        {
+            GoToPageForm form = new GoToPageForm();
             form.MaxPageNumber = mDocument.PageCount;
 
-			if (form.ShowDialog().Equals(DialogResult.OK))
+            if (form.ShowDialog().Equals(DialogResult.OK))
             {
                 mPageNumber = form.PageNumber;
-				UpdatePage();
+                UpdatePage();
             }
-		}
+        }
 
-		private void UpdatePage()
-		{
+        private void UpdatePage()
+        {
             // This operation can take some time (for the first page) so we set the Cursor to WaitCursor.
             Cursor cursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
@@ -167,7 +170,8 @@ namespace DocumentExplorerExample
                 mDocument.RenderToScale(pageIndex, gfx, 0, 0, scale);
             }
 
-            docPagePictureBox.Width = Math.Max(img.Width + 100, SystemInformation.WorkingArea.Width - SystemInformation.VerticalScrollBarWidth);
+            docPagePictureBox.Width = Math.Max(img.Width + 100,
+                SystemInformation.WorkingArea.Width - SystemInformation.VerticalScrollBarWidth);
             docPagePictureBox.Height = img.Height + 100;
             docPagePictureBox.Image = img;
 
@@ -175,15 +179,16 @@ namespace DocumentExplorerExample
 
             // Restore cursor.
             Cursor.Current = cursor;
-		}
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// The contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// The contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(ViewerForm));
             this.mainMenu = new System.Windows.Forms.MainMenu();
@@ -219,18 +224,22 @@ namespace DocumentExplorerExample
             // 
             // MainMenu
             // 
-            this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                     this.fileMenuItem,
-                                                                                     this.viewMenuItem});
+            this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.fileMenuItem,
+                this.viewMenuItem
+            });
             // 
             // FileMenuItem
             // 
             this.fileMenuItem.Index = 0;
-            this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                         this.fileOpenMenuItem,
-                                                                                         this.filePrintMenuItem,
-                                                                                         this.separator1MenuItem,
-                                                                                         this.fileExitMenuItem});
+            this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.fileOpenMenuItem,
+                this.filePrintMenuItem,
+                this.separator1MenuItem,
+                this.fileExitMenuItem
+            });
             this.fileMenuItem.Text = "&File";
             // 
             // FileOpenMenuItem
@@ -261,21 +270,24 @@ namespace DocumentExplorerExample
             // ViewMenuItem
             // 
             this.viewMenuItem.Index = 1;
-            this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                         this.navigationPreviousPageMenuItem,
-                                                                                         this.navigationNextPageMenuItem,
-                                                                                         this.separator2,
-                                                                                         this.navigationFirstPageMenuItem,
-                                                                                         this.navigationLastPageMenuItem,
-                                                                                         this.separator3,
-                                                                                         this.navigationGoToPageMenuItem});
+            this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.navigationPreviousPageMenuItem,
+                this.navigationNextPageMenuItem,
+                this.separator2,
+                this.navigationFirstPageMenuItem,
+                this.navigationLastPageMenuItem,
+                this.separator3,
+                this.navigationGoToPageMenuItem
+            });
             this.viewMenuItem.Text = "&View";
             // 
             // NavigationPreviousPageMenuItem
             // 
             this.navigationPreviousPageMenuItem.Index = 0;
             this.navigationPreviousPageMenuItem.Text = "P&revious Page";
-            this.navigationPreviousPageMenuItem.Click += new System.EventHandler(this.navigationPreviousPageMenuItem_Click);
+            this.navigationPreviousPageMenuItem.Click +=
+                new System.EventHandler(this.navigationPreviousPageMenuItem_Click);
             // 
             // NavigationNextPageMenuItem
             // 
@@ -314,15 +326,17 @@ namespace DocumentExplorerExample
             // ToolBar
             // 
             this.toolBar.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-            this.toolBar.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
-                                                                                       this.fileOpenButton,
-                                                                                       this.filePrintButton,
-                                                                                       this.separator1,
-                                                                                       this.navigationFirstPageButton,
-                                                                                       this.navigationPreviousPageButton,
-                                                                                       this.navigationNextPageButton,
-                                                                                       this.navigationLastPageButton,
-                                                                                       this.navigationGoToPageButton});
+            this.toolBar.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[]
+            {
+                this.fileOpenButton,
+                this.filePrintButton,
+                this.separator1,
+                this.navigationFirstPageButton,
+                this.navigationPreviousPageButton,
+                this.navigationNextPageButton,
+                this.navigationLastPageButton,
+                this.navigationGoToPageButton
+            });
             this.toolBar.ButtonSize = new System.Drawing.Size(16, 16);
             this.toolBar.DropDownArrows = true;
             this.toolBar.ImageList = this.toolBarImages;
@@ -331,7 +345,8 @@ namespace DocumentExplorerExample
             this.toolBar.ShowToolTips = true;
             this.toolBar.Size = new System.Drawing.Size(712, 28);
             this.toolBar.TabIndex = 0;
-            this.toolBar.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar_ButtonClick);
+            this.toolBar.ButtonClick +=
+                new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar_ButtonClick);
             // 
             // FileOpenButton
             // 
@@ -376,7 +391,8 @@ namespace DocumentExplorerExample
             // 
             this.toolBarImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.toolBarImages.ImageSize = new System.Drawing.Size(16, 16);
-            this.toolBarImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("toolBarImages.ImageStream")));
+            this.toolBarImages.ImageStream =
+                ((System.Windows.Forms.ImageListStreamer) (resources.GetObject("toolBarImages.ImageStream")));
             this.toolBarImages.TransparentColor = System.Drawing.Color.Silver;
             // 
             // StatusBar
@@ -393,7 +409,8 @@ namespace DocumentExplorerExample
             // MainPanel
             // 
             this.mainPanel.AutoScroll = true;
-            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(144)), ((System.Byte)(153)), ((System.Byte)(174)));
+            this.mainPanel.BackColor =
+                System.Drawing.Color.FromArgb(((System.Byte) (144)), ((System.Byte) (153)), ((System.Byte) (174)));
             this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.Controls.Add(this.docPagePictureBox);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -404,7 +421,8 @@ namespace DocumentExplorerExample
             // 
             // DocPagePictureBox
             // 
-            this.docPagePictureBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(144)), ((System.Byte)(153)), ((System.Byte)(174)));
+            this.docPagePictureBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte) (144)),
+                ((System.Byte) (153)), ((System.Byte) (174)));
             this.docPagePictureBox.Location = new System.Drawing.Point(0, 0);
             this.docPagePictureBox.Name = "docPagePictureBox";
             this.docPagePictureBox.Size = new System.Drawing.Size(56, 56);
@@ -425,78 +443,78 @@ namespace DocumentExplorerExample
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
-		#endregion
 
-		private void fileOpenMenuItem_Click(object sender, EventArgs e)
-		{
-			OpenDocument();
-		}
+        #endregion
 
-		private void filePrintMenuItem_Click(object sender, EventArgs e)
-		{
-			PrintPreview();
-		}
+        private void fileOpenMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenDocument();
+        }
 
-		private void fileExitMenuItem_Click(object sender, EventArgs e)
-		{
+        private void filePrintMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintPreview();
+        }
+
+        private void fileExitMenuItem_Click(object sender, EventArgs e)
+        {
             Close();
-		}
+        }
 
-		private void navigationPreviousPageMenuItem_Click(object sender, EventArgs e)
-		{
+        private void navigationPreviousPageMenuItem_Click(object sender, EventArgs e)
+        {
             MoveToPreviousPage();
-		}
+        }
 
-		private void navigationNextPageMenuItem_Click(object sender, EventArgs e)
-		{
+        private void navigationNextPageMenuItem_Click(object sender, EventArgs e)
+        {
             MoveToNextPage();
-		}
+        }
 
-		private void navigationFirstPageMenuItem_Click(object sender, EventArgs e)
-		{
-			MoveToFirstPage();
-		}
+        private void navigationFirstPageMenuItem_Click(object sender, EventArgs e)
+        {
+            MoveToFirstPage();
+        }
 
-		private void lastPageMenuItem_Click(object sender, EventArgs e)
-		{
-			MoveToLastPage();
-		}
+        private void lastPageMenuItem_Click(object sender, EventArgs e)
+        {
+            MoveToLastPage();
+        }
 
-		private void navigationGoToPageMenuItem_Click(object sender, EventArgs e)
-		{
-			GoToPage();
-		}
+        private void navigationGoToPageMenuItem_Click(object sender, EventArgs e)
+        {
+            GoToPage();
+        }
 
-		private void toolBar_ButtonClick(object sender, ToolBarButtonClickEventArgs e)
-		{
-			switch (toolBar.Buttons.IndexOf(e.Button))
-			{
-				case 0:
-					OpenDocument();
-					break;
-				case 1:
-					PrintPreview();
-					break;
-				case 3:
-					MoveToFirstPage();
-					break;
-				case 4:
-					MoveToPreviousPage();
-					break;
-				case 5:
-					MoveToNextPage();
-					break;
-				case 6:
-					MoveToLastPage();
-					break;
-				case 7:
-					GoToPage();
-					break;
+        private void toolBar_ButtonClick(object sender, ToolBarButtonClickEventArgs e)
+        {
+            switch (toolBar.Buttons.IndexOf(e.Button))
+            {
+                case 0:
+                    OpenDocument();
+                    break;
+                case 1:
+                    PrintPreview();
+                    break;
+                case 3:
+                    MoveToFirstPage();
+                    break;
+                case 4:
+                    MoveToPreviousPage();
+                    break;
+                case 5:
+                    MoveToNextPage();
+                    break;
+                case 6:
+                    MoveToLastPage();
+                    break;
+                case 7:
+                    GoToPage();
+                    break;
                 default:
-					throw new Exception("Unknown toolbar button index.");
-			}
-		}
-	}
+                    throw new Exception("Unknown toolbar button index.");
+            }
+        }
+    }
 }

@@ -27,7 +27,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             dataDir = dataDir + "UnconditionalMergeFieldsAndRegions_out.docx";
             doc.Save(dataDir);
             // ExEnd:MailMergeAndConditionalField
-            Console.WriteLine("\nMail merge with conditional field has performed successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nMail merge with conditional field has performed successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

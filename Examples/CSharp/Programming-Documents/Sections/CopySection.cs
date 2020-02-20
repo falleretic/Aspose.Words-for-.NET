@@ -16,12 +16,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sectio
             Document dstDoc = new Document();
 
             Section sourceSection = srcDoc.Sections[0];
-            Section newSection = (Section)dstDoc.ImportNode(sourceSection, true);
+            Section newSection = (Section) dstDoc.ImportNode(sourceSection, true);
             dstDoc.Sections.Add(newSection);
             dataDir = dataDir + "Document.Copy_out.doc";
             dstDoc.Save(dataDir);
             // ExEnd:CopySection
             Console.WriteLine("\nSection copied successfully.\nFile saved at " + dataDir);
-        }        
+        }
     }
 }

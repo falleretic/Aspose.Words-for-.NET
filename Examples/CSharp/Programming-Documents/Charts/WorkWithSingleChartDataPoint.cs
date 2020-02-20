@@ -49,6 +49,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             doc.Save(dataDir);
             // ExEnd:WorkWithSingleChartDataPoint
             Console.WriteLine("\nSingle line chart created successfully.\nFile saved at " + dataDir);
-        }        
+        }
     }
 }

@@ -7,10 +7,11 @@ using Aspose.Words.Fields;
 using Aspose.Words.Layout;
 using System.Text.RegularExpressions;
 using System.Text;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Hyperlink
 {
     class ReplaceHyperlinks
-    {        
+    {
         public static void Run()
         {
             // ExStart:ReplaceHyperlinks
@@ -25,7 +26,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Hyperl
             {
                 if (field.Type == FieldType.FieldHyperlink)
                 {
-                    FieldHyperlink hyperlink = (FieldHyperlink)field;
+                    FieldHyperlink hyperlink = (FieldHyperlink) field;
 
                     // Some hyperlinks can be local (links to bookmarks inside the document), ignore these.
                     if (hyperlink.SubAddress != null)

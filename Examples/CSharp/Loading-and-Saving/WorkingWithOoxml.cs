@@ -1,11 +1,6 @@
-﻿using Aspose.Words.Drawing;
-using Aspose.Words.Saving;
+﻿using Aspose.Words.Saving;
 using Aspose.Words.Settings;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -26,35 +21,43 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         {
             //ExStart:EncryptDocxWithPassword
             Document doc = new Document(dataDir + "Document.doc");
+            
             OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions();
             ooxmlSaveOptions.Password = "password";
+            
             dataDir = dataDir + "Document.Password_out.docx";
+            
             doc.Save(dataDir, ooxmlSaveOptions);
             //ExEnd:EncryptDocxWithPassword
-            Console.WriteLine("\nThe password of document is set using ECMA376 Standard encryption algorithm.\nFile saved at " + dataDir);
+            
+            Console.WriteLine(
+                "\nThe password of document is set using ECMA376 Standard encryption algorithm.\nFile saved at " +
+                dataDir);
         }
 
         public static void SetOOXMLCompliance(string dataDir)
         {
             //ExStart:SetOOXMLCompliance
             Document doc = new Document(dataDir + "Document.doc");
-            
+
             // Set Word2016 version for document
             doc.CompatibilityOptions.OptimizeFor(MsWordVersion.Word2016);
 
             //Set the Strict compliance level. 
             OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions
-            {
-                Compliance = OoxmlCompliance.Iso29500_2008_Strict,
-                SaveFormat = SaveFormat.Docx
-            };
+            ooxmlSaveOptions.Compliance = OoxmlCompliance.Iso29500_2008_Strict;
+            ooxmlSaveOptions.SaveFormat = SaveFormat.Docx;
+
             dataDir = dataDir + "Document.Iso29500_2008_Strict_out.docx";
+            
             doc.Save(dataDir, ooxmlSaveOptions);
             //ExEnd:SetOOXMLCompliance
-            Console.WriteLine("\nDocument is saved with ISO/IEC 29500:2008 Strict compliance level.\nFile saved at " + dataDir);
+            
+            Console.WriteLine("\nDocument is saved with ISO/IEC 29500:2008 Strict compliance level.\nFile saved at " +
+                              dataDir);
         }
 
-        public static void UpdateLastSavedTimeProperty(String dataDir)
+        public static void UpdateLastSavedTimeProperty(string dataDir)
         {
             // ExStart:UpdateLastSavedTimeProperty
             Document doc = new Document(dataDir + "Document.doc");
@@ -67,10 +70,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Save the document to disk.
             doc.Save(dataDir, ooxmlSaveOptions);
             // ExEnd:UpdateLastSavedTimeProperty
+
             Console.WriteLine("\nUpdated Last Saved Time Property successfully.\nFile saved at " + dataDir);
         }
 
-        public static void KeepLegacyControlChars(String dataDir)
+        public static void KeepLegacyControlChars(string dataDir)
         {
             // ExStart:KeepLegacyControlChars
             Document doc = new Document(dataDir + "Document.doc");
@@ -81,9 +85,10 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "Document_out.docx";
             // Save the document to disk.
             doc.Save(dataDir, so);
-
             // ExEnd:KeepLegacyControlChars
-            Console.WriteLine("\nUpdated Last Saved With Keeping Legacy Control Chars Successfully.\nFile saved at " + dataDir);
+
+            Console.WriteLine("\nUpdated Last Saved With Keeping Legacy Control Chars Successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

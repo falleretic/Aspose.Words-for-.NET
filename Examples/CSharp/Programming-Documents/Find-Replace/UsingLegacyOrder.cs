@@ -18,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 
             FineReplaceUsingLegacyOrder(dataDir);
         }
+
         // ExStart:FineReplaceUsingLegacyOrder
         public static void FineReplaceUsingLegacyOrder(string dataDir)
         {
@@ -41,6 +42,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
                 return ReplaceAction.Replace;
             }
         }
+
         // ExEnd:FineReplaceUsingLegacyOrder
     }
 }

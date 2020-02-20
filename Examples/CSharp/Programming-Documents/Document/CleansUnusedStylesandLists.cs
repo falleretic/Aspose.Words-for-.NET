@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             Document doc = new Document(dataDir + "Document.doc");
-             
+
             CleanupOptions cleanupoptions = new CleanupOptions();
             cleanupoptions.UnusedLists = false;
             cleanupoptions.UnusedStyles = true;

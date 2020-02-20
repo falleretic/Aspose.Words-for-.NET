@@ -18,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             DocumentBuilderInsertHorizontalRule(dataDir);
             DocumentBuilderHorizontalRuleFormat(dataDir);
         }
+
         public static void DocumentBuilderInsertHorizontalRule(string dataDir)
         {
             // ExStart:DocumentBuilderInsertHorizontalRule
@@ -50,7 +51,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             builder.Document.Save("HorizontalRuleFormat.docx");
             // ExEnd:DocumentBuilderHorizontalRuleFormat
-            Console.WriteLine("\nHorizontal rule format inserted into document successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nHorizontal rule format inserted into document successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 
@@ -22,8 +21,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             ArrayList parasStyleHeading3 = Common.ParagraphsByStyleName(doc, "Heading 3");
 
             // Use the first instance of the paragraphs with those styles.
-            Node startPara1 = (Node)parasStyleHeading1[0];
-            Node endPara1 = (Node)parasStyleHeading3[0];
+            Node startPara1 = (Node) parasStyleHeading1[0];
+            Node endPara1 = (Node) parasStyleHeading3[0];
 
             // Extract the content between these nodes in the document. Don't include these markers in the extraction.
             ArrayList extractedNodes = Common.ExtractContent(startPara1, endPara1, false);
@@ -33,7 +32,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             dstDoc.Save(dataDir);
             // ExEnd:ExtractContentBetweenParagraphStyles
-            Console.WriteLine("\nExtracted content betweenn the paragraph styles successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nExtracted content betweenn the paragraph styles successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

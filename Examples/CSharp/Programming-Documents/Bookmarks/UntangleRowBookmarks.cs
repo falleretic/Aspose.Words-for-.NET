@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 
@@ -39,8 +38,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             foreach (Bookmark bookmark in doc.Range.Bookmarks)
             {
                 // Get the parent row of both the bookmark and bookmark end node.
-                Row row1 = (Row)bookmark.BookmarkStart.GetAncestor(typeof(Row));
-                Row row2 = (Row)bookmark.BookmarkEnd.GetAncestor(typeof(Row));
+                Row row1 = (Row) bookmark.BookmarkStart.GetAncestor(typeof(Row));
+                Row row2 = (Row) bookmark.BookmarkEnd.GetAncestor(typeof(Row));
 
                 // If both rows are found okay and the bookmark start and end are contained
                 // In adjacent rows, then just move the bookmark end node to the end
@@ -58,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
                 return;
 
             // Get the parent row of the bookmark. Exit if the bookmark is not in a row.
-            Row row = (Row)bookmark.BookmarkStart.GetAncestor(typeof(Row));
+            Row row = (Row) bookmark.BookmarkStart.GetAncestor(typeof(Row));
             if (row == null)
                 return;
 

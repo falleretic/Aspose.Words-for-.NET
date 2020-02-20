@@ -10,6 +10,7 @@ using System.Drawing.Imaging;
 using Aspose.Words.Tables;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class PrintDocViaXpsPrint
@@ -29,8 +30,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             XpsPrintHelper.Print(document, printerName, "My Test Job", true);
             // ExEnd:PrintDocViaXpsPrint
         }
-        
     }
+
     /// <summary>
     /// A utility class that converts a document to XPS using Aspose.Words and then sends to the XpsPrint API.
     /// </summary>
@@ -68,6 +69,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             Print(stream, printerName, jobName, isWait);
             Console.WriteLine("After Print");
         }
+
         // ExEnd:XpsPrint_PrintDocument
         // ExStart:XpsPrint_PrintStream        
         // ExSummary:Prints an XPS document using the XpsPrint API.
@@ -109,6 +111,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 WaitForJob(completionEvent);
                 CheckJobStatus(job);
             }
+
             Console.WriteLine("End Wait");
             /*            }
                         finally
@@ -123,7 +126,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         }
         // ExEnd:XpsPrint_PrintStream
 
-        private static void StartJob(string printerName, string jobName, IntPtr completionEvent, out IXpsPrintJob job, out IXpsPrintJobStream jobStream)
+        private static void StartJob(string printerName, string jobName, IntPtr completionEvent, out IXpsPrintJob job,
+            out IXpsPrintJobStream jobStream)
         {
             int result = StartXpsPrintJob(printerName, jobName, null, IntPtr.Zero, completionEvent,
                 null, 0, out job, out jobStream, IntPtr.Zero);
@@ -133,13 +137,12 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
         private static void CopyJob(Stream stream, IXpsPrintJob job, IXpsPrintJobStream jobStream)
         {
-
             //            try
             //            {
             byte[] buff = new byte[4096];
             while (true)
             {
-                uint read = (uint)stream.Read(buff, 0, buff.Length);
+                uint read = (uint) stream.Read(buff, 0, buff.Length);
                 if (read == 0)
                     break;
 
@@ -194,22 +197,23 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
         [DllImport("XpsPrint.dll", EntryPoint = "StartXpsPrintJob")]
         private static extern int StartXpsPrintJob(
-            [MarshalAs(UnmanagedType.LPWStr)] String printerName,
-            [MarshalAs(UnmanagedType.LPWStr)] String jobName,
-            [MarshalAs(UnmanagedType.LPWStr)] String outputFileName,
-            IntPtr progressEvent,   // HANDLE
+            [MarshalAs(UnmanagedType.LPWStr)] string printerName,
+            [MarshalAs(UnmanagedType.LPWStr)] string jobName,
+            [MarshalAs(UnmanagedType.LPWStr)] string outputFileName,
+            IntPtr progressEvent, // HANDLE
             IntPtr completionEvent, // HANDLE
             [MarshalAs(UnmanagedType.LPArray)] byte[] printablePagesOn,
-            UInt32 printablePagesOnCount,
+            uint printablePagesOnCount,
             out IXpsPrintJob xpsPrintJob,
             out IXpsPrintJobStream documentStream,
-            IntPtr printTicketStream);  // This is actually "out IXpsPrintJobStream", but we don't use it and just want to pass null, hence IntPtr.
+            IntPtr printTicketStream); // This is actually "out IXpsPrintJobStream", but we don't use it and just want to pass null, hence IntPtr.
 
         [DllImport("Kernel32.dll", SetLastError = true)]
-        private static extern IntPtr CreateEvent(IntPtr lpEventAttributes, bool bManualReset, bool bInitialState, string lpName);
+        private static extern IntPtr CreateEvent(IntPtr lpEventAttributes, bool bManualReset, bool bInitialState,
+            string lpName);
 
         [DllImport("Kernel32.dll", SetLastError = true, ExactSpelling = true)]
-        private static extern WAIT_RESULT WaitForSingleObject(IntPtr handle, Int32 milliseconds);
+        private static extern WAIT_RESULT WaitForSingleObject(IntPtr handle, int milliseconds);
 
         [DllImport("Kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -226,13 +230,15 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
     /// So the hack is that we obtain the ISequentialStream interface but work with it as 
     /// with the IXpsPrintJobStream interface. 
     /// </summary>
-    [Guid("0C733A30-2A1C-11CE-ADE5-00AA0044773D")]  // This is IID of ISequenatialSteam.
+    [Guid("0C733A30-2A1C-11CE-ADE5-00AA0044773D")] // This is IID of ISequenatialSteam.
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     interface IXpsPrintJobStream
     {
         // ISequentualStream methods.
         void Read([MarshalAs(UnmanagedType.LPArray)] byte[] pv, uint cb, out uint pcbRead);
+
         void Write([MarshalAs(UnmanagedType.LPArray)] byte[] pv, uint cb, out uint pcbWritten);
+
         // IXpsPrintJobStream methods.
         void Close();
     }
@@ -248,12 +254,12 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
     [StructLayout(LayoutKind.Sequential)]
     struct XPS_JOB_STATUS
     {
-        public UInt32 jobId;
-        public Int32 currentDocument;
-        public Int32 currentPage;
-        public Int32 currentPageTotal;
+        public uint jobId;
+        public int currentDocument;
+        public int currentPage;
+        public int currentPageTotal;
         public XPS_JOB_COMPLETION completion;
-        public Int32 jobStatus; // UInt32
+        public int jobStatus; // UInt32
     };
 
     enum XPS_JOB_COMPLETION

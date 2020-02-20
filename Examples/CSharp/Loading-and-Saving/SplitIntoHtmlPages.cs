@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
-using Aspose.Words;
-using Aspose.Words.Tables;
-using System.Diagnostics;
 using Aspose.Words.MailMerging;
 using Aspose.Words.Saving;
 using System.Text;
@@ -21,7 +17,6 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // Aspose.Words.License license = new Aspose.Words.License();
             // License.SetLicense(@"Aspose.Words.lic");
 
-            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
 
@@ -34,12 +29,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // This class does the job.
             Worker w = new Worker();
             w.Execute(srcFileName, tocTemplate, outDir);
-           
 
             Console.WriteLine("\nDocument split into HTML pages successfully.\nFile saved at " + outDir);
         }
     }
-   
+
     internal class Worker
     {
         /// <summary>
@@ -152,6 +146,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 else if (c == ' ')
                     b.Append('_');
             }
+
             return b.ToString();
         }
 
@@ -207,7 +202,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                     mBuilder = new DocumentBuilder(e.Document);
 
                 // Our custom data source returns topic objects.
-                Topic topic = (Topic)e.FieldValue;
+                Topic topic = (Topic) e.FieldValue;
 
                 // We use the document builder to move to the current merge field and insert a hyperlink.
                 mBuilder.MoveToMergeField(e.FieldName);
@@ -230,7 +225,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         private string mTocTemplate;
         private string mDstDir;
     }
-  
+
     internal class Topic
     {
         internal Topic(string title, string fileName)
@@ -305,5 +300,4 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         private readonly ArrayList mTopics;
         private int mIndex;
     }
-    
 }

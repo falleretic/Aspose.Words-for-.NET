@@ -33,7 +33,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             dataDir = dataDir + "Rendering.DisableFontSubstitution_out.pdf";
             doc.Save(dataDir);
             // ExEnd:EnableDisableFontSubstitution      
-            Console.WriteLine("\nDocument is rendered to PDF with disabled font substitution.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument is rendered to PDF with disabled font substitution.\nFile saved at " + dataDir);
         }
 
         public static void SetFontFallbackSettings(string dataDir)
@@ -69,6 +70,5 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // ExEnd:SetPredefinedFontFallbackSettings      
             Console.WriteLine("\nDocument is rendered to PDF with font fallback.\nFile saved at " + dataDir);
         }
-
     }
 }

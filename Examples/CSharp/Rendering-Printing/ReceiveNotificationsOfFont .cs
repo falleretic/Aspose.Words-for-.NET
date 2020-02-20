@@ -4,19 +4,20 @@ using System.Reflection;
 using Aspose.Words.Fonts;
 using Aspose.Words;
 using Aspose.Words.Saving;
+
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class ReceiveNotificationsOfFont 
+    class ReceiveNotificationsOfFont
     {
         public static void Run()
         {
             // ExStart:ReceiveNotificationsOfFonts 
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "Rendering.doc");
 
-            FontSettings FontSettings = new FontSettings();          
+            FontSettings FontSettings = new FontSettings();
 
             // We can choose the default font to use in the case of any missing fonts.
             FontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial";
@@ -35,10 +36,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Pass the save options along with the save path to the save method.
             doc.Save(path);
             // ExEnd:ReceiveNotificationsOfFonts 
-            Console.WriteLine("\nReceive notifications of font substitutions by using IWarningCallback processed.\nFile saved at " + path);
+            Console.WriteLine(
+                "\nReceive notifications of font substitutions by using IWarningCallback processed.\nFile saved at " +
+                path);
 
             ReceiveWarningNotification(doc, dataDir);
         }
+
         private static void ReceiveWarningNotification(Document doc, string dataDir)
         {
             // ExStart:ReceiveWarningNotification 
@@ -55,6 +59,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             doc.Save(dataDir);
             // ExEnd:ReceiveWarningNotification  
         }
+
         // ExStart:HandleDocumentWarnings
         public class HandleDocumentWarnings : IWarningCallback
         {
@@ -72,6 +77,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 }
             }
         }
+
         // ExEnd:HandleDocumentWarnings
     }
 }

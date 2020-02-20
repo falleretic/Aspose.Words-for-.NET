@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Drawing;
-
 using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
@@ -19,7 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:HyphenateWordsOfLanguages
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             // Load the documents which store the shapes we want to render.
             Document doc = new Document(dataDir + "TestFile RenderShape.doc");
@@ -30,8 +28,6 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             doc.Save(dataDir);
             // ExEnd:HyphenateWordsOfLanguages
             Console.WriteLine("\nWords of special languages hyphenate successfully.\nFile saved at " + dataDir);
-            
         }
-        
     }
 }

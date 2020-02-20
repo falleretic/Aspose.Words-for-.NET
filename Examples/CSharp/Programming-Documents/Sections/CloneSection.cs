@@ -16,6 +16,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sectio
             Section cloneSection = doc.Sections[0].Clone();
             // ExEnd:CloneSection
             Console.WriteLine("\n0 index section clone successfully.");
-        }        
+        }
     }
 }

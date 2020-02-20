@@ -18,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             InsertDocumentAtMailMerge(dataDir);
             InsertDocumentAtReplace(dataDir);
         }
+
         public static void InsertDocumentAtReplace(string dataDir)
         {
             // ExStart:InsertDocumentAtReplace
@@ -26,12 +27,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new InsertDocumentAtReplaceHandler();
 
-            mainDoc.Range.Replace(new Regex("\\[MY_DOCUMENT\\]"),"" , options);
+            mainDoc.Range.Replace(new Regex("\\[MY_DOCUMENT\\]"), "", options);
             dataDir = dataDir + "InsertDocumentAtReplace_out.doc";
             mainDoc.Save(dataDir);
             // ExEnd:InsertDocumentAtReplace
             Console.WriteLine("\nDocument inserted successfully at a replace.\nFile saved at " + dataDir);
         }
+
         public static void InsertDocumentAtBookmark(string dataDir)
         {
             // ExStart:InsertDocumentAtBookmark         
@@ -45,6 +47,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:InsertDocumentAtBookmark
             Console.WriteLine("\nDocument inserted successfully at a bookmark.\nFile saved at " + dataDir);
         }
+
         public static void InsertDocumentAtMailMerge(string dataDir)
         {
             // ExStart:InsertDocumentAtMailMerge   
@@ -65,6 +68,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:InsertDocumentAtMailMerge 
             Console.WriteLine("\nDocument inserted successfully at mail merge.\nFile saved at " + dataDir);
         }
+
         // ExStart:InsertDocument
         /// <summary>
         /// Inserts content of the external document after the specified node.
@@ -77,14 +81,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         {
             // Make sure that the node is either a paragraph or table.
             if ((!insertAfterNode.NodeType.Equals(NodeType.Paragraph)) &
-              (!insertAfterNode.NodeType.Equals(NodeType.Table)))
+                (!insertAfterNode.NodeType.Equals(NodeType.Table)))
                 throw new ArgumentException("The destination node should be either a paragraph or table.");
 
             // We will be inserting into the parent of the destination paragraph.
             CompositeNode dstStory = insertAfterNode.ParentNode;
 
             // This object will be translating styles and lists during the import.
-            NodeImporter importer = new NodeImporter(srcDoc, insertAfterNode.Document, ImportFormatMode.KeepSourceFormatting);
+            NodeImporter importer =
+                new NodeImporter(srcDoc, insertAfterNode.Document, ImportFormatMode.KeepSourceFormatting);
 
             // Loop through all sections in the source document.
             foreach (Section srcSection in srcDoc.Sections)
@@ -95,7 +100,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     // Let's skip the node if it is a last empty paragraph in a section.
                     if (srcNode.NodeType.Equals(NodeType.Paragraph))
                     {
-                        Paragraph para = (Paragraph)srcNode;
+                        Paragraph para = (Paragraph) srcNode;
                         if (para.IsEndOfSection && !para.HasChildNodes)
                             continue;
                     }
@@ -109,6 +114,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 }
             }
         }
+
         // ExEnd:InsertDocument
         // ExStart:InsertDocumentWithSectionFormatting
         /// <summary>
@@ -125,13 +131,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 throw new ArgumentException("The destination node should be either a paragraph or table.");
 
             // Document to insert srcDoc into.
-            Document dstDoc = (Document)insertAfterNode.Document;
+            Document dstDoc = (Document) insertAfterNode.Document;
             // To retain section formatting, split the current section into two at the marker node and then import the content from srcDoc as whole sections.
             // The section of the node which the insert marker node belongs to
-            Section currentSection = (Section)insertAfterNode.GetAncestor(NodeType.Section);
+            Section currentSection = (Section) insertAfterNode.GetAncestor(NodeType.Section);
 
             // Don't clone the content inside the section, we just want the properties of the section retained.
-            Section cloneSection = (Section)currentSection.Clone(false);
+            Section cloneSection = (Section) currentSection.Clone(false);
 
             // However make sure the clone section has a body, but no empty first paragraph.
             cloneSection.EnsureMinimum();
@@ -160,9 +166,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
                 // Append each section to the destination document. Start by inserting it after the split section.
                 dstDoc.InsertAfter(newNode, currentSection);
-                currentSection = (Section)newNode;
+                currentSection = (Section) newNode;
             }
         }
+
         // ExEnd:InsertDocumentWithSectionFormatting
         // ExStart:InsertDocumentAtMailMergeHandler
         private class InsertDocumentAtMailMergeHandler : IFieldMergingCallback
@@ -181,7 +188,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     builder.MoveToMergeField(e.DocumentFieldName);
 
                     // The name of the document to load and insert is stored in the field value.
-                    Document subDoc = new Document((string)e.FieldValue);
+                    Document subDoc = new Document((string) e.FieldValue);
 
                     // Insert the document.
                     InsertDocument(builder.CurrentParagraph, subDoc);
@@ -200,6 +207,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 // Do nothing.
             }
         }
+
         // ExEnd:InsertDocumentAtMailMergeHandler
         // ExStart:InsertDocumentAtMailMergeBlobHandler
         private class InsertDocumentAtMailMergeBlobHandler : IFieldMergingCallback
@@ -218,7 +226,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     builder.MoveToMergeField(e.DocumentFieldName);
 
                     // Load the document from the blob field.
-                    MemoryStream stream = new MemoryStream((byte[])e.FieldValue);
+                    MemoryStream stream = new MemoryStream((byte[]) e.FieldValue);
                     Document subDoc = new Document(stream);
 
                     // Insert the document.
@@ -238,6 +246,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 // Do nothing.
             }
         }
+
         // ExEnd:InsertDocumentAtMailMergeBlobHandler
         // ExStart:InsertDocumentAtReplaceHandler
         private class InsertDocumentAtReplaceHandler : IReplacingCallback
@@ -247,7 +256,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 Document subDoc = new Document(RunExamples.GetDataDir_WorkingWithDocument() + "InsertDocument2.doc");
 
                 // Insert a document after the paragraph, containing the match text.
-                Paragraph para = (Paragraph)e.MatchNode.ParentNode;
+                Paragraph para = (Paragraph) e.MatchNode.ParentNode;
                 InsertDocument(para, subDoc);
 
                 // Remove the paragraph with the match text.
@@ -256,8 +265,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 return ReplaceAction.Skip;
             }
         }
+
         // ExEnd:InsertDocumentAtReplaceHandler
-
     }
-
 }

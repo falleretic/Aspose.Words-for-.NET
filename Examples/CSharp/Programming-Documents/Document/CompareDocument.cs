@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 
@@ -8,13 +7,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     class CompareDocument
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             NormalComparison(dataDir);
             CompareForEqual(dataDir);
             CompareDocumentWithComparisonTarget(dataDir);
-        }             
+        }
 
         private static void NormalComparison(string dataDir)
         {
@@ -22,9 +21,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Document docA = new Document(dataDir + "TestFile.doc");
             Document docB = new Document(dataDir + "TestFile - Copy.doc");
             // DocA now contains changes as revisions. 
-            docA.Compare(docB, "user", DateTime.Now); 
+            docA.Compare(docB, "user", DateTime.Now);
             // ExEnd:NormalComparison                     
         }
+
         private static void CompareForEqual(string dataDir)
         {
             // ExStart:CompareForEqual

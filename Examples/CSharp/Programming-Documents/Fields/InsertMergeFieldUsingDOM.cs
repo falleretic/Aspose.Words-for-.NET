@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -20,7 +19,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Get paragraph you want to append this merge field to
-            Paragraph para = (Paragraph)doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
             // Move cursor to this paragraph
             builder.MoveTo(para);
@@ -29,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // { " MERGEFIELD Test1 \\b Test2 \\f Test3 \\m \\v" }
 
             // Create instance of FieldMergeField class and lets build the above field code
-            FieldMergeField field = (FieldMergeField)builder.InsertField(FieldType.FieldMergeField, false);
+            FieldMergeField field = (FieldMergeField) builder.InsertField(FieldType.FieldMergeField, false);
 
             // { " MERGEFIELD Test1" }
             field.FieldName = "Test1";
@@ -51,7 +50,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 
             dataDir = dataDir + "InsertMergeFieldUsingDOM_out.doc";
             doc.Save(dataDir);
-            
+
             // ExEnd:InsertMergeFieldUsingDOM
             Console.WriteLine("\nMerge field using DOM inserted successfully.\nFile saved at " + dataDir);
         }

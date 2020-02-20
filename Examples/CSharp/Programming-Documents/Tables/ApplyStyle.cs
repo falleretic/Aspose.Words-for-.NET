@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Drawing;
@@ -12,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
     class ApplyStyle
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithTables();
             BuildTableWithStyle(dataDir);
@@ -20,6 +19,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             CreateTableStyle(dataDir);
             DefineConditionalFormatting(dataDir);
         }
+
         /// <summary>
         /// Shows how to build a new table with a table style applied.
         /// </summary>
@@ -36,7 +36,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // Note that not all table styles are available when saving as .doc format.
             table.StyleIdentifier = StyleIdentifier.MediumShading1Accent1;
             // Apply which features should be formatted by the style.
-            table.StyleOptions = TableStyleOptions.FirstColumn | TableStyleOptions.RowBands | TableStyleOptions.FirstRow;
+            table.StyleOptions =
+                TableStyleOptions.FirstColumn | TableStyleOptions.RowBands | TableStyleOptions.FirstRow;
             table.AutoFit(AutoFitBehavior.AutoFitToContents);
 
             // Continue with building the table as normal.
@@ -65,12 +66,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.EndRow();
 
             dataDir = dataDir + "DocumentBuilder.SetTableStyle_out.docx";
-           
+
             // Save the document to disk.
             doc.Save(dataDir);
             // ExEnd:BuildTableWithStyle
             Console.WriteLine("\nTable created successfully with table style.\nFile saved at " + dataDir);
         }
+
         /// <summary>
         /// Shows how to expand the formatting from styles onto the rows and cells of the table as direct formatting.
         /// </summary>
@@ -80,7 +82,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             Document doc = new Document(dataDir + "Table.TableStyle.docx");
 
             // Get the first cell of the first table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             Cell firstCell = table.FirstRow.FirstCell;
 
             // First print the color of the cell shading. This should be empty as the current shading
@@ -96,8 +98,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             Color cellShadingAfter = firstCell.CellFormat.Shading.BackgroundPatternColor;
             Console.WriteLine("Cell shading after style expansion: " + cellShadingAfter.ToString());
             // ExEnd:ExpandFormattingOnCellsAndRowFromStyle
-            
         }
+
         private static void CreateTableStyle(string dataDir)
         {
             // ExStart:CreateTableStyle
@@ -114,7 +116,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.InsertCell();
             builder.EndTable();
 
-            TableStyle tableStyle = (TableStyle)doc.Styles.Add(StyleType.Table, "MyTableStyle1");
+            TableStyle tableStyle = (TableStyle) doc.Styles.Add(StyleType.Table, "MyTableStyle1");
             tableStyle.Borders.LineStyle = LineStyle.Double;
             tableStyle.Borders.LineWidth = 1;
             tableStyle.LeftPadding = 18;
@@ -127,6 +129,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             doc.Save(dataDir + "TableStyleCreation.docx");
             // ExEnd:CreateTableStyle
         }
+
         private static void DefineConditionalFormatting(string dataDir)
         {
             // ExStart:DefineConditionalFormatting
@@ -143,7 +146,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.InsertCell();
             builder.EndTable();
 
-            TableStyle tableStyle = (TableStyle)doc.Styles.Add(StyleType.Table, "MyTableStyle1");
+            TableStyle tableStyle = (TableStyle) doc.Styles.Add(StyleType.Table, "MyTableStyle1");
             // Define background color to the first row of table.
             tableStyle.ConditionalStyles.FirstRow.Shading.BackgroundPatternColor = Color.GreenYellow;
             tableStyle.ConditionalStyles.FirstRow.Shading.Texture = TextureIndex.TextureNone;

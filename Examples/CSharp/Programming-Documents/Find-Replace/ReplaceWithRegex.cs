@@ -27,5 +27,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // ExEnd:ReplaceWithRegex
             Console.WriteLine("\nText replaced with regex successfully.\nFile saved at " + dataDir);
         }
-    }    
+    }
 }

@@ -1,9 +1,5 @@
-﻿using Aspose.Words.Saving;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -13,6 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
+
             SaveHtmlWithMetafileFormat(dataDir);
             ImportExportSVGinHTML(dataDir);
             SetCssClassNamePrefix(dataDir);
@@ -30,6 +27,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "SaveHtmlWithMetafileFormat_out.html";
             doc.Save(dataDir, options);
             // ExEnd:SaveHtmlWithMetafileFormat
+
             Console.WriteLine("\nDocument saved with Metafile format.\nFile saved at " + dataDir);
         }
 
@@ -51,6 +49,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "ExportSVGinHTML_out.html";
             doc.Save(dataDir, options);
             // ExEnd:ImportExportSVGinHTML
+
             Console.WriteLine("\nDocument saved with SVG Metafile format.\nFile saved at " + dataDir);
         }
 
@@ -66,15 +65,16 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "CssClassNamePrefix_out.html";
             doc.Save(dataDir, saveOptions);
             // ExEnd:SetCssClassNamePrefix
+
             Console.WriteLine("\nDocument saved with CSS prefix pfx_.\nFile saved at " + dataDir);
         }
 
         public static void SetExportCidUrlsForMhtmlResources(string dataDir)
         {
             // ExStart:SetExportCidUrlsForMhtmlResources
-            var doc = new Aspose.Words.Document(dataDir + "CidUrls.docx");
+            Document doc = new Document(dataDir + "CidUrls.docx");
 
-            Aspose.Words.Saving.HtmlSaveOptions saveOptions = new Aspose.Words.Saving.HtmlSaveOptions(SaveFormat.Mhtml);
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Mhtml);
             saveOptions.PrettyFormat = true;
             saveOptions.ExportCidUrlsForMhtmlResources = true;
             saveOptions.SaveFormat = SaveFormat.Mhtml;
@@ -82,6 +82,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             dataDir = dataDir + "SetExportCidUrlsForMhtmlResources_out.mhtml";
             doc.Save(dataDir, saveOptions);
             // ExEnd:SetExportCidUrlsForMhtmlResources
+
             Console.WriteLine("\nDocument has saved with Content - Id URL scheme.\nFile saved at " + dataDir);
         }
 
@@ -90,13 +91,14 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // ExStart:SetResolveFontNames
             Document doc = new Document(dataDir + "Test File (docx).docx");
 
-            Aspose.Words.Saving.HtmlSaveOptions saveOptions = new Aspose.Words.Saving.HtmlSaveOptions(SaveFormat.Html);
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Html);
             saveOptions.PrettyFormat = true;
             saveOptions.ResolveFontNames = true;
 
             dataDir = dataDir + "ResolveFontNames_out.html";
             doc.Save(dataDir, saveOptions);
             // ExEnd:SetResolveFontNames
+
             Console.WriteLine("\nFontSettings is used to resolve font family name.\nFile saved at " + dataDir);
         }
     }

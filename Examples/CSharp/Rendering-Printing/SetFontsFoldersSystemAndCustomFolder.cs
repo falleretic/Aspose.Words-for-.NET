@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using Aspose.Words.Fonts;
@@ -14,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:SetFontsFoldersSystemAndCustomFolder
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "Rendering.doc");
             FontSettings FontSettings = new FontSettings();
@@ -30,8 +29,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             fontSources.Add(folderFontSource);
 
             // Convert the Arraylist of source back into a primitive array of FontSource objects.
-            FontSourceBase[] updatedFontSources = (FontSourceBase[])fontSources.ToArray(typeof(FontSourceBase));
-            
+            FontSourceBase[] updatedFontSources = (FontSourceBase[]) fontSources.ToArray(typeof(FontSourceBase));
+
             // Apply the new set of font sources to use.
             FontSettings.SetFontsSources(updatedFontSources);
             // Set font settings
@@ -40,7 +39,6 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             doc.Save(dataDir);
             // ExEnd:SetFontsFoldersSystemAndCustomFolder 
             Console.WriteLine("\nFonts system and coustom folder is setup.\nFile saved at " + dataDir);
-                     
         }
     }
 }

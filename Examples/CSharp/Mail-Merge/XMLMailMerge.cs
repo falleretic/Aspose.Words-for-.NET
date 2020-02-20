@@ -17,7 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // ExStart:XMLMailMerge 
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
 
             // Create the Dataset and read the XML.
             DataSet customersDs = new DataSet();

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
@@ -41,6 +37,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 
             doc.Save(dataDir + "VbaProject_out.docm");
             //ExEnd:CreateVbaProject
+
             Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
         }
 
@@ -56,6 +53,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
                     Console.WriteLine(module.SourceCode);
                 }
             }
+
             //ExEnd:ReadVbaMacros
         }
 
@@ -72,6 +70,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 
             doc.Save(dataDir + "VbaProject_out.docm");
             //ExEnd:ModifyVbaMacros
+
             Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
         }
 
@@ -88,6 +87,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 
             destDoc.Save(dataDir + "output.docm");
             //ExEnd:CloneVbaProject
+
             Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
         }
 
@@ -107,6 +107,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 
             destDoc.Save(dataDir + "output.docm");
             //ExEnd:CloneVbaModule
+
             Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
         }
     }

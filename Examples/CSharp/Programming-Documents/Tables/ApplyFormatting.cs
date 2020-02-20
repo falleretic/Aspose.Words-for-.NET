@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Drawing;
@@ -39,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             Document doc = new Document(dataDir + "Table.EmptyTable.doc");
 
             Console.WriteLine("\nGet distance between table left, right, bottom, top and the surrounding text.");
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             Console.WriteLine(table.DistanceTop);
             Console.WriteLine(table.DistanceBottom);
@@ -57,7 +56,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExStart:ApplyOutlineBorder
             Document doc = new Document(dataDir + "Table.EmptyTable.doc");
 
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Align the table to the center of the page.
             table.Alignment = TableAlignment.Center;
             // Clear any existing borders from the table.
@@ -77,6 +76,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:ApplyOutlineBorder
             Console.WriteLine("\nOutline border applied successfully to a table.\nFile saved at " + dataDir);
         }
+
         /// <summary>
         /// Shows how to build a table with all borders enabled (grid).
         /// </summary>
@@ -85,7 +85,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExStart:BuildTableWithBordersEnabled
             Document doc = new Document(dataDir + "Table.EmptyTable.doc");
 
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Clear any existing borders from the table.
             table.ClearBorders();
             // Set a green border around and inside the table.
@@ -97,6 +97,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:BuildTableWithBordersEnabled
             Console.WriteLine("\nTable build successfully with all borders enabled.\nFile saved at " + dataDir);
         }
+
         /// <summary>
         /// Shows how to modify formatting of a table row.
         /// </summary>
@@ -104,7 +105,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         {
             // ExStart:ModifyRowFormatting
             Document doc = new Document(dataDir + "Table.Document.doc");
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // Retrieve the first row in the table.
             Row firstRow = table.FirstRow;
@@ -115,6 +116,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:ModifyRowFormatting
             Console.WriteLine("\nSome row level properties modified successfully.");
         }
+
         /// <summary>
         /// Shows how to create a table that contains a single cell and apply row formatting.
         /// </summary>
@@ -184,7 +186,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         {
             // ExStart:ModifyCellFormatting
             Document doc = new Document(dataDir + "Table.Document.doc");
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // Retrieve the first cell in the table.
             Cell firstCell = table.FirstRow.FirstCell;
@@ -195,6 +197,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:ModifyCellFormatting
             Console.WriteLine("\nSome cell level properties modified successfully.");
         }
+
         /// <summary>
         /// Shows how to format table and cell with different borders and shadings.
         /// </summary>
@@ -242,7 +245,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // Save finished document.
             doc.Save(dataDir + "Table.SetBordersAndShading_out.doc");
             // ExEnd:FormatTableAndCellWithDifferentBorders
-            Console.WriteLine("\nformat table and cell with different borders and shadings successfully.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nformat table and cell with different borders and shadings successfully.\nFile saved at " + dataDir);
         }
 
         /// <summary>
@@ -252,7 +256,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         {
             // ExStart:SetTableTitleandDescription
             Document doc = new Document(dataDir + "Table.Document.doc");
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             table.Title = "Test title";
             table.Description = "Test description";
 
@@ -277,7 +281,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         {
             // ExStart:AllowCellSpacing
             Document doc = new Document(dataDir + "Table.Document.doc");
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             table.AllowCellSpacing = true;
             table.CellSpacing = 2;
             dataDir = dataDir + "Table.AllowCellSpacing_out.docx";

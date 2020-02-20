@@ -15,7 +15,6 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
             GetListOfAvailableFonts(dataDir);
-
         }
 
         public static void GetListOfAvailableFonts(string dataDir)
@@ -26,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
             FontSettings fontSettings = new FontSettings();
             ArrayList fontSources = new ArrayList(fontSettings.GetFontsSources());
-             
+
             // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts. 
             FolderFontSource folderFontSource = new FolderFontSource(dataDir, true);
 
@@ -34,16 +33,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             fontSources.Add(folderFontSource);
 
             // Convert the Arraylist of source back into a primitive array of FontSource objects.
-            FontSourceBase[] updatedFontSources = (FontSourceBase[])fontSources.ToArray(typeof(FontSourceBase));
+            FontSourceBase[] updatedFontSources = (FontSourceBase[]) fontSources.ToArray(typeof(FontSourceBase));
 
             foreach (PhysicalFontInfo fontInfo in updatedFontSources[0].GetAvailableFonts())
             {
-                Console.WriteLine("FontFamilyName : "+ fontInfo.FontFamilyName);
+                Console.WriteLine("FontFamilyName : " + fontInfo.FontFamilyName);
                 Console.WriteLine("FullFontName  : " + fontInfo.FullFontName);
                 Console.WriteLine("Version  : " + fontInfo.Version);
                 Console.WriteLine("FilePath : " + fontInfo.FilePath);
             }
-             
+
             // ExEnd:GetListOfAvailableFonts      
         }
     }

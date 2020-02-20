@@ -1,4 +1,3 @@
-
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -18,7 +17,6 @@ namespace DocumentExplorerExample
     /// </summary>
     public class MainForm : Form
     {
-
         #region Windows Form Designer generated code
 
         private System.Windows.Forms.ToolBar toolBar1;
@@ -115,19 +113,21 @@ namespace DocumentExplorerExample
             // ToolBar1
             // 
             this.toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-            this.toolBar1.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
-                                                                                        this.toolOpenDocument,
-                                                                                        this.toolSaveDocument,
-                                                                                        this.toolSeparator1,
-                                                                                        this.toolRenderDocument,
-                                                                                        this.toolPreviewButton,
-                                                                                        this.toolBarButton1,
-                                                                                        this.toolExpandAll,
-                                                                                        this.toolCollapseAll,
-                                                                                        this.toolSeparator2,
-                                                                                        this.toolRemove,
-                                                                                        this.toolViewInWord,
-                                                                                        this.toolViewInPdf});
+            this.toolBar1.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[]
+            {
+                this.toolOpenDocument,
+                this.toolSaveDocument,
+                this.toolSeparator1,
+                this.toolRenderDocument,
+                this.toolPreviewButton,
+                this.toolBarButton1,
+                this.toolExpandAll,
+                this.toolCollapseAll,
+                this.toolSeparator2,
+                this.toolRemove,
+                this.toolViewInWord,
+                this.toolViewInPdf
+            });
             this.toolBar1.DropDownArrows = true;
             this.toolBar1.ImageList = this.imageList1;
             this.toolBar1.Location = new System.Drawing.Point(0, 0);
@@ -135,7 +135,8 @@ namespace DocumentExplorerExample
             this.toolBar1.ShowToolTips = true;
             this.toolBar1.Size = new System.Drawing.Size(884, 28);
             this.toolBar1.TabIndex = 1;
-            this.toolBar1.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar1_ButtonClick);
+            this.toolBar1.ButtonClick +=
+                new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar1_ButtonClick);
             // 
             // ToolOpenDocument
             // 
@@ -205,7 +206,8 @@ namespace DocumentExplorerExample
             // ImageList1
             // 
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.ImageStream =
+                ((System.Windows.Forms.ImageListStreamer) (resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Panel1
@@ -253,7 +255,8 @@ namespace DocumentExplorerExample
             // 
             this.Text1.BackColor = System.Drawing.SystemColors.Window;
             this.Text1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Text1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+            this.Text1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((System.Byte) (0)));
             this.Text1.HideSelection = false;
             this.Text1.Location = new System.Drawing.Point(0, 0);
             this.Text1.Multiline = true;
@@ -266,23 +269,27 @@ namespace DocumentExplorerExample
             // 
             // MainMenu1
             // 
-            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                      this.menuFile,
-                                                                                      this.menuEdit,
-                                                                                      this.menuView,
-                                                                                      this.menuHelp});
+            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.menuFile,
+                this.menuEdit,
+                this.menuView,
+                this.menuHelp
+            });
             // 
             // MenuFile
             // 
             this.menuFile.Index = 0;
-            this.menuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                     this.menuOpen,
-                                                                                     this.menuSaveAs,
-                                                                                     this.menuBar1,
-                                                                                     this.menuRender,
-                                                                                     this.menuPreview,
-                                                                                     this.menuItem1,
-                                                                                     this.menuExit});
+            this.menuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.menuOpen,
+                this.menuSaveAs,
+                this.menuBar1,
+                this.menuRender,
+                this.menuPreview,
+                this.menuItem1,
+                this.menuExit
+            });
             this.menuFile.Text = "&File";
             // 
             // MenuOpen
@@ -331,8 +338,10 @@ namespace DocumentExplorerExample
             // MenuEdit
             // 
             this.menuEdit.Index = 1;
-            this.menuEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                     this.menuRemoveNode});
+            this.menuEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.menuRemoveNode
+            });
             this.menuEdit.Text = "Edit";
             // 
             // MenuRemoveNode
@@ -345,9 +354,11 @@ namespace DocumentExplorerExample
             // MenuView
             // 
             this.menuView.Index = 2;
-            this.menuView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                     this.menuExpandAll,
-                                                                                     this.menuCollapseAll});
+            this.menuView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.menuExpandAll,
+                this.menuCollapseAll
+            });
             this.menuView.Text = "&View";
             // 
             // MenuExpandAll
@@ -367,8 +378,10 @@ namespace DocumentExplorerExample
             // MenuHelp
             // 
             this.menuHelp.Index = 3;
-            this.menuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-                                                                                     this.menuAbout});
+            this.menuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+            {
+                this.menuAbout
+            });
             this.menuHelp.Text = "&Help";
             // 
             // MenuAbout
@@ -386,14 +399,13 @@ namespace DocumentExplorerExample
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolBar1);
             this.Controls.Add(this.StatusBar);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "MainForm";
             this.Text = "Document Explorer";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         protected override void Dispose(bool disposing)
@@ -405,6 +417,7 @@ namespace DocumentExplorerExample
                     components.Dispose();
                 }
             }
+
             base.Dispose(disposing);
         }
 
@@ -457,7 +470,6 @@ namespace DocumentExplorerExample
             licenseFile = Path.Combine(Application.StartupPath, "Aspose.Words.lic");
             if (File.Exists(licenseFile))
                 LicenseAsposeWords(licenseFile);
-
         }
 
         /// <summary>
@@ -479,10 +491,10 @@ namespace DocumentExplorerExample
         {
             SaveDocument();
         }
-        
+
         private void menuRender_Click(object sender, System.EventArgs e)
         {
-            RenderDocument();        
+            RenderDocument();
         }
 
         private void menuPreview_Click(object sender, System.EventArgs e)
@@ -588,12 +600,12 @@ namespace DocumentExplorerExample
 
                 menuSaveAs.Enabled = true;
                 toolBar1.Buttons[1].Enabled = true;
-                
+
                 menuRender.Enabled = true;
                 toolBar1.Buttons[3].Enabled = true;
                 menuPreview.Enabled = true;
                 toolBar1.Buttons[4].Enabled = true;
-                
+
                 menuExpandAll.Enabled = true;
                 toolBar1.Buttons[6].Enabled = true;
                 menuCollapseAll.Enabled = true;
@@ -642,17 +654,17 @@ namespace DocumentExplorerExample
             // Restore cursor.
             Cursor.Current = cursor;
         }
-        
+
         private void RenderDocument()
         {
             if (mDocument == null)
                 return;
-            
+
             ViewerForm form = new ViewerForm();
             form.Document = mDocument;
             form.ShowDialog();
         }
-        
+
         private void PrintPreview()
         {
             if (mDocument == null)
@@ -675,16 +687,16 @@ namespace DocumentExplorerExample
                 dlg.InitialDirectory = mInitialDirectory;
                 dlg.Filter =
                     "All Supported Formats (*.doc;*.dot;*.docx;*.dotx;*.docm;*.dotm;*.xml;*.wml;*.rtf;*.odt;*.ott;*.htm;*.html;*.xhtml;*.mht;*.mhtm;*.mhtml)|*.doc;*.dot;*.docx;*.dotx;*.docm;*.dotm;*.xml;*.wml;*.rtf;*.odt;*.ott;*.htm;*.html;*.xhtml;*.mht;*.mhtm;*.mhtml|" +
-            "Word 97-2003 Documents (*.doc;*.dot)|*.doc;*.dot|" +
-            "Word 2007 OOXML Documents (*.docx;*.dotx;*.docm;*.dotm)|*.docx;*.dotx;*.docm;*.dotm|" +
-            "XML Documents (*.xml;*.wml)|*.xml;*.wml|" +
-            "Rich Text Format (*.rtf)|*.rtf|" +
-            "OpenDocument Text (*.odt;*.ott)|*.odt;*.ott|" +
-            "Web Pages (" +
-            "*.htm;*.html;*.xhtml;*.mht;*.mhtm;*.mhtml)|" +
-            "*.htm;*.html;*.xhtml;*.mht;*.mhtm;*.mhtml|" +
+                    "Word 97-2003 Documents (*.doc;*.dot)|*.doc;*.dot|" +
+                    "Word 2007 OOXML Documents (*.docx;*.dotx;*.docm;*.dotm)|*.docx;*.dotx;*.docm;*.dotm|" +
+                    "XML Documents (*.xml;*.wml)|*.xml;*.wml|" +
+                    "Rich Text Format (*.rtf)|*.rtf|" +
+                    "OpenDocument Text (*.odt;*.ott)|*.odt;*.ott|" +
+                    "Web Pages (" +
+                    "*.htm;*.html;*.xhtml;*.mht;*.mhtm;*.mhtml)|" +
+                    "*.htm;*.html;*.xhtml;*.mht;*.mhtm;*.mhtml|" +
                     "All Files (*.*)|*.*";
-                    
+
                 DialogResult dlgResult = dlg.ShowDialog();
                 // Optimized to allow automatic conversion to VB.NET
                 if (dlgResult.Equals(DialogResult.OK))
@@ -801,7 +813,7 @@ namespace DocumentExplorerExample
         private void Remove()
         {
             if (Tree.SelectedNode != null)
-                ((Item)Tree.SelectedNode.Tag).Remove();
+                ((Item) Tree.SelectedNode.Tag).Remove();
         }
 
         /// <summary>
@@ -815,7 +827,7 @@ namespace DocumentExplorerExample
             Cursor cursor = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
 
-            Item selectedItem = (Item)e.Node.Tag;
+            Item selectedItem = (Item) e.Node.Tag;
 
             // Set 'Remove Node' menu and tool button visibility.
             menuRemoveNode.Enabled = selectedItem.IsRemovable;
@@ -834,7 +846,7 @@ namespace DocumentExplorerExample
         /// </summary>
         private void Tree_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            ((Item)e.Node.Tag).OnExpand();
+            ((Item) e.Node.Tag).OnExpand();
         }
 
         /// <summary>
@@ -859,6 +871,7 @@ namespace DocumentExplorerExample
         /// The currently opened document.
         /// </summary>
         private Document mDocument;
+
         /// <summary>
         /// Last selected directory in the open and save dialogs.
         /// </summary>

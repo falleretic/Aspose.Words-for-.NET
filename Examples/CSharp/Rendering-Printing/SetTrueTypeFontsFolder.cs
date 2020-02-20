@@ -4,6 +4,7 @@ using System.Reflection;
 using Aspose.Words.Fonts;
 using Aspose.Words;
 using Aspose.Words.Saving;
+
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class SetTrueTypeFontsFolder
@@ -12,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:SetTrueTypeFontsFolder
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             Document doc = new Document(dataDir + "Rendering.doc");
 

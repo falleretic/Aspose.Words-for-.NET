@@ -26,10 +26,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Document doc = new Document(dataDir + @"languagepreferences.docx", loadOptions);
 
             int localeIdFarEast = doc.Styles.DefaultFont.LocaleIdFarEast;
-            if (localeIdFarEast == (int)EditingLanguage.Japanese)
-                Console.WriteLine("The document either has no any FarEast language set in defaults or it was set to Japanese originally.");
+            if (localeIdFarEast == (int) EditingLanguage.Japanese)
+                Console.WriteLine(
+                    "The document either has no any FarEast language set in defaults or it was set to Japanese originally.");
             else
-                Console.WriteLine("The document default FarEast language was set to another than Japanese language originally, so it is not overridden.");
+                Console.WriteLine(
+                    "The document default FarEast language was set to another than Japanese language originally, so it is not overridden.");
             // ExEnd:AddJapaneseAsEditinglanguages
         }
 
@@ -43,10 +45,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Document doc = new Document(dataDir + @"languagepreferences.docx", loadOptions);
 
             int localeId = doc.Styles.DefaultFont.LocaleId;
-            if (localeId == (int)EditingLanguage.Russian)
-                Console.WriteLine("The document either has no any language set in defaults or it was set to Russian originally.");
+            if (localeId == (int) EditingLanguage.Russian)
+                Console.WriteLine(
+                    "The document either has no any language set in defaults or it was set to Russian originally.");
             else
-                Console.WriteLine("The document default language was set to another than Russian language originally, so it is not overridden.");
+                Console.WriteLine(
+                    "The document default language was set to another than Russian language originally, so it is not overridden.");
             // ExEnd:SetRussianAsDefaultEditingLanguage
         }
     }

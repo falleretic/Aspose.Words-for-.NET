@@ -1,29 +1,28 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Collections;
 using Aspose.Words;
 using System;
 using Aspose.Words.Tables;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class AddRemoveColumn
     {
         public static void Run()
         {
-           
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithTables() + "Table.Document.doc";
             Document doc = new Document(dataDir);
             InsertBlankColumn(doc);
             RemoveColumn(doc);
-                   
         }
+
         private static void RemoveColumn(Document doc)
         {
             // ExStart:RemoveColumn
             // Get the second table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 1, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 1, true);
 
             // Get the third column from the table and remove it.
             Column column = Column.FromIndex(table, 2);
@@ -31,11 +30,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:RemoveColumn
             Console.WriteLine("\nThird column removed successfully.");
         }
+
         private static void InsertBlankColumn(Document doc)
         {
             // ExStart:InsertBlankColumn
             // Get the first table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // ExStart:GetPlainText
             // Get the second column in the table.
@@ -51,8 +51,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             foreach (Cell cell in newColumn.Cells)
                 cell.FirstParagraph.AppendChild(new Run(doc, "Column Text " + newColumn.IndexOf(cell)));
             // ExEnd:InsertBlankColumn
-            Console.WriteLine("\nColumn added successfully." );  
+            Console.WriteLine("\nColumn added successfully.");
         }
+
         // ExStart:ColumnClass
         /// <summary>
         /// Represents a facade object for a column of a table in a Microsoft Word document.
@@ -81,10 +82,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             /// </summary>
             public Cell[] Cells
             {
-                get
-                {
-                    return (Cell[])GetColumnCells().ToArray(typeof(Cell));
-                }
+                get { return (Cell[]) GetColumnCells().ToArray(typeof(Cell)); }
             }
 
             /// <summary>
@@ -164,6 +162,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             private int mColumnIndex;
             private Table mTable;
         }
+
         // ExEnd:ColumnClass
     }
 }

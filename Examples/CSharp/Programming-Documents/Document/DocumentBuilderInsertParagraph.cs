@@ -2,6 +2,7 @@
 using Aspose.Words;
 using System;
 using System.Drawing;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderInsertParagraph
@@ -33,7 +34,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertParagraph_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertParagraph
-            Console.WriteLine("\nParagraph inserted successfully into the document using DocumentBuilder.\nFile saved at " + dataDir);
-        }        
+            Console.WriteLine(
+                "\nParagraph inserted successfully into the document using DocumentBuilder.\nFile saved at " + dataDir);
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
@@ -78,7 +77,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 if (currNode.NextSibling == null && isExtracting)
                 {
                     // Move to the next section.
-                    Section nextSection = (Section)currNode.GetAncestor(NodeType.Section).NextSibling;
+                    Section nextSection = (Section) currNode.GetAncestor(NodeType.Section).NextSibling;
                     currNode = nextSection.Body.FirstChild;
                 }
                 else
@@ -109,6 +108,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 if (paragraph.ParagraphFormat.Style.Name == styleName)
                     paragraphsWithStyle.Add(paragraph);
             }
+
             return paragraphsWithStyle;
         }
 
@@ -151,8 +151,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             // Check the end node is after the start node in the DOM tree
             // First check if they are in different sections, then if they're not check their position in the body of the same section they are in.
-            Section startSection = (Section)startNode.GetAncestor(NodeType.Section);
-            Section endSection = (Section)endNode.GetAncestor(NodeType.Section);
+            Section startSection = (Section) startNode.GetAncestor(NodeType.Section);
+            Section endSection = (Section) endNode.GetAncestor(NodeType.Section);
 
             int startIndex = startSection.ParentNode.IndexOf(startSection);
             int endIndex = endSection.ParentNode.IndexOf(endSection);
@@ -160,7 +160,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             if (startIndex == endIndex)
             {
                 if (startSection.Body.IndexOf(GetAncestorInBody(startNode)) >
-                        endSection.Body.IndexOf(GetAncestorInBody(endNode)))
+                    endSection.Body.IndexOf(GetAncestorInBody(endNode)))
                     throw new ArgumentException("The end node must be after the start node in the body");
             }
             else if (startIndex > endIndex)
@@ -174,7 +174,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             if (fromNode.IsComposite)
             {
-                Node node = FindNextNode(nodeType, ((CompositeNode)fromNode).FirstChild);
+                Node node = FindNextNode(nodeType, ((CompositeNode) fromNode).FirstChild);
                 if (node != null)
                     return node;
             }
@@ -185,7 +185,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         private static bool IsInline(Node node)
         {
             // Test if the node is desendant of a Paragraph or Table node and also is not a paragraph or a table a paragraph inside a comment class which is decesant of a pararaph is possible.
-            return ((node.GetAncestor(NodeType.Paragraph) != null || node.GetAncestor(NodeType.Table) != null) && !(node.NodeType == NodeType.Paragraph || node.NodeType == NodeType.Table));
+            return ((node.GetAncestor(NodeType.Paragraph) != null || node.GetAncestor(NodeType.Table) != null) &&
+                    !(node.NodeType == NodeType.Paragraph || node.NodeType == NodeType.Table));
         }
 
         private static void ProcessMarker(Node cloneNode, ArrayList nodes, Node node, Node blockLevelAncestor,
@@ -198,6 +199,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     nodes.Add(cloneNode);
                 return;
             }
+
             // cloneNode is a clone of blockLevelNode. If node != blockLevelNode, blockLevelAncestor is ancestor of node
             // that means it is a composite node.
             System.Diagnostics.Debug.Assert(cloneNode.IsComposite);
@@ -224,14 +226,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             {
                 Node currentNode = nodeBranch[i];
                 int nodeIndex = currentNode.ParentNode.IndexOf(currentNode);
-                currentCloneNode = ((CompositeNode)currentCloneNode).ChildNodes[nodeIndex];
+                currentCloneNode = ((CompositeNode) currentCloneNode).ChildNodes[nodeIndex];
 
                 RemoveNodesOutsideOfRange(currentCloneNode, isInclusive || (i > 0), isStartMarker);
             }
 
             // After processing the composite node may become empty. If it has don't include it.
             if (canAdd &&
-                (forceAdd || ((CompositeNode)cloneNode).HasChildNodes))
+                (forceAdd || ((CompositeNode) cloneNode).HasChildNodes))
                 nodes.Add(cloneNode);
         }
 
@@ -286,7 +288,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
         private static void IncludeNextParagraph(Node node, ArrayList nodes)
         {
-            Paragraph paragraph = (Paragraph)FindNextNode(NodeType.Paragraph, node.NextSibling);
+            Paragraph paragraph = (Paragraph) FindNextNode(NodeType.Paragraph, node.NextSibling);
             if (paragraph != null)
             {
                 // Move to first child to include paragraph without contents.
@@ -304,6 +306,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 startNode = startNode.ParentNode;
             return startNode;
         }
+
         // ExEnd:CommonExtractContentHelperMethods
     }
 }

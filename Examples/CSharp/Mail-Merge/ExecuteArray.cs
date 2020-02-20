@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class ExecuteArray
@@ -16,7 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // ExStart:ExecuteArray           
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
             // Open an existing document.
             Document doc = new Document(dataDir + "MailMerge.ExecuteArray.doc");
 

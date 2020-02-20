@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
@@ -12,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithBookmarks();
-            string fileName = "Template.doc"; 
+            string fileName = "Template.doc";
 
             // Load the source document.
             Document srcDoc = new Document(dataDir + fileName);
@@ -53,17 +52,19 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
         private static void AppendBookmarkedText(NodeImporter importer, Bookmark srcBookmark, CompositeNode dstNode)
         {
             // This is the paragraph that contains the beginning of the bookmark.
-            Paragraph startPara = (Paragraph)srcBookmark.BookmarkStart.ParentNode;
+            Paragraph startPara = (Paragraph) srcBookmark.BookmarkStart.ParentNode;
 
             // This is the paragraph that contains the end of the bookmark.
-            Paragraph endPara = (Paragraph)srcBookmark.BookmarkEnd.ParentNode;
+            Paragraph endPara = (Paragraph) srcBookmark.BookmarkEnd.ParentNode;
 
             if ((startPara == null) || (endPara == null))
-                throw new InvalidOperationException("Parent of the bookmark start or end is not a paragraph, cannot handle this scenario yet.");
+                throw new InvalidOperationException(
+                    "Parent of the bookmark start or end is not a paragraph, cannot handle this scenario yet.");
 
             // Limit ourselves to a reasonably simple scenario.
             if (startPara.ParentNode != endPara.ParentNode)
-                throw new InvalidOperationException("Start and end paragraphs have different parents, cannot handle this scenario yet.");
+                throw new InvalidOperationException(
+                    "Start and end paragraphs have different parents, cannot handle this scenario yet.");
 
             // We want to copy all paragraphs from the start paragraph up to (and including) the end paragraph,
             // Therefore the node at which we stop is one after the end paragraph.

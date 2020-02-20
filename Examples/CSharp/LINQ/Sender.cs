@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Aspose.Words.Examples.CSharp.LINQ
+﻿namespace Aspose.Words.Examples.CSharp.LINQ
 {
     // ExStart:Sender
     public class Sender
     {
-        public String Name { get; set; }
-        public String Message { get; set; }
+        public string Name { get; set; }
+        public string Message { get; set; }
     }
     // ExEnd:Sender
-    
 }

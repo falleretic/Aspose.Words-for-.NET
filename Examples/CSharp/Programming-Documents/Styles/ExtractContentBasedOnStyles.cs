@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -46,6 +44,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
             // ExEnd:ExtractContentBasedOnStyles
             Console.WriteLine("\nExtracted contents based on styles successfully.");
         }
+
         // ExStart:ParagraphsByStyleName
         public static ArrayList ParagraphsByStyleName(Document doc, string styleName)
         {
@@ -59,8 +58,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
                 if (paragraph.ParagraphFormat.Style.Name == styleName)
                     paragraphsWithStyle.Add(paragraph);
             }
+
             return paragraphsWithStyle;
         }
+
         // ExEnd:ParagraphsByStyleName
         // ExStart:RunsByStyleName
         public static ArrayList RunsByStyleName(Document doc, string styleName)
@@ -75,8 +76,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
                 if (run.Font.Style.Name == styleName)
                     runsWithStyle.Add(run);
             }
+
             return runsWithStyle;
         }
+
         // ExEnd:RunsByStyleName
     }
 }

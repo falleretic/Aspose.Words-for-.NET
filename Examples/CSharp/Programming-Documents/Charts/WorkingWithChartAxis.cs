@@ -24,8 +24,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             TickMultiLineLabelAlignment(dataDir);
         }
 
-
-        public static void DefineXYAxisProperties(String dataDir)
+        public static void DefineXYAxisProperties(string dataDir)
         {
             //ExStart:DefineXYAxisProperties
             Document doc = new Document();
@@ -40,8 +39,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             // Fill data.
             chart.Series.Add("AW Series 1",
-            new DateTime[] { new DateTime(2002, 01, 01), new DateTime(2002, 06, 01), new DateTime(2002, 07, 01), new DateTime(2002, 08, 01), new DateTime(2002, 09, 01) },
-            new double[] { 640, 320, 280, 120, 150 });
+                new DateTime[]
+                {
+                    new DateTime(2002, 01, 01), new DateTime(2002, 06, 01), new DateTime(2002, 07, 01),
+                    new DateTime(2002, 08, 01), new DateTime(2002, 09, 01)
+                },
+                new double[] { 640, 320, 280, 120, 150 });
 
             ChartAxis xAxis = chart.AxisX;
             ChartAxis yAxis = chart.AxisY;
@@ -71,7 +74,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             Console.WriteLine("\nProperties of X and Y axis are set successfully.\nFile saved at " + dataDir);
         }
 
-        public static void SetDateTimeValuesToAxis(String dataDir)
+        public static void SetDateTimeValuesToAxis(string dataDir)
         {
             // ExStart:SetDateTimeValuesToAxis
             Document doc = new Document();
@@ -86,8 +89,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             // Fill data.
             chart.Series.Add("AW Series 1",
-                new DateTime[] { new DateTime(2017, 11, 06), new DateTime(2017, 11, 09), new DateTime(2017, 11, 15),
-                new DateTime(2017, 11, 21), new DateTime(2017, 11, 25), new DateTime(2017, 11, 29) },
+                new DateTime[]
+                {
+                    new DateTime(2017, 11, 06), new DateTime(2017, 11, 09), new DateTime(2017, 11, 15),
+                    new DateTime(2017, 11, 21), new DateTime(2017, 11, 25), new DateTime(2017, 11, 29)
+                },
                 new double[] { 1.2, 0.3, 2.1, 2.9, 4.2, 5.3 });
 
             // Set X axis bounds.
@@ -107,7 +113,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             Console.WriteLine("\nDateTime values are set for chart axis successfully.\nFile saved at " + dataDir);
         }
 
-        public static void SetNumberFormatForAxis(String dataDir)
+        public static void SetNumberFormatForAxis(string dataDir)
         {
             // ExStart:SetNumberFormatForAxis
             Document doc = new Document();
@@ -134,7 +140,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             Console.WriteLine("\nSet number format for axis successfully.\nFile saved at " + dataDir);
         }
 
-        public static void SetboundsOfAxis(String dataDir)
+        public static void SetboundsOfAxis(string dataDir)
         {
             // ExStart:SetboundsOfAxis
             Document doc = new Document();
@@ -161,7 +167,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             Console.WriteLine("\nSet Bounds of chart axis successfully.\nFile saved at " + dataDir);
         }
 
-        public static void SetIntervalUnitBetweenLabelsOnAxis(String dataDir)
+        public static void SetIntervalUnitBetweenLabelsOnAxis(string dataDir)
         {
             // ExStart:SetIntervalUnitBetweenLabelsOnAxis
             Document doc = new Document();
@@ -187,7 +193,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             Console.WriteLine("\nSet interval unit between labels on an axis successfully.\nFile saved at " + dataDir);
         }
 
-        public static void HideChartAxis(String dataDir)
+        public static void HideChartAxis(string dataDir)
         {
             // ExStart:HideChartAxis
             Document doc = new Document();
@@ -218,7 +224,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
         {
             // ExStart:TickMultiLineLabelAlignment
             Document doc = new Document(dataDir + "Document.docx");
-            Shape shape = (Shape)doc.GetChild(NodeType.Shape, 0, true);
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             ChartAxis axis = shape.Chart.AxisX;
 
             //This property has effect only for multi-line labels.

@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             // ExStart:SetContentControlColor
 
             Document doc = new Document(dataDir + "input.docx");
-            StructuredDocumentTag sdt = (StructuredDocumentTag)doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Color = Color.Red;
 
             dataDir = dataDir + "SetContentControlColor_out.docx";
@@ -43,7 +43,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             // ExStart:ClearContentsControl
 
             Document doc = new Document(dataDir + "input.docx");
-            StructuredDocumentTag sdt = (StructuredDocumentTag)doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Clear();
 
             dataDir = dataDir + "ClearContentsControl_out.doc";
@@ -58,7 +58,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
         {
             // ExStart:BindSDTtoCustomXmlPart
             Document doc = new Document();
-            CustomXmlPart xmlPart = doc.CustomXmlParts.Add(Guid.NewGuid().ToString("B"), "<root><text>Hello, World!</text></root>");
+            CustomXmlPart xmlPart =
+                doc.CustomXmlParts.Add(Guid.NewGuid().ToString("B"), "<root><text>Hello, World!</text></root>");
 
             StructuredDocumentTag sdt = new StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Block);
             doc.FirstSection.Body.AppendChild(sdt);
@@ -77,7 +78,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
         {
             // ExStart:SetContentControlStyle
             Document doc = new Document(dataDir + "input.docx");
-            StructuredDocumentTag sdt = (StructuredDocumentTag)doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             Style style = doc.Styles[StyleIdentifier.Quote];
             sdt.Style = style;
 

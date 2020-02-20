@@ -37,7 +37,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             foreach (DataRow row in data.Rows)
             {
                 // Clone the template instead of loading it from disk (for speed).
-                Document dstDoc = (Document)doc.Clone(true);
+                Document dstDoc = (Document) doc.Clone(true);
 
                 // Execute mail merge.
                 dstDoc.MailMerge.Execute(row);
@@ -45,8 +45,9 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 // Save the document.
                 dstDoc.Save(string.Format(dataDir + "TestFile_out{0}.doc", counter++));
             }
+
             // ExEnd:ProduceMultipleDocuments
-            Console.WriteLine("\nProduce multiple documents performed successfully.\nFile saved at " + dataDir);            
+            Console.WriteLine("\nProduce multiple documents performed successfully.\nFile saved at " + dataDir);
         }
     }
 }

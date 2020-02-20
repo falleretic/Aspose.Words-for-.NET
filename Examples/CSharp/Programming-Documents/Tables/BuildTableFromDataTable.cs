@@ -52,7 +52,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         /// Imports the content from the specified DataTable into a new Aspose.Words Table object. 
         /// The table is inserted at the current position of the document builder and using the current builder's formatting if any is defined.
         /// </summary>
-        public static Table ImportTableFromDataTable(DocumentBuilder builder, DataTable dataTable, bool importColumnHeadings)
+        public static Table ImportTableFromDataTable(DocumentBuilder builder, DataTable dataTable,
+            bool importColumnHeadings)
         {
             Table table = builder.StartTable();
 
@@ -92,7 +93,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                     {
                         case "DateTime":
                             // Define a custom format for dates and times.
-                            DateTime dateTime = (DateTime)item;
+                            DateTime dateTime = (DateTime) item;
                             builder.Write(dateTime.ToString("MMMM d, yyyy"));
                             break;
                         default:
@@ -100,7 +101,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                             builder.Write(item.ToString());
                             break;
                     }
-
                 }
 
                 // After we insert all the data from the current record we can end the table row.
@@ -112,6 +112,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
             return table;
         }
+
         // ExEnd:ImportTableFromDataTable
     }
 }

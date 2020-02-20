@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Aspose.Words.Examples.CSharp.LINQ
+﻿namespace Aspose.Words.Examples.CSharp.LINQ
 {
     // ExStart:Client
     public class Client
     {
-        public String Name { get; set; }
-        public String Country { get; set; }
-        public String LocalAddress { get; set; } 
+        public string Name { get; set; }
+        public string Country { get; set; }
+        public string LocalAddress { get; set; }
     }
     // ExEnd:Client
 }

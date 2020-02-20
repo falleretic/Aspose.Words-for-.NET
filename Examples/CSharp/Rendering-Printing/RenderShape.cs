@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Drawing;
-
 using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
@@ -18,14 +16,14 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             // Load the documents which store the shapes we want to render.
             Document doc = new Document(dataDir + "TestFile RenderShape.doc");
             Document doc2 = new Document(dataDir + "TestFile RenderShape.docx");
 
             // Retrieve the target shape from the document. In our sample document this is the first shape.
-            Shape shape = (Shape)doc.GetChild(NodeType.Shape, 0, true);
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
 
             // Test rendering of different types of nodes.
             RenderShapeToDisk(dataDir, shape);
@@ -37,6 +35,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             FindShapeSizes(shape);
             RenderShapeImage(dataDir, shape);
         }
+
         public static void RenderShapeToDisk(string dataDir, Shape shape)
         {
             // ExStart:RenderShapeToDisk
@@ -54,6 +53,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // ExEnd:RenderShapeToDisk
             Console.WriteLine("\nShape rendered to disk successfully.\nFile saved at " + dataDir);
         }
+
         public static void RenderShapeToStream(string dataDir, Shape shape)
         {
             // ExStart:RenderShapeToStream
@@ -89,7 +89,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // And make sure that the graphics canvas is large enough to compensate for this.
             int maxSide = System.Math.Max(shapeSizeInPixels.Width, shapeSizeInPixels.Height);
 
-            using (Bitmap image = new Bitmap((int)(maxSide * 1.25), (int)(maxSide * 1.25)))
+            using (Bitmap image = new Bitmap((int) (maxSide * 1.25), (int) (maxSide * 1.25)))
             {
                 // Rendering to a graphics object means we can specify settings and transformations to be applied to 
                 // The shape that is rendered. In our case we will rotate the rendered shape.
@@ -98,15 +98,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                     // Clear the shape with the background color of the document.
                     gr.Clear(shape.Document.PageColor);
                     // Center the rotation using translation method below
-                    gr.TranslateTransform((float)image.Width / 8, (float)image.Height / 2);
+                    gr.TranslateTransform((float) image.Width / 8, (float) image.Height / 2);
                     // Rotate the image by 45 degrees.
                     gr.RotateTransform(45);
                     // Undo the translation.
-                    gr.TranslateTransform(-(float)image.Width / 8, -(float)image.Height / 2);
+                    gr.TranslateTransform(-(float) image.Width / 8, -(float) image.Height / 2);
 
                     // Render the shape onto the graphics object.
                     r.RenderToSize(gr, 0, 0, shapeSizeInPixels.Width, shapeSizeInPixels.Height);
                 }
+
                 dataDir = dataDir + "TestFile.RenderToGraphics_out.png";
                 image.Save(dataDir, ImageFormat.Png);
                 Console.WriteLine("\nShape rendered to graphics successfully.\nFile saved at " + dataDir);
@@ -117,7 +118,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void RenderCellToImage(string dataDir, Document doc)
         {
             // ExStart:RenderCellToImage
-            Cell cell = (Cell)doc.GetChild(NodeType.Cell, 2, true); // The third cell in the first table.
+            Cell cell = (Cell) doc.GetChild(NodeType.Cell, 2, true); // The third cell in the first table.
             dataDir = dataDir + "TestFile.RenderCell_out.png";
             RenderNode(cell, dataDir, null);
             // ExEnd:RenderCellToImage
@@ -127,7 +128,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void RenderRowToImage(string dataDir, Document doc)
         {
             // ExStart:RenderRowToImage
-            Row row = (Row)doc.GetChild(NodeType.Row, 0, true); // The first row in the first table.
+            Row row = (Row) doc.GetChild(NodeType.Row, 0, true); // The first row in the first table.
 
             dataDir = dataDir + "TestFile.RenderRow_out.png";
             RenderNode(row, dataDir, null);
@@ -138,8 +139,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void RenderParagraphToImage(string dataDir, Document doc)
         {
             // ExStart:RenderParagraphToImage
-            Shape shape = (Shape)doc.GetChild(NodeType.Shape, 0, true);
-            Paragraph paragraph = (Paragraph)shape.LastParagraph;
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
+            Paragraph paragraph = (Paragraph) shape.LastParagraph;
 
             // Save the node with a light pink background.
             ImageSaveOptions options = new ImageSaveOptions(SaveFormat.Png);
@@ -149,6 +150,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // ExEnd:RenderParagraphToImage
             Console.WriteLine("\nParagraph rendered to image successfully.\nFile saved at " + dataDir);
         }
+
         public static void FindShapeSizes(Shape shape)
         {
             // ExStart:FindShapeSizes
@@ -161,8 +163,10 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                     // Render shape onto the graphics object using the RenderToScale or RenderToSize methods of ShapeRenderer class.
                 }
             }
+
             // ExEnd:FindShapeSizes
         }
+
         public static void RenderShapeImage(string dataDir, Shape shape)
         {
             // ExStart:RenderShapeImage
@@ -172,6 +176,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // ExEnd:RenderShapeImage
             Console.WriteLine("\nShape image rendered successfully.\nFile saved at " + dataDir);
         }
+
         /// <summary>
         /// Renders any node in a document to the path specified using the image save options.
         /// </summary>
@@ -196,13 +201,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
             // There a bug which affects the cache of a cloned node. To avoid this we instead clone the entire document including all nodes,
             // Find the matching node in the cloned document and render that instead.
-            Document doc = (Document)node.Document.Clone(true);
+            Document doc = (Document) node.Document.Clone(true);
             node = doc.GetChild(NodeType.Any, node.Document.GetChildNodes(NodeType.Any, true).IndexOf(node), true);
 
             // Create a temporary shape to store the target node in. This shape will be rendered to retrieve
             // The rendered content of the node.
             Shape shape = new Shape(doc, ShapeType.TextBox);
-            Section parentSection = (Section)node.GetAncestor(NodeType.Section);
+            Section parentSection = (Section) node.GetAncestor(NodeType.Section);
 
             // Assume that the node cannot be larger than the page in size.
             shape.Width = parentSection.PageSetup.PageWidth;
@@ -216,9 +221,10 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // Each parent node is cloned on the way up so even a descendant node passed to this method can be rendered.
             // Since we are working with the actual nodes of the document we need to clone the target node into the temporary shape.
             Node currentNode = node;
-            while (!(currentNode.ParentNode is InlineStory || currentNode.ParentNode is Story || currentNode.ParentNode is ShapeBase))
+            while (!(currentNode.ParentNode is InlineStory || currentNode.ParentNode is Story ||
+                     currentNode.ParentNode is ShapeBase))
             {
-                CompositeNode parent = (CompositeNode)currentNode.ParentNode.Clone(false);
+                CompositeNode parent = (CompositeNode) currentNode.ParentNode.Clone(false);
                 currentNode = currentNode.ParentNode;
                 parent.AppendChild(node.Clone(true));
                 node = parent; // Store this new node to be inserted into the shape.
@@ -235,7 +241,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             renderer.Save(stream, imageOptions);
             shape.Remove();
 
-            Rectangle crop = renderer.GetOpaqueBoundsInPixels(imageOptions.Scale, imageOptions.HorizontalResolution, imageOptions.VerticalResolution);
+            Rectangle crop = renderer.GetOpaqueBoundsInPixels(imageOptions.Scale, imageOptions.HorizontalResolution,
+                imageOptions.VerticalResolution);
 
             // Load the image into a new bitmap.
             using (Bitmap renderedImage = new Bitmap(stream))
@@ -247,7 +254,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 using (Graphics g = Graphics.FromImage(croppedImage))
                 {
                     g.Clear(savePaperColor);
-                    g.DrawImage(renderedImage, new Rectangle(0, 0, croppedImage.Width, croppedImage.Height), crop.X, crop.Y, crop.Width, crop.Height, GraphicsUnit.Pixel);
+                    g.DrawImage(renderedImage, new Rectangle(0, 0, croppedImage.Width, croppedImage.Height), crop.X,
+                        crop.Y, crop.Width, crop.Height, GraphicsUnit.Pixel);
 
                     croppedImage.Save(filePath);
                 }

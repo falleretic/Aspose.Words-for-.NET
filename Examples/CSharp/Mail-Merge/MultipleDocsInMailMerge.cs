@@ -13,8 +13,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         public static void Run()
         {
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
-            
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
+
             // Open the database connection.
             string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + dataDir + "Customers.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
@@ -37,7 +37,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 foreach (DataRow row in data.Rows)
                 {
                     // Clone the template instead of loading it from disk (for speed).
-                    Document dstDoc = (Document)doc.Clone(true);
+                    Document dstDoc = (Document) doc.Clone(true);
 
                     // Execute mail merge.
                     dstDoc.MailMerge.Execute(row);
@@ -56,7 +56,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 conn.Close();
             }
 
-            Console.WriteLine("\nMail merge performed and created multiple pages successfully.\nFile saved at " + dataDir + "TestFile.Multiple Pages_out.doc");
+            Console.WriteLine("\nMail merge performed and created multiple pages successfully.\nFile saved at " +
+                              dataDir + "TestFile.Multiple Pages_out.doc");
         }
     }
 }

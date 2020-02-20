@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
     class WorkWithSingleChartSeries
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithCharts();
             Document doc = new Document();
@@ -48,8 +48,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             // ExEnd:ChartDataPoint 
             dataDir = dataDir + @"SingleChartSeries_out.docx";
             doc.Save(dataDir);
-            
+
             Console.WriteLine("\nChart created successfully.\nFile saved at " + dataDir);
-        }        
+        }
     }
 }

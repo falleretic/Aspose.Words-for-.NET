@@ -12,7 +12,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     {
         public static void Run()
         {
-            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             CursorPosition(dataDir);
@@ -25,8 +24,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             MoveToBookmark(dataDir);
             MoveToBookmarkEnd(dataDir);
             MoveToMergeField(dataDir);
-
         }
+
         public static void CursorPosition(string dataDir)
         {
             // ExStart:DocumentBuilderCursorPosition
@@ -39,6 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:DocumentBuilderCursorPosition
             Console.WriteLine("\nCursor move to paragraph: " + curParagraph.GetText());
         }
+
         public static void MoveToNode(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToNode
@@ -48,6 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:DocumentBuilderMoveToNode   
             Console.WriteLine("\nCursor move to required node.");
         }
+
         public static void MoveToDocumentStartEnd(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToDocumentStartEnd
@@ -61,6 +62,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Console.WriteLine("\nThis is the beginning of the document.");
             // ExEnd:DocumentBuilderMoveToDocumentStartEnd            
         }
+
         public static void MoveToSection(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToSection
@@ -72,6 +74,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("This is the 3rd section.");
             // ExEnd:DocumentBuilderMoveToSection               
         }
+
         public static void HeadersAndFooters(string dataDir)
         {
             // ExStart:DocumentBuilderHeadersAndFooters
@@ -102,8 +105,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilder.HeadersAndFooters_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderHeadersAndFooters   
-            Console.WriteLine("\nHeaders and footers created successfully using DocumentBuilder.\nFile saved at " + dataDir);
+            Console.WriteLine("\nHeaders and footers created successfully using DocumentBuilder.\nFile saved at " +
+                              dataDir);
         }
+
         public static void MoveToParagraph(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToParagraph
@@ -115,6 +120,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("This is the 3rd paragraph.");
             // ExEnd:DocumentBuilderMoveToParagraph               
         }
+
         public static void MoveToTableCell(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToTableCell
@@ -126,6 +132,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("Hello World!");
             // ExEnd:DocumentBuilderMoveToTableCell               
         }
+
         public static void MoveToBookmark(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToBookmark
@@ -136,6 +143,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("This is a very cool bookmark.");
             // ExEnd:DocumentBuilderMoveToBookmark               
         }
+
         public static void MoveToBookmarkEnd(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToBookmarkEnd
@@ -146,6 +154,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("This is a very cool bookmark.");
             // ExEnd:DocumentBuilderMoveToBookmarkEnd              
         }
+
         public static void MoveToMergeField(string dataDir)
         {
             // ExStart:DocumentBuilderMoveToMergeField
@@ -155,6 +164,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.MoveToMergeField("NiceMergeField");
             builder.Writeln("This is a very nice merge field.");
             // ExEnd:DocumentBuilderMoveToMergeField              
-        }     
+        }
     }
 }

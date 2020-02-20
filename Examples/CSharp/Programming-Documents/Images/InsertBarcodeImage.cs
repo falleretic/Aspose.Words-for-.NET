@@ -28,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             for (int i = 1; i < numPages; i++)
             {
                 // Clone the first section and add it into the end of the document.
-                Section cloneSection = (Section)doc.FirstSection.Clone(false);
+                Section cloneSection = (Section) doc.FirstSection.Clone(false);
                 cloneSection.PageSetup.SectionStart = SectionStart.NewPage;
                 doc.AppendChild(cloneSection);
 
@@ -36,14 +36,17 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                 InsertBarcodeIntoFooter(builder, cloneSection, i, HeaderFooterType.FooterPrimary);
             }
 
-            dataDir  = dataDir + "Document_out.docx";
+            dataDir = dataDir + "Document_out.docx";
             // Save the document as a PDF to disk. You can also save this directly to a stream.
             doc.Save(dataDir);
             // ExEnd:InsertBarcodeImage
-            Console.WriteLine("\nBarcode image on each page of document inserted successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nBarcode image on each page of document inserted successfully.\nFile saved at " +
+                              dataDir);
         }
+
         // ExStart:InsertBarcodeIntoFooter
-        private static void InsertBarcodeIntoFooter(DocumentBuilder builder, Section section, int pageId, HeaderFooterType footerType)
+        private static void InsertBarcodeIntoFooter(DocumentBuilder builder, Section section, int pageId,
+            HeaderFooterType footerType)
         {
             // Move to the footer type in the specific section.
             builder.MoveToSection(section.Document.IndexOf(section));
@@ -51,14 +54,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 
             // Insert the barcode, then move to the next line and insert the ID along with the page number.
             // Use pageId if you need to insert a different barcode on each page. 0 = First page, 1 = Second page etc.    
-            builder.InsertImage(System.Drawing.Image.FromFile( RunExamples.GetDataDir_WorkingWithImages() + "Barcode1.png"));
+            builder.InsertImage(
+                System.Drawing.Image.FromFile(RunExamples.GetDataDir_WorkingWithImages() + "Barcode1.png"));
             builder.Writeln();
             builder.Write("1234567890");
             builder.InsertField("PAGE");
 
             // Create a right aligned tab at the right margin.
             double tabPos = section.PageSetup.PageWidth - section.PageSetup.RightMargin - section.PageSetup.LeftMargin;
-            builder.CurrentParagraph.ParagraphFormat.TabStops.Add(new TabStop(tabPos, TabAlignment.Right, TabLeader.None));
+            builder.CurrentParagraph.ParagraphFormat.TabStops.Add(new TabStop(tabPos, TabAlignment.Right,
+                TabLeader.None));
 
             // Move to the right hand side of the page and insert the page and page total.
             builder.Write(ControlChar.Tab);
@@ -66,7 +71,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             builder.Write(" of ");
             builder.InsertField("NUMPAGES");
         }
-        // ExEnd:InsertBarcodeIntoFooter
 
+        // ExEnd:InsertBarcodeIntoFooter
     }
 }

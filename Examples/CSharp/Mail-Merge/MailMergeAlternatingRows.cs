@@ -21,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // ExStart:MailMergeAlternatingRows           
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
             Document doc = new Document(dataDir + "MailMerge.AlternatingRows.doc");
 
             // Add a handler for the MergeField event.
@@ -35,6 +35,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // ExEnd:MailMergeAlternatingRows
             Console.WriteLine("\nMail merge alternative rows performed successfully.\nFile saved at " + dataDir);
         }
+
         // ExStart:HandleMergeFieldAlternatingRows
         private class HandleMergeFieldAlternatingRows : IFieldMergingCallback
         {
@@ -77,7 +78,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             private DocumentBuilder mBuilder;
             private int mRowIdx;
-        }     
+        }
+
         /// <summary>
         /// Returns true if the value is odd; false if the value is even.
         /// </summary>
@@ -85,7 +87,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // The code is a bit complex, but otherwise automatic conversion to VB does not work.
             return ((value / 2) * 2).Equals(value);
-        }      
+        }
+
         /// <summary>
         /// Create DataTable and fill it with data.
         /// In real life this DataTable should be filled from a database.
@@ -102,8 +105,10 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 datarow[0] = "Company " + i.ToString();
                 datarow[1] = "Contact " + i.ToString();
             }
+
             return dataTable;
         }
+
         // ExEnd:HandleMergeFieldAlternatingRows
     }
 }

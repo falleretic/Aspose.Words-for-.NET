@@ -25,6 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     Console.WriteLine("Separator Found!");
                 }
             }
+
             // ExEnd:ParagraphStyleSeparator
         }
     }

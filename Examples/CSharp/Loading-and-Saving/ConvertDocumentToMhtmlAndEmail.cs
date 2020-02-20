@@ -1,6 +1,4 @@
-﻿using Aspose.Words;
-using System;
-using Aspose.Words.Saving;
+﻿using System;
 using System.IO;
 using Aspose.Email;
 using Aspose.Email.Clients.Smtp;
@@ -35,7 +33,6 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             SmtpClient client = new SmtpClient();
             client.Host = "your_smtp.com";
             client.Send(message);
-
             // ExEnd:ConvertDocumentToMhtmlAndEmail
 
             Console.WriteLine("\nDocument converted to html with roundtrip informations successfully.");

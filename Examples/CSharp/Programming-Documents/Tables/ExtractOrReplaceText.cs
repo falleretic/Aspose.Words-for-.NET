@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Tables;
@@ -11,20 +10,19 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     {
         public static void Run()
         {
-           
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithTables() + "Table.SimpleTable.doc";
             ExtractPrintText(dataDir);
             ReplaceText(dataDir);
-        
         }
+
         private static void ExtractPrintText(string dataDir)
         {
             // ExStart:ExtractText
             Document doc = new Document(dataDir);
 
             // Get the first table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // The range text will include control characters such as "\a" for a cell.
             // You can call ToString and pass SaveFormat.Text on the desired node to find the plain text content.
@@ -44,13 +42,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Console.WriteLine(table.LastRow.LastCell.Range.Text);
             // ExEnd:PrintTextRangeOFRowAndTable
         }
+
         private static void ReplaceText(string dataDir)
         {
             // ExStart:ReplaceText
             Document doc = new Document(dataDir);
 
             // Get the first table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // Replace any instances of our string in the entire table.
             table.Range.Replace("Carrots", "Eggs", new FindReplaceOptions(FindReplaceDirection.Forward));
@@ -58,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             table.LastRow.LastCell.Range.Replace("50", "20", new FindReplaceOptions(FindReplaceDirection.Forward));
 
             dataDir = RunExamples.GetDataDir_WorkingWithTables() + "Table.ReplaceCellText_out.doc";
-            doc.Save(dataDir); 
+            doc.Save(dataDir);
             // ExEnd:ReplaceText    
             Console.WriteLine("\nText replaced successfully.\nFile saved at " + dataDir);
         }

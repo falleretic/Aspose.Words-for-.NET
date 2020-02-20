@@ -43,7 +43,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep source list formatting when importing numbered paragraphs.
             importFormatOptions.KeepSourceNumbering = true;
-            NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.KeepSourceFormatting, importFormatOptions);
+            NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.KeepSourceFormatting,
+                importFormatOptions);
 
             ParagraphCollection srcParas = srcDoc.FirstSection.Body.Paragraphs;
             foreach (Paragraph srcPara in srcParas)
@@ -65,7 +66,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep the source text boxes formatting when importing.
             importFormatOptions.IgnoreTextBoxes = false;
-            NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.KeepSourceFormatting, importFormatOptions);
+            NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.KeepSourceFormatting,
+                importFormatOptions);
 
             ParagraphCollection srcParas = srcDoc.FirstSection.Body.Paragraphs;
             foreach (Paragraph srcPara in srcParas)

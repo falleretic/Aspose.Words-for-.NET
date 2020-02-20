@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -33,7 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                 while (enumerator.MoveNext())
                 {
                     // Check if the current paragraph belongs to the target page.
-                    Paragraph paragraph = (Paragraph)enumerator.Current;
+                    Paragraph paragraph = (Paragraph) enumerator.Current;
                     if (layoutCollector.GetStartPageIndex(paragraph) == page)
                     {
                         AddImageToPage(paragraph, page, dataDir);
@@ -56,9 +55,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
         /// </summary>
         /// <param name="para">The paragraph to an an image to.</param>
         /// <param name="page">The page number the paragraph appears on.</param>
-        public static void AddImageToPage(Paragraph para, int page, String dataDir)
+        public static void AddImageToPage(Paragraph para, int page, string dataDir)
         {
-            Document doc = (Document)para.Document;
+            Document doc = (Document) para.Document;
 
             DocumentBuilder builder = new DocumentBuilder(doc);
             builder.MoveTo(para);

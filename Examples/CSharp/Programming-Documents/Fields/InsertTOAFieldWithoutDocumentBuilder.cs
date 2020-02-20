@@ -16,14 +16,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             string dataDir = RunExamples.GetDataDir_WorkingWithFields();
             Document doc = new Document(dataDir + "in.doc");
             // Get paragraph you want to append this TOA field to
-            Paragraph para = (Paragraph)doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
             // We want to insert TA and TOA fields like this:
             // { TA  \c 1 \l "Value 0" }
             // { TOA  \c 1 }
 
             // Create instance of FieldAsk class and lets build the above field code
-            FieldTA fieldTA = (FieldTA)para.AppendField(FieldType.FieldTOAEntry, false);
+            FieldTA fieldTA = (FieldTA) para.AppendField(FieldType.FieldTOAEntry, false);
             fieldTA.EntryCategory = "1";
             fieldTA.LongCitation = "Value 0";
 
@@ -32,7 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             para = new Paragraph(doc);
 
             // Create instance of FieldToa class
-            FieldToa fieldToa = (FieldToa)para.AppendField(FieldType.FieldTOA, false);
+            FieldToa fieldToa = (FieldToa) para.AppendField(FieldType.FieldTOA, false);
             fieldToa.EntryCategory = "1";
             doc.FirstSection.Body.AppendChild(para);
 
@@ -43,7 +43,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             doc.Save(dataDir);
 
             // ExEnd:InsertTOAFieldWithoutDocumentBuilder
-            Console.WriteLine("\nTOA field without using document builder inserted successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nTOA field without using document builder inserted successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
@@ -14,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
     class MergedCells
     {
         public static void Run()
-        {            
+        {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithTables();
             CheckCellsMerged(dataDir);
@@ -29,13 +28,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // This method converts cells which are horizontally merged by its width to the cell horizontally merged by flags
             ConvertToHorizontallyMergedCells(dataDir);
         }
+
         public static void CheckCellsMerged(string dataDir)
         {
             // ExStart:CheckCellsMerged 
             Document doc = new Document(dataDir + "Table.MergedCells.doc");
 
             // Retrieve the first table in the document.
-            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+            Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             foreach (Row row in table.Rows)
             {
@@ -44,14 +44,17 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                     Console.WriteLine(PrintCellMergeType(cell));
                 }
             }
+
             // ExEnd:CheckCellsMerged 
         }
+
         // ExStart:PrintCellMergeType 
         public static string PrintCellMergeType(Cell cell)
         {
             bool isHorizontallyMerged = cell.CellFormat.HorizontalMerge != CellMerge.None;
             bool isVerticallyMerged = cell.CellFormat.VerticalMerge != CellMerge.None;
-            string cellLocation = string.Format("R{0}, C{1}", cell.ParentRow.ParentTable.IndexOf(cell.ParentRow) + 1, cell.ParentRow.IndexOf(cell) + 1);
+            string cellLocation = string.Format("R{0}, C{1}", cell.ParentRow.ParentTable.IndexOf(cell.ParentRow) + 1,
+                cell.ParentRow.IndexOf(cell) + 1);
 
             if (isHorizontallyMerged && isVerticallyMerged)
                 return string.Format("The cell at {0} is both horizontally and vertically merged", cellLocation);
@@ -62,8 +65,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             else
                 return string.Format("The cell at {0} is not merged", cellLocation);
         }
+
         // ExEnd:PrintCellMergeType
-        public static void VerticalMerge( string dataDir)
+        public static void VerticalMerge(string dataDir)
         {
             // ExStart:VerticalMerge           
             Document doc = new Document();
@@ -92,8 +96,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // Save the document to disk.
             doc.Save(dataDir);
             // ExEnd:VerticalMerge
-            Console.WriteLine("\nTable created successfully with two columns with cells merged vertically in the first column.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nTable created successfully with two columns with cells merged vertically in the first column.\nFile saved at " +
+                dataDir);
         }
+
         public static void HorizontalMerge(string dataDir)
         {
             // ExStart:HorizontalMerge         
@@ -122,9 +129,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // Save the document to disk.
             doc.Save(dataDir);
             // ExEnd:HorizontalMerge
-            Console.WriteLine("\nTable created successfully with cells in the first row horizontally merged.\nFile saved at " + dataDir);
-            
+            Console.WriteLine(
+                "\nTable created successfully with cells in the first row horizontally merged.\nFile saved at " +
+                dataDir);
         }
+
         public static void MergeCellRange(string dataDir)
         {
             // ExStart:MergeCellRange
@@ -133,20 +142,20 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
             // Retrieve the first table in the body of the first section.
             Table table = doc.FirstSection.Body.Tables[0];
-           
+
             // We want to merge the range of cells found inbetween these two cells.
             Cell cellStartRange = table.Rows[2].Cells[2];
             Cell cellEndRange = table.Rows[3].Cells[3];
 
             // Merge all the cells between the two specified cells into one.
-            MergeCells(cellStartRange, cellEndRange);            
+            MergeCells(cellStartRange, cellEndRange);
             dataDir = dataDir + "Table.MergeCellRange_out.doc";
             // Save the document.
             doc.Save(dataDir);
             // ExEnd:MergeCellRange
             Console.WriteLine("\nCells merged successfully.\nFile saved at " + dataDir);
-            
         }
+
         public static void PrintHorizontalAndVerticalMerged(string dataDir)
         {
             // ExStart:PrintHorizontalAndVerticalMerged
@@ -159,28 +168,31 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             doc.Accept(visitor);
             // ExEnd:PrintHorizontalAndVerticalMerged
             Console.WriteLine("\nHorizontal and vertical merged of a cell prints successfully.");
-           
         }
+
         public static void ConvertToHorizontallyMergedCells(string dataDir)
         {
             // ExStart:ConvertToHorizontallyMergedCells         
             Document doc = new Document();
 
             Table table = doc.FirstSection.Body.Tables[0];
-            table.ConvertToHorizontallyMergedCells();   // Now merged cells have appropriate merge flags.
+            table.ConvertToHorizontallyMergedCells(); // Now merged cells have appropriate merge flags.
             // ExEnd:ConvertToHorizontallyMergedCells
             Console.WriteLine("\nNow merged cells have appropriate merge flags.\nFile saved at " + dataDir);
         }
+
         // ExStart:MergeCells
         internal static void MergeCells(Cell startCell, Cell endCell)
         {
             Table parentTable = startCell.ParentRow.ParentTable;
 
             // Find the row and cell indices for the start and end cell.
-            Point startCellPos = new Point(startCell.ParentRow.IndexOf(startCell), parentTable.IndexOf(startCell.ParentRow));
+            Point startCellPos = new Point(startCell.ParentRow.IndexOf(startCell),
+                parentTable.IndexOf(startCell.ParentRow));
             Point endCellPos = new Point(endCell.ParentRow.IndexOf(endCell), parentTable.IndexOf(endCell.ParentRow));
             // Create the range of cells to be merged based off these indices. Inverse each index if the end cell if before the start cell. 
-            Rectangle mergeRange = new Rectangle( System.Math.Min(startCellPos.X, endCellPos.X), System.Math.Min(startCellPos.Y, endCellPos.Y),
+            Rectangle mergeRange = new Rectangle(System.Math.Min(startCellPos.X, endCellPos.X),
+                System.Math.Min(startCellPos.Y, endCellPos.Y),
                 System.Math.Abs(endCellPos.X - startCellPos.X) + 1, System.Math.Abs(endCellPos.Y - startCellPos.Y) + 1);
 
             foreach (Row row in parentTable.Rows)
@@ -205,6 +217,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                 }
             }
         }
+
         // ExEnd:MergeCells
         // ExStart:HorizontalAndVerticalMergeHelperClasses
         /// <summary>
@@ -260,7 +273,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
         public class SpanVisitor : DocumentVisitor
         {
-
             /// <summary>
             /// Creates new SpanVisitor instance
             /// </summary>
@@ -306,8 +318,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                             XmlAttribute colSpanAttr = cell.Attributes["colspan"];
                             XmlAttribute rowSpanAttr = cell.Attributes["rowspan"];
 
-                            int colSpan = colSpanAttr == null ? 0 : Int32.Parse(colSpanAttr.Value);
-                            int rowSpan = rowSpanAttr == null ? 0 : Int32.Parse(rowSpanAttr.Value);
+                            int colSpan = colSpanAttr == null ? 0 : int.Parse(colSpanAttr.Value);
+                            int rowSpan = rowSpanAttr == null ? 0 : int.Parse(rowSpanAttr.Value);
 
                             CellInfo cellInf = new CellInfo(colSpan, rowSpan);
                             rowInf.Cells.Add(cellInf);
@@ -346,10 +358,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
                 return VisitorAction.Continue;
             }
+
             private List<TableInfo> mTables = new List<TableInfo>();
             private NodeCollection mWordTables = null;
         }
+
         // ExEnd:HorizontalAndVerticalMergeHelperClasses
- 
     }
 }

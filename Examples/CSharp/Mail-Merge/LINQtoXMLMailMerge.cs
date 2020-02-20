@@ -19,7 +19,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
 #if !NET20
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
 
             // Load the XML document.
             XElement orderXml = XElement.Load(dataDir + "PurchaseOrder.xml");
@@ -35,30 +35,30 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // The XElement or XAttribute objects are passed to Aspose.Words.
             // ExStart:LINQtoXMLMailMergeorderItems
             var orderItems =
-            from order in orderXml.Descendants("Item")
-            select new
-            {
-                PartNumber = (string)order.Attribute("PartNumber"),
-                ProductName = (string)order.Element("ProductName"),
-                Quantity = (string)order.Element("Quantity"),
-                USPrice = (string)order.Element("USPrice"),
-                Comment = (string)order.Element("Comment"),
-                ShipDate = (string)order.Element("ShipDate")
-            };
+                from order in orderXml.Descendants("Item")
+                select new
+                {
+                    PartNumber = (string) order.Attribute("PartNumber"),
+                    ProductName = (string) order.Element("ProductName"),
+                    Quantity = (string) order.Element("Quantity"),
+                    USPrice = (string) order.Element("USPrice"),
+                    Comment = (string) order.Element("Comment"),
+                    ShipDate = (string) order.Element("ShipDate")
+                };
             // ExEnd:LINQtoXMLMailMergeorderItems
             // ExStart:LINQToXMLQueryForDeliveryAddress
             var deliveryAddress =
-            from delivery in orderXml.Elements("Address")
-            where ((string)delivery.Attribute("Type") == "Shipping")
-            select new
-            {
-                Name = (string)delivery.Element("Name"),
-                Country = (string)delivery.Element("Country"),
-                Zip = (string)delivery.Element("Zip"),
-                State = (string)delivery.Element("State"),
-                City = (string)delivery.Element("City"),
-                Street = (string)delivery.Element("Street")
-            };
+                from delivery in orderXml.Elements("Address")
+                where ((string) delivery.Attribute("Type") == "Shipping")
+                select new
+                {
+                    Name = (string) delivery.Element("Name"),
+                    Country = (string) delivery.Element("Country"),
+                    Zip = (string) delivery.Element("Zip"),
+                    State = (string) delivery.Element("State"),
+                    City = (string) delivery.Element("City"),
+                    Street = (string) delivery.Element("Street")
+                };
             // ExEnd:LINQToXMLQueryForDeliveryAddress
             // Create custom Aspose.Words mail merge data sources based on the LINQ queries.
             MyMailMergeDataSource orderItemsDataSource = new MyMailMergeDataSource(orderItems, "Items");
@@ -97,7 +97,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         /// </summary>
         // ExStart:MyMailMergeDataSource 
         public class MyMailMergeDataSource : IMailMergeDataSource
-        // ExEnd:MyMailMergeDataSource 
+            // ExEnd:MyMailMergeDataSource 
         {
             /// <summary>
             /// Creates a new instance of a custom mail merge data source.
@@ -108,6 +108,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             {
                 mEnumerator = data.GetEnumerator();
             }
+
             // ExEnd:MyMailMergeDataSourceConstructor 
             /// <summary>
             /// Creates a new instance of a custom mail merge data source, for mail merge with regions.
@@ -121,6 +122,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 mEnumerator = data.GetEnumerator();
                 mTableName = tableName;
             }
+
             // ExEnd:MyMailMergeDataSourceConstructorWithDataTable
             /// <summary>
             /// Aspose.Words calls this method to get a value for every data field.
@@ -148,6 +150,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 fieldValue = null;
                 return false;
             }
+
             // ExEnd:MyMailMergeDataSourceGetValue
             /// <summary>
             /// Moves to the next record in the collection.
@@ -157,6 +160,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             {
                 return mEnumerator.MoveNext();
             }
+
             // ExEnd:MyMailMergeDataSourceMoveNext
             /// <summary>
             /// The name of the data source. Used by Aspose.Words only when executing mail merge with repeatable regions.
@@ -166,15 +170,15 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             {
                 get { return mTableName; }
             }
+
             // ExEnd:MyMailMergeDataSourceTableName
             public IMailMergeDataSource GetChildDataSource(string tableName)
             {
                 return null;
-            }           
+            }
+
             private readonly IEnumerator mEnumerator;
             private readonly string mTableName;
         }
-        
-        
     }
 }

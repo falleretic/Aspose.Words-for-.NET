@@ -18,7 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             FormatNumberofDataLabel(dataDir);
         }
 
-        public static void FormatNumberofDataLabel(String dataDir)
+        public static void FormatNumberofDataLabel(string dataDir)
         {
             //ExStart:FormatNumberofDataLabel
             Document doc = new Document();
@@ -33,7 +33,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             chart.Series.Clear();
 
             // Add new series
-            ChartSeries series0 = chart.Series.Add("AW Series 0", new string[] { "AW0", "AW1", "AW2" }, new double[] { 2.5, 1.5, 3.5 });
+            ChartSeries series0 = chart.Series.Add("AW Series 0", new string[] { "AW0", "AW1", "AW2" },
+                new double[] { 2.5, 1.5, 3.5 });
 
             // Add DataLabel to the first point of the first series.
             ChartDataLabel chartDataLabel0 = series0.DataLabels.Add(0);
@@ -61,7 +62,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             dataDir = dataDir + @"NumberFormat_DataLabel_out.docx";
             doc.Save(dataDir);
             //ExEnd:FormatNumberofDataLabel
-            Console.WriteLine("\nSimple line chart created with formatted data lablel successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nSimple line chart created with formatted data lablel successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

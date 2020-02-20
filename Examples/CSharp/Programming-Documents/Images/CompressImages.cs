@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -42,23 +41,24 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             if (count != 1)
                 Console.WriteLine("We expected to have only 1 image resampled in this test document!");
 
-            string dstFileName = dataDir +  RunExamples.GetOutputFilePath(fileName);
+            string dstFileName = dataDir + RunExamples.GetOutputFilePath(fileName);
             doc.Save(dstFileName);
             Console.WriteLine("Saving {0}. Size {1}.", dstFileName, GetFileSize(dstFileName));
 
             // Verify that the first image was compressed by checking the new Ppi.
             doc = new Document(dstFileName);
-            Shape shape = (Shape)doc.GetChild(NodeType.Shape, 0, true);
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             double imagePpi = shape.ImageData.ImageSize.WidthPixels / ConvertUtil.PointToInch(shape.SizeInPoints.Width);
 
             Debug.Assert(imagePpi < 150, "Image was not resampled successfully.");
 
             Console.WriteLine("\nCompressed images successfully.\nFile saved at " + dstFileName);
         }
+
         public static int GetFileSize(string fileName)
         {
             using (Stream stream = File.OpenRead(fileName))
-                return (int)stream.Length;
+                return (int) stream.Length;
         }
     }
 
@@ -118,7 +118,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                 double currentPpiX = imageSize.WidthPixels / shapeWidthInches;
                 double currentPpiY = imageSize.HeightPixels / shapeHeightInches;
 
-                Console.Write("Image PpiX:{0}, PpiY:{1}. ", (int)currentPpiX, (int)currentPpiY);
+                Console.Write("Image PpiX:{0}, PpiY:{1}. ", (int) currentPpiX, (int) currentPpiY);
 
                 // Let's resample only if the current PPI is higher than the requested PPI (e.g. we have extra data we can get rid of).
                 if ((currentPpiX <= ppi) || (currentPpiY <= ppi))
@@ -130,8 +130,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                 using (Image srcImage = imageData.ToImage())
                 {
                     // Create a new image of such size that it will hold only the pixels required by the desired ppi.
-                    int dstWidthPixels = (int)(shapeWidthInches * ppi);
-                    int dstHeightPixels = (int)(shapeHeightInches * ppi);
+                    int dstWidthPixels = (int) (shapeWidthInches * ppi);
+                    int dstHeightPixels = (int) (shapeHeightInches * ppi);
                     using (Bitmap dstImage = new Bitmap(dstWidthPixels, dstHeightPixels))
                     {
                         // Drawing the source image to the new image scales it to the new size.

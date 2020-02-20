@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Aspose.Words;
-using System.IO;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -18,7 +15,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             {
                 Console.WriteLine("*** Signature Found ***");
                 Console.WriteLine("Is valid: " + signature.IsValid);
-                Console.WriteLine("Reason for signing: " + signature.Comments); // This property is available in MS Word documents only.
+                Console.WriteLine("Reason for signing: " +
+                                  signature.Comments); // This property is available in MS Word documents only.
                 Console.WriteLine("Time of signing: " + signature.SignTime);
                 Console.WriteLine("Subject name: " + signature.CertificateHolder.Certificate.SubjectName.Name);
                 Console.WriteLine("Issuer name: " + signature.CertificateHolder.Certificate.IssuerName.Name);

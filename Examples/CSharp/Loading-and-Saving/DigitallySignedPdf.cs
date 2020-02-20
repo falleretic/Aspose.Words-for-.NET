@@ -1,7 +1,4 @@
-﻿
-using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 // ExStart:X509Certificates
 using System.Security.Cryptography.X509Certificates;
 // ExEnd:X509Certificates
@@ -27,16 +24,15 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             X509Certificate2 cert = new X509Certificate2(
                 dataDir + "signature.pfx", "signature");
 
-
             // Pass the certificate and details to the save options class to sign with.
             PdfSaveOptions options = new PdfSaveOptions();
             options.DigitalSignatureDetails = new PdfDigitalSignatureDetails();
-
 
             dataDir = dataDir + "Document.Signed_out.pdf";
             // Save the document as PDF.
             doc.Save(dataDir, options);
             // ExEnd:DigitallySignedPdf
+
             Console.WriteLine("\nDigitally signed PDF file created successfully.\nFile saved at " + dataDir);
         }
     }

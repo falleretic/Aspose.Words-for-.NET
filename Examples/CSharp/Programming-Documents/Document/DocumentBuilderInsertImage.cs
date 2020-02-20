@@ -12,12 +12,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     {
         public static void Run()
         {
-            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             InsertInlineImage(dataDir);
             InsertFloatingImage(dataDir);
         }
+
         public static void InsertInlineImage(string dataDir)
         {
             // ExStart:DocumentBuilderInsertInlineImage
@@ -30,6 +30,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:DocumentBuilderInsertInlineImage
             Console.WriteLine("\nInline image using DocumentBuilder inserted successfully.\nFile saved at " + dataDir);
         }
+
         public static void InsertFloatingImage(string dataDir)
         {
             // ExStart:DocumentBuilderInsertFloatingImage

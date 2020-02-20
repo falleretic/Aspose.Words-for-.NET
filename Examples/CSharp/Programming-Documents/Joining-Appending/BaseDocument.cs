@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
@@ -29,7 +28,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             dstDoc.Save(dataDir);
             // ExEnd:BaseDocument
-            Console.WriteLine("\nDocument appended successfully with all content removed from the destination document.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument appended successfully with all content removed from the destination document.\nFile saved at " +
+                dataDir);
         }
     }
 }

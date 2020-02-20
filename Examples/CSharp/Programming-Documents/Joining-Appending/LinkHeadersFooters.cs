@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending

@@ -27,7 +27,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertBreak_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertBreak
-            Console.WriteLine("\nPage breaks inserted into a document using DocumentBuilder.\nFile saved at " + dataDir);
-        }     
+            Console.WriteLine("\nPage breaks inserted into a document using DocumentBuilder.\nFile saved at " +
+                              dataDir);
+        }
     }
 }

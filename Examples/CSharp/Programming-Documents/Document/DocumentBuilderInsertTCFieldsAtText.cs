@@ -19,13 +19,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             // Highlight newly inserted content.
             options.ApplyFont.HighlightColor = Color.DarkOrange;
-            options.ReplacingCallback =  new InsertTCFieldHandler("Chapter 1", "\\l 1");
+            options.ReplacingCallback = new InsertTCFieldHandler("Chapter 1", "\\l 1");
 
             // Insert a TC field which displays "Chapter 1" just before the text "The Beginning" in the document.
             doc.Range.Replace(new Regex("The Beginning"), "", options);
             // ExEnd:DocumentBuilderInsertTCFieldsAtText
-          
-        }     
+        }
     }
 
     //ExStart:InsertTCFieldHandler
@@ -56,7 +55,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         ReplaceAction IReplacingCallback.Replacing(ReplacingArgs args)
         {
             // Create a builder to insert the field.
-            DocumentBuilder builder = new DocumentBuilder((Document)args.MatchNode.Document);
+            DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
             // Move to the first node of the match.
             builder.MoveTo(args.MatchNode);
 
@@ -76,5 +75,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             return ReplaceAction.Skip;
         }
     }
+
     //ExEnd:InsertTCFieldHandler
 }

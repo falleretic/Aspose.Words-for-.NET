@@ -1,8 +1,8 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 using Aspose.Words.Drawing;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class AddGroupShapeToDocument

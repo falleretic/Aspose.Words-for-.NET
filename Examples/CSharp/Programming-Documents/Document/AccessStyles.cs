@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using Aspose.Words;
 using System;
 
@@ -29,8 +28,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     styleName = styleName + ", " + style.Name;
                 }
             }
+
             // ExEnd:AccessStyles
             Console.WriteLine("\nDocument have following styles " + styleName);
-        }        
+        }
     }
 }

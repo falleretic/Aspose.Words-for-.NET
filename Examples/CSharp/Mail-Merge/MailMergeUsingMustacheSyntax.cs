@@ -50,13 +50,14 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             doc.MailMerge.UseNonMergeFields = true;
 
-            doc.MailMerge.Execute(new String[] { "GENDER" }, new Object[] { "MALE" });
+            doc.MailMerge.Execute(new string[] { "GENDER" }, new object[] { "MALE" });
 
             dataDir = dataDir + "MailMergeUsingMustacheSyntaxifelse_out.docx";
             // Save the output document.
             doc.Save(dataDir);
             // ExEnd:UseOfifelseMustacheSyntax
-            Console.WriteLine("\nMail merge performed with mustache if else syntax successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nMail merge performed with mustache if else syntax successfully.\nFile saved at " +
+                              dataDir);
         }
     }
 }

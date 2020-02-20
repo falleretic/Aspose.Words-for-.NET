@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
         {
             // ExStart:EvaluateIFCondition
             DocumentBuilder builder = new DocumentBuilder();
-            FieldIf field = (FieldIf)builder.InsertField("IF 1 = 1", null);
+            FieldIf field = (FieldIf) builder.InsertField("IF 1 = 1", null);
 
             FieldIfComparisonResult actualResult = field.EvaluateCondition();
             Console.WriteLine(actualResult);

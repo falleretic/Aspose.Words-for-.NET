@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
@@ -39,12 +38,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             run1.ParentNode.InsertAfter(commentRangeStart, run1);
             run3.ParentNode.InsertAfter(commentRangeEnd, run3);
             commentRangeEnd.ParentNode.InsertAfter(comment, commentRangeEnd);
-           
+
             dataDir = dataDir + "Anchor.Comment_out.doc";
             // Save the document.
             doc.Save(dataDir);
             // ExEnd:AnchorComment
             Console.WriteLine("\nComment anchored successfully.\nFile saved at " + dataDir);
-        }        
+        }
     }
 }

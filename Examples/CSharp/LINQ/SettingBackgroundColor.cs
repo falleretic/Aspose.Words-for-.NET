@@ -1,9 +1,5 @@
 ﻿using Aspose.Words.Reporting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
@@ -14,6 +10,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_LINQ();
             string fileName = "SettingBackgroundColor.docx";
+            
             // ExStart:SettingBackgroundColor
             // Load the template document.
             Document doc = new Document(dataDir + fileName);
@@ -29,10 +26,8 @@ namespace Aspose.Words.Examples.CSharp.LINQ
             // Save the finished document to disk.
             doc.Save(dataDir);
             // ExEnd:SettingBackgroundColor
+            
             Console.WriteLine("\nSet the background color of text and shape successfully.\nFile saved at " + dataDir);
-
         }
-
-
     }
 }

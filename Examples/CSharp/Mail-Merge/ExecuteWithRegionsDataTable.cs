@@ -39,6 +39,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             Console.WriteLine("\nMail merge executed successfully with repeatable regions.\nFile saved at " + dataDir);
         }
+
         // ExStart:ExecuteWithRegionsDataTableMethods
         private static DataTable GetTestOrder(int orderId)
         {
@@ -47,6 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             table.TableName = "Orders";
             return table;
         }
+
         private static DataTable GetTestOrderDetails(int orderId)
         {
             DataTable table = ExecuteDataTable(string.Format(
@@ -54,6 +56,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             table.TableName = "OrderDetails";
             return table;
         }
+
         /// <summary>
         /// Utility function that creates a connection, command, 
         /// Executes the command and return the result in a DataTable.
@@ -62,7 +65,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // Open the database connection.
             string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                RunExamples.GetDataDir_Database() + "Northwind.mdb";
+                                RunExamples.GetDataDir_Database() + "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
@@ -77,6 +80,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             return table;
         }
+
         // ExEnd:ExecuteWithRegionsDataTableMethods
     }
 }

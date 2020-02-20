@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Drawing;
@@ -49,8 +48,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // Save the document to disk.
             doc.Save(dataDir);
             // ExEnd:RepeatRowsOnSubsequentPages
-            Console.WriteLine("\nTable build successfully which include heading rows that repeat on subsequent pages..\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nTable build successfully which include heading rows that repeat on subsequent pages..\nFile saved at " +
+                dataDir);
         }
-        
     }
 }

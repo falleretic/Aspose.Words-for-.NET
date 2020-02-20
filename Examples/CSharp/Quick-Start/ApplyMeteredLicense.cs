@@ -32,7 +32,6 @@ namespace CSharp.Quick_Start
             {
                 Console.WriteLine("\nThere was an error setting the license: " + e.Message);
             }
-            
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -13,11 +12,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
     {
         public static void Run()
         {
-            
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
             // ExStart:OpenFromFile
-            string fileName = "TestFile.doc";            
+            string fileName = "TestFile.doc";
             // Open the document.
             Document doc = new Document(dataDir + fileName);
             // ExEnd:OpenFromFile
@@ -31,9 +29,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             // Save the document.
             doc.Save(dataDir);
-        
+
             Console.WriteLine("\nRemoved breaks from the document successfully.\nFile saved at " + dataDir);
         }
+
         // ExStart:RemovePageBreaks
         private static void RemovePageBreaks(Document doc)
         {
@@ -53,10 +52,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     if (run.Text.Contains(ControlChar.PageBreak))
                         run.Text = run.Text.Replace(ControlChar.PageBreak, string.Empty);
                 }
-
             }
-
         }
+
         // ExEnd:RemovePageBreaks
         // ExStart:RemoveSectionBreaks
         private static void RemoveSectionBreaks(Document doc)
@@ -71,6 +69,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 doc.Sections[i].Remove();
             }
         }
+
         // ExEnd:RemoveSectionBreaks
     }
 }

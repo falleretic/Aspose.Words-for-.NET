@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using Aspose.Words;
 using Aspose.Words.Replacing;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
     class ReplaceWithEvaluator
@@ -17,7 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             string dataDir = RunExamples.GetDataDir_FindAndReplace();
             Document doc = new Document(dataDir + "Range.ReplaceWithEvaluator.doc");
 
-            FindReplaceOptions options = new FindReplaceOptions();   
+            FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new MyReplaceEvaluator();
 
             doc.Range.Replace(new Regex("[s|m]ad"), "", options);
@@ -27,6 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // ExEnd:ReplaceWithEvaluator
             Console.WriteLine("\nText replaced successfully with evaluator.\nFile saved at " + dataDir);
         }
+
         // ExStart:MyReplaceEvaluator
         private class MyReplaceEvaluator : IReplacingCallback
         {
@@ -43,6 +45,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 
             private int mMatchNumber;
         }
+
         // ExEnd:MyReplaceEvaluator        
     }
 }

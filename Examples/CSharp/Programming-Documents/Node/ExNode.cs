@@ -4,7 +4,6 @@ using Aspose.Words.Saving;
 using Aspose.Words.Tables;
 using AWords = Aspose.Words;
 
-
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
 {
     class ExNode
@@ -28,6 +27,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             // The following method shows how to creates and adds a paragraph node.
             CreateAndAddParagraphNode();
         }
+
         public static void UseNodeType()
         {
             // ExStart:UseNodeType            
@@ -36,6 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             NodeType type = doc.NodeType;
             // ExEnd:UseNodeType
         }
+
         public static void GetParentNode()
         {
             // ExStart:GetParentNode           
@@ -47,6 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             Console.WriteLine("Section parent is the document: " + (doc == section.ParentNode));
             // ExEnd:GetParentNode           
         }
+
         public static void OwnerDocument()
         {
             // ExStart:OwnerDocument            
@@ -73,12 +75,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             Console.WriteLine("Paragraph has a parent node: " + (para.ParentNode != null));
             // ExEnd:OwnerDocument
         }
+
         public static void EnumerateChildNodes()
         {
             // ExStart:EnumerateChildNodes 
-            Document doc = new Document();          
-            Paragraph paragraph = (Paragraph)doc.GetChild(NodeType.Paragraph, 0, true);
-            
+            Document doc = new Document();
+            Paragraph paragraph = (Paragraph) doc.GetChild(NodeType.Paragraph, 0, true);
+
             NodeCollection children = paragraph.ChildNodes;
             foreach (Node child in children)
             {
@@ -86,17 +89,19 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
                 if (child.NodeType.Equals(NodeType.Run))
                 {
                     // Say we found the node that we want, do something useful.
-                    Run run = (Run)child;
+                    Run run = (Run) child;
                     Console.WriteLine(run.Text);
                 }
             }
+
             // ExEnd:EnumerateChildNodes
         }
+
         public static void IndexChildNodes()
         {
             // ExStart:IndexChildNodes
             Document doc = new Document();
-            Paragraph paragraph = (Paragraph)doc.GetChild(NodeType.Paragraph, 0, true);
+            Paragraph paragraph = (Paragraph) doc.GetChild(NodeType.Paragraph, 0, true);
             NodeCollection children = paragraph.ChildNodes;
             for (int i = 0; i < children.Count; i++)
             {
@@ -106,12 +111,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
                 if (child.NodeType.Equals(NodeType.Run))
                 {
                     // Say we found the node that we want, do something useful.
-                    Run run = (Run)child;
+                    Run run = (Run) child;
                     Console.WriteLine(run.Text);
                 }
             }
+
             // ExEnd:IndexChildNodes
         }
+
         // ExStart:RecurseAllNodes
         public static void RecurseAllNodes()
         {
@@ -138,14 +145,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
 
                 // Recurse into the node if it is a composite node.
                 if (childNode.IsComposite)
-                    TraverseAllNodes((CompositeNode)childNode);
+                    TraverseAllNodes((CompositeNode) childNode);
             }
         }
+
         // ExEnd:RecurseAllNodes
         public static void TypedAccess()
         {
             // ExStart:TypedAccess
-            Document doc = new Document();            
+            Document doc = new Document();
             Section section = doc.FirstSection;
             // Quick typed access to the Body child node of the Section.
             Body body = section.Body;
@@ -162,8 +170,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
                 if (table.LastRow != null)
                     table.LastRow.Remove();
             }
+
             // ExEnd:TypedAccess
         }
+
         public static void CreateAndAddParagraphNode()
         {
             // ExStart:CreateAndAddParagraphNode
@@ -174,5 +184,4 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             // ExEnd:CreateAndAddParagraphNode
         }
     }
-
 }

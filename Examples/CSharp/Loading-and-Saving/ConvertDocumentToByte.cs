@@ -1,6 +1,4 @@
-﻿
-using System.IO;
-using Aspose.Words;
+﻿using System.IO;
 using System;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving

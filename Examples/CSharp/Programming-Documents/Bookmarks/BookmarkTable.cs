@@ -16,6 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             InsertBookmarkTable(dataDir);
             BookmarkTableColumns(dataDir);
         }
+
         public static void InsertBookmarkTable(string dataDir)
         {
             // ExStart:BookmarkTable
@@ -74,6 +75,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
                         Console.WriteLine(row.Cells[bookmark.FirstColumn].GetText().TrimEnd(ControlChar.CellChar));
                 }
             }
+
             // ExEnd:BookmarkTableColumns
         }
     }

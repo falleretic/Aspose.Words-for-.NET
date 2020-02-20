@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
-
 using Aspose.Words;
 using Aspose.Words.Saving;
 
@@ -14,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             // ExStart:SaveAsMultipageTiff
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting(); 
+            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
 
             // Open the document.
             Document doc = new Document(dataDir + "TestFile Multipage TIFF.doc");

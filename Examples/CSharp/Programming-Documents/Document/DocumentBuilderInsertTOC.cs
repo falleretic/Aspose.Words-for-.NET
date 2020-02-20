@@ -28,7 +28,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dataDir = dataDir + "DocumentBuilderInsertTOC_out.doc";
             doc.Save(dataDir);
             // ExEnd:DocumentBuilderInsertTOC
-            Console.WriteLine("\nTable of contents field inserted successfully into a document.\nFile saved at " + dataDir);
-        }     
+            Console.WriteLine("\nTable of contents field inserted successfully into a document.\nFile saved at " +
+                              dataDir);
+        }
     }
 }

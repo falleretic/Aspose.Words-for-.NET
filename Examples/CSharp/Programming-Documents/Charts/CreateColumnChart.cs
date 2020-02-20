@@ -14,8 +14,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithCharts();
             InsertSimpleColumnChart(dataDir);
-            InsertColumnChart(dataDir);            
+            InsertColumnChart(dataDir);
         }
+
         /// <summary>
         ///  Shows how to insert a simple column chart into the document using DocumentBuilder.InsertChart method.
         /// </summary>             
@@ -55,8 +56,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             doc.Save(dataDir);
             // ExEnd:InsertSimpleColumnChart
             Console.WriteLine("\nSimple column chart created successfully.\nFile saved at " + dataDir);
-            
         }
+
         /// <summary>
         ///  Shows how to insert a column chart into the document using DocumentBuilder.InsertChart method.
         /// </summary>             
@@ -77,7 +78,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             doc.Save(dataDir);
             // ExEnd:InsertColumnChart
             Console.WriteLine("\nColumn chart created successfully.\nFile saved at " + dataDir);
-
         }
     }
 }

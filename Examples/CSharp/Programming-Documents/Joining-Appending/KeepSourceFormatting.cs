@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
@@ -24,7 +23,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             dstDoc.Save(dataDir);
             // ExEnd:KeepSourceFormatting
-            Console.WriteLine("\nDocument appended successfully with keep source formatting option.\nFile saved at " + dataDir);
+            Console.WriteLine("\nDocument appended successfully with keep source formatting option.\nFile saved at " +
+                              dataDir);
         }
     }
 }

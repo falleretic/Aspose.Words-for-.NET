@@ -25,9 +25,11 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             Document doc = new Document(dataDir + "Rendering.doc");
 
             // FontSettings.SetFontSources instead.
-            FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[] { new SystemFontSource(), new ResourceSteamFontSourceExample() });
+            FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
+                { new SystemFontSource(), new ResourceSteamFontSourceExample() });
             doc.Save(dataDir + "Rendering.SetFontsFolders.pdf");
         }
     }
+
     // ExEnd:ResourceSteamFontSourceExample
 }

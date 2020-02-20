@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Fields;
 using System.Text;
@@ -36,8 +35,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
             dstDoc.Save(dataDir);
             // ExEnd:ConvertNumPageFields
-            Console.WriteLine("\nDocument appended successfully with conversion of NUMPAGE fields with PAGEREF fields.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nDocument appended successfully with conversion of NUMPAGE fields with PAGEREF fields.\nFile saved at " +
+                dataDir);
         }
+
         // ExStart:ConvertNumPageFieldsToPageRef
         public static void ConvertNumPageFieldsToPageRef(Document doc)
         {
@@ -67,7 +69,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
                     if (!section.Equals(doc.FirstSection))
                     {
                         // Get the previous section and the last node within the body of that section.
-                        Section prevSection = (Section)section.PreviousSibling;
+                        Section prevSection = (Section) section.PreviousSibling;
                         Node lastNode = prevSection.Body.LastChild;
 
                         // Use the DocumentBuilder to move to this node and insert the bookmark there.
@@ -117,7 +119,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
                         // Insert a PAGEREF field at the same position as the field.
                         builder.MoveTo(previousNode);
                         // This will insert a new field with a code like " PAGEREF _SubDocumentEnd0 *\MERGEFORMAT ".
-                        Field newField = builder.InsertField(string.Format(" {0} {1}{2} {3} ", pageRefFieldName, bookmarkPrefix, subDocumentCount, fieldSwitches));
+                        Field newField = builder.InsertField(string.Format(" {0} {1}{2} {3} ", pageRefFieldName,
+                            bookmarkPrefix, subDocumentCount, fieldSwitches));
 
                         // The field will be inserted before the referenced node. Move the node before the field instead.
                         previousNode.ParentNode.InsertBefore(previousNode, newField.Start);
@@ -128,6 +131,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
                 }
             }
         }
+
         // ExEnd:ConvertNumPageFieldsToPageRef
         // ExStart:GetRemoveField
         private static void RemoveField(FieldStart fieldStart)
@@ -144,19 +148,24 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
                 currentNode = nextNode;
             }
         }
+
         private static string GetFieldCode(FieldStart fieldStart)
         {
             StringBuilder builder = new StringBuilder();
 
-            for (Node node = fieldStart; node != null && node.NodeType != NodeType.FieldSeparator &&
-                node.NodeType != NodeType.FieldEnd; node = node.NextPreOrder(node.Document))
+            for (Node node = fieldStart;
+                node != null && node.NodeType != NodeType.FieldSeparator &&
+                node.NodeType != NodeType.FieldEnd;
+                node = node.NextPreOrder(node.Document))
             {
                 // Use text only of Run nodes to avoid duplication.
                 if (node.NodeType == NodeType.Run)
                     builder.Append(node.GetText());
             }
+
             return builder.ToString();
         }
+
         // ExEnd:GetRemoveField
     }
 }

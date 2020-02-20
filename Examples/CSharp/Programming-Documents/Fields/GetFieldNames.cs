@@ -10,12 +10,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
         public static void Run()
         {
             // ExStart:GetFieldNames
-            Document doc = new Document();            
+            Document doc = new Document();
             // Shows how to get names of all merge fields in a document.
             string[] fieldNames = doc.MailMerge.GetFieldNames();
             // ExEnd:GetFieldNames
             Console.WriteLine("\nDocument have " + fieldNames.Length + " fields.");
         }
+
         public static void MappedDataFields()
         {
             // ExStart:MappedDataFields
@@ -24,10 +25,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             doc.MailMerge.MappedDataFields.Add("MyFieldName_InDocument", "MyFieldName_InDataSource");
             // ExEnd:MappedDataFields
         }
+
         public void DeleteFields()
         {
             // ExStart:DeleteFields
-            Document doc = new Document();            
+            Document doc = new Document();
             // Shows how to delete all merge fields from a document without executing mail merge.
             doc.MailMerge.DeleteFields();
             // ExEnd:DeleteFields

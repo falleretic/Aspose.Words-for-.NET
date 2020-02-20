@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
@@ -14,19 +12,17 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
             // Initialize a Document.
             Document doc = new Document();
-            
+
             // Use a document builder to add content to the document.
             DocumentBuilder builder = new DocumentBuilder(doc);
-            builder.Writeln("Hello World!");  
-        
-            dataDir  = dataDir + "CreateDocument_out.docx";
+            builder.Writeln("Hello World!");
+
+            dataDir = dataDir + "CreateDocument_out.docx";
             // Save the document to disk.
             doc.Save(dataDir);
-           
             // ExEnd:CreateDocument
 
             Console.WriteLine("\nDocument created successfully.\nFile saved at " + dataDir);
-
         }
     }
 }

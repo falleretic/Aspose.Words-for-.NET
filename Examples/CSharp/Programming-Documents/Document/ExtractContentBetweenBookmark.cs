@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -38,7 +37,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dstDoc = Common.GenerateDocument(doc, extractedNodesExclusive);
             dstDoc.Save(dataDir + "TestFile.BookmarkExclusive_out.doc");
             // ExEnd:ExtractContentBetweenBookmark
-            Console.WriteLine("\nExtracted content between bookmarks successfully.\nFile saved at " + dataDir + "TestFile.BookmarkExclusive_out.doc");
+            Console.WriteLine("\nExtracted content between bookmarks successfully.\nFile saved at " + dataDir +
+                              "TestFile.BookmarkExclusive_out.doc");
         }
     }
 }

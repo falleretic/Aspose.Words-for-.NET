@@ -37,8 +37,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             doc.Save(dataDir);
             // ExEnd:ChangeFieldUpdateCultureSource
 
-            Console.WriteLine("\nCulture changed successfully used in formatting fields during update.\nFile saved at " + dataDir);
+            Console.WriteLine(
+                "\nCulture changed successfully used in formatting fields during update.\nFile saved at " + dataDir);
         }
-
     }
 }

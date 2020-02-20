@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Drawing;
@@ -15,11 +14,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-            
+
             SimpleTable(dataDir);
             FormattedTable(dataDir);
             NestedTable(dataDir);
         }
+
         private static void SimpleTable(string dataDir)
         {
             // ExStart:SimpleTable
@@ -53,12 +53,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:SimpleTable
             Console.WriteLine("\nSimple table created successfully.\nFile saved at " + dataDir);
         }
+
         private static void FormattedTable(string dataDir)
         {
             // ExStart:FormattedTable
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-            
+
             Table table = builder.StartTable();
             // Make the header row.
             builder.InsertCell();
@@ -132,6 +133,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             // ExEnd:FormattedTable
             Console.WriteLine("\nFormatted table created successfully.\nFile saved at " + dataDir);
         }
+
         private static void NestedTable(string dataDir)
         {
             // ExStart:NestedTable

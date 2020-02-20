@@ -1,7 +1,5 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
-
 using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start

@@ -17,7 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // ExStart:RemoveUnmergedRegions
             // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting(); 
+            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
 
             string fileName = "TestFile Empty.doc";
             // Open the document.
@@ -41,7 +41,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // Save the output document to disk.
             doc.Save(dataDir);
             // ExEnd:RemoveUnmergedRegions
-            Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0, "Error: There are still unused regions remaining in the document");
+            Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0,
+                "Error: There are still unused regions remaining in the document");
 
             Console.WriteLine("\nMail merge performed with empty regions successfully.\nFile saved at " + dataDir);
         }

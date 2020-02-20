@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
@@ -13,7 +12,7 @@ namespace DocumentExplorerExample
     /// <summary>
     /// Base class to provide GUI representation for document nodes.
     /// </summary>
-    public class Item 
+    public class Item
     {
         /// <summary>
         /// Creates Item for the document node.
@@ -53,10 +52,10 @@ namespace DocumentExplorerExample
                 // E.g. [!PageBreak!], [!ParagraphBreak!], etc.
                 foreach (char c in mNode.GetText())
                 {
-                    string controlCharDisplay = (string)gControlCharacters[c];
+                    string controlCharDisplay = (string) gControlCharacters[c];
                     if (controlCharDisplay == null)
                         result.Append(c);
-                    else 
+                    else
                         result.Append(controlCharDisplay);
                 }
 
@@ -69,7 +68,7 @@ namespace DocumentExplorerExample
         /// </summary>
         public TreeNode TreeNode
         {
-            get 
+            get
             {
                 if (mTreeNode == null)
                 {
@@ -79,29 +78,32 @@ namespace DocumentExplorerExample
                         gIconNames.Add(IconName);
                         ImageList.Images.Add(Icon);
                     }
+
                     int index = gIconNames.IndexOf(IconName);
                     mTreeNode.ImageIndex = index;
                     mTreeNode.SelectedImageIndex = index;
                     mTreeNode.Tag = this;
-                    if (mNode is CompositeNode && ((CompositeNode)mNode).ChildNodes.Count > 0)
+                    if (mNode is CompositeNode && ((CompositeNode) mNode).ChildNodes.Count > 0)
                     {
                         mTreeNode.Nodes.Add("#dummy");
                     }
                 }
+
                 return mTreeNode;
             }
         }
 
-        public static ImageList ImageList 
+        public static ImageList ImageList
         {
-            get 
+            get
             {
-                if (mImageList == null) 
+                if (mImageList == null)
                 {
                     mImageList = new ImageList();
                     mImageList.ColorDepth = ColorDepth.Depth32Bit;
                     mImageList.ImageSize = new Size(16, 16);
                 }
+
                 return mImageList;
             }
         }
@@ -109,16 +111,17 @@ namespace DocumentExplorerExample
         /// <summary>
         /// Icon to display in the Document Explorer TreeView control.
         /// </summary>
-        public Icon Icon 
+        public Icon Icon
         {
-            get 
+            get
             {
-                if (mIcon == null) 
+                if (mIcon == null)
                 {
                     mIcon = LoadIcon(IconName);
                     if (mIcon == null)
                         mIcon = LoadIcon("Node");
                 }
+
                 return mIcon;
             }
         }
@@ -127,7 +130,7 @@ namespace DocumentExplorerExample
         /// Icon for this node can be customized by overriding this property in the inheriting classes.
         /// The name represents name of .ico file without extension located in the Icons folder of the project.
         /// </summary>
-        protected virtual string IconName 
+        protected virtual string IconName
         {
             get { return GetType().Name.Replace("Item", ""); }
         }
@@ -141,13 +144,13 @@ namespace DocumentExplorerExample
             if (TreeNode.Nodes[0].Text.Equals("#dummy"))
             {
                 TreeNode.Nodes.Clear();
-                foreach (Node n in ((CompositeNode)mNode).ChildNodes)
+                foreach (Node n in ((CompositeNode) mNode).ChildNodes)
                 {
                     TreeNode.Nodes.Add(CreateItem(n).TreeNode);
                 }
             }
         }
-        
+
         /// <summary>
         /// Loads icon from assembly resource stream.
         /// </summary>
@@ -155,7 +158,8 @@ namespace DocumentExplorerExample
         /// <returns>Icon object or null if icon was not found in the resources.</returns>
         private static Icon LoadIcon(string anIconName)
         {
-            string resourceName = "Aspose.Words.Examples.CSharp.Viewers_Visualizers.Document_Explorer.Icons." + anIconName + ".ico";
+            string resourceName = "Aspose.Words.Examples.CSharp.Viewers_Visualizers.Document_Explorer.Icons." +
+                                  anIconName + ".ico";
             Stream iconStream = FetchResourceStream(resourceName);
 
             if (iconStream != null)
@@ -210,9 +214,9 @@ namespace DocumentExplorerExample
         {
             // Fill set of typenames of Item inheritors for Item class fabric.
             gItemSet = new ArrayList();
-            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) 
+            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
             {
-                if (type.IsSubclassOf(typeof(Item)) && !type.IsAbstract) 
+                if (type.IsSubclassOf(typeof(Item)) && !type.IsAbstract)
                 {
                     gItemSet.Add(type.Name);
                 }
@@ -241,7 +245,8 @@ namespace DocumentExplorerExample
         {
             string typeName = aNode.NodeType.ToString() + "Item";
             if (gItemSet.Contains(typeName))
-                return (Item)Activator.CreateInstance(Type.GetType("DocumentExplorerExample." + typeName), new object[] {aNode});
+                return (Item) Activator.CreateInstance(Type.GetType("DocumentExplorerExample." + typeName),
+                    new object[] { aNode });
             else
                 return new Item(aNode);
         }
@@ -253,6 +258,7 @@ namespace DocumentExplorerExample
 
         private static readonly ArrayList gItemSet;
         private static readonly ArrayList gIconNames = new ArrayList();
+
         /// <summary>
         /// Map of character to string that we use to display control MS Word control characters.
         /// </summary>

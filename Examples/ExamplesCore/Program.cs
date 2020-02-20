@@ -53,7 +53,7 @@ namespace ExamplesCore
             Console.WriteLine("\nLoad and save PDF with specific Page Range successfully.\nFile saved at " + dataDir);
         }
 
-        public static String GetDataDir_LoadingAndSaving()
+        public static string GetDataDir_LoadingAndSaving()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Loading-and-Saving/");
         }

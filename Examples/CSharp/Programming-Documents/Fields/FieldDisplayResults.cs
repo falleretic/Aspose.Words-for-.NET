@@ -22,6 +22,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             {
                 Console.WriteLine(field.DisplayResult);
             }
+
             // ExEnd:FieldDisplayResults
         }
     }

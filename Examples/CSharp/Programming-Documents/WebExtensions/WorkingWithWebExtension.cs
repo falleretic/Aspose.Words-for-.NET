@@ -35,8 +35,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Web_Extensions
             taskPane.WebExtension.Reference.StoreType = WebExtensionStoreType.OMEX;
             taskPane.WebExtension.Reference.Store = "th-TH";
             taskPane.WebExtension.Properties.Add(new WebExtensionProperty("mailchimpCampaign", "mailchimpCampaign"));
-            taskPane.WebExtension.Bindings.Add(new WebExtensionBinding("UnnamedBinding_0_1506535429545", WebExtensionBindingType.Text, "194740422"));
-            
+            taskPane.WebExtension.Bindings.Add(new WebExtensionBinding("UnnamedBinding_0_1506535429545",
+                WebExtensionBindingType.Text, "194740422"));
+
             doc.Save(dataDir + "output.docx", SaveFormat.Docx);
             // ExEnd:UsingWebExtensionTaskPanes 
             Console.WriteLine("\nThe file is saved successfully at " + dataDir);

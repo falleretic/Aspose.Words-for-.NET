@@ -2,6 +2,7 @@
 using Aspose.Words;
 using System;
 using System.Drawing;
+
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WriteAndFont
@@ -23,11 +24,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             font.Name = "Arial";
             font.Underline = Underline.Dash;
 
-            builder.Write("Sample text.");           
+            builder.Write("Sample text.");
             dataDir = dataDir + "WriteAndFont_out.doc";
             doc.Save(dataDir);
             // ExEnd:WriteAndFont
-            Console.WriteLine("\nFormatted text using DocumentBuilder inserted successfully.\nFile saved at " + dataDir);
-        }        
+            Console.WriteLine("\nFormatted text using DocumentBuilder inserted successfully.\nFile saved at " +
+                              dataDir);
+        }
     }
 }

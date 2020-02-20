@@ -16,7 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_FindAndReplace();
             string fileName = "Document.doc";
-  
+
             Document doc = new Document(dataDir + fileName);
             doc.Range.Replace("sad", "bad", new FindReplaceOptions(FindReplaceDirection.Forward));
 
@@ -26,6 +26,4 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             Console.WriteLine("\nText replaced with string successfully.\nFile saved at " + dataDir);
         }
     }
-
-    
 }

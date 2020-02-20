@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-
 using Aspose.Words;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
@@ -20,8 +19,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             // This is a quick way of getting both comment nodes.
             // Your code should have a proper method of retrieving each corresponding start and end node.
-            CommentRangeStart commentStart = (CommentRangeStart)doc.GetChild(NodeType.CommentRangeStart, 0, true);
-            CommentRangeEnd commentEnd = (CommentRangeEnd)doc.GetChild(NodeType.CommentRangeEnd, 0, true);
+            CommentRangeStart commentStart = (CommentRangeStart) doc.GetChild(NodeType.CommentRangeStart, 0, true);
+            CommentRangeEnd commentEnd = (CommentRangeEnd) doc.GetChild(NodeType.CommentRangeEnd, 0, true);
 
             // Firstly extract the content between these nodes including the comment as well. 
             ArrayList extractedNodesInclusive = Common.ExtractContent(commentStart, commentEnd, true);
@@ -33,7 +32,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dstDoc = Common.GenerateDocument(doc, extractedNodesExclusive);
             dstDoc.Save(dataDir + "TestFile.CommentExclusive_out.doc");
             // ExEnd:ExtractContentBetweenCommentRange
-            Console.WriteLine("\nExtracted content between the comment range successfully.\nFile saved at " + dataDir + "TestFile.CommentExclusive_out.doc");
+            Console.WriteLine("\nExtracted content between the comment range successfully.\nFile saved at " + dataDir +
+                              "TestFile.CommentExclusive_out.doc");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // ExStart:InsertFieldNone
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-            FieldUnknown field = (FieldUnknown)builder.InsertField(FieldType.FieldNone, false);
+            FieldUnknown field = (FieldUnknown) builder.InsertField(FieldType.FieldNone, false);
 
             dataDir = dataDir + "InsertFieldNone_out.docx";
             doc.Save(dataDir);
