@@ -97,6 +97,7 @@ namespace Aspose.Words.Examples.CSharp
             // SaveDocWithHtmlSaveOptions.Run();
             // WorkingWithVbaMacros.Run();
 
+
             //// =====================================================
             //// =====================================================
             //// Programming with Documents
@@ -144,10 +145,11 @@ namespace Aspose.Words.Examples.CSharp
             // BookmarkNameAndText.Run();
             // AccessBookmarks.Run();
             // CreateBookmark.Run();
+             ShowHideBookmarks.Run();
 
             //// Shapes
             //// =====================================================
-             //WorkingWithShapes.Run();
+            // WorkingWithShapes.Run();
 
             //// Comments
             //// =====================================================
