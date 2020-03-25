@@ -1,9 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AWords = Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
@@ -11,7 +6,7 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
     {
         public static void Run()
         {
-            AWords.License license = new AWords.License();
+            License license = new License();
 
             // This line attempts to set a license from several locations relative to the executable and Aspose.Words.dll.
             // You can also use the additional overload to load a license from a stream, this is useful for instance when the 

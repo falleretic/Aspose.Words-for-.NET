@@ -44,7 +44,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             doc.CompatibilityOptions.OptimizeFor(MsWordVersion.Word2016);
 
             //Set the Strict compliance level. 
-            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions
+            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions();
             ooxmlSaveOptions.Compliance = OoxmlCompliance.Iso29500_2008_Strict;
             ooxmlSaveOptions.SaveFormat = SaveFormat.Docx;
 

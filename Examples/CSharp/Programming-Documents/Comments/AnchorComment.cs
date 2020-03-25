@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
-using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 {
-    class AnchorComment
+    class AnchorComment : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:AnchorComment
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithComments();
+            //ExStart:AnchorComment
             Document doc = new Document();
 
             Paragraph para1 = new Paragraph(doc);
@@ -39,11 +34,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
             run3.ParentNode.InsertAfter(commentRangeEnd, run3);
             commentRangeEnd.ParentNode.InsertAfter(comment, commentRangeEnd);
 
-            dataDir = dataDir + "Anchor.Comment_out.doc";
-            // Save the document.
-            doc.Save(dataDir);
-            // ExEnd:AnchorComment
-            Console.WriteLine("\nComment anchored successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "Anchor.Comment.doc");
+            //ExEnd:AnchorComment
+
+            Console.WriteLine("\nComment anchored successfully.");
         }
     }
 }

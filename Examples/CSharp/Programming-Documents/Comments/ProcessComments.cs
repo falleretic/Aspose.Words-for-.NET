@@ -1,55 +1,48 @@
 ﻿using System;
 using System.Collections;
-using System.IO;
-using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 {
-    class ProcessComments
+    class ProcessComments : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:ProcessComments
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithComments();
-            string fileName = "TestFile.doc";
+            Document doc = new Document(CommentsDir + "TestFile.doc");
 
-            // Open the document.
-            Document doc = new Document(dataDir + fileName);
-
-            // Extract the information about the comments of all the authors.
+            // Extract the information about the comments of all the authors
             foreach (string comment in ExtractComments(doc))
                 Console.Write(comment);
 
-            // Remove comments by the "pm" author.
+            // Remove comments by the "pm" author
             RemoveComments(doc, "pm");
             Console.WriteLine("Comments from \"pm\" are removed!");
 
-            // Extract the information about the comments of the "ks" author.
+            // Extract the information about the comments of the "ks" author
             foreach (string comment in ExtractComments(doc, "ks"))
                 Console.Write(comment);
 
-            //Read the comment's reply and resolve them.
-            CommentResolvedandReplies(doc);
+            //Read the comment's reply and resolve them
+            CommentResolvedAndReplies(doc);
 
-            // Remove all comments.
+            // Remove all comments
             RemoveComments(doc);
             Console.WriteLine("All comments are removed!");
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            // Save the document.
-            doc.Save(dataDir);
-            // ExEnd:ProcessComments
-            Console.WriteLine("\nComments extracted and removed successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "TestFile.doc");
+            //ExEnd:ProcessComments
+
+            Console.WriteLine("\nComments extracted and removed successfully.");
         }
 
-        // ExStart:ExtractComments
+        //ExStart:ExtractComments
         static ArrayList ExtractComments(Document doc)
         {
             ArrayList collectedComments = new ArrayList();
             // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            // Look through all comments and gather information about them.
+
+            // Look through all comments and gather information about them
             foreach (Comment comment in comments)
             {
                 collectedComments.Add(comment.Author + " " + comment.DateTime + " " +
@@ -58,15 +51,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 
             return collectedComments;
         }
+        //ExEnd:ExtractComments
 
-        // ExEnd:ExtractComments
-        // ExStart:ExtractCommentsByAuthor
+        //ExStart:ExtractCommentsByAuthor
         static ArrayList ExtractComments(Document doc, string authorName)
         {
             ArrayList collectedComments = new ArrayList();
             // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            // Look through all comments and gather information about those written by the authorName author.
+
+            // Look through all comments and gather information about those written by the authorName author
             foreach (Comment comment in comments)
             {
                 if (comment.Author == authorName)
@@ -76,24 +70,25 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 
             return collectedComments;
         }
+        //ExEnd:ExtractCommentsByAuthor
 
-        // ExEnd:ExtractCommentsByAuthor
-        // ExStart:RemoveComments
+        //ExStart:RemoveComments
         static void RemoveComments(Document doc)
         {
             // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            // Remove all comments.
+            // Remove all comments
             comments.Clear();
         }
+        //ExEnd:RemoveComments
 
-        // ExEnd:RemoveComments
-        // ExStart:RemoveCommentsByAuthor
+        //ExStart:RemoveCommentsByAuthor
         static void RemoveComments(Document doc, string authorName)
         {
             // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            // Look through all comments and remove those written by the authorName author.
+
+            // Look through all comments and remove those written by the authorName author
             for (int i = comments.Count - 1; i >= 0; i--)
             {
                 Comment comment = (Comment) comments[i];
@@ -101,25 +96,24 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
                     comment.Remove();
             }
         }
-        // ExEnd:RemoveCommentsByAuthor
+        //ExEnd:RemoveCommentsByAuthor
 
-        // ExStart:CommentResolvedandReplies
-        static void CommentResolvedandReplies(Document doc)
+        //ExStart:CommentResolvedandReplies
+        static void CommentResolvedAndReplies(Document doc)
         {
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
             Comment parentComment = (Comment) comments[0];
 
             foreach (Comment childComment in parentComment.Replies)
             {
-                // Get comment parent and status.
+                // Get comment parent and status
                 Console.WriteLine(childComment.Ancestor.Id);
                 Console.WriteLine(childComment.Done);
 
-                // And update comment Done mark.
+                // And update comment Done mark
                 childComment.Done = true;
             }
         }
-
-        // ExEnd:CommentResolvedandReplies
+        //ExEnd:CommentResolvedandReplies
     }
 }

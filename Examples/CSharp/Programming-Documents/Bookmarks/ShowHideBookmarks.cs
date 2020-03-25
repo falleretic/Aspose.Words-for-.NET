@@ -1,29 +1,21 @@
 ﻿using Aspose.Words.Fields;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
-    class ShowHideBookmarks
+    class ShowHideBookmarks : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ShowHideBookmarks_call
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithBookmarks();
+            //ExStart:ShowHideBookmarks_call
+            Document doc = new Document(BookmarksDir + "Bookmarks.doc");
 
-            Document doc = new Document(dataDir + "Bookmarks.doc");
             ShowHideBookmarkedContent(doc, "Bookmark2", false);
-            doc.Save(dataDir + "Updated_Document.doc");
-
-            // ExEnd:ShowHideBookmarks_call
-            //Console.WriteLine("\nBookmark by name is " + bookmark1.Name + " and bookmark by index is " + bookmark2.Name);
+            
+            doc.Save(ArtifactsDir + "UpdatedDocument.doc");
+            //ExEnd:ShowHideBookmarks_call
         }
 
-        // ExStart:ShowHideBookmarks
+        //ExStart:ShowHideBookmarks
         public static void ShowHideBookmarkedContent(Document doc, string bookmarkName, bool showHide)
         {
             DocumentBuilder builder = new DocumentBuilder(doc);
@@ -73,7 +65,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             //builder.MoveToMergeField(bookmarkName);
             //builder.Write(showHide ? "true" : "false");
         }
-
-        // ExEnd:ShowHideBookmarks
+        //ExEnd:ShowHideBookmarks
     }
 }

@@ -1,37 +1,32 @@
 ﻿using Aspose.Words;
 using Aspose.Words.Examples.CSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CSharp.Quick_Start
 {
-    class ApplyMeteredLicense
+    class ApplyMeteredLicense : TestDataHelper
     {
         public static void Run()
         {
+            //ExStart:ApplyMeteredLicense
             try
             {
-                //ExStart:ApplyMeteredLicense
-                // set metered public and private keys
-                Aspose.Words.Metered metered = new Aspose.Words.Metered();
+                // Set metered public and private keys
+                Metered metered = new Metered();
                 // Access the setMeteredKey property and pass public and private keys as parameters
                 metered.SetMeteredKey("*****", "*****");
 
-                // The path to the documents directory. 
-                string dataDir = RunExamples.GetDataDir_QuickStart();
+                // Load the document from disk
+                Document doc = new Document(QuickStartDir + "Template.doc");
 
-                // Load the document from disk.
-                Document doc = new Document(dataDir + "Template.doc");
-                //Get the page count of document
+                // Get the page count of document
                 Console.WriteLine(doc.PageCount);
-                //ExEnd:ApplyMeteredLicense
             }
             catch (Exception e)
             {
                 Console.WriteLine("\nThere was an error setting the license: " + e.Message);
             }
+            //ExEnd:ApplyMeteredLicense
         }
     }
 }

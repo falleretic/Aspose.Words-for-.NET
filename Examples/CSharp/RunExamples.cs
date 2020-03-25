@@ -57,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp
 
             // QuickStart.AppendDocuments.Run();
             // QuickStart.ApplyLicense.Run();
-            QuickStart.FindAndReplace.Run();
+            // QuickStart.FindAndReplace.Run();
             // QuickStart.HelloWorld.Run();
             // QuickStart.UpdateFields.Run();
             // QuickStart.WorkingWithNodes.Run();
@@ -145,7 +145,7 @@ namespace Aspose.Words.Examples.CSharp
             // BookmarkNameAndText.Run();
             // AccessBookmarks.Run();
             // CreateBookmark.Run();
-            ShowHideBookmarks.Run();
+            // ShowHideBookmarks.Run();
 
             //// Shapes
             //// =====================================================
@@ -164,7 +164,6 @@ namespace Aspose.Words.Examples.CSharp
 
             //// Document
             //// =====================================================
-
             // SigningSignatureLine.Run();
             // ExtractContentBetweenParagraphs.Run();
             // ExtractContentBetweenBlockLevelNodes.Run();

@@ -10,6 +10,9 @@ namespace Aspose.Words.Examples.CSharp
             MainDataDir = GetDataDir_Data();
             ArtifactsDir = new Uri(new Uri(MainDataDir), @"Artifacts/").LocalPath;
             QuickStartDir = new Uri(new Uri(MainDataDir), @"Quick-Start/").LocalPath;
+            BookmarksDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Bookmarks/").LocalPath;
+            ChartsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Charts/").LocalPath;
+            CommentsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Comments/").LocalPath;
         }
 
         private static string GetDataDir_Data()
@@ -41,6 +44,21 @@ namespace Aspose.Words.Examples.CSharp
         /// Gets the path to the license used by the code examples.
         /// </summary>
         internal static string QuickStartDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string BookmarksDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string ChartsDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string CommentsDir { get; }
 
         /// <summary>
         /// Gets the path to the documents used by the code examples. Ends with a back slash.

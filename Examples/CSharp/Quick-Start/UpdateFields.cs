@@ -1,29 +1,24 @@
 ﻿using System;
-using System.IO;
-using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
-    class UpdateFields
+    class UpdateFields : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_QuickStart();
+            // Demonstrates how to insert fields and update them using Aspose.Words
 
-            // Demonstrates how to insert fields and update them using Aspose.Words.
-
-            // First create a blank document.
+            // First create a blank document
             Document doc = new Document();
 
-            // Use the document builder to insert some content and fields.
+            // Use the document builder to insert some content and fields
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert a table of contents at the beginning of the document.
+            // Insert a table of contents at the beginning of the document
             builder.InsertTableOfContents("\\o \"1-3\" \\h \\z \\u");
             builder.Writeln();
 
-            // Insert some other fields.
+            // Insert some other fields
             builder.Write("Page: ");
             builder.InsertField("PAGE");
             builder.Write(" of ");
@@ -33,10 +28,10 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
             builder.Write("Date: ");
             builder.InsertField("DATE");
 
-            // Start the actual document content on the second page.
+            // Start the actual document content on the second page
             builder.InsertBreak(BreakType.SectionBreakNewPage);
 
-            // Build a document with complex structure by applying different heading styles thus creating TOC entries.
+            // Build a document with complex structure by applying different heading styles thus creating TOC entries
             builder.ParagraphFormat.StyleIdentifier = StyleIdentifier.Heading1;
 
             builder.Writeln("Heading 1");
@@ -71,13 +66,12 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
 
             Console.WriteLine("Updating all fields in the document.");
 
-            // Call the method below to update the TOC.
+            // Call the method below to update the TOC
             doc.UpdateFields();
 
-            dataDir = dataDir + "Document Field Update_out.docx";
-            doc.Save(dataDir);
+            doc.Save(ArtifactsDir + "Document Field Update.docx");
 
-            Console.WriteLine("\nFields updated successfully.\nFile saved at " + dataDir);
+            Console.WriteLine("\nFields updated successfully.");
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
 using Aspose.Words;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CSharp.Quick_Start
 {
@@ -12,7 +8,7 @@ namespace CSharp.Quick_Start
         public static void Run()
         {
             //ExStart:ApplyLicenseFromFile
-            Aspose.Words.License license = new Aspose.Words.License();
+            License license = new License();
 
             // This line attempts to set a license from several locations relative to the executable and Aspose.Words.dll.
             // You can also use the additional overload to load a license from a stream, this is useful for instance when the 
@@ -27,7 +23,6 @@ namespace CSharp.Quick_Start
                 // We do not ship any license with this example, visit the Aspose site to obtain either a temporary or permanent license. 
                 Console.WriteLine("\nThere was an error setting the license: " + e.Message);
             }
-
             //ExEnd:ApplyLicenseFromFile
         }
     }
