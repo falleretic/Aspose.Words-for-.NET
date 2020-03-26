@@ -1,33 +1,6 @@
 ﻿using System;
 using System.IO;
-using Aspose.Words.Examples.CSharp.LINQ;
-using Aspose.Words.Examples.CSharp.Loading_and_Saving;
-using Aspose.Words.Examples.CSharp.Loading_Saving;
-using Aspose.Words.Examples.CSharp.Mail_Merge;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Comments;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_ConvertUtil;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Hyperlink;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Ranges;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signature;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_StructuredDocumentTag;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Theme;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document;
-using Aspose.Words.Examples.CSharp.Rendering_and_Printing;
-using Aspose.Words.Examples.CSharp.Rendering_Printing;
 using QuickStart = Aspose.Words.Examples.CSharp.Quick_Start;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes;
-using Aspose.Words.Examples.CSharp.Programming_Documents.Web_Extensions;
 
 namespace Aspose.Words.Examples.CSharp
 {

@@ -1,59 +1,45 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class ProtectDocument
+    class ProtectDocument : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            dataDir = dataDir + "ProtectDocument.doc";
-
-            Protect(dataDir);
-            UnProtect(dataDir);
-            GetProtectionType(dataDir);
+            Protect();
+            UnProtect();
+            GetProtectionType();
         }
 
         /// <summary>
-        /// Shows how to protect document
-        /// </summary>
-        /// <param name="inputFileName">input file name with complete path.</param>        
-        private static void Protect(string inputFileName)
+        /// Shows how to protect document.
+        /// </summary>      
+        private static void Protect()
         {
-            // ExStart:ProtectDocument
-            Document doc = new Document(inputFileName);
+            //ExStart:ProtectDocument
+            Document doc = new Document(DocumentDir + "ProtectDocument.doc");
             doc.Protect(ProtectionType.AllowOnlyFormFields, "password");
-            // ExEnd:ProtectDocument
-            Console.WriteLine("\nDocument protected successfully.");
+            //ExEnd:ProtectDocument
         }
 
         /// <summary>
-        /// Shows how to unprotect document
-        /// </summary>
-        /// <param name="inputFileName">input file name with complete path.</param>        
-        private static void UnProtect(string inputFileName)
+        /// Shows how to unprotect document.
+        /// </summary>      
+        private static void UnProtect()
         {
             // ExStart:UnProtectDocument
-            Document doc = new Document(inputFileName);
+            Document doc = new Document(DocumentDir + "ProtectDocument.doc");
             doc.Unprotect();
             // ExEnd:UnProtectDocument
-            Console.WriteLine("\nDocument unprotected successfully.");
         }
 
         /// <summary>
-        /// Shows how to get protection type
-        /// </summary>
-        /// <param name="inputFileName">input file name with complete path.</param>        
-        private static void GetProtectionType(string inputFileName)
+        /// Shows how to get protection type.
+        /// </summary>        
+        private static void GetProtectionType()
         {
-            // ExStart:GetProtectionType
-            Document doc = new Document(inputFileName);
+            //ExStart:GetProtectionType
+            Document doc = new Document(DocumentDir + "ProtectDocument.doc");
             ProtectionType protectionType = doc.ProtectionType;
-            // ExEnd:GetProtectionType
-            Console.WriteLine("\nDocument protection type is " + protectionType.ToString());
+            //ExEnd:GetProtectionType
         }
     }
 }

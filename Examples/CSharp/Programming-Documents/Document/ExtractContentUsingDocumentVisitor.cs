@@ -1,40 +1,34 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using System.Text;
 using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class ExtractContentUsingDocumentVisitor
+    class ExtractContentUsingDocumentVisitor : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ExtractContentUsingDocumentVisitor
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
+            //ExStart:ExtractContentUsingDocumentVisitor
+            Document doc = new Document(DocumentDir + "Visitor.ToText.doc");
 
-            // Open the document we want to convert.
-            Document doc = new Document(dataDir + "Visitor.ToText.doc");
-
-            // Create an object that inherits from the DocumentVisitor class.
+            // Create an object that inherits from the DocumentVisitor class
             MyDocToTxtWriter myConverter = new MyDocToTxtWriter();
 
-            // This is the well known Visitor pattern. Get the model to accept a visitor.
+            // This is the well known Visitor pattern. Get the model to accept a visitor
             // The model will iterate through itself by calling the corresponding methods
-            // On the visitor object (this is called visiting).
+            // On the visitor object (this is called visiting)
             // 
             // Note that every node in the object model has the Accept method so the visiting
-            // Can be executed not only for the whole document, but for any node in the document.
+            // Can be executed not only for the whole document, but for any node in the document
             doc.Accept(myConverter);
 
             // Once the visiting is complete, we can retrieve the result of the operation,
-            // That in this example, has accumulated in the visitor.
+            // That in this example, has accumulated in the visitor
             Console.WriteLine(myConverter.GetText());
-            // ExEnd:ExtractContentUsingDocumentVisitor
+            //ExEnd:ExtractContentUsingDocumentVisitor
         }
 
-        // ExStart:MyDocToTxtWriter
+        //ExStart:MyDocToTxtWriter
         /// <summary>
         /// Simple implementation of saving a document in the plain text format. Implemented as a Visitor.
         /// </summary>
@@ -61,7 +55,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             {
                 AppendText(run.Text);
 
-                // Let the visitor continue visiting other nodes.
+                // Let the visitor continue visiting other nodes
                 return VisitorAction.Continue;
             }
 
@@ -72,10 +66,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             {
                 // In Microsoft Word, a field code (such as "MERGEFIELD FieldName") follows
                 // After a field start character. We want to skip field codes and output field 
-                // Result only, therefore we use a flag to suspend the output while inside a field code.
+                // Result only, therefore we use a flag to suspend the output while inside a field code
                 //
                 // Note this is a very simplistic implementation and will not work very well
-                // If you have nested fields in a document. 
+                // If you have nested fields in a document
                 mIsSkipText = true;
 
                 return VisitorAction.Continue;
@@ -87,7 +81,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             public override VisitorAction VisitFieldSeparator(FieldSeparator fieldSeparator)
             {
                 // Once reached a field separator node, we enable the output because we are
-                // Now entering the field result nodes.
+                // Now entering the field result nodes
                 mIsSkipText = false;
 
                 return VisitorAction.Continue;
@@ -99,7 +93,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             public override VisitorAction VisitFieldEnd(FieldEnd fieldEnd)
             {
                 // Make sure we enable the output when reached a field end because some fields
-                // Do not have field separator and do not have field result.
+                // Do not have field separator and do not have field result
                 mIsSkipText = false;
 
                 return VisitorAction.Continue;
@@ -110,7 +104,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             /// </summary>
             public override VisitorAction VisitParagraphEnd(Paragraph paragraph)
             {
-                // When outputting to plain text we output Cr+Lf characters.
+                // When outputting to plain text we output Cr+Lf characters
                 AppendText(ControlChar.CrLf);
 
                 return VisitorAction.Continue;
@@ -119,7 +113,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             public override VisitorAction VisitBodyStart(Body body)
             {
                 // We can detect beginning and end of all composite nodes such as Section, Body, 
-                // Table, Paragraph etc and provide custom handling for them.
+                // Table, Paragraph etc and provide custom handling for them
                 mBuilder.Append("*** Body Started ***\r\n");
 
                 return VisitorAction.Continue;
@@ -137,9 +131,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             public override VisitorAction VisitHeaderFooterStart(HeaderFooter headerFooter)
             {
                 // Returning this value from a visitor method causes visiting of this
-                // Node to stop and move on to visiting the next sibling node.
+                // Node to stop and move on to visiting the next sibling node
                 // The net effect in this example is that the text of headers and footers
-                // Is not included in the resulting output.
+                // Is not included in the resulting output
                 return VisitorAction.SkipThisNode;
             }
 
@@ -155,7 +149,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             private readonly StringBuilder mBuilder;
             private bool mIsSkipText;
         }
-
-        // ExEnd:MyDocToTxtWriter
+        //ExEnd:MyDocToTxtWriter
     }
 }

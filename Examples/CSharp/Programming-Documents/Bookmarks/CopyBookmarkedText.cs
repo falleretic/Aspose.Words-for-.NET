@@ -28,8 +28,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             AppendBookmarkedText(importer, srcBookmark, dstNode);
 
             dstDoc.Save(ArtifactsDir + "Template.doc");
-
-            Console.WriteLine("\nBookmark copied successfully.");
         }
 
         /// <summary>

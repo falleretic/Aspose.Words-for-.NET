@@ -1,19 +1,12 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using System.Drawing;
-using Aspose.Words.Tables;
+﻿using Aspose.Words.Tables;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class DocumentBuilderBuildTable
+    class DocumentBuilderBuildTable : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:DocumentBuilderBuildTable
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            // Initialize document.
+            //ExStart:DocumentBuilderBuildTable
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -21,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             // Insert a cell
             builder.InsertCell();
-            // Use fixed column widths.
+            // Use fixed column widths
             table.AutoFit(AutoFitBehavior.FixedColumnWidths);
 
             builder.CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
@@ -49,12 +42,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("This is row 2 cell 2");
 
             builder.EndRow();
-
             builder.EndTable();
-            dataDir = dataDir + "DocumentBuilderBuildTable_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderBuildTable
-            Console.WriteLine("\nTable build successfully using DocumentBuilder.\nFile saved at " + dataDir);
+
+            doc.Save(ArtifactsDir + "DocumentBuilderBuildTable.doc");
+            //ExEnd:DocumentBuilderBuildTable
         }
     }
 }

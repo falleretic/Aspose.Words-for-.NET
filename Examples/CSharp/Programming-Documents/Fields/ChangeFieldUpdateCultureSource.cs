@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
-using Aspose.Words;
-using Aspose.Words.Drawing;
 using Aspose.Words.Fields;
-using Aspose.Words.Rendering;
-using Aspose.Words.Saving;
-using Aspose.Words.Settings;
-using Aspose.Words.Tables;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {

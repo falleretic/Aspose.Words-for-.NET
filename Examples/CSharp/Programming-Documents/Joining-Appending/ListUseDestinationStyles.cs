@@ -1,8 +1,4 @@
 ﻿using System;
-using System.IO;
-using Aspose.Words;
-using Aspose.Words.Fields;
-using System.Text;
 using System.Collections;
 using Aspose.Words.Lists;
 

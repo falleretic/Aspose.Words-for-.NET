@@ -20,8 +20,6 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
 
             // Save the modified document
             doc.Save(ArtifactsDir + "ReplaceSimple.doc");
-
-            Console.WriteLine("\nText found and replaced successfully.");
         }
     }
 }

@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aspose.Words.Rendering;
-using Aspose.Words;
 using System.Windows.Forms;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing

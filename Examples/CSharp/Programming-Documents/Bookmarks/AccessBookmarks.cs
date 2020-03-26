@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class AccessBookmarks : TestDataHelper
     {
@@ -15,8 +13,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             // By name
             Bookmark bookmark2 = doc.Range.Bookmarks["Bookmark2"];
             //ExEnd:AccessBookmarks
-
-            Console.WriteLine("\nBookmark by name is " + bookmark1.Name + " and bookmark by index is " + bookmark2.Name);
         }
     }
 }

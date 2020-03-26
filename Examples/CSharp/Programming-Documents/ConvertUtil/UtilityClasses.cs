@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_ConvertUtil
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_ConvertUtil
 {
     class UtilityClasses
     {
@@ -24,8 +22,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Conver
             pageSetup.HeaderDistance = ConvertUtil.InchToPoint(0.2);
             pageSetup.FooterDistance = ConvertUtil.InchToPoint(0.2);
             //ExEnd:ConvertBetweenMeasurementUnits
-
-            Console.WriteLine("\nPage properties specified in inches.");
         }
 
         private static void UseControlCharacters()
@@ -35,8 +31,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Conver
             // Replace "\r" control character with "\r\n"
             string replace = text.Replace(ControlChar.Cr, ControlChar.CrLf);
             //ExEnd:UseControlCharacters
-            
-            Console.WriteLine("\nControl characters used successfully.");
         }
     }
 }

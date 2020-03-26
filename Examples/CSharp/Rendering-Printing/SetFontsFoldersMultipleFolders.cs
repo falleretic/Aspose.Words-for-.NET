@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using Aspose.Words.Fonts;
-using Aspose.Words;
-using Aspose.Words.Saving;
+﻿using Aspose.Words.Fonts;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {

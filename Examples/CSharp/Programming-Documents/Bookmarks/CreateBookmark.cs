@@ -1,5 +1,4 @@
-﻿using System;
-using Aspose.Words.Saving;
+﻿using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
@@ -27,8 +26,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 
             doc.Save(ArtifactsDir + "Create.Bookmark.pdf", options);
             //ExEnd:CreateBookmark
-
-            Console.WriteLine("\nBookmark created successfully.");
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Aspose.Words;
-using Aspose.Words.MailMerging;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {

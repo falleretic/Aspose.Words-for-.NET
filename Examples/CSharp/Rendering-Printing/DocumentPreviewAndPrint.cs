@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
-using Aspose.Words;
 using Aspose.Words.Rendering;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing

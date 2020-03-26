@@ -2,9 +2,6 @@
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Drawing;
-using System.IO;
-using System.Reflection;
-using Aspose.Words;
 using Aspose.Words.Replacing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace

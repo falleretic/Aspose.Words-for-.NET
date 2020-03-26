@@ -1,43 +1,34 @@
-﻿using System;
-using System.Drawing;
-using Aspose.Words;
-using Aspose.Words.Drawing;
-using Aspose.Words.Drawing.Charts;
-using Aspose.Words.Fields;
-using Aspose.Words.Tables;
+﻿using Aspose.Words.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class DocumentBuilderInsertImage
+    class DocumentBuilderInsertImage : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            InsertInlineImage(dataDir);
-            InsertFloatingImage(dataDir);
+            InsertInlineImage();
+            InsertFloatingImage();
         }
 
-        public static void InsertInlineImage(string dataDir)
+        public static void InsertInlineImage()
         {
-            // ExStart:DocumentBuilderInsertInlineImage
+            //ExStart:DocumentBuilderInsertInlineImage
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.InsertImage(DocumentDir + "Watermark.png");
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertInlineImage.doc");
+            //ExEnd:DocumentBuilderInsertInlineImage
+        }
+
+        public static void InsertFloatingImage()
+        {
+            //ExStart:DocumentBuilderInsertFloatingImage
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            builder.InsertImage(dataDir + "Watermark.png");
-            dataDir = dataDir + "DocumentBuilderInsertInlineImage_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertInlineImage
-            Console.WriteLine("\nInline image using DocumentBuilder inserted successfully.\nFile saved at " + dataDir);
-        }
-
-        public static void InsertFloatingImage(string dataDir)
-        {
-            // ExStart:DocumentBuilderInsertFloatingImage
-            Document doc = new Document();
-            DocumentBuilder builder = new DocumentBuilder(doc);
-
-            builder.InsertImage(dataDir + "Watermark.png",
+            builder.InsertImage(DocumentDir + "Watermark.png",
                 RelativeHorizontalPosition.Margin,
                 100,
                 RelativeVerticalPosition.Margin,
@@ -45,10 +36,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 200,
                 100,
                 WrapType.Square);
-            dataDir = dataDir + "DocumentBuilderInsertFloatingImage_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertFloatingImage
-            Console.WriteLine("\nInline image using DocumentBuilder inserted successfully.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertFloatingImage.doc");
+            //ExEnd:DocumentBuilderInsertFloatingImage
         }
     }
 }

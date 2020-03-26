@@ -70,8 +70,6 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
             doc.UpdateFields();
 
             doc.Save(ArtifactsDir + "Document Field Update.docx");
-
-            Console.WriteLine("\nFields updated successfully.");
         }
     }
 }

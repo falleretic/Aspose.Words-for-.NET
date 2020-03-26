@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
-using System.Drawing;
-using Aspose.Words;
-using Aspose.Words.Tables;
-using System.Diagnostics;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {

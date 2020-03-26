@@ -20,8 +20,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 
             doc.Save(ArtifactsDir + "Comments.doc");
             //ExEnd:AddComments
-
-            Console.WriteLine("\nComments added successfully.");
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Quick_Start
+﻿namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class AppendDocuments : TestDataHelper
     {
@@ -14,8 +12,6 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
             
             dstDoc.Save(ArtifactsDir + "TestFile.Destination.doc");
-
-            Console.WriteLine("\nDocument appended successfully.");
         }
     }
 }

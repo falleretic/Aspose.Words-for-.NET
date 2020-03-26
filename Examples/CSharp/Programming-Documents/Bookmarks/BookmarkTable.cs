@@ -50,8 +50,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 
             doc.Save(ArtifactsDir + "Bookmark.Table.doc");
             //ExEnd:BookmarkTable
-
-            Console.WriteLine("\nTable bookmarked successfully.");
         }
 
         public static void BookmarkTableColumns()

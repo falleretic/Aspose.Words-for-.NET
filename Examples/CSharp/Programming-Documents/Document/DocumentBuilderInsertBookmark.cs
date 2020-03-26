@@ -1,19 +1,10 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using System.Drawing;
-using Aspose.Words.Tables;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class DocumentBuilderInsertBookmark
+    class DocumentBuilderInsertBookmark : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:DocumentBuilderInsertBookmark
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            // Initialize document.
+            //ExStart:DocumentBuilderInsertBookmark
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -21,10 +12,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("This is just a fine bookmark.");
             builder.EndBookmark("FineBookmark");
 
-            dataDir = dataDir + "DocumentBuilderInsertBookmark_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertBookmark
-            Console.WriteLine("\nBookmark using DocumentBuilder inserted successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertBookmark.doc");
+            //ExEnd:DocumentBuilderInsertBookmark
         }
     }
 }

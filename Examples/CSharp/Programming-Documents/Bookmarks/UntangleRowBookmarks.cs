@@ -20,8 +20,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
                 throw new Exception("Wrong, the end of the bookmark was deleted.");
 
             doc.Save(ArtifactsDir + "TestDefect1352.doc");
-
-            Console.WriteLine("\nRow bookmark untangled successfully.");
         }
 
         private static void Untangle(Document doc)

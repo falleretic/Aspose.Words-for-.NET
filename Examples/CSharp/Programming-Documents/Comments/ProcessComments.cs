@@ -31,8 +31,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 
             doc.Save(ArtifactsDir + "TestFile.doc");
             //ExEnd:ProcessComments
-
-            Console.WriteLine("\nComments extracted and removed successfully.");
         }
 
         //ExStart:ExtractComments

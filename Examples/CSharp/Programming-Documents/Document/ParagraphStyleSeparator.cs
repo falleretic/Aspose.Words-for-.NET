@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class ParagraphStyleSeparator
+    class ParagraphStyleSeparator : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ParagraphStyleSeparator
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-
-            // Initialize document.
-            string fileName = "TestFile.doc";
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:ParagraphStyleSeparator
+            Document doc = new Document(DocumentDir + "TestFile.doc");
 
             foreach (Paragraph paragraph in doc.GetChildNodes(NodeType.Paragraph, true))
             {
@@ -25,8 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     Console.WriteLine("Separator Found!");
                 }
             }
-
-            // ExEnd:ParagraphStyleSeparator
+            //ExEnd:ParagraphStyleSeparator
         }
     }
 }

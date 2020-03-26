@@ -1,9 +1,5 @@
 ﻿using Aspose.Words.Replacing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {

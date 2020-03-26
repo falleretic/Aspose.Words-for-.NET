@@ -1,28 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WorkingWithImportFormatOptions
+    class WorkingWithImportFormatOptions : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            // Invokes the InsertDocument method shown above to insert a document at a bookmark.
-            SmartStyleBehavior(dataDir);
-            KeepSourceNumbering(dataDir);
-            IgnoreTextBoxes(dataDir);
+            SmartStyleBehavior();
+            KeepSourceNumbering();
+            IgnoreTextBoxes();
         }
 
-        static void SmartStyleBehavior(string dataDir)
+        static void SmartStyleBehavior()
         {
-            // ExStart:SmartStyleBehavior
-            Document srcDoc = new Document(dataDir + "source.docx");
-            Document dstDoc = new Document(dataDir + "destination.docx");
+            //ExStart:SmartStyleBehavior
+            Document srcDoc = new Document(DocumentDir + "source.docx");
+            Document dstDoc = new Document(DocumentDir + "destination.docx");
 
             DocumentBuilder builder = new DocumentBuilder(dstDoc);
             builder.MoveToDocumentEnd();
@@ -31,18 +22,19 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             ImportFormatOptions options = new ImportFormatOptions();
             options.SmartStyleBehavior = true;
             builder.InsertDocument(srcDoc, ImportFormatMode.UseDestinationStyles, options);
-            // ExEnd:SmartStyleBehavior
+            //ExEnd:SmartStyleBehavior
         }
 
-        static void KeepSourceNumbering(string dataDir)
+        static void KeepSourceNumbering()
         {
-            // ExStart:KeepSourceNumbering
-            Document srcDoc = new Document(dataDir + "source.docx");
-            Document dstDoc = new Document(dataDir + "destination.docx");
+            //ExStart:KeepSourceNumbering
+            Document srcDoc = new Document(DocumentDir + "source.docx");
+            Document dstDoc = new Document(DocumentDir + "destination.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
-            // Keep source list formatting when importing numbered paragraphs.
+            // Keep source list formatting when importing numbered paragraphs
             importFormatOptions.KeepSourceNumbering = true;
+            
             NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.KeepSourceFormatting,
                 importFormatOptions);
 
@@ -53,19 +45,20 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 dstDoc.FirstSection.Body.AppendChild(importedNode);
             }
 
-            dstDoc.Save(dataDir + "output.docx");
-            // ExEnd:KeepSourceNumbering
+            dstDoc.Save(ArtifactsDir + "output.docx");
+            //ExEnd:KeepSourceNumbering
         }
 
-        public static void IgnoreTextBoxes(string dataDir)
+        public static void IgnoreTextBoxes()
         {
-            // ExStart:IgnoreTextBoxes
-            Document srcDoc = new Document(dataDir + "source.docx");
-            Document dstDoc = new Document(dataDir + "destination.docx");
+            //ExStart:IgnoreTextBoxes
+            Document srcDoc = new Document(DocumentDir + "source.docx");
+            Document dstDoc = new Document(DocumentDir + "destination.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
-            // Keep the source text boxes formatting when importing.
+            // Keep the source text boxes formatting when importing
             importFormatOptions.IgnoreTextBoxes = false;
+            
             NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.KeepSourceFormatting,
                 importFormatOptions);
 
@@ -76,8 +69,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 dstDoc.FirstSection.Body.AppendChild(importedNode);
             }
 
-            dstDoc.Save(dataDir + "output.docx");
-            // ExEnd:IgnoreTextBoxes
+            dstDoc.Save(ArtifactsDir + "output.docx");
+            //ExEnd:IgnoreTextBoxes
         }
     }
 }

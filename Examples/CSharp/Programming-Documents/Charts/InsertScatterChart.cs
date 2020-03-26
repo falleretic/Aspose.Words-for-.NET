@@ -1,5 +1,4 @@
-﻿using System;
-using Aspose.Words.Drawing;
+﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
@@ -21,8 +20,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "TestInsertScatterChart.docx");
             //ExEnd:InsertScatterChart
-
-            Console.WriteLine("\nScatter chart created successfully.");
         }
     }
 }

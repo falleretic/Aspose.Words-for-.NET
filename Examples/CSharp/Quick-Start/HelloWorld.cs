@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Quick_Start
+﻿namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class HelloWorld : TestDataHelper
     {
@@ -17,8 +15,6 @@ namespace Aspose.Words.Examples.CSharp.Quick_Start
             // Save the document in DOCX format. The format to save as is inferred from the extension of the file name
             // Aspose.Words supports saving any document in many more formats
             doc.Save(ArtifactsDir + "HelloWorld.docx");
-
-            Console.WriteLine("\nNew document created successfully.");
         }
     }
 }

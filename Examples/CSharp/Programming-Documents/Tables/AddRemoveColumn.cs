@@ -1,7 +1,5 @@
-﻿using System.IO;
-using System.Text;
+﻿using System.Text;
 using System.Collections;
-using Aspose.Words;
 using System;
 using Aspose.Words.Tables;
 

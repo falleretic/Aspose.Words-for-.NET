@@ -1,5 +1,4 @@
-﻿using System;
-using Aspose.Words.Drawing;
+﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
@@ -46,8 +45,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             
             doc.Save(ArtifactsDir + "SimpleBarChart.docx");
             //ExEnd:WorkWithChartDataLabel
-
-            Console.WriteLine("\nSimple bar chart created successfully.");
         }
 
         public static void DefaultOptionsForDataLabels()
@@ -72,8 +69,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "Demo.docx");
             //ExEnd:DefaultOptionsForDataLabels
-
-            Console.WriteLine("\nDefault options for data labels of chart series created successfully.");
         }
     }
 }

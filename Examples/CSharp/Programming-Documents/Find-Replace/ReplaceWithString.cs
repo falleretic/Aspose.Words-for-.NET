@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.IO;
-using System.Text.RegularExpressions;
-using Aspose.Words;
-using Aspose.Words.Fields;
-using System;
+﻿using System;
 using Aspose.Words.Replacing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace

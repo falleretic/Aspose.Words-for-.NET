@@ -1,18 +1,13 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using Aspose.Words.Markup;
+﻿using Aspose.Words.Markup;
 using System.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class RichTextBoxContentControl
+    class RichTextBoxContentControl : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RichTextBoxContentControl
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
+            //ExStart:RichTextBoxContentControl
             Document doc = new Document();
             StructuredDocumentTag sdtRichText = new StructuredDocumentTag(doc, SdtType.RichText, MarkupLevel.Block);
 
@@ -24,10 +19,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             sdtRichText.ChildNodes.Add(para);
             doc.FirstSection.Body.AppendChild(sdtRichText);
 
-            dataDir = dataDir + "RichTextBoxContentControl_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:RichTextBoxContentControl
-            Console.WriteLine("\nRich text box type content control created successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "RichTextBoxContentControl.docx");
+            //ExEnd:RichTextBoxContentControl
         }
     }
 }

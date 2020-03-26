@@ -63,8 +63,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "SetAxisProperties.docx");
             //ExEnd:DefineXYAxisProperties
-
-            Console.WriteLine("\nProperties of X and Y axis are set successfully.");
         }
 
         public static void SetDateTimeValuesToAxis()
@@ -102,8 +100,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "SetDateTimeValuesToAxis.docx");
             //ExEnd:SetDateTimeValuesToAxis
-
-            Console.WriteLine("\nDateTime values are set for chart axis successfully.");
         }
 
         public static void SetNumberFormatForAxis()
@@ -129,8 +125,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "FormatAxisNumber.docx");
             //ExEnd:SetNumberFormatForAxis
-            
-            Console.WriteLine("\nSet number format for axis successfully.");
         }
 
         public static void SetBoundsOfAxis()
@@ -156,8 +150,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "SetBoundsOfAxis.docx");
             // ExEnd:SetboundsOfAxis
-
-            Console.WriteLine("\nSet Bounds of chart axis successfully.");
         }
 
         public static void SetIntervalUnitBetweenLabelsOnAxis()
@@ -182,8 +174,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "SetIntervalUnitBetweenLabelsOnAxis.docx");
             //ExEnd:SetIntervalUnitBetweenLabelsOnAxis
-
-            Console.WriteLine("\nSet interval unit between labels on an axis successfully.");
         }
 
         public static void HideChartAxis()
@@ -209,8 +199,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "HideChartAxis.docx");
             //ExEnd:HideChartAxis
-
-            Console.WriteLine("\nY Axis of chart has hidden successfully.");
         }
 
         public static void TickMultiLineLabelAlignment()

@@ -207,7 +207,7 @@
     <Compile Include="Programming-Documents\Document\CheckBoxTypeContentControl.cs" />
     <Compile Include="Programming-Documents\Document\ComboBoxContentControl.cs" />
     <Compile Include="Programming-Documents\Document\SetCompatibilityOptions.cs" />
-    <Compile Include="Programming-Documents\Document\Setuplanguagepreferences.cs" />
+    <Compile Include="Programming-Documents\Document\SetupLanguagePreferences.cs" />
     <Compile Include="Programming-Documents\Document\UpdateContentControls.cs" />
     <Compile Include="Programming-Documents\Document\RichTextBoxContentControl.cs" />
     <Compile Include="Programming-Documents\Document\RemoveTOCFromDocument.cs" />

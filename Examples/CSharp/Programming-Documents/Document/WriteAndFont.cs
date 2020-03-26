@@ -1,22 +1,16 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WriteAndFont
+    class WriteAndFont : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:WriteAndFont
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            // Initialize document.
+            //ExStart:WriteAndFont
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Specify font formatting before adding text.
+            // Specify font formatting before adding text
             Font font = builder.Font;
             font.Size = 16;
             font.Bold = true;
@@ -25,11 +19,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             font.Underline = Underline.Dash;
 
             builder.Write("Sample text.");
-            dataDir = dataDir + "WriteAndFont_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:WriteAndFont
-            Console.WriteLine("\nFormatted text using DocumentBuilder inserted successfully.\nFile saved at " +
-                              dataDir);
+            
+            doc.Save(ArtifactsDir + "WriteAndFont.doc");
+            //ExEnd:WriteAndFont
         }
     }
 }

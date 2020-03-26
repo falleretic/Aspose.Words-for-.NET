@@ -1,5 +1,4 @@
-﻿using System;
-using Aspose.Words.Drawing;
+﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
@@ -22,8 +21,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             
             doc.Save(ArtifactsDir + "TestInsertBubbleChart.docx");
             //ExEnd:InsertBubbleChart
-
-            Console.WriteLine("\nBubble chart created successfully.");
         }
     }
 }

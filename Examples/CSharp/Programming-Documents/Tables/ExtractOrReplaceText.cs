@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using Aspose.Words.Tables;
 using Aspose.Words.Replacing;
 

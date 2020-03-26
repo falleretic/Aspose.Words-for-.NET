@@ -1,31 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class CleansUnusedStylesandLists
+    class CleanUnusedStylesAndLists : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:CleansUnusedStylesandLists
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:CleansUnusedStylesandLists
+            Document doc = new Document(DocumentDir + "Document.doc");
 
-            CleanupOptions cleanupoptions = new CleanupOptions();
-            cleanupoptions.UnusedLists = false;
-            cleanupoptions.UnusedStyles = true;
+            CleanupOptions cleanupOptions = new CleanupOptions();
+            cleanupOptions.UnusedLists = false;
+            cleanupOptions.UnusedStyles = true;
 
-            // Cleans unused styles and lists from the document depending on given CleanupOptions. 
-            doc.Cleanup(cleanupoptions);
+            // Clean unused styles and lists from the document depending on given CleanupOptions
+            doc.Cleanup(cleanupOptions);
 
-            dataDir = dataDir + "Document.Cleanup_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:CleansUnusedStylesandLists
-            Console.WriteLine("\nAll revisions accepted.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "Document.Cleanup.docx");
+            //ExEnd:CleansUnusedStylesandLists
         }
     }
 }

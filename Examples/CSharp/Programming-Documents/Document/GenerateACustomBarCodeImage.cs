@@ -1,30 +1,25 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using Aspose.Words.Fields;
 using System.Drawing;
-using Aspose.BarCode;
 using Aspose.BarCode.Generation;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class GenerateACustomBarCodeImage
+    class GenerateACustomBarCodeImage : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:GenerateACustomBarCodeImage
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            Document doc = new Document(dataDir + @"GenerateACustomBarCodeImage.docx");
+            //ExStart:GenerateACustomBarCodeImage
+            Document doc = new Document(DocumentDir + "GenerateACustomBarCodeImage.docx");
 
             // Set custom barcode generator
             doc.FieldOptions.BarcodeGenerator = new CustomBarcodeGenerator();
-            doc.Save(dataDir + @"GenerateACustomBarCodeImage_out.pdf");
-            // ExEnd:GenerateACustomBarCodeImage
+            doc.Save(DocumentDir + "GenerateACustomBarCodeImage.pdf");
+            //ExEnd:GenerateACustomBarCodeImage
         }
     }
 
-    // ExStart:GenerateACustomBarCodeImage_IBarcodeGenerator
+    //ExStart:GenerateACustomBarCodeImage_IBarcodeGenerator
     public class CustomBarcodeGenerator : IBarcodeGenerator
     {
         /// <summary>
@@ -35,8 +30,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         private static float ConvertSymbolHeight(string heightInTwipsString)
         {
             // Input value is in 1/1440 inches (twips)
-            int heightInTwips = int.MinValue;
-            int.TryParse(heightInTwipsString, out heightInTwips);
+            int.TryParse(heightInTwipsString, out int heightInTwips);
 
             if (heightInTwips == int.MinValue)
                 throw new Exception("Error! Incorrect height - " + heightInTwipsString + ".");
@@ -53,8 +47,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         private static Color ConvertColor(string inputColor)
         {
             // Input should be from "0x000000" to "0xFFFFFF"
-            int color = int.MinValue;
-            int.TryParse(inputColor.Replace("0x", ""), out color);
+            int.TryParse(inputColor.Replace("0x", ""), out int color);
 
             if (color == int.MinValue)
                 throw new Exception("Error! Incorrect color - " + inputColor + ".");
@@ -73,8 +66,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         private static float ConvertScalingFactor(string scalingFactor)
         {
             bool isParsed = false;
-            int percents = int.MinValue;
-            int.TryParse(scalingFactor, out percents);
+            int.TryParse(scalingFactor, out int percents);
 
             if (percents != int.MinValue)
             {
@@ -99,7 +91,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 return null;
 
             string type = parameters.BarcodeType.ToUpper();
-            var encodeType = EncodeTypes.None;
+            SymbologyEncodeType encodeType = EncodeTypes.None;
 
             switch (type)
             {
@@ -132,13 +124,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     break;
             }
 
-            if (encodeType == EncodeTypes.None)
+            if (encodeType.Equals(EncodeTypes.None))
                 return null;
 
             BarcodeGenerator generator = new BarcodeGenerator(encodeType);
             generator.CodeText = parameters.BarcodeValue;
 
-            if (encodeType == EncodeTypes.QR)
+            if (encodeType.Equals(EncodeTypes.QR))
                 generator.Parameters.Barcode.CodeTextParameters.TwoDDisplayText = parameters.BarcodeValue;
 
             if (parameters.ForegroundColor != null)
@@ -163,7 +155,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             const float scale = 1.0f; // Empiric scaling factor for converting Word barcode to Aspose.BarCode
             float xdim = 1.0f;
 
-            if (encodeType == EncodeTypes.QR)
+            if (encodeType.Equals(EncodeTypes.QR))
             {
                 generator.Parameters.Barcode.AutoSizeMode = AutoSizeMode.Nearest;
                 generator.Parameters.Barcode.BarCodeWidth.Millimeters *= scale;
@@ -178,7 +170,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             {
                 float scalingFactor = ConvertScalingFactor(parameters.ScalingFactor);
                 generator.Parameters.Barcode.BarCodeHeight.Millimeters *= scalingFactor;
-                if (encodeType == EncodeTypes.QR)
+                if (encodeType.Equals(EncodeTypes.QR))
                 {
                     generator.Parameters.Barcode.BarCodeWidth.Millimeters =
                         generator.Parameters.Barcode.BarCodeHeight.Millimeters;
@@ -197,6 +189,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             throw new NotImplementedException();
         }
     }
-
-    // ExEnd:GenerateACustomBarCodeImage_IBarcodeGenerator
+    //ExEnd:GenerateACustomBarCodeImage_IBarcodeGenerator
 }

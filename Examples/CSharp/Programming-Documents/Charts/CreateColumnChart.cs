@@ -51,8 +51,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "TestInsertSimpleChartColumn.doc");
             //ExEnd:InsertSimpleColumnChart
-
-            Console.WriteLine("\nSimple column chart created successfully.");
         }
 
         /// <summary>
@@ -73,8 +71,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "TestInsertChartColumn.doc");
             //ExEnd:InsertColumnChart
-
-            Console.WriteLine("\nColumn chart created successfully.");
         }
     }
 }

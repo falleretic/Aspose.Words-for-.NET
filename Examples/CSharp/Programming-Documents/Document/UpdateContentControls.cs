@@ -1,81 +1,73 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using Aspose.Words.Markup;
-using System.Drawing;
+﻿using Aspose.Words.Markup;
 using Aspose.Words.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class UpdateContentControls
+    class UpdateContentControls : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            SetCurrentStateOfCheckBox(dataDir);
-            // Shows how to modify content controls of type plain text box, drop down list and picture.
-            ModifyContentControls(dataDir);
+            SetCurrentStateOfCheckBox();
+            ModifyContentControls();
         }
 
-        public static void SetCurrentStateOfCheckBox(string dataDir)
+        public static void SetCurrentStateOfCheckBox()
         {
-            // ExStart:SetCurrentStateOfCheckBox
+            //ExStart:SetCurrentStateOfCheckBox
             // Open an existing document
-            Document doc = new Document(dataDir + "CheckBoxTypeContentControl.docx");
-
-            DocumentBuilder builder = new DocumentBuilder(doc);
+            Document doc = new Document(DocumentDir + "CheckBoxTypeContentControl.docx");
+            
             // Get the first content control from the document
-            StructuredDocumentTag SdtCheckBox =
+            StructuredDocumentTag sdtCheckBox =
                 (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
 
             // StructuredDocumentTag.Checked property gets/sets current state of the Checkbox SDT
-            if (SdtCheckBox.SdtType == SdtType.Checkbox)
-                SdtCheckBox.Checked = true;
+            if (sdtCheckBox.SdtType == SdtType.Checkbox)
+                sdtCheckBox.Checked = true;
 
-            dataDir = dataDir + "SetCurrentStateOfCheckBox_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:SetCurrentStateOfCheckBox
-            Console.WriteLine("\nCurrent state fo checkbox setup successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetCurrentStateOfCheckBox.docx");
+            //ExEnd:SetCurrentStateOfCheckBox
         }
 
-        public static void ModifyContentControls(string dataDir)
+        public static void ModifyContentControls()
         {
-            // ExStart:ModifyContentControls
+            //ExStart:ModifyContentControls
             // Open an existing document
-            Document doc = new Document(dataDir + "CheckBoxTypeContentControl.docx");
+            Document doc = new Document(DocumentDir + "CheckBoxTypeContentControl.docx");
 
             foreach (StructuredDocumentTag sdt in doc.GetChildNodes(NodeType.StructuredDocumentTag, true))
             {
-                if (sdt.SdtType == SdtType.PlainText)
+                switch (sdt.SdtType)
                 {
-                    sdt.RemoveAllChildren();
-                    Paragraph para = sdt.AppendChild(new Paragraph(doc)) as Paragraph;
-                    Run run = new Run(doc, "new text goes here");
-                    para.AppendChild(run);
-                }
-                else if (sdt.SdtType == SdtType.DropDownList)
-                {
-                    SdtListItem secondItem = sdt.ListItems[2];
-                    sdt.ListItems.SelectedValue = secondItem;
-                }
-                else if (sdt.SdtType == SdtType.Picture)
-                {
-                    Shape shape = (Shape) sdt.GetChild(NodeType.Shape, 0, true);
-                    if (shape.HasImage)
+                    case SdtType.PlainText:
                     {
-                        shape.ImageData.SetImage(dataDir + "Watermark.png");
+                        sdt.RemoveAllChildren();
+                        Paragraph para = sdt.AppendChild(new Paragraph(doc)) as Paragraph;
+                        Run run = new Run(doc, "new text goes here");
+                        para.AppendChild(run);
+                        break;
+                    }
+                    case SdtType.DropDownList:
+                    {
+                        SdtListItem secondItem = sdt.ListItems[2];
+                        sdt.ListItems.SelectedValue = secondItem;
+                        break;
+                    }
+                    case SdtType.Picture:
+                    {
+                        Shape shape = (Shape) sdt.GetChild(NodeType.Shape, 0, true);
+                        if (shape.HasImage)
+                        {
+                            shape.ImageData.SetImage(DocumentDir + "Watermark.png");
+                        }
+
+                        break;
                     }
                 }
             }
-
-
-            dataDir = dataDir + "ModifyContentControls_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:ModifyContentControls
-            Console.WriteLine(
-                "\nPlain text box, drop down list and picture content modified successfully.\nFile saved at " +
-                dataDir);
+            
+            doc.Save(ArtifactsDir + "ModifyContentControls.docx");
+            //ExEnd:ModifyContentControls
         }
     }
 }

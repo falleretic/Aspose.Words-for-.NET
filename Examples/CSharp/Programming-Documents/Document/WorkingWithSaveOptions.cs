@@ -1,55 +1,40 @@
 ﻿using Aspose.Words.Saving;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    public class WorkingWithSaveOptions
+    public class WorkingWithSaveOptions : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-
-            UpdateLastSavedTimeProperty(dataDir);
-            SetMeasureUnitForODT(dataDir);
+            UpdateLastSavedTimeProperty();
+            SetMeasureUnitForOdt();
         }
 
-        public static void UpdateLastSavedTimeProperty(string dataDir)
+        public static void UpdateLastSavedTimeProperty()
         {
-            // ExStart:UpdateLastSavedTimeProperty
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:UpdateLastSavedTimeProperty
+            Document doc = new Document(DocumentDir + "Document.doc");
 
             OoxmlSaveOptions options = new OoxmlSaveOptions();
             options.UpdateLastSavedTimeProperty = true;
 
-            dataDir = dataDir + "UpdateLastSavedTimeProperty_out.docx";
-
-            // Save the document to disk.
-            doc.Save(dataDir, options);
-            // ExEnd:UpdateLastSavedTimeProperty
-            Console.WriteLine("\nUpdated Last Saved Time Property successfully.");
+            doc.Save(ArtifactsDir + "UpdateLastSavedTimeProperty.docx", options);
+            //ExEnd:UpdateLastSavedTimeProperty
         }
 
-        public static void SetMeasureUnitForODT(string dataDir)
+        public static void SetMeasureUnitForOdt()
         {
-            // ExStart:SetMeasureUnitForODT  
-            //Load the Word document
-            Document doc = new Document(dataDir + @"Document.doc");
+            //ExStart:SetMeasureUnitForODT
+            // Load the Word document
+            Document doc = new Document(DocumentDir + "Document.doc");
 
-            //Open Office uses centimeters when specifying lengths, widths and other measurable formatting 
-            //and content properties in documents whereas MS Office uses inches. 
-
+            // Open Office uses centimeters when specifying lengths, widths and other measurable formatting
+            // and content properties in documents whereas MS Office uses inches
             OdtSaveOptions saveOptions = new OdtSaveOptions();
             saveOptions.MeasureUnit = OdtSaveMeasureUnit.Inches;
 
-            //Save the document into ODT
-            doc.Save(dataDir + "MeasureUnit_out.odt", saveOptions);
-            // ExEnd:SetMeasureUnitForODT
-            Console.WriteLine("\nSet MeasureUnit for ODT successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "MeasureUnit.odt", saveOptions);
+            //ExEnd:SetMeasureUnitForODT
         }
     }
 }

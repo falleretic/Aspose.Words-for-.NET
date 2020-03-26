@@ -1,28 +1,15 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class CloningDocument
+    class CloningDocument : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:CloningDocument
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-
-            // Load the document from disk.
-            Document doc = new Document(dataDir + "TestFile.doc");
+            //ExStart:CloningDocument
+            Document doc = new Document(DocumentDir + "TestFile.doc");
 
             Document clone = doc.Clone();
-
-            dataDir = dataDir + "TestFile_clone_out.doc";
-
-            // Save the document to disk.
-            clone.Save(dataDir);
-            // ExEnd:CloningDocument
-            Console.WriteLine("\nDocument cloned successfully.\nFile saved at " + dataDir);
+            clone.Save(ArtifactsDir + "TestFile_clone.doc");
+            //ExEnd:CloningDocument
         }
     }
 }

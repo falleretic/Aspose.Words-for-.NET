@@ -1,19 +1,10 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using System.Drawing;
-using Aspose.Words.Tables;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class DocumentBuilderInsertBreak
+    class DocumentBuilderInsertBreak : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:DocumentBuilderInsertBreak
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            // Initialize document.
+            //ExStart:DocumentBuilderInsertBreak
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -24,11 +15,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.InsertBreak(BreakType.PageBreak);
 
             builder.Writeln("This is page 3.");
-            dataDir = dataDir + "DocumentBuilderInsertBreak_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertBreak
-            Console.WriteLine("\nPage breaks inserted into a document using DocumentBuilder.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertBreak.doc");
+            //ExEnd:DocumentBuilderInsertBreak
         }
     }
 }

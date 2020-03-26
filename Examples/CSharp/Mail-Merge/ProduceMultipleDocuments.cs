@@ -1,14 +1,6 @@
-﻿using Aspose.Words;
-using Aspose.Words.MailMerging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Web;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {

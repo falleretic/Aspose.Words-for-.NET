@@ -1,133 +1,105 @@
-﻿using System;
-using System.Drawing;
-using Aspose.Words;
+﻿using System.Drawing;
 using Aspose.Words.Drawing;
-using Aspose.Words.Drawing.Charts;
 using Aspose.Words.Fields;
-using Aspose.Words.Tables;
 using System.IO;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class DocumentBuilderInsertElements
+    class DocumentBuilderInsertElements : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            InsertTextInputFormField(dataDir);
-            InsertCheckBoxFormField(dataDir);
-            InsertComboBoxFormField(dataDir);
-            InsertHtml(dataDir);
-            InsertHyperlink(dataDir);
-            InsertTableOfContents(dataDir);
-            InsertOleObject(dataDir);
-            InsertOleObjectwithOlePackage(dataDir);
-            GetAccessToOLEObjectRawData(dataDir);
+            InsertTextInputFormField();
+            InsertCheckBoxFormField();
+            InsertComboBoxFormField();
+            InsertHtml();
+            InsertHyperlink();
+            InsertTableOfContents();
+            InsertOleObject();
+            InsertOleObjectWithOlePackage();
+            GetAccessToOLEObjectRawData();
         }
 
-        public static void InsertTextInputFormField(string dataDir)
+        public static void InsertTextInputFormField()
         {
-            // ExStart:DocumentBuilderInsertTextInputFormField
+            //ExStart:DocumentBuilderInsertTextInputFormField
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-
             builder.InsertTextInput("TextInput", TextFormFieldType.Regular, "", "Hello", 0);
-            dataDir = dataDir + "DocumentBuilderInsertTextInputFormField_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertTextInputFormField
-            Console.WriteLine(
-                "\nText input form field using DocumentBuilder inserted successfully into a document.\nFile saved at " +
-                dataDir);
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertTextInputFormField.doc");
+            //ExEnd:DocumentBuilderInsertTextInputFormField
         }
 
-        public static void InsertCheckBoxFormField(string dataDir)
+        public static void InsertCheckBoxFormField()
         {
-            // ExStart:DocumentBuilderInsertCheckBoxFormField
+            //ExStart:DocumentBuilderInsertCheckBoxFormField
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-
             builder.InsertCheckBox("CheckBox", true, true, 0);
-            dataDir = dataDir + "DocumentBuilderInsertCheckBoxFormField_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertCheckBoxFormField
-            Console.WriteLine(
-                "\nCheckbox form field using DocumentBuilder inserted successfully into a document.\nFile saved at " +
-                dataDir);
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertCheckBoxFormField.doc");
+            //ExEnd:DocumentBuilderInsertCheckBoxFormField
         }
 
-        public static void InsertComboBoxFormField(string dataDir)
+        public static void InsertComboBoxFormField()
         {
-            // ExStart:DocumentBuilderInsertComboBoxFormField
-            Document doc = new Document();
-            DocumentBuilder builder = new DocumentBuilder(doc);
-
+            //ExStart:DocumentBuilderInsertComboBoxFormField
             string[] items = { "One", "Two", "Three" };
-            builder.InsertComboBox("DropDown", items, 0);
-            dataDir = dataDir + "DocumentBuilderInsertComboBoxFormField_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertComboBoxFormField
-            Console.WriteLine(
-                "\nCombobox form field using DocumentBuilder inserted successfully into a document.\nFile saved at " +
-                dataDir);
-        }
-
-        public static void InsertHtml(string dataDir)
-        {
-            // ExStart:DocumentBuilderInsertHtml
+            
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.InsertComboBox("DropDown", items, 0);
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertComboBoxFormField.doc");
+            //ExEnd:DocumentBuilderInsertComboBoxFormField
+        }
 
+        public static void InsertHtml()
+        {
+            //ExStart:DocumentBuilderInsertHtml
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
             builder.InsertHtml(
                 "<P align='right'>Paragraph right</P>" +
                 "<b>Implicit paragraph left</b>" +
                 "<div align='center'>Div center</div>" +
                 "<h1 align='left'>Heading 1 left.</h1>");
-            dataDir = dataDir + "DocumentBuilderInsertHtml_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertHtml
-            Console.WriteLine("\nHTML using DocumentBuilder inserted successfully into a document.\nFile saved at " +
-                              dataDir);
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertHtml.doc");
+            //ExEnd:DocumentBuilderInsertHtml
         }
 
-        public static void InsertHyperlink(string dataDir)
+        public static void InsertHyperlink()
         {
-            // ExStart:DocumentBuilderInsertHyperlink
+            //ExStart:DocumentBuilderInsertHyperlink
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-
             builder.Write("Please make sure to visit ");
-
-            // Specify font formatting for the hyperlink.
+            // Specify font formatting for the hyperlink
             builder.Font.Color = Color.Blue;
             builder.Font.Underline = Underline.Single;
-            // Insert the link.
+            // Insert the link
             builder.InsertHyperlink("Aspose Website", "http://www.aspose.com", false);
-
-            // Revert to default formatting.
+            // Revert to default formatting
             builder.Font.ClearFormatting();
-
             builder.Write(" for more information.");
-            dataDir = dataDir + "DocumentBuilderInsertHyperlink_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertHyperlink
-            Console.WriteLine(
-                "\nHyperlink using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertHyperlink.doc");
+            //ExEnd:DocumentBuilderInsertHyperlink
         }
 
-        public static void InsertTableOfContents(string dataDir)
+        public static void InsertTableOfContents()
         {
-            // ExStart:DocumentBuilderInsertTableOfContents
+            //ExStart:DocumentBuilderInsertTableOfContents
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-
-            // Insert a table of contents at the beginning of the document.
+            // Insert a table of contents at the beginning of the document
             builder.InsertTableOfContents("\\o \"1-3\" \\h \\z \\u");
-
-            // Start the actual document content on the second page.
+            // Start the actual document content on the second page
             builder.InsertBreak(BreakType.PageBreak);
-
-            // Build a document with complex structure by applying different heading styles thus creating TOC entries.
+            
+            // Build a document with complex structure by applying different heading styles thus creating TOC entries
             builder.ParagraphFormat.StyleIdentifier = StyleIdentifier.Heading1;
 
             builder.Writeln("Heading 1");
@@ -158,57 +130,51 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             builder.Writeln("Heading 3.3");
 
             doc.UpdateFields();
-            dataDir = dataDir + "DocumentBuilderInsertTableOfContents_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertTableOfContents
-            Console.WriteLine(
-                "\nTable of contents using DocumentBuilder inserted successfully into a document.\nFile saved at " +
-                dataDir);
+
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertTableOfContents.doc");
+            //ExEnd:DocumentBuilderInsertTableOfContents
         }
 
-        public static void InsertOleObject(string dataDir)
+        public static void InsertOleObject()
         {
-            // ExStart:DocumentBuilderInsertOleObject
+            //ExStart:DocumentBuilderInsertOleObject
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
             builder.InsertOleObject("http://www.aspose.com", "htmlfile", true, true, null);
-            dataDir = dataDir + "DocumentBuilderInsertOleObject_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:DocumentBuilderInsertOleObject
-            Console.WriteLine(
-                "\nOleObject using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObject.doc");
+            //ExEnd:DocumentBuilderInsertOleObject
         }
 
-        public static void InsertOleObjectwithOlePackage(string dataDir)
+        public static void InsertOleObjectWithOlePackage()
         {
-            // ExStart:InsertOleObjectwithOlePackage
+            //ExStart:InsertOleObjectwithOlePackage
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-            byte[] bs = File.ReadAllBytes(dataDir + @"input.zip");
+            
+            byte[] bs = File.ReadAllBytes(DocumentDir + "input.zip");
             using (Stream stream = new MemoryStream(bs))
             {
                 Shape shape = builder.InsertOleObject(stream, "Package", true, null);
                 OlePackage olePackage = shape.OleFormat.OlePackage;
                 olePackage.FileName = "filename.zip";
                 olePackage.DisplayName = "displayname.zip";
-                dataDir = dataDir + "DocumentBuilderInsertOleObjectOlePackage_out.doc";
-                doc.Save(dataDir);
+                
+                doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObjectOlePackage.doc");
             }
 
-            // ExEnd:InsertOleObjectwithOlePackage
-            Console.WriteLine(
-                "\nOleObject using DocumentBuilder inserted successfully into a document.\nFile saved at " + dataDir);
+            //ExEnd:InsertOleObjectwithOlePackage
         }
 
-        public static void GetAccessToOLEObjectRawData(string dataDir)
+        public static void GetAccessToOLEObjectRawData()
         {
-            // ExStart:GetAccessToOLEObjectRawData
-            // Load document with OLE object.
-            Document doc = new Document(dataDir + "DocumentBuilderInsertTextInputFormField_out.doc");
+            //ExStart:GetAccessToOLEObjectRawData
+            // Load document with OLE object
+            Document doc = new Document(ArtifactsDir + "DocumentBuilderInsertTextInputFormField.doc");
 
             Shape oleShape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             byte[] oleRawData = oleShape.OleFormat.GetRawData();
-            // ExEnd:GetAccessToOLEObjectRawData
+            //ExEnd:GetAccessToOLEObjectRawData
         }
     }
 }

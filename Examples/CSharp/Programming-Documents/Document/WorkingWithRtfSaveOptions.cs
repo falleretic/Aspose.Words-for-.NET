@@ -1,34 +1,24 @@
 ﻿using Aspose.Words.Saving;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WorkingWithRtfSaveOptions
+    class WorkingWithRtfSaveOptions : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-
-            SavingImagesAsWmf(dataDir);
+            SavingImagesAsWmf();
         }
 
-        public static void SavingImagesAsWmf(string dataDir)
+        public static void SavingImagesAsWmf()
         {
-            // ExStart:SavingImagesAsWmf 
-            string fileName = "TestFile.doc";
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:SavingImagesAsWmf
+            Document doc = new Document(DocumentDir + "TestFile.doc");
 
             RtfSaveOptions saveOpts = new RtfSaveOptions();
             saveOpts.SaveImagesAsWmf = true;
 
-            doc.Save(dataDir + "output.rtf", saveOpts);
+            doc.Save(ArtifactsDir + "output.rtf", saveOpts);
             //ExEnd:SavingImagesAsWmf
-            Console.WriteLine("\nThe document saved successfully.\nFile saved at " + dataDir);
         }
     }
 }

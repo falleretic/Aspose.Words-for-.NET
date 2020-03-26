@@ -1,6 +1,5 @@
 ﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 {
@@ -54,8 +53,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
             doc.Save(ArtifactsDir + "NumberFormat_DataLabel.docx");
             //ExEnd:FormatNumberofDataLabel
-            
-            Console.WriteLine("\nSimple line chart created with formatted data label successfully.");
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Drawing;
-using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
 

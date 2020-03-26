@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Text;
 using System.Text.RegularExpressions;
-using Aspose.Words;
 using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields

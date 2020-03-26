@@ -1,18 +1,12 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
-using Aspose.Words.Markup;
-using System.Drawing;
+﻿using Aspose.Words.Markup;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class ComboBoxContentControl
+    class ComboBoxContentControl : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ComboBoxContentControl
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
+            //ExStart:ComboBoxContentControl
             Document doc = new Document();
             StructuredDocumentTag sdt = new StructuredDocumentTag(doc, SdtType.ComboBox, MarkupLevel.Block);
 
@@ -21,10 +15,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             sdt.ListItems.Add(new SdtListItem("Item 2", "2"));
             doc.FirstSection.Body.AppendChild(sdt);
 
-            dataDir = dataDir + "ComboBoxContentControl_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:ComboBoxContentControl
-            Console.WriteLine("\nCombo box type content control created successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "ComboBoxContentControl.docx");
+            //ExEnd:ComboBoxContentControl
         }
     }
 }

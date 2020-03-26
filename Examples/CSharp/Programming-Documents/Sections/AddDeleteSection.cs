@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Aspose.Words;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
 {

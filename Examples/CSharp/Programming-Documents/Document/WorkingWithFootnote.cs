@@ -1,73 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WorkingWithFootnote
+    class WorkingWithFootnote : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            SetFootNoteColumns(dataDir);
-            SetFootnoteAndEndNotePosition(dataDir);
-            SetEndnoteOptions(dataDir);
+            SetFootNoteColumns();
+            SetFootnoteAndEndNotePosition();
+            SetEndnoteOptions();
         }
 
-        private static void SetFootNoteColumns(string dataDir)
+        private static void SetFootNoteColumns()
         {
-            // ExStart:SetFootNoteColumns
-            Document doc = new Document(dataDir + "TestFile.docx");
+            //ExStart:SetFootNoteColumns
+            Document doc = new Document(DocumentDir + "TestFile.docx");
 
-            //Specify the number of columns with which the footnotes area is formatted. 
+            // Specify the number of columns with which the footnotes area is formatted
             doc.FootnoteOptions.Columns = 3;
-            dataDir = dataDir + "TestFile_Out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetFootNoteColumns      
-            Console.WriteLine("\nFootnote number of columns set successfully.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "TestFile.doc");
+            //ExEnd:SetFootNoteColumns
         }
 
-        private static void SetFootnoteAndEndNotePosition(string dataDir)
+        private static void SetFootnoteAndEndNotePosition()
         {
-            // ExStart:SetFootnoteAndEndNotePosition
-            Document doc = new Document(dataDir + "TestFile.docx");
+            //ExStart:SetFootnoteAndEndNotePosition
+            Document doc = new Document(DocumentDir + "TestFile.docx");
 
-            //Set footnote and endnode position.
+            // Set footnote and endnode position
             doc.FootnoteOptions.Position = FootnotePosition.BeneathText;
             doc.EndnoteOptions.Position = EndnotePosition.EndOfSection;
-            dataDir = dataDir + "TestFile_Out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetFootnoteAndEndNotePosition      
-            Console.WriteLine("\nFootnote number of columns set successfully.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "TestFile_Out.doc");
+            //ExEnd:SetFootnoteAndEndNotePosition
         }
 
-        private static void SetEndnoteOptions(string dataDir)
+        private static void SetEndnoteOptions()
         {
-            // ExStart:SetEndnoteOptions
-            Document doc = new Document(dataDir + "TestFile.docx");
-
+            //ExStart:SetEndnoteOptions
+            Document doc = new Document(DocumentDir + "TestFile.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
             builder.Write("Some text");
-
             builder.InsertFootnote(FootnoteType.Endnote, "Eootnote text.");
 
             EndnoteOptions option = doc.EndnoteOptions;
             option.RestartRule = FootnoteNumberingRule.RestartPage;
             option.Position = EndnotePosition.EndOfSection;
 
-            dataDir = dataDir + "TestFile_Out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetEndnoteOptions      
-            Console.WriteLine("\nEootnote is inserted at the end of section successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "TestFile.doc");
+            //ExEnd:SetEndnoteOptions
         }
     }
 }

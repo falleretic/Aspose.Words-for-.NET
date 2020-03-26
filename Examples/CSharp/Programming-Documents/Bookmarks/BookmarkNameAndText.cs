@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class BookmarkNameAndText : TestDataHelper
     {
@@ -20,8 +18,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             bookmark.Name = "RenamedBookmark";
             bookmark.Text = "This is a new bookmarked text.";
             //ExEnd:BookmarkNameAndText
-
-            Console.WriteLine("\nBookmark text and name get and set successfully.");
         }
     }
 }

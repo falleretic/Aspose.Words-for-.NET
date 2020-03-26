@@ -1,13 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Drawing;
-using Aspose.Words;
-using Aspose.Words.Layout;
-using Aspose.Words.Rendering;
-using Aspose.Words.Saving;
-using Aspose.Words.Drawing;
-using System.Drawing.Imaging;
-using Aspose.Words.Tables;
+﻿using Aspose.Words.Rendering;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {

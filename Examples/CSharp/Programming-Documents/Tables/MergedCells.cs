@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Drawing;
-using Aspose.Words;
 using Aspose.Words.Tables;
-using System.Diagnostics;
 using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables

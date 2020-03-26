@@ -1,4 +1,3 @@
-using System;
 using Aspose.Words;
 using Aspose.Words.Drawing;
 using Aspose.Words.Fields;

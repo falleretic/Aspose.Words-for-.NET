@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Tables;
 using System.Collections.Generic;

@@ -1,46 +1,41 @@
-﻿using System.IO;
-using Aspose.Words;
-using System;
+﻿using System;
 using Aspose.Words.Layout;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WorkingWithRevisions
+    class WorkingWithRevisions : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-            AcceptRevisions(dataDir);
-            GetRevisionTypes(dataDir);
-            GetRevisionGroups(dataDir);
-            SetShowCommentsinPDF(dataDir);
-            GetRevisionGroupDetails(dataDir);
-            AccessRevisedVersion(dataDir);
+            AcceptRevisions();
+            GetRevisionTypes();
+            GetRevisionGroups();
+            SetShowCommentsInPDF();
+            SetShowInBalloons();
+            GetRevisionGroupDetails();
+            AccessRevisedVersion();
         }
 
-        private static void AcceptRevisions(string dataDir)
+        private static void AcceptRevisions()
         {
-            // ExStart:AcceptAllRevisions
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:AcceptAllRevisions
+            Document doc = new Document(DocumentDir + "Document.doc");
 
-            // Start tracking and make some revisions.
+            // Start tracking and make some revisions
             doc.StartTrackRevisions("Author");
             doc.FirstSection.Body.AppendParagraph("Hello world!");
 
-            // Revisions will now show up as normal text in the output document.
+            // Revisions will now show up as normal text in the output document
             doc.AcceptAllRevisions();
-
-            dataDir = dataDir + "Document.AcceptedRevisions_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:AcceptAllRevisions
-            Console.WriteLine("\nAll revisions accepted.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "Document.AcceptedRevisions.doc");
+            //ExEnd:AcceptAllRevisions
         }
 
-        private static void GetRevisionTypes(string dataDir)
+        private static void GetRevisionTypes()
         {
-            // ExStart:GetRevisionTypes
-            Document doc = new Document(dataDir + "Revisions.docx");
+            //ExStart:GetRevisionTypes
+            Document doc = new Document(DocumentDir + "Revisions.docx");
 
             ParagraphCollection paragraphs = doc.FirstSection.Body.Paragraphs;
             for (int i = 0; i < paragraphs.Count; i++)
@@ -50,56 +45,52 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 if (paragraphs[i].IsMoveToRevision)
                     Console.WriteLine("The paragraph {0} has been moved (inserted).", i);
             }
-
-            // ExEnd:GetRevisionTypes
+            //ExEnd:GetRevisionTypes
         }
 
-        private static void GetRevisionGroups(string dataDir)
+        private static void GetRevisionGroups()
         {
-            // ExStart:GetRevisionGroups
-            Document doc = new Document(dataDir + "Revisions.docx");
+            //ExStart:GetRevisionGroups
+            Document doc = new Document(DocumentDir + "Revisions.docx");
 
             foreach (RevisionGroup group in doc.Revisions.Groups)
             {
                 Console.WriteLine("{0}, {1}:", group.Author, group.RevisionType);
                 Console.WriteLine(group.Text);
             }
-
-            // ExEnd:GetRevisionGroups
+            //ExEnd:GetRevisionGroups
         }
 
-        private static void SetShowCommentsinPDF(string dataDir)
+        private static void SetShowCommentsInPDF()
         {
-            // ExStart:SetShowCommentsinPDF
-            Document doc = new Document(dataDir + "Revisions.docx");
+            //ExStart:SetShowCommentsinPDF
+            Document doc = new Document(DocumentDir + "Revisions.docx");
 
-            //Do not render the comments in PDF
+            // Do not render the comments in PDF
             doc.LayoutOptions.ShowComments = false;
-            doc.Save(dataDir + "RemoveCommentsinPDF_out.pdf");
-            // ExEnd:SetShowCommentsinPDF
-            Console.WriteLine("\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "RemoveCommentsInPDF.pdf");
+            //ExEnd:SetShowCommentsinPDF
         }
 
-        private static void SetShowInBalloons(string dataDir)
+        private static void SetShowInBalloons()
         {
-            // ExStart:SetShowInBalloons
-            Document doc = new Document(dataDir + "Revisions.docx");
+            //ExStart:SetShowInBalloons
+            Document doc = new Document(DocumentDir + "Revisions.docx");
 
-            // Renders insert and delete revisions inline, format revisions in balloons.
+            // Renders insert and delete revisions inline, format revisions in balloons
             doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.Format;
 
-            // Renders insert revisions inline, delete and format revisions in balloons.
+            // Renders insert revisions inline, delete and format revisions in balloons
             //doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.FormatAndDelete;
 
-            doc.Save(dataDir + "SetShowInBalloons_out.pdf");
-            // ExEnd:SetShowInBalloons
-            Console.WriteLine("\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetShowInBalloons.pdf");
+            //ExEnd:SetShowInBalloons
         }
 
-        private static void GetRevisionGroupDetails(string dataDir)
+        private static void GetRevisionGroupDetails()
         {
-            // ExStart:GetRevisionGroupDetails
-            Document doc = new Document(dataDir + "TestFormatDescription.docx");
+            //ExStart:GetRevisionGroupDetails
+            Document doc = new Document(DocumentDir + "TestFormatDescription.docx");
 
             foreach (Revision revision in doc.Revisions)
             {
@@ -113,17 +104,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 Console.WriteLine("Revision text: " + revision.ParentNode.ToString(SaveFormat.Text));
                 Console.WriteLine(groupText);
             }
-
-            // ExEnd:GetRevisionGroupDetails
+            //ExEnd:GetRevisionGroupDetails
         }
 
-        private static void AccessRevisedVersion(string dataDir)
+        private static void AccessRevisedVersion()
         {
-            // ExStart:AccessRevisedVersion
-            Document doc = new Document(dataDir + "Test.docx");
+            //ExStart:AccessRevisedVersion
+            Document doc = new Document(DocumentDir + "Test.docx");
             doc.UpdateListLabels();
 
-            // Switch to the revised version of the document.
+            // Switch to the revised version of the document
             doc.RevisionsView = RevisionsView.Final;
 
             foreach (Revision revision in doc.Revisions)
@@ -133,14 +123,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                     Paragraph paragraph = (Paragraph) revision.ParentNode;
                     if (paragraph.IsListItem)
                     {
-                        // Print revised version of LabelString and ListLevel.
+                        // Print revised version of LabelString and ListLevel
                         Console.WriteLine(paragraph.ListLabel.LabelString);
                         Console.WriteLine(paragraph.ListFormat.ListLevel);
                     }
                 }
             }
-
-            // ExEnd:AccessRevisedVersion
+            //ExEnd:AccessRevisedVersion
         }
     }
 }

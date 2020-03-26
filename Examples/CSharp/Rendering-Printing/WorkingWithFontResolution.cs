@@ -1,9 +1,5 @@
 ﻿using Aspose.Words.Fonts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {

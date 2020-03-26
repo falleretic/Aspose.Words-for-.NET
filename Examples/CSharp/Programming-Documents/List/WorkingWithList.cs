@@ -1,11 +1,7 @@
 ﻿using Aspose.Words.Lists;
 using Aspose.Words.Saving;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
 {

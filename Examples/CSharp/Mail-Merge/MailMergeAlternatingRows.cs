@@ -1,16 +1,8 @@
-﻿using Aspose.Words;
-// ExStart:MailMergingNamespace
+﻿// ExStart:MailMergingNamespace
 using Aspose.Words.MailMerging;
 // ExEnd:MailMergingNamespace
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Web;
 using System.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge

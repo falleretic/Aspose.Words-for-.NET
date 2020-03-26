@@ -29,8 +29,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             
             doc.Save(ArtifactsDir + "TestInsertAreaChart.docx");
             //ExEnd:InsertAreaChart
-
-            Console.WriteLine("\nScatter chart created successfully.");
         }
     }
 }

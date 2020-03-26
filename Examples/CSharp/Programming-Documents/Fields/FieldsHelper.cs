@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.IO;
-using Aspose.Words;
+﻿using System.Collections;
 using Aspose.Words.Tables;
 using Aspose.Words.Fields;
-using Aspose.Words.Layout;
 using System.Diagnostics;
 using System.Linq;
 

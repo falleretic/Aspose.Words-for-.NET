@@ -1,39 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.IO;
-using Aspose.Words;
-using Aspose.Words.Tables;
-using Aspose.Words.Fields;
+﻿using System.Collections;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class ExtractContentBetweenCommentRange
+    class ExtractContentBetweenCommentRange : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ExtractContentBetweenCommentRange
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
+            //ExStart:ExtractContentBetweenCommentRange
+            Document doc = new Document(DocumentDir + "TestFile.doc");
 
-            Document doc = new Document(dataDir + "TestFile.doc");
-
-            // This is a quick way of getting both comment nodes.
-            // Your code should have a proper method of retrieving each corresponding start and end node.
+            // This is a quick way of getting both comment nodes
+            // Your code should have a proper method of retrieving each corresponding start and end node
             CommentRangeStart commentStart = (CommentRangeStart) doc.GetChild(NodeType.CommentRangeStart, 0, true);
             CommentRangeEnd commentEnd = (CommentRangeEnd) doc.GetChild(NodeType.CommentRangeEnd, 0, true);
 
-            // Firstly extract the content between these nodes including the comment as well. 
+            // Firstly extract the content between these nodes including the comment as well
             ArrayList extractedNodesInclusive = Common.ExtractContent(commentStart, commentEnd, true);
             Document dstDoc = Common.GenerateDocument(doc, extractedNodesInclusive);
-            dstDoc.Save(dataDir + "TestFile.CommentInclusive_out.doc");
+            dstDoc.Save(ArtifactsDir + "TestFile.CommentInclusive.doc");
 
-            // Secondly extract the content between these nodes without the comment.
+            // Secondly extract the content between these nodes without the comment
             ArrayList extractedNodesExclusive = Common.ExtractContent(commentStart, commentEnd, false);
             dstDoc = Common.GenerateDocument(doc, extractedNodesExclusive);
-            dstDoc.Save(dataDir + "TestFile.CommentExclusive_out.doc");
-            // ExEnd:ExtractContentBetweenCommentRange
-            Console.WriteLine("\nExtracted content between the comment range successfully.\nFile saved at " + dataDir +
-                              "TestFile.CommentExclusive_out.doc");
+            dstDoc.Save(ArtifactsDir + "TestFile.CommentExclusive.doc");
+            //ExEnd:ExtractContentBetweenCommentRange
         }
     }
 }
