@@ -1,27 +1,20 @@
-﻿using System;
-using Aspose.Words.Fields;
+﻿using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class ConvertFieldsInDocument
+    class ConvertFieldsInDocument : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ConvertFieldsInDocument
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            string fileName = "TestFile.doc";
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:ConvertFieldsInDocument
+            Document doc = new Document(FieldsDir + "TestFile.doc");
 
-            // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to static text.
+            // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to static text
             FieldsHelper.ConvertFieldsToStaticText(doc, FieldType.FieldIf);
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            // Save the document with fields transformed to disk.
-            doc.Save(dataDir);
-            // ExEnd:ConvertFieldsInDocument
-            Console.WriteLine("\nConverted fields to static text in the document successfully.\nFile saved at " +
-                              dataDir);
+            // Save the document with fields transformed to disk
+            doc.Save(ArtifactsDir + "TestFile.doc");
+            //ExEnd:ConvertFieldsInDocument
         }
     }
 }

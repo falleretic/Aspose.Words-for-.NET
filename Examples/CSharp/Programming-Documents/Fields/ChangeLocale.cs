@@ -4,34 +4,28 @@ using System.Globalization;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class ChangeLocale
+    class ChangeLocale : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ChangeLocale
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-
-            // Create a blank document.
+            //ExStart:ChangeLocale
             Document doc = new Document();
-            DocumentBuilder b = new DocumentBuilder(doc);
-            b.InsertField("MERGEFIELD Date");
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.InsertField("MERGEFIELD Date");
 
-            // Store the current culture so it can be set back once mail merge is complete.
+            // Store the current culture so it can be set back once mail merge is complete
             CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
-            // Set to German language so dates and numbers are formatted using this culture during mail merge.
+            // Set to German language so dates and numbers are formatted using this culture during mail merge
             Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
 
-            // Execute mail merge.
-            doc.MailMerge.Execute(new string[] { "Date" }, new object[] { DateTime.Now });
-
-            // Restore the original culture.
+            // Execute mail merge
+            doc.MailMerge.Execute(new[] { "Date" }, new object[] { DateTime.Now });
+            
+            // Restore the original culture
             Thread.CurrentThread.CurrentCulture = currentCulture;
-            doc.Save(dataDir + "Field.ChangeLocale_out.doc");
-            // ExEnd:ChangeLocale
-
-            Console.WriteLine(
-                "\nCulture changed successfully used in formatting fields during update.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "Field.ChangeLocale.doc");
+            //ExEnd:ChangeLocale
         }
     }
 }

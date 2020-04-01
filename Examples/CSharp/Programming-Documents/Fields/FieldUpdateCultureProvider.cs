@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    // ExStart:FieldUpdateCultureProviderGetCulture
+    //ExStart:FieldUpdateCultureProviderGetCulture
     class FieldUpdateCultureProvider : IFieldUpdateCultureProvider
     {
         public CultureInfo GetCulture(string name, Field field)
@@ -53,6 +53,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             }
         }
     }
-
-    // ExEnd:FieldUpdateCultureProviderGetCulture   
+    //ExEnd:FieldUpdateCultureProviderGetCulture   
 }

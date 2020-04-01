@@ -2,7 +2,7 @@
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    public class WorkingWithSaveOptions : TestDataHelper
+    class WorkingWithSaveOptions : TestDataHelper
     {
         public static void Run()
         {

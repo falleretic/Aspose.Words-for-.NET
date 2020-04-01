@@ -14,6 +14,7 @@ namespace Aspose.Words.Examples.CSharp
             ChartsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Charts/").LocalPath;
             CommentsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Comments/").LocalPath;
             DocumentDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Document/").LocalPath;
+            FieldsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Fields/").LocalPath;
         }
 
         private static string GetDataDir_Data()
@@ -65,6 +66,11 @@ namespace Aspose.Words.Examples.CSharp
         /// Gets the path to the license used by the code examples.
         /// </summary>
         internal static string DocumentDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string FieldsDir { get; }
 
         /// <summary>
         /// Gets the path to the documents used by the code examples. Ends with a back slash.
