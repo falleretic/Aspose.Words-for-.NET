@@ -1,25 +1,19 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
 {
-    class CopySection
+    class CopySection : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:CopySection
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithSections();
-
-            Document srcDoc = new Document(dataDir + "Document.doc");
+            //ExStart:CopySection
+            Document srcDoc = new Document(SectionsDir + "Document.doc");
             Document dstDoc = new Document();
 
             Section sourceSection = srcDoc.Sections[0];
             Section newSection = (Section) dstDoc.ImportNode(sourceSection, true);
             dstDoc.Sections.Add(newSection);
-            dataDir = dataDir + "Document.Copy_out.doc";
-            dstDoc.Save(dataDir);
-            // ExEnd:CopySection
-            Console.WriteLine("\nSection copied successfully.\nFile saved at " + dataDir);
+            
+            dstDoc.Save(ArtifactsDir + "CopySection.docx");
+            //ExEnd:CopySection
         }
     }
 }

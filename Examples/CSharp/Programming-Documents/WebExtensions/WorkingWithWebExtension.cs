@@ -1,21 +1,17 @@
 ﻿using Aspose.Words.WebExtensions;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Web_Extensions
 {
-    class WorkingWithWebExtension
+    class WorkingWithWebExtension : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithWebExtensions();
-
-            UsingWebExtensionTaskPanes(dataDir);
+            UsingWebExtensionTaskPanes();
         }
 
-        public static void UsingWebExtensionTaskPanes(string dataDir)
+        public static void UsingWebExtensionTaskPanes()
         {
-            // ExStart:UsingWebExtensionTaskPanes
+            //ExStart:UsingWebExtensionTaskPanes
             Document doc = new Document();
 
             TaskPane taskPane = new TaskPane();
@@ -33,9 +29,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Web_Extensions
             taskPane.WebExtension.Bindings.Add(new WebExtensionBinding("UnnamedBinding_0_1506535429545",
                 WebExtensionBindingType.Text, "194740422"));
 
-            doc.Save(dataDir + "output.docx", SaveFormat.Docx);
-            // ExEnd:UsingWebExtensionTaskPanes 
-            Console.WriteLine("\nThe file is saved successfully at " + dataDir);
+            doc.Save(ArtifactsDir + "output.docx");
+            //ExEnd:UsingWebExtensionTaskPanes
         }
     }
 }

@@ -1,53 +1,46 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
 {
-    class AddDeleteSection
+    class AddDeleteSection : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithSections() + "Section.AddRemove.doc";
-            AddSection(dataDir);
-            DeleteSection(dataDir);
-            DeleteAllSections(dataDir);
+            AddSection();
+            DeleteSection();
+            DeleteAllSections();
         }
 
         /// <summary>
         /// Shows how to add a section to the end of the document.
         /// </summary>
-        private static void AddSection(string dataDir)
+        private static void AddSection()
         {
-            // ExStart:AddSection
-            Document doc = new Document(dataDir);
+            //ExStart:AddSection
+            Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
             Section sectionToAdd = new Section(doc);
             doc.Sections.Add(sectionToAdd);
-            // ExEnd:AddSection
-            Console.WriteLine("\nSection added successfully to the end of the document.");
+            //ExEnd:AddSection
         }
 
         /// <summary>
         /// Shows how to remove a section at the specified index.
         /// </summary>
-        private static void DeleteSection(string dataDir)
+        private static void DeleteSection()
         {
-            // ExStart:DeleteSection
-            Document doc = new Document(dataDir);
+            //ExStart:DeleteSection
+            Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
             doc.Sections.RemoveAt(0);
-            // ExEnd:DeleteSection
-            Console.WriteLine("\nSection deleted successfully at 0 index.");
+            //ExEnd:DeleteSection
         }
 
         /// <summary>
         /// Shows how to remove all sections from a document.
         /// </summary>
-        private static void DeleteAllSections(string dataDir)
+        private static void DeleteAllSections()
         {
-            // ExStart:DeleteAllSections
-            Document doc = new Document(dataDir);
+            //ExStart:DeleteAllSections
+            Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
             doc.Sections.Clear();
-            // ExEnd:DeleteAllSections
-            Console.WriteLine("\nAll sections deleted successfully form the document.");
+            //ExEnd:DeleteAllSections
         }
     }
 }

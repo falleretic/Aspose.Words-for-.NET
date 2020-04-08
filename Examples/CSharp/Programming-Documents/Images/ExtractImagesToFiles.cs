@@ -1,19 +1,17 @@
-﻿using System;
-using Aspose.Words.Drawing;
+﻿using Aspose.Words.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 {
-    class ExtractImagesToFiles
+    class ExtractImagesToFiles : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ExtractImagesToFiles
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithImages();
-            Document doc = new Document(dataDir + "Image.SampleImages.doc");
+            //ExStart:ExtractImagesToFiles
+            Document doc = new Document(ImagesDir + "Image.SampleImages.doc");
 
             NodeCollection shapes = doc.GetChildNodes(NodeType.Shape, true);
             int imageIndex = 0;
+            
             foreach (Shape shape in shapes)
             {
                 if (shape.HasImage)
@@ -21,13 +19,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                     string imageFileName = string.Format(
                         "Image.ExportImages.{0}_out{1}", imageIndex,
                         FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType));
-                    shape.ImageData.Save(dataDir + imageFileName);
+
+                    shape.ImageData.Save(ArtifactsDir + imageFileName);
                     imageIndex++;
                 }
             }
-
-            // ExEnd:ExtractImagesToFiles
-            Console.WriteLine("\nAll images extracted from document.");
+            //ExEnd:ExtractImagesToFiles
         }
     }
 }

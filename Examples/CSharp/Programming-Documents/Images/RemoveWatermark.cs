@@ -2,18 +2,17 @@
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 {
-    class RemoveWatermark
+    internal class RemoveWatermark : TestDataHelper
+
     {
-        // ExStart:RemoveWatermark
+        //ExStart:RemoveWatermark
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithImages();
-            string fileName = "RemoveWatermark.docx";
-            Document doc = new Document(dataDir + fileName);
+            Document doc = new Document(ImagesDir + "RemoveWatermark.docx");
+            
             RemoveWatermarkText(doc);
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            doc.Save(dataDir);
+            
+            doc.Save(ArtifactsDir + "RemoveWatermark.docx");
         }
 
         private static void RemoveWatermarkText(Document doc)
@@ -30,6 +29,5 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             }
         }
     }
-
-    // ExEnd:RemoveWatermark
+    //ExEnd:RemoveWatermark
 }

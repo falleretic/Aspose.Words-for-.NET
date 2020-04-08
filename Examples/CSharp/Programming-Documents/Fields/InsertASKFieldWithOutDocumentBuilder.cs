@@ -1,16 +1,13 @@
-﻿using System;
-using Aspose.Words.Fields;
+﻿using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class InsertASKFieldWithOutDocumentBuilder
+    class InsertASKFieldWithOutDocumentBuilder : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:InsertASKFieldWithOutDocumentBuilder
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            Document doc = new Document(dataDir + "in.doc");
+            //ExStart:InsertASKFieldWithOutDocumentBuilder
+            Document doc = new Document(FieldsDir + "in.doc");
             // Get paragraph you want to append this Ask field to
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
@@ -35,12 +32,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Finally update this Ask field
             field.Update();
 
-            dataDir = dataDir + "InsertASKFieldWithOutDocumentBuilder_out.doc";
-            doc.Save(dataDir);
-
-            // ExEnd:InsertASKFieldWithOutDocumentBuilder
-            Console.WriteLine("\nASK field without using document builder inserted successfully.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "InsertASKFieldWithOutDocumentBuilder.doc");
+            //ExEnd:InsertASKFieldWithOutDocumentBuilder
         }
     }
 }

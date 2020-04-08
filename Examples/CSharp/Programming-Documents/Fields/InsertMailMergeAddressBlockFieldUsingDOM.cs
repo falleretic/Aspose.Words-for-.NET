@@ -1,16 +1,13 @@
-﻿using System;
-using Aspose.Words.Fields;
+﻿using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class InsertMailMergeAddressBlockFieldUsingDOM
+    class InsertMailMergeAddressBlockFieldUsingDOM : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:InsertMailMergeAddressBlockFieldUsingDOM
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            Document doc = new Document(dataDir + "in.doc");
+            //ExStart:InsertMailMergeAddressBlockFieldUsingDOM
+            Document doc = new Document(FieldsDir + "in.doc");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Get paragraph you want to append this merge field to
@@ -43,12 +40,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Finally update this merge field
             field.Update();
 
-            dataDir = dataDir + "InsertMailMergeAddressBlockFieldUsingDOM_out.doc";
-            doc.Save(dataDir);
-
-            // ExEnd:InsertMailMergeAddressBlockFieldUsingDOM
-            Console.WriteLine("\nMail Merge address block field using DOM inserted successfully.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "InsertMailMergeAddressBlockFieldUsingDOM.doc");
+            //ExEnd:InsertMailMergeAddressBlockFieldUsingDOM
         }
     }
 }

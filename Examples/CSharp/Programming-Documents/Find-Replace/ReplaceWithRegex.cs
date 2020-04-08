@@ -1,27 +1,21 @@
 ﻿using System.Text.RegularExpressions;
-using System;
 using Aspose.Words.Replacing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
-    class ReplaceWithRegex
+    class ReplaceWithRegex : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ReplaceWithRegex
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_FindAndReplace();
-
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:ReplaceWithRegex
+            Document doc = new Document(FindReplaceDir + "Document.doc");
 
             FindReplaceOptions options = new FindReplaceOptions();
 
             doc.Range.Replace(new Regex("[s|m]ad"), "bad", options);
 
-            dataDir = dataDir + "ReplaceWithRegex_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:ReplaceWithRegex
-            Console.WriteLine("\nText replaced with regex successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "ReplaceWithRegex.doc");
+            //ExEnd:ReplaceWithRegex
         }
     }
 }

@@ -1,19 +1,13 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Ranges
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Ranges
 {
-    class RangesGetText
+    class RangesGetText : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RangesGetText
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithRanges();
-
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:RangesGetText
+            Document doc = new Document(RangeDir + "Document.doc");
             string text = doc.Range.Text;
-            // ExEnd:RangesGetText
-            Console.WriteLine("\nDocument have following text range " + text);
+            //ExEnd:RangesGetText
         }
     }
 }

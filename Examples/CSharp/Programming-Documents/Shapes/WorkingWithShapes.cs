@@ -3,82 +3,73 @@ using Aspose.Words.Saving;
 using Aspose.Words.Settings;
 using System;
 using System.Drawing;
+using System.Linq;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
 {
-    public class WorkingWithShapes
+    internal class WorkingWithShapes : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithShapes();
-            SetShapeLayoutInCell(dataDir);
-            SetAspectRatioLocked(dataDir);
-            InsertShapeUsingDocumentBuilder(dataDir);
-            AddCornersSnipped(dataDir);
-            GetActualShapeBoundsPoints(dataDir);
-            SpecifyVerticalAnchor(dataDir);
-            DetectSmartArtShape(dataDir);
-            InsertOLEObjectAsIcon(dataDir);
+            SetShapeLayoutInCell();
+            SetAspectRatioLocked();
+            InsertShapeUsingDocumentBuilder();
+            AddCornersSnipped();
+            GetActualShapeBoundsPoints();
+            SpecifyVerticalAnchor();
+            DetectSmartArtShape();
+            InsertOleObjectAsIcon();
         }
 
-        public static void InsertShapeUsingDocumentBuilder(string dataDir)
+        public static void InsertShapeUsingDocumentBuilder()
         {
-            // ExStart:InsertShapeUsingDocumentBuilder
+            //ExStart:InsertShapeUsingDocumentBuilder
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            //Free-floating shape insertion.
+            // Free-floating shape insertion
             Shape shape = builder.InsertShape(ShapeType.TextBox, RelativeHorizontalPosition.Page, 100,
                 RelativeVerticalPosition.Page, 100, 50, 50, WrapType.None);
             shape.Rotation = 30.0;
 
             builder.Writeln();
 
-            //Inline shape insertion.
+            // Inline shape insertion
             shape = builder.InsertShape(ShapeType.TextBox, 50, 50);
             shape.Rotation = 30.0;
 
-            OoxmlSaveOptions so = new OoxmlSaveOptions(SaveFormat.Docx);
-            // "Strict" or "Transitional" compliance allows to save shape as DML.
-            so.Compliance = OoxmlCompliance.Iso29500_2008_Transitional;
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions(SaveFormat.Docx);
+            // "Strict" or "Transitional" compliance allows to save shape as DML
+            saveOptions.Compliance = OoxmlCompliance.Iso29500_2008_Transitional;
 
-            dataDir = dataDir + "Shape_InsertShapeUsingDocumentBuilder_out.docx";
-
-            // Save the document to disk.
-            doc.Save(dataDir, so);
-            // ExEnd:InsertShapeUsingDocumentBuilder
-            Console.WriteLine("\nInsert Shape successfully using DocumentBuilder.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "Shape_InsertShapeUsingDocumentBuilder.docx", saveOptions);
+            //ExEnd:InsertShapeUsingDocumentBuilder
         }
 
-        public static void SetAspectRatioLocked(string dataDir)
+        public static void SetAspectRatioLocked()
         {
-            // ExStart:SetAspectRatioLocked
+            //ExStart:SetAspectRatioLocked
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
-            var shape = builder.InsertImage(dataDir + "Test.png");
+
+            Shape shape = builder.InsertImage(ShapesDir + "Test.png");
             shape.AspectRatioLocked = false;
 
-            dataDir = dataDir + "Shape_AspectRatioLocked_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetAspectRatioLocked
-            Console.WriteLine("\nShape's AspectRatioLocked property is set successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "Shape_AspectRatioLocked.doc");
+            //ExEnd:SetAspectRatioLocked
         }
 
-        public static void SetShapeLayoutInCell(string dataDir)
+        public static void SetShapeLayoutInCell()
         {
-            // ExStart:SetShapeLayoutInCell
-
-            Document doc = new Document(dataDir + @"LayoutInCell.docx");
+            //ExStart:SetShapeLayoutInCell
+            Document doc = new Document(ShapesDir + "LayoutInCell.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             Shape watermark = new Shape(doc, ShapeType.TextPlainText);
             watermark.RelativeHorizontalPosition = RelativeHorizontalPosition.Page;
             watermark.RelativeVerticalPosition = RelativeVerticalPosition.Page;
-            watermark.IsLayoutInCell =
-                true; // Display the shape outside of table cell if it will be placed into a cell.
+            // Display the shape outside of table cell if it will be placed into a cell
+            watermark.IsLayoutInCell = true;
 
             watermark.Width = 300;
             watermark.Height = 70;
@@ -101,88 +92,78 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             builder.InsertNode(watermark);
             doc.CompatibilityOptions.OptimizeFor(MsWordVersion.Word2010);
 
-            dataDir = dataDir + "Shape_IsLayoutInCell_out.docx";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetShapeLayoutInCell
-            Console.WriteLine("\nShape's IsLayoutInCell property is set successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "Shape_IsLayoutInCell.docx");
+            //ExEnd:SetShapeLayoutInCell
         }
 
-        public static void AddCornersSnipped(string dataDir)
+        public static void AddCornersSnipped()
         {
-            // ExStart:AddCornersSnipped
+            //ExStart:AddCornersSnipped
             Document doc = new Document();
+            
             DocumentBuilder builder = new DocumentBuilder(doc);
-            Shape shape = builder.InsertShape(ShapeType.TopCornersSnipped, 50, 50);
+            builder.InsertShape(ShapeType.TopCornersSnipped, 50, 50);
 
-            OoxmlSaveOptions so = new OoxmlSaveOptions(SaveFormat.Docx);
-            so.Compliance = OoxmlCompliance.Iso29500_2008_Transitional;
-            dataDir = dataDir + "AddCornersSnipped_out.docx";
-
-            //Save the document to disk.
-            doc.Save(dataDir, so);
-            // ExEnd:AddCornersSnipped
-            Console.WriteLine("\nCorner Snip shape is created successfully.\nFile saved at " + dataDir);
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions(SaveFormat.Docx);
+            saveOptions.Compliance = OoxmlCompliance.Iso29500_2008_Transitional;
+            
+            doc.Save(ArtifactsDir + "AddCornersSnipped.docx", saveOptions);
+            //ExEnd:AddCornersSnipped
         }
 
-        public static void GetActualShapeBoundsPoints(string dataDir)
+        public static void GetActualShapeBoundsPoints()
         {
-            // ExStart:GetActualShapeBoundsPoints
+            //ExStart:GetActualShapeBoundsPoints
             Document doc = new Document();
+            
             DocumentBuilder builder = new DocumentBuilder(doc);
-            var shape = builder.InsertImage(dataDir + "Test.png");
+            Shape shape = builder.InsertImage(ShapesDir + "Test.png");
             shape.AspectRatioLocked = false;
 
-            Console.Write("\nGets the actual bounds of the shape in points.");
+            Console.Write("\nGets the actual bounds of the shape in points: ");
             Console.WriteLine(shape.GetShapeRenderer().BoundsInPoints);
-            // ExEnd:GetActualShapeBoundsPoints
+            //ExEnd:GetActualShapeBoundsPoints
         }
 
-        public static void SpecifyVerticalAnchor(string dataDir)
+        public static void SpecifyVerticalAnchor()
         {
-            // ExStart:SpecifyVerticalAnchor
-            Document doc = new Document(dataDir + @"VerticalAnchor.docx");
+            //ExStart:SpecifyVerticalAnchor
+            Document doc = new Document(ShapesDir + "VerticalAnchor.docx");
+            
             NodeCollection shapes = doc.GetChildNodes(NodeType.Shape, true);
-            Shape textBoxShape = shapes[0] as Shape;
-            if (textBoxShape != null)
+            if (shapes[0] is Shape textBoxShape)
             {
                 textBoxShape.TextBox.VerticalAnchor = TextBoxAnchor.Bottom;
             }
 
-            doc.Save(dataDir + "VerticalAnchor_out.docx");
-            // ExEnd:SpecifyVerticalAnchor
+            doc.Save(ArtifactsDir + "VerticalAnchor.docx");
+            //ExEnd:SpecifyVerticalAnchor
         }
 
-        public static void DetectSmartArtShape(string dataDir)
+        public static void DetectSmartArtShape()
         {
-            // ExStart:DetectSmartArtShape
-            Document doc = new Document(dataDir + "input.docx");
+            //ExStart:DetectSmartArtShape
+            Document doc = new Document(ShapesDir + "input.docx");
 
-            int count = 0;
-            foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
-            {
-                if (shape.HasSmartArt)
-                    count++;
-            }
+            int count = doc.GetChildNodes(NodeType.Shape, true).Cast<Shape>().Count(shape => shape.HasSmartArt);
 
             Console.WriteLine("The document has {0} shapes with SmartArt.", count);
-            // ExEnd:DetectSmartArtShape
+            //ExEnd:DetectSmartArtShape
         }
 
-        public static void InsertOLEObjectAsIcon(string dataDir)
+        public static void InsertOleObjectAsIcon()
         {
-            // ExStart:InsertOLEObjectAsIcon
+            //ExStart:InsertOLEObjectAsIcon
             Document doc = new Document();
 
             DocumentBuilder builder = new DocumentBuilder(doc);
-            Shape shape = builder.InsertOleObjectAsIcon(dataDir + "embedded.xlsx", false, dataDir + "icon.ico",
+            builder.InsertOleObjectAsIcon(ShapesDir + "embedded.xlsx", false, ShapesDir + "icon.ico",
                 "My embedded file");
 
-            doc.Save(dataDir + "EmbeddeWithIcon_out.docx");
+            doc.Save(ArtifactsDir + "EmbeddeWithIcon.docx");
 
             Console.WriteLine("The document has been saved with OLE Object as an Icon.");
-            // ExEnd:InsertOLEObjectAsIcon
+            //ExEnd:InsertOLEObjectAsIcon
         }
     }
 }

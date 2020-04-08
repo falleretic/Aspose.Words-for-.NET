@@ -1,15 +1,10 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
 {
-    class InsertStyleSeparator
+    class InsertStyleSeparator : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithStyles();
-
-            // ExStart:ParagraphInsertStyleSeparator
+            //ExStart:ParagraphInsertStyleSeparator
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -18,24 +13,17 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
             paraStyle.Font.Size = 8;
             paraStyle.Font.Name = "Arial";
 
-            // Append text with "Heading 1" style.
+            // Append text with "Heading 1" style
             builder.ParagraphFormat.StyleIdentifier = StyleIdentifier.Heading1;
             builder.Write("Heading 1");
             builder.InsertStyleSeparator();
 
-            // Append text with another style.
+            // Append text with another style
             builder.ParagraphFormat.StyleName = paraStyle.Name;
             builder.Write("This is text with some other formatting ");
 
-            dataDir = dataDir + "InsertStyleSeparator_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:ParagraphInsertStyleSeparator 
-
-            Console.WriteLine(
-                "\nApplied different paragraph styles to two different parts of a text line successfully.\nFile saved at " +
-                dataDir);
+            doc.Save(ArtifactsDir + "InsertStyleSeparator.docx");
+            //ExEnd:ParagraphInsertStyleSeparator
         }
     }
 }

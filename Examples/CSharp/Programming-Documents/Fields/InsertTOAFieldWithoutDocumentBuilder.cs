@@ -1,16 +1,13 @@
 ﻿using Aspose.Words.Fields;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class InsertTOAFieldWithoutDocumentBuilder
+    class InsertTOAFieldWithoutDocumentBuilder : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:InsertTOAFieldWithoutDocumentBuilder
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            Document doc = new Document(dataDir + "in.doc");
+            Document doc = new Document(FieldsDir + "in.doc");
             // Get paragraph you want to append this TOA field to
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
@@ -35,12 +32,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Finally update this TOA field
             fieldToa.Update();
 
-            dataDir = dataDir + "InsertTOAFieldWithoutDocumentBuilder_out.doc";
-            doc.Save(dataDir);
-
-            // ExEnd:InsertTOAFieldWithoutDocumentBuilder
-            Console.WriteLine("\nTOA field without using document builder inserted successfully.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "InsertTOAFieldWithoutDocumentBuilder.doc");
+            //ExEnd:InsertTOAFieldWithoutDocumentBuilder
         }
     }
 }

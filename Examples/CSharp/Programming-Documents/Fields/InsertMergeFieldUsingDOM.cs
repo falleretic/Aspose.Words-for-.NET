@@ -1,16 +1,13 @@
-﻿using System;
-using Aspose.Words.Fields;
+﻿using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class InsertMergeFieldUsingDOM
+    class InsertMergeFieldUsingDOM : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:InsertMergeFieldUsingDOM
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            Document doc = new Document(dataDir + "in.doc");
+            //ExStart:InsertMergeFieldUsingDOM
+            Document doc = new Document(FieldsDir + "in.doc");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Get paragraph you want to append this merge field to
@@ -43,11 +40,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Finally update this merge field
             field.Update();
 
-            dataDir = dataDir + "InsertMergeFieldUsingDOM_out.doc";
-            doc.Save(dataDir);
-
-            // ExEnd:InsertMergeFieldUsingDOM
-            Console.WriteLine("\nMerge field using DOM inserted successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "InsertMergeFieldUsingDOM.doc");
+            //ExEnd:InsertMergeFieldUsingDOM
         }
     }
 }

@@ -1,16 +1,13 @@
-﻿using System;
-using Aspose.Words.Fields;
+﻿using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class InsertAuthorField
+    class InsertAuthorField : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:InsertAuthorField
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            Document doc = new Document(dataDir + "in.doc");
+            Document doc = new Document(FieldsDir + "in.doc");
             // Get paragraph you want to append this AUTHOR field to
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
@@ -26,11 +23,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Finally update this AUTHOR field
             field.Update();
 
-            dataDir = dataDir + "InsertAuthorField_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:InsertAuthorField
-            Console.WriteLine(
-                "\nAuthor field without document builder inserted successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "InsertAuthorField.doc");
+            //ExEnd:InsertAuthorField
         }
     }
 }

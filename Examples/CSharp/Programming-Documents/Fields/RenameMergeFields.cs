@@ -4,35 +4,29 @@ using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class RenameMergeFields
+    class RenameMergeFields : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RenameMergeFields
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
+            //ExStart:RenameMergeFields
+            Document doc = new Document(FieldsDir + "RenameMergeFields.doc");
 
-            // Specify your document name here.
-            Document doc = new Document(dataDir + "RenameMergeFields.doc");
-
-            // Select all field start nodes so we can find the merge fields.
+            // Select all field start nodes so we can find the merge fields
             NodeCollection fieldStarts = doc.GetChildNodes(NodeType.FieldStart, true);
             foreach (FieldStart fieldStart in fieldStarts)
             {
                 if (fieldStart.FieldType.Equals(FieldType.FieldMergeField))
                 {
                     MergeField mergeField = new MergeField(fieldStart);
-                    mergeField.Name = mergeField.Name + "_Renamed";
+                    mergeField.Name += "_Renamed";
                 }
             }
 
-            dataDir = dataDir + "RenameMergeFields_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:RenameMergeFields
-            Console.WriteLine("\nMerge fields rename successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "RenameMergeFields.doc");
+            //ExEnd:RenameMergeFields
         }
 
-        // ExStart:MergeField
+        //ExStart:MergeField
         /// <summary>
         /// Represents a facade object for a merge field in a Microsoft Word document.
         /// </summary>
@@ -41,13 +35,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             internal MergeField(FieldStart fieldStart)
             {
                 if (fieldStart.Equals(null))
-                    throw new ArgumentNullException("fieldStart");
+                    throw new ArgumentNullException(nameof(fieldStart));
                 if (!fieldStart.FieldType.Equals(FieldType.FieldMergeField))
                     throw new ArgumentException("Field start type must be FieldMergeField.");
 
                 mFieldStart = fieldStart;
 
-                // Find the field separator node.
+                // Find the field separator node
                 mFieldSeparator = fieldStart.GetField().Separator;
                 if (mFieldSeparator == null)
                     throw new InvalidOperationException("Cannot find field separator.");
@@ -60,15 +54,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             /// </summary>
             internal string Name
             {
-                get { return ((FieldStart) mFieldStart).GetField().Result.Replace("«", "").Replace("»", ""); }
+                get => ((FieldStart) mFieldStart).GetField().Result.Replace("«", "").Replace("»", "");
                 set
                 {
                     // Merge field name is stored in the field result which is a Run
-                    // Node between field separator and field end.
+                    // node between field separator and field end
                     Run fieldResult = (Run) mFieldSeparator.NextSibling;
                     fieldResult.Text = string.Format("«{0}»", value);
 
-                    // But sometimes the field result can consist of more than one run, delete these runs.
+                    // But sometimes the field result can consist of more than one run, delete these runs
                     RemoveSameParent(fieldResult.NextSibling, mFieldEnd);
 
                     UpdateFieldCode(value);
@@ -77,7 +71,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 
             private void UpdateFieldCode(string fieldName)
             {
-                // Field code is stored in a Run node between field start and field separator.
+                // Field code is stored in a Run node between field start and field separator
                 Run fieldCode = (Run) mFieldStart.NextSibling;
 
                 Match match = gRegex.Match(((FieldStart) mFieldStart).GetField().GetFieldCode());
@@ -85,7 +79,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
                 string newFieldCode = string.Format(" {0}{1} ", match.Groups["start"].Value, fieldName);
                 fieldCode.Text = newFieldCode;
 
-                // But sometimes the field code can consist of more than one run, delete these runs.
+                // But sometimes the field code can consist of more than one run, delete these runs
                 RemoveSameParent(fieldCode.NextSibling, mFieldSeparator);
             }
 
@@ -95,11 +89,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             /// </summary>
             private static void RemoveSameParent(Node startNode, Node endNode)
             {
-                if ((endNode != null) && ((Node) startNode.ParentNode != (Node) endNode.ParentNode))
+                if (endNode != null && startNode.ParentNode != endNode.ParentNode)
                     throw new ArgumentException("Start and end nodes are expected to have the same parent.");
 
                 Node curChild = startNode;
-                while ((curChild != null) && (curChild != endNode))
+                while (curChild != null && curChild != endNode)
                 {
                     Node nextChild = curChild.NextSibling;
                     curChild.Remove();
@@ -113,7 +107,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 
             private static readonly Regex gRegex = new Regex(@"\s*(?<start>MERGEFIELD\s|)(\s|)(?<name>\S+)\s+");
         }
-
-        // ExEnd:MergeField
+        //ExEnd:MergeField
     }
 }

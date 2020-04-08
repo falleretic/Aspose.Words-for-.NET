@@ -1,31 +1,23 @@
 ﻿using System.Collections;
 using System.Text.RegularExpressions;
 using Aspose.Words.Fields;
-using System;
 using Aspose.Words.Replacing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
-    class ReplaceTextWithField
+    class ReplaceTextWithField : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_FindAndReplace();
-            string fileName = "Field.ReplaceTextWithFields.doc";
-
-            Document doc = new Document(dataDir + fileName);
+            Document doc = new Document(FindReplaceDir + "Field.ReplaceTextWithFields.doc");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new ReplaceTextWithFieldHandler(FieldType.FieldMergeField);
 
-            // Replace any "PlaceHolderX" instances in the document (where X is a number) with a merge field.
+            // Replace any "PlaceHolderX" instances in the document (where X is a number) with a merge field
             doc.Range.Replace(new Regex(@"PlaceHolder(\d+)"), "", options);
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            doc.Save(dataDir);
-
-            Console.WriteLine("\nText replaced with field successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "Field.ReplaceTextWithFields.doc");
         }
     }
 
@@ -40,23 +32,23 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
         {
             ArrayList runs = FindAndSplitMatchRuns(args);
 
-            // Create DocumentBuilder which is used to insert the field.
+            // Create DocumentBuilder which is used to insert the field
             DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
             builder.MoveTo((Run) runs[runs.Count - 1]);
 
-            // Calculate the name of the field from the FieldType enumeration by removing the first instance of "Field" from the text. 
-            // This works for almost all of the field types.
+            // Calculate the name of the field from the FieldType enumeration by removing the first instance of "Field" from the text
+            // This works for almost all of the field types
             string fieldName = mFieldType.ToString().ToUpper().Substring(5);
 
-            // Insert the field into the document using the specified field type and the match text as the field name.
-            // If the fields you are inserting do not require this extra parameter then it can be removed from the string below.
+            // Insert the field into the document using the specified field type and the match text as the field name
+            // If the fields you are inserting do not require this extra parameter then it can be removed from the string below
             builder.InsertField(string.Format("{0} {1}", fieldName, args.Match.Groups[0]));
 
-            // Now remove all runs in the sequence.
+            // Now remove all runs in the sequence
             foreach (Run run in runs)
                 run.Remove();
 
-            // Signal to the replace engine to do nothing because we have already done all what we wanted.
+            // Signal to the replace engine to do nothing because we have already done all what we wanted
             return ReplaceAction.Skip;
         }
 
@@ -65,37 +57,37 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
         /// </summary>
         public ArrayList FindAndSplitMatchRuns(ReplacingArgs args)
         {
-            // This is a Run node that contains either the beginning or the complete match.
+            // This is a Run node that contains either the beginning or the complete match
             Node currentNode = args.MatchNode;
 
             // The first (and may be the only) run can contain text before the match, 
-            // In this case it is necessary to split the run.
+            // In this case it is necessary to split the run
             if (args.MatchOffset > 0)
                 currentNode = SplitRun((Run) currentNode, args.MatchOffset);
 
-            // This array is used to store all nodes of the match for further removing.
+            // This array is used to store all nodes of the match for further removing
             ArrayList runs = new ArrayList();
 
-            // Find all runs that contain parts of the match string.
+            // Find all runs that contain parts of the match string
             int remainingLength = args.Match.Value.Length;
             while (
-                (remainingLength > 0) &&
-                (currentNode != null) &&
-                (currentNode.GetText().Length <= remainingLength))
+                remainingLength > 0 &&
+                currentNode != null &&
+                currentNode.GetText().Length <= remainingLength)
             {
                 runs.Add(currentNode);
-                remainingLength = remainingLength - currentNode.GetText().Length;
+                remainingLength -= currentNode.GetText().Length;
 
-                // Select the next Run node. 
+                // Select the next Run node
                 // Have to loop because there could be other nodes such as BookmarkStart etc.
                 do
                 {
                     currentNode = currentNode.NextSibling;
-                } while ((currentNode != null) && (currentNode.NodeType != NodeType.Run));
+                } while (currentNode != null && currentNode.NodeType != NodeType.Run);
             }
 
-            // Split the last run that contains the match if there is any text left.
-            if ((currentNode != null) && (remainingLength > 0))
+            // Split the last run that contains the match if there is any text left
+            if (currentNode != null && remainingLength > 0)
             {
                 SplitRun((Run) currentNode, remainingLength);
                 runs.Add(currentNode);
@@ -108,7 +100,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
         /// Splits text of the specified run into two runs.
         /// Inserts the new run just after the specified run.
         /// </summary>
-        private Run SplitRun(Run run, int position)
+        private static Run SplitRun(Run run, int position)
         {
             Run afterRun = (Run) run.Clone(true);
             afterRun.Text = run.Text.Substring(position);

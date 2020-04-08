@@ -4,19 +4,19 @@ using System.Text.RegularExpressions;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 {
-    class ReplaceInHeaderAndFooter
+    class ReplaceInHeaderAndFooter : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_FindAndReplace();
+            ReplaceTextInFooter();
+            ShowChangesForHeaderAndFooterOrders();
         }
 
-        private static void ReplaceTextInFooter(string dataDir)
+        public static void ReplaceTextInFooter()
         {
-            // ExStart:ReplaceTextInFooter
-            // Open the template document, containing obsolete copyright information in the footer.
-            Document doc = new Document(dataDir + "HeaderFooter.ReplaceText.doc");
+            //ExStart:ReplaceTextInFooter
+            // Open the template document, containing obsolete copyright information in the footer
+            Document doc = new Document(FindReplaceDir + "HeaderFooter.ReplaceText.doc");
 
             HeaderFooterCollection headersFooters = doc.FirstSection.HeadersFooters;
             HeaderFooter footer = headersFooters[HeaderFooterType.FooterPrimary];
@@ -27,16 +27,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
                 FindWholeWordsOnly = false
             };
 
-            footer.Range.Replace("(C) 2006 Aspose Pty Ltd.", "Copyright (C) 2019 by Aspose Pty Ltd.", options);
+            footer.Range.Replace("(C) 2006 Aspose Pty Ltd.", "Copyright (C) 2020 by Aspose Pty Ltd.", options);
 
-            doc.Save(dataDir + "HeaderFooter.ReplaceText.doc");
-            // ExEnd:ReplaceTextInFooter
+            doc.Save(ArtifactsDir + "HeaderFooter.ReplaceText.doc");
+            //ExEnd:ReplaceTextInFooter
         }
 
-        // ExStart:ShowChangesForHeaderAndFooterOrders
-        private static void ShowChangesForHeaderAndFooterOrders(string dataDir)
+        //ExStart:ShowChangesForHeaderAndFooterOrders
+        public static void ShowChangesForHeaderAndFooterOrders()
         {
-            Document doc = new Document(dataDir + "HeaderFooter.HeaderFooterOrder.docx");
+            Document doc = new Document(FindReplaceDir + "HeaderFooter.HeaderFooterOrder.docx");
 
             // Assert that we use special header and footer for the first page
             // The order for this: first header\footer, even header\footer, primary header\footer
@@ -47,7 +47,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             doc.Range.Replace(new Regex("(header|footer)"), "", options);
 
-            doc.Save(dataDir + "HeaderFooter.HeaderFooterOrder.docx");
+            doc.Save(ArtifactsDir + "HeaderFooter.HeaderFooterOrder.docx");
 
             // Prepare our string builder for assert results without "DifferentFirstPageHeaderFooter"
             logger.ClearText();
@@ -63,21 +63,18 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
         {
             public ReplaceAction Replacing(ReplacingArgs args)
             {
-                _textBuilder.AppendLine(args.MatchNode.GetText());
+                mTextBuilder.AppendLine(args.MatchNode.GetText());
                 return ReplaceAction.Skip;
             }
 
             internal void ClearText()
             {
-                _textBuilder.Clear();
+                mTextBuilder.Clear();
             }
 
-            internal string Text
-            {
-                get { return _textBuilder.ToString(); }
-            }
+            internal string Text => mTextBuilder.ToString();
 
-            private readonly StringBuilder _textBuilder = new StringBuilder();
+            private readonly StringBuilder mTextBuilder = new StringBuilder();
         }
 
         // ExEnd:ShowChangesForHeaderAndFooterOrders

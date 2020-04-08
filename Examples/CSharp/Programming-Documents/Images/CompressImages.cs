@@ -8,27 +8,24 @@ using System.Diagnostics;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 {
-    class CompressImages
+    class CompressImages : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithImages();
-            string fileName = "Test.docx";
-            string srcFileName = dataDir + fileName;
+            string srcFileName = ImagesDir + "Test.docx";
 
             Console.WriteLine("Loading {0}. Size {1}.", srcFileName, GetFileSize(srcFileName));
             Document doc = new Document(srcFileName);
 
-            // 220ppi Print - said to be excellent on most printers and screens.
-            // 150ppi Screen - said to be good for web pages and projectors.
-            // 96ppi Email - said to be good for minimal document size and sharing.
+            // 220ppi Print - said to be excellent on most printers and screens
+            // 150ppi Screen - said to be good for web pages and projectors
+            // 96ppi Email - said to be good for minimal document size and sharing
             const int desiredPpi = 150;
 
-            // In .NET this seems to be a good compression / quality setting.
+            // In .NET this seems to be a good compression / quality setting
             const int jpegQuality = 90;
 
-            // Resample images to desired ppi and save.
+            // Resample images to desired ppi and save
             int count = Resampler.Resample(doc, desiredPpi, jpegQuality);
 
             Console.WriteLine("Resampled {0} images.", count);
@@ -36,18 +33,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             if (count != 1)
                 Console.WriteLine("We expected to have only 1 image resampled in this test document!");
 
-            string dstFileName = dataDir + RunExamples.GetOutputFilePath(fileName);
-            doc.Save(dstFileName);
-            Console.WriteLine("Saving {0}. Size {1}.", dstFileName, GetFileSize(dstFileName));
+            doc.Save(ArtifactsDir + "CompressImages.docx");
+            
+            // Verify that the first image was compressed by checking the new Ppi
+            doc = new Document(ArtifactsDir + "CompressImages.docx");
 
-            // Verify that the first image was compressed by checking the new Ppi.
-            doc = new Document(dstFileName);
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             double imagePpi = shape.ImageData.ImageSize.WidthPixels / ConvertUtil.PointToInch(shape.SizeInPoints.Width);
 
             Debug.Assert(imagePpi < 150, "Image was not resampled successfully.");
-
-            Console.WriteLine("\nCompressed images successfully.\nFile saved at " + dstFileName);
         }
 
         public static int GetFileSize(string fileName)
@@ -71,10 +65,11 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
         {
             int count = 0;
 
-            // Convert VML shapes.
+            // Convert VML shapes
             foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
             {
-                // It is important to use this method to correctly get the picture shape size in points even if the picture is inside a group shape.
+                // It is important to use this method to correctly get the picture shape size in points
+                // even if the picture is inside a group shape
                 SizeF shapeSizeInPoints = shape.SizeInPoints;
 
                 if (ResampleCore(shape.ImageData, shapeSizeInPoints, desiredPpi, jpegQuality))
@@ -89,16 +84,18 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
         /// </summary>
         private static bool ResampleCore(ImageData imageData, SizeF shapeSizeInPoints, int ppi, int jpegQuality)
         {
-            // The are actually several shape types that can have an image (picture, ole object, ole control), let's skip other shapes.
+            // The are actually several shape types that can have an image (picture, ole object, ole control),
+            // let's skip other shapes
             if (imageData == null)
                 return false;
 
-            // An image can be stored in the shape or linked from somewhere else. Let's skip images that do not store bytes in the shape.
+            // An image can be stored in the shape or linked from somewhere else
+            // Let's skip images that do not store bytes in the shape
             byte[] originalBytes = imageData.ImageBytes;
             if (originalBytes == null)
                 return false;
 
-            // Ignore metafiles, they are vector drawings and we don't want to resample them.
+            // Ignore metafiles, they are vector drawings and we don't want to resample them
             ImageType imageType = imageData.ImageType;
             if (imageType.Equals(ImageType.Wmf) || imageType.Equals(ImageType.Emf))
                 return false;
@@ -108,15 +105,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
                 double shapeWidthInches = ConvertUtil.PointToInch(shapeSizeInPoints.Width);
                 double shapeHeightInches = ConvertUtil.PointToInch(shapeSizeInPoints.Height);
 
-                // Calculate the current PPI of the image.
+                // Calculate the current PPI of the image
                 ImageSize imageSize = imageData.ImageSize;
                 double currentPpiX = imageSize.WidthPixels / shapeWidthInches;
                 double currentPpiY = imageSize.HeightPixels / shapeHeightInches;
 
                 Console.Write("Image PpiX:{0}, PpiY:{1}. ", (int) currentPpiX, (int) currentPpiY);
 
-                // Let's resample only if the current PPI is higher than the requested PPI (e.g. we have extra data we can get rid of).
-                if ((currentPpiX <= ppi) || (currentPpiY <= ppi))
+                // Let's resample only if the current PPI is higher than the requested PPI (e.g. we have extra data we can get rid of)
+                if (currentPpiX <= ppi || currentPpiY <= ppi)
                 {
                     Console.WriteLine("Skipping.");
                     return false;
@@ -124,28 +121,28 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 
                 using (Image srcImage = imageData.ToImage())
                 {
-                    // Create a new image of such size that it will hold only the pixels required by the desired ppi.
+                    // Create a new image of such size that it will hold only the pixels required by the desired ppi
                     int dstWidthPixels = (int) (shapeWidthInches * ppi);
                     int dstHeightPixels = (int) (shapeHeightInches * ppi);
                     using (Bitmap dstImage = new Bitmap(dstWidthPixels, dstHeightPixels))
                     {
-                        // Drawing the source image to the new image scales it to the new size.
+                        // Drawing the source image to the new image scales it to the new size
                         using (Graphics gr = Graphics.FromImage(dstImage))
                         {
                             gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
                             gr.DrawImage(srcImage, 0, 0, dstWidthPixels, dstHeightPixels);
                         }
 
-                        // Create JPEG encoder parameters with the quality setting.
+                        // Create JPEG encoder parameters with the quality setting
                         ImageCodecInfo encoderInfo = GetEncoderInfo(ImageFormat.Jpeg);
                         EncoderParameters encoderParams = new EncoderParameters();
                         encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, jpegQuality);
 
-                        // Save the image as JPEG to a memory stream.
+                        // Save the image as JPEG to a memory stream
                         MemoryStream dstStream = new MemoryStream();
                         dstImage.Save(dstStream, encoderInfo, encoderParams);
 
-                        // If the image saved as JPEG is smaller than the original, store it in the shape.
+                        // If the image saved as JPEG is smaller than the original, store it in the shape
                         Console.WriteLine("Original size {0}, new size {1}.", originalBytes.Length, dstStream.Length);
                         if (dstStream.Length < originalBytes.Length)
                         {
@@ -158,7 +155,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
             }
             catch (Exception e)
             {
-                // Catch an exception, log an error and continue if cannot process one of the images for whatever reason.
+                // Catch an exception, log an error and continue if cannot process one of the images for whatever reason
                 Console.WriteLine("Error processing an image, ignoring. " + e.Message);
             }
 
@@ -172,10 +169,10 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
         {
             ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
 
-            for (int i = 0; i < encoders.Length; i++)
+            foreach (ImageCodecInfo codecInfo in encoders)
             {
-                if (encoders[i].FormatID == format.Guid)
-                    return encoders[i];
+                if (codecInfo.FormatID == format.Guid)
+                    return codecInfo;
             }
 
             throw new Exception("Cannot find a codec.");

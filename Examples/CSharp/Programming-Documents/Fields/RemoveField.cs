@@ -3,21 +3,17 @@ using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class RemoveField
+    class RemoveField : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RemoveField
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-
-            Document doc = new Document(dataDir + "Field.RemoveField.doc");
-
+            //ExStart:RemoveField
+            Document doc = new Document(FieldsDir + "Field.RemoveField.doc");
+            
             Field field = doc.Range.Fields[0];
-            // Calling this method completely removes the field from the document.
+            // Calling this method completely removes the field from the document
             field.Remove();
-            // ExEnd:RemoveField
-            Console.WriteLine("\nRemoved field from the document successfully.");
+            //ExEnd:RemoveField
         }
     }
 }

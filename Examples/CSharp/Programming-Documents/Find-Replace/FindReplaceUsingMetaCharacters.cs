@@ -3,7 +3,7 @@ using System;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
-    class FindReplaceUsingMetaCharacters
+    class FindReplaceUsingMetaCharacters : TestDataHelper
     {
         public static void Run()
         {
@@ -14,19 +14,16 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             &l - manual line break
             */
 
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_FindAndReplace();
-            MetaCharactersInSearchPattern(dataDir);
-            ReplaceTextContaingMetaCharacters(dataDir);
+            MetaCharactersInSearchPattern();
+            ReplaceTextContainingMetaCharacters();
         }
 
-        public static void MetaCharactersInSearchPattern(string dataDir)
+        public static void MetaCharactersInSearchPattern()
         {
-            // ExStart:MetaCharactersInSearchPattern
-            // Initialize a Document.
+            //ExStart:MetaCharactersInSearchPattern
             Document doc = new Document();
 
-            // Use a document builder to add content to the document.
+            // Use a document builder to add content to the document
             DocumentBuilder builder = new DocumentBuilder(doc);
             builder.Writeln("This is Line 1");
             builder.Writeln("This is Line 2");
@@ -43,16 +40,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             doc.Range.Replace("This is Line 1&mThis is Line 2", "Page break is replaced with new text.",
                 findReplaceOptions);
 
-            dataDir = dataDir + "MetaCharactersInSearchPattern_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:MetaCharactersInSearchPattern
-            Console.WriteLine("\nFind and Replace text using meta-characters has done successfully.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "MetaCharactersInSearchPattern.docx");
+            //ExEnd:MetaCharactersInSearchPattern
         }
 
-        public static void ReplaceTextContaingMetaCharacters(string dataDir)
+        public static void ReplaceTextContainingMetaCharacters()
         {
-            // ExStart:ReplaceTextContaingMetaCharacters
+            //ExStart:ReplaceTextContaingMetaCharacters
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -73,11 +67,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // Insert section break instead of custom text tag.
             count = doc.Range.Replace("{insert-section}", "&b", options);
 
-            dataDir = dataDir + "ReplaceTextContaingMetaCharacters_out.docx";
-            doc.Save(dataDir);
-            // ExEnd:ReplaceTextContaingMetaCharacters
-            Console.WriteLine("\nFind and Replace text using meta-characters has done successfully.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "ReplaceTextContainingMetaCharacters.docx");
+            //ExEnd:ReplaceTextContaingMetaCharacters
         }
     }
 }

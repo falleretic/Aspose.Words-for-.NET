@@ -3,18 +3,15 @@ using System.Text.RegularExpressions;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 {
-    class ReplaceWithHTML
+    class ReplaceWithHTML : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_FindAndReplace();
-
-            ReplaceWithHtml(dataDir);
+            ReplaceWithHtml();
         }
 
         // ExStart:ReplaceWithHtml
-        public static void ReplaceWithHtml(string dataDir)
+        public static void ReplaceWithHtml()
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
@@ -26,8 +23,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             doc.Range.Replace(new Regex(@" <CustomerName>,"), string.Empty, options);
 
-            // Save the modified document.
-            doc.Save(dataDir + "Range.ReplaceWithInsertHtml.doc");
+            doc.Save(ArtifactsDir + "Range.ReplaceWithInsertHtml.doc");
         }
 
         private class ReplaceWithHtmlEvaluator : IReplacingCallback
@@ -55,7 +51,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             private readonly FindReplaceOptions mOptions;
         }
-
-        // ExEnd:ReplaceWithHtml
+        //ExEnd:ReplaceWithHtml
     }
 }

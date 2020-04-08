@@ -5,54 +5,42 @@ using System.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_StructuredDocumentTag
 {
-    public class WorkingWithSDT
+    internal class WorkingWithSdt : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithStructuredDocumentTag();
-            BindSDTtoCustomXmlPart(dataDir);
-            ClearContentsControl(dataDir);
-            SetContentControlColor(dataDir);
-            SetContentControlStyle(dataDir);
-            CreatingTableRepeatingSectionMappedToCustomXmlPart(dataDir);
+            BindSdTtoCustomXmlPart();
+            ClearContentsControl();
+            SetContentControlColor();
+            SetContentControlStyle();
+            CreatingTableRepeatingSectionMappedToCustomXmlPart();
         }
 
-        public static void SetContentControlColor(string dataDir)
+        public static void SetContentControlColor()
         {
-            // ExStart:SetContentControlColor
-
-            Document doc = new Document(dataDir + "input.docx");
+            //ExStart:SetContentControlColor
+            Document doc = new Document(SdtDir + "input.docx");
             StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Color = Color.Red;
 
-            dataDir = dataDir + "SetContentControlColor_out.docx";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetContentControlColor
-            Console.WriteLine("\nSet the color of content control successfully.");
+            doc.Save(ArtifactsDir + "SetContentControlColor.docx");
+            //ExEnd:SetContentControlColor
         }
 
-        public static void ClearContentsControl(string dataDir)
+        public static void ClearContentsControl()
         {
-            // ExStart:ClearContentsControl
-
-            Document doc = new Document(dataDir + "input.docx");
+            //ExStart:ClearContentsControl
+            Document doc = new Document(SdtDir + "input.docx");
             StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Clear();
 
-            dataDir = dataDir + "ClearContentsControl_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:ClearContentsControl
-            Console.WriteLine("\nClear the contents of content control successfully.");
+            doc.Save(ArtifactsDir + "ClearContentsControl.doc");
+            //ExEnd:ClearContentsControl
         }
 
-        public static void BindSDTtoCustomXmlPart(string dataDir)
+        public static void BindSdTtoCustomXmlPart()
         {
-            // ExStart:BindSDTtoCustomXmlPart
+            //ExStart:BindSDTtoCustomXmlPart
             Document doc = new Document();
             CustomXmlPart xmlPart =
                 doc.CustomXmlParts.Add(Guid.NewGuid().ToString("B"), "<root><text>Hello, World!</text></root>");
@@ -62,32 +50,25 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
 
             sdt.XmlMapping.SetMapping(xmlPart, "/root[1]/text[1]", "");
 
-            dataDir = dataDir + "BindSDTtoCustomXmlPart_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:BindSDTtoCustomXmlPart
-            Console.WriteLine("\nCreation of an XML part and binding a content control to it successfully.");
+            doc.Save(ArtifactsDir + "BindSDTtoCustomXmlPart.doc");
+            //ExEnd:BindSDTtoCustomXmlPart
         }
 
-        public static void SetContentControlStyle(string dataDir)
+        public static void SetContentControlStyle()
         {
-            // ExStart:SetContentControlStyle
-            Document doc = new Document(dataDir + "input.docx");
+            //ExStart:SetContentControlStyle
+            Document doc = new Document(SdtDir + "input.docx");
             StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             Style style = doc.Styles[StyleIdentifier.Quote];
             sdt.Style = style;
 
-            dataDir = dataDir + "SetContentControlStyle_out.docx";
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetContentControlStyle
-            Console.WriteLine("\nSet the style of content control successfully.");
+            doc.Save(ArtifactsDir + "SetContentControlStyle.docx");
+            //ExEnd:SetContentControlStyle
         }
 
-        public static void CreatingTableRepeatingSectionMappedToCustomXmlPart(string dataDir)
+        public static void CreatingTableRepeatingSectionMappedToCustomXmlPart()
         {
-            // ExStart:CreatingTableRepeatingSectionMappedToCustomXmlPart
+            //ExStart:CreatingTableRepeatingSectionMappedToCustomXmlPart
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -129,9 +110,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             authorSdt.XmlMapping.SetMapping(xmlPart, "/books[1]/book[1]/author[1]", "");
             row.AppendChild(authorSdt);
 
-            doc.Save(dataDir + "Document.docx");
-            // ExEnd:CreatingTableRepeatingSectionMappedToCustomXmlPart
-            Console.WriteLine("\nCreation of a Table Repeating Section Mapped To a Custom Xml Part is successfull.");
+            doc.Save(ArtifactsDir + "Document.docx");
+            //ExEnd:CreatingTableRepeatingSectionMappedToCustomXmlPart
         }
     }
 }

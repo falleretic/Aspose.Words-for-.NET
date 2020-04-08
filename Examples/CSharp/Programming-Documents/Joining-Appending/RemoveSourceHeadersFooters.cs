@@ -1,19 +1,14 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
 {
-    class RemoveSourceHeadersFooters
+    class RemoveSourceHeadersFooters : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RemoveSourceHeadersFooters
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_JoiningAndAppending();
-            string fileName = "TestFile.Destination.doc";
-            Document dstDoc = new Document(dataDir + fileName);
-            Document srcDoc = new Document(dataDir + "TestFile.Source.doc");
+            //ExStart:RemoveSourceHeadersFooters
+            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
 
-            // Remove the headers and footers from each of the sections in the source document.
+            // Remove the headers and footers from each of the sections in the source document
             foreach (Section section in srcDoc.Sections)
             {
                 section.ClearHeadersFooters();
@@ -21,15 +16,13 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
 
             // Even after the headers and footers are cleared from the source document, the "LinkToPrevious" setting 
             // For HeadersFooters can still be set. This will cause the headers and footers to continue from the destination 
-            // Document. This should set to false to avoid this behavior.
+            // Document. This should set to false to avoid this behavior
             srcDoc.FirstSection.HeadersFooters.LinkToPrevious(false);
 
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            dstDoc.Save(dataDir);
-            // ExEnd:RemoveSourceHeadersFooters
-            Console.WriteLine("\nDocument appended successfully with source header footers removed.\nFile saved at " +
-                              dataDir);
+            
+            dstDoc.Save(ArtifactsDir + "RemoveSourceHeadersFooters.docx");
+            //ExEnd:RemoveSourceHeadersFooters
         }
     }
 }

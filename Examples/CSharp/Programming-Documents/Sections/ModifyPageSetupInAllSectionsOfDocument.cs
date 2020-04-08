@@ -1,25 +1,20 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Sections
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Sections
 {
-    class ModifyPageSetupInAllSectionsOfDocument
+    class ModifyPageSetupInAllSectionsOfDocument : TestDataHelper
+
     {
         public static void Run()
         {
-            // ExStart:ModifyPageSetupInAllSectionsOfDocument
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithSections();
-            Document doc = new Document(dataDir + "ModifyPageSetupInAllSections.doc");
+            //ExStart:ModifyPageSetupInAllSectionsOfDocument
+            Document doc = new Document(SectionsDir + "ModifyPageSetupInAllSections.doc");
 
             // It is important to understand that a document can contain many sections and each
-            // section has its own page setup. In this case we want to modify them all.
+            // section has its own page setup. In this case we want to modify them all
             foreach (Section section in doc)
                 section.PageSetup.PaperSize = PaperSize.Letter;
 
-            doc.Save(dataDir + "ModifyPageSetupInAllSections_Out.doc");
-
-            // ExEnd:ModifyPageSetupInAllSectionsOfDocument
-            Console.WriteLine("\nSections page setup updatd successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "ModifyPageSetupInAllSections.doc");
+            //ExEnd:ModifyPageSetupInAllSectionsOfDocument
         }
     }
 }

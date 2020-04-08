@@ -1,19 +1,13 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Ranges
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Ranges
 {
-    class RangesDeleteText
+    class RangesDeleteText : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RangesDeleteText
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithRanges();
-
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:RangesDeleteText
+            Document doc = new Document(RangeDir + "Document.doc");
             doc.Sections[0].Range.Delete();
-            // ExEnd:RangesDeleteText
-            Console.WriteLine("\nAll characters of a range deleted successfully.");
+            //ExEnd:RangesDeleteText
         }
     }
 }

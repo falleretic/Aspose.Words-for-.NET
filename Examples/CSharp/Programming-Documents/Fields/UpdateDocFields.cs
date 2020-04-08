@@ -1,23 +1,16 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class UpdateDocFields
+    class UpdateDocFields : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:UpdateDocFields
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-
-            Document doc = new Document(dataDir + "Rendering.doc");
-
-            // This updates all fields in the document.
+            //ExStart:UpdateDocFields
+            Document doc = new Document(FieldsDir + "Rendering.doc");
+            // This updates all fields in the document
             doc.UpdateFields();
-            dataDir = dataDir + "Rendering.UpdateFields_out.pdf";
-            doc.Save(dataDir);
-            // ExEnd:UpdateDocFields
-            Console.WriteLine("\nDocument fields updated successfully.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "Rendering.UpdateFields.pdf");
+            //ExEnd:UpdateDocFields
         }
     }
 }

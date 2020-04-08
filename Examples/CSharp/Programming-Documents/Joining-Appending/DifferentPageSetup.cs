@@ -1,18 +1,12 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
 {
-    class DifferentPageSetup
+    class DifferentPageSetup : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:DifferentPageSetup
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_JoiningAndAppending();
-            string fileName = "TestFile.Destination.doc";
-
-            Document dstDoc = new Document(dataDir + fileName);
-            Document srcDoc = new Document(dataDir + "TestFile.SourcePageSetup.doc");
+            //ExStart:DifferentPageSetup
+            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.SourcePageSetup.doc");
 
             // Set the source document to continue straight after the end of the destination document.
             // If some page setup settings are different then this may not work and the source document will appear 
@@ -28,10 +22,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
             srcDoc.FirstSection.PageSetup.Orientation = dstDoc.LastSection.PageSetup.Orientation;
 
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            dstDoc.Save(dataDir);
-            // ExEnd:DifferentPageSetup
-            Console.WriteLine("\nDocument appended successfully with different page setup.\nFile saved at " + dataDir);
+            
+            dstDoc.Save(ArtifactsDir + "DifferentPageSetup.docx");
+            //ExEnd:DifferentPageSetup
         }
     }
 }

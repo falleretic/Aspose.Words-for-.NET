@@ -3,14 +3,12 @@ using Aspose.Words.Fields;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
-    class InsertAdvanceFieldWithOutDocumentBuilder
+    class InsertAdvanceFieldWithOutDocumentBuilder : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:InsertAdvanceFieldWithOutDocumentBuilder
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithFields();
-            Document doc = new Document(dataDir + "in.doc");
+            //ExStart:InsertAdvanceFieldWithOutDocumentBuilder
+            Document doc = new Document(FieldsDir + "in.doc");
             // Get paragraph you want to append this Advance field to
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
 
@@ -19,8 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 
             // Create instance of FieldAdvance class and lets build the above field code
             FieldAdvance field = (FieldAdvance) para.AppendField(FieldType.FieldAdvance, false);
-
-
+            
             // { ADVANCE \\d 10 " }
             field.DownOffset = "10";
 
@@ -42,12 +39,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             // Finally update this Advance field
             field.Update();
 
-            dataDir = dataDir + "InsertAdvanceFieldWithOutDocumentBuilder_out.doc";
-            doc.Save(dataDir);
-
-            // ExEnd:InsertAdvanceFieldWithOutDocumentBuilder
-            Console.WriteLine("\nAdvance field without using document builder inserted successfully.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "InsertAdvanceFieldWithOutDocumentBuilder.doc");
+            //ExEnd:InsertAdvanceFieldWithOutDocumentBuilder
         }
     }
 }

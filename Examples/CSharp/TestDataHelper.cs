@@ -15,6 +15,19 @@ namespace Aspose.Words.Examples.CSharp
             CommentsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Comments/").LocalPath;
             DocumentDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Document/").LocalPath;
             FieldsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Fields/").LocalPath;
+            FindReplaceDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Find-Replace/").LocalPath;
+            HyperlinkDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Hyperlink/").LocalPath;
+            ImagesDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Images/").LocalPath;
+            JoiningAppendingDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Joining-Appending/").LocalPath;
+            NodeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Node/").LocalPath;
+            RangeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Ranges/").LocalPath;
+            SectionsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Sections/").LocalPath;
+            ShapesDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Shapes/").LocalPath;
+            SignatureDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Signature/").LocalPath;
+            SdtDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/StructuredDocumentTag/").LocalPath;
+            StyleDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Styles/").LocalPath;
+            ThemeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Theme/").LocalPath;
+            WebExtensionsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/WebExtensions/").LocalPath;
         }
 
         private static string GetDataDir_Data()
@@ -71,6 +84,71 @@ namespace Aspose.Words.Examples.CSharp
         /// Gets the path to the license used by the code examples.
         /// </summary>
         internal static string FieldsDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string FindReplaceDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string HyperlinkDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string ImagesDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string JoiningAppendingDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string NodeDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string RangeDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string SectionsDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string ShapesDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string SignatureDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string SdtDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string StyleDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string ThemeDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string WebExtensionsDir { get; }
 
         /// <summary>
         /// Gets the path to the documents used by the code examples. Ends with a back slash.

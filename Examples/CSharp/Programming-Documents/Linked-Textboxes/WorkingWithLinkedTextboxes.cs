@@ -7,16 +7,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithShapes();
-            CreateALink(dataDir);
-            CheckSequence(dataDir);
-            BreakALink(dataDir);
+            CreateALink();
+            CheckSequence();
+            BreakALink();
         }
 
-        public static void CreateALink(string dataDir)
+        public static void CreateALink()
         {
-            // ExStart:CreateALink
+            //ExStart:CreateALink
             Document doc = new Document();
             Shape shape1 = new Shape(doc, ShapeType.TextBox);
             Shape shape2 = new Shape(doc, ShapeType.TextBox);
@@ -26,37 +24,36 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
 
             if (textBox1.IsValidLinkTarget(textBox2))
                 textBox1.Next = textBox2;
-            // ExEnd:CreateALink
+            //ExEnd:CreateALink
         }
 
-        public static void CheckSequence(string dataDir)
+        public static void CheckSequence()
         {
-            // ExStart:CheckSequence
+            //ExStart:CheckSequence
             Document doc = new Document();
             Shape shape = new Shape(doc, ShapeType.TextBox);
             TextBox textBox = shape.TextBox;
 
-            if ((textBox.Next != null) && (textBox.Previous == null))
+            if (textBox.Next != null && textBox.Previous == null)
             {
                 Console.WriteLine("The head of the sequence");
             }
 
-            if ((textBox.Next != null) && (textBox.Previous != null))
+            if (textBox.Next != null && textBox.Previous != null)
             {
                 Console.WriteLine("The Middle of the sequence.");
             }
 
-            if ((textBox.Next == null) && (textBox.Previous != null))
+            if (textBox.Next == null && textBox.Previous != null)
             {
                 Console.WriteLine("The Tail of the sequence.");
             }
-
-            // ExEnd:CheckSequence
+            //ExEnd:CheckSequence
         }
 
-        public static void BreakALink(string dataDir)
+        public static void BreakALink()
         {
-            // ExStart:BreakALink
+            //ExStart:BreakALink
             Document doc = new Document();
             Shape shape = new Shape(doc, ShapeType.TextBox);
             TextBox textBox = shape.TextBox;
@@ -68,9 +65,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
             textBox.Next = null;
 
             // Break a link, which leads to this textbox
-            if (textBox.Previous != null)
-                textBox.Previous.BreakForwardLink();
-            // ExEnd:BreakALink
+            textBox.Previous?.BreakForwardLink();
+            //ExEnd:BreakALink
         }
     }
 }
