@@ -1,35 +1,26 @@
-﻿using System;
-using Aspose.Words.Tables;
+﻿using Aspose.Words.Tables;
 using System.Diagnostics;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class AutoFitTableToWindow
+    class AutoFitTableToWindow : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:AutoFitTableToPageWidth
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-            string fileName = "TestFile.doc";
-            // Open the document
-            Document doc = new Document(dataDir + fileName);
+            Document doc = new Document(TablesDir + "TestFile.doc");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
-
-            // Autofit the first table to the page width.
+            // Autofit the first table to the page width
             table.AutoFit(AutoFitBehavior.AutoFitToWindow);
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            // Save the document to disk.
-            doc.Save(dataDir);
+            doc.Save(ArtifactsDir + "AutoFitTableToWindow.docx");
 
             Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Type == PreferredWidthType.Percent,
                 "PreferredWidth type is not percent");
             Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Value == 100,
                 "PreferredWidth value is different than 100");
-            // ExEnd:AutoFitTableToPageWidth
-            Console.WriteLine("\nAuto fit tables to window successfully.\nFile saved at " + dataDir);
+            //ExEnd:AutoFitTableToPageWidth
         }
     }
 }

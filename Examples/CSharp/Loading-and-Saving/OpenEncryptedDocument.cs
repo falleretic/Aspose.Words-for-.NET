@@ -1,20 +1,12 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+﻿namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class OpenEncryptedDocument
+    class OpenEncryptedDocument : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:OpenEncryptedDocument      
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            // Loads encrypted document.
-            Document doc = new Document(dataDir + "LoadEncrypted.docx", new LoadOptions("aspose"));
-            // ExEnd:OpenEncryptedDocument
-
-            Console.WriteLine("\nEncrypted document loaded successfully.");
+            //ExStart:OpenEncryptedDocument
+            Document doc = new Document(LoadingSavingDir + "LoadEncrypted.docx", new LoadOptions("aspose"));
+            //ExEnd:OpenEncryptedDocument
         }
     }
 }

@@ -4,50 +4,45 @@ using System.Data.OleDb;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    class ExecuteWithRegionsDataTable
+    class ExecuteWithRegionsDataTable : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ExecuteWithRegionsDataTable
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-            string fileName = "MailMerge.ExecuteWithRegions.doc";
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:ExecuteWithRegionsDataTable
+            Document doc = new Document(MailMergeDir + "MailMerge.ExecuteWithRegions.doc");
 
-            int orderId = 10444;
+            const int orderId = 10444;
 
-            // Perform several mail merge operations populating only part of the document each time.
+            // Perform several mail merge operations populating only part of the document each time
 
-            // Use DataTable as a data source.
+            // Use DataTable as a data source
             DataTable orderTable = GetTestOrder(orderId);
             doc.MailMerge.ExecuteWithRegions(orderTable);
 
-            // Instead of using DataTable you can create a DataView for custom sort or filter and then mail merge.
+            // Instead of using DataTable you can create a DataView for custom sort or filter and then mail merge
             DataView orderDetailsView = new DataView(GetTestOrderDetails(orderId));
             orderDetailsView.Sort = "ExtendedPrice DESC";
             doc.MailMerge.ExecuteWithRegions(orderDetailsView);
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            doc.Save(dataDir);
-            // ExEnd:ExecuteWithRegionsDataTable
-
-            Console.WriteLine("\nMail merge executed successfully with repeatable regions.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegions.doc");
+            //ExEnd:ExecuteWithRegionsDataTable
         }
 
-        // ExStart:ExecuteWithRegionsDataTableMethods
+        //ExStart:ExecuteWithRegionsDataTableMethods
         private static DataTable GetTestOrder(int orderId)
         {
-            DataTable table = ExecuteDataTable(string.Format(
-                "SELECT * FROM AsposeWordOrders WHERE OrderId = {0}", orderId));
+            DataTable table = ExecuteDataTable($"SELECT * FROM AsposeWordOrders WHERE OrderId = {orderId}");
             table.TableName = "Orders";
+            
             return table;
         }
 
         private static DataTable GetTestOrderDetails(int orderId)
         {
-            DataTable table = ExecuteDataTable(string.Format(
-                "SELECT * FROM AsposeWordOrderDetails WHERE OrderId = {0} ORDER BY ProductID", orderId));
+            DataTable table = ExecuteDataTable(
+                $"SELECT * FROM AsposeWordOrderDetails WHERE OrderId = {orderId} ORDER BY ProductID");
             table.TableName = "OrderDetails";
+            
             return table;
         }
 
@@ -63,18 +58,17 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
-            // Create and execute a command.
+            // Create and execute a command
             OleDbCommand cmd = new OleDbCommand(commandText, conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataTable table = new DataTable();
             da.Fill(table);
 
-            // Close the database.
+            // Close the database
             conn.Close();
 
             return table;
         }
-
-        // ExEnd:ExecuteWithRegionsDataTableMethods
+        //ExEnd:ExecuteWithRegionsDataTableMethods
     }
 }

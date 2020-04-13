@@ -7,28 +7,25 @@ using System.Drawing;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    class MailMergeAlternatingRows
+    class MailMergeAlternatingRows : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:MailMergeAlternatingRows           
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-            Document doc = new Document(dataDir + "MailMerge.AlternatingRows.doc");
+            //ExStart:MailMergeAlternatingRows
+            Document doc = new Document(MailMergeDir + "MailMerge.AlternatingRows.doc");
 
-            // Add a handler for the MergeField event.
+            // Add a handler for the MergeField event
             doc.MailMerge.FieldMergingCallback = new HandleMergeFieldAlternatingRows();
 
-            // Execute mail merge with regions.
+            // Execute mail merge with regions
             DataTable dataTable = GetSuppliersDataTable();
             doc.MailMerge.ExecuteWithRegions(dataTable);
-            dataDir = dataDir + "MailMerge.AlternatingRows_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:MailMergeAlternatingRows
-            Console.WriteLine("\nMail merge alternative rows performed successfully.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "MailMerge.AlternatingRows.doc");
+            //ExEnd:MailMergeAlternatingRows
         }
 
-        // ExStart:HandleMergeFieldAlternatingRows
+        //ExStart:HandleMergeFieldAlternatingRows
         private class HandleMergeFieldAlternatingRows : IFieldMergingCallback
         {
             /// <summary>
@@ -41,18 +38,16 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 if (mBuilder == null)
                     mBuilder = new DocumentBuilder(e.Document);
 
-                // This way we catch the beginning of a new row.
+                // This way we catch the beginning of a new row
                 if (e.FieldName.Equals("CompanyName"))
                 {
-                    // Select the color depending on whether the row number is even or odd.
-                    Color rowColor;
-                    if (IsOdd(mRowIdx))
-                        rowColor = Color.FromArgb(213, 227, 235);
-                    else
-                        rowColor = Color.FromArgb(242, 242, 242);
+                    // Select the color depending on whether the row number is even or odd
+                    Color rowColor = IsOdd(mRowIdx) 
+                        ? Color.FromArgb(213, 227, 235) 
+                        : Color.FromArgb(242, 242, 242);
 
                     // There is no way to set cell properties for the whole row at the moment,
-                    // So we have to iterate over all cells in the row.
+                    // So we have to iterate over all cells in the row
                     for (int colIdx = 0; colIdx < 4; colIdx++)
                     {
                         mBuilder.MoveToCell(0, mRowIdx, colIdx, 0);
@@ -65,7 +60,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                // Do nothing.
+                // Do nothing
             }
 
             private DocumentBuilder mBuilder;
@@ -77,8 +72,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         /// </summary>
         private static bool IsOdd(int value)
         {
-            // The code is a bit complex, but otherwise automatic conversion to VB does not work.
-            return ((value / 2) * 2).Equals(value);
+            // The code is a bit complex, but otherwise automatic conversion to VB does not work
+            return (value / 2 * 2).Equals(value);
         }
 
         /// <summary>
@@ -94,13 +89,12 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             {
                 DataRow datarow = dataTable.NewRow();
                 dataTable.Rows.Add(datarow);
-                datarow[0] = "Company " + i.ToString();
-                datarow[1] = "Contact " + i.ToString();
+                datarow[0] = "Company " + i;
+                datarow[1] = "Contact " + i;
             }
 
             return dataTable;
         }
-
-        // ExEnd:HandleMergeFieldAlternatingRows
+        //ExEnd:HandleMergeFieldAlternatingRows
     }
 }

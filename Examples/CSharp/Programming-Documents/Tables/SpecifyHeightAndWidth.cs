@@ -4,27 +4,25 @@ using Aspose.Words.Tables;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class SpecifyHeightAndWidth
+    class SpecifyHeightAndWidth : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-            AutoFitToPageWidth(dataDir);
-            SetPreferredWidthSettings(dataDir);
-            RetrievePreferredWidthType(dataDir);
+            AutoFitToPageWidth();
+            SetPreferredWidthSettings();
+            RetrievePreferredWidthType();
         }
 
         /// <summary>
         /// Shows how to set a table to auto fit to 50% of the page width.
         /// </summary>
-        private static void AutoFitToPageWidth(string dataDir)
+        private static void AutoFitToPageWidth()
         {
-            // ExStart:AutoFitToPageWidth
+            //ExStart:AutoFitToPageWidth
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert a table with a width that takes up half the page width.
+            // Insert a table with a width that takes up half the page width
             Table table = builder.StartTable();
 
             // Insert a few cells
@@ -38,39 +36,35 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.InsertCell();
             builder.Writeln("Cell #3");
 
-            dataDir = dataDir + "Table.PreferredWidth_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:AutoFitToPageWidth
-            Console.WriteLine("\nTable autofit successfully to 50% of the page width.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "AutoFitToPageWidth.docx");
+            //ExEnd:AutoFitToPageWidth
         }
 
         /// <summary>
         /// Shows how to set the different preferred width settings.
         /// </summary>
-        private static void SetPreferredWidthSettings(string dataDir)
+        private static void SetPreferredWidthSettings()
         {
-            // ExStart:SetPreferredWidthSettings
+            //ExStart:SetPreferredWidthSettings
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert a table row made up of three cells which have different preferred widths.
-            Table table = builder.StartTable();
+            // Insert a table row made up of three cells which have different preferred widths
+            builder.StartTable();
 
-            // Insert an absolute sized cell.
+            // Insert an absolute sized cell
             builder.InsertCell();
             builder.CellFormat.PreferredWidth = PreferredWidth.FromPoints(40);
             builder.CellFormat.Shading.BackgroundPatternColor = Color.LightYellow;
             builder.Writeln("Cell at 40 points width");
 
-            // Insert a relative (percent) sized cell.
+            // Insert a relative (percent) sized cell
             builder.InsertCell();
             builder.CellFormat.PreferredWidth = PreferredWidth.FromPercent(20);
             builder.CellFormat.Shading.BackgroundPatternColor = Color.LightBlue;
             builder.Writeln("Cell at 20% width");
 
-            // Insert a auto sized cell.
+            // Insert a auto sized cell
             builder.InsertCell();
             builder.CellFormat.PreferredWidth = PreferredWidth.Auto;
             builder.CellFormat.Shading.BackgroundPatternColor = Color.LightGreen;
@@ -78,33 +72,28 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                 "Cell automatically sized. The size of this cell is calculated from the table preferred width.");
             builder.Writeln("In this case the cell will fill up the rest of the available space.");
 
-            dataDir = dataDir + "Table.CellPreferredWidths_out.doc";
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:SetPreferredWidthSettings
-            Console.WriteLine("\nDifferent preferred width settings set successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetPreferredWidthSettings.docx");
+            //ExEnd:SetPreferredWidthSettings
         }
 
         /// <summary>
         /// Shows how to retrieves the preferred width type of a table cell.
         /// </summary>
-        private static void RetrievePreferredWidthType(string dataDir)
+        private static void RetrievePreferredWidthType()
         {
-            // ExStart:RetrievePreferredWidthType
-            Document doc = new Document(dataDir + "Table.SimpleTable.doc");
+            //ExStart:RetrievePreferredWidthType
+            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
 
-            // Retrieve the first table in the document.
+            // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
-            // ExStart:AllowAutoFit
+            //ExStart:AllowAutoFit
             table.AllowAutoFit = true;
-            // ExEnd:AllowAutoFit
+            //ExEnd:AllowAutoFit
 
             Cell firstCell = table.FirstRow.FirstCell;
             PreferredWidthType type = firstCell.CellFormat.PreferredWidth.Type;
             double value = firstCell.CellFormat.PreferredWidth.Value;
-
-            // ExEnd:RetrievePreferredWidthType
-            Console.WriteLine("\nTable preferred width type value is " + value.ToString());
+            //ExEnd:RetrievePreferredWidthType
         }
     }
 }

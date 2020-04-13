@@ -1,28 +1,18 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+﻿namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class CreateDocument
+    class CreateDocument : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:CreateDocument            
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            // Initialize a Document.
+            //ExStart:CreateDocument
             Document doc = new Document();
 
             // Use a document builder to add content to the document.
             DocumentBuilder builder = new DocumentBuilder(doc);
             builder.Writeln("Hello World!");
 
-            dataDir = dataDir + "CreateDocument_out.docx";
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:CreateDocument
-
-            Console.WriteLine("\nDocument created successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "CreateDocument.docx");
+            //ExEnd:CreateDocument
         }
     }
 }

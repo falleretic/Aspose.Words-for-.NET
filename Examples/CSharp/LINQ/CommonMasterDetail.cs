@@ -1,35 +1,21 @@
-﻿using System;
-using Aspose.Words.Reporting;
+﻿using Aspose.Words.Reporting;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
-    class CommonMasterDetail
+    class CommonMasterDetail : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:CommonMasterDetail
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LINQ();
-            string fileName = "CommonMasterDetail.doc";
-            
-            // Load the template document.
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:CommonMasterDetail
+            Document doc = new Document(LinqDir + "CommonMasterDetail.doc");
 
-            // Create a Reporting Engine.
+            // Create a Reporting Engine
             ReportingEngine engine = new ReportingEngine();
-
-            // Execute the build report.
+            // Execute the build report
             engine.BuildReport(doc, Common.GetManagers(), "managers");
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-
-            // Save the finished document to disk.
-            doc.Save(dataDir);
-            // ExEnd:CommonMasterDetail
-            
-            Console.WriteLine(
-                "\nCommon master detail template document is populated with the data about managers and it's contracts.\nFile saved at " +
-                dataDir);
+            doc.Save(ArtifactsDir + "CommonMasterDetail.docx");
+            //ExEnd:CommonMasterDetail
         }
     }
 }

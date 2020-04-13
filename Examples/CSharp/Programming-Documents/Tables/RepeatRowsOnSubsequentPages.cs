@@ -1,20 +1,14 @@
-﻿using System;
-using Aspose.Words.Tables;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class RepeatRowsOnSubsequentPages
+    class RepeatRowsOnSubsequentPages : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:RepeatRowsOnSubsequentPages
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-
+            //ExStart:RepeatRowsOnSubsequentPages
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            Table table = builder.StartTable();
+            builder.StartTable();
             builder.RowFormat.HeadingFormat = true;
             builder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
             builder.CellFormat.Width = 100;
@@ -28,7 +22,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.CellFormat.Width = 50;
             builder.ParagraphFormat.ClearFormatting();
 
-            // Insert some content so the table is long enough to continue onto the next page.
+            // Insert some content so the table is long enough to continue onto the next page
             for (int i = 0; i < 50; i++)
             {
                 builder.InsertCell();
@@ -39,13 +33,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                 builder.EndRow();
             }
 
-            dataDir = dataDir + "Table.HeadingRow_out.doc";
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:RepeatRowsOnSubsequentPages
-            Console.WriteLine(
-                "\nTable build successfully which include heading rows that repeat on subsequent pages..\nFile saved at " +
-                dataDir);
+            doc.Save(ArtifactsDir + "RepeatRowsOnSubsequentPages.docx");
+            //ExEnd:RepeatRowsOnSubsequentPages
         }
     }
 }

@@ -3,162 +3,138 @@ using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class WorkingWithTxt
+    class WorkingWithTxt : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            SaveAsTxt(dataDir);
-            AddBidiMarks(dataDir);
-            DetectNumberingWithWhitespaces(dataDir);
-            HandleSpacesOptions(dataDir);
-            DocumentTextDirection(dataDir);
-            ExportHeadersFootersMode(dataDir);
-            UseTabCharacterPerLevelForListIndentation(dataDir);
-            UseSpaceCharacterPerLevelForListIndentation(dataDir);
-            DefaultLevelForListIndentation(dataDir);
+            SaveAsTxt();
+            AddBidiMarks();
+            DetectNumberingWithWhitespaces();
+            HandleSpacesOptions();
+            DocumentTextDirection();
+            ExportHeadersFootersMode();
+            UseTabCharacterPerLevelForListIndentation();
+            UseSpaceCharacterPerLevelForListIndentation();
+            DefaultLevelForListIndentation();
         }
 
-        public static void SaveAsTxt(string dataDir)
+        public static void SaveAsTxt()
         {
             //ExStart:SaveAsTxt
-            Document doc = new Document(dataDir + "Document.doc");
-            
-            dataDir = dataDir + "Document.ConvertToTxt_out.txt";
-            doc.Save(dataDir);
+            Document doc = new Document(LoadingSavingDir + "Document.doc");
+            doc.Save(ArtifactsDir + "SaveAsTxt.txt");
             //ExEnd:SaveAsTxt
-
-            Console.WriteLine("\nDocument saved as TXT.\nFile saved at " + dataDir);
         }
 
-        public static void AddBidiMarks(string dataDir)
+        public static void AddBidiMarks()
         {
             //ExStart:AddBidiMarks
-            Document doc = new Document(dataDir + "Input.docx");
+            Document doc = new Document(LoadingSavingDir + "Input.docx");
             
             TxtSaveOptions saveOptions = new TxtSaveOptions();
             saveOptions.AddBidiMarks = true;
 
-            dataDir = dataDir + "Document.AddBidiMarks_out.txt";
-            doc.Save(dataDir, saveOptions);
+            doc.Save(ArtifactsDir + "AddBidiMarks.txt", saveOptions);
             //ExEnd:AddBidiMarks
-            
-            Console.WriteLine("\nAdd bi-directional marks set successfully.\nFile saved at " + dataDir);
         }
 
-        public static void DetectNumberingWithWhitespaces(string dataDir)
+        public static void DetectNumberingWithWhitespaces()
         {
             //ExStart:DetectNumberingWithWhitespaces
             TxtLoadOptions loadOptions = new TxtLoadOptions();
             loadOptions.DetectNumberingWithWhitespaces = false;
 
-            Document doc = new Document(dataDir + "LoadTxt.txt", loadOptions);
-
-            dataDir = dataDir + "DetectNumberingWithWhitespaces_out.docx";
-            doc.Save(dataDir);
+            Document doc = new Document(LoadingSavingDir + "LoadTxt.txt", loadOptions);
+            doc.Save(ArtifactsDir + "DetectNumberingWithWhitespaces.docx");
             //ExEnd:DetectNumberingWithWhitespaces
-            
-            Console.WriteLine("\nDetect number with whitespaces successfully.\nFile saved at " + dataDir);
         }
 
-        public static void HandleSpacesOptions(string dataDir)
+        public static void HandleSpacesOptions()
         {
             //ExStart:HandleSpacesOptions
             TxtLoadOptions loadOptions = new TxtLoadOptions();
-
             loadOptions.LeadingSpacesOptions = TxtLeadingSpacesOptions.Trim;
             loadOptions.TrailingSpacesOptions = TxtTrailingSpacesOptions.Trim;
-            Document doc = new Document(dataDir + "LoadTxt.txt", loadOptions);
-
-            dataDir = dataDir + "HandleSpacesOptions_out.docx";
-            doc.Save(dataDir);
-            //ExEnd:HandleSpacesOptions
             
-            Console.WriteLine("\nTrim leading and trailing spaces while importing text document.\nFile saved at " +
-                              dataDir);
+            Document doc = new Document(LoadingSavingDir + "LoadTxt.txt", loadOptions);
+            doc.Save(ArtifactsDir + "HandleSpacesOptions.docx");
+            //ExEnd:HandleSpacesOptions
         }
 
-        public static void DocumentTextDirection(string dataDir)
+        public static void DocumentTextDirection()
         {
             //ExStart:DocumentTextDirection
             TxtLoadOptions loadOptions = new TxtLoadOptions();
             loadOptions.DocumentDirection = DocumentDirection.Auto;
 
-            Document doc = new Document(dataDir + "arabic.txt", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "arabic.txt", loadOptions);
 
             Paragraph paragraph = doc.FirstSection.Body.FirstParagraph;
             Console.WriteLine(paragraph.ParagraphFormat.Bidi);
 
-            dataDir = dataDir + "DocumentDirection_out.docx";
-            doc.Save(dataDir);
+            doc.Save(ArtifactsDir + "DocumentTextDirection.docx");
             //ExEnd:DocumentTextDirection
-
-            Console.WriteLine("\nFile saved at " + dataDir);
         }
 
-        public static void ExportHeadersFootersMode(string dataDir)
+        public static void ExportHeadersFootersMode()
         {
             //ExStart:ExportHeadersFootersMode
-            Document doc = new Document(dataDir + "TxtExportHeadersFootersMode.docx");
+            Document doc = new Document(LoadingSavingDir + "TxtExportHeadersFootersMode.docx");
 
             TxtSaveOptions options = new TxtSaveOptions();
             options.SaveFormat = SaveFormat.Text;
-            // All headers and footers are placed at the very end of the output document.
+            // All headers and footers are placed at the very end of the output document
             options.ExportHeadersFootersMode = TxtExportHeadersFootersMode.AllAtEnd;
             
-            doc.Save(dataDir + "outputFileNameA.txt", options);
+            doc.Save(ArtifactsDir + "ExportHeadersFootersModeA.txt", options);
 
-            // Only primary headers and footers are exported at the beginning and end of each section.
+            // Only primary headers and footers are exported at the beginning and end of each section
             options.ExportHeadersFootersMode = TxtExportHeadersFootersMode.PrimaryOnly;
             
-            doc.Save(dataDir + "outputFileNameB.txt", options);
+            doc.Save(ArtifactsDir + "ExportHeadersFootersModeB.txt", options);
 
-            // No headers and footers are exported.
+            // No headers and footers are exported
             options.ExportHeadersFootersMode = TxtExportHeadersFootersMode.None;
             
-            doc.Save(dataDir + "outputFileNameC.txt", options);
+            doc.Save(ArtifactsDir + "ExportHeadersFootersModeC.txt", options);
             //ExEnd:ExportHeadersFootersMode
-
-            Console.WriteLine("\nExport text files with TxtExportHeadersFootersMode.\nFiles saved at " + dataDir);
         }
 
-        public static void UseTabCharacterPerLevelForListIndentation(string dataDir)
+        public static void UseTabCharacterPerLevelForListIndentation()
         {
             //ExStart:UseTabCharacterPerLevelForListIndentation
-            Document doc = new Document("input_document");
+            Document doc = new Document(LoadingSavingDir + "input_document");
 
             TxtSaveOptions options = new TxtSaveOptions();
             options.ListIndentation.Count = 1;
             options.ListIndentation.Character = '\t';
 
-            doc.Save(dataDir + "output.txt", options);
+            doc.Save(ArtifactsDir + "UseTabCharacterPerLevelForListIndentation.txt", options);
             //ExEnd:UseTabCharacterPerLevelForListIndentation
         }
 
-        public static void UseSpaceCharacterPerLevelForListIndentation(string dataDir)
+        public static void UseSpaceCharacterPerLevelForListIndentation()
         {
             //ExStart:UseSpaceCharacterPerLevelForListIndentation
-            Document doc = new Document("input_document");
+            Document doc = new Document(LoadingSavingDir + "input_document");
 
             TxtSaveOptions options = new TxtSaveOptions();
             options.ListIndentation.Count = 3;
             options.ListIndentation.Character = ' ';
 
-            doc.Save(dataDir + "output.txt", options);
+            doc.Save(ArtifactsDir + "UseSpaceCharacterPerLevelForListIndentation.txt", options);
             //ExEnd:UseSpaceCharacterPerLevelForListIndentation
         }
 
-        public static void DefaultLevelForListIndentation(string dataDir)
+        public static void DefaultLevelForListIndentation()
         {
             //ExStart:DefaultLevelForListIndentation
-            Document doc1 = new Document("input_document");
-            doc1.Save(dataDir + "output1.txt");
+            Document doc1 = new Document(LoadingSavingDir + "input_document");
+            doc1.Save(ArtifactsDir + "DefaultLevelForListIndentation1.txt");
 
             Document doc2 = new Document("input_document");
             TxtSaveOptions options = new TxtSaveOptions();
-            doc2.Save(dataDir + "output2.txt", options);
+            doc2.Save(ArtifactsDir + "DefaultLevelForListIndentation2.txt", options);
             //ExEnd:DefaultLevelForListIndentation
         }
     }

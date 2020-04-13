@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
-    class Common
+    class Common : TestDataHelper
     {
         /// <summary>
         /// Return first manager from Managers which is an enumeration of instances of the Manager class. 
         /// </summary>        
         public static Manager GetManager()
         {
-            // ExStart:GetManager
+            //ExStart:GetManager
             IEnumerator<Manager> managers = GetManagers().GetEnumerator();
             managers.MoveNext();
-
+            
             return managers.Current;
-            // ExEnd:GetManager
+            //ExEnd:GetManager
         }
 
         /// <summary>
@@ -23,13 +23,13 @@ namespace Aspose.Words.Examples.CSharp.LINQ
         /// </summary>        
         public static IEnumerable<Client> GetClients()
         {
-            // ExStart:GetClients
+            //ExStart:GetClients
             foreach (Manager manager in GetManagers())
             {
                 foreach (Contract contract in manager.Contracts)
                     yield return contract.Client;
             }
-            // ExEnd:GetClients
+            //ExEnd:GetClients
         }
 
         /// <summary>
@@ -37,9 +37,9 @@ namespace Aspose.Words.Examples.CSharp.LINQ
         /// </summary>
         public static IEnumerable<Manager> GetManagers()
         {
-            // ExStart:GetManagers
+            //ExStart:GetManagers
             Manager manager = new Manager { Name = "John Smith", Age = 36, Photo = Photo() };
-            manager.Contracts = new Contract[]
+            manager.Contracts = new[]
             {
                 new Contract
                 {
@@ -72,7 +72,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ
             yield return manager;
 
             manager = new Manager { Name = "Tony Anderson", Age = 37, Photo = Photo() };
-            manager.Contracts = new Contract[]
+            manager.Contracts = new[]
             {
                 new Contract
                 {
@@ -90,7 +90,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ
             yield return manager;
 
             manager = new Manager { Name = "July James", Age = 38, Photo = Photo() };
-            manager.Contracts = new Contract[]
+            manager.Contracts = new[]
             {
                 new Contract
                 {
@@ -124,7 +124,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ
                 }
             };
             yield return manager;
-            // ExEnd:GetManagers
+            //ExEnd:GetManagers
         }
 
         /// <summary>
@@ -132,14 +132,12 @@ namespace Aspose.Words.Examples.CSharp.LINQ
         /// </summary>
         private static byte[] Photo()
         {
-            // ExStart:Photo
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LINQ();
-
-            // Load the photo and read all bytes.
-            byte[] imgdata = System.IO.File.ReadAllBytes(dataDir + "photo.png");
+            //ExStart:Photo
+            // Load the photo and read all bytes
+            byte[] imgdata = System.IO.File.ReadAllBytes(LinqDir + "photo.png");
+            
             return imgdata;
-            // ExEnd:Photo
+            //ExEnd:Photo
         }
 
         /// <summary>
@@ -147,13 +145,13 @@ namespace Aspose.Words.Examples.CSharp.LINQ
         /// </summary>
         public static IEnumerable<Contract> GetContracts()
         {
-            // ExStart:GetContracts
+            //ExStart:GetContracts
             foreach (Manager manager in GetManagers())
             {
                 foreach (Contract contract in manager.Contracts)
                     yield return contract;
             }
-            // ExEnd:GetContracts
+            //ExEnd:GetContracts
         }
     }
 }

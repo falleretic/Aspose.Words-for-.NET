@@ -3,24 +3,20 @@ using System.Data;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    class RemoveRowsFromTable
+    class RemoveRowsFromTable : TestDataHelper
     {
         public static void Run()
         {
-            //Exstart:RemoveRowsFromTable
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-            string fileName = "RemoveTableRows.doc";
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:RemoveRowsFromTable
+            Document doc = new Document(MailMergeDir + "RemoveTableRows.doc");
             DataSet data = new DataSet();
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions |
                                            MailMergeCleanupOptions.RemoveEmptyTableRows;
             doc.MailMerge.MergeDuplicateRegions = true;
             doc.MailMerge.ExecuteWithRegions(data);
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            // Save the output document to disk.
-            doc.Save(dataDir);
-            //Exend:RemoveRowsFromTable
+
+            doc.Save(ArtifactsDir + "RemoveRowsFromTable.docx");
+            //ExEnd:RemoveRowsFromTable
         }
     }
 }

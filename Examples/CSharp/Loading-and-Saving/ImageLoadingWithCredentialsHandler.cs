@@ -18,12 +18,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             {
                 Uri uri = new Uri(args.Uri);
 
-                if (uri.Host == "www.aspose.com")
-                    mWebClient.Credentials = new NetworkCredential("User1", "akjdlsfkjs");
-                else
-                    mWebClient.Credentials = new NetworkCredential("SomeOtherUserID", "wiurlnlvs");
+                mWebClient.Credentials = uri.Host == "www.aspose.com"
+                    ? new NetworkCredential("User1", "akjdlsfkjs")
+                    : new NetworkCredential("SomeOtherUserID", "wiurlnlvs");
 
-                // Download the bytes from the location referenced by the URI.
+                // Download the bytes from the location referenced by the URI
                 byte[] imageBytes = mWebClient.DownloadData(args.Uri);
 
                 args.SetData(imageBytes);
@@ -34,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             return ResourceLoadingAction.Default;
         }
 
-        private WebClient mWebClient;
+        private readonly WebClient mWebClient;
     }
     //ExEnd:ImageLoadingWithCredentialsHandler
 }

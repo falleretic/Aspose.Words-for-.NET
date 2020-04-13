@@ -4,81 +4,66 @@ using System;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
-    class Load_Options
+    class Load_Options : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_QuickStart();
-
-            LoadOptionsUpdateDirtyFields(dataDir);
-            LoadAndSaveEncryptedODT(dataDir);
-            VerifyODTdocument(dataDir);
-            ConvertShapeToOfficeMath(dataDir);
-            SetMSWordVersion(dataDir);
+            LoadOptionsUpdateDirtyFields();
+            LoadAndSaveEncryptedOdt();
+            VerifyOdtDocument();
+            ConvertShapeToOfficeMath();
+            SetMsWordVersion();
         }
 
-        public static void LoadOptionsUpdateDirtyFields(string dataDir)
+        public static void LoadOptionsUpdateDirtyFields()
         {
-            // ExStart:LoadOptionsUpdateDirtyFields
+            //ExStart:LoadOptionsUpdateDirtyFields
             LoadOptions lo = new LoadOptions();
-
             // Update the fields with the dirty attribute
             lo.UpdateDirtyFields = true;
 
-            // Load the Word document
-            Document doc = new Document(dataDir + "input.docx", lo);
-
-            // Save the document into DOCX
-            doc.Save(dataDir + "output.docx", SaveFormat.Docx);
-            // ExEnd:LoadOptionsUpdateDirtyFields
-
-            Console.WriteLine("\nUpdate the fields with the dirty attribute successfully.\nFile saved at " + dataDir);
+            Document doc = new Document(LoadingSavingDir + "input.docx", lo);
+            doc.Save(ArtifactsDir + "LoadOptionsUpdateDirtyFields.docx");
+            //ExEnd:LoadOptionsUpdateDirtyFields
         }
 
-        public static void LoadAndSaveEncryptedODT(string dataDir)
+        public static void LoadAndSaveEncryptedOdt()
         {
-            // ExStart:LoadAndSaveEncryptedODT
-            Document doc = new Document(dataDir + @"encrypted.odt", new Aspose.Words.LoadOptions("password"));
-
-            doc.Save(dataDir + "out.odt", new OdtSaveOptions("newpassword"));
-            // ExEnd:LoadAndSaveEncryptedODT
-
-            Console.WriteLine("\nLoad and save encrypted document successfully.\nFile saved at " + dataDir);
+            //ExStart:LoadAndSaveEncryptedODT
+            Document doc = new Document(LoadingSavingDir + "encrypted.odt", new LoadOptions("password"));
+            doc.Save(ArtifactsDir + "LoadAndSaveEncryptedOdt.odt", new OdtSaveOptions("newpassword"));
+            //ExEnd:LoadAndSaveEncryptedODT
         }
 
-        public static void VerifyODTdocument(string dataDir)
+        public static void VerifyOdtDocument()
         {
-            // ExStart:VerifyODTdocument
-            FileFormatInfo info = FileFormatUtil.DetectFileFormat(dataDir + "encrypted.odt");
+            //ExStart:VerifyODTdocument
+            FileFormatInfo info = FileFormatUtil.DetectFileFormat(LoadingSavingDir + "encrypted.odt");
             Console.WriteLine(info.IsEncrypted);
-            // ExEnd:VerifyODTdocument
+            //ExEnd:VerifyODTdocument
         }
 
-        public static void ConvertShapeToOfficeMath(string dataDir)
+        public static void ConvertShapeToOfficeMath()
         {
-            // ExStart:ConvertShapeToOfficeMath
+            //ExStart:ConvertShapeToOfficeMath
             LoadOptions lo = new LoadOptions();
             lo.ConvertShapeToOfficeMath = true;
 
             // Specify load option to use previous default behaviour i.e. convert math shapes to office math ojects on loading stage.
-            Document doc = new Document(dataDir + "OfficeMath.docx", lo);
-            // Save the document into DOCX
-            doc.Save(dataDir + "ConvertShapeToOfficeMath_out.docx", SaveFormat.Docx);
-            // ExEnd:ConvertShapeToOfficeMath
+            Document doc = new Document(LoadingSavingDir + "OfficeMath.docx", lo);
+            doc.Save(ArtifactsDir + "ConvertShapeToOfficeMath.docx", SaveFormat.Docx);
+            //ExEnd:ConvertShapeToOfficeMath
         }
 
-        public static void SetMSWordVersion(string dataDir)
+        public static void SetMsWordVersion()
         {
-            // ExStart:SetMSWordVersion
+            //ExStart:SetMSWordVersion
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.MswVersion = MsWordVersion.Word2003;
-            Document doc = new Document(dataDir + "document.doc", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "document.doc", loadOptions);
 
-            doc.Save(dataDir + "Word2003_out.docx");
-            // ExEnd:SetMSWordVersion
-
-            Console.WriteLine("\n Loaded with MS Word Version successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetMsWordVersion.docx");
+            //ExEnd:SetMSWordVersion
         }
     }
 }

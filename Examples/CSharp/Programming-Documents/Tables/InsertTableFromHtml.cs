@@ -1,19 +1,15 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
+﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class InsertTableFromHtml
+    class InsertTableFromHtml : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:InsertTableFromHtml
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
+            //ExStart:InsertTableFromHtml
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Insert the table from HTML. Note that AutoFitSettings does not apply to tables
-            // Inserted from HTML.
+            // inserted from HTML
             builder.InsertHtml("<table>" +
                                "<tr>" +
                                "<td>Row 1, Cell 1</td>" +
@@ -25,12 +21,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                                "</tr>" +
                                "</table>");
 
-            dataDir = dataDir + "DocumentBuilder.InsertTableFromHtml_out.doc";
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:InsertTableFromHtml
-
-            Console.WriteLine("\nTable inserted successfully from html.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "InsertTableFromHtml.docx");
+            //ExEnd:InsertTableFromHtml
         }
     }
 }

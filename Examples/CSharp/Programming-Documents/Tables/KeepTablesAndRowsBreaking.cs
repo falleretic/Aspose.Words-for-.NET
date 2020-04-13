@@ -3,49 +3,42 @@ using Aspose.Words.Tables;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class KeepTablesAndRowsBreaking
+    class KeepTablesAndRowsBreaking : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-
-            // The below method shows how to disable rows breaking across pages for every row in a table.
-            RowFormatDisableBreakAcrossPages(dataDir);
-            // The below method shows how to set a table to stay together on the same page.
-            KeepTableTogether(dataDir);
+            // The below method shows how to disable rows breaking across pages for every row in a table
+            RowFormatDisableBreakAcrossPages();
+            // The below method shows how to set a table to stay together on the same page
+            KeepTableTogether();
         }
 
-        public static void RowFormatDisableBreakAcrossPages(string dataDir)
+        public static void RowFormatDisableBreakAcrossPages()
         {
-            // ExStart:RowFormatDisableBreakAcrossPages
-            Document doc = new Document(dataDir + "Table.TableAcrossPage.doc");
+            //ExStart:RowFormatDisableBreakAcrossPages
+            Document doc = new Document(TablesDir + "Table.TableAcrossPage.doc");
 
-            // Retrieve the first table in the document.
+            // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
-            // Disable breaking across pages for all rows in the table.
+            // Disable breaking across pages for all rows in the table
             foreach (Row row in table.Rows)
                 row.RowFormat.AllowBreakAcrossPages = false;
 
-            dataDir = dataDir + "Table.DisableBreakAcrossPages_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:RowFormatDisableBreakAcrossPages
-            Console.WriteLine(
-                "\nTable rows breaking across pages for every row in a table disabled successfully.\nFile saved at " +
-                dataDir);
+            doc.Save(ArtifactsDir + "RowFormatDisableBreakAcrossPages.docx");
+            //ExEnd:RowFormatDisableBreakAcrossPages
         }
 
-        public static void KeepTableTogether(string dataDir)
+        public static void KeepTableTogether()
         {
-            // ExStart:KeepTableTogether
-            Document doc = new Document(dataDir + "Table.TableAcrossPage.doc");
-            // Retrieve the first table in the document.
+            //ExStart:KeepTableTogether
+            Document doc = new Document(TablesDir + "Table.TableAcrossPage.doc");
+            // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // To keep a table from breaking across a page we need to enable KeepWithNext 
-            // For every paragraph in the table except for the last paragraphs in the last 
-            // Row of the table.
+            // for every paragraph in the table except for the last paragraphs in the last 
+            // row of the table
             foreach (Cell cell in table.GetChildNodes(NodeType.Cell, true))
             {
                 // Call this method if table's cell is created on the fly
@@ -56,11 +49,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                         para.ParagraphFormat.KeepWithNext = true;
             }
 
-            dataDir = dataDir + "Table.KeepTableTogether_out.doc";
-            doc.Save(dataDir);
-            // ExEnd:KeepTableTogether
-            Console.WriteLine("\nTable setup successfully to stay together on the same page.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "KeepTableTogether.docx");
+            //ExEnd:KeepTableTogether
         }
     }
 }

@@ -1,33 +1,26 @@
 ﻿using Aspose.Words.Fields;
 using Aspose.Words.MailMerging;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    public class HandleMailMergeSwitches
+    class HandleMailMergeSwitches : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-            // Open an existing document.
-            Document doc = new Document(dataDir + "MailMergeSwitches.docx");
+            Document doc = new Document(MailMergeDir + "MailMergeSwitches.docx");
 
             doc.MailMerge.FieldMergingCallback = new MailMergeSwitches();
 
-            // Fill the fields in the document with user data.
+            // Fill the fields in the document with user data
             doc.MailMerge.Execute(
                 new string[] { "HTML_Name" },
                 new object[] { "James Bond" });
 
-            dataDir = dataDir + "MergeSwitches_out.doc";
-            doc.Save(dataDir);
-
-            Console.WriteLine("\nSimple Mail merge performed with array data successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "HandleMailMergeSwitches.docx");
         }
     }
 
-    // ExStart:HandleMailMergeSwitches
+    //ExStart:HandleMailMergeSwitches
     public sealed class MailMergeSwitches : IFieldMergingCallback
     {
         void IFieldMergingCallback.FieldMerging(FieldMergingArgs e)
@@ -52,6 +45,5 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
         }
     }
-
-    // ExEnd:HandleMailMergeSwitches
+    //ExEnd:HandleMailMergeSwitches
 }

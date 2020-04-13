@@ -2,7 +2,7 @@
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
-    // ExStart:Manager
+    //ExStart:Manager
     public class Manager
     {
         public string Name { get; set; }
@@ -10,5 +10,5 @@ namespace Aspose.Words.Examples.CSharp.LINQ
         public byte[] Photo { get; set; }
         public IEnumerable<Contract> Contracts { get; set; }
     }
-    // ExEnd:Manager
+    //ExEnd:Manager
 }

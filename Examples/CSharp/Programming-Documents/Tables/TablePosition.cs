@@ -4,23 +4,21 @@ using System;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class TablePosition
+    class TablePosition : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-            GetTablePosition(dataDir);
-            GetFloatingTablePosition(dataDir);
-            SetFloatingTablePosition(dataDir);
+            GetTablePosition();
+            GetFloatingTablePosition();
+            SetFloatingTablePosition();
         }
 
-        private static void GetTablePosition(string dataDir)
+        private static void GetTablePosition()
         {
-            // ExStart:GetTablePosition
-            Document doc = new Document(dataDir + "Table.Document.doc");
+            //ExStart:GetTablePosition
+            Document doc = new Document(TablesDir + "Table.Document.doc");
 
-            // Retrieve the first table in the document.
+            // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             if (table.TextWrapping == TextWrapping.Around)
@@ -32,18 +30,17 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             {
                 Console.WriteLine(table.Alignment);
             }
-
-            // ExEnd:GetTablePosition
-            Console.WriteLine("\nGet the Table position successfully.");
+            //ExEnd:GetTablePosition
         }
 
-        private static void GetFloatingTablePosition(string dataDir)
+        private static void GetFloatingTablePosition()
         {
-            // ExStart:GetFloatingTablePosition
-            Document doc = new Document(dataDir + "FloatingTablePosition.docx");
+            //ExStart:GetFloatingTablePosition
+            Document doc = new Document(TablesDir + "FloatingTablePosition.docx");
+            
             foreach (Table table in doc.FirstSection.Body.Tables)
             {
-                // If table is floating type then print its positioning properties.
+                // If table is floating type then print its positioning properties
                 if (table.TextWrapping == TextWrapping.Around)
                 {
                     Console.WriteLine(table.HorizontalAnchor);
@@ -56,28 +53,22 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                     Console.WriteLine("..............................");
                 }
             }
-
-            // ExEnd:GetFloatingTablePosition
-            Console.WriteLine("\nGet the Table position successfully.");
+            //ExEnd:GetFloatingTablePosition
         }
 
-        private static void SetFloatingTablePosition(string dataDir)
+        private static void SetFloatingTablePosition()
         {
-            // ExStart:SetFloatingTablePosition
-            Document doc = new Document(dataDir + "FloatingTablePosition.docx");
+            //ExStart:SetFloatingTablePosition
+            Document doc = new Document(TablesDir + "FloatingTablePosition.docx");
 
             Table table = doc.FirstSection.Body.Tables[0];
-
-            // sets absolute table horizontal position at 10pt.
+            // Sets absolute table horizontal position at 10pt
             table.AbsoluteHorizontalDistance = 10;
-
-            // sets vertical table position to center of entity specified by Table.VerticalAnchor.
+            // Sets vertical table position to center of entity specified by Table.VerticalAnchor
             table.RelativeVerticalAlignment = VerticalAlignment.Center;
 
-            // Save the document to disk.
-            doc.Save(dataDir + "Table.SetFloatingTablePosition.docx");
-            // ExEnd:SetFloatingTablePosition
-            Console.WriteLine("\nSet the Table position successfully.");
+            doc.Save(ArtifactsDir + "SetFloatingTablePosition.docx");
+            //ExEnd:SetFloatingTablePosition
         }
     }
 }

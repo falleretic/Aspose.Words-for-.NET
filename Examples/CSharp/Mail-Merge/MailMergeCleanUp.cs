@@ -1,38 +1,26 @@
 ﻿using Aspose.Words.MailMerging;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    class MailMergeCleanUp
+    class MailMergeCleanUp : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-
-            CleanupParagraphsWithPunctuationMarks(dataDir);
+            CleanupParagraphsWithPunctuationMarks();
         }
 
-        public static void CleanupParagraphsWithPunctuationMarks(string dataDir)
+        public static void CleanupParagraphsWithPunctuationMarks()
         {
-            // ExStart:CleanupParagraphsWithPunctuationMarks
-            string fileName = "MailMerge.CleanupPunctuationMarks.docx";
-            // Open the document.
-            Document doc = new Document(dataDir + fileName);
+            //ExStart:CleanupParagraphsWithPunctuationMarks
+            Document doc = new Document(MailMergeDir + "MailMerge.CleanupPunctuationMarks.docx");
 
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveEmptyParagraphs;
             doc.MailMerge.CleanupParagraphsWithPunctuationMarks = false;
 
             doc.MailMerge.Execute(new string[] { "field1", "field2" }, new object[] { "", "" });
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            // Save the output document to disk.
-            doc.Save(dataDir);
-            // ExEnd:CleanupParagraphsWithPunctuationMarks
-
-            Console.WriteLine(
-                "\nMail merge performed with cleanup paragraphs having punctuation marks successfully.\nFile saved at " +
-                dataDir);
+            doc.Save(ArtifactsDir + "MailMerge.CleanupPunctuationMarks.docx");
+            //ExEnd:CleanupParagraphsWithPunctuationMarks
         }
     }
 }

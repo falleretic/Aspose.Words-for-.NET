@@ -2,27 +2,25 @@
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class AccessAndVerifySignature
+    class AccessAndVerifySignature : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:AccessAndVerifySignature            
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
+            //ExStart:AccessAndVerifySignature
+            Document doc = new Document(LoadingSavingDir + "Test File (doc).doc");
 
-            Document doc = new Document(dataDir + "Test File (doc).doc");
             foreach (DigitalSignature signature in doc.DigitalSignatures)
             {
                 Console.WriteLine("*** Signature Found ***");
                 Console.WriteLine("Is valid: " + signature.IsValid);
-                Console.WriteLine("Reason for signing: " +
-                                  signature.Comments); // This property is available in MS Word documents only.
+                // This property is available in MS Word documents only
+                Console.WriteLine("Reason for signing: " + signature.Comments); 
                 Console.WriteLine("Time of signing: " + signature.SignTime);
                 Console.WriteLine("Subject name: " + signature.CertificateHolder.Certificate.SubjectName.Name);
                 Console.WriteLine("Issuer name: " + signature.CertificateHolder.Certificate.IssuerName.Name);
                 Console.WriteLine();
             }
-            // ExEnd:AccessAndVerifySignature
+            //ExEnd:AccessAndVerifySignature
         }
     }
 }

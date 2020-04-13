@@ -3,39 +3,34 @@ using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class SaveDocWithHtmlSaveOptions
+    class SaveDocWithHtmlSaveOptions : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            SaveHtmlWithMetafileFormat(dataDir);
-            ImportExportSVGinHTML(dataDir);
-            SetCssClassNamePrefix(dataDir);
-            SetExportCidUrlsForMhtmlResources(dataDir);
-            SetResolveFontNames(dataDir);
+            SaveHtmlWithMetafileFormat();
+            ImportExportSvgInHtml();
+            SetCssClassNamePrefix();
+            SetExportCidUrlsForMhtmlResources();
+            SetResolveFontNames();
         }
 
-        public static void SaveHtmlWithMetafileFormat(string dataDir)
+        public static void SaveHtmlWithMetafileFormat()
         {
-            // ExStart:SaveHtmlWithMetafileFormat
-            Document doc = new Document(dataDir + "Document.docx");
+            //ExStart:SaveHtmlWithMetafileFormat
+            Document doc = new Document(LoadingSavingDir + "Document.docx");
             HtmlSaveOptions options = new HtmlSaveOptions();
             options.MetafileFormat = HtmlMetafileFormat.EmfOrWmf;
 
-            dataDir = dataDir + "SaveHtmlWithMetafileFormat_out.html";
-            doc.Save(dataDir, options);
-            // ExEnd:SaveHtmlWithMetafileFormat
-
-            Console.WriteLine("\nDocument saved with Metafile format.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SaveHtmlWithMetafileFormat.html", options);
+            //ExEnd:SaveHtmlWithMetafileFormat
         }
 
-        public static void ImportExportSVGinHTML(string dataDir)
+        public static void ImportExportSvgInHtml()
         {
-            // ExStart:ImportExportSVGinHTML
+            //ExStart:ImportExportSVGinHTML
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
             builder.Write("Here is an SVG image: ");
             builder.InsertHtml(
                 @"<svg height='210' width='500'>
@@ -46,60 +41,48 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             HtmlSaveOptions options = new HtmlSaveOptions();
             options.MetafileFormat = HtmlMetafileFormat.Svg;
 
-            dataDir = dataDir + "ExportSVGinHTML_out.html";
-            doc.Save(dataDir, options);
-            // ExEnd:ImportExportSVGinHTML
-
-            Console.WriteLine("\nDocument saved with SVG Metafile format.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "ImportExportSvgInHtml.html", options);
+            //ExEnd:ImportExportSVGinHTML
         }
 
-        public static void SetCssClassNamePrefix(string dataDir)
+        public static void SetCssClassNamePrefix()
         {
-            // ExStart:SetCssClassNamePrefix
-            Document doc = new Document(dataDir + "Document.docx");
+            //ExStart:SetCssClassNamePrefix
+            Document doc = new Document(LoadingSavingDir + "Document.docx");
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
             saveOptions.CssStyleSheetType = CssStyleSheetType.External;
             saveOptions.CssClassNamePrefix = "pfx_";
 
-            dataDir = dataDir + "CssClassNamePrefix_out.html";
-            doc.Save(dataDir, saveOptions);
-            // ExEnd:SetCssClassNamePrefix
-
-            Console.WriteLine("\nDocument saved with CSS prefix pfx_.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetCssClassNamePrefix.html", saveOptions);
+            //ExEnd:SetCssClassNamePrefix
         }
 
-        public static void SetExportCidUrlsForMhtmlResources(string dataDir)
+        public static void SetExportCidUrlsForMhtmlResources()
         {
-            // ExStart:SetExportCidUrlsForMhtmlResources
-            Document doc = new Document(dataDir + "CidUrls.docx");
+            //ExStart:SetExportCidUrlsForMhtmlResources
+            Document doc = new Document(LoadingSavingDir + "CidUrls.docx");
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Mhtml);
             saveOptions.PrettyFormat = true;
             saveOptions.ExportCidUrlsForMhtmlResources = true;
             saveOptions.SaveFormat = SaveFormat.Mhtml;
 
-            dataDir = dataDir + "SetExportCidUrlsForMhtmlResources_out.mhtml";
-            doc.Save(dataDir, saveOptions);
-            // ExEnd:SetExportCidUrlsForMhtmlResources
-
-            Console.WriteLine("\nDocument has saved with Content - Id URL scheme.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetExportCidUrlsForMhtmlResources.mhtml", saveOptions);
+            //ExEnd:SetExportCidUrlsForMhtmlResources
         }
 
-        public static void SetResolveFontNames(string dataDir)
+        public static void SetResolveFontNames()
         {
-            // ExStart:SetResolveFontNames
-            Document doc = new Document(dataDir + "Test File (docx).docx");
+            //ExStart:SetResolveFontNames
+            Document doc = new Document(LoadingSavingDir + "Test File (docx).docx");
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Html);
             saveOptions.PrettyFormat = true;
             saveOptions.ResolveFontNames = true;
 
-            dataDir = dataDir + "ResolveFontNames_out.html";
-            doc.Save(dataDir, saveOptions);
-            // ExEnd:SetResolveFontNames
-
-            Console.WriteLine("\nFontSettings is used to resolve font family name.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "SetResolveFontNames.html", saveOptions);
+            //ExEnd:SetResolveFontNames
         }
     }
 }

@@ -28,6 +28,11 @@ namespace Aspose.Words.Examples.CSharp
             StyleDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Styles/").LocalPath;
             ThemeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Theme/").LocalPath;
             WebExtensionsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/WebExtensions/").LocalPath;
+            LoadingSavingDir = new Uri(new Uri(MainDataDir), @"Loading-and-Saving/").LocalPath;
+            DatabaseDir = new Uri(new Uri(MainDataDir), @"Database/").LocalPath;
+            TablesDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Tables/").LocalPath;
+            LinqDir = new Uri(new Uri(MainDataDir), @"LINQ/").LocalPath;
+            MailMergeDir = new Uri(new Uri(MainDataDir), @"Mail-Merge/").LocalPath;
         }
 
         private static string GetDataDir_Data()
@@ -149,6 +154,31 @@ namespace Aspose.Words.Examples.CSharp
         /// Gets the path to the license used by the code examples.
         /// </summary>
         internal static string WebExtensionsDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string TablesDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string LoadingSavingDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string DatabaseDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string LinqDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string MailMergeDir { get; }
 
         /// <summary>
         /// Gets the path to the documents used by the code examples. Ends with a back slash.

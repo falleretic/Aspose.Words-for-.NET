@@ -1,55 +1,40 @@
 ﻿using Aspose.Words.Saving;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class SaveOptionsHtmlFixed
+    class SaveOptionsHtmlFixed : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            UseFontFromTargetMachine(dataDir);
-            WriteAllCSSrulesinSingleFile(dataDir);
+            UseFontFromTargetMachine();
+            WriteAllCssRulesInSingleFile();
         }
 
-        static void UseFontFromTargetMachine(string dataDir)
+        static void UseFontFromTargetMachine()
         {
-            // ExStart:UseFontFromTargetMachine
-            // Load the document from disk.
-            Document doc = new Document(dataDir + "Test File (doc).doc");
+            //ExStart:UseFontFromTargetMachine
+            Document doc = new Document(LoadingSavingDir + "Test File (doc).doc");
 
             HtmlFixedSaveOptions options = new HtmlFixedSaveOptions();
             options.UseTargetMachineFonts = true;
 
-            dataDir = dataDir + "UseFontFromTargetMachine_out.html";
-            // Save the document to disk.
-            doc.Save(dataDir, options);
-            // ExEnd:UseFontFromTargetMachine
-
-            Console.WriteLine("\nFonts from target machine are used in saved HtmlFixed file.\nFile saved at " +
-                              dataDir);
+            doc.Save(ArtifactsDir + "UseFontFromTargetMachine.html", options);
+            //ExEnd:UseFontFromTargetMachine
         }
 
-        static void WriteAllCSSrulesinSingleFile(string dataDir)
+        static void WriteAllCssRulesInSingleFile()
         {
-            // ExStart:WriteAllCSSrulesinSingleFile
-            // Load the document from disk.
-            Document doc = new Document(dataDir + "Test File (doc).doc");
+            //ExStart:WriteAllCSSrulesinSingleFile
+            Document doc = new Document(LoadingSavingDir + "Test File (doc).doc");
 
             HtmlFixedSaveOptions options = new HtmlFixedSaveOptions();
-            //Setting this property to true restores the old behavior (separate files) for compatibility with legacy code. 
-            //Default value is false.
-            //All CSS rules are written into single file "styles.css
+            // Setting this property to true restores the old behavior (separate files) for compatibility with legacy code
+            // Default value is false
+            // All CSS rules are written into single file "styles.css
             options.SaveFontFaceCssSeparately = false;
 
-            dataDir = dataDir + "WriteAllCSSrulesinSingleFile_out.html";
-            // Save the document to disk.
-            doc.Save(dataDir, options);
-            // ExEnd:WriteAllCSSrulesinSingleFile
-
-            Console.WriteLine("\nWrite all CSS rules in single file successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "WriteAllCssRulesInSingleFile.html", options);
+            //ExEnd:WriteAllCSSrulesinSingleFile
         }
     }
 }

@@ -8,31 +8,29 @@ using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
-    class MergedCells
+    class MergedCells : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithTables();
-            CheckCellsMerged(dataDir);
-            // The below method shows how to create a table with two rows with cells in the first row horizontally merged.
-            HorizontalMerge(dataDir);
-            // The below method shows how to create a table with two columns with cells merged vertically in the first column.
-            VerticalMerge(dataDir);
-            // The below method shows how to merges the range of cells between the two specified cells.   
-            MergeCellRange(dataDir);
-            // Show how to prints the horizontal and vertical merge of a cell.
-            PrintHorizontalAndVerticalMerged(dataDir);
+            CheckCellsMerged();
+            // The below method shows how to create a table with two rows with cells in the first row horizontally merged
+            HorizontalMerge();
+            // The below method shows how to create a table with two columns with cells merged vertically in the first column
+            VerticalMerge();
+            // The below method shows how to merges the range of cells between the two specified cells
+            MergeCellRange();
+            // Show how to prints the horizontal and vertical merge of a cell
+            PrintHorizontalAndVerticalMerged();
             // This method converts cells which are horizontally merged by its width to the cell horizontally merged by flags
-            ConvertToHorizontallyMergedCells(dataDir);
+            ConvertToHorizontallyMergedCells();
         }
 
-        public static void CheckCellsMerged(string dataDir)
+        public static void CheckCellsMerged()
         {
-            // ExStart:CheckCellsMerged 
-            Document doc = new Document(dataDir + "Table.MergedCells.doc");
+            //ExStart:CheckCellsMerged 
+            Document doc = new Document(TablesDir + "Table.MergedCells.doc");
 
-            // Retrieve the first table in the document.
+            // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             foreach (Row row in table.Rows)
@@ -42,32 +40,34 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                     Console.WriteLine(PrintCellMergeType(cell));
                 }
             }
-
-            // ExEnd:CheckCellsMerged 
+            //ExEnd:CheckCellsMerged 
         }
 
-        // ExStart:PrintCellMergeType 
+        //ExStart:PrintCellMergeType 
         public static string PrintCellMergeType(Cell cell)
         {
             bool isHorizontallyMerged = cell.CellFormat.HorizontalMerge != CellMerge.None;
             bool isVerticallyMerged = cell.CellFormat.VerticalMerge != CellMerge.None;
-            string cellLocation = string.Format("R{0}, C{1}", cell.ParentRow.ParentTable.IndexOf(cell.ParentRow) + 1,
-                cell.ParentRow.IndexOf(cell) + 1);
+            
+            string cellLocation =
+                $"R{cell.ParentRow.ParentTable.IndexOf(cell.ParentRow) + 1}, C{cell.ParentRow.IndexOf(cell) + 1}";
 
             if (isHorizontallyMerged && isVerticallyMerged)
-                return string.Format("The cell at {0} is both horizontally and vertically merged", cellLocation);
-            else if (isHorizontallyMerged)
-                return string.Format("The cell at {0} is horizontally merged.", cellLocation);
-            else if (isVerticallyMerged)
-                return string.Format("The cell at {0} is vertically merged", cellLocation);
-            else
-                return string.Format("The cell at {0} is not merged", cellLocation);
+                return $"The cell at {cellLocation} is both horizontally and vertically merged";
+            
+            if (isHorizontallyMerged)
+                return $"The cell at {cellLocation} is horizontally merged.";
+            
+            if (isVerticallyMerged)
+                return $"The cell at {cellLocation} is vertically merged";
+            
+            return $"The cell at {cellLocation} is not merged";
         }
-
-        // ExEnd:PrintCellMergeType
-        public static void VerticalMerge(string dataDir)
+        //ExEnd:PrintCellMergeType
+        
+        public static void VerticalMerge()
         {
-            // ExStart:VerticalMerge           
+            //ExStart:VerticalMerge           
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -81,7 +81,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.EndRow();
 
             builder.InsertCell();
-            // This cell is vertically merged to the cell above and should be empty.
+            // This cell is vertically merged to the cell above and should be empty
             builder.CellFormat.VerticalMerge = CellMerge.Previous;
 
             builder.InsertCell();
@@ -89,19 +89,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.Write("Text in another cell");
             builder.EndRow();
             builder.EndTable();
-            dataDir = dataDir + "Table.VerticalMerge_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:VerticalMerge
-            Console.WriteLine(
-                "\nTable created successfully with two columns with cells merged vertically in the first column.\nFile saved at " +
-                dataDir);
+            
+            doc.Save(ArtifactsDir + "VerticalMerge.docx");
+            //ExEnd:VerticalMerge
         }
 
-        public static void HorizontalMerge(string dataDir)
+        public static void HorizontalMerge()
         {
-            // ExStart:HorizontalMerge         
+            //ExStart:HorizontalMerge         
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -110,7 +105,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.Write("Text in merged cells.");
 
             builder.InsertCell();
-            // This cell is merged to the previous and should be empty.
+            // This cell is merged to the previous and should be empty
             builder.CellFormat.HorizontalMerge = CellMerge.Previous;
             builder.EndRow();
 
@@ -122,73 +117,63 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             builder.Write("Text in another cell.");
             builder.EndRow();
             builder.EndTable();
-            dataDir = dataDir + "Table.HorizontalMerge_out.doc";
-
-            // Save the document to disk.
-            doc.Save(dataDir);
-            // ExEnd:HorizontalMerge
-            Console.WriteLine(
-                "\nTable created successfully with cells in the first row horizontally merged.\nFile saved at " +
-                dataDir);
+            
+            doc.Save(ArtifactsDir + "HorizontalMerge.docx");
+            //ExEnd:HorizontalMerge
         }
 
-        public static void MergeCellRange(string dataDir)
+        public static void MergeCellRange()
         {
-            // ExStart:MergeCellRange
-            // Open the document
-            Document doc = new Document(dataDir + "Table.Document.doc");
+            //ExStart:MergeCellRange
+            Document doc = new Document(TablesDir + "Table.Document.doc");
 
-            // Retrieve the first table in the body of the first section.
+            // Retrieve the first table in the body of the first section
             Table table = doc.FirstSection.Body.Tables[0];
 
-            // We want to merge the range of cells found inbetween these two cells.
+            // We want to merge the range of cells found inbetween these two cells
             Cell cellStartRange = table.Rows[2].Cells[2];
             Cell cellEndRange = table.Rows[3].Cells[3];
 
-            // Merge all the cells between the two specified cells into one.
+            // Merge all the cells between the two specified cells into one
             MergeCells(cellStartRange, cellEndRange);
-            dataDir = dataDir + "Table.MergeCellRange_out.doc";
-            // Save the document.
-            doc.Save(dataDir);
-            // ExEnd:MergeCellRange
-            Console.WriteLine("\nCells merged successfully.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "MergeCellRange.docx");
+            //ExEnd:MergeCellRange
         }
 
-        public static void PrintHorizontalAndVerticalMerged(string dataDir)
+        public static void PrintHorizontalAndVerticalMerged()
         {
-            // ExStart:PrintHorizontalAndVerticalMerged
-            Document doc = new Document(dataDir + "Table.MergedCells.doc");
+            //ExStart:PrintHorizontalAndVerticalMerged
+            Document doc = new Document(TablesDir + "Table.MergedCells.doc");
 
             // Create visitor
             SpanVisitor visitor = new SpanVisitor(doc);
-
             // Accept visitor
             doc.Accept(visitor);
-            // ExEnd:PrintHorizontalAndVerticalMerged
-            Console.WriteLine("\nHorizontal and vertical merged of a cell prints successfully.");
+            //ExEnd:PrintHorizontalAndVerticalMerged
         }
 
-        public static void ConvertToHorizontallyMergedCells(string dataDir)
+        public static void ConvertToHorizontallyMergedCells()
         {
-            // ExStart:ConvertToHorizontallyMergedCells         
+            //ExStart:ConvertToHorizontallyMergedCells         
             Document doc = new Document();
 
             Table table = doc.FirstSection.Body.Tables[0];
-            table.ConvertToHorizontallyMergedCells(); // Now merged cells have appropriate merge flags.
-            // ExEnd:ConvertToHorizontallyMergedCells
-            Console.WriteLine("\nNow merged cells have appropriate merge flags.\nFile saved at " + dataDir);
+            table.ConvertToHorizontallyMergedCells(); // Now merged cells have appropriate merge flags
+            //ExEnd:ConvertToHorizontallyMergedCells
         }
 
-        // ExStart:MergeCells
+        //ExStart:MergeCells
         internal static void MergeCells(Cell startCell, Cell endCell)
         {
             Table parentTable = startCell.ParentRow.ParentTable;
 
-            // Find the row and cell indices for the start and end cell.
+            // Find the row and cell indices for the start and end cell
             Point startCellPos = new Point(startCell.ParentRow.IndexOf(startCell),
                 parentTable.IndexOf(startCell.ParentRow));
             Point endCellPos = new Point(endCell.ParentRow.IndexOf(endCell), parentTable.IndexOf(endCell.ParentRow));
-            // Create the range of cells to be merged based off these indices. Inverse each index if the end cell if before the start cell. 
+            // Create the range of cells to be merged based off these indices
+            // Inverse each index if the end cell if before the start cell
             Rectangle mergeRange = new Rectangle(System.Math.Min(startCellPos.X, endCellPos.X),
                 System.Math.Min(startCellPos.Y, endCellPos.Y),
                 System.Math.Abs(endCellPos.X - startCellPos.X) + 1, System.Math.Abs(endCellPos.Y - startCellPos.Y) + 1);
@@ -199,36 +184,25 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                 {
                     Point currentPos = new Point(row.IndexOf(cell), parentTable.IndexOf(row));
 
-                    // Check if the current cell is inside our merge range then merge it.
+                    // Check if the current cell is inside our merge range then merge it
                     if (mergeRange.Contains(currentPos))
                     {
-                        if (currentPos.X == mergeRange.X)
-                            cell.CellFormat.HorizontalMerge = CellMerge.First;
-                        else
-                            cell.CellFormat.HorizontalMerge = CellMerge.Previous;
+                        cell.CellFormat.HorizontalMerge = currentPos.X == mergeRange.X ? CellMerge.First : CellMerge.Previous;
 
-                        if (currentPos.Y == mergeRange.Y)
-                            cell.CellFormat.VerticalMerge = CellMerge.First;
-                        else
-                            cell.CellFormat.VerticalMerge = CellMerge.Previous;
+                        cell.CellFormat.VerticalMerge = currentPos.Y == mergeRange.Y ? CellMerge.First : CellMerge.Previous;
                     }
                 }
             }
         }
-
-        // ExEnd:MergeCells
-        // ExStart:HorizontalAndVerticalMergeHelperClasses
+        //ExEnd:MergeCells
+        
+        //ExStart:HorizontalAndVerticalMergeHelperClasses
         /// <summary>
         /// Helper class that contains collection of rowinfo for each row
         /// </summary>
         public class TableInfo
         {
-            public List<RowInfo> Rows
-            {
-                get { return mRows; }
-            }
-
-            private List<RowInfo> mRows = new List<RowInfo>();
+            public List<RowInfo> Rows { get; } = new List<RowInfo>();
         }
 
         /// <summary>
@@ -236,12 +210,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         /// </summary>
         public class RowInfo
         {
-            public List<CellInfo> Cells
-            {
-                get { return mCells; }
-            }
-
-            private List<CellInfo> mCells = new List<CellInfo>();
+            public List<CellInfo> Cells { get; } = new List<CellInfo>();
         }
 
         /// <summary>
@@ -251,30 +220,22 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         {
             public CellInfo(int colSpan, int rowSpan)
             {
-                mColSpan = colSpan;
-                mRowSpan = rowSpan;
+                ColSpan = colSpan;
+                RowSpan = rowSpan;
             }
 
-            public int ColSpan
-            {
-                get { return mColSpan; }
-            }
-
-            public int RowSpan
-            {
-                get { return mRowSpan; }
-            }
-
-            private int mColSpan = 0;
-            private int mRowSpan = 0;
+            public int ColSpan { get; }
+            public int RowSpan { get; }
         }
 
         public class SpanVisitor : DocumentVisitor
         {
             /// <summary>
-            /// Creates new SpanVisitor instance
+            /// Creates new SpanVisitor instance.
             /// </summary>
-            /// <param name="doc">Is document which we should parse</param>
+            /// <param name="doc">
+            /// Is document which we should parse.
+            /// </param>
             public SpanVisitor(Document doc)
             {
                 // Get collection of tables from the document
@@ -306,7 +267,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                     foreach (XmlNode row in rows)
                     {
                         RowInfo rowInf = new RowInfo();
-
                         // Get collection of cells
                         XmlNodeList cells = row.SelectNodes("td");
 
@@ -332,7 +292,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
             public override VisitorAction VisitCellStart(Cell cell)
             {
-                // Determone index of current table
+                // Determine index of current table
                 int tabIdx = mWordTables.IndexOf(cell.ParentRow.ParentTable);
 
                 // Determine index of current row
@@ -357,10 +317,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                 return VisitorAction.Continue;
             }
 
-            private List<TableInfo> mTables = new List<TableInfo>();
-            private NodeCollection mWordTables = null;
+            private readonly List<TableInfo> mTables = new List<TableInfo>();
+            private readonly NodeCollection mWordTables;
         }
-
-        // ExEnd:HorizontalAndVerticalMergeHelperClasses
+        //ExEnd:HorizontalAndVerticalMergeHelperClasses
     }
 }

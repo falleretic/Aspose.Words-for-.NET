@@ -1,26 +1,16 @@
-﻿using System;
-
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+﻿namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class LoadAndSaveHtmlFormFieldasContentControlinDOCX
+    class LoadAndSaveHtmlFormFieldAsContentControlInDocx : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:LoadAndSaveHtmlFormFieldasContentControlinDOCX
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
+            //ExStart:LoadAndSaveHtmlFormFieldasContentControlinDOCX
             HtmlLoadOptions lo = new HtmlLoadOptions();
             lo.PreferredControlType = HtmlControlType.StructuredDocumentTag;
 
-            //Load the HTML document
-            Document doc = new Document(dataDir + @"input.html", lo);
-
-            //Save the HTML document into DOCX
-            doc.Save(dataDir + "output.docx", SaveFormat.Docx);
-            // ExEnd:LoadAndSaveHtmlFormFieldasContentControlinDOCX
-
-            Console.WriteLine("\nHtml form fields are exported as content control successfully.");
+            Document doc = new Document(LoadingSavingDir + "input.html", lo);
+            doc.Save(ArtifactsDir + "LoadAndSaveHtmlFormFieldAsContentControlInDocx.docx", SaveFormat.Docx);
+            //ExEnd:LoadAndSaveHtmlFormFieldasContentControlinDOCX
         }
     }
 }

@@ -3,18 +3,15 @@ using System.IO;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class CheckFormat
+    class CheckFormat : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:CheckFormatCompatibility
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            string supportedDir = dataDir + "OutSupported";
-            string unknownDir = dataDir + "OutUnknown";
-            string encryptedDir = dataDir + "OutEncrypted";
-            string pre97Dir = dataDir + "OutPre97";
+            //ExStart:CheckFormatCompatibility
+            string supportedDir = LoadingSavingDir + "OutSupported";
+            string unknownDir = LoadingSavingDir + "OutUnknown";
+            string encryptedDir = LoadingSavingDir + "OutEncrypted";
+            string pre97Dir = LoadingSavingDir + "OutPre97";
 
             // Create the directories if they do not already exist
             if (Directory.Exists(supportedDir) == false)
@@ -26,20 +23,20 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             if (Directory.Exists(pre97Dir) == false)
                 Directory.CreateDirectory(pre97Dir);
 
-            // ExStart:GetListOfFilesInFolder
-            string[] fileList = Directory.GetFiles(dataDir);
-            // ExEnd:GetListOfFilesInFolder
-            // Loop through all found files.
+            //ExStart:GetListOfFilesInFolder
+            string[] fileList = Directory.GetFiles(LoadingSavingDir);
+            //ExEnd:GetListOfFilesInFolder
+            // Loop through all found files
             foreach (string fileName in fileList)
             {
-                // Extract and display the file name without the path.
+                // Extract and display the file name without the path
                 string nameOnly = Path.GetFileName(fileName);
                 Console.Write(nameOnly);
-                // ExStart:DetectFileFormat
-                // Check the file format and move the file to the appropriate folder.
+                //ExStart:DetectFileFormat
+                // Check the file format and move the file to the appropriate folder
                 FileFormatInfo info = FileFormatUtil.DetectFileFormat(fileName);
 
-                // Display the document type.
+                // Display the document type
                 switch (info.LoadFormat)
                 {
                     case LoadFormat.Doc:
@@ -85,13 +82,12 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                         Console.WriteLine("\tMS Word 6 or Word 95 format.");
                         break;
                     case LoadFormat.Unknown:
-                    default:
                         Console.WriteLine("\tUnknown format.");
                         break;
                 }
-                // ExEnd:DetectFileFormat
+                //ExEnd:DetectFileFormat
 
-                // Now copy the document into the appropriate folder.
+                // Now copy the document into the appropriate folder
                 if (info.IsEncrypted)
                 {
                     Console.WriteLine("\tAn encrypted document.");
@@ -113,9 +109,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                     }
                 }
             }
-            // ExEnd:CheckFormatCompatibility
-
-            Console.WriteLine("\nChecked the format of all documents successfully.");
+            //ExEnd:CheckFormatCompatibility
         }
     }
 }

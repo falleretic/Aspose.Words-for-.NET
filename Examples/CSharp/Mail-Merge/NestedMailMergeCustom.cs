@@ -1,42 +1,34 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Aspose.Words.MailMerging;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    class NestedMailMergeCustom
+    class NestedMailMergeCustom : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:NestedMailMergeCustom
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-            string fileName = "NestedMailMerge.CustomDataSource.doc";
-            // Create some data that we will use in the mail merge.
+            //ExStart:NestedMailMergeCustom
+            // Create some data that we will use in the mail merge
             CustomerList customers = new CustomerList();
             customers.Add(new Customer("Thomas Hardy", "120 Hanover Sq., London"));
             customers.Add(new Customer("Paolo Accorti", "Via Monte Bianco 34, Torino"));
 
-            // Create some data for nesting in the mail merge.
+            // Create some data for nesting in the mail merge
             customers[0].Orders.Add(new Order("Rugby World Cup Cap", 2));
             customers[0].Orders.Add(new Order("Rugby World Cup Ball", 1));
             customers[1].Orders.Add(new Order("Rugby World Cup Guide", 1));
 
-            // Open the template document.
-            Document doc = new Document(dataDir + fileName);
+            Document doc = new Document(MailMergeDir + "NestedMailMerge.CustomDataSource.doc");
 
             // To be able to mail merge from your own data source, it must be wrapped
-            // Into an object that implements the IMailMergeDataSource interface.
+            // Into an object that implements the IMailMergeDataSource interface
             CustomerMailMergeDataSource customersDataSource = new CustomerMailMergeDataSource(customers);
 
-            // Now you can pass your data source into Aspose.Words.
+            // Now you can pass your data source into Aspose.Words
             doc.MailMerge.ExecuteWithRegions(customersDataSource);
 
-            dataDir = dataDir + RunExamples.GetOutputFilePath(fileName);
-            doc.Save(dataDir);
-            // ExEnd:NestedMailMergeCustom
-
-            Console.WriteLine("\nMail merge performed with nested custom data successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "NestedMailMergeCustom.docx");
+            //ExEnd:NestedMailMergeCustom
         }
 
         /// <summary>
@@ -46,32 +38,14 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             public Customer(string aFullName, string anAddress)
             {
-                mFullName = aFullName;
-                mAddress = anAddress;
-                mOrders = new OrderList();
+                FullName = aFullName;
+                Address = anAddress;
+                Orders = new OrderList();
             }
 
-            public string FullName
-            {
-                get { return mFullName; }
-                set { mFullName = value; }
-            }
-
-            public string Address
-            {
-                get { return mAddress; }
-                set { mAddress = value; }
-            }
-
-            public OrderList Orders
-            {
-                get { return mOrders; }
-                set { mOrders = value; }
-            }
-
-            private string mFullName;
-            private string mAddress;
-            private OrderList mOrders;
+            public string FullName { get; set; }
+            public string Address { get; set; }
+            public OrderList Orders { get; set; }
         }
 
         /// <summary>
@@ -81,8 +55,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             public new Customer this[int index]
             {
-                get { return (Customer) base[index]; }
-                set { base[index] = value; }
+                get => (Customer) base[index];
+                set => base[index] = value;
             }
         }
 
@@ -93,24 +67,12 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             public Order(string oName, int oQuantity)
             {
-                mName = oName;
-                mQuantity = oQuantity;
+                Name = oName;
+                Quantity = oQuantity;
             }
 
-            public string Name
-            {
-                get { return mName; }
-                set { mName = value; }
-            }
-
-            public int Quantity
-            {
-                get { return mQuantity; }
-                set { mQuantity = value; }
-            }
-
-            private string mName;
-            private int mQuantity;
+            public string Name { get; set; }
+            public int Quantity { get; set; }
         }
 
         /// <summary>
@@ -120,8 +82,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             public new Order this[int index]
             {
-                get { return (Order) base[index]; }
-                set { base[index] = value; }
+                get => (Order) base[index];
+                set => base[index] = value;
             }
         }
 
@@ -135,17 +97,14 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             {
                 mCustomers = customers;
 
-                // When the data source is initialized, it must be positioned before the first record.
+                // When the data source is initialized, it must be positioned before the first record
                 mRecordIndex = -1;
             }
 
             /// <summary>
             /// The name of the data source. Used by Aspose.Words only when executing mail merge with repeatable regions.
             /// </summary>
-            public string TableName
-            {
-                get { return "Customer"; }
-            }
+            public string TableName => "Customer";
 
             /// <summary>
             /// Aspose.Words calls this method to get a value for every data field.
@@ -164,8 +123,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                         fieldValue = mCustomers[mRecordIndex].Orders;
                         return true;
                     default:
-                        // A field with this name was not found, 
-                        // Return false to the Aspose.Words mail merge engine.
+                        // A field with this name was not found,
+                        // Return false to the Aspose.Words mail merge engine
                         fieldValue = null;
                         return false;
                 }
@@ -179,10 +138,10 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 if (!IsEof)
                     mRecordIndex++;
 
-                return (!IsEof);
+                return !IsEof;
             }
 
-            // ExStart:GetChildDataSourceExample           
+            //ExStart:GetChildDataSourceExample           
             public IMailMergeDataSource GetChildDataSource(string tableName)
             {
                 switch (tableName)
@@ -194,12 +153,9 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                         return null;
                 }
             }
-            // ExEnd:GetChildDataSourceExample
+            //ExEnd:GetChildDataSourceExample
 
-            private bool IsEof
-            {
-                get { return (mRecordIndex >= mCustomers.Count); }
-            }
+            private bool IsEof => (mRecordIndex >= mCustomers.Count);
 
             private readonly CustomerList mCustomers;
             private int mRecordIndex;
@@ -211,17 +167,14 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             {
                 mOrders = orders;
 
-                // When the data source is initialized, it must be positioned before the first record.
+                // When the data source is initialized, it must be positioned before the first record
                 mRecordIndex = -1;
             }
 
             /// <summary>
             /// The name of the data source. Used by Aspose.Words only when executing mail merge with repeatable regions.
             /// </summary>
-            public string TableName
-            {
-                get { return "Order"; }
-            }
+            public string TableName => "Order";
 
             /// <summary>
             /// Aspose.Words calls this method to get a value for every data field.
@@ -237,8 +190,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                         fieldValue = mOrders[mRecordIndex].Quantity;
                         return true;
                     default:
-                        // A field with this name was not found, 
-                        // Return false to the Aspose.Words mail merge engine.
+                        // A field with this name was not found,
+                        // Return false to the Aspose.Words mail merge engine
                         fieldValue = null;
                         return false;
                 }
@@ -252,19 +205,16 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 if (!IsEof)
                     mRecordIndex++;
 
-                return (!IsEof);
+                return !IsEof;
             }
 
-            // Return null because we haven't any child elements for this sort of object.
+            // Return null because we haven't any child elements for this sort of object
             public IMailMergeDataSource GetChildDataSource(string tableName)
             {
                 return null;
             }
 
-            private bool IsEof
-            {
-                get { return (mRecordIndex >= mOrders.Count); }
-            }
+            private bool IsEof => mRecordIndex >= mOrders.Count;
 
             private readonly OrderList mOrders;
             private int mRecordIndex;

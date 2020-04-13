@@ -1,29 +1,21 @@
 ﻿using Aspose.Words.Saving;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class ConvertDocumentToPCL
+    class ConvertDocumentToPCL : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:ConvertDocumentToPCL
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            // Load the document from disk.
-            Document doc = new Document(dataDir + "Test File (docx).docx");
+            //ExStart:ConvertDocumentToPCL
+            Document doc = new Document(LoadingSavingDir + "Test File (docx).docx");
 
             PclSaveOptions saveOptions = new PclSaveOptions();
-
             saveOptions.SaveFormat = SaveFormat.Pcl;
             saveOptions.RasterizeTransformedElements = false;
 
-            // Export the document as an PCL file.
-            doc.Save(dataDir + "Document.PclConversion_out.pcl", saveOptions);
-            // ExEnd:ConvertDocumentToPCL
-
-            Console.WriteLine("\nDocument converted to PCL successfully.");
+            // Export the document as an PCL file
+            doc.Save(ArtifactsDir + "ConvertDocumentToPCL.pcl", saveOptions);
+            //ExEnd:ConvertDocumentToPCL
         }
     }
 }
