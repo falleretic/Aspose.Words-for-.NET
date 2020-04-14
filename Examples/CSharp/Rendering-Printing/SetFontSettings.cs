@@ -1,70 +1,57 @@
 ﻿using Aspose.Words.Fonts;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class SetFontSettings
+    class SetFontSettings : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-            EnableDisableFontSubstitution(dataDir);
-            SetFontFallbackSettings(dataDir);
-            SetPredefinedFontFallbackSettings(dataDir);
+            EnableDisableFontSubstitution();
+            SetFontFallbackSettings();
+            SetPredefinedFontFallbackSettings();
         }
 
-        public static void EnableDisableFontSubstitution(string dataDir)
+        public static void EnableDisableFontSubstitution()
         {
-            // ExStart:EnableDisableFontSubstitution
-            // The path to the documents directory.
-            Document doc = new Document(dataDir + "Rendering.doc");
+            //ExStart:EnableDisableFontSubstitution
+            Document doc = new Document(MailMergeDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial";
             fontSettings.SubstitutionSettings.FontInfoSubstitution.Enabled = false;
-
             // Set font settings
             doc.FontSettings = fontSettings;
-            dataDir = dataDir + "Rendering.DisableFontSubstitution_out.pdf";
-            doc.Save(dataDir);
-            // ExEnd:EnableDisableFontSubstitution      
-            Console.WriteLine(
-                "\nDocument is rendered to PDF with disabled font substitution.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "EnableDisableFontSubstitution.pdf");
+            //ExEnd:EnableDisableFontSubstitution
         }
 
-        public static void SetFontFallbackSettings(string dataDir)
+        public static void SetFontFallbackSettings()
         {
-            // ExStart:SetFontFallbackSettings
-            // The path to the documents directory.
-            Document doc = new Document(dataDir + "Rendering.doc");
+            //ExStart:SetFontFallbackSettings
+            Document doc = new Document(MailMergeDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
-            fontSettings.FallbackSettings.Load(dataDir + "Fallback.xml");
-
+            fontSettings.FallbackSettings.Load(MailMergeDir + "Fallback.xml");
             // Set font settings
             doc.FontSettings = fontSettings;
-            dataDir = dataDir + "Rendering.FontFallback_out.pdf";
-            doc.Save(dataDir);
-            // ExEnd:SetFontFallbackSettings      
-            Console.WriteLine("\nDocument is rendered to PDF with font fallback.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "SetFontFallbackSettings.pdf");
+            //ExEnd:SetFontFallbackSettings
         }
 
-        public static void SetPredefinedFontFallbackSettings(string dataDir)
+        public static void SetPredefinedFontFallbackSettings()
         {
-            // ExStart:SetPredefinedFontFallbackSettings
-            // The path to the documents directory.
-            Document doc = new Document(dataDir + "Rendering.doc");
+            //ExStart:SetPredefinedFontFallbackSettings
+            Document doc = new Document(MailMergeDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.FallbackSettings.LoadNotoFallbackSettings();
-
             // Set font settings
             doc.FontSettings = fontSettings;
-            dataDir = dataDir + "Rendering.FontFallbackGoogleNoto_out.pdf";
-            doc.Save(dataDir);
-            // ExEnd:SetPredefinedFontFallbackSettings      
-            Console.WriteLine("\nDocument is rendered to PDF with font fallback.\nFile saved at " + dataDir);
+            
+            doc.Save(ArtifactsDir + "SetPredefinedFontFallbackSettings.pdf");
+            //ExEnd:SetPredefinedFontFallbackSettings
         }
     }
 }

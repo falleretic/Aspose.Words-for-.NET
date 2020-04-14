@@ -2,15 +2,13 @@
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class PrintProgressDialog
+    class PrintProgressDialog : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:PrintProgressDialog
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-            // Load the documents which store the shapes we want to render.
-            Document doc = new Document(dataDir + "TestFile RenderShape.doc");
+            // Load the documents which store the shapes we want to render
+            Document doc = new Document(MailMergeDir + "TestFile RenderShape.doc");
             // Obtain the settings of the default printer
             System.Drawing.Printing.PrinterSettings settings = new System.Drawing.Printing.PrinterSettings();
 
@@ -23,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             prntDoc.PrinterSettings = settings;
             prntDoc.PrintController = standardPrintController;
             prntDoc.Print();
-            // ExEnd:PrintProgressDialog
+            //ExEnd:PrintProgressDialog
         }
     }
 }

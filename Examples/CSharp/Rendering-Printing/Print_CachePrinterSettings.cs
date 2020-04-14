@@ -1,41 +1,34 @@
 ﻿using Aspose.Words.Rendering;
-using System;
 using System.Drawing.Printing;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {
-    public class Print_CachePrinterSettings
+    class PrintCachePrinterSettings : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-
-            CachePrinterSettings(dataDir);
+            CachePrinterSettings();
         }
 
-        public static void CachePrinterSettings(string dataDir)
+        public static void CachePrinterSettings()
         {
-            // ExStart:CachePrinterSettings  
-            //Load the Word document
-            Document doc = new Document(dataDir + "TestFile.doc");
+            //ExStart:CachePrinterSettings
+            Document doc = new Document(MailMergeDir + "TestFile.doc");
 
-            // Build layout.
+            // Build layout
             doc.UpdatePageLayout();
 
-            // Create settings, setup printing.
+            // Create settings, setup printing
             PrinterSettings settings = new PrinterSettings();
             settings.PrinterName = "Microsoft XPS Document Writer";
 
-            // Create AsposeWordsPrintDocument  and cache settings.
+            // Create AsposeWordsPrintDocument and cache settings
             AsposeWordsPrintDocument printDocument = new AsposeWordsPrintDocument(doc);
             printDocument.PrinterSettings = settings;
             printDocument.CachePrinterSettings();
 
             printDocument.Print();
-
-            // ExEnd:CachePrinterSettings
-            Console.WriteLine("\nDocument is printed successfully.");
+            //ExEnd:CachePrinterSettings
         }
     }
 }

@@ -5,29 +5,24 @@ using Aspose.Words.Rendering;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class EnumerateLayoutElements
+    class EnumerateLayoutElements : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
+            Document doc = new Document(MailMergeDir + "TestFile.EnumerateLayout.docx");
 
-            Document doc = new Document(dataDir + "TestFile.EnumerateLayout.docx");
-
-            // This creates an enumerator which is used to "walk" the elements of a rendered document.
+            // This creates an enumerator which is used to "walk" the elements of a rendered document
             LayoutEnumerator it = new LayoutEnumerator(doc);
 
-            // This sample uses the enumerator to write information about each layout element to the console.
+            // This sample uses the enumerator to write information about each layout element to the console
             LayoutInfoWriter.Run(it);
 
-            // This sample adds a border around each layout element and saves each page as a JPEG image to the data directory.
-            OutlineLayoutEntitiesRenderer.Run(doc, it, dataDir);
-
-            Console.WriteLine("\nEnumerate layout elements example ran successfully.");
+            // This sample adds a border around each layout element and saves each page as a JPEG image to the data directory
+            OutlineLayoutEntitiesRenderer.Run(doc, it, MailMergeDir);
         }
     }
 
-    class LayoutInfoWriter
+    internal class LayoutInfoWriter
     {
         public static void Run(LayoutEnumerator it)
         {
@@ -74,16 +69,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         }
     }
 
-    class OutlineLayoutEntitiesRenderer
+    internal class OutlineLayoutEntitiesRenderer
     {
         public static void Run(Document doc, LayoutEnumerator it, string folderPath)
         {
-            // Make sure the enumerator is at the beginning of the document.
+            // Make sure the enumerator is at the beginning of the document
             it.Reset();
 
             for (int pageIndex = 0; pageIndex < doc.PageCount; pageIndex++)
             {
-                // Use the document class to find information about the current page.
+                // Use the document class to find information about the current page
                 PageInfo pageInfo = doc.GetPageInfo(pageIndex);
 
                 const float resolution = 150.0f;
@@ -95,19 +90,19 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
                     using (Graphics g = Graphics.FromImage(img))
                     {
-                        // Make the background white.
+                        // Make the background white
                         g.Clear(Color.White);
 
-                        // Render the page to the graphics.
+                        // Render the page to the graphics
                         doc.RenderToScale(pageIndex, g, 0.0f, 0.0f, 1.0f);
 
-                        // Add an outline around each element on the page using the graphics object.
+                        // Add an outline around each element on the page using the graphics object
                         AddBoundingBoxToElementsOnPage(it, g);
 
-                        // Move the enumerator to the next page if there is one.
+                        // Move the enumerator to the next page if there is one
                         it.MoveNext();
 
-                        img.Save(folderPath + string.Format("TestFile Page {0} Out.png", pageIndex + 1));
+                        img.Save(folderPath + $"TestFile Page {pageIndex + 1} Out.png");
                     }
                 }
             }
@@ -120,23 +115,23 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             do
             {
-                // This time instead of MoveFirstChild and MoveNext, we use MoveLastChild and MovePrevious to enumerate from last to first.
-                // Enumeration is done backward so the lines of child entities are drawn first and don't overlap the lines of the parent.
+                // This time instead of MoveFirstChild and MoveNext, we use MoveLastChild and MovePrevious to enumerate from last to first
+                // Enumeration is done backward so the lines of child entities are drawn first and don't overlap the lines of the parent
                 if (it.MoveLastChild())
                 {
                     AddBoundingBoxToElementsOnPage(it, g);
                     it.MoveParent();
                 }
 
-                // Convert the rectangle representing the position of the layout entity on the page from points to pixels.
+                // Convert the rectangle representing the position of the layout entity on the page from points to pixels
                 RectangleF rectF = it.Rectangle;
                 Rectangle rect = new Rectangle(PointToPixel(rectF.Left, g.DpiX), PointToPixel(rectF.Top, g.DpiY),
                     PointToPixel(rectF.Width, g.DpiX), PointToPixel(rectF.Height, g.DpiY));
 
-                // Draw a line around the layout entity on the page.
+                // Draw a line around the layout entity on the page
                 g.DrawRectangle(GetColoredPenFromType(it.Type), rect);
 
-                // Stop after all elements on the page have been procesed.
+                // Stop after all elements on the page have been procesed
                 if (it.Type == LayoutEntityType.Page)
                     return;
             } while (it.MovePrevious());

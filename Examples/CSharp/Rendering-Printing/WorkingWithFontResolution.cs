@@ -1,9 +1,8 @@
 ﻿using Aspose.Words.Fonts;
-using System;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {
-    class WorkingWithFontResolution
+    class WorkingWithFontResolution : TestDataHelper
     {
         public static void Run()
         {
@@ -11,33 +10,33 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             SetFontsFolder();
         }
 
-        static void FontSettingsWithLoadOptions()
+        private static void FontSettingsWithLoadOptions()
         {
-            // ExStart:FontSettingsWithLoadOptions
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
+            //ExStart:FontSettingsWithLoadOptions
             FontSettings fontSettings = new FontSettings();
+
             TableSubstitutionRule substitutionRule = fontSettings.SubstitutionSettings.TableSubstitution;
-            // If "UnknownFont1" font family is not available then substitute it by "Comic Sans MS".
+            // If "UnknownFont1" font family is not available then substitute it by "Comic Sans MS"
             substitutionRule.AddSubstitutes("UnknownFont1", new string[] { "Comic Sans MS" });
-            LoadOptions lo = new LoadOptions();
-            lo.FontSettings = fontSettings;
-            Document doc = new Document(dataDir + "myfile.html", lo);
-            // ExEnd:FontSettingsWithLoadOptions
-            Console.WriteLine("\nFile created successfully.\nFile saved at " + dataDir);
+            
+            LoadOptions loadOptions = new LoadOptions();
+            loadOptions.FontSettings = fontSettings;
+            
+            Document doc = new Document(ArtifactsDir + "myfile.html", loadOptions);
+            //ExEnd:FontSettingsWithLoadOptions
         }
 
-        static void SetFontsFolder()
+        private static void SetFontsFolder()
         {
-            // ExStart:SetFontsFolder
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
+            //ExStart:SetFontsFolder
             FontSettings fontSettings = new FontSettings();
-            fontSettings.SetFontsFolder(dataDir + "Fonts", false);
-            LoadOptions lo = new LoadOptions();
-            lo.FontSettings = fontSettings;
-            Document doc = new Document(dataDir + "myfile.html", lo);
-            // ExEnd:SetFontsFolder
+            fontSettings.SetFontsFolder(MailMergeDir + "Fonts", false);
+            
+            LoadOptions loadOptions = new LoadOptions();
+            loadOptions.FontSettings = fontSettings;
+            
+            Document doc = new Document(MailMergeDir + "myfile.html", loadOptions);
+            //ExEnd:SetFontsFolder
         }
     }
 }

@@ -3,40 +3,37 @@ using Aspose.Words.Layout;
 using Aspose.Words.Tables;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class DocumentLayoutHelper
+    class DocumentLayoutHelper : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-
-            string fileName = "TestFile.docx";
-            Document doc = new Document(dataDir + fileName);
+            Document doc = new Document(MailMergeDir + "TestFile.docx");
 
             // This sample introduces the RenderedDocument class and other related classes which provide an API wrapper for 
-            // The LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API.
+            // The LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API
 
-            // Create a new RenderedDocument class from a Document object.
+            // Create a new RenderedDocument class from a Document object
             RenderedDocument layoutDoc = new RenderedDocument(doc);
 
-            // The following examples demonstrate how to use the wrapper API. 
-            // This snippet returns the third line of the first page and prints the line of text to the console.
+            // The following examples demonstrate how to use the wrapper API
+            // This snippet returns the third line of the first page and prints the line of text to the console
             RenderedLine line = layoutDoc.Pages[0].Columns[0].Lines[2];
             Console.WriteLine("Line: " + line.Text);
 
-            // With a rendered line the original paragraph in the document object model can be returned.
+            // With a rendered line the original paragraph in the document object model can be returned
             Paragraph para = line.Paragraph;
             Console.WriteLine("Paragraph text: " + para.Range.Text);
 
-            // Retrieve all the text that appears of the first page in plain text format (including headers and footers).
+            // Retrieve all the text that appears of the first page in plain text format (including headers and footers)
             string pageText = layoutDoc.Pages[0].Text;
             Console.WriteLine();
 
-            // Loop through each page in the document and print how many lines appear on each page.
+            // Loop through each page in the document and print how many lines appear on each page
             foreach (RenderedPage page in layoutDoc.Pages)
             {
                 LayoutCollection<LayoutEntity> lines = page.GetChildEntities(LayoutEntityType.Line, true);
@@ -44,18 +41,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             }
 
             // This method provides a reverse lookup of layout entities for any given node (with the exception of runs and nodes in the
-            // Header and footer).
+            // header and footer)
             Console.WriteLine();
             Console.WriteLine("The lines of the second paragraph:");
             foreach (RenderedLine paragraphLine in layoutDoc.GetLayoutEntitiesOfNode(
                 doc.FirstSection.Body.Paragraphs[1]))
             {
-                Console.WriteLine(string.Format("\"{0}\"", paragraphLine.Text.Trim()));
+                Console.WriteLine($"\"{paragraphLine.Text.Trim()}\"");
                 Console.WriteLine(paragraphLine.Rectangle.ToString());
                 Console.WriteLine();
             }
-
-            Console.WriteLine("\nDocument layout helper example ran successfully.");
         }
     }
 
@@ -68,7 +63,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Creates a new instance from the supplied Document class.
         /// </summary>
-        /// <param name="document">A document whose page layout model to enumerate.</param>
+        /// <param name="doc">A document whose page layout model to enumerate.</param>
         /// <remarks><para>If page layout model of the document hasn't been built the enumerator calls <see cref="Document.UpdatePageLayout"/> to build it.</para>
         /// <para>Whenever document is updated and new page layout model is created, a new RenderedDocument instance must be used to access the changes.</para></remarks>
         public RenderedDocument(Document doc)
@@ -83,10 +78,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the pages of a document.
         /// </summary>
-        public LayoutCollection<RenderedPage> Pages
-        {
-            get { return GetChildNodes<RenderedPage>(); }
-        }
+        public LayoutCollection<RenderedPage> Pages => GetChildNodes<RenderedPage>();
 
         /// <summary>
         /// Returns all the layout entities of the specified node.
@@ -102,13 +94,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 
             List<LayoutEntity> entities = new List<LayoutEntity>();
 
-            // Retrieve all entities from the layout document (inversion of LayoutEntityType.None).
+            // Retrieve all entities from the layout document (inversion of LayoutEntityType.None)
             foreach (LayoutEntity entity in GetChildEntities(~LayoutEntityType.None, true))
             {
                 if (entity.ParentNode == node)
                     entities.Add(entity);
 
-                // There is no table entity in rendered output so manually check if rows belong to a table node.
+                // There is no table entity in rendered output so manually check if rows belong to a table node
                 if (entity.Type == LayoutEntityType.Row)
                 {
                     RenderedRow row = (RenderedRow) entity;
@@ -194,10 +186,10 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             }
         }
 
-        private LayoutCollector mLayoutCollector;
-        private LayoutEnumerator mEnumerator;
+        private readonly LayoutCollector mLayoutCollector;
+        private readonly LayoutEnumerator mEnumerator;
 
-        private static Dictionary<object, Node> mLayoutToNodeLookup =
+        private static readonly Dictionary<object, Node> mLayoutToNodeLookup =
             new Dictionary<object, Node>();
     }
 
@@ -206,33 +198,20 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
     /// </summary>
     public abstract class LayoutEntity
     {
-        protected LayoutEntity()
-        {
-        }
-
         /// <summary>
         /// Gets the 1-based index of a page which contains the rendered entity.
         /// </summary>
-        public int PageIndex
-        {
-            get { return mPageIndex; }
-        }
+        public int PageIndex => mPageIndex;
 
         /// <summary>
         /// Returns bounding rectangle of the entity relative to the page top left corner (in points).
         /// </summary>
-        public RectangleF Rectangle
-        {
-            get { return mRectangle; }
-        }
+        public RectangleF Rectangle => mRectangle;
 
         /// <summary>
         /// Gets the type of this layout entity.
         /// </summary>
-        public LayoutEntityType Type
-        {
-            get { return mType; }
-        }
+        public LayoutEntityType Type => mType;
 
         /// <summary>
         /// Exports the contents of the entity into a string in plain text format.
@@ -254,19 +233,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Gets the immediate parent of this entity.
         /// </summary>
-        public LayoutEntity Parent
-        {
-            get { return mParent; }
-        }
+        public LayoutEntity Parent => mParent;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
         /// <remarks>This property may return null for spans that originate from Run nodes or nodes that are inside the header or footer.</remarks>
-        public virtual Node ParentNode
-        {
-            get { return mParentNode; }
-        }
+        public virtual Node ParentNode => mParentNode;
 
         /// <summary>
         /// Internal method separate from ParentNode property to make code autoportable to VB.NET.
@@ -362,7 +335,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                     childList.Add(entity);
 
                 if (isDeep)
-                    childList.AddRange((IEnumerable<LayoutEntity>) entity.GetChildEntities(type, true));
+                    childList.AddRange(entity.GetChildEntities(type, true));
             }
 
             return new LayoutCollection<LayoutEntity>(childList);
@@ -371,13 +344,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         protected LayoutCollection<T> GetChildNodes<T>() where T : LayoutEntity, new()
         {
             T obj = new T();
-            List<T> childList = new List<T>();
-
-            foreach (LayoutEntity entity in mChildEntities)
-            {
-                if (entity.GetType() == obj.GetType())
-                    childList.Add((T) entity);
-            }
+            List<T> childList = mChildEntities.Where(entity => entity.GetType() == obj.GetType()).Cast<T>().ToList();
 
             return new LayoutCollection<T>(childList);
         }
@@ -423,56 +390,26 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Returns the first entity in the collection.
         /// </summary>
-        public T First
-        {
-            get
-            {
-                if (mBaseList.Count > 0)
-                    return mBaseList[0];
-                else
-                    return default(T);
-            }
-        }
+        public T First => mBaseList.Count > 0 ? mBaseList[0] : default;
 
         /// <summary>
         /// Returns the last entity in the collection.
         /// </summary>
-        public T Last
-        {
-            get
-            {
-                if (mBaseList.Count > 0)
-                    return mBaseList[mBaseList.Count - 1];
-                else
-                    return default(T);
-            }
-        }
+        public T Last => mBaseList.Count > 0 ? mBaseList[mBaseList.Count - 1] : default;
 
         /// <summary>
         /// Retrieves the entity at the given index. 
         /// </summary>
         /// <remarks><para>The index is zero-based.</para>
         /// <para>If index is greater than or equal to the number of items in the list, this returns a null reference.</para></remarks>
-        public T this[int index]
-        {
-            get
-            {
-                if (index < mBaseList.Count)
-                    return mBaseList[index];
-                else
-                    return default(T);
-            }
-        }
+        public T this[int index] => index < mBaseList.Count ? mBaseList[index] : default;
 
         /// <summary>
         /// Gets the number of entities in the collection.
         /// </summary>
-        public int Count
-        {
-            get { return mBaseList.Count; }
-        }
+        public int Count => mBaseList.Count;
 
-        private List<T> mBaseList;
+        private readonly List<T> mBaseList;
     }
 
     /// <summary>
@@ -483,18 +420,12 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the lines of a story.
         /// </summary>
-        public LayoutCollection<RenderedLine> Lines
-        {
-            get { return GetChildNodes<RenderedLine>(); }
-        }
+        public LayoutCollection<RenderedLine> Lines => GetChildNodes<RenderedLine>();
 
         /// <summary>
         /// Provides access to the row entities of a table.
         /// </summary>
-        public LayoutCollection<RenderedRow> Rows
-        {
-            get { return GetChildNodes<RenderedRow>(); }
-        }
+        public LayoutCollection<RenderedRow> Rows => GetChildNodes<RenderedRow>();
     }
 
     /// <summary>
@@ -505,27 +436,18 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Exports the contents of the entity into a string in plain text format.
         /// </summary>
-        public override string Text
-        {
-            get { return base.Text + Environment.NewLine; }
-        }
+        public override string Text => base.Text + Environment.NewLine;
 
         /// <summary>
         /// Returns the paragraph that corresponds to the layout entity.  
         /// </summary>
         /// <remarks>This property may return null for some lines such as those inside the header or footer.</remarks>
-        public Paragraph Paragraph
-        {
-            get { return (Paragraph) ParentNode; }
-        }
+        public Paragraph Paragraph => (Paragraph) ParentNode;
 
         /// <summary>
         /// Provides access to the spans of the line.
         /// </summary>
-        public LayoutCollection<RenderedSpan> Spans
-        {
-            get { return GetChildNodes<RenderedSpan>(); }
-        }
+        public LayoutCollection<RenderedSpan> Spans => GetChildNodes<RenderedSpan>();
     }
 
     /// <summary>
@@ -541,7 +463,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         internal RenderedSpan(string text)
         {
             // Assign empty text if the span text is null (this can happen with shape spans).
-            mText = text != null ? text : string.Empty;
+            Text = text ?? string.Empty;
         }
 
         /// <summary>
@@ -549,29 +471,18 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// </summary>
         /// <remarks>This is a more specific type of the current entity, e.g. bookmark span has Span type and
         /// May have either a BOOKMARKSTART or BOOKMARKEND kind.</remarks>
-        public string Kind
-        {
-            get { return mKind; }
-        }
+        public string Kind => mKind;
 
         /// <summary>
         /// Exports the contents of the entity into a string in plain text format.
         /// </summary>
-        public override string Text
-        {
-            get { return mText; }
-        }
+        public override string Text { get; }
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
         /// <remarks>This property returns null for spans that originate from Run nodes or nodes that are inside the header or footer.</remarks>
-        public override Node ParentNode
-        {
-            get { return mParentNode; }
-        }
-
-        private string mText;
+        public override Node ParentNode => mParentNode;
     }
 
     /// <summary>
@@ -582,10 +493,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Returns the type of the header or footer.
         /// </summary>
-        public string Kind
-        {
-            get { return mKind; }
-        }
+        public string Kind => mKind;
     }
 
     /// <summary>
@@ -596,46 +504,28 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the columns of the page.
         /// </summary>
-        public LayoutCollection<RenderedColumn> Columns
-        {
-            get { return GetChildNodes<RenderedColumn>(); }
-        }
+        public LayoutCollection<RenderedColumn> Columns => GetChildNodes<RenderedColumn>();
 
         /// <summary>
         /// Provides access to the header and footers of the page.
         /// </summary>
-        public LayoutCollection<RenderedHeaderFooter> HeaderFooters
-        {
-            get { return GetChildNodes<RenderedHeaderFooter>(); }
-        }
+        public LayoutCollection<RenderedHeaderFooter> HeaderFooters => GetChildNodes<RenderedHeaderFooter>();
 
         /// <summary>
         /// Provides access to the comments of the page.
         /// </summary>
-        public LayoutCollection<RenderedComment> Comments
-        {
-            get { return GetChildNodes<RenderedComment>(); }
-        }
+        public LayoutCollection<RenderedComment> Comments => GetChildNodes<RenderedComment>();
 
         /// <summary>
         /// Returns the section that corresponds to the layout entity.  
         /// </summary>
-        public Section Section
-        {
-            get { return (Section) ParentNode; }
-        }
+        public Section Section => (Section) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        public override Node ParentNode
-        {
-            get
-            {
-                return Columns.First.GetChildEntities(LayoutEntityType.Line, true).First.ParentNode
-                    .GetAncestor(NodeType.Section);
-            }
-        }
+        public override Node ParentNode =>
+            Columns.First.GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Section);
     }
 
     /// <summary>
@@ -646,28 +536,19 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the cells of the row.
         /// </summary>
-        public LayoutCollection<RenderedCell> Cells
-        {
-            get { return GetChildNodes<RenderedCell>(); }
-        }
+        public LayoutCollection<RenderedCell> Cells => GetChildNodes<RenderedCell>();
 
         /// <summary>
         /// Returns the row that corresponds to the layout entity.  
         /// </summary>
         /// <remarks>This property may return null for some rows such as those inside the header or footer.</remarks>
-        public Row Row
-        {
-            get { return (Row) ParentNode; }
-        }
+        public Row Row => (Row) ParentNode;
 
         /// <summary>
         /// Returns the table that corresponds to the layout entity.  
         /// </summary>
         /// <remarks>This property may return null for some tables such as those inside the header or footer.</remarks>
-        public Table Table
-        {
-            get { return Row != null ? Row.ParentTable : null; }
-        }
+        public Table Table => Row?.ParentTable;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
@@ -677,8 +558,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             get
             {
-                Paragraph para = Cells.First.Lines.First != null ? Cells.First.Lines.First.Paragraph : null;
-                return para != null ? para.GetAncestor(NodeType.Row) : para;
+                Paragraph para = Cells.First.Lines.First?.Paragraph;
+                return para?.GetAncestor(NodeType.Row);
             }
         }
     }
@@ -691,42 +572,28 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Provides access to the footnotes of the page.
         /// </summary>
-        public LayoutCollection<RenderedFootnote> Footnotes
-        {
-            get { return GetChildNodes<RenderedFootnote>(); }
-        }
+        public LayoutCollection<RenderedFootnote> Footnotes => GetChildNodes<RenderedFootnote>();
 
         /// <summary>
         /// Provides access to the endnotes of the page.
         /// </summary>
-        public LayoutCollection<RenderedEndnote> Endnotes
-        {
-            get { return GetChildNodes<RenderedEndnote>(); }
-        }
+        public LayoutCollection<RenderedEndnote> Endnotes => GetChildNodes<RenderedEndnote>();
 
         /// <summary>
         /// Provides access to the note separators of the page.
         /// </summary>
-        public LayoutCollection<RenderedNoteSeparator> NoteSeparators
-        {
-            get { return GetChildNodes<RenderedNoteSeparator>(); }
-        }
+        public LayoutCollection<RenderedNoteSeparator> NoteSeparators => GetChildNodes<RenderedNoteSeparator>();
 
         /// <summary>
         /// Returns the body that corresponds to the layout entity.  
         /// </summary>
-        public Body Body
-        {
-            get { return (Body) ParentNode; }
-        }
+        public Body Body => (Body) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        public override Node ParentNode
-        {
-            get { return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Body); }
-        }
+        public override Node ParentNode => 
+            GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Body);
     }
 
     /// <summary>
@@ -738,25 +605,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// Returns the cell that corresponds to the layout entity.  
         /// </summary>
         /// <remarks>This property may return null for some cells such as those inside the header or footer.</remarks>
-        public Cell Cell
-        {
-            get { return (Cell) ParentNode; }
-        }
+        public Cell Cell => (Cell) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
         /// <remarks>This property may return null for nodes that are inside the header or footer.</remarks>
-        public override Node ParentNode
-        {
-            get
-            {
-                if (Lines.First == null)
-                    return null;
-                else
-                    return Lines.First.Paragraph != null ? Lines.First.Paragraph.GetAncestor(NodeType.Cell) : null;
-            }
-        }
+        public override Node ParentNode => Lines.First?.Paragraph?.GetAncestor(NodeType.Cell);
     }
 
     /// <summary>
@@ -767,21 +622,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Returns the footnote that corresponds to the layout entity.  
         /// </summary>
-        public Footnote Footnote
-        {
-            get { return (Footnote) ParentNode; }
-        }
+        public Footnote Footnote => (Footnote) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        public override Node ParentNode
-        {
-            get
-            {
-                return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Footnote);
-            }
-        }
+        public override Node ParentNode => 
+            GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Footnote);
     }
 
     /// <summary>
@@ -792,21 +639,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Returns the endnote that corresponds to the layout entity.  
         /// </summary>
-        public Footnote Endnote
-        {
-            get { return (Footnote) ParentNode; }
-        }
+        public Footnote Endnote => (Footnote) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        public override Node ParentNode
-        {
-            get
-            {
-                return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Footnote);
-            }
-        }
+        public override Node ParentNode => 
+            GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Footnote);
     }
 
     /// <summary>
@@ -825,10 +664,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 LayoutCollection<LayoutEntity> lines = GetChildEntities(LayoutEntityType.Line, true);
                 Node shape = lines.First.ParentNode.GetAncestor(NodeType.Shape);
 
-                if (shape != null)
-                    return shape;
-                else
-                    return lines.First.ParentNode.GetAncestor(NodeType.Shape);
+                return shape ?? lines.First.ParentNode.GetAncestor(NodeType.Shape);
             }
         }
     }
@@ -841,18 +677,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Returns the comment that corresponds to the layout entity.  
         /// </summary>
-        public Comment Comment
-        {
-            get { return (Comment) ParentNode; }
-        }
+        public Comment Comment => (Comment) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        public override Node ParentNode
-        {
-            get { return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Comment); }
-        }
+        public override Node ParentNode => 
+            GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Comment);
     }
 
     /// <summary>
@@ -863,20 +694,12 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         /// <summary>
         /// Returns the footnote/endnote that corresponds to the layout entity.  
         /// </summary>
-        public Footnote Footnote
-        {
-            get { return (Footnote) ParentNode; }
-        }
+        public Footnote Footnote => (Footnote) ParentNode;
 
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        public override Node ParentNode
-        {
-            get
-            {
-                return GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Footnote);
-            }
-        }
+        public override Node ParentNode => 
+            GetChildEntities(LayoutEntityType.Line, true).First.ParentNode.GetAncestor(NodeType.Footnote);
     }
 }

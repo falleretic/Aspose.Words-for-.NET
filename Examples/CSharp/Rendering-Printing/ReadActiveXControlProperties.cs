@@ -4,18 +4,14 @@ using Aspose.Words.Drawing.Ole;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class ReadActiveXControlProperties
+    class ReadActiveXControlProperties : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-
-            // Load the documents which store the shapes we want to render.           
-            Document doc = new Document(dataDir + "ActiveXControl.docx");
+            Document doc = new Document(MailMergeDir + "ActiveXControl.docx");
 
             string properties = "";
-            // Retrieve shapes from the document.         
+            // Retrieve shapes from the document
             foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
             {
                 OleControl oleControl = shape.OleFormat.OleControl;
@@ -31,12 +27,11 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                         properties = properties + "\nChildNodes: " + checkBox.ChildNodes;
                     }
 
-                    properties = properties + "\n";
+                    properties += "\n";
                 }
             }
 
-            properties = properties + "\nTotal ActiveX Controls found: " +
-                         doc.GetChildNodes(NodeType.Shape, true).Count.ToString();
+            properties = properties + "\nTotal ActiveX Controls found: " + doc.GetChildNodes(NodeType.Shape, true).Count;
             Console.WriteLine("\n" + properties);
         }
     }

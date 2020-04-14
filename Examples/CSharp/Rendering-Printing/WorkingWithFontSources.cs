@@ -4,31 +4,25 @@ using System.Collections;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class WorkingWithFontSources
+    class WorkingWithFontSources : TestDataHelper
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-            GetListOfAvailableFonts(dataDir);
+            GetListOfAvailableFonts();
         }
 
-        public static void GetListOfAvailableFonts(string dataDir)
+        public static void GetListOfAvailableFonts()
         {
-            // ExStart:GetListOfAvailableFonts
-            // The path to the documents directory.
-            Document doc = new Document(dataDir + "TestFile.docx");
-
+            //ExStart:GetListOfAvailableFonts
             FontSettings fontSettings = new FontSettings();
             ArrayList fontSources = new ArrayList(fontSettings.GetFontsSources());
 
-            // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts. 
-            FolderFontSource folderFontSource = new FolderFontSource(dataDir, true);
-
-            // Add the custom folder which contains our fonts to the list of existing font sources.
+            // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts
+            FolderFontSource folderFontSource = new FolderFontSource(MailMergeDir, true);
+            // Add the custom folder which contains our fonts to the list of existing font sources
             fontSources.Add(folderFontSource);
 
-            // Convert the Arraylist of source back into a primitive array of FontSource objects.
+            // Convert the ArrayList of source back into a primitive array of FontSource objects
             FontSourceBase[] updatedFontSources = (FontSourceBase[]) fontSources.ToArray(typeof(FontSourceBase));
 
             foreach (PhysicalFontInfo fontInfo in updatedFontSources[0].GetAvailableFonts())
@@ -38,8 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 Console.WriteLine("Version  : " + fontInfo.Version);
                 Console.WriteLine("FilePath : " + fontInfo.FilePath);
             }
-
-            // ExEnd:GetListOfAvailableFonts      
+            //ExEnd:GetListOfAvailableFonts
         }
     }
 }

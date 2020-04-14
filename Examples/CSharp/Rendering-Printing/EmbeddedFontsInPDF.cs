@@ -1,43 +1,43 @@
-﻿using System;
-using Aspose.Words.Saving;
+﻿using Aspose.Words.Saving;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class EmbeddedFontsInPDF
+    class EmbeddedFontsInPdf : TestDataHelper
     {
         public static void Run()
         {
-            // ExStart:EmbeddAllFonts
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
+            EmbeddedAllFonts();
+            EmbeddedSubsetFonts();
+        }
 
-            Document doc = new Document(dataDir + "Rendering.doc");
+        private static void EmbeddedAllFonts()
+        {
+            //ExStart:EmbeddAllFonts
+            Document doc = new Document(MailMergeDir + "Rendering.doc");
 
             // Aspose.Words embeds full fonts by default when EmbedFullFonts is set to true. The property below can be changed
-            // Each time a document is rendered.
+            // Each time a document is rendered
             PdfSaveOptions options = new PdfSaveOptions();
             options.EmbedFullFonts = true;
 
-            string outPath = dataDir + "Rendering.EmbedFullFonts_out.pdf";
-            // The output PDF will be embedded with all fonts found in the document.
-            doc.Save(outPath, options);
-            // ExEnd:EmbeddAllFonts
-            Console.WriteLine("\nAll Fonts embedded successfully.\nFile saved at " + outPath);
-            EmbeddSubsetFonts(doc, dataDir);
+            // The output PDF will be embedded with all fonts found in the document
+            doc.Save(ArtifactsDir + "EmbeddedFontsInPdf.pdf", options);
+            //ExEnd:EmbeddAllFonts
         }
 
-        private static void EmbeddSubsetFonts(Document doc, string dataDir)
+        private static void EmbeddedSubsetFonts()
         {
-            // ExStart:EmbeddSubsetFonts
-            // To subset fonts in the output PDF document, simply create new PdfSaveOptions and set EmbedFullFonts to false.
+            //ExStart:EmbeddSubsetFonts
+            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            
+            // To subset fonts in the output PDF document, simply create new PdfSaveOptions and set EmbedFullFonts to false
             PdfSaveOptions options = new PdfSaveOptions();
             options.EmbedFullFonts = false;
-            dataDir = dataDir + "Rendering.SubsetFonts_out.pdf";
+            
             // The output PDF will contain subsets of the fonts in the document. Only the glyphs used
-            // In the document are included in the PDF fonts.
-            doc.Save(dataDir, options);
-            // ExEnd:EmbeddSubsetFonts
-            Console.WriteLine("\nSubset Fonts embedded successfully.\nFile saved at " + dataDir);
+            // in the document are included in the PDF fonts
+            doc.Save(ArtifactsDir + "EmbeddSubsetFonts.pdf", options);
+            //ExEnd:EmbeddSubsetFonts
         }
     }
 }
