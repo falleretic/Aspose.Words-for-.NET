@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class GetVariables : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:GetVariables

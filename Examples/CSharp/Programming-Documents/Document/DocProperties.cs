@@ -1,23 +1,12 @@
 ﻿using System;
 using Aspose.Words.Properties;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocProperties : TestDataHelper
     {
-        public static void Run()
-        {
-            // Enumerates through all built-in and custom properties in a document
-            EnumerateProperties();
-            // Checks if a custom property with a given name exists in a document and adds few more custom document properties
-            CustomAdd();
-            // Removes a custom document property
-            CustomRemove();
-
-            RemovePersonalInformation();
-            ConfiguringLinkToContent();
-        }
-
+        [Test]
         public static void EnumerateProperties()
         {
             //ExStart:EnumerateProperties            
@@ -34,6 +23,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:EnumerateProperties
         }
 
+        [Test]
         public static void CustomAdd()
         {
             //ExStart:CustomAdd            
@@ -49,6 +39,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:CustomAdd
         }
 
+        [Test]
         public static void CustomRemove()
         {
             //ExStart:CustomRemove            
@@ -57,6 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:CustomRemove
         }
 
+        [Test]
         public static void RemovePersonalInformation()
         {
             //ExStart:RemovePersonalInformation            
@@ -67,6 +59,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:RemovePersonalInformation
         }
 
+        [Test]
         public static void ConfiguringLinkToContent()
         {
             //ExStart:ConfiguringLinkToContent            

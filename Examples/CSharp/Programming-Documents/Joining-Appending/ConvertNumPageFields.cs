@@ -1,10 +1,12 @@
 ﻿using Aspose.Words.Fields;
 using System.Text;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
 {
     class ConvertNumPageFields : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ConvertNumPageFields

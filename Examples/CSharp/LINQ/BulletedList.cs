@@ -1,4 +1,5 @@
 ﻿using Aspose.Words.Reporting;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
@@ -9,6 +10,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ
             CreateBulletedList();
         }
 
+        [Test]
         public static void CreateBulletedList()
         {
             //ExStart:BulletedList

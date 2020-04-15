@@ -1,18 +1,11 @@
-﻿using System;
-using Aspose.Words.Tables;
+﻿using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class KeepTablesAndRowsBreaking : TestDataHelper
     {
-        public static void Run()
-        {
-            // The below method shows how to disable rows breaking across pages for every row in a table
-            RowFormatDisableBreakAcrossPages();
-            // The below method shows how to set a table to stay together on the same page
-            KeepTableTogether();
-        }
-
+        [Test]
         public static void RowFormatDisableBreakAcrossPages()
         {
             //ExStart:RowFormatDisableBreakAcrossPages
@@ -29,6 +22,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:RowFormatDisableBreakAcrossPages
         }
 
+        [Test]
         public static void KeepTableTogether()
         {
             //ExStart:KeepTableTogether

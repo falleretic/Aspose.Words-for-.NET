@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
 {
     internal class ExtractContentBasedOnStyles : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExtractContentBasedOnStyles

@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Fonts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class SetFontsFoldersMultipleFolders : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:SetFontsFoldersMultipleFolders

@@ -1,15 +1,11 @@
 ﻿using Aspose.Words.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderInsertImage : TestDataHelper
     {
-        public static void Run()
-        {
-            InsertInlineImage();
-            InsertFloatingImage();
-        }
-
+        [Test]
         public static void InsertInlineImage()
         {
             //ExStart:DocumentBuilderInsertInlineImage
@@ -22,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertInlineImage
         }
 
+        [Test]
         public static void InsertFloatingImage()
         {
             //ExStart:DocumentBuilderInsertFloatingImage

@@ -1,20 +1,15 @@
-﻿using System;
-using Aspose.Words.Tables;
+﻿using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class CloneTable : TestDataHelper
     {
-        public static void Run()
-        {
-            CloneCompleteTable();
-            CloneLastRow();
-        }
-
         /// <summary>
         /// Shows how to clone complete table.
         /// </summary>
-        private static void CloneCompleteTable()
+        [Test]
+        public static void CloneCompleteTable()
         {
             //ExStart:CloneCompleteTable
             Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
@@ -39,7 +34,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         /// <summary>
         /// Shows how to clone last row of table.
         /// </summary>
-        private static void CloneLastRow()
+        [Test]
+        public static void CloneLastRow()
         {
             //ExStart:CloneLastRow
             Document doc = new Document(TablesDir + "Table.SimpleTable.doc");

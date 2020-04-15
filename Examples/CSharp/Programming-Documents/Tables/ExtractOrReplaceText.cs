@@ -1,18 +1,14 @@
 ﻿using System;
 using Aspose.Words.Tables;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class ExtractText : TestDataHelper
     {
-        public static void Run()
-        {
-            ExtractPrintText();
-            ReplaceText();
-        }
-
-        private static void ExtractPrintText()
+        [Test]
+        public static void ExtractPrintText()
         {
             //ExStart:ExtractText
             Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
@@ -39,7 +35,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:PrintTextRangeOFRowAndTable
         }
 
-        private static void ReplaceText()
+        [Test]
+        public static void ReplaceText()
         {
             //ExStart:ReplaceText
             Document doc = new Document(TablesDir + "Table.SimpleTable.doc");

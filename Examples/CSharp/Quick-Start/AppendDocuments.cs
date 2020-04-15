@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Quick_Start
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class AppendDocuments : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // Load the destination and source documents from disk

@@ -1,10 +1,12 @@
 ﻿using System;
 using Aspose.Words.Fields;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
     class ChangeFieldUpdateCultureSource : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ChangeFieldUpdateCultureSource

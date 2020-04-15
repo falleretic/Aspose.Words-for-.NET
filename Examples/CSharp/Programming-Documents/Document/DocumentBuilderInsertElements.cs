@@ -2,24 +2,13 @@
 using Aspose.Words.Drawing;
 using Aspose.Words.Fields;
 using System.IO;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderInsertElements : TestDataHelper
     {
-        public static void Run()
-        {
-            InsertTextInputFormField();
-            InsertCheckBoxFormField();
-            InsertComboBoxFormField();
-            InsertHtml();
-            InsertHyperlink();
-            InsertTableOfContents();
-            InsertOleObject();
-            InsertOleObjectWithOlePackage();
-            GetAccessToOLEObjectRawData();
-        }
-
+        [Test]
         public static void InsertTextInputFormField()
         {
             //ExStart:DocumentBuilderInsertTextInputFormField
@@ -31,6 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertTextInputFormField
         }
 
+        [Test]
         public static void InsertCheckBoxFormField()
         {
             //ExStart:DocumentBuilderInsertCheckBoxFormField
@@ -42,6 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertCheckBoxFormField
         }
 
+        [Test]
         public static void InsertComboBoxFormField()
         {
             //ExStart:DocumentBuilderInsertComboBoxFormField
@@ -55,6 +46,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertComboBoxFormField
         }
 
+        [Test]
         public static void InsertHtml()
         {
             //ExStart:DocumentBuilderInsertHtml
@@ -70,6 +62,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertHtml
         }
 
+        [Test]
         public static void InsertHyperlink()
         {
             //ExStart:DocumentBuilderInsertHyperlink
@@ -89,6 +82,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertHyperlink
         }
 
+        [Test]
         public static void InsertTableOfContents()
         {
             //ExStart:DocumentBuilderInsertTableOfContents
@@ -135,6 +129,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertTableOfContents
         }
 
+        [Test]
         public static void InsertOleObject()
         {
             //ExStart:DocumentBuilderInsertOleObject
@@ -146,6 +141,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertOleObject
         }
 
+        [Test]
         public static void InsertOleObjectWithOlePackage()
         {
             //ExStart:InsertOleObjectwithOlePackage
@@ -166,7 +162,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:InsertOleObjectwithOlePackage
         }
 
-        public static void GetAccessToOLEObjectRawData()
+        [Test]
+        public static void GetAccessToOleObjectRawData()
         {
             //ExStart:GetAccessToOLEObjectRawData
             // Load document with OLE object

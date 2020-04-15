@@ -2,11 +2,13 @@
 using System.Security.Cryptography.X509Certificates;
 //ExEnd:X509Certificates
 using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class DigitallySignedPdf : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:DigitallySignedPdf

@@ -2,11 +2,13 @@
 using System.IO;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class PrintDocViaXpsPrint : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:PrintDocViaXpsPrint

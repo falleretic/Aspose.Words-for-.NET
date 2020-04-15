@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class HyphenateWordsOfLanguages : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:HyphenateWordsOfLanguages

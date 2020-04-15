@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Loading_Saving
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class CreateDocument : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:CreateDocument

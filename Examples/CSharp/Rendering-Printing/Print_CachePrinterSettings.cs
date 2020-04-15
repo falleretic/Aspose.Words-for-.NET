@@ -1,15 +1,12 @@
 ﻿using Aspose.Words.Rendering;
 using System.Drawing.Printing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {
     class PrintCachePrinterSettings : TestDataHelper
     {
-        public static void Run()
-        {
-            CachePrinterSettings();
-        }
-
+        [Test]
         public static void CachePrinterSettings()
         {
             //ExStart:CachePrinterSettings

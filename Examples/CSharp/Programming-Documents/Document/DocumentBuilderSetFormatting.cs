@@ -1,23 +1,11 @@
 ﻿using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderSetFormatting : TestDataHelper
     {
-        public static void Run()
-        {
-            SetSpaceBetweenAsianAndLatinText();
-            SetAsianTypographyLinebreakGroupProp();
-            SetFontFormatting();
-            SetParagraphFormatting();
-            SetTableCellFormatting();
-            SetTableRowFormatting();
-            SetMultilevelListFormatting();
-            SetPageSetupAndSectionFormatting();
-            ApplyParagraphStyle();
-            ApplyBordersAndShadingToParagraph();
-        }
-
+        [Test]
         public static void SetSpaceBetweenAsianAndLatinText()
         {
             //ExStart:DocumentBuilderSetSpacebetweenAsianandLatintext
@@ -36,6 +24,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetSpacebetweenAsianandLatintext
         }
 
+        [Test]
         public static void SetAsianTypographyLinebreakGroupProp()
         {
             //ExStart:SetAsianTypographyLinebreakGroupProp
@@ -50,6 +39,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:SetAsianTypographyLinebreakGroupProp
         }
 
+        [Test]
         public static void SetFontFormatting()
         {
             //ExStart:DocumentBuilderSetFontFormatting
@@ -73,6 +63,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetFontFormatting
         }
 
+        [Test]
         public static void SetParagraphFormatting()
         {
             //ExStart:DocumentBuilderSetParagraphFormatting
@@ -96,6 +87,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetParagraphFormatting
         }
 
+        [Test]
         public static void SetTableCellFormatting()
         {
             //ExStart:DocumentBuilderSetTableCellFormatting
@@ -122,6 +114,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetTableCellFormatting
         }
 
+        [Test]
         public static void SetTableRowFormatting()
         {
             //ExStart:DocumentBuilderSetTableRowFormatting
@@ -150,6 +143,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetTableRowFormatting
         }
 
+        [Test]
         public static void SetMultilevelListFormatting()
         {
             //ExStart:DocumentBuilderSetMultilevelListFormatting
@@ -180,6 +174,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetMultilevelListFormatting
         }
 
+        [Test]
         public static void SetPageSetupAndSectionFormatting()
         {
             //ExStart:DocumentBuilderSetPageSetupAndSectionFormatting
@@ -195,6 +190,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderSetPageSetupAndSectionFormatting
         }
 
+        [Test]
         public static void ApplyParagraphStyle()
         {
             //ExStart:DocumentBuilderApplyParagraphStyle
@@ -209,6 +205,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderApplyParagraphStyle
         }
 
+        [Test]
         public static void ApplyBordersAndShadingToParagraph()
         {
             //ExStart:DocumentBuilderApplyBordersAndShadingToParagraph

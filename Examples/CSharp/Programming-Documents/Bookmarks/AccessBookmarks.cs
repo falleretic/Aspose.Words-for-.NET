@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class AccessBookmarks : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:AccessBookmarks

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using Aspose.Words.Fields;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class ExtractContentUsingField : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExtractContentUsingField

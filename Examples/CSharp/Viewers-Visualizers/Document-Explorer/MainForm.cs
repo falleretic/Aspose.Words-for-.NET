@@ -875,6 +875,6 @@ namespace DocumentExplorerExample
         /// <summary>
         /// Last selected directory in the open and save dialogs.
         /// </summary>
-        private string mInitialDirectory = RunExamples.GetDataDir_ViewersAndVisualizers();
+        private string mInitialDirectory = TestDataHelper.ViewersVisualizersDir;
     }
 }

@@ -1,15 +1,11 @@
 ﻿using System.Data;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class MailMergeUsingMustacheSyntax : TestDataHelper
     {
-        public static void Run()
-        {
-            MustacheSyntax();
-            UseIfElseMustacheSyntax();
-        }
-
+        [Test]
         public static void MustacheSyntax()
         {
             //ExStart:MailMergeUsingMustacheSyntax
@@ -28,6 +24,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             //ExEnd:MailMergeUsingMustacheSyntax
         }
 
+        [Test]
         public static void UseIfElseMustacheSyntax()
         {
             //ExStart:UseOfifelseMustacheSyntax

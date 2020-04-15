@@ -1,10 +1,12 @@
 ﻿using Aspose.Words.Markup;
 using System.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class RichTextBoxContentControl : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:RichTextBoxContentControl

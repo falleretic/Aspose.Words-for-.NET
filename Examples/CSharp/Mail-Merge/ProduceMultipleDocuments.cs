@@ -1,10 +1,12 @@
 ﻿using System.Data;
 using System.Data.OleDb;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class ProduceMultipleDocuments : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ProduceMultipleDocuments

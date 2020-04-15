@@ -1,10 +1,12 @@
 ﻿using System;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class UntangleRowBookmarks : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(BookmarksDir + "TestDefect1352.doc");

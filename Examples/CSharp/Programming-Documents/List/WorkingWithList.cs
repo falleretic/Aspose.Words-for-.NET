@@ -1,18 +1,14 @@
 ﻿using Aspose.Words.Lists;
 using Aspose.Words.Saving;
 using System.Drawing;
+using NUnit.Framework;
+using List = Aspose.Words.Lists.List;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
 {
     class WorkingWithList : TestDataHelper
     {
-        public static void Run()
-        {
-            RestartListNumber();
-            SpecifyListLevel();
-            SetRestartAtEachSection();
-        }
-
+        [Test]
         public static void SetRestartAtEachSection()
         {
             //ExStart:SetRestartAtEachSection
@@ -44,6 +40,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
             //ExEnd:SetRestartAtEachSection
         }
 
+        [Test]
         public static void SpecifyListLevel()
         {
             //ExStart:SpecifyListLevel
@@ -79,6 +76,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Lists
             // ExEnd:SpecifyListLevel
         }
 
+        [Test]
         public static void RestartListNumber()
         {
             //ExStart:RestartListNumber

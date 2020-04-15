@@ -1,16 +1,11 @@
 ﻿using Aspose.Words.Fonts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class SetFontSettings : TestDataHelper
     {
-        public static void Run()
-        {
-            EnableDisableFontSubstitution();
-            SetFontFallbackSettings();
-            SetPredefinedFontFallbackSettings();
-        }
-
+        [Test]
         public static void EnableDisableFontSubstitution()
         {
             //ExStart:EnableDisableFontSubstitution
@@ -26,6 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:EnableDisableFontSubstitution
         }
 
+        [Test]
         public static void SetFontFallbackSettings()
         {
             //ExStart:SetFontFallbackSettings
@@ -40,6 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:SetFontFallbackSettings
         }
 
+        [Test]
         public static void SetPredefinedFontFallbackSettings()
         {
             //ExStart:SetPredefinedFontFallbackSettings

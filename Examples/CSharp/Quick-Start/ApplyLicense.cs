@@ -1,9 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class ApplyLicense
     {
+        [Test]
         public static void Run()
         {
             License license = new License();

@@ -1,15 +1,11 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WorkingWithFootnote : TestDataHelper
     {
-        public static void Run()
-        {
-            SetFootNoteColumns();
-            SetFootnoteAndEndNotePosition();
-            SetEndnoteOptions();
-        }
-
-        private static void SetFootNoteColumns()
+        [Test]
+        public static void SetFootNoteColumns()
         {
             //ExStart:SetFootNoteColumns
             Document doc = new Document(DocumentDir + "TestFile.docx");
@@ -21,7 +17,8 @@
             //ExEnd:SetFootNoteColumns
         }
 
-        private static void SetFootnoteAndEndNotePosition()
+        [Test]
+        public static void SetFootnoteAndEndNotePosition()
         {
             //ExStart:SetFootnoteAndEndNotePosition
             Document doc = new Document(DocumentDir + "TestFile.docx");
@@ -34,7 +31,8 @@
             //ExEnd:SetFootnoteAndEndNotePosition
         }
 
-        private static void SetEndnoteOptions()
+        [Test]
+        public static void SetEndnoteOptions()
         {
             //ExStart:SetEndnoteOptions
             Document doc = new Document(DocumentDir + "TestFile.docx");

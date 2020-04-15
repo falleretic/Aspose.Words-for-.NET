@@ -1,10 +1,12 @@
 ﻿using System.IO;
 using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class SpecifySaveOption : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:SpecifySaveOption

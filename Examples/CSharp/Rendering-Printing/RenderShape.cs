@@ -1,16 +1,17 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Drawing;
 using Aspose.Words.Rendering;
 using Aspose.Words.Saving;
 using Aspose.Words.Drawing;
 using System.Drawing.Imaging;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class RenderShape : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(MailMergeDir + "TestFile RenderShape.doc");

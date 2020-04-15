@@ -1,15 +1,12 @@
 ﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 {
     class ChartNumberFormat : TestDataHelper
     {
-        public static void Run()
-        {
-            FormatNumberOfDataLabel();
-        }
-
+        [Test]
         public static void FormatNumberOfDataLabel()
         {
             //ExStart:FormatNumberofDataLabel

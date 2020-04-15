@@ -1,11 +1,12 @@
 ﻿using Aspose.Words.Replacing;
-using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
     class FindReplaceUsingMetaCharacters : TestDataHelper
     {
-        public static void Run()
+        [Test]
+        public static void MetaCharactersInSearchPattern()
         {
             /* meta-characters
             &p - paragraph break
@@ -14,12 +15,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             &l - manual line break
             */
 
-            MetaCharactersInSearchPattern();
-            ReplaceTextContainingMetaCharacters();
-        }
-
-        public static void MetaCharactersInSearchPattern()
-        {
             //ExStart:MetaCharactersInSearchPattern
             Document doc = new Document();
 
@@ -44,6 +39,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             //ExEnd:MetaCharactersInSearchPattern
         }
 
+        [Test]
         public static void ReplaceTextContainingMetaCharacters()
         {
             //ExStart:ReplaceTextContaingMetaCharacters

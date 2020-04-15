@@ -1,11 +1,13 @@
 ﻿using System.Drawing;
 using System.Text.RegularExpressions;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderInsertTCFieldsAtText
     {
+        [Test]
         public static void Run()
         {
             //ExStart:DocumentBuilderInsertTCFieldsAtText

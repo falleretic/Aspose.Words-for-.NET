@@ -1,10 +1,12 @@
 ﻿using Aspose.Words.Tables;
 using Aspose.Words.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class CreateHeaderFooterUsingDocBuilder : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:CreateHeaderFooterUsingDocBuilder

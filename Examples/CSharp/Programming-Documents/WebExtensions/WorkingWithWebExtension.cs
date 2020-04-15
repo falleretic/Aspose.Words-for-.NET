@@ -1,14 +1,11 @@
 ﻿using Aspose.Words.WebExtensions;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Web_Extensions
 {
     class WorkingWithWebExtension : TestDataHelper
     {
-        public static void Run()
-        {
-            UsingWebExtensionTaskPanes();
-        }
-
+        [Test]
         public static void UsingWebExtensionTaskPanes()
         {
             //ExStart:UsingWebExtensionTaskPanes

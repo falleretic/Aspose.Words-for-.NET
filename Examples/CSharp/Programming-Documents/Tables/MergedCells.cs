@@ -5,6 +5,7 @@ using System.Xml;
 using System.Drawing;
 using Aspose.Words.Tables;
 using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
@@ -25,6 +26,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             ConvertToHorizontallyMergedCells();
         }
 
+        [Test]
         public static void CheckCellsMerged()
         {
             //ExStart:CheckCellsMerged 
@@ -65,6 +67,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         }
         //ExEnd:PrintCellMergeType
         
+        [Test]
         public static void VerticalMerge()
         {
             //ExStart:VerticalMerge           
@@ -94,6 +97,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:VerticalMerge
         }
 
+        [Test]
         public static void HorizontalMerge()
         {
             //ExStart:HorizontalMerge         
@@ -122,6 +126,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:HorizontalMerge
         }
 
+        [Test]
         public static void MergeCellRange()
         {
             //ExStart:MergeCellRange
@@ -141,6 +146,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:MergeCellRange
         }
 
+        [Test]
         public static void PrintHorizontalAndVerticalMerged()
         {
             //ExStart:PrintHorizontalAndVerticalMerged
@@ -153,6 +159,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:PrintHorizontalAndVerticalMerged
         }
 
+        [Test]
         public static void ConvertToHorizontallyMergedCells()
         {
             //ExStart:ConvertToHorizontallyMergedCells         

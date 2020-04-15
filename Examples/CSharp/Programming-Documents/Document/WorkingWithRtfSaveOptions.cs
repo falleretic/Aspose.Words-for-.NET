@@ -1,14 +1,11 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WorkingWithRtfSaveOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            SavingImagesAsWmf();
-        }
-
+        [Test]
         public static void SavingImagesAsWmf()
         {
             //ExStart:SavingImagesAsWmf

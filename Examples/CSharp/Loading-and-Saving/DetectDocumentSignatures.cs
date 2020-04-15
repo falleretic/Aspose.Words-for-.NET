@@ -1,10 +1,12 @@
 ﻿using System.IO;
 using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class DetectDocumentSignatures : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:DetectDocumentSignatures

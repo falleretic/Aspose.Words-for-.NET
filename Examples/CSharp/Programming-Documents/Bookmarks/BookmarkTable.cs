@@ -1,16 +1,12 @@
 ﻿using System;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class BookmarkTable : TestDataHelper
     {
-        public static void Run()
-        {
-            InsertBookmarkTable();
-            BookmarkTableColumns();
-        }
-
+        [Test]
         public static void InsertBookmarkTable()
         {
             //ExStart:BookmarkTable
@@ -52,6 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             //ExEnd:BookmarkTable
         }
 
+        [Test]
         public static void BookmarkTableColumns()
         {
             //ExStart:BookmarkTableColumns

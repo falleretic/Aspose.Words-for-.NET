@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Math;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
     class UseOfficeMathProperties : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:SpecifylocaleAtFieldlevel

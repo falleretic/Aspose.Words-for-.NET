@@ -1,11 +1,13 @@
 ﻿using Aspose.Words.MailMerging;
 using System.Data;
 using System.Diagnostics;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class RemoveEmptyRegions : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:RemoveUnmergedRegions

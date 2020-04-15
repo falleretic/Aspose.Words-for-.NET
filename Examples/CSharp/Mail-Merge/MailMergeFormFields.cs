@@ -1,10 +1,12 @@
 ﻿using Aspose.Words.Fields;
 using Aspose.Words.MailMerging;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class MailMergeFormFields : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:MailMergeFormFields

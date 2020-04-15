@@ -1,10 +1,12 @@
 ﻿using System;
 using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class DigitallySignedPdfUsingCertificateHolder : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:DigitallySignedPdfUsingCertificateHolder

@@ -1,23 +1,12 @@
 ﻿using System;
 using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class WorkingWithTxt : TestDataHelper
     {
-        public static void Run()
-        {
-            SaveAsTxt();
-            AddBidiMarks();
-            DetectNumberingWithWhitespaces();
-            HandleSpacesOptions();
-            DocumentTextDirection();
-            ExportHeadersFootersMode();
-            UseTabCharacterPerLevelForListIndentation();
-            UseSpaceCharacterPerLevelForListIndentation();
-            DefaultLevelForListIndentation();
-        }
-
+        [Test]
         public static void SaveAsTxt()
         {
             //ExStart:SaveAsTxt
@@ -26,6 +15,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:SaveAsTxt
         }
 
+        [Test]
         public static void AddBidiMarks()
         {
             //ExStart:AddBidiMarks
@@ -38,6 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:AddBidiMarks
         }
 
+        [Test]
         public static void DetectNumberingWithWhitespaces()
         {
             //ExStart:DetectNumberingWithWhitespaces
@@ -49,6 +40,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:DetectNumberingWithWhitespaces
         }
 
+        [Test]
         public static void HandleSpacesOptions()
         {
             //ExStart:HandleSpacesOptions
@@ -61,6 +53,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:HandleSpacesOptions
         }
 
+        [Test]
         public static void DocumentTextDirection()
         {
             //ExStart:DocumentTextDirection
@@ -76,6 +69,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:DocumentTextDirection
         }
 
+        [Test]
         public static void ExportHeadersFootersMode()
         {
             //ExStart:ExportHeadersFootersMode
@@ -100,6 +94,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:ExportHeadersFootersMode
         }
 
+        [Test]
         public static void UseTabCharacterPerLevelForListIndentation()
         {
             //ExStart:UseTabCharacterPerLevelForListIndentation
@@ -113,6 +108,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:UseTabCharacterPerLevelForListIndentation
         }
 
+        [Test]
         public static void UseSpaceCharacterPerLevelForListIndentation()
         {
             //ExStart:UseSpaceCharacterPerLevelForListIndentation
@@ -126,6 +122,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:UseSpaceCharacterPerLevelForListIndentation
         }
 
+        [Test]
         public static void DefaultLevelForListIndentation()
         {
             //ExStart:DefaultLevelForListIndentation

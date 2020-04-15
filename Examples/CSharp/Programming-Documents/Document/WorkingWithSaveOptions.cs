@@ -1,15 +1,11 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WorkingWithSaveOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            UpdateLastSavedTimeProperty();
-            SetMeasureUnitForOdt();
-        }
-
+        [Test]
         public static void UpdateLastSavedTimeProperty()
         {
             //ExStart:UpdateLastSavedTimeProperty
@@ -22,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:UpdateLastSavedTimeProperty
         }
 
+        [Test]
         public static void SetMeasureUnitForOdt()
         {
             //ExStart:SetMeasureUnitForODT

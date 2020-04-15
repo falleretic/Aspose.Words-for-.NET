@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace Aspose.Words.Examples.CSharp
 {
@@ -7,52 +8,45 @@ namespace Aspose.Words.Examples.CSharp
     {
         static TestDataHelper()
         {
-            MainDataDir = GetDataDir_Data();
-            ArtifactsDir = new Uri(new Uri(MainDataDir), @"Artifacts/").LocalPath;
-            QuickStartDir = new Uri(new Uri(MainDataDir), @"Quick-Start/").LocalPath;
-            BookmarksDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Bookmarks/").LocalPath;
-            ChartsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Charts/").LocalPath;
-            CommentsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Comments/").LocalPath;
-            DocumentDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Document/").LocalPath;
-            FieldsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Fields/").LocalPath;
-            FindReplaceDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Find-Replace/").LocalPath;
-            HyperlinkDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Hyperlink/").LocalPath;
-            ImagesDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Images/").LocalPath;
-            JoiningAppendingDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Joining-Appending/").LocalPath;
-            NodeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Node/").LocalPath;
-            RangeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Ranges/").LocalPath;
-            SectionsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Sections/").LocalPath;
-            ShapesDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Shapes/").LocalPath;
-            SignatureDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Signature/").LocalPath;
-            SdtDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/StructuredDocumentTag/").LocalPath;
-            StyleDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Styles/").LocalPath;
-            ThemeDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Theme/").LocalPath;
-            WebExtensionsDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/WebExtensions/").LocalPath;
-            LoadingSavingDir = new Uri(new Uri(MainDataDir), @"Loading-and-Saving/").LocalPath;
-            DatabaseDir = new Uri(new Uri(MainDataDir), @"Database/").LocalPath;
-            TablesDir = new Uri(new Uri(MainDataDir), @"Programming-Documents/Tables/").LocalPath;
-            LinqDir = new Uri(new Uri(MainDataDir), @"LINQ/").LocalPath;
-            MailMergeDir = new Uri(new Uri(MainDataDir), @"Mail-Merge/").LocalPath;
+            MainDataDir = GetCodeBaseDir(Assembly.GetExecutingAssembly());
+            ArtifactsDir = new Uri(new Uri(MainDataDir), @"Data/Artifacts/").LocalPath;
+            QuickStartDir = new Uri(new Uri(MainDataDir), @"Data/Quick-Start/").LocalPath;
+            BookmarksDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Bookmarks/").LocalPath;
+            ChartsDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Charts/").LocalPath;
+            CommentsDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Comments/").LocalPath;
+            DocumentDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Document/").LocalPath;
+            FieldsDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Fields/").LocalPath;
+            FindReplaceDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Find-Replace/").LocalPath;
+            HyperlinkDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Hyperlink/").LocalPath;
+            ImagesDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Images/").LocalPath;
+            JoiningAppendingDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Joining-Appending/").LocalPath;
+            NodeDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Node/").LocalPath;
+            RangeDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Ranges/").LocalPath;
+            SectionsDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Sections/").LocalPath;
+            ShapesDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Shapes/").LocalPath;
+            SignatureDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Signature/").LocalPath;
+            SdtDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/StructuredDocumentTag/").LocalPath;
+            StyleDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Styles/").LocalPath;
+            ThemeDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Theme/").LocalPath;
+            WebExtensionsDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/WebExtensions/").LocalPath;
+            LoadingSavingDir = new Uri(new Uri(MainDataDir), @"Data/Loading-and-Saving/").LocalPath;
+            DatabaseDir = new Uri(new Uri(MainDataDir), @"Data/Database/").LocalPath;
+            TablesDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Tables/").LocalPath;
+            LinqDir = new Uri(new Uri(MainDataDir), @"Data/LINQ/").LocalPath;
+            MailMergeDir = new Uri(new Uri(MainDataDir), @"Data/Mail-Merge/").LocalPath;
+            ViewersVisualizersDir = new Uri(new Uri(MainDataDir), @"Data/Viewers-Visualizers/").LocalPath;
         }
 
-        private static string GetDataDir_Data()
+        /// <summary>
+        /// Returns the code-base directory.
+        /// </summary>
+        internal static string GetCodeBaseDir(Assembly assembly)
         {
-            DirectoryInfo parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
-            string startDirectory = null;
-            if (parent != null)
-            {
-                DirectoryInfo directoryInfo = parent.Parent;
-                if (directoryInfo != null)
-                {
-                    startDirectory = directoryInfo.FullName;
-                }
-            }
-            else
-            {
-                startDirectory = parent.FullName;
-            }
-
-            return Path.Combine(startDirectory, "Data\\");
+            // CodeBase is a full URI, such as file:///x:\blahblah.
+            Uri uri = new Uri(assembly.CodeBase);
+            string mainFolder = Path.GetDirectoryName(uri.LocalPath)
+                ?.Substring(0, uri.LocalPath.IndexOf("CSharp", StringComparison.Ordinal));
+            return mainFolder;
         }
 
         /// <summary>
@@ -179,6 +173,11 @@ namespace Aspose.Words.Examples.CSharp
         /// Gets the path to the license used by the code examples.
         /// </summary>
         internal static string MailMergeDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string ViewersVisualizersDir { get; }
 
         /// <summary>
         /// Gets the path to the documents used by the code examples. Ends with a back slash.

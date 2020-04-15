@@ -1,12 +1,14 @@
 ﻿using Aspose.Words.Fonts;
 using System.IO;
 using System.Reflection;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     // ExStart:ResourceSteamFontSourceExample
     class ResourceSteamFontSourceExamples : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(MailMergeDir + "Rendering.doc");

@@ -1,10 +1,12 @@
 ﻿using System;
 using Aspose.Words.Layout;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class PageNumbersOfNodes : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(DocumentDir + "TestFile.docx");

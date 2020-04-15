@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class EmbeddingWindowsStandardFonts : TestDataHelper
     {
-        public static void Run()
-        {
-            AvoidEmbeddingCoreFonts();
-            SkipEmbeddedArialAndTimesRomanFonts();
-        }
-
-        private static void AvoidEmbeddingCoreFonts()
+        [Test]
+        public static void AvoidEmbeddingCoreFonts()
         {
             //ExStart:AvoidEmbeddingCoreFonts
             Document doc = new Document(MailMergeDir + "Rendering.doc");
@@ -24,7 +20,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:AvoidEmbeddingCoreFonts
         }
 
-        private static void SkipEmbeddedArialAndTimesRomanFonts()
+        [Test]
+        public static void SkipEmbeddedArialAndTimesRomanFonts()
         {
             //ExStart:SkipEmbeddedArialAndTimesRomanFonts
             Document doc = new Document(MailMergeDir + "Rendering.doc");

@@ -1,8 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
 {
     class UnlinkHeadersFooters : TestDataHelper
-
     {
+        [Test]
         public static void Run()
         {
             //ExStart:UnlinkHeadersFooters

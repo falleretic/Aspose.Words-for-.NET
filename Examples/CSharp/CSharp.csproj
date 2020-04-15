@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{10D7FE6F-656B-4ADB-A3CC-E2B69CDD7C49}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspose.Words.Examples.CSharp</RootNamespace>
     <AssemblyName>Aspose.Words.Examples.CSharp</AssemblyName>
@@ -53,7 +54,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Aspose.Words.Examples.CSharp.RunExamples</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -95,6 +97,9 @@
     <Reference Include="Aspose.Words.Shaping.HarfBuzz, Version=20.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Words.Shaping.HarfBuzz.20.4.0\lib\net40\Aspose.Words.Shaping.HarfBuzz.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -451,7 +456,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Viewers-Visualizers\Document-Explorer\Preview.cs" />
-    <Compile Include="RunExamples.cs" />
     <Compile Include="Viewers-Visualizers\Document-Explorer\ViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -543,6 +547,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Aspose.Words.Shaping.HarfBuzz.20.4.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aspose.Words.Shaping.HarfBuzz.20.4.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
   </Target>
   <Import Project="..\packages\Aspose.Words.Shaping.HarfBuzz.20.4.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets" Condition="Exists('..\packages\Aspose.Words.Shaping.HarfBuzz.20.4.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

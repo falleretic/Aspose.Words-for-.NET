@@ -1,11 +1,13 @@
 ﻿using System;
 using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 {
     class InsertAreaChart : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:InsertAreaChart

@@ -1,16 +1,13 @@
 ﻿using Aspose.Words.Fonts;
 using System;
 using System.Collections;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class WorkingWithFontSources : TestDataHelper
     {
-        public static void Run()
-        {
-            GetListOfAvailableFonts();
-        }
-
+        [Test]
         public static void GetListOfAvailableFonts()
         {
             //ExStart:GetListOfAvailableFonts

@@ -1,11 +1,13 @@
 ﻿using Aspose.Words;
 using Aspose.Words.Examples.CSharp;
 using System;
+using NUnit.Framework;
 
 namespace CSharp.Quick_Start
 {
     class ApplyMeteredLicense : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ApplyMeteredLicense

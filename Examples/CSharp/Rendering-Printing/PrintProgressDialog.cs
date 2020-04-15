@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Rendering;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class PrintProgressDialog : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // ExStart:PrintProgressDialog

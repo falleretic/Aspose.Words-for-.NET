@@ -1,15 +1,11 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WorkingWithImportFormatOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            SmartStyleBehavior();
-            KeepSourceNumbering();
-            IgnoreTextBoxes();
-        }
-
-        static void SmartStyleBehavior()
+        [Test]
+        public static void SmartStyleBehavior()
         {
             //ExStart:SmartStyleBehavior
             Document srcDoc = new Document(DocumentDir + "source.docx");
@@ -25,7 +21,8 @@
             //ExEnd:SmartStyleBehavior
         }
 
-        static void KeepSourceNumbering()
+        [Test]
+        public static void KeepSourceNumbering()
         {
             //ExStart:KeepSourceNumbering
             Document srcDoc = new Document(DocumentDir + "source.docx");
@@ -49,6 +46,7 @@
             //ExEnd:KeepSourceNumbering
         }
 
+        [Test]
         public static void IgnoreTextBoxes()
         {
             //ExStart:IgnoreTextBoxes

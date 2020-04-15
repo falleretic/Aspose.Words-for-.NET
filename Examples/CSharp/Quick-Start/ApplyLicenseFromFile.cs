@@ -1,10 +1,12 @@
 ﻿using System;
 using Aspose.Words;
+using NUnit.Framework;
 
 namespace CSharp.Quick_Start
 {
     class ApplyLicenseFromFile
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ApplyLicenseFromFile

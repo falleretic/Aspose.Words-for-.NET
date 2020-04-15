@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Drawing;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
     class FindAndHighlight : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:FindAndHighlight

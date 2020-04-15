@@ -1,9 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 {
     class AddComments : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:AddComments

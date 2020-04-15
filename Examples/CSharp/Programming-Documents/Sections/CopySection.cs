@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
 {
     class CopySection : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:CopySection

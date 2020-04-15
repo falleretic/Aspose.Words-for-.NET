@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Reporting;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
     class PieChart : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:PieChart

@@ -1,9 +1,11 @@
 ﻿using System.IO;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class LoadHyphenationDictionaryForLanguage : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:LoadHyphenationDictionaryForLanguage

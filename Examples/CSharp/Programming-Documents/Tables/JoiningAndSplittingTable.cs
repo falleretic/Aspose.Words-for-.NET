@@ -1,19 +1,15 @@
 ﻿using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class JoiningAndSplittingTable : TestDataHelper
     {
-        public static void Run()
-        {
-            CombineRows();
-            SplitTable();
-        }
-
         /// <summary>
         /// Shows how to combine the rows from two tables into one.
-        /// </summary>        
-        private static void CombineRows()
+        /// </summary>
+        [Test]
+        public static void CombineRows()
         {
             //ExStart:CombineRows
             Document doc = new Document(TablesDir + "Table.Document.doc");
@@ -37,8 +33,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 
         /// <summary>
         /// Shows how to split a table into two tables in a specific row.
-        /// </summary>              
-        private static void SplitTable()
+        /// </summary>
+        [Test]
+        public static void SplitTable()
         {
             //ExStart:SplitTable
             Document doc = new Document(TablesDir + "Table.Document.doc");

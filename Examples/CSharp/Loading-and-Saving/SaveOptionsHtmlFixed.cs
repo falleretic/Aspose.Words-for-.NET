@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class SaveOptionsHtmlFixed : TestDataHelper
     {
-        public static void Run()
-        {
-            UseFontFromTargetMachine();
-            WriteAllCssRulesInSingleFile();
-        }
-
-        static void UseFontFromTargetMachine()
+        [Test]
+        public static void UseFontFromTargetMachine()
         {
             //ExStart:UseFontFromTargetMachine
             Document doc = new Document(LoadingSavingDir + "Test File (doc).doc");
@@ -22,7 +18,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:UseFontFromTargetMachine
         }
 
-        static void WriteAllCssRulesInSingleFile()
+        [Test]
+        public static void WriteAllCssRulesInSingleFile()
         {
             //ExStart:WriteAllCSSrulesinSingleFile
             Document doc = new Document(LoadingSavingDir + "Test File (doc).doc");

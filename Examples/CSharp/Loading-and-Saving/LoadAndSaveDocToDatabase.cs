@@ -2,11 +2,13 @@
 using System.IO;
 using System.Data;
 using System.Data.OleDb;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class LoadAndSaveDocToDatabase : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(LoadingSavingDir + "TestFile.doc");

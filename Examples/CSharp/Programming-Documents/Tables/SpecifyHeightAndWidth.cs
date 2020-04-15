@@ -1,22 +1,16 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class SpecifyHeightAndWidth : TestDataHelper
     {
-        public static void Run()
-        {
-            AutoFitToPageWidth();
-            SetPreferredWidthSettings();
-            RetrievePreferredWidthType();
-        }
-
         /// <summary>
         /// Shows how to set a table to auto fit to 50% of the page width.
         /// </summary>
-        private static void AutoFitToPageWidth()
+        [Test]
+        public static void AutoFitToPageWidth()
         {
             //ExStart:AutoFitToPageWidth
             Document doc = new Document();
@@ -43,7 +37,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         /// <summary>
         /// Shows how to set the different preferred width settings.
         /// </summary>
-        private static void SetPreferredWidthSettings()
+        [Test]
+        public static void SetPreferredWidthSettings()
         {
             //ExStart:SetPreferredWidthSettings
             Document doc = new Document();
@@ -79,7 +74,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         /// <summary>
         /// Shows how to retrieves the preferred width type of a table cell.
         /// </summary>
-        private static void RetrievePreferredWidthType()
+        [Test]
+        public static void RetrievePreferredWidthType()
         {
             //ExStart:RetrievePreferredWidthType
             Document doc = new Document(TablesDir + "Table.SimpleTable.doc");

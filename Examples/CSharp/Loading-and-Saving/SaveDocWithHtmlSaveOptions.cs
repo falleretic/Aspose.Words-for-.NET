@@ -1,19 +1,11 @@
-﻿using System;
-using Aspose.Words.Saving;
+﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class SaveDocWithHtmlSaveOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            SaveHtmlWithMetafileFormat();
-            ImportExportSvgInHtml();
-            SetCssClassNamePrefix();
-            SetExportCidUrlsForMhtmlResources();
-            SetResolveFontNames();
-        }
-
+        [Test]
         public static void SaveHtmlWithMetafileFormat()
         {
             //ExStart:SaveHtmlWithMetafileFormat
@@ -25,6 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:SaveHtmlWithMetafileFormat
         }
 
+        [Test]
         public static void ImportExportSvgInHtml()
         {
             //ExStart:ImportExportSVGinHTML
@@ -45,6 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:ImportExportSVGinHTML
         }
 
+        [Test]
         public static void SetCssClassNamePrefix()
         {
             //ExStart:SetCssClassNamePrefix
@@ -58,6 +52,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:SetCssClassNamePrefix
         }
 
+        [Test]
         public static void SetExportCidUrlsForMhtmlResources()
         {
             //ExStart:SetExportCidUrlsForMhtmlResources
@@ -72,6 +67,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:SetExportCidUrlsForMhtmlResources
         }
 
+        [Test]
         public static void SetResolveFontNames()
         {
             //ExStart:SetResolveFontNames

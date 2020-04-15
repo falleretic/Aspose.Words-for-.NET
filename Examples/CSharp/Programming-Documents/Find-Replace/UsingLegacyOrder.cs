@@ -2,16 +2,13 @@
 using System;
 using System.Text.RegularExpressions;
 using Aspose.Words.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
     class UsingLegacyOrder : TestDataHelper
     {
-        public static void Run()
-        {
-            FineReplaceUsingLegacyOrder();
-        }
-
+        [Test]
         //ExStart:FineReplaceUsingLegacyOrder
         public static void FineReplaceUsingLegacyOrder()
         {

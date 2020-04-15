@@ -3,11 +3,13 @@ using Aspose.Words.Tables;
 using System.Collections;
 using System.Data;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class ApplyCustomLogicToEmptyRegions : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ApplyCustomLogicToEmptyRegions

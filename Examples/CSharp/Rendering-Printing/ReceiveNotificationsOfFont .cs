@@ -1,17 +1,13 @@
 ﻿using System;
 using Aspose.Words.Fonts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class ReceiveNotificationsOfFont : TestDataHelper
     {
-        public static void Run()
-        {
-            ReceiveNotificationsOfFonts();
-            ReceiveWarningNotification();
-        }
-
-        private static void ReceiveNotificationsOfFonts()
+        [Test]
+        public static void ReceiveNotificationsOfFonts()
         {
             //ExStart:ReceiveNotificationsOfFonts
             Document doc = new Document(MailMergeDir + "Rendering.doc");
@@ -36,7 +32,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:ReceiveNotificationsOfFonts
         }
 
-        private static void ReceiveWarningNotification()
+        [Test]
+        public static void ReceiveWarningNotification()
         {
             //ExStart:ReceiveWarningNotification
             Document doc = new Document(MailMergeDir + "Rendering.doc");

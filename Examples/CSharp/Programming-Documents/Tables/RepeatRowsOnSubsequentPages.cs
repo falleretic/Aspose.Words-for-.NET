@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class RepeatRowsOnSubsequentPages : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:RepeatRowsOnSubsequentPages

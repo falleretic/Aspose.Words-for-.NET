@@ -1,10 +1,12 @@
 ﻿using System.Drawing;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class InsertTableDirectly : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:InsertTableDirectly

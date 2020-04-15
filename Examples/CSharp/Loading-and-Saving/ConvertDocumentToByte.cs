@@ -1,9 +1,11 @@
 ﻿using System.IO;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class ConvertDocumentToByte : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ConvertDocumentToByte

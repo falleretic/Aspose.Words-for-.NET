@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Fields;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class ShowHideBookmarks : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ShowHideBookmarks_call

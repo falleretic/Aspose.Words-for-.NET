@@ -2,11 +2,13 @@
 using System.Drawing;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class EnumerateLayoutElements : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(MailMergeDir + "TestFile.EnumerateLayout.docx");

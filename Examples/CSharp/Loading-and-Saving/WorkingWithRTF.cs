@@ -1,12 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Loading_Saving
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class WorkingWithRTF : TestDataHelper
     {
-        public static void Run()
-        {
-            RecognizeUtf8Text();
-        }
-
+        [Test]
         public static void RecognizeUtf8Text()
         {
             //ExStart:RecognizeUtf8Text

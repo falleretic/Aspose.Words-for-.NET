@@ -1,18 +1,12 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class CompareDocument : TestDataHelper
     {
-        public static void Run()
-        {
-            NormalComparison();
-            CompareForEqual();
-            CompareDocumentWithCompareOptions();
-            CompareDocumentWithComparisonTarget();
-        }
-
-        private static void NormalComparison()
+        [Test]
+        public static void NormalComparison()
         {
             //ExStart:NormalComparison
             Document docA = new Document(DocumentDir + "TestFile.doc");
@@ -23,7 +17,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:NormalComparison                     
         }
 
-        private static void CompareForEqual()
+        [Test]
+        public static void CompareForEqual()
         {
             //ExStart:CompareForEqual
             Document docA = new Document(DocumentDir + "TestFile.doc");
@@ -35,7 +30,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:CompareForEqual                     
         }
 
-        private static void CompareDocumentWithCompareOptions()
+        [Test]
+        public static void CompareDocumentWithCompareOptions()
         {
             //ExStart:CompareDocumentWithCompareOptions
             Document docA = new Document(DocumentDir + "TestFile.doc");
@@ -57,7 +53,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:CompareDocumentWithCompareOptions                     
         }
 
-        private static void CompareDocumentWithComparisonTarget()
+        [Test]
+        public static void CompareDocumentWithComparisonTarget()
         {
             //ExStart:CompareDocumentWithComparisonTarget
             Document docA = new Document(DocumentDir + "TestFile.doc");

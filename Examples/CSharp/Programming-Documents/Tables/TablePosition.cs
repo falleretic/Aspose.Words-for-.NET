@@ -1,19 +1,14 @@
 ﻿using Aspose.Words.Drawing;
 using Aspose.Words.Tables;
 using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class TablePosition : TestDataHelper
     {
-        public static void Run()
-        {
-            GetTablePosition();
-            GetFloatingTablePosition();
-            SetFloatingTablePosition();
-        }
-
-        private static void GetTablePosition()
+        [Test]
+        public static void GetTablePosition()
         {
             //ExStart:GetTablePosition
             Document doc = new Document(TablesDir + "Table.Document.doc");
@@ -33,7 +28,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:GetTablePosition
         }
 
-        private static void GetFloatingTablePosition()
+        [Test]
+        public static void GetFloatingTablePosition()
         {
             //ExStart:GetFloatingTablePosition
             Document doc = new Document(TablesDir + "FloatingTablePosition.docx");
@@ -56,7 +52,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:GetFloatingTablePosition
         }
 
-        private static void SetFloatingTablePosition()
+        [Test]
+        public static void SetFloatingTablePosition()
         {
             //ExStart:SetFloatingTablePosition
             Document doc = new Document(TablesDir + "FloatingTablePosition.docx");

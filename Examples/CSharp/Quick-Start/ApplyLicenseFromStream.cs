@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using NUnit.Framework;
 
 namespace CSharp.Quick_Start
 {
     class ApplyLicenseFromStream
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ApplyLicenseFromStream

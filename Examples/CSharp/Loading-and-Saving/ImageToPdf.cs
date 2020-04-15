@@ -2,11 +2,13 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using Aspose.Words.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class ImageToPdf : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ImageToPdf

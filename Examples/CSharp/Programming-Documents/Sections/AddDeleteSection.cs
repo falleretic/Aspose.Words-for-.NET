@@ -1,18 +1,14 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Sections
 {
     class AddDeleteSection : TestDataHelper
     {
-        public static void Run()
-        {
-            AddSection();
-            DeleteSection();
-            DeleteAllSections();
-        }
-
         /// <summary>
         /// Shows how to add a section to the end of the document.
         /// </summary>
-        private static void AddSection()
+        [Test]
+        public static void AddSection()
         {
             //ExStart:AddSection
             Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
@@ -24,7 +20,8 @@
         /// <summary>
         /// Shows how to remove a section at the specified index.
         /// </summary>
-        private static void DeleteSection()
+        [Test]
+        public static void DeleteSection()
         {
             //ExStart:DeleteSection
             Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
@@ -35,7 +32,8 @@
         /// <summary>
         /// Shows how to remove all sections from a document.
         /// </summary>
-        private static void DeleteAllSections()
+        [Test]
+        public static void DeleteAllSections()
         {
             //ExStart:DeleteAllSections
             Document doc = new Document(SectionsDir + "Section.AddRemove.doc");

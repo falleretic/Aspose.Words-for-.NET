@@ -1,11 +1,13 @@
 ﻿using System;
 using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Ole;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class ReadActiveXControlProperties : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(MailMergeDir + "ActiveXControl.docx");

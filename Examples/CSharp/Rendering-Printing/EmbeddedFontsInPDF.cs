@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class EmbeddedFontsInPdf : TestDataHelper
     {
-        public static void Run()
-        {
-            EmbeddedAllFonts();
-            EmbeddedSubsetFonts();
-        }
-
-        private static void EmbeddedAllFonts()
+        [Test]
+        public static void EmbeddedAllFonts()
         {
             //ExStart:EmbeddAllFonts
             Document doc = new Document(MailMergeDir + "Rendering.doc");
@@ -25,7 +21,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:EmbeddAllFonts
         }
 
-        private static void EmbeddedSubsetFonts()
+        [Test]
+        public static void EmbeddedSubsetFonts()
         {
             //ExStart:EmbeddSubsetFonts
             Document doc = new Document(MailMergeDir + "Rendering.doc");

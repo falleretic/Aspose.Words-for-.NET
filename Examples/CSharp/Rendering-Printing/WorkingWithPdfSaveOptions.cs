@@ -1,18 +1,11 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class WorkingWithPdfSaveOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            EscapeUriInPdf();
-            ExportHeaderFooterBookmarks();
-            ScaleWmfFontsToMetafileSize();
-            AdditionalTextPositioning();
-            ConversionToPdf17();
-        }
-
+        [Test]
         public static void EscapeUriInPdf()
         {
             //ExStart:EscapeUriInPdf
@@ -25,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:EscapeUriInPdf
         }
 
+        [Test]
         public static void ExportHeaderFooterBookmarks()
         {
             //ExStart:ExportHeaderFooterBookmarks
@@ -38,6 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:ExportHeaderFooterBookmarks
         }
 
+        [Test]
         public static void ScaleWmfFontsToMetafileSize()
         {
             //ExStart:ScaleWmfFontsToMetafileSize
@@ -56,6 +51,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:ScaleWmfFontsToMetafileSize
         }
 
+        [Test]
         public static void AdditionalTextPositioning()
         {
             //ExStart:AdditionalTextPositioning
@@ -68,6 +64,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:AdditionalTextPositioning
         }
 
+        [Test]
         public static void ConversionToPdf17()
         {
             //ExStart:ConversionToPDF17

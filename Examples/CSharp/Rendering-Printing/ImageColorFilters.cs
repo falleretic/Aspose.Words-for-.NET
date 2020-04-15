@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class ImageColorFilters : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document($"{MailMergeDir}TestFile.Colors.docx");

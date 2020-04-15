@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class CheckFormat : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:CheckFormatCompatibility

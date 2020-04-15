@@ -1,10 +1,12 @@
 ﻿using System.Collections;
-using Aspose.Words.Lists;
+using NUnit.Framework;
+using List = Aspose.Words.Lists.List;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
 {
     class ListUseDestinationStyles : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ListUseDestinationStyles

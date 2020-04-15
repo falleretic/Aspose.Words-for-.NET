@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Fonts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {
     class WorkingWithFontResolution : TestDataHelper
     {
-        public static void Run()
-        {
-            FontSettingsWithLoadOptions();
-            SetFontsFolder();
-        }
-
-        private static void FontSettingsWithLoadOptions()
+        [Test]
+        public static void FontSettingsWithLoadOptions()
         {
             //ExStart:FontSettingsWithLoadOptions
             FontSettings fontSettings = new FontSettings();
@@ -26,7 +22,8 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             //ExEnd:FontSettingsWithLoadOptions
         }
 
-        private static void SetFontsFolder()
+        [Test]
+        public static void SetFontsFolder()
         {
             //ExStart:SetFontsFolder
             FontSettings fontSettings = new FontSettings();

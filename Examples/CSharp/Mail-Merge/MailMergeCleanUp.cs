@@ -1,14 +1,11 @@
 ﻿using Aspose.Words.MailMerging;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class MailMergeCleanUp : TestDataHelper
     {
-        public static void Run()
-        {
-            CleanupParagraphsWithPunctuationMarks();
-        }
-
+        [Test]
         public static void CleanupParagraphsWithPunctuationMarks()
         {
             //ExStart:CleanupParagraphsWithPunctuationMarks

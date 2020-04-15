@@ -2,22 +2,18 @@
 using System.Collections;
 using System;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class AddRemoveColumn : TestDataHelper
     {
-        public static void Run()
-        {
-            Document doc = new Document(TablesDir + "Table.Document.doc");
-
-            InsertBlankColumn(doc);
-            RemoveColumn(doc);
-        }
-
-        private static void RemoveColumn(Document doc)
+        [Test]
+        public static void RemoveColumn()
         {
             //ExStart:RemoveColumn
+            Document doc = new Document(TablesDir + "Table.Document.doc");
+
             // Get the second table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 1, true);
 
@@ -27,9 +23,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:RemoveColumn
         }
 
-        private static void InsertBlankColumn(Document doc)
+        [Test]
+        public static void InsertBlankColumn()
         {
             //ExStart:InsertBlankColumn
+            Document doc = new Document(TablesDir + "Table.Document.doc");
+
             // Get the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 

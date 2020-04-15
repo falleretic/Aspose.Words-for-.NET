@@ -3,18 +3,13 @@ using System;
 using Aspose.Words.MailMerging;
 using System.Text.RegularExpressions;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class InsertDoc : TestDataHelper
     {
-        public static void Run()
-        {
-            InsertDocumentAtReplace();
-            InsertDocumentAtBookmark();
-            InsertDocumentAtMailMerge();
-        }
-
+        [Test]
         public static void InsertDocumentAtReplace()
         {
             //ExStart:InsertDocumentAtReplace
@@ -28,6 +23,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:InsertDocumentAtReplace
         }
 
+        [Test]
         public static void InsertDocumentAtBookmark()
         {
             //ExStart:InsertDocumentAtBookmark         
@@ -41,6 +37,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:InsertDocumentAtBookmark
         }
 
+        [Test]
         public static void InsertDocumentAtMailMerge()
         {
             //ExStart:InsertDocumentAtMailMerge   
@@ -245,7 +242,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         {
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs e)
             {
-                Document subDoc = new Document(RunExamples.GetDataDir_WorkingWithDocument() + "InsertDocument2.doc");
+                Document subDoc = new Document(DocumentDir + "InsertDocument2.doc");
 
                 // Insert a document after the paragraph, containing the match text
                 Paragraph para = (Paragraph) e.MatchNode.ParentNode;

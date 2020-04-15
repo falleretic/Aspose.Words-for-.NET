@@ -1,10 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
     class ReplaceWithRegex : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ReplaceWithRegex

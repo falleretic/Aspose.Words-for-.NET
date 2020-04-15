@@ -1,19 +1,13 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class InsertTableUsingDocumentBuilder : TestDataHelper
     {
-        public static void Run()
-        {
-            SimpleTable();
-            FormattedTable();
-            NestedTable();
-        }
-
-        private static void SimpleTable()
+        [Test]
+        public static void SimpleTable()
         {
             //ExStart:SimpleTable
             Document doc = new Document();
@@ -44,7 +38,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:SimpleTable
         }
 
-        private static void FormattedTable()
+        [Test]
+        public static void FormattedTable()
         {
             //ExStart:FormattedTable
             Document doc = new Document();
@@ -121,7 +116,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:FormattedTable
         }
 
-        private static void NestedTable()
+        [Test]
+        public static void NestedTable()
         {
             //ExStart:NestedTable
             Document doc = new Document();

@@ -1,10 +1,12 @@
 ﻿using Aspose.Words.Fields;
 using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class ExtractTableOfContents : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(DocumentDir + "TOC.doc");

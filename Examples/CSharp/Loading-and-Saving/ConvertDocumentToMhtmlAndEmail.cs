@@ -1,11 +1,13 @@
 ﻿using System.IO;
 using Aspose.Email;
 using Aspose.Email.Clients.Smtp;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
     class ConvertDocumentToMhtmlAndEmail : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ConvertDocumentToMhtmlAndEmail

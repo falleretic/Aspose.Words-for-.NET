@@ -1,17 +1,12 @@
 ﻿using System;
 using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class Doc2Pdf : TestDataHelper
     {
-        public static void Run()
-        {
-            SaveDoc2Pdf();
-            DisplayDocTitleInWindowTitlebar();
-            PdfRenderWarnings();
-        }
-
+        [Test]
         public static void SaveDoc2Pdf()
         {
             //ExStart:Doc2Pdf
@@ -20,6 +15,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:Doc2Pdf
         }
 
+        [Test]
         public static void DisplayDocTitleInWindowTitlebar()
         {
             //ExStart:DisplayDocTitleInWindowTitlebar
@@ -32,6 +28,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:DisplayDocTitleInWindowTitlebar
         }
 
+        [Test]
         //ExStart:PdfRenderWarnings
         public static void PdfRenderWarnings()
         {

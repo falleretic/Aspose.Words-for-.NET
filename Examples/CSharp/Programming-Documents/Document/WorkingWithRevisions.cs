@@ -1,22 +1,13 @@
 ﻿using System;
 using Aspose.Words.Layout;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WorkingWithRevisions : TestDataHelper
     {
-        public static void Run()
-        {
-            AcceptRevisions();
-            GetRevisionTypes();
-            GetRevisionGroups();
-            SetShowCommentsInPDF();
-            SetShowInBalloons();
-            GetRevisionGroupDetails();
-            AccessRevisedVersion();
-        }
-
-        private static void AcceptRevisions()
+        [Test]
+        public static void AcceptRevisions()
         {
             //ExStart:AcceptAllRevisions
             Document doc = new Document(DocumentDir + "Document.doc");
@@ -32,7 +23,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:AcceptAllRevisions
         }
 
-        private static void GetRevisionTypes()
+        [Test]
+        public static void GetRevisionTypes()
         {
             //ExStart:GetRevisionTypes
             Document doc = new Document(DocumentDir + "Revisions.docx");
@@ -48,7 +40,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:GetRevisionTypes
         }
 
-        private static void GetRevisionGroups()
+        [Test]
+        public static void GetRevisionGroups()
         {
             //ExStart:GetRevisionGroups
             Document doc = new Document(DocumentDir + "Revisions.docx");
@@ -61,7 +54,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:GetRevisionGroups
         }
 
-        private static void SetShowCommentsInPDF()
+        [Test]
+        public static void SetShowCommentsInPDF()
         {
             //ExStart:SetShowCommentsinPDF
             Document doc = new Document(DocumentDir + "Revisions.docx");
@@ -72,7 +66,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:SetShowCommentsinPDF
         }
 
-        private static void SetShowInBalloons()
+        [Test]
+        public static void SetShowInBalloons()
         {
             //ExStart:SetShowInBalloons
             Document doc = new Document(DocumentDir + "Revisions.docx");
@@ -87,7 +82,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:SetShowInBalloons
         }
 
-        private static void GetRevisionGroupDetails()
+        [Test]
+        public static void GetRevisionGroupDetails()
         {
             //ExStart:GetRevisionGroupDetails
             Document doc = new Document(DocumentDir + "TestFormatDescription.docx");
@@ -107,7 +103,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:GetRevisionGroupDetails
         }
 
-        private static void AccessRevisedVersion()
+        [Test]
+        public static void AccessRevisedVersion()
         {
             //ExStart:AccessRevisedVersion
             Document doc = new Document(DocumentDir + "Test.docx");

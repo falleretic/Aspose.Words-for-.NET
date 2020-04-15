@@ -2,11 +2,13 @@
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class PrintMultiplePagesOnOneSheet : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:PrintMultiplePagesOnOneSheet

@@ -1,16 +1,11 @@
 ﻿using Aspose.Words.Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class WorkingWithDoc : TestDataHelper
     {
-        public static void Run()
-        {
-            EncryptDocumentWithPassword();
-            AlwaysCompressMetafiles();
-            SavePictureBullet();
-        }
-
+        [Test]
         public static void EncryptDocumentWithPassword()
         {
             //ExStart:EncryptDocumentWithPassword
@@ -23,6 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:EncryptDocumentWithPassword
         }
 
+        [Test]
         public static void AlwaysCompressMetafiles()
         {
             //ExStart:AlwaysCompressMetafiles
@@ -35,6 +31,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:AlwaysCompressMetafiles
         }
 
+        [Test]
         public static void SavePictureBullet()
         {
             //ExStart:SavePictureBullet

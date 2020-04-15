@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Drawing;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class ApplyStyle : TestDataHelper
     {
-        public static void Run()
-        {
-            BuildTableWithStyle();
-            ExpandFormattingOnCellsAndRowFromStyle();
-            CreateTableStyle();
-            DefineConditionalFormatting();
-        }
-
         /// <summary>
         /// Shows how to build a new table with a table style applied.
         /// </summary>
-        private static void BuildTableWithStyle()
+        [Test]
+        public static void BuildTableWithStyle()
         {
             //ExStart:BuildTableWithStyle
             Document doc = new Document();
@@ -66,7 +60,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         /// <summary>
         /// Shows how to expand the formatting from styles onto the rows and cells of the table as direct formatting.
         /// </summary>
-        private static void ExpandFormattingOnCellsAndRowFromStyle()
+        [Test]
+        public static void ExpandFormattingOnCellsAndRowFromStyle()
         {
             //ExStart:ExpandFormattingOnCellsAndRowFromStyle
             Document doc = new Document(TablesDir + "Table.TableStyle.docx");
@@ -90,7 +85,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:ExpandFormattingOnCellsAndRowFromStyle
         }
 
-        private static void CreateTableStyle()
+        [Test]
+        public static void CreateTableStyle()
         {
             //ExStart:CreateTableStyle
             Document doc = new Document();
@@ -120,7 +116,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
             //ExEnd:CreateTableStyle
         }
 
-        private static void DefineConditionalFormatting()
+        [Test]
+        public static void DefineConditionalFormatting()
         {
             //ExStart:DefineConditionalFormatting
             Document doc = new Document();

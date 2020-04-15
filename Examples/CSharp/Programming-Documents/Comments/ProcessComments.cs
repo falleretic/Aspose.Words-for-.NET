@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Comments
 {
     class ProcessComments : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // ExStart:ProcessComments

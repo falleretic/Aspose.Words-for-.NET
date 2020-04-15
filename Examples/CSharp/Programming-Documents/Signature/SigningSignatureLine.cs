@@ -1,30 +1,13 @@
 ﻿using Aspose.Words.Drawing;
 using System;
 using System.IO;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signature
 {
     class SigningSignatureLine : TestDataHelper
     {
-        public static void Run()
-        {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithSignature();
-
-            if (!File.Exists(dataDir + "signature.pfx"))
-            {
-                Console.WriteLine("Certificate file does not exist.");
-                return;
-            }
-
-            SimpleDocumentSigning();
-            SigningEncryptedDocument();
-            CreatingAndSigningNewSignatureLine();
-            SigningExistingSignatureLine();
-            SetSignatureProviderId();
-            CreateNewSignatureLineAndSetProviderId();
-        }
-
+        [Test]
         public static void SimpleDocumentSigning()
         {
             //ExStart:SimpleDocumentSigning
@@ -34,6 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             //ExEnd:SimpleDocumentSigning
         }
 
+        [Test]
         public static void SigningEncryptedDocument()
         {
             //ExStart:SigningEncryptedDocument
@@ -46,6 +30,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             //ExEnd:SigningEncryptedDocument
         }
 
+        [Test]
         public static void CreatingAndSigningNewSignatureLine()
         {
             //ExStart:CreatingAndSigningNewSignatureLine
@@ -65,6 +50,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             //ExEnd:CreatingAndSigningNewSignatureLine
         }
 
+        [Test]
         public static void SigningExistingSignatureLine()
         {
             //ExStart:SigningExistingSignatureLine
@@ -82,6 +68,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             //ExEnd:SigningExistingSignatureLine
         }
 
+        [Test]
         public static void SetSignatureProviderId()
         {
             //ExStart:SetSignatureProviderID
@@ -100,6 +87,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signat
             //ExEnd:SetSignatureProviderID
         }
 
+        [Test]
         public static void CreateNewSignatureLineAndSetProviderId()
         {
             //ExStart:CreateNewSignatureLineAndSetProviderID

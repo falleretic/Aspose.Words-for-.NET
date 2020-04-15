@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
 {
     class SimpleAppendDocument : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");

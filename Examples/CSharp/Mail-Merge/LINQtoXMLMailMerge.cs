@@ -4,11 +4,13 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class LINQtoXMLMailMerge : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
 #if !NET20

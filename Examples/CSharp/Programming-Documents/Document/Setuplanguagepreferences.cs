@@ -1,16 +1,12 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class SetupLanguagePreferences : TestDataHelper
     {
-        public static void Run()
-        {
-            AddJapaneseAsEditingLanguages();
-            SetRussianAsDefaultEditingLanguage();
-        }
-
-        private static void AddJapaneseAsEditingLanguages()
+        [Test]
+        public static void AddJapaneseAsEditingLanguages()
         {
             //ExStart:AddJapaneseAsEditinglanguages
             LoadOptions loadOptions = new LoadOptions();
@@ -26,7 +22,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:AddJapaneseAsEditinglanguages
         }
 
-        private static void SetRussianAsDefaultEditingLanguage()
+        [Test]
+        public static void SetRussianAsDefaultEditingLanguage()
         {
             //ExStart:SetRussianAsDefaultEditingLanguage
             LoadOptions loadOptions = new LoadOptions();

@@ -1,9 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class CopyBookmarkedText : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document srcDoc = new Document(BookmarksDir + "Template.doc");

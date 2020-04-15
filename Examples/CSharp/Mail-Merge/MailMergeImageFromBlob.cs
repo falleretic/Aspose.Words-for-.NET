@@ -2,11 +2,13 @@
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class MailMergeImageFromBlob : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:MailMergeImageFromBlob

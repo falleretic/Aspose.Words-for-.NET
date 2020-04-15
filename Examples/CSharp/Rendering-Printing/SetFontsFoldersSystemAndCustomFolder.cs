@@ -1,10 +1,12 @@
 ﻿using Aspose.Words.Fonts;
 using System.Collections;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class SetFontsFoldersSystemAndCustomFolder : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:SetFontsFoldersSystemAndCustomFolder

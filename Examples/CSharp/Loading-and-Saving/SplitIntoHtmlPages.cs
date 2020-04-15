@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.IO;
 using Aspose.Words.MailMerging;
 using Aspose.Words.Saving;
 using System.Text;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
-    class SplitIntoHtmlPages
+    class SplitIntoHtmlPages : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // You need to have a valid license for Aspose.Words.
@@ -16,21 +17,16 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             // And specify only file name without path in the following call.
             // Aspose.Words.License license = new Aspose.Words.License();
             // License.SetLicense(@"Aspose.Words.lic");
+            
+            string srcFileName = LoadingSavingDir + "SOI 2007-2012-DeeM with footnote added.doc";
+            string tocTemplate = LoadingSavingDir + "TocTemplate.doc";
 
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_LoadingAndSaving();
-
-            string srcFileName = dataDir + "SOI 2007-2012-DeeM with footnote added.doc";
-            string tocTemplate = dataDir + "TocTemplate.doc";
-
-            string outDir = Path.Combine(dataDir, "_out");
+            string outDir = Path.Combine(ArtifactsDir, "SplitIntoHtmlPages_out");
             Directory.CreateDirectory(outDir);
 
-            // This class does the job.
+            // This class does the job
             Worker w = new Worker();
             w.Execute(srcFileName, tocTemplate, outDir);
-
-            Console.WriteLine("\nDocument split into HTML pages successfully.\nFile saved at " + outDir);
         }
     }
 
@@ -85,14 +81,14 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             {
                 Section section = para.ParentSection;
 
-                // Insert section break if the paragraph is not at the beginning of a section already.
+                // Insert section break if the paragraph is not at the beginning of a section already
                 if (para != section.Body.FirstParagraph)
                 {
                     builder.MoveTo(para.FirstChild);
                     builder.InsertBreak(BreakType.SectionBreakNewPage);
 
-                    // This is the paragraph that was inserted at the end of the now old section.
-                    // We don't really need the extra paragraph, we just needed the section.
+                    // This is the paragraph that was inserted at the end of the now old section
+                    // We don't really need the extra paragraph, we just needed the section
                     section.Body.LastParagraph.Remove();
                 }
             }
@@ -111,14 +107,14 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
                 string paraText = section.Body.FirstParagraph.GetText();
 
-                // The text of the heading paragaph is used to generate the HTML file name.
+                // The text of the heading paragaph is used to generate the HTML file name
                 string fileName = MakeTopicFileName(paraText);
                 if (fileName == "")
                     fileName = "UNTITLED SECTION " + sectionIdx;
 
                 fileName = Path.Combine(mDstDir, fileName + ".html");
 
-                // The text of the heading paragraph is also used to generate the title for the TOC.
+                // The text of the heading paragraph is also used to generate the title for the TOC
                 string title = MakeTopicTitle(paraText);
                 if (title == "")
                     title = "UNTITLED SECTION " + sectionIdx;
@@ -172,7 +168,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
             saveOptions.PrettyFormat = true;
-            // This is to allow headings to appear to the left of main text.
+            // This is to allow headings to appear to the left of main text
             saveOptions.AllowNegativeIndent = true;
             saveOptions.ExportHeadersFootersMode = ExportHeadersFootersMode.None;
 
@@ -186,9 +182,9 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         {
             Document tocDoc = new Document(mTocTemplate);
 
-            // We use a custom mail merge even handler defined below.
+            // We use a custom mail merge even handler defined below
             tocDoc.MailMerge.FieldMergingCallback = new HandleTocMergeField();
-            // We use a custom mail merge data source based on the collection of the topics we created.
+            // We use a custom mail merge data source based on the collection of the topics we created
             tocDoc.MailMerge.ExecuteWithRegions(new TocMailMergeDataSource(topics));
 
             tocDoc.Save(Path.Combine(mDstDir, "contents.html"));
@@ -201,21 +197,21 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 if (mBuilder == null)
                     mBuilder = new DocumentBuilder(e.Document);
 
-                // Our custom data source returns topic objects.
+                // Our custom data source returns topic objects
                 Topic topic = (Topic) e.FieldValue;
 
-                // We use the document builder to move to the current merge field and insert a hyperlink.
+                // We use the document builder to move to the current merge field and insert a hyperlink
                 mBuilder.MoveToMergeField(e.FieldName);
                 mBuilder.InsertHyperlink(topic.Title, topic.FileName, false);
 
                 // Signal to the mail merge engine that it does not need to insert text into the field
-                // As we've done it already.
+                // As we've done it already
                 e.Text = "";
             }
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                // Do nothing.
+                // Do nothing
             }
 
             private DocumentBuilder mBuilder;
@@ -230,22 +226,13 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
     {
         internal Topic(string title, string fileName)
         {
-            mTitle = title;
-            mFileName = fileName;
+            Title = title;
+            FileName = fileName;
         }
 
-        internal string Title
-        {
-            get { return mTitle; }
-        }
+        internal string Title { get; }
 
-        internal string FileName
-        {
-            get { return mFileName; }
-        }
-
-        private readonly string mTitle;
-        private readonly string mFileName;
+        internal string FileName { get; }
     }
 
     internal class TocMailMergeDataSource : IMailMergeDataSource
@@ -253,7 +240,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         internal TocMailMergeDataSource(ArrayList topics)
         {
             mTopics = topics;
-            // Initialize to BOF.
+            // Initialize to BOF
             mIndex = -1;
         }
 
@@ -264,33 +251,25 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 mIndex++;
                 return true;
             }
-            else
-            {
-                // Reached EOF, return false.
-                return false;
-            }
+
+            // Reached EOF, return false
+            return false;
         }
 
         public bool GetValue(string fieldName, out object fieldValue)
         {
             if (fieldName == "TocEntry")
             {
-                // The template document is supposed to have only one field called "TocEntry".
+                // The template document is supposed to have only one field called "TocEntry"
                 fieldValue = mTopics[mIndex];
                 return true;
             }
-            else
-            {
-                fieldValue = null;
-                return false;
-            }
+
+            fieldValue = null;
+            return false;
         }
 
-        public string TableName
-        {
-            // The template document is supposed to have only one merge region called "TOC".
-            get { return "TOC"; }
-        }
+        public string TableName => "TOC";
 
         public IMailMergeDataSource GetChildDataSource(string tableName)
         {

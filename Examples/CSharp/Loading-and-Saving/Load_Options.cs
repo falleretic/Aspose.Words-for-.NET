@@ -1,20 +1,13 @@
 ﻿using Aspose.Words.Saving;
 using Aspose.Words.Settings;
 using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
     class Load_Options : TestDataHelper
     {
-        public static void Run()
-        {
-            LoadOptionsUpdateDirtyFields();
-            LoadAndSaveEncryptedOdt();
-            VerifyOdtDocument();
-            ConvertShapeToOfficeMath();
-            SetMsWordVersion();
-        }
-
+        [Test]
         public static void LoadOptionsUpdateDirtyFields()
         {
             //ExStart:LoadOptionsUpdateDirtyFields
@@ -27,6 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:LoadOptionsUpdateDirtyFields
         }
 
+        [Test]
         public static void LoadAndSaveEncryptedOdt()
         {
             //ExStart:LoadAndSaveEncryptedODT
@@ -35,6 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:LoadAndSaveEncryptedODT
         }
 
+        [Test]
         public static void VerifyOdtDocument()
         {
             //ExStart:VerifyODTdocument
@@ -43,6 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:VerifyODTdocument
         }
 
+        [Test]
         public static void ConvertShapeToOfficeMath()
         {
             //ExStart:ConvertShapeToOfficeMath
@@ -55,6 +51,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:ConvertShapeToOfficeMath
         }
 
+        [Test]
         public static void SetMsWordVersion()
         {
             //ExStart:SetMSWordVersion

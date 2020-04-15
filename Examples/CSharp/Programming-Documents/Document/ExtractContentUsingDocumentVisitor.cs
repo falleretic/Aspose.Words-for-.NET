@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Text;
 using Aspose.Words.Fields;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class ExtractContentUsingDocumentVisitor : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExtractContentUsingDocumentVisitor

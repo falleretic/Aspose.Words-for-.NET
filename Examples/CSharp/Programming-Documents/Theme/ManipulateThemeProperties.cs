@@ -1,21 +1,17 @@
 ﻿using System;
 using Aspose.Words.Themes;
 using System.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Theme
 {
     class ManipulateThemeProperties : TestDataHelper
     {
-        public static void Run()
-        {
-            GetThemeProperties();
-            SetThemeProperties();
-        }
-
         /// <summary>
         ///  Shows how to get theme properties.
-        /// </summary>             
-        private static void GetThemeProperties()
+        /// </summary>
+        [Test]
+        public static void GetThemeProperties()
         {
             //ExStart:GetThemeProperties
             Document doc = new Document(ThemeDir + "Document.doc");
@@ -32,8 +28,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Theme
 
         /// <summary>
         ///  Shows how to set theme properties.
-        /// </summary>             
-        private static void SetThemeProperties()
+        /// </summary>
+        [Test]
+        public static void SetThemeProperties()
         {
             // ExStart:SetThemeProperties
             Document doc = new Document(ThemeDir + "Document.doc");

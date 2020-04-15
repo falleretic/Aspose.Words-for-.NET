@@ -2,11 +2,13 @@
 using Aspose.Words.Fields;
 using System.Drawing;
 using Aspose.BarCode.Generation;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class GenerateACustomBarCodeImage : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:GenerateACustomBarCodeImage

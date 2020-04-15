@@ -1,9 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class UpdateFields : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // Demonstrates how to insert fields and update them using Aspose.Words

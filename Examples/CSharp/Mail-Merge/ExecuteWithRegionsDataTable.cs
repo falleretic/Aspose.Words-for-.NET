@@ -1,11 +1,12 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.OleDb;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class ExecuteWithRegionsDataTable : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExecuteWithRegionsDataTable
@@ -54,7 +55,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         {
             // Open the database connection.
             string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                                RunExamples.GetDataDir_Database() + "Northwind.mdb";
+                                DatabaseDir + "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 

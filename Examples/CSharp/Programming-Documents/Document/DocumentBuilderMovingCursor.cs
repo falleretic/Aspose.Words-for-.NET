@@ -1,23 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderMovingCursor : TestDataHelper
     {
-        public static void Run()
-        {
-            CursorPosition();
-            MoveToNode();
-            MoveToDocumentStartEnd();
-            MoveToSection();
-            HeadersAndFooters();
-            MoveToParagraph();
-            MoveToTableCell();
-            MoveToBookmark();
-            MoveToBookmarkEnd();
-            MoveToMergeField();
-        }
-
+        [Test]
         public static void CursorPosition()
         {
             //ExStart:DocumentBuilderCursorPosition
@@ -32,6 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             Console.WriteLine("\nCursor move to paragraph: " + curParagraph.GetText());
         }
 
+        [Test]
         public static void MoveToNode()
         {
             //ExStart:DocumentBuilderMoveToNode
@@ -42,6 +31,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // ExEnd:DocumentBuilderMoveToNode
         }
 
+        [Test]
         public static void MoveToDocumentStartEnd()
         {
             //ExStart:DocumentBuilderMoveToDocumentStartEnd
@@ -56,6 +46,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderMoveToDocumentStartEnd            
         }
 
+        [Test]
         public static void MoveToSection()
         {
             //ExStart:DocumentBuilderMoveToSection
@@ -68,6 +59,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderMoveToSection               
         }
 
+        [Test]
         public static void HeadersAndFooters()
         {
             //ExStart:DocumentBuilderHeadersAndFooters
@@ -99,6 +91,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderHeadersAndFooters
         }
 
+        [Test]
         public static void MoveToParagraph()
         {
             //ExStart:DocumentBuilderMoveToParagraph
@@ -111,6 +104,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderMoveToParagraph               
         }
 
+        [Test]
         public static void MoveToTableCell()
         {
             //ExStart:DocumentBuilderMoveToTableCell
@@ -123,6 +117,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderMoveToTableCell               
         }
 
+        [Test]
         public static void MoveToBookmark()
         {
             //ExStart:DocumentBuilderMoveToBookmark
@@ -134,6 +129,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderMoveToBookmark               
         }
 
+        [Test]
         public static void MoveToBookmarkEnd()
         {
             //ExStart:DocumentBuilderMoveToBookmarkEnd
@@ -145,6 +141,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderMoveToBookmarkEnd              
         }
 
+        [Test]
         public static void MoveToMergeField()
         {
             //ExStart:DocumentBuilderMoveToMergeField

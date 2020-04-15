@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
     class InsertFormFields : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:InsertFormFields

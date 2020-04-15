@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class MultipleDocsInMailMerge : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // Open the database connection

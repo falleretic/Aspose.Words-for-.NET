@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class DocumentLayoutHelper : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(MailMergeDir + "TestFile.docx");

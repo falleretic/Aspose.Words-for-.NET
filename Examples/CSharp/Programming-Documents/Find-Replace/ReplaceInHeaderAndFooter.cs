@@ -1,17 +1,13 @@
 ﻿using Aspose.Words.Replacing;
 using System.Text;
 using System.Text.RegularExpressions;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 {
     class ReplaceInHeaderAndFooter : TestDataHelper
     {
-        public static void Run()
-        {
-            ReplaceTextInFooter();
-            ShowChangesForHeaderAndFooterOrders();
-        }
-
+        [Test]
         public static void ReplaceTextInFooter()
         {
             //ExStart:ReplaceTextInFooter
@@ -33,6 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
             //ExEnd:ReplaceTextInFooter
         }
 
+        [Test]
         //ExStart:ShowChangesForHeaderAndFooterOrders
         public static void ShowChangesForHeaderAndFooterOrders()
         {
@@ -76,7 +73,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 
             private readonly StringBuilder mTextBuilder = new StringBuilder();
         }
-
         // ExEnd:ShowChangesForHeaderAndFooterOrders
     }
 }

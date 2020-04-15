@@ -1,9 +1,11 @@
 ﻿using System.Data;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class XMLMailMerge : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:XMLMailMerge

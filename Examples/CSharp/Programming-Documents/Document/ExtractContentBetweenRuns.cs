@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class ExtractContentBetweenRuns : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExtractContentBetweenRuns

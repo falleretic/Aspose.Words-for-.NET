@@ -1,6 +1,7 @@
 ﻿using System;
 using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 {
@@ -14,8 +15,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
         /// <summary>
         ///  Shows how to insert a simple column chart into the document using DocumentBuilder.InsertChart method.
-        /// </summary>             
-        private static void InsertSimpleColumnChart()
+        /// </summary>
+        [Test]
+        public static void InsertSimpleColumnChart()
         {
             //ExStart:InsertSimpleColumnChart
             Document doc = new Document();
@@ -55,8 +57,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 
         /// <summary>
         ///  Shows how to insert a column chart into the document using DocumentBuilder.InsertChart method.
-        /// </summary>             
-        private static void InsertColumnChart()
+        /// </summary>
+        [Test]
+        public static void InsertColumnChart()
         {
             //ExStart:InsertColumnChart
             Document doc = new Document();

@@ -1,16 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
     class GetFieldNames
     {
-        public static void Run()
-        {
-            GetMailMergeFieldNames();
-            MappedDataFields();
-            DeleteFields();
-        }
-
+        [Test]
         public static void GetMailMergeFieldNames()
         {
             //ExStart:GetFieldNames
@@ -21,6 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             Console.WriteLine("\nDocument have " + fieldNames.Length + " fields.");
         }
 
+        [Test]
         public static void MappedDataFields()
         {
             //ExStart:MappedDataFields
@@ -30,6 +26,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
             //ExEnd:MappedDataFields
         }
 
+        [Test]
         public static void DeleteFields()
         {
             //ExStart:DeleteFields

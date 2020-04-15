@@ -1,15 +1,12 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class CommentReply : TestDataHelper
     {
-        public static void Run()
-        {
-            AddRemoveCommentReply();
-        }
-
-        static void AddRemoveCommentReply()
+        [Test]
+        public static void AddRemoveCommentReply()
         {
             //ExStart:AddRemoveCommentReply
             Document doc = new Document(CommentsDir + "TestFile.doc");

@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Loading_Saving
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class LoadTxt : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:LoadTxt

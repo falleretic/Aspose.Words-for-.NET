@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Reporting;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
     class ConditionalBlocks : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:InTableList

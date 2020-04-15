@@ -1,14 +1,11 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_ConvertUtil
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_ConvertUtil
 {
     class UtilityClasses
     {
-        public static void Run()
-        {
-            ConvertBetweenMeasurementUnits();
-            UseControlCharacters();
-        }
-
-        private static void ConvertBetweenMeasurementUnits()
+        [Test]
+        public static void ConvertBetweenMeasurementUnits()
         {
             //ExStart:ConvertBetweenMeasurementUnits
             Document doc = new Document();
@@ -24,7 +21,8 @@
             //ExEnd:ConvertBetweenMeasurementUnits
         }
 
-        private static void UseControlCharacters()
+        [Test]
+        public static void UseControlCharacters()
         {
             //ExStart:UseControlCharacters
             const string text = "test\r";

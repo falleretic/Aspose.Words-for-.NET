@@ -1,30 +1,12 @@
 ﻿using System;
 using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
 {
     class ExNode : TestDataHelper
     {
-        public static void Run()
-        {
-            // The following method shows how to use the NodeType enumeration
-            UseNodeType();
-            // The following method shows how to access the parent node
-            GetParentNode();
-            // The following method shows that when you create any node, it requires a document that will own the node
-            OwnerDocument();
-            // Shows how to extract a specific child node from a CompositeNode by using the GetChild method and passing the NodeType and index
-            EnumerateChildNodes();
-            // Shows how to enumerate immediate children of a CompositeNode using indexed access
-            IndexChildNodes();
-            // Shows how to efficiently visit all direct and indirect children of a composite node
-            RecurseAllNodes();
-            // Demonstrates how to use typed properties to access nodes of the document tree
-            TypedAccess();
-            // The following method shows how to creates and adds a paragraph node
-            CreateAndAddParagraphNode();
-        }
-
+        [Test]
         public static void UseNodeType()
         {
             //ExStart:UseNodeType            
@@ -34,6 +16,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             //ExEnd:UseNodeType
         }
 
+        [Test]
         public static void GetParentNode()
         {
             //ExStart:GetParentNode           
@@ -46,6 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             //ExEnd:GetParentNode           
         }
 
+        [Test]
         public static void OwnerDocument()
         {
             //ExStart:OwnerDocument
@@ -72,6 +56,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             //ExEnd:OwnerDocument
         }
 
+        [Test]
         public static void EnumerateChildNodes()
         {
             //ExStart:EnumerateChildNodes 
@@ -92,6 +77,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             //ExEnd:EnumerateChildNodes
         }
 
+        [Test]
         public static void IndexChildNodes()
         {
             //ExStart:IndexChildNodes
@@ -112,6 +98,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             //ExEnd:IndexChildNodes
         }
 
+        [Test]
         //ExStart:RecurseAllNodes
         public static void RecurseAllNodes()
         {
@@ -140,6 +127,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
         }
         //ExEnd:RecurseAllNodes
 
+        [Test]
         public static void TypedAccess()
         {
             //ExStart:TypedAccess
@@ -161,6 +149,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Node
             //ExEnd:TypedAccess
         }
 
+        [Test]
         public static void CreateAndAddParagraphNode()
         {
             //ExStart:CreateAndAddParagraphNode

@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_Appending
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_Appending
 {
     class AppendWithImportFormatOptions : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:AppendWithImportFormatOptions

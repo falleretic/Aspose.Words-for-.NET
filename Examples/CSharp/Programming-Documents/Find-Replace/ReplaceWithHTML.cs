@@ -1,15 +1,12 @@
 ﻿using Aspose.Words.Replacing;
 using System.Text.RegularExpressions;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
 {
     class ReplaceWithHTML : TestDataHelper
     {
-        public static void Run()
-        {
-            ReplaceWithHtml();
-        }
-
+        [Test]
         // ExStart:ReplaceWithHtml
         public static void ReplaceWithHtml()
         {

@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Drawing;
 using System.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderHorizontalRule : TestDataHelper
     {
-        public static void Run()
-        {
-            DocumentBuilderInsertHorizontalRule();
-            DocumentBuilderHorizontalRuleFormat();
-        }
-
+        [Test]
         public static void DocumentBuilderInsertHorizontalRule()
         {
             //ExStart:DocumentBuilderInsertHorizontalRule
@@ -24,6 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:DocumentBuilderInsertHorizontalRule
         }
 
+        [Test]
         public static void DocumentBuilderHorizontalRuleFormat()
         {
             //ExStart:DocumentBuilderHorizontalRuleFormat

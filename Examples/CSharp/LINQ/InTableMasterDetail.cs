@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Reporting;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.LINQ
 {
     class InTableMasterDetail : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:InTableMasterDetail

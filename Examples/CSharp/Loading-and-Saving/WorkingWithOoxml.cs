@@ -1,18 +1,12 @@
 ﻿using Aspose.Words.Saving;
 using Aspose.Words.Settings;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class WorkingWithOoxml : TestDataHelper
     {
-        public static void Run()
-        {
-            EncryptDocxWithPassword();
-            SetOoxmlCompliance();
-            UpdateLastSavedTimeProperty();
-            KeepLegacyControlChars();
-        }
-
+        [Test]
         public static void EncryptDocxWithPassword()
         {
             //ExStart:EncryptDocxWithPassword
@@ -25,6 +19,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:EncryptDocxWithPassword
         }
 
+        [Test]
         public static void SetOoxmlCompliance()
         {
             //ExStart:SetOOXMLCompliance
@@ -42,6 +37,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:SetOOXMLCompliance
         }
 
+        [Test]
         public static void UpdateLastSavedTimeProperty()
         {
             //ExStart:UpdateLastSavedTimeProperty
@@ -54,6 +50,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:UpdateLastSavedTimeProperty
         }
 
+        [Test]
         public static void KeepLegacyControlChars()
         {
             //ExStart:KeepLegacyControlChars

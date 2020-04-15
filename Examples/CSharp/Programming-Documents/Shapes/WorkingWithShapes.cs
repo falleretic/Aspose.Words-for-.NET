@@ -4,23 +4,13 @@ using Aspose.Words.Settings;
 using System;
 using System.Drawing;
 using System.Linq;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
 {
     internal class WorkingWithShapes : TestDataHelper
     {
-        public static void Run()
-        {
-            SetShapeLayoutInCell();
-            SetAspectRatioLocked();
-            InsertShapeUsingDocumentBuilder();
-            AddCornersSnipped();
-            GetActualShapeBoundsPoints();
-            SpecifyVerticalAnchor();
-            DetectSmartArtShape();
-            InsertOleObjectAsIcon();
-        }
-
+        [Test]
         public static void InsertShapeUsingDocumentBuilder()
         {
             //ExStart:InsertShapeUsingDocumentBuilder
@@ -46,6 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:InsertShapeUsingDocumentBuilder
         }
 
+        [Test]
         public static void SetAspectRatioLocked()
         {
             //ExStart:SetAspectRatioLocked
@@ -59,6 +50,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:SetAspectRatioLocked
         }
 
+        [Test]
         public static void SetShapeLayoutInCell()
         {
             //ExStart:SetShapeLayoutInCell
@@ -96,6 +88,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:SetShapeLayoutInCell
         }
 
+        [Test]
         public static void AddCornersSnipped()
         {
             //ExStart:AddCornersSnipped
@@ -111,6 +104,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:AddCornersSnipped
         }
 
+        [Test]
         public static void GetActualShapeBoundsPoints()
         {
             //ExStart:GetActualShapeBoundsPoints
@@ -125,6 +119,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:GetActualShapeBoundsPoints
         }
 
+        [Test]
         public static void SpecifyVerticalAnchor()
         {
             //ExStart:SpecifyVerticalAnchor
@@ -140,6 +135,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:SpecifyVerticalAnchor
         }
 
+        [Test]
         public static void DetectSmartArtShape()
         {
             //ExStart:DetectSmartArtShape
@@ -151,6 +147,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
             //ExEnd:DetectSmartArtShape
         }
 
+        [Test]
         public static void InsertOleObjectAsIcon()
         {
             //ExStart:InsertOLEObjectAsIcon

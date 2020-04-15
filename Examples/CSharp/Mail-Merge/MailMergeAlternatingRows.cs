@@ -1,14 +1,15 @@
 ﻿// ExStart:MailMergingNamespace
 using Aspose.Words.MailMerging;
 // ExEnd:MailMergingNamespace
-using System;
 using System.Data;
 using System.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class MailMergeAlternatingRows : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:MailMergeAlternatingRows

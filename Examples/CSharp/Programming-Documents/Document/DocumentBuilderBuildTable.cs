@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Tables;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class DocumentBuilderBuildTable : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:DocumentBuilderBuildTable

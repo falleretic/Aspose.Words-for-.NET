@@ -1,9 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class WorkingWithNodes
     {
+        [Test]
         public static void Run()
         {
             // Create a new document

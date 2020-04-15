@@ -5,11 +5,13 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 {
     class CompressImages : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             string srcFileName = ImagesDir + "Test.docx";

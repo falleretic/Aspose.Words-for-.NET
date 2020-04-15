@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Markup;
 using Aspose.Words.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class UpdateContentControls : TestDataHelper
     {
-        public static void Run()
-        {
-            SetCurrentStateOfCheckBox();
-            ModifyContentControls();
-        }
-
+        [Test]
         public static void SetCurrentStateOfCheckBox()
         {
             //ExStart:SetCurrentStateOfCheckBox
@@ -29,6 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:SetCurrentStateOfCheckBox
         }
 
+        [Test]
         public static void ModifyContentControls()
         {
             //ExStart:ModifyContentControls

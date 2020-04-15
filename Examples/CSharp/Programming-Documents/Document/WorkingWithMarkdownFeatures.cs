@@ -1,17 +1,11 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
     class WorkingWithMarkdownFeatures : TestDataHelper
     {
-        public static void Run()
-        {
-            MarkdownDocumentWithEmphases();
-            MarkdownDocumentWithHeadings();
-            MarkdownDocumentWithBlockQuotes();
-            MarkdownDocumentWithHorizontalRule();
-            ReadMarkdownDocument();
-        }
-
-        private static void MarkdownDocumentWithEmphases()
+        [Test]
+        public static void MarkdownDocumentWithEmphases()
         {
             //ExStart:MarkdownDocumentWithEmphases
             Document doc = new Document();
@@ -38,7 +32,8 @@
             //ExEnd:MarkdownDocumentWithEmphases
         }
 
-        private static void MarkdownDocumentWithHeadings()
+        [Test]
+        public static void MarkdownDocumentWithHeadings()
         {
             //ExStart:MarkdownDocumentWithHeadings
             Document doc = new Document();
@@ -72,7 +67,8 @@
             //ExEnd:MarkdownDocumentWithHeadings
         }
 
-        private static void MarkdownDocumentWithBlockQuotes()
+        [Test]
+        public static void MarkdownDocumentWithBlockQuotes()
         {
             //ExStart:MarkdownDocumentWithBlockQuotes
             Document doc = new Document();
@@ -107,7 +103,8 @@
             //ExEnd:MarkdownDocumentWithBlockQuotes
         }
 
-        private static void MarkdownDocumentWithHorizontalRule()
+        [Test]
+        public static void MarkdownDocumentWithHorizontalRule()
         {
             //ExStart:MarkdownDocumentWithHorizontalRule
             DocumentBuilder builder = new DocumentBuilder(new Document());
@@ -119,7 +116,8 @@
             // ExEnd: MarkdownDocumentWithHorizontalRule
         }
 
-        private static void ReadMarkdownDocument()
+        [Test]
+        public static void ReadMarkdownDocument()
         {
             //ExStart:ReadMarkdownDocument
             // This is Markdown document that was produced in example of UC3

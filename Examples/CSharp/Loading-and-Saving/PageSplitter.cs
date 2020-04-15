@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_Saving
 {
     class PageSplitter : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             SplitAllDocumentsToPages(LoadingSavingDir + "Split");

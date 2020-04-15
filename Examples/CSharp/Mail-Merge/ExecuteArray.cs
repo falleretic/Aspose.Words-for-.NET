@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Mail_Merge
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
     class ExecuteArray : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExecuteArray

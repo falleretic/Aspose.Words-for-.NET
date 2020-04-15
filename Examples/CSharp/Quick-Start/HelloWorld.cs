@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Quick_Start
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     class HelloWorld : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document();

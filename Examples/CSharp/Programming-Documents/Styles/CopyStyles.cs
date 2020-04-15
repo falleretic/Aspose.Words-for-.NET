@@ -1,7 +1,10 @@
-﻿namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
+﻿using NUnit.Framework;
+
+namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
 {
     class CopyStyles : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:CopyStylesFromDocument

@@ -1,22 +1,13 @@
 ﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
 using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 {
     class WorkingWithChartAxis : TestDataHelper
     {
-        public static void Run()
-        {
-            DefineXYAxisProperties();
-            SetDateTimeValuesToAxis();
-            SetNumberFormatForAxis();
-            SetBoundsOfAxis();
-            SetIntervalUnitBetweenLabelsOnAxis();
-            HideChartAxis();
-            TickMultiLineLabelAlignment();
-        }
-
+        [Test]
         public static void DefineXYAxisProperties()
         {
             //ExStart:DefineXYAxisProperties
@@ -65,6 +56,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             //ExEnd:DefineXYAxisProperties
         }
 
+        [Test]
         public static void SetDateTimeValuesToAxis()
         {
             //ExStart:SetDateTimeValuesToAxis
@@ -102,6 +94,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             //ExEnd:SetDateTimeValuesToAxis
         }
 
+        [Test]
         public static void SetNumberFormatForAxis()
         {
             //ExStart:SetNumberFormatForAxis
@@ -127,6 +120,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             //ExEnd:SetNumberFormatForAxis
         }
 
+        [Test]
         public static void SetBoundsOfAxis()
         {
             //ExStart:SetboundsOfAxis
@@ -152,6 +146,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             // ExEnd:SetboundsOfAxis
         }
 
+        [Test]
         public static void SetIntervalUnitBetweenLabelsOnAxis()
         {
             //ExStart:SetIntervalUnitBetweenLabelsOnAxis
@@ -176,6 +171,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             //ExEnd:SetIntervalUnitBetweenLabelsOnAxis
         }
 
+        [Test]
         public static void HideChartAxis()
         {
             //ExStart:HideChartAxis
@@ -201,6 +197,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             //ExEnd:HideChartAxis
         }
 
+        [Test]
         public static void TickMultiLineLabelAlignment()
         {
             //ExStart:TickMultiLineLabelAlignment

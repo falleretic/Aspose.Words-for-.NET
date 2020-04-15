@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Aspose.Words.Fields;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
 {
     class RenameMergeFields : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:RenameMergeFields

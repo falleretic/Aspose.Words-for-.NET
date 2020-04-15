@@ -1,10 +1,12 @@
 ﻿using System;
 using Aspose.Words.Replacing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Quick_Start
 {
     internal class FindAndReplace : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             Document doc = new Document(QuickStartDir + "ReplaceSimple.doc");

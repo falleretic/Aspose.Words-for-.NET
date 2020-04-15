@@ -1,9 +1,11 @@
 ﻿using Aspose.Words.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
 {
     class ExtractImagesToFiles : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:ExtractImagesToFiles

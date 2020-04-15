@@ -1,16 +1,12 @@
 ﻿using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
 {
     class WorkWithChartDataLabels : TestDataHelper
     {
-        public static void Run()
-        {
-            WorkWithChartDataLabel();
-            DefaultOptionsForDataLabels();
-        }
-
+        [Test]
         public static void WorkWithChartDataLabel()
         {
             //ExStart:WorkWithChartDataLabel
@@ -47,6 +43,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             //ExEnd:WorkWithChartDataLabel
         }
 
+        [Test]
         public static void DefaultOptionsForDataLabels()
         {
             //ExStart:DefaultOptionsForDataLabels

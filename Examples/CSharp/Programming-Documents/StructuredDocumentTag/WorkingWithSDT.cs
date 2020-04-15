@@ -2,20 +2,13 @@
 using Aspose.Words.Tables;
 using System;
 using System.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_StructuredDocumentTag
 {
     internal class WorkingWithSdt : TestDataHelper
     {
-        public static void Run()
-        {
-            BindSdTtoCustomXmlPart();
-            ClearContentsControl();
-            SetContentControlColor();
-            SetContentControlStyle();
-            CreatingTableRepeatingSectionMappedToCustomXmlPart();
-        }
-
+        [Test]
         public static void SetContentControlColor()
         {
             //ExStart:SetContentControlColor
@@ -27,6 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             //ExEnd:SetContentControlColor
         }
 
+        [Test]
         public static void ClearContentsControl()
         {
             //ExStart:ClearContentsControl
@@ -38,6 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             //ExEnd:ClearContentsControl
         }
 
+        [Test]
         public static void BindSdTtoCustomXmlPart()
         {
             //ExStart:BindSDTtoCustomXmlPart
@@ -54,6 +49,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             //ExEnd:BindSDTtoCustomXmlPart
         }
 
+        [Test]
         public static void SetContentControlStyle()
         {
             //ExStart:SetContentControlStyle
@@ -66,6 +62,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Struct
             //ExEnd:SetContentControlStyle
         }
 
+        [Test]
         public static void CreatingTableRepeatingSectionMappedToCustomXmlPart()
         {
             //ExStart:CreatingTableRepeatingSectionMappedToCustomXmlPart

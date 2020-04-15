@@ -1,17 +1,12 @@
 ﻿using Aspose.Words.Drawing;
 using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
 {
     class WorkingWithLinkedTextboxes
     {
-        public static void Run()
-        {
-            CreateALink();
-            CheckSequence();
-            BreakALink();
-        }
-
+        [Test]
         public static void CreateALink()
         {
             //ExStart:CreateALink
@@ -27,6 +22,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
             //ExEnd:CreateALink
         }
 
+        [Test]
         public static void CheckSequence()
         {
             //ExStart:CheckSequence
@@ -51,6 +47,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
             //ExEnd:CheckSequence
         }
 
+        [Test]
         public static void BreakALink()
         {
             //ExStart:BreakALink

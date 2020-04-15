@@ -1,18 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
     class WorkingWithVbaMacros : TestDataHelper
     {
-        public static void Run()
-        {
-            CreateVbaProject();
-            ReadVbaMacros();
-            ModifyVbaMacros();
-            CloneVbaProject();
-            CloneVbaModule();
-        }
-
+        [Test]
         public static void CreateVbaProject()
         {
             //ExStart:CreateVbaProject
@@ -36,6 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:CreateVbaProject
         }
 
+        [Test]
         public static void ReadVbaMacros()
         {
             //ExStart:ReadVbaMacros
@@ -51,6 +45,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:ReadVbaMacros
         }
 
+        [Test]
         public static void ModifyVbaMacros()
         {
             //ExStart:ModifyVbaMacros
@@ -66,6 +61,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:ModifyVbaMacros
         }
 
+        [Test]
         public static void CloneVbaProject()
         {
             //ExStart:CloneVbaProject
@@ -79,6 +75,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:CloneVbaProject
         }
 
+        [Test]
         public static void CloneVbaModule()
         {
             //ExStart:CloneVbaModule

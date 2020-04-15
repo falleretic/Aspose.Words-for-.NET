@@ -1,11 +1,13 @@
 ﻿using Aspose.Words.Tables;
 using System;
 using System.Data;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
 {
     class BuildTableFromDataTable : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             //ExStart:BuildTableFromDataTable
