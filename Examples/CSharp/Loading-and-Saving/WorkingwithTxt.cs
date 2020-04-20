@@ -60,7 +60,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             TxtLoadOptions loadOptions = new TxtLoadOptions();
             loadOptions.DocumentDirection = DocumentDirection.Auto;
 
-            Document doc = new Document(LoadingSavingDir + "arabic.txt", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "Hebrew text.txt", loadOptions);
 
             Paragraph paragraph = doc.FirstSection.Body.FirstParagraph;
             Console.WriteLine(paragraph.ParagraphFormat.Bidi);
@@ -98,7 +98,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void UseTabCharacterPerLevelForListIndentation()
         {
             //ExStart:UseTabCharacterPerLevelForListIndentation
-            Document doc = new Document(LoadingSavingDir + "input_document");
+            Document doc = new Document(LoadingSavingDir + "List indentation.docx");
 
             TxtSaveOptions options = new TxtSaveOptions();
             options.ListIndentation.Count = 1;
@@ -112,7 +112,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void UseSpaceCharacterPerLevelForListIndentation()
         {
             //ExStart:UseSpaceCharacterPerLevelForListIndentation
-            Document doc = new Document(LoadingSavingDir + "input_document");
+            Document doc = new Document(LoadingSavingDir + "List indentation.docx");
 
             TxtSaveOptions options = new TxtSaveOptions();
             options.ListIndentation.Count = 3;
@@ -126,10 +126,10 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void DefaultLevelForListIndentation()
         {
             //ExStart:DefaultLevelForListIndentation
-            Document doc1 = new Document(LoadingSavingDir + "input_document");
+            Document doc1 = new Document(LoadingSavingDir + "List indentation.docx");
             doc1.Save(ArtifactsDir + "DefaultLevelForListIndentation1.txt");
 
-            Document doc2 = new Document("input_document");
+            Document doc2 = new Document(LoadingSavingDir + "List indentation.docx");
             TxtSaveOptions options = new TxtSaveOptions();
             doc2.Save(ArtifactsDir + "DefaultLevelForListIndentation2.txt", options);
             //ExEnd:DefaultLevelForListIndentation

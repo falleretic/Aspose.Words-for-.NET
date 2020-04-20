@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         public static void SmartStyleBehavior()
         {
             //ExStart:SmartStyleBehavior
-            Document srcDoc = new Document(DocumentDir + "source.docx");
-            Document dstDoc = new Document(DocumentDir + "destination.docx");
+            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
 
             DocumentBuilder builder = new DocumentBuilder(dstDoc);
             builder.MoveToDocumentEnd();
@@ -25,8 +25,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         public static void KeepSourceNumbering()
         {
             //ExStart:KeepSourceNumbering
-            Document srcDoc = new Document(DocumentDir + "source.docx");
-            Document dstDoc = new Document(DocumentDir + "destination.docx");
+            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep source list formatting when importing numbered paragraphs
@@ -50,8 +50,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         public static void IgnoreTextBoxes()
         {
             //ExStart:IgnoreTextBoxes
-            Document srcDoc = new Document(DocumentDir + "source.docx");
-            Document dstDoc = new Document(DocumentDir + "destination.docx");
+            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep the source text boxes formatting when importing

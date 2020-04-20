@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void LoadAndSaveEncryptedOdt()
         {
             //ExStart:LoadAndSaveEncryptedODT
-            Document doc = new Document(LoadingSavingDir + "encrypted.odt", new LoadOptions("password"));
+            Document doc = new Document(QuickStartDir + "encrypted.odt", new LoadOptions("password"));
             doc.Save(ArtifactsDir + "LoadAndSaveEncryptedOdt.odt", new OdtSaveOptions("newpassword"));
             //ExEnd:LoadAndSaveEncryptedODT
         }
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void VerifyOdtDocument()
         {
             //ExStart:VerifyODTdocument
-            FileFormatInfo info = FileFormatUtil.DetectFileFormat(LoadingSavingDir + "encrypted.odt");
+            FileFormatInfo info = FileFormatUtil.DetectFileFormat(QuickStartDir + "encrypted.odt");
             Console.WriteLine(info.IsEncrypted);
             //ExEnd:VerifyODTdocument
         }
@@ -46,7 +46,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             lo.ConvertShapeToOfficeMath = true;
 
             // Specify load option to use previous default behaviour i.e. convert math shapes to office math ojects on loading stage.
-            Document doc = new Document(LoadingSavingDir + "OfficeMath.docx", lo);
+            Document doc = new Document(QuickStartDir + "OfficeMath.docx", lo);
             doc.Save(ArtifactsDir + "ConvertShapeToOfficeMath.docx", SaveFormat.Docx);
             //ExEnd:ConvertShapeToOfficeMath
         }

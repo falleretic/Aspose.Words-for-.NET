@@ -123,13 +123,14 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
         public static void SpecifyVerticalAnchor()
         {
             //ExStart:SpecifyVerticalAnchor
-            Document doc = new Document(ShapesDir + "VerticalAnchor.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            Shape textBox = builder.InsertShape(ShapeType.TextBox, 200, 200);
+            textBox.TextBox.VerticalAnchor = TextBoxAnchor.Bottom;
             
-            NodeCollection shapes = doc.GetChildNodes(NodeType.Shape, true);
-            if (shapes[0] is Shape textBoxShape)
-            {
-                textBoxShape.TextBox.VerticalAnchor = TextBoxAnchor.Bottom;
-            }
+            builder.MoveTo(textBox.FirstParagraph);
+            builder.Write("Textbox contents");
 
             doc.Save(ArtifactsDir + "VerticalAnchor.docx");
             //ExEnd:SpecifyVerticalAnchor
@@ -139,7 +140,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
         public static void DetectSmartArtShape()
         {
             //ExStart:DetectSmartArtShape
-            Document doc = new Document(ShapesDir + "input.docx");
+            Document doc = new Document(QuickStartDir + "input.docx");
 
             int count = doc.GetChildNodes(NodeType.Shape, true).Cast<Shape>().Count(shape => shape.HasSmartArt);
 

@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void SavePictureBullet()
         {
             //ExStart:SavePictureBullet
-            Document doc = new Document(LoadingSavingDir + "in.doc");
+            Document doc = new Document(LoadingSavingDir + "Document.doc");
             
             DocSaveOptions saveOptions = (DocSaveOptions) SaveOptions.CreateSaveOptions(SaveFormat.Doc);
             saveOptions.SavePictureBullet = false;

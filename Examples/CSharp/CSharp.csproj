@@ -33,7 +33,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -179,7 +179,6 @@
     <Compile Include="Loading-and-Saving\SaveDocWithHtmlSaveOptions.cs" />
     <Compile Include="Loading-and-Saving\SaveOptionsHtmlFixed.cs" />
     <Compile Include="Loading-and-Saving\SendToClientBrowser.cs" />
-    <Compile Include="Loading-and-Saving\DigitallySignedPdf.cs" />
     <Compile Include="Loading-and-Saving\ExportFontsAsBase64.cs" />
     <Compile Include="Loading-and-Saving\SpecifySaveOption.cs" />
     <Compile Include="Loading-and-Saving\OpenEncryptedDocument.cs" />

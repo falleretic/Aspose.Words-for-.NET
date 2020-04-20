@@ -63,16 +63,20 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         public static void ConfiguringLinkToContent()
         {
             //ExStart:ConfiguringLinkToContent            
-            Document doc = new Document(DocumentDir + "test.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.StartBookmark("MyBookmark");
+            builder.Writeln("Text inside a bookmark.");
+            builder.EndBookmark("MyBookmark");
 
             // Retrieve a list of all custom document properties from the file
             CustomDocumentProperties customProperties = doc.CustomDocumentProperties;
 
             // Add linked to content property
-            DocumentProperty customProperty = customProperties.AddLinkToContent("PropertyName", "BookmarkName");
+            DocumentProperty customProperty = customProperties.AddLinkToContent("Bookmark", "MyBookmark");
 
             // Also, accessing the custom document property can be performed by using the property name
-            customProperty = customProperties["PropertyName"];
+            customProperty = customProperties["Bookmark"];
 
             // Check whether the property is linked to content
             bool isLinkedToContent = customProperty.IsLinkToContent;

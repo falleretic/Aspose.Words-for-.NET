@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Sections
         public static void Run()
         {
             //ExStart:ModifyPageSetupInAllSectionsOfDocument
-            Document doc = new Document(SectionsDir + "ModifyPageSetupInAllSections.doc");
+            Document doc = new Document(SectionsDir + "Section.AppendContent.doc");
 
             // It is important to understand that a document can contain many sections and each
             // section has its own page setup. In this case we want to modify them all

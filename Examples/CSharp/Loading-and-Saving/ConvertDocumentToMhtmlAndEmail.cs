@@ -7,7 +7,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
     class ConvertDocumentToMhtmlAndEmail : TestDataHelper
     {
-        [Test]
+        [Test, Ignore("Only for example")]
         public static void Run()
         {
             //ExStart:ConvertDocumentToMhtmlAndEmail

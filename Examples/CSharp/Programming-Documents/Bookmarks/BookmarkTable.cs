@@ -6,7 +6,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
 {
     class BookmarkTable : TestDataHelper
     {
-        [Test]
+        [Test, Order(1)]
         public static void InsertBookmarkTable()
         {
             //ExStart:BookmarkTable
@@ -48,7 +48,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Bookmarks
             //ExEnd:BookmarkTable
         }
 
-        [Test]
+        [Test, Order(2)]
         public static void BookmarkTableColumns()
         {
             //ExStart:BookmarkTableColumns

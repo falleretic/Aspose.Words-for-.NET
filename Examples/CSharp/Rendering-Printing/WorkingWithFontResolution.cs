@@ -18,7 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
             
-            Document doc = new Document(ArtifactsDir + "myfile.html", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "Document.docx", loadOptions);
             //ExEnd:FontSettingsWithLoadOptions
         }
 
@@ -32,7 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
             
-            Document doc = new Document(MailMergeDir + "myfile.html", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "Document.docx", loadOptions);
             //ExEnd:SetFontsFolder
         }
     }

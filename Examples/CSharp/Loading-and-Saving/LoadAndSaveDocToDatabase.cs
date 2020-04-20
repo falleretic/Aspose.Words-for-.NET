@@ -11,12 +11,11 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         [Test]
         public static void Run()
         {
-            Document doc = new Document(LoadingSavingDir + "TestFile.doc");
+            Document doc = new Document(LoadingSavingDir + "Test File (doc).doc");
             
             //ExStart:OpenDatabaseConnection 
-            string dbName = "";
             // Open a database connection
-            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + dbName;
+            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
             OleDbConnection connection = new OleDbConnection(connString);
             connection.Open();
             //ExEnd:OpenDatabaseConnection
@@ -26,14 +25,13 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             StoreToDatabase(doc, connection);
             
             // Read the document from the database and store the file to disk
-            Document dbDoc = ReadFromDatabase("TestFile.doc", connection);
+            Document dbDoc = ReadFromDatabase("Test File (doc).doc", connection);
             
             // Save the retrieved document to disk
-            string newFileName = Path.GetFileNameWithoutExtension("TestFile.doc") + " from DB" + Path.GetExtension("TestFile.doc");
-            dbDoc.Save(ArtifactsDir + newFileName);
+            dbDoc.Save(ArtifactsDir + "LoadAndSaveDocToDatabase.docx");
 
             // Delete the document from the database
-            DeleteFromDatabase("TestFile.doc", connection);
+            DeleteFromDatabase("Test File (doc).doc", connection);
 
             // Close the connection to the database
             connection.Close();
@@ -51,7 +49,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             string fileName = Path.GetFileName(doc.OriginalFileName);
 
             // Create the SQL command
-            string commandString = "INSERT INTO Documents (FileName, FileContent) VALUES('" + fileName + "', @Doc)";
+            string commandString = "INSERT INTO Documents (Name, Data) VALUES('" + fileName + "', @Doc)";
             OleDbCommand command = new OleDbCommand(commandString, connection);
 
             // Add the @Doc parameter
@@ -66,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static Document ReadFromDatabase(string fileName, OleDbConnection connection)
         {
             // Create the SQL command
-            string commandString = "SELECT * FROM Documents WHERE FileName='" + fileName + "'";
+            string commandString = "SELECT * FROM Documents WHERE Name='" + fileName + "'";
             OleDbCommand command = new OleDbCommand(commandString, connection);
 
             // Create the data adapter
@@ -83,7 +81,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
             // The document is stored in byte form in the FileContent column
             // Retrieve these bytes of the first matching record to a new buffer
-            byte[] buffer = (byte[]) dataTable.Rows[0]["FileContent"];
+            byte[] buffer = (byte[]) dataTable.Rows[0]["Data"];
 
             // Wrap the bytes from the buffer into a new MemoryStream object
             MemoryStream newStream = new MemoryStream(buffer);
@@ -100,7 +98,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void DeleteFromDatabase(string fileName, OleDbConnection connection)
         {
             // Create the SQL command
-            string commandString = "DELETE * FROM Documents WHERE FileName='" + fileName + "'";
+            string commandString = "DELETE * FROM Documents WHERE Name='" + fileName + "'";
             OleDbCommand command = new OleDbCommand(commandString, connection);
 
             // Delete the record

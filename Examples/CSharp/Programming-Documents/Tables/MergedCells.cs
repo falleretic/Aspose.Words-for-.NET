@@ -163,7 +163,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
         public static void ConvertToHorizontallyMergedCells()
         {
             //ExStart:ConvertToHorizontallyMergedCells         
-            Document doc = new Document();
+            Document doc = new Document(TablesDir + "Table.MergedCells.doc");
 
             Table table = doc.FirstSection.Body.Tables[0];
             table.ConvertToHorizontallyMergedCells(); // Now merged cells have appropriate merge flags

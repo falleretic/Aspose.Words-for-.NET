@@ -158,17 +158,9 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 
                 doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObjectOlePackage.doc");
             }
-
             //ExEnd:InsertOleObjectwithOlePackage
-        }
 
-        [Test]
-        public static void GetAccessToOleObjectRawData()
-        {
             //ExStart:GetAccessToOLEObjectRawData
-            // Load document with OLE object
-            Document doc = new Document(ArtifactsDir + "DocumentBuilderInsertTextInputFormField.doc");
-
             Shape oleShape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             byte[] oleRawData = oleShape.OleFormat.GetRawData();
             //ExEnd:GetAccessToOLEObjectRawData

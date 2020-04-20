@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
         public static void Run()
         {
             //ExStart:FieldDisplayResults
-            Document document = new Document(FieldsDir + "Document.docx");
+            Document document = new Document(LoadingSavingDir + "Document.docx");
             document.UpdateFields();
 
             foreach (Field field in document.Range.Fields)

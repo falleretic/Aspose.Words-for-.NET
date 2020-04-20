@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
         {
             //ExStart:ReplaceTextInFooter
             // Open the template document, containing obsolete copyright information in the footer
-            Document doc = new Document(FindReplaceDir + "HeaderFooter.ReplaceText.doc");
+            Document doc = new Document(DocumentDir + "HeaderFooter.ReplaceText.doc");
 
             HeaderFooterCollection headersFooters = doc.FirstSection.HeadersFooters;
             HeaderFooter footer = headersFooters[HeaderFooterType.FooterPrimary];
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
         //ExStart:ShowChangesForHeaderAndFooterOrders
         public static void ShowChangesForHeaderAndFooterOrders()
         {
-            Document doc = new Document(FindReplaceDir + "HeaderFooter.HeaderFooterOrder.docx");
+            Document doc = new Document(DocumentDir + "HeaderFooter.ReplaceText.doc");
 
             // Assert that we use special header and footer for the first page
             // The order for this: first header\footer, even header\footer, primary header\footer

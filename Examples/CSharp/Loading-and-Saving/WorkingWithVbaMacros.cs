@@ -65,7 +65,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void CloneVbaProject()
         {
             //ExStart:CloneVbaProject
-            Document doc = new Document(LoadingSavingDir + "VbaProject_source.docm");
+            Document doc = new Document(LoadingSavingDir + "VbaProject_out.docm");
             Document destDoc = new Document();
 
             // Clone the whole project
@@ -79,12 +79,12 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void CloneVbaModule()
         {
             //ExStart:CloneVbaModule
-            Document doc = new Document(LoadingSavingDir + "VbaProject_source.docm");
+            Document doc = new Document(LoadingSavingDir + "VbaProject_out.docm");
             Document destDoc = new Document();
 
             destDoc.VbaProject = new VbaProject();
             // Clone a single module
-            VbaModule copyModule = doc.VbaProject.Modules["Module1"].Clone();
+            VbaModule copyModule = doc.VbaProject.Modules["AsposeModule"].Clone();
             destDoc.VbaProject.Modules.Add(copyModule);
 
             destDoc.Save(ArtifactsDir + "output.docm");
