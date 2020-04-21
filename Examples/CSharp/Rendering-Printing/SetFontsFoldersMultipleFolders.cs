@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             //ExStart:SetFontsFoldersMultipleFolders
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
             
             FontSettings fontSettings = new FontSettings();
             // Note that this setting will override any default font sources that are being searched by default. Now only these folders will be searched for

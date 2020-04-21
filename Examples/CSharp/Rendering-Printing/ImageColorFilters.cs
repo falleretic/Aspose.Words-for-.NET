@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         [Test]
         public static void Run()
         {
-            Document doc = new Document($"{MailMergeDir}TestFile.Colors.docx");
+            Document doc = new Document($"{RenderingPrintingDir}TestFile.Colors.docx");
 
             SaveColorTiffWithLzw(doc, 0.8f, 0.8f);
             SaveGrayscaleTiffWithLzw(doc, 0.8f, 0.8f);
@@ -154,7 +154,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         private static void ExposeThresholdControlForTiffBinarization()
         {
             //ExStart:ExposeThresholdControlForTiffBinarization
-            Document doc = new Document(MailMergeDir + "TestFile.Colors.docx");
+            Document doc = new Document(RenderingPrintingDir + "TestFile.Colors.docx");
 
             ImageSaveOptions options = new ImageSaveOptions(Aspose.Words.SaveFormat.Tiff);
             options.TiffCompression = TiffCompression.Ccitt3;

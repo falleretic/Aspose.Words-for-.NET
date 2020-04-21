@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void ReceiveNotificationsOfFonts()
         {
             //ExStart:ReceiveNotificationsOfFonts
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
 
@@ -36,7 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void ReceiveWarningNotification()
         {
             //ExStart:ReceiveWarningNotification
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
             
             // When you call UpdatePageLayout the document is rendered in memory. Any warnings that occured during rendering
             // Are stored until the document save and then sent to the appropriate WarningCallback

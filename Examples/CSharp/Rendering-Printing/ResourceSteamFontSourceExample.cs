@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         [Test]
         public static void Run()
         {
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
             // FontSettings.SetFontSources instead
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
                 { new SystemFontSource(), new ResourceSteamFontSource() });

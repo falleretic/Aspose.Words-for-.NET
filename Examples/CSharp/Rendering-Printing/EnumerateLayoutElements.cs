@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         [Test]
         public static void Run()
         {
-            Document doc = new Document(MailMergeDir + "TestFile.EnumerateLayout.docx");
+            Document doc = new Document(RenderingPrintingDir + "TestFile.EnumerateLayout.docx");
 
             // This creates an enumerator which is used to "walk" the elements of a rendered document
             LayoutEnumerator it = new LayoutEnumerator(doc);

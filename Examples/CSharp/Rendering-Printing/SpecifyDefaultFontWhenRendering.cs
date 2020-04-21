@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             //ExStart:SpecifyDefaultFontWhenRendering
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
             // If the default font defined here cannot be found during rendering then

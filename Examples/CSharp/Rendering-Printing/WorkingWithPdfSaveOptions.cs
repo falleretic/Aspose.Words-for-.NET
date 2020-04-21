@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void EscapeUriInPdf()
         {
             //ExStart:EscapeUriInPdf
-            Document doc = new Document(MailMergeDir + "EscapeUri.docx");
+            Document doc = new Document(RenderingPrintingDir + "EscapeUri.docx");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.EscapeUri = false;
@@ -22,7 +22,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void ExportHeaderFooterBookmarks()
         {
             //ExStart:ExportHeaderFooterBookmarks
-            Document doc = new Document(MailMergeDir + "TestFile.docx");
+            Document doc = new Document(RenderingPrintingDir + "TestFile.docx");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.OutlineOptions.DefaultBookmarksOutlineLevel = 1;
@@ -36,7 +36,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void ScaleWmfFontsToMetafileSize()
         {
             //ExStart:ScaleWmfFontsToMetafileSize
-            Document doc = new Document(MailMergeDir + "MetafileRendering.docx");
+            Document doc = new Document(RenderingPrintingDir + "MetafileRendering.docx");
 
             MetafileRenderingOptions metafileRenderingOptions = new MetafileRenderingOptions
             {
@@ -55,7 +55,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void AdditionalTextPositioning()
         {
             //ExStart:AdditionalTextPositioning
-            Document doc = new Document(MailMergeDir + "TestFile.docx");
+            Document doc = new Document(RenderingPrintingDir + "TestFile.docx");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.AdditionalTextPositioning = true;
@@ -68,7 +68,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void ConversionToPdf17()
         {
             //ExStart:ConversionToPDF17
-            Document originalDoc = new Document(MailMergeDir + "Document.docx");
+            Document originalDoc = new Document(ChartsDir + "Document.docx");
 
             // Provide PDFSaveOption compliance to PDF17
             // or just convert without SaveOptions

@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void Run()
         {
             //ExStart:SaveAsMultipageTiff
-            Document doc = new Document(MailMergeDir + "TestFile Multipage TIFF.doc");
+            Document doc = new Document(RenderingPrintingDir + "TestFile Multipage TIFF.doc");
             //ExStart:SaveAsTIFF
             // Save the document as multipage TIFF
             doc.Save(ArtifactsDir + "TestFile Multipage TIFF_out.tiff");

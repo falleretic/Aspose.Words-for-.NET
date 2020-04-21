@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class PrintDocViaXpsPrint : TestDataHelper
     {
-        [Test]
+        [Test, Ignore("Run only when a printer driver installed")]
         public static void Run()
         {
             //ExStart:PrintDocViaXpsPrint

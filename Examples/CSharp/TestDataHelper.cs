@@ -34,6 +34,7 @@ namespace Aspose.Words.Examples.CSharp
             TablesDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Tables/").LocalPath;
             LinqDir = new Uri(new Uri(MainDataDir), @"Data/LINQ/").LocalPath;
             MailMergeDir = new Uri(new Uri(MainDataDir), @"Data/Mail-Merge/").LocalPath;
+            RenderingPrintingDir = new Uri(new Uri(MainDataDir), @"Data/Rendering-Printing/").LocalPath;
             ViewersVisualizersDir = new Uri(new Uri(MainDataDir), @"Data/Viewers-Visualizers/").LocalPath;
         }
 
@@ -173,6 +174,11 @@ namespace Aspose.Words.Examples.CSharp
         /// Gets the path to the license used by the code examples.
         /// </summary>
         internal static string MailMergeDir { get; }
+
+        /// <summary>
+        /// Gets the path to the license used by the code examples.
+        /// </summary>
+        internal static string RenderingPrintingDir { get; }
 
         /// <summary>
         /// Gets the path to the license used by the code examples.

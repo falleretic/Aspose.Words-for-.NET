@@ -10,12 +10,14 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         [Test]
         public static void Run()
         {
-            Document doc = new Document(MailMergeDir + "ActiveXControl.docx");
+            Document doc = new Document(RenderingPrintingDir + "ActiveXControl.docx");
 
             string properties = "";
             // Retrieve shapes from the document
             foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
             {
+                if (shape.OleFormat is null) break;
+
                 OleControl oleControl = shape.OleFormat.OleControl;
                 if (oleControl.IsForms2OleControl)
                 {

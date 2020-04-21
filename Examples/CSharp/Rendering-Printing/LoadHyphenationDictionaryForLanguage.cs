@@ -10,9 +10,9 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         {
             //ExStart:LoadHyphenationDictionaryForLanguage
             // Load the documents which store the shapes we want to render
-            Document doc = new Document(MailMergeDir + "TestFile RenderShape.doc");
+            Document doc = new Document(RenderingPrintingDir + "TestFile RenderShape.doc");
             
-            Stream stream = File.OpenRead(MailMergeDir + "hyph_de_CH.dic");
+            Stream stream = File.OpenRead(RenderingPrintingDir + "hyph_de_CH.dic");
             Hyphenation.RegisterDictionary("de-CH", stream);
 
             doc.Save(ArtifactsDir + "LoadHyphenationDictionaryForLanguage.pdf");

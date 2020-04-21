@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         [Test]
         public static void Run()
         {
-            Document doc = new Document(MailMergeDir + "TestFile RenderShape.doc");
+            Document doc = new Document(RenderingPrintingDir + "TestFile RenderShape.doc");
             
             // Retrieve the target shape from the document. In our sample document this is the first shape.
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);

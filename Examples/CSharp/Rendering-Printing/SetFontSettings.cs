@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void EnableDisableFontSubstitution()
         {
             //ExStart:EnableDisableFontSubstitution
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial";
@@ -25,10 +25,10 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void SetFontFallbackSettings()
         {
             //ExStart:SetFontFallbackSettings
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
-            fontSettings.FallbackSettings.Load(MailMergeDir + "Fallback.xml");
+            fontSettings.FallbackSettings.Load(RenderingPrintingDir + "Fallback.xml");
             // Set font settings
             doc.FontSettings = fontSettings;
             
@@ -40,7 +40,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         public static void SetPredefinedFontFallbackSettings()
         {
             //ExStart:SetPredefinedFontFallbackSettings
-            Document doc = new Document(MailMergeDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.FallbackSettings.LoadNotoFallbackSettings();
