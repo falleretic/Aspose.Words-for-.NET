@@ -5,7 +5,9 @@
 // "as is", without warranty of any kind, either expressed or implied.
 //////////////////////////////////////////////////////////////////////////
 
+using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using Aspose.Words;
@@ -13,9 +15,6 @@ using Aspose.Words.Drawing;
 using Aspose.Words.Fields;
 using Aspose.Words.MailMerging;
 using NUnit.Framework;
-#if NETFRAMEWORK
-using System.Data.OleDb;
-#endif
 
 namespace ApiExamples
 {
@@ -31,7 +30,6 @@ namespace ApiExamples
         //ExFor:FieldMergingArgsBase.Field
         //ExFor:FieldMergingArgsBase.DocumentFieldName
         //ExFor:FieldMergingArgsBase.Document
-        //ExFor:FieldMergingArgsBase.FieldValue
         //ExFor:IFieldMergingCallback.FieldMerging
         //ExFor:FieldMergingArgs.Text
         //ExFor:FieldMergeField.TextBefore
@@ -39,7 +37,7 @@ namespace ApiExamples
         [Test] //ExSkip
         public void InsertHtml()
         {
-            Document doc = new Document(MyDir + "Field MERGEFIELD.docx");
+            Document doc = new Document(MyDir + "Field sample - MERGEFIELD.docx");
 
             // Add a handler for the MergeField event
             doc.MailMerge.FieldMergingCallback = new HandleMergeFieldInsertHtml();
@@ -86,6 +84,60 @@ namespace ApiExamples
         }
         //ExEnd
 
+        //ExStart
+        //ExFor:FieldMergingArgsBase.FieldValue
+        //ExSummary:Shows how to use data source value of the field.
+        [Test] //ExSkip
+        public void FieldFormats()
+        {
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.InsertField("MERGEFIELD TextField \\* Caps", null);
+            builder.Write(", ");
+            builder.InsertField("MERGEFIELD TextField2 \\* Upper", null);
+            builder.Write(", ");
+            builder.InsertField("MERGEFIELD NumericField \\# 0.0", null);
+
+            builder.Document.MailMerge.FieldMergingCallback = new FieldValueMergingCallback();
+
+            builder.Document.MailMerge.Execute(
+                new string[] { "TextField", "TextField2", "NumericField" },
+                new object[] { "Original value", "Original value", 10 });
+
+            Assert.AreEqual("New Value, New value from FieldMergingArgs, 20.0", doc.GetText().Trim());
+        }
+
+        private class FieldValueMergingCallback : IFieldMergingCallback
+        {
+            /// <summary>
+            /// This is called when merge field is actually merged with data in the document.
+            /// </summary>
+            void IFieldMergingCallback.FieldMerging(FieldMergingArgs e)
+            {
+                switch (e.FieldName)
+                {
+                    case "TextField":
+                        Assert.AreEqual("Original value", e.FieldValue);
+                        e.FieldValue = "New value";
+                        break;
+                    case "TextField2":
+                        Assert.AreEqual("Original value", e.FieldValue);
+                        e.Text = "New value from FieldMergingArgs";   // Should suppress e.FieldValue and ignore format
+                        e.FieldValue = "new value";
+                        break;
+                    case "NumericField":
+                        Assert.AreEqual(10.0d, e.FieldValue);
+                        e.FieldValue = 20;
+                        break;
+                }
+            }
+
+            void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs e)
+            {
+                // Do nothing
+            }
+        }
+        //ExEnd
 
         //ExStart
         //ExFor:DocumentBuilder.MoveToMergeField(String)
@@ -98,6 +150,7 @@ namespace ApiExamples
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.StartTable();
             builder.InsertCell();
             builder.InsertField(" MERGEFIELD  TableStart:StudentCourse ");
@@ -115,7 +168,8 @@ namespace ApiExamples
             doc.MailMerge.ExecuteWithRegions(dataTable);
 
             // Save resulting document with a new name
-            doc.Save(ArtifactsDir + "MailMergeEvent.InsertCheckBox.doc");
+            doc.Save(ArtifactsDir + "MailMergeEvent.InsertCheckBox.docx");
+            TestUtil.MailMergeMatchesDataTable(dataTable, new Document(ArtifactsDir + "MailMergeEvent.InsertCheckBox.docx"), false); //ExSkip
         }
 
         private class HandleMergeFieldInsertCheckBox : IFieldMergingCallback
@@ -193,6 +247,7 @@ namespace ApiExamples
             doc.MailMerge.ExecuteWithRegions(dataTable);
 
             doc.Save(ArtifactsDir + "MailMergeEvent.AlternatingRows.docx");
+            TestUtil.MailMergeMatchesDataTable(dataTable, new Document(ArtifactsDir + "MailMergeEvent.AlternatingRows.docx"), false); //ExSkip
         }
 
         private class HandleMergeFieldAlternatingRows : IFieldMergingCallback
@@ -287,7 +342,7 @@ namespace ApiExamples
             Assert.IsTrue(logoImage.HasImage);
         }
 
-        #if NETFRAMEWORK
+#if  NET462 || JAVA
         //ExStart
         //ExFor:MailMerge.FieldMergingCallback
         //ExFor:MailMerge.ExecuteWithRegions(IDataReader,String)
@@ -307,21 +362,23 @@ namespace ApiExamples
             doc.MailMerge.FieldMergingCallback = new HandleMergeImageFieldFromBlob();
 
             // Open a database connection
-            string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + DatabaseDir + "Northwind.mdb";
-            OleDbConnection conn = new OleDbConnection(connString);
-            conn.Open();
+            string connString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={DatabaseDir + "Northwind.mdb"};";
+            string query = "SELECT FirstName, LastName, Title, Address, City, Region, Country, PhotoBLOB FROM Employees";
 
-            // Open the data reader. It needs to be in the normal mode that reads all record at once
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM Employees", conn);
-            IDataReader dataReader = cmd.ExecuteReader();
+            using (OleDbConnection conn = new OleDbConnection(connString))
+            {
+                conn.Open();
 
-            // Perform mail merge
-            doc.MailMerge.ExecuteWithRegions(dataReader, "Employees");
+                // Open the data reader. It needs to be in the normal mode that reads all record at once
+                OleDbCommand cmd = new OleDbCommand(query, conn);
+                IDataReader dataReader = cmd.ExecuteReader();
 
-            // Close the database
-            conn.Close();
+                // Perform mail merge
+                doc.MailMerge.ExecuteWithRegions(dataReader, "Employees");
+            }
 
             doc.Save(ArtifactsDir + "MailMergeEvent.ImageFromBlob.docx");
+            TestUtil.MailMergeMatchesQueryResult(DatabaseDir + "Northwind.mdb", query, new Document(ArtifactsDir + "MailMergeEvent.ImageFromBlob.docx"), false); //ExSkip
         }
 
         private class HandleMergeImageFieldFromBlob : IFieldMergingCallback

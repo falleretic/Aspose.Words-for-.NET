@@ -43,7 +43,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         {
             // Save the document to a MemoryStream object
             MemoryStream stream = new MemoryStream();
-            doc.Save(stream, SaveFormat.Doc);
+            doc.Save(stream, SaveFormat.Docx);
 
             // Get the filename from the document
             string fileName = Path.GetFileName(doc.OriginalFileName);

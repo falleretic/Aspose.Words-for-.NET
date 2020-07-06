@@ -56,7 +56,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
                 Console.WriteLine(warningInfo.Description);
             }
         }
-
+        // ExStart:RenderMetafileToBitmap
         public class HandleDocumentWarnings : IWarningCallback
         {
             /// <summary>

@@ -9,6 +9,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Aspose.Words;
 using Aspose.Words.Drawing;
 using Aspose.Words.Fields;
@@ -25,7 +26,6 @@ namespace ApiExamples
     [TestFixture]
     internal class ExHtmlSaveOptions : ApiExampleBase
     {
-        [Test]
         [TestCase(SaveFormat.Html)]
         [TestCase(SaveFormat.Mhtml)]
         [TestCase(SaveFormat.Epub)]
@@ -42,7 +42,6 @@ namespace ApiExamples
             doc.Save(ArtifactsDir +"HtmlSaveOptions.ExportPageMargins" + FileFormatUtil.SaveFormatToExtension(saveFormat), saveOptions);
         }
 
-        [Test]
         [TestCase(SaveFormat.Html, HtmlOfficeMathOutputMode.Image, Category = "SkipMono")]
         [TestCase(SaveFormat.Mhtml, HtmlOfficeMathOutputMode.MathML, Category = "SkipMono")]
         [TestCase(SaveFormat.Epub, HtmlOfficeMathOutputMode.Text, Category = "SkipMono")]
@@ -56,7 +55,6 @@ namespace ApiExamples
             doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportOfficeMath" + FileFormatUtil.SaveFormatToExtension(saveFormat), saveOptions);
         }
 
-        [Test]
         [TestCase(SaveFormat.Html, true, Description = "TextBox as svg (html)")]
         [TestCase(SaveFormat.Epub, true, Description = "TextBox as svg (epub)")]
         [TestCase(SaveFormat.Mhtml, false, Description = "TextBox as img (mhtml)")]
@@ -98,7 +96,6 @@ namespace ApiExamples
             }
         }
 
-        [Test]
         [TestCase(ExportListLabels.Auto)]
         [TestCase(ExportListLabels.AsInlineText)]
         [TestCase(ExportListLabels.ByHtmlTags)]
@@ -126,7 +123,6 @@ namespace ApiExamples
             doc.Save(ArtifactsDir + $"HtmlSaveOptions.ControlListLabelsExport.html", saveOptions);
         }
 
-        [Test]
         [TestCase(true)]
         [TestCase(false)]
         public void ExportUrlForLinkedImage(bool export)
@@ -139,10 +135,10 @@ namespace ApiExamples
 
             string[] dirFiles = Directory.GetFiles(ArtifactsDir, "HtmlSaveOptions.ExportUrlForLinkedImage.001.png", SearchOption.AllDirectories);
 
-            if (dirFiles.Length == 0)
-                DocumentHelper.FindTextInFile(ArtifactsDir + "HtmlSaveOptions.ExportUrlForLinkedImage.html", "<img src=\"http://www.aspose.com/images/aspose-logo.gif\"");
-            else
-                DocumentHelper.FindTextInFile(ArtifactsDir + "HtmlSaveOptions.ExportUrlForLinkedImage.html", "<img src=\"HtmlSaveOptions.ExportUrlForLinkedImage.001.png\"");
+            DocumentHelper.FindTextInFile(ArtifactsDir + "HtmlSaveOptions.ExportUrlForLinkedImage.html",
+                dirFiles.Length == 0
+                    ? "<img src=\"http://www.aspose.com/images/aspose-logo.gif\""
+                    : "<img src=\"HtmlSaveOptions.ExportUrlForLinkedImage.001.png\"");
         }
 
         [Test]
@@ -223,8 +219,7 @@ namespace ApiExamples
             doc.Save(ArtifactsDir + "HtmlSaveOptions.Html5Support.html", saveOptions);
         }
 
-#if NETFRAMEWORK || NETSTANDARD2_0
-        [Test]
+#if NET462 || NETCOREAPP2_1 || JAVA
         [TestCase(false)]
         [TestCase(true)]
         public void ExportFonts(bool exportAsBase64)
@@ -365,7 +360,7 @@ namespace ApiExamples
             HtmlSaveOptions saveOptions = new HtmlSaveOptions
             {
                 CssStyleSheetType = CssStyleSheetType.Embedded,
-                CssClassNamePrefix = "aspose-"
+                CssClassNamePrefix = "myprefix-"
             };
 
             // The prefix will be found before CSS element names in the embedded stylesheet
@@ -439,9 +434,11 @@ namespace ApiExamples
             };
 
             document.Save(ArtifactsDir + "HtmlSaveOptions.ResolveFontNames.html", saveOptions);
-            //ExEnd
 
-            DocumentHelper.FindTextInFile(ArtifactsDir + "HtmlSaveOptions.ResolveFontNames.html", "<span style=\"font-family:Arial\">");
+            string outDocContents = File.ReadAllText(ArtifactsDir + "HtmlSaveOptions.ResolveFontNames.html");
+
+            Assert.True(Regex.Match(outDocContents, "<span style=\"font-family:Arial\">").Success);
+            //ExEnd
         }
 
         [Test]

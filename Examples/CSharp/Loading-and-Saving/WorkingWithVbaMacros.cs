@@ -56,6 +56,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 
             // Choose a module, and set a new source code
             project.Modules[0].SourceCode = newSourceCode;
+            //ExEnd:ModifyVbaMacros
+
 
             doc.Save(ArtifactsDir + "VbaProject_out.docm");
             //ExEnd:ModifyVbaMacros

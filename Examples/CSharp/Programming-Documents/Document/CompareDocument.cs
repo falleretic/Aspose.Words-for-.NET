@@ -68,5 +68,21 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             docA.Compare(docB, "user", DateTime.Now, options);
             //ExEnd:CompareDocumentWithComparisonTarget
         }
+
+        public static void SpecifyComparisonGranularity(string dataDir)
+        {
+            // ExStart:SpecifyComparisonGranularity
+            DocumentBuilder builderA = new DocumentBuilder(new Document());
+            DocumentBuilder builderB = new DocumentBuilder(new Document());
+
+            builderA.Writeln("This is A simple word");
+            builderB.Writeln("This is B simple words");
+
+            CompareOptions co = new CompareOptions();
+            co.Granularity = Granularity.CharLevel;
+
+            builderA.Document.Compare(builderB.Document, "author", DateTime.Now, co);
+            // ExEnd:SpecifyComparisonGranularity      
+        }
     }
 }

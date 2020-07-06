@@ -16,11 +16,11 @@ using Aspose.Words.Rendering;
 using Aspose.Words.Saving;
 using Aspose.Words.Settings;
 using NUnit.Framework;
-#if NETFRAMEWORK
+#if NET462 || JAVA
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Drawing.Text;
-#else
+#elif NETCOREAPP2_1 || __MOBILE__
 using SkiaSharp;
 #endif
 
@@ -65,7 +65,6 @@ namespace ApiExamples
                 options.PageCount = 1;
                 doc.Save(stream, options);
             }
-
             //ExEnd
         }
 
@@ -210,7 +209,6 @@ namespace ApiExamples
         public void SaveToTiffDefault()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
-
             doc.Save(ArtifactsDir + "Rendering.SaveToTiffDefault.tiff");
         }
 
@@ -317,7 +315,7 @@ namespace ApiExamples
             //ExEnd
         }
 
-        #if NETFRAMEWORK
+        #if NET462 || JAVA
         [Test]
         public void SaveToImageStream()
         {
@@ -660,7 +658,6 @@ namespace ApiExamples
             //ExFor:Document.Print
             //ExSummary:Prints the whole document to the default printer.
             Document doc = new Document(MyDir + "Document.docx");
-
             doc.Print();
             //ExEnd
         }
@@ -673,7 +670,6 @@ namespace ApiExamples
             //ExFor:Document.Print(String)
             //ExSummary:Prints the whole document to a specified printer.
             Document doc = new Document(MyDir + "Document.docx");
-
             doc.Print("KONICA MINOLTA magicolor 2400W");
             //ExEnd
         }
@@ -689,6 +685,7 @@ namespace ApiExamples
 
             PrinterSettings printerSettings = new PrinterSettings();
             // Page numbers in the .NET printing framework are 1-based
+            printerSettings.PrintRange = System.Drawing.Printing.PrintRange.SomePages;
             printerSettings.FromPage = 1;
             printerSettings.ToPage = 3;
 
@@ -707,10 +704,11 @@ namespace ApiExamples
 
             PrinterSettings printerSettings = new PrinterSettings();
             // Page numbers in the .NET printing framework are 1-based
+            printerSettings.PrintRange = System.Drawing.Printing.PrintRange.SomePages;
             printerSettings.FromPage = 1;
             printerSettings.ToPage = 3;
 
-            doc.Print(printerSettings, "Rendering.PrintRangeWithDocumentName.doc");
+            doc.Print(printerSettings, "Rendering.PrintRangeWithDocumentName.docx");
             //ExEnd
         }
 
@@ -756,7 +754,7 @@ namespace ApiExamples
             previewDlg.ShowDialog();
             //ExEnd
         }
-#else
+#elif NETCOREAPP2_1 || __MOBILE__
         [Test]
         public void RenderToSizeNetStandard2()
         {
@@ -918,21 +916,6 @@ namespace ApiExamples
         }
 
         [Test]
-        public void UpdateFields()
-        {
-            //ExStart
-            //ExFor:Document.UpdateFields
-            //ExSummary:Shows how to update all fields before rendering a document.
-            Document doc = new Document(MyDir + "Rendering.docx");
-
-            // This updates all fields in the document
-            doc.UpdateFields();
-
-            doc.Save(ArtifactsDir + "Rendering.UpdateFields.pdf");
-            //ExEnd
-        }
-
-        [Test]
         public void SetTrueTypeFontsFolder()
         {
             // Store the font sources currently used so we can restore them later
@@ -1059,9 +1042,6 @@ namespace ApiExamples
             Document doc = new Document(MyDir + "Rendering.docx");
             doc.FontSettings = fontSettings;
 
-            MemoryStream dstStream = new MemoryStream();
-            doc.Save(dstStream, SaveFormat.Docx);
-
             // Check that font source are default
             FontSourceBase[] fontSource = doc.FontSettings.GetFontsSources();
             Assert.AreEqual("SystemFonts", fontSource[0].Type.ToString());
@@ -1101,9 +1081,6 @@ namespace ApiExamples
 
             Document doc = new Document(MyDir + "Rendering.docx");
             doc.FontSettings = fontSettings;
-
-            MemoryStream dstStream = new MemoryStream();
-            doc.Save(dstStream, SaveFormat.Docx);
 
             string[] alternativeFonts = doc.FontSettings.SubstitutionSettings.TableSubstitution.GetSubstitutes("Slab").ToArray();
             Assert.AreEqual(new string[] { "Times New Roman", "Arial" }, alternativeFonts);
@@ -1201,7 +1178,7 @@ namespace ApiExamples
             options.EmbedFullFonts = true;
 
             // The output PDF will be embedded with all fonts found in the document
-            doc.Save(ArtifactsDir + "Rendering.EmbedFullFonts.pdf");
+            doc.Save(ArtifactsDir + "Rendering.EmbedFullFonts.pdf", options);
             //ExEnd
         }
 
@@ -1220,7 +1197,7 @@ namespace ApiExamples
 
             // The output PDF will contain subsets of the fonts in the document
             // Only the glyphs used in the document are included in the PDF fonts
-            doc.Save(ArtifactsDir + "Rendering.SubsetFonts.pdf");
+            doc.Save(ArtifactsDir + "Rendering.SubsetFonts.pdf", options);
             //ExEnd
         }
 
@@ -1239,7 +1216,7 @@ namespace ApiExamples
             options.FontEmbeddingMode = PdfFontEmbeddingMode.EmbedNone;
 
             // The output PDF will be saved without embedding standard windows fonts
-            doc.Save(ArtifactsDir + "Rendering.DisableEmbedWindowsFonts.pdf");
+            doc.Save(ArtifactsDir + "Rendering.DisableEmbedWindowsFonts.pdf", options);
             //ExEnd
         }
 
@@ -1257,7 +1234,7 @@ namespace ApiExamples
             options.UseCoreFonts = true;
 
             // The output PDF will not be embedded with core fonts such as Arial, Times New Roman etc.
-            doc.Save(ArtifactsDir + "Rendering.DisableEmbedCoreFonts.pdf");
+            doc.Save(ArtifactsDir + "Rendering.DisableEmbedCoreFonts.pdf", options);
             //ExEnd
         }
 

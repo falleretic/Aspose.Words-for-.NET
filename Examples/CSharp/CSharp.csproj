@@ -41,7 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -135,6 +135,7 @@
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="LINQ\BuildOptions.cs" />
+    <Compile Include="LINQ\ChartSeries.cs" />
     <Compile Include="LINQ\Common.cs" />
     <Compile Include="LINQ\Contract.cs" />
     <Compile Include="LINQ\Client.cs" />
@@ -162,13 +163,14 @@
     <Compile Include="Loading-and-Saving\AccessAndVerifySignature.cs" />
     <Compile Include="Loading-and-Saving\ConvertDocumentToByte.cs" />
     <Compile Include="Loading-and-Saving\ConvertDocumentToEPUB.cs" />
-    <Compile Include="Loading-and-Saving\ConvertDocumentToHtmlWithRoundtrip.cs" />
+    <Compile Include="Loading-and-Saving\ConvertDocumentToHtml.cs" />
     <Compile Include="Loading-and-Saving\ConvertDocumentToMhtmlAndEmail.cs" />
     <Compile Include="Loading-and-Saving\ConvertDocumentToPCL.cs" />
     <Compile Include="Loading-and-Saving\DigitallySignedPdfUsingCertificateHolder.cs" />
     <Compile Include="Loading-and-Saving\ExportResourcesUsingHtmlSaveOptions.cs" />
     <Compile Include="Loading-and-Saving\LoadAndSaveHtmlFormFieldAsContentControlInDocx.cs" />
     <Compile Include="Loading-and-Saving\Load_Options.cs" />
+    <Compile Include="Loading-and-Saving\SpecifyMarkdownSaveOptions.cs" />
     <Compile Include="Loading-and-Saving\WorkingWithDoc.cs" />
     <Compile Include="Loading-and-Saving\WorkingWithOoxml.cs" />
     <Compile Include="Loading-and-Saving\WorkingWithRTF.cs" />
@@ -193,6 +195,7 @@
     <Compile Include="Mail-Merge\HandleMailMergeSwitches.cs" />
     <Compile Include="Mail-Merge\MailMergeAndConditionalField.cs" />
     <Compile Include="Mail-Merge\MailMergeCleanUp.cs" />
+    <Compile Include="Mail-Merge\MailMergeImageField.cs" />
     <Compile Include="Mail-Merge\SimpleMailMerge.cs" />
     <Compile Include="Mail-Merge\NestedMailMergeCustom.cs" />
     <Compile Include="Mail-Merge\ExecuteWithRegionsDataTable.cs" />
@@ -238,6 +241,9 @@
     <Compile Include="Programming-Documents\Document\CompareDocument.cs" />
     <Compile Include="Programming-Documents\Document\GetFontLineSpacing.cs" />
     <Compile Include="Programming-Documents\Document\ParagraphStyleSeparator.cs" />
+    <Compile Include="Programming-Documents\Document\ShowGrammaticalAndSpellingErrors.cs" />
+    <Compile Include="Programming-Documents\Document\SplitDocument.cs" />
+    <Compile Include="Programming-Documents\Document\WorkWithCleanupOptions.cs" />
     <Compile Include="Programming-Documents\Document\WorkingWithImportFormatOptions.cs" />
     <Compile Include="Programming-Documents\Document\WorkingWithMarkdownFeatures.cs" />
     <Compile Include="Programming-Documents\Document\WorkingWithRevisions.cs" />
@@ -264,6 +270,7 @@
     <Compile Include="Programming-Documents\Document\WorkingWithFootnote.cs" />
     <Compile Include="Programming-Documents\Document\WorkingWithRtfSaveOptions.cs" />
     <Compile Include="Programming-Documents\Document\WorkingWithSaveOptions.cs" />
+    <Compile Include="Programming-Documents\Document\WorkWithWatermark.cs" />
     <Compile Include="Programming-Documents\Document\WriteAndFont.cs" />
     <Compile Include="Programming-Documents\Document\DocProperties.cs" />
     <Compile Include="Programming-Documents\Document\RemoveFooters.cs" />
@@ -294,6 +301,7 @@
     <Compile Include="Programming-Documents\Fields\UpdateDocFields.cs" />
     <Compile Include="Programming-Documents\Fields\SpecifylocaleAtFieldlevel.cs" />
     <Compile Include="Programming-Documents\Find-Replace\FindReplaceUsingMetaCharacters.cs" />
+    <Compile Include="Programming-Documents\Find-Replace\IgnoreText.cs" />
     <Compile Include="Programming-Documents\Find-Replace\UsingLegacyOrder.cs" />
     <Compile Include="Programming-Documents\Find-Replace\ReplaceHtmlTextWithMeta-Characters.cs" />
     <Compile Include="Programming-Documents\Find-Replace\ReplaceInHeaderAndFooter.cs" />
@@ -414,6 +422,7 @@
     <Compile Include="Quick-Start\WorkingWithNodes.cs" />
     <Compile Include="Rendering-Printing\PrintMultiplePagesOnOneSheet.cs" />
     <Compile Include="Rendering-Printing\PrintDocViaXpsPrint.cs" />
+    <Compile Include="Rendering-Printing\PrintPreviewSettingsDialog.cs" />
     <Compile Include="Rendering-Printing\PrintProgressDialog.cs" />
     <Compile Include="Rendering-Printing\LoadHyphenationDictionaryForLanguage.cs" />
     <Compile Include="Rendering-Printing\HyphenateWordsOfLanguages.cs" />
@@ -421,8 +430,13 @@
     <Compile Include="Rendering-Printing\EmbeddedFontsInPDF.cs" />
     <Compile Include="Rendering-Printing\Print_CachePrinterSettings.cs" />
     <Compile Include="Rendering-Printing\ReceiveNotificationsOfFont .cs" />
+    <Compile Include="Rendering-Printing\SaveDocumentToJPEG.cs" />
     <Compile Include="Rendering-Printing\SetFontSettings.cs" />
+    <Compile Include="Rendering-Printing\SetFontsFoldersDefaultInstance.cs" />
+    <Compile Include="Rendering-Printing\SetFontsFoldersWithPriority.cs" />
+    <Compile Include="Rendering-Printing\SetFontsFolders.cs" />
     <Compile Include="Rendering-Printing\WorkingWithFontResolution.cs" />
+    <Compile Include="Rendering-Printing\WorkingWithFontSettings.cs" />
     <Compile Include="Rendering-Printing\WorkingWithFontSources.cs" />
     <Compile Include="Rendering-Printing\WorkingWithPdfSaveOptions.cs" />
     <Compile Include="Rendering-Printing\SpecifyDefaultFontWhenRendering.cs" />
@@ -541,6 +555,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Aspose.Words.Shaping.HarfBuzz.20.6.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets" Condition="Exists('..\packages\Aspose.Words.Shaping.HarfBuzz.20.6.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>

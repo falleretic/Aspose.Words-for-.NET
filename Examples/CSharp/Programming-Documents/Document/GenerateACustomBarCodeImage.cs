@@ -136,15 +136,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 generator.Parameters.Barcode.CodeTextParameters.TwoDDisplayText = parameters.BarcodeValue;
 
             if (parameters.ForegroundColor != null)
-                generator.Parameters.Barcode.ForeColor = ConvertColor(parameters.ForegroundColor);
+                generator.Parameters.Barcode.BarColor = ConvertColor(parameters.ForegroundColor);
 
             if (parameters.BackgroundColor != null)
                 generator.Parameters.BackColor = ConvertColor(parameters.BackgroundColor);
 
             if (parameters.SymbolHeight != null)
             {
-                generator.Parameters.Barcode.BarCodeHeight.Millimeters = ConvertSymbolHeight(parameters.SymbolHeight);
-                generator.Parameters.Barcode.AutoSizeMode = AutoSizeMode.Nearest;
+                generator.Parameters.ImageHeight.Millimeters = ConvertSymbolHeight(parameters.SymbolHeight);
+                generator.Parameters.AutoSizeMode = AutoSizeMode.Nearest;
             }
 
             generator.Parameters.Barcode.CodeTextParameters.Location = CodeLocation.None;
@@ -180,7 +180,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                         generator.Parameters.Barcode.BarHeight.Millimeters = xdim * scalingFactor;
                 }
 
-                generator.Parameters.Barcode.AutoSizeMode = AutoSizeMode.Nearest;
+                generator.Parameters.AutoSizeMode = AutoSizeMode.Nearest;
             }
 
             return generator.GenerateBarCodeImage();

@@ -1,4 +1,4 @@
-﻿using Aspose.Words.Tables;
+using Aspose.Words.Tables;
 using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
@@ -230,6 +230,54 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             
             doc.Save(ArtifactsDir + "DocumentBuilderApplyBordersAndShadingToParagraph.doc");
             //ExEnd:DocumentBuilderApplyBordersAndShadingToParagraph
+        }
+        
+        public static void ChangeAsianParagraphSpacingandIndents(string dataDir)
+        {
+            // ExStart:ChangeAsianParagraphSpacingandIndents
+            Document doc = new Document(dataDir + "Input.docx");
+
+            ParagraphFormat format = doc.FirstSection.Body.FirstParagraph.ParagraphFormat;
+            format.CharacterUnitLeftIndent = 10;       // ParagraphFormat.LeftIndent will be updated
+            format.CharacterUnitRightIndent = 10;      // ParagraphFormat.RightIndent will be updated
+            format.CharacterUnitFirstLineIndent = 20;  // ParagraphFormat.FirstLineIndent will be updated
+            format.LineUnitBefore = 5;                 // ParagraphFormat.SpaceBefore will be updated
+            format.LineUnitAfter = 10;                 // ParagraphFormat.SpaceAfter will be updated
+
+            dataDir = dataDir + "ChangeAsianParagraphSpacingandIndents_out.doc";
+            doc.Save(dataDir);
+            // ExEnd:ChangeAsianParagraphSpacingandIndents
+            Console.WriteLine("\nSpacing and Indents applied successfully to paragraph.\nFile saved at " + dataDir);
+        }
+        public static void SetSnapToGrid(string dataDir)
+        {
+            // ExStart:SetSnapToGrid
+            Document doc = new Document(dataDir);
+
+            Paragraph par = doc.FirstSection.Body.FirstParagraph;
+            par.ParagraphFormat.SnapToGrid = true;
+            par.Runs[0].Font.SnapToGrid = true;
+
+            dataDir = dataDir + "SetSnapToGrid_out.doc";
+            doc.Save(dataDir);
+            // ExEnd:SetSnapToGrid
+            Console.WriteLine("\nSetSnapToGrid successfully to paragraph.\nFile saved at " + dataDir);
+        }
+        private static void SetFontEmphasisMark(string dataDir)
+        {
+            // ExStart:SetFontEmphasisMark
+            Document document = new Document();
+            DocumentBuilder builder = new DocumentBuilder(document);
+
+            builder.Font.EmphasisMark = EmphasisMark.UnderSolidCircle;
+
+            builder.Write("Emphasis text");
+            builder.Writeln();
+            builder.Font.ClearFormatting();
+            builder.Write("Simple text");
+
+            document.Save(dataDir + "FontEmphasisMark_out.doc");
+            // ExEnd:SetFontEmphasisMark
         }
     }
 }

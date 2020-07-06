@@ -23,6 +23,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             // Instead of using DataTable you can create a DataView for custom sort or filter and then mail merge
             DataView orderDetailsView = new DataView(GetTestOrderDetails(orderId));
             orderDetailsView.Sort = "ExtendedPrice DESC";
+ 
+            // Execute the mail merge operation.
             doc.MailMerge.ExecuteWithRegions(orderDetailsView);
 
             doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegions.doc");

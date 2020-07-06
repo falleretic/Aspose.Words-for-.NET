@@ -16,28 +16,25 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Charts
             Shape shape = builder.InsertChart(ChartType.Bar, 432, 252);
             Chart chart = shape.Chart;
 
-            // Get first series
-            ChartSeries series0 = chart.Series[0];
-            ChartDataLabelCollection dataLabelCollection = series0.DataLabels;
+            // Get first series.
+            ChartSeries series0 = shape.Chart.Series[0];
 
-            // Add data label to the first and second point of the first series
-            ChartDataLabel chartDataLabel00 = dataLabelCollection.Add(0);
-            ChartDataLabel chartDataLabel01 = dataLabelCollection.Add(1);
+            ChartDataLabelCollection labels = series0.DataLabels;
 
-            // Set properties
-            chartDataLabel00.ShowLegendKey = true;
+            // Set properties.
+            labels.ShowLegendKey = true;
 
             // By default, when you add data labels to the data points in a pie chart, leader lines are displayed for data labels that are
-            // positioned far outside the end of data points. Leader lines create a visual connection between a data label and its 
-            // corresponding data point
-            chartDataLabel00.ShowLeaderLines = true;
+            // Positioned far outside the end of data points. Leader lines create a visual connection between a data label and its 
+            // Corresponding data point.
+            labels.ShowLeaderLines = true;
 
-            chartDataLabel00.ShowCategoryName = false;
-            chartDataLabel00.ShowPercentage = false;
-            chartDataLabel00.ShowSeriesName = true;
-            chartDataLabel00.ShowValue = true;
-            chartDataLabel00.Separator = "/";
-            chartDataLabel01.ShowValue = true;
+            labels.ShowCategoryName = false;
+            labels.ShowPercentage = false;
+            labels.ShowSeriesName = true;
+            labels.ShowValue = true;
+            labels.Separator = "/";
+            labels.ShowValue = true;
             
             doc.Save(ArtifactsDir + "SimpleBarChart.docx");
             //ExEnd:WorkWithChartDataLabel

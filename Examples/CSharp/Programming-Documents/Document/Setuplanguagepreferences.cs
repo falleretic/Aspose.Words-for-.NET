@@ -10,6 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
         {
             //ExStart:AddJapaneseAsEditinglanguages
             LoadOptions loadOptions = new LoadOptions();
+            // Set language preferences that will be used when document is loading.
             loadOptions.LanguagePreferences.AddEditingLanguage(EditingLanguage.Japanese);
 
             Document doc = new Document(DocumentDir + "languagepreferences.docx", loadOptions);

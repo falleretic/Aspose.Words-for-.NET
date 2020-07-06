@@ -6,9 +6,12 @@
 //////////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading;
 using Aspose.Words;
 using NUnit.Framework;
 
@@ -19,9 +22,11 @@ namespace ApiExamples
     /// </summary>
     public class ApiExampleBase
     {
-        [SetUp]
-        public void SetUp()
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
             if (CheckForSkipMono() && IsRunningOnMono())
             {
                 Assert.Ignore("Test skipped on mono");
@@ -37,8 +42,14 @@ namespace ApiExamples
                 Directory.CreateDirectory(ArtifactsDir);
         }
 
-        [TearDown]
-        public void TearDown()
+        [SetUp]
+        public void SetUp()
+        {
+            Console.WriteLine($"Clr: {RuntimeInformation.FrameworkDescription}\n");
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
             if (!CheckForSkipTearDown())
             {
@@ -87,7 +98,7 @@ namespace ApiExamples
         internal static void SetUnlimitedLicense()
         {
             // This is where the test license is on my development machine.
-            string testLicenseFileName = Path.Combine(LicenseDir, "Aspose.Words.lic");
+            string testLicenseFileName = Path.Combine(LicenseDir, "Aspose.Total.NET.lic");
 
             if (File.Exists(testLicenseFileName))
             {
@@ -95,8 +106,14 @@ namespace ApiExamples
                 // You don't have to specify full path as shown here. You can specify just the 
                 // file name if you copy the license file into the same folder as your application
                 // binaries or you add the license to your project as an embedded resource.
-                License license = new License();
-                license.SetLicense(testLicenseFileName);
+                License wordsLicense = new License();
+                wordsLicense.SetLicense(testLicenseFileName);
+
+                Aspose.Pdf.License pdfLicense = new Aspose.Pdf.License();
+                pdfLicense.SetLicense(testLicenseFileName);
+
+                Aspose.BarCode.License barcodeLicense = new Aspose.BarCode.License();
+                barcodeLicense.SetLicense(testLicenseFileName);
             }
         }
 
