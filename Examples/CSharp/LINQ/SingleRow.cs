@@ -11,9 +11,6 @@ namespace Aspose.Words.Examples.CSharp.LINQ
             //ExStart:SingleRow
             Document doc = new Document(LinqDir + "SingleRow.doc");
 
-            // Load the photo and read all bytes
-            byte[] imgdata = System.IO.File.ReadAllBytes(LinqDir + "photo.png");
-
             // Create a Reporting Engine
             ReportingEngine engine = new ReportingEngine();
             // Execute the build report

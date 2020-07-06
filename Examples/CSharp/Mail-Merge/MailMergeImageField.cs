@@ -1,22 +1,16 @@
 ﻿using Aspose.Words.Drawing;
 using Aspose.Words.MailMerging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Mail_Merge
 {
-    class MailMergeImageField
+    class MailMergeImageField : TestDataHelper
     {
+        [Test]
         public static void Run()
         {
             // ExStart:MailMergeImageField       
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_MailMergeAndReporting();
-            Document doc = new Document(dataDir + "template.docx");
+            Document doc = new Document(MailMergeDir + "template.docx");
 
             doc.MailMerge.UseNonMergeFields = true;
             doc.MailMerge.TrimWhitespaces = true;
@@ -30,10 +24,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
             doc.MailMerge.FieldMergingCallback = new ImageFieldMergingHandler();
             doc.MailMerge.ExecuteWithRegions(new DataSourceRoot());
 
-            dataDir = dataDir + "MailMerge.ImageMailMerge_out.doc";
-            doc.Save(dataDir);
+            doc.Save(ArtifactsDir + "MailMerge.ImageMailMerge_out.doc");
             // ExEnd:MailMergeImageField
-            Console.WriteLine("\nMail merge Image Field performed successfully.\nFile saved at " + dataDir);
         }
         // ExStart:ImageFieldMergingHandler
         private class ImageFieldMergingHandler : IFieldMergingCallback
@@ -50,8 +42,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 shape.Height = 126;
                 shape.WrapType = WrapType.Square;
 
-                string imageFileName = Path.GetFullPath(RunExamples.GetDataDir_WorkingWithDocument() + "image.png");
-                shape.ImageData.SetImage(imageFileName);
+                shape.ImageData.SetImage(DocumentDir + "image.png");
 
                 args.Shape = shape;
             }
@@ -60,19 +51,18 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
         // ExStart:DataSourceRoot
         public class DataSourceRoot : IMailMergeDataSourceRoot
         {
-            public IMailMergeDataSource GetDataSource(String s)
+            public IMailMergeDataSource GetDataSource(string s)
             {
                 return new DataSource();
             }
 
             private class DataSource : IMailMergeDataSource
             {
-
-                bool next = true;
+                private bool next = true;
 
                 string IMailMergeDataSource.TableName => TableName();
 
-                public string TableName()
+                private static string TableName()
                 {
                     return "example";
                 }
@@ -84,7 +74,7 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                     return result;
                 }
 
-                public IMailMergeDataSource GetChildDataSource(String s)
+                public IMailMergeDataSource GetChildDataSource(string s)
                 {
                     return null;
                 }

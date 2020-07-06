@@ -5,11 +5,6 @@ namespace Aspose.Words.Examples.CSharp.LINQ
 {
     class BulletedList : TestDataHelper
     {
-        public static void Run()
-        {
-            CreateBulletedList();
-        }
-
         [Test]
         public static void CreateBulletedList()
         {

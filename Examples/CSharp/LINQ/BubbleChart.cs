@@ -5,11 +5,6 @@ namespace Aspose.Words.Examples.CSharp.LINQ
 {
     class BubbleChart : TestDataHelper
     {
-        public static void Run()
-        {
-            CreateBubbleChart();
-        }
-
         [Test]
         public static void CreateBubbleChart()
         {

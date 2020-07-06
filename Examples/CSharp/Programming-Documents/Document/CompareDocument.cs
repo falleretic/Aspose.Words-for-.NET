@@ -69,7 +69,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             //ExEnd:CompareDocumentWithComparisonTarget
         }
 
-        public static void SpecifyComparisonGranularity(string dataDir)
+        [Test]
+        public static void SpecifyComparisonGranularity()
         {
             // ExStart:SpecifyComparisonGranularity
             DocumentBuilder builderA = new DocumentBuilder(new Document());

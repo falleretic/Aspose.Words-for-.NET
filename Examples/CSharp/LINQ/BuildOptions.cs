@@ -5,11 +5,6 @@ namespace Aspose.Words.Examples.CSharp.LINQ
 {
     class BuildOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            RemoveEmptyParagraphs();
-        }
-
         [Test]
         public static void RemoveEmptyParagraphs()
         {

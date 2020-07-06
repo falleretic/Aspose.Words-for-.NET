@@ -1,44 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WorkWithCleanupOptions
+    class WorkWithCleanupOptions : TestDataHelper
     {
-        public static void Run()
-        {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-
-            CleanupUnusedStylesandLists(dataDir);
-            CleanupDuplicateStyle(dataDir);
-        }
-
-        private static void CleanupUnusedStylesandLists(string dataDir)
+        [Test]
+        public static void CleanupUnusedStylesandLists()
         {
             // ExStart:CleanupUnusedStylesandLists
-            Document doc = new Document(dataDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.doc");
 
-            CleanupOptions cleanupoptions = new CleanupOptions();
-            cleanupoptions.UnusedLists = false;
-            cleanupoptions.UnusedStyles = true;
+            CleanupOptions cleanupOptions = new CleanupOptions();
+            cleanupOptions.UnusedLists = false;
+            cleanupOptions.UnusedStyles = true;
 
             // Cleans unused styles and lists from the document depending on given CleanupOptions. 
-            doc.Cleanup(cleanupoptions);
+            doc.Cleanup(cleanupOptions);
 
-            dataDir = dataDir + "Document.CleanupUnusedStylesandLists_out.docx";
-            doc.Save(dataDir);
+            doc.Save(ArtifactsDir + "Document.CleanupUnusedStylesandLists.docx");
             // ExEnd:CleanupUnusedStylesandLists
-            Console.WriteLine("\nAll revisions accepted.\nFile saved at " + dataDir);
         }
 
-        private static void CleanupDuplicateStyle(string dataDir)
+        [Test]
+        public static void CleanupDuplicateStyle()
         {
             // ExStart:CleanupDuplicateStyle
-            Document doc = new Document(dataDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.doc");
 
             CleanupOptions options = new CleanupOptions();
             options.DuplicateStyle = true;
@@ -46,9 +33,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             // Cleans duplicate styles from the document. 
             doc.Cleanup(options);
 
-            doc.Save(dataDir + "Document.CleanupDuplicateStyle_out.docx");
+            doc.Save(ArtifactsDir + "Document.CleanupDuplicateStyle_out.docx");
             // ExEnd:CleanupDuplicateStyle
-            Console.WriteLine("\nAll revisions accepted.\nFile saved at " + dataDir);
         }
     }
 }

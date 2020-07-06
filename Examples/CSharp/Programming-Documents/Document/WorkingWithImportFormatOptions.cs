@@ -70,17 +70,19 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             dstDoc.Save(ArtifactsDir + "output.docx");
             //ExEnd:IgnoreTextBoxes
         }
-        private static void IgnoreHeaderFooter(string dataDir)
+
+        [Test]
+        public static void IgnoreHeaderFooter()
         {
             // ExStart:IgnoreHeaderFooter
-            Document srcDocument = new Document(dataDir + "source.docx");
-            Document dstDocument = new Document(dataDir + "destination.docx");
+            Document srcDocument = new Document(JoiningAppendingDir + "source.docx");
+            Document dstDocument = new Document(JoiningAppendingDir + "destination.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             importFormatOptions.IgnoreHeaderFooter = false;
 
             dstDocument.AppendDocument(srcDocument, ImportFormatMode.KeepSourceFormatting, importFormatOptions);
-            dstDocument.Save(dataDir + "IgnoreHeaderFooter_out.docx");
+            dstDocument.Save(ArtifactsDir + "IgnoreHeaderFooter.docx");
             // ExEnd:IgnoreHeaderFooter
         }
     }

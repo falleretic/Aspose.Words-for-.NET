@@ -1,4 +1,5 @@
-﻿using Aspose.Words.Saving;
+﻿using System;
+using Aspose.Words.Saving;
 using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
@@ -79,11 +80,12 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:ConversionToPDF17
         }
 
-        public static void DownsamplingImages(string dataDir)
+        [Test]
+        public static void DownsamplingImages()
         {
             // ExStart:DownsamplingImages
             // Open a document that contains images 
-            Document doc = new Document(dataDir + "Rendering.doc");
+            Document doc = new Document(ChartsDir + "Rendering.doc");
 
             // If we want to convert the document to .pdf, we can use a SaveOptions implementation to customize the saving process
             PdfSaveOptions options = new PdfSaveOptions();
@@ -96,25 +98,27 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             // This value will prevent the second image in the input document from being downsampled
             options.DownsampleOptions.ResolutionThreshold = 128;
 
-            doc.Save(dataDir + "PdfSaveOptions.DownsampleOptions.pdf", options);
+            doc.Save(ArtifactsDir + "PdfSaveOptions.DownsampleOptions.pdf", options);
             // ExEnd:DownsamplingImages
         }
 
-        public static void SaveToPdfWithOutline(string dataDir)
+        [Test]
+        public static void SaveToPdfWithOutline()
         {
             // ExStart:SaveToPdfWithOutline
             // Open a document
-            Document doc = new Document(dataDir + "Rendering.doc");
+            Document doc = new Document(ChartsDir + "Rendering.doc");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.OutlineOptions.HeadingsOutlineLevels = 3;
             options.OutlineOptions.ExpandedOutlineLevels = 1;
 
-            doc.Save(dataDir + "Rendering.SaveToPdfWithOutline.pdf", options);
+            doc.Save(ArtifactsDir + "Rendering.SaveToPdfWithOutline.pdf", options);
             // ExEnd:SaveToPdfWithOutline
         }
 
-        public static void CustomPropertiesExport(string dataDir)
+        [Test]
+        public static void CustomPropertiesExport()
         {
             // ExStart:CustomPropertiesExport
             // Open a document
@@ -128,15 +132,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             PdfSaveOptions options = new PdfSaveOptions();
             options.CustomPropertiesExport = PdfCustomPropertiesExport.Standard;
 
-            doc.Save(dataDir + "PdfSaveOptions.CustomPropertiesExport.pdf", options);
+            doc.Save(ArtifactsDir + "PdfSaveOptions.CustomPropertiesExport.pdf", options);
             // ExEnd:CustomPropertiesExport
         }
 
-        public static void ExportDocumentStructure(string dataDir)
+        [Test]
+        public static void ExportDocumentStructure()
         {
             // ExStart:ExportDocumentStructure
             // Open a document
-            Document doc = new Document(dataDir + "Paragraphs.docx");
+            Document doc = new Document(ChartsDir + "Paragraphs.docx");
 
             // Create a PdfSaveOptions object and configure it to preserve the logical structure that's in the input document
             // The file size will be increased and the structure will be visible in the "Content" navigation pane
@@ -144,15 +149,16 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             PdfSaveOptions options = new PdfSaveOptions();
             options.ExportDocumentStructure = true;
 
-            doc.Save(dataDir + "PdfSaveOptions.ExportDocumentStructure.pdf", options);
+            doc.Save(ArtifactsDir + "PdfSaveOptions.ExportDocumentStructure.pdf", options);
             // ExEnd:ExportDocumentStructure
         }
 
-        public static void PdfImageComppression(string dataDir)
+        [Test]
+        public static void PdfImageComppression()
         {
             // ExStart:PdfImageComppression
             // Open a document
-            Document doc = new Document(dataDir + "SaveOptions.PdfImageCompression.rtf");
+            Document doc = new Document(ChartsDir + "SaveOptions.PdfImageCompression.rtf");
 
             PdfSaveOptions options = new PdfSaveOptions
             {
@@ -160,7 +166,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 PreserveFormFields = true
             };
             
-            doc.Save(dataDir + "SaveOptions.PdfImageCompression.pdf", options);
+            doc.Save(ArtifactsDir + "SaveOptions.PdfImageCompression.pdf", options);
 
             PdfSaveOptions optionsA1B = new PdfSaveOptions
             {
@@ -172,46 +178,48 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
                 ImageColorSpaceExportMode = PdfImageColorSpaceExportMode.SimpleCmyk
             };
             
-            doc.Save(dataDir + "SaveOptions.PdfImageComppression PDF_A_1_B.pdf", optionsA1B);
+            doc.Save(ArtifactsDir + "SaveOptions.PdfImageComppression PDF_A_1_B.pdf", optionsA1B);
             // ExEnd:PdfImageComppression
-            Console.WriteLine("\nFile saved at " + dataDir);
         }
 
-        public static void UpdateIfLastPrinted(string dataDir)
+        [Test]
+        public static void UpdateIfLastPrinted()
         {
             // ExStart:UpdateIfLastPrinted
             // Open a document
-            Document doc = new Document(dataDir + "Rendering.doc");
+            Document doc = new Document(ChartsDir + "Rendering.doc");
 
             SaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.UpdateLastPrintedProperty = false;
 
-            doc.Save(dataDir + "PdfSaveOptions.UpdateIfLastPrinted.pdf", saveOptions);
+            doc.Save(ArtifactsDir + "PdfSaveOptions.UpdateIfLastPrinted.pdf", saveOptions);
             // ExEnd:UpdateIfLastPrinted
         }
 
-        public static void EffectsRendering(string dataDir)
+        [Test]
+        public static void EffectsRendering()
         {
             // ExStart:EffectsRendering
             // Open a document
-            Document doc = new Document(dataDir + "Rendering.doc");
+            Document doc = new Document(ChartsDir + "Rendering.doc");
 
             SaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.Dml3DEffectsRenderingMode = Dml3DEffectsRenderingMode.Advanced;
             
-            doc.Save(dataDir, saveOptions);
+            doc.Save(ArtifactsDir + "EffectsRendering.pdf", saveOptions);
             // ExEnd:EffectsRendering
         }
 
-        public static void SetImageInterpolation(string dataDir)
+        [Test]
+        public static void SetImageInterpolation()
         {
             // ExStart:SetImageInterpolation
-            Document doc = new Document(dataDir);
+            Document doc = new Document();
 
             PdfSaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.InterpolateImages = true;
             
-            doc.Save(dataDir, saveOptions);
+            doc.Save(ArtifactsDir + "SetImageInterpolation.pdf", saveOptions);
             // ExEnd:SetImageInterpolation
         }
     }

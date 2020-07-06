@@ -1,28 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class WorkWithWatermark
+    class WorkWithWatermark : TestDataHelper
     {
-        public static void Run()
+        [Test]
+        public static void AddTextWatermarkWithSpecificOptions()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-
-            AddTextWatermarkWithSpecificOptions(dataDir);
-            AddImageWatermarkWithSpecificOptions(dataDir);
-            RemoveWatermarkFromDocument(dataDir);
-        }
-
-        public static void AddTextWatermarkWithSpecificOptions(string dataDir)
-        {
-            // ExStart: AddTextWatermarkWithSpecificOptions
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:AddTextWatermarkWithSpecificOptions
+            Document doc = new Document(DocumentDir + "Document.doc");
 
             TextWatermarkOptions options = new TextWatermarkOptions()
             {
@@ -35,15 +22,15 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
 
             doc.Watermark.SetText("Test", options);
 
-            doc.Save(dataDir + "AddTextWatermark_out.docx");
-            // ExEnd: AddTextWatermarkWithSpecificOptions
-            Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "AddTextWatermark.docx");
+            //ExEnd:AddTextWatermarkWithSpecificOptions
         }
 
-        public static void AddImageWatermarkWithSpecificOptions(string dataDir)
+        [Test]
+        public static void AddImageWatermarkWithSpecificOptions()
         {
-            // ExStart: AddImageWatermarkWithSpecificOptions
-            Document doc = new Document(dataDir + "Document.doc");
+            //ExStart:AddImageWatermarkWithSpecificOptions
+            Document doc = new Document(DocumentDir + "Document.doc");
 
             ImageWatermarkOptions options = new ImageWatermarkOptions()
             {
@@ -51,26 +38,25 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 IsWashout = false
             };
 
-            doc.Watermark.SetImage(Image.FromFile(dataDir + "Watermark.png"), options);
+            doc.Watermark.SetImage(Image.FromFile(DocumentDir + "Watermark.png"), options);
 
-            doc.Save(dataDir + "AddImageWatermark_out.docx");
-            // ExEnd: AddImageWatermarkWithSpecificOptions
-            Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "AddImageWatermark_out.docx");
+            //ExEnd:AddImageWatermarkWithSpecificOptions
         }
 
-        public static void RemoveWatermarkFromDocument(string dataDir)
+        [Test]
+        public static void RemoveWatermarkFromDocument()
         {
-            // ExStart: RemoveWatermarkFromDocument
-            Document doc = new Document(dataDir + "AddTextWatermark_out.docx");
+            //ExStart:RemoveWatermarkFromDocument
+            Document doc = new Document(DocumentDir + "AddTextWatermark_out.docx");
 
             if (doc.Watermark.Type == WatermarkType.Text)
             {
                 doc.Watermark.Remove();
             }
 
-            doc.Save(dataDir + "RemoveWatermark_out.docx");
-            // ExEnd: RemoveWatermarkFromDocument
-            Console.WriteLine("\nDocument saved successfully.\nFile saved at " + dataDir);
+            doc.Save(ArtifactsDir + "RemoveWatermark_out.docx");
+            //ExEnd:RemoveWatermarkFromDocument
         }
     }
 }

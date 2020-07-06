@@ -1,27 +1,18 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using Aspose.Words;
 using Aspose.Words.Examples.CSharp.Loading_Saving;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
 {
-    class SplitDocument
+    class SplitDocument : TestDataHelper
     {
-        public static void Run()
-        {
-            string dataDir = RunExamples.GetDataDir_WorkingWithDocument();
-
-            SplitDocumentBySections(dataDir);
-            SplitDocumentPageByPage(dataDir);
-            SplitDocumentByPageRange(dataDir);
-        }
-
-        public static void SplitDocumentBySections(string dataDir)
+        [Test]
+        public static void SplitDocumentBySections()
         {
             //ExStart:SplitDocumentBySections
             // Open a Word document
-            Document doc = new Document(dataDir + "TestFile (Split).docx");
+            Document doc = new Document(DocumentDir + "TestFile (Split).docx");
 
             for (int i = 0; i < doc.Sections.Count; i++)
             {
@@ -35,16 +26,17 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
                 newDoc.Sections.Add(newSection);
 
                 // Save each section as a separate document
-                newDoc.Save(dataDir + $"SplitDocumentBySectionsOut_{i}.docx");
+                newDoc.Save(ArtifactsDir + $"SplitDocumentBySectionsOut_{i}.docx");
             }
             //ExEnd:SplitDocumentBySections
         }
 
-        public static void SplitDocumentPageByPage(string dataDir)
+        [Test]
+        public static void SplitDocumentPageByPage()
         {
             //ExStart:SplitDocumentPageByPage
             // Open a Word document
-            Document doc = new Document(dataDir + "TestFile (Split).docx");
+            Document doc = new Document(DocumentDir + "TestFile (Split).docx");
 
             // Split nodes in the document into separate pages
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);
@@ -53,21 +45,22 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             for (int page = 1; page <= doc.PageCount; page++)
             {
                 Document pageDoc = splitter.GetDocumentOfPage(page);
-                pageDoc.Save(dataDir + $"SplitDocumentPageByPageOut_{page}.docx");
+                pageDoc.Save(ArtifactsDir + $"SplitDocumentPageByPageOut_{page}.docx");
             }
             //ExEnd:SplitDocumentPageByPage
 
-            MergeDocuments(dataDir);
+            MergeDocuments();
         }
 
+        [Test]
         //ExStart:MergeSplitDocuments
-        public static void MergeDocuments(string dataDir)
+        public static void MergeDocuments()
         {
             // Find documents using for merge
-            FileSystemInfo[] documentPaths = new DirectoryInfo(dataDir)
+            FileSystemInfo[] documentPaths = new DirectoryInfo(DocumentDir)
                 .GetFileSystemInfos("SplitDocumentPageByPageOut_*.docx").OrderBy(f => f.CreationTime).ToArray();
             string sourceDocumentPath =
-                Directory.GetFiles(dataDir, "SplitDocumentPageByPageOut_1.docx", SearchOption.TopDirectoryOnly)[0];
+                Directory.GetFiles(DocumentDir, "SplitDocumentPageByPageOut_1.docx", SearchOption.TopDirectoryOnly)[0];
 
             // Open the first part of the resulting document
             Document sourceDoc = new Document(sourceDocumentPath);
@@ -88,22 +81,23 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Docume
             }
 
             // Save the output file
-            mergedDoc.Save(dataDir + "MergeDocuments_out.docx");
+            mergedDoc.Save(ArtifactsDir + "MergeDocuments.docx");
         }
         //ExEnd:MergeSplitDocuments
 
-        public static void SplitDocumentByPageRange(string dataDir)
+        [Test]
+        public static void SplitDocumentByPageRange()
         {
             //ExStart:SplitDocumentByPageRange
             // Open a Word document
-            Document doc = new Document(dataDir + "TestFile (Split).docx");
+            Document doc = new Document(DocumentDir + "TestFile (Split).docx");
  
             // Split nodes in the document into separate pages
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);
  
             // Get part of the document
             Document pageDoc = splitter.GetDocumentOfPageRange(3,6);
-            pageDoc.Save(dataDir + "SplitDocumentByPageRangeOut.docx");
+            pageDoc.Save(ArtifactsDir + "SplitDocumentByPageRangeOut.docx");
             //ExEnd:SplitDocumentByPageRange
         }
     }

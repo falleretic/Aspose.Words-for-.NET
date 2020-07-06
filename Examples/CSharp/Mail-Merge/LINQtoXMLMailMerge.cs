@@ -127,8 +127,8 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                 // Use reflection to get the property by name from the current object
                 object obj = mEnumerator.Current;
 
-                Type curentRecordType = obj.GetType();
-                PropertyInfo property = curentRecordType.GetProperty(fieldName);
+                Type currentRecordType = obj.GetType();
+                PropertyInfo property = currentRecordType.GetProperty(fieldName);
                 if (property != null)
                 {
                     fieldValue = property.GetValue(obj, null);

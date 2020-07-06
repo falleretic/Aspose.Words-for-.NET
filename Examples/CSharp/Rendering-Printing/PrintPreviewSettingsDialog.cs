@@ -4,14 +4,12 @@ using System.Windows.Forms;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {
-    class PrintPreviewSettingsDialog
+    class PrintPreviewSettingsDialog : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:PrintPreviewSettingsDialog
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-            Document doc = new Document(dataDir + "TestFile.doc");
+            Document doc = new Document(RenderingPrintingDir + "TestFile.doc");
 
             PrintDialog printDlg = new PrintDialog();
 

@@ -32,7 +32,6 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         //ExStart:PdfRenderWarnings
         public static void PdfRenderWarnings()
         {
-            
             Document doc = new Document(LoadingSavingDir + "PdfRenderWarnings.doc");
 
             // Set a SaveOptions object to not emulate raster operations

@@ -20,7 +20,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             //ExEnd:ReplaceWithRegex
         }
         
-        public static void RecognizeAndSubstitutionsWithinReplacementPatterns(string dataDir)
+        [Test]
+        public static void RecognizeAndSubstitutionsWithinReplacementPatterns()
         {
             // ExStart:RecognizeAndSubstitutionsWithinReplacementPatterns
             // Create new document.
@@ -37,7 +38,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             options.UseSubstitutions = true;
             doc.Range.Replace(regex, @"$2 take money from $1", options);
             // ExEnd:RecognizeAndSubstitutionsWithinReplacementPatterns
-            Console.WriteLine(doc.GetText()); // The output is: Paul take money from Jason.\f
         }
     }    
 }

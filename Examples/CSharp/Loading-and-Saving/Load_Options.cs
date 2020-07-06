@@ -1,6 +1,9 @@
 ﻿using Aspose.Words.Saving;
 using Aspose.Words.Settings;
 using System;
+using System.Drawing;
+using System.Text;
+using Aspose.Words.Loading;
 using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
@@ -63,23 +66,25 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             //ExEnd:SetMSWordVersion
         }
 
-        public static void SetTempFolder(string dataDir)
+        [Test]
+        public static void SetTempFolder()
         {
             // ExStart:SetTempFolder  
             LoadOptions lo = new LoadOptions();
-            lo.TempFolder = @"C:\TempFolder\";
+            lo.TempFolder = ArtifactsDir;
 
-            Document doc = new Document(dataDir + "document.docx", lo);
+            Document doc = new Document(LoadingSavingDir + "document.docx", lo);
             // ExEnd:SetTempFolder  
         }
         
-        public static void LoadOptionsWarningCallback(string dataDir)
+        [Test]
+        public static void LoadOptionsWarningCallback()
         {
             //ExStart:LoadOptionsWarningCallback
             // Create a new LoadOptions object and set its WarningCallback property. 
             LoadOptions loadOptions = new LoadOptions { WarningCallback = new DocumentLoadingWarningCallback() };
  
-            Document doc = new Document(dataDir + "document.docx", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "document.docx", loadOptions);
             //ExEnd:LoadOptionsWarningCallback
         }
 
@@ -95,7 +100,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         }
         //ExEnd:DocumentLoadingWarningCallback
         
-        public static void LoadOptionsResourceLoadingCallback(string dataDir)
+        [Test]
+        public static void LoadOptionsResourceLoadingCallback()
         {
             //ExStart:LoadOptionsResourceLoadingCallback
             // Create a new LoadOptions object and set its ResourceLoadingCallback attribute as an instance of our IResourceLoadingCallback implementation
@@ -103,8 +109,8 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
  
             // When we open an Html document, external resources such as references to CSS stylesheet files and external images
             // will be handled in a custom manner by the loading callback as the document is loaded
-            Document doc = new Document(dataDir + "Images.html", loadOptions);
-            doc.Save(dataDir + "Document.LoadOptionsCallback_out.pdf");
+            Document doc = new Document(LoadingSavingDir + "Images.html", loadOptions);
+            doc.Save(ArtifactsDir + "Document.LoadOptionsCallback.pdf");
             //ExEnd:LoadOptionsResourceLoadingCallback
         }
 
@@ -125,9 +131,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
                     case ResourceType.Image:
                     {
                         // Replaces all images with a substitute
-                        const string newImageFilename = "Logo.jpg";
-                        Console.WriteLine($"\tImage will be substituted with: {newImageFilename}");
-                        Image newImage = Image.FromFile(RunExamples.GetDataDir_QuickStart() + newImageFilename);
+                        Image newImage = Image.FromFile(QuickStartDir + "Logo.jpg");
                         ImageConverter converter = new ImageConverter();
                         byte[] imageBytes = (byte[])converter.ConvertTo(newImage, typeof(byte[]));
                         args.SetData(imageBytes);
@@ -149,12 +153,13 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         }
         //ExEnd:HtmlLinkedResourceLoadingCallback
 
-        public static void LoadOptionsEncoding(string dataDir)
+        [Test]
+        public static void LoadOptionsEncoding()
         {
             //ExStart:LoadOptionsEncoding
             // Set the Encoding attribute in a LoadOptions object to override the automatically chosen encoding with the one we know to be correct
             LoadOptions loadOptions = new LoadOptions { Encoding = Encoding.UTF7 };
-            Document doc = new Document(dataDir + "Encoded in UTF-7.txt", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "Encoded in UTF-7.txt", loadOptions);
             //ExEnd:LoadOptionsEncoding
         }
     }

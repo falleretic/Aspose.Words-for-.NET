@@ -1,25 +1,16 @@
 ﻿using Aspose.Words.Replacing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
 {
-    class IgnoreText
+    class IgnoreText : TestDataHelper
     {
-        public static void Run()
-        {
-            IgnoreTextInsideFields();
-            IgnoreTextInsideDeleteRevisions();
-            IgnoreTextInsideInsertRevisions();
-        }
+        [Test]
         public static void IgnoreTextInsideFields()
         {
             // ExStart:IgnoreTextInsideFields
-            // Create document.
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -41,7 +32,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // ExEnd:IgnoreTextInsideFields
         }
 
-        private static void IgnoreTextInsideDeleteRevisions()
+        [Test]
+        public static void IgnoreTextInsideDeleteRevisions()
         {
             // ExStart:IgnoreTextInsideDeleteRevisions
             // Create new document.
@@ -72,7 +64,8 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
             // ExEnd:IgnoreTextInsideDeleteRevisions
         }
 
-        private static void IgnoreTextInsideInsertRevisions()
+        [Test]
+        public static void IgnoreTextInsideInsertRevisions()
         {
             // ExStart:IgnoreTextInsideInsertRevisions
             // Create new document.

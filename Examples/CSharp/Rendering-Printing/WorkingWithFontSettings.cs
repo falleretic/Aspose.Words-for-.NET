@@ -1,38 +1,28 @@
 ﻿using Aspose.Words.Fonts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_Printing
 {
-    class WorkingWithFontSettings
+    class WorkingWithFontSettings : TestDataHelper
     {
-        public static void Run()
-        {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-
-            FontSettingsWithLoadOption(dataDir);
-        }
-
-        public static void FontSettingsWithLoadOption(string dataDir)
+        [Test]
+        public static void FontSettingsWithLoadOption()
         {
             // ExStart:FontSettingsWithLoadOption
             FontSettings fontSettings = new FontSettings();
             // init font settings
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(dataDir + "MyDocument.docx", loadOptions);
+            Document doc1 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions);
 
             LoadOptions loadOptions2 = new LoadOptions();
             loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(dataDir + "MyDocument.docx", loadOptions2);
+            Document doc2 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions2);
             // ExEnd:FontSettingsWithLoadOption   
         }
 
-        public static void FontSettingsDefaultInstance(string dataDir)
+        [Test]
+        public static void FontSettingsDefaultInstance()
         {
             // ExStart:FontSettingsFontSource
             // ExStart:FontSettingsDefaultInstance
@@ -48,11 +38,11 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             // init font settings
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(dataDir + "MyDocument.docx", loadOptions);
+            Document doc1 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions);
 
             LoadOptions loadOptions2 = new LoadOptions();
             loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(dataDir + "MyDocument.docx", loadOptions2);
+            Document doc2 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions2);
         }
     }
 }

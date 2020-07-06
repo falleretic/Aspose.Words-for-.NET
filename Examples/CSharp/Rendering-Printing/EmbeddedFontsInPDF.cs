@@ -37,20 +37,20 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:EmbeddSubsetFonts
         }
 
-        private static void SetFontEmbeddingMode(string dataDir)
+        [Test]
+        public static void SetFontEmbeddingMode()
         {
             // ExStart:SetFontEmbeddingMode
             // Load the document to render.
-            Document doc = new Document(dataDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
 
             // To disable embedding standard windows font use the PdfSaveOptions and set the EmbedStandardWindowsFonts property to false.
             PdfSaveOptions options = new PdfSaveOptions();
             options.FontEmbeddingMode = PdfFontEmbeddingMode.EmbedNone;
 
             // The output PDF will be saved without embedding standard windows fonts.
-            doc.Save(dataDir + "Rendering.DisableEmbedWindowsFonts.pdf");
+            doc.Save(ArtifactsDir + "Rendering.DisableEmbedWindowsFonts.pdf");
             // ExEnd:SetFontEmbeddingMode
-            Console.WriteLine("\n Fonts embedding mode set successfully.\nFile saved at " + dataDir);
         }
     }
 }

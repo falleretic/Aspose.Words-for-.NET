@@ -1,25 +1,16 @@
 ﻿using Aspose.Words.Saving;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
-    class SaveDocumentToJPEG
+    class SaveDocumentToJPEG : TestDataHelper
     {
         public static void Run()
         {
             // ExStart:SaveDocumentToJPEG
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_RenderingAndPrinting();
-
-            // Open the document
-            Document doc = new Document(dataDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
             // Save as a JPEG image file with default options
-            doc.Save(dataDir + "Rendering.JpegDefaultOptions.jpg");
+            doc.Save(ArtifactsDir + "Rendering.JpegDefaultOptions.jpg");
 
             // Save document to stream as a JPEG with default options
             MemoryStream docStream = new MemoryStream();
@@ -35,7 +26,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             imageOptions.PageIndex = 2;
             imageOptions.PageCount = 1;
             imageOptions.JpegQuality = 80;
-            doc.Save(dataDir + "Rendering.JpegCustomOptions.jpg", imageOptions);
+            doc.Save(ArtifactsDir + "Rendering.JpegCustomOptions.jpg", imageOptions);
             // ExEnd:SaveDocumentToJPEG
         }
     }

@@ -69,8 +69,6 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
                 mTextBuilder.Clear();
             }
 
-            internal string Text => mTextBuilder.ToString();
-
             private readonly StringBuilder mTextBuilder = new StringBuilder();
         }
         // ExEnd:ShowChangesForHeaderAndFooterOrders

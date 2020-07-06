@@ -63,20 +63,18 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             //ExEnd:KeepLegacyControlChars
         }
 
-        public static void SetCompressionLevel(string dataDir)
+        [Test]
+        public static void SetCompressionLevel()
         {
             // ExStart:SetCompressionLevel
-            Document doc = new Document(dataDir + "Document.doc");
+            Document doc = new Document(LoadingSavingDir + "Document.doc");
 
             OoxmlSaveOptions so = new OoxmlSaveOptions(SaveFormat.Docx);
             so.CompressionLevel = CompressionLevel.SuperFast;
 
             // Save the document to disk.
-            doc.Save(dataDir + "SetCompressionLevel_out.docx", so);
-
+            doc.Save(ArtifactsDir + "SetCompressionLevel.docx", so);
             // ExEnd:SetCompressionLevel
-            Console.WriteLine("\nDocument save with a Compression Level Successfully.\nFile saved at " + dataDir);
-            doc.Save("out.docx", so);
         }
     }
 }

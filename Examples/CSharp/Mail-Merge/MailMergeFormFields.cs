@@ -64,19 +64,21 @@ namespace Aspose.Words.Examples.CSharp.Mail_Merge
                     return;
                 }
 
-                // We want to insert html during mail merge
-                if (e.FieldName == "Body")
+                switch (e.FieldName)
                 {
-                    mBuilder.MoveToMergeField(e.FieldName);
-                    mBuilder.InsertHtml((string) e.FieldValue);
-                }
-
-                // Another example, we want the Subject field to come out as text input form field
-                if (e.FieldName == "Subject")
-                {
-                    mBuilder.MoveToMergeField(e.FieldName);
-                    string textInputName = $"{e.FieldName}{e.RecordIndex}";
-                    mBuilder.InsertTextInput(textInputName, TextFormFieldType.Regular, "", (string) e.FieldValue, 0);
+                    // We want to insert html during mail merge
+                    case "Body":
+                        mBuilder.MoveToMergeField(e.FieldName);
+                        mBuilder.InsertHtml((string) e.FieldValue);
+                        break;
+                    // Another example, we want the Subject field to come out as text input form field
+                    case "Subject":
+                    {
+                        mBuilder.MoveToMergeField(e.FieldName);
+                        string textInputName = $"{e.FieldName}{e.RecordIndex}";
+                        mBuilder.InsertTextInput(textInputName, TextFormFieldType.Regular, "", (string) e.FieldValue, 0);
+                        break;
+                    }
                 }
             }
 
