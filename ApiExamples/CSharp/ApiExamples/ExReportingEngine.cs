@@ -778,8 +778,12 @@ namespace ApiExamples
                 builder.Document.GetText());
         }
 
-        [TestCase("<<[missingObject.First().id]>>", "<<[missingObject.First( Error! Can not get the value of member 'missingObject' on type 'System.Data.DataSet'. ).id]>>", TestName = "Can not get the value of member")]
-        [TestCase("<<[new DateTime()]:\"dd.MM.yyyy\">>", "<<[new DateTime( Error! A type identifier is expected. )]:\"dd.MM.yyyy\">>", TestName = "A type identifier is expected")]
+        [TestCase("<<[missingObject.First().id]>>",
+            "<<[missingObject.First( Error! Can not get the value of member 'missingObject' on type 'System.Data.DataSet'. ).id]>>",
+            TestName = "Can not get the value of member")]
+        [TestCase("<<[new DateTime()]:\"dd.MM.yyyy\">>",
+            "<<[new DateTime( Error! A type identifier is expected. )]:\"dd.MM.yyyy\">>", TestName =
+                "A type identifier is expected")]
         [TestCase("<<]>>", "<<] Error! Character ']' is unexpected. >>", TestName = "Character is unexpected")]
         [TestCase("<<[>>", "<<[>> Error! An expression is expected.", TestName = "An expression is expected")]
         [TestCase("<<>>", "<<>> Error! Tag end is unexpected.", TestName = "Tag end is unexpected")]
@@ -787,7 +791,7 @@ namespace ApiExamples
         {
             DocumentBuilder builder = new DocumentBuilder();
             DocumentHelper.InsertBuilderText(builder, new[] { templateText });
-            
+
             BuildReport(builder.Document, new DataSet(), "", ReportBuildOptions.InlineErrorMessages);
 
             Assert.That(builder.Document.FirstSection.Body.Paragraphs[0].GetText().TrimEnd(), Is.EqualTo(result));

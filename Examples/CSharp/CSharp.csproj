@@ -90,31 +90,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="LINQ\BuildOptions.cs" />
-    <Compile Include="LINQ\ChartSeries.cs" />
-    <Compile Include="LINQ\Common.cs" />
-    <Compile Include="LINQ\Contract.cs" />
-    <Compile Include="LINQ\Client.cs" />
-    <Compile Include="LINQ\BulletedList.cs" />
-    <Compile Include="LINQ\CommonList.cs" />
-    <Compile Include="LINQ\CommonMasterDetail.cs" />
-    <Compile Include="LINQ\BubbleChart.cs" />
-    <Compile Include="LINQ\ChartWithFilteringGroupingOrdering.cs" />
-    <Compile Include="LINQ\ConditionalBlocks.cs" />
-    <Compile Include="LINQ\ScatterChart.cs" />
-    <Compile Include="LINQ\PieChart.cs" />
-    <Compile Include="LINQ\InTableWithFilteringGroupingSorting.cs" />
-    <Compile Include="LINQ\InTableMasterDetail.cs" />
-    <Compile Include="LINQ\InTableAlternateContent.cs" />
-    <Compile Include="LINQ\InTableList.cs" />
-    <Compile Include="LINQ\MulticoloredNumberedList.cs" />
-    <Compile Include="LINQ\NumberedList.cs" />
-    <Compile Include="LINQ\InParagraphList.cs" />
-    <Compile Include="LINQ\SettingBackgroundColor.cs" />
-    <Compile Include="LINQ\SingleRow.cs" />
-    <Compile Include="LINQ\Manager.cs" />
-    <Compile Include="LINQ\HelloWorld.cs" />
-    <Compile Include="LINQ\Sender.cs" />
+    <Compile Include="LINQ Reporting Engine\Helpers\Data Source Objects\PointData.cs" />
+    <Compile Include="LINQ Reporting Engine\BuildOptions.cs" />
+    <Compile Include="LINQ Reporting Engine\Helpers\Common.cs" />
+    <Compile Include="LINQ Reporting Engine\Helpers\Data Source Objects\Contract.cs" />
+    <Compile Include="LINQ Reporting Engine\Helpers\Data Source Objects\Client.cs" />
+    <Compile Include="LINQ Reporting Engine\Lists.cs" />
+    <Compile Include="LINQ Reporting Engine\BaseFeatures.cs" />
+    <Compile Include="LINQ Reporting Engine\Charts.cs" />
+    <Compile Include="LINQ Reporting Engine\Tables.cs" />
+    <Compile Include="LINQ Reporting Engine\Helpers\Data Source Objects\Manager.cs" />
+    <Compile Include="LINQ Reporting Engine\Helpers\Data Source Objects\Sender.cs" />
     <Compile Include="Loading-and-Saving\CheckFormat.cs" />
     <Compile Include="Loading-and-Saving\AccessAndVerifySignature.cs" />
     <Compile Include="Loading-and-Saving\ConvertDocumentToByte.cs" />
@@ -538,6 +524,7 @@
       <Version>4.7.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Aspose.Words.Shaping.HarfBuzz.20.6.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets" Condition="Exists('..\packages\Aspose.Words.Shaping.HarfBuzz.20.6.0\build\net20\Aspose.Words.Shaping.HarfBuzz.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

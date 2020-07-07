@@ -32,7 +32,7 @@ namespace Aspose.Words.Examples.CSharp
             LoadingSavingDir = new Uri(new Uri(MainDataDir), @"Data/Loading-and-Saving/").LocalPath;
             DatabaseDir = new Uri(new Uri(MainDataDir), @"Data/Database/").LocalPath;
             TablesDir = new Uri(new Uri(MainDataDir), @"Data/Programming-Documents/Tables/").LocalPath;
-            LinqDir = new Uri(new Uri(MainDataDir), @"Data/LINQ/").LocalPath;
+            LinqDir = new Uri(new Uri(MainDataDir), @"Data/LINQ Reporting Engine/").LocalPath;
             MailMergeDir = new Uri(new Uri(MainDataDir), @"Data/Mail-Merge/").LocalPath;
             RenderingPrintingDir = new Uri(new Uri(MainDataDir), @"Data/Rendering-Printing/").LocalPath;
             ViewersVisualizersDir = new Uri(new Uri(MainDataDir), @"Data/Viewers-Visualizers/").LocalPath;
