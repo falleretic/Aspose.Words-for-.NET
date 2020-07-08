@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
-    class SpecifyMarkdownSaveOptions : TestDataHelper
+    class MarkdownSaveOptions : TestDataHelper
     {
         [Test]
         public static void SaveAsMD()
@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             builder.Writeln("Some text!");
 
             // specify MarkDownSaveOptions
-            MarkdownSaveOptions saveOptions = (MarkdownSaveOptions)SaveOptions.CreateSaveOptions(SaveFormat.Markdown);
+            Saving.MarkdownSaveOptions saveOptions = (Saving.MarkdownSaveOptions)SaveOptions.CreateSaveOptions(SaveFormat.Markdown);
             
             builder.Document.Save(ArtifactsDir + "TestDocument.md", saveOptions);
             //ExEnd:SaveAsMD
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             builder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
             builder.Write("Cell2");
 
-            MarkdownSaveOptions saveOptions = new MarkdownSaveOptions();
+            Saving.MarkdownSaveOptions saveOptions = new Saving.MarkdownSaveOptions();
             // Makes all paragraphs inside table to be aligned to Left. 
             saveOptions.TableContentAlignment = TableContentAlignment.Left;
             builder.Document.Save(ArtifactsDir + "left.md", saveOptions);

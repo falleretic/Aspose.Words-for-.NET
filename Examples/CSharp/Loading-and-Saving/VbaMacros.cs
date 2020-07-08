@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
-    class WorkingWithVbaMacros : TestDataHelper
+    class VbaMacros : TestDataHelper
     {
         [Test]
         public static void CreateVbaProject()

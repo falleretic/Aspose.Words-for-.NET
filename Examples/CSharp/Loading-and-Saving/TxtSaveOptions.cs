@@ -29,47 +29,6 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         }
 
         [Test]
-        public static void DetectNumberingWithWhitespaces()
-        {
-            //ExStart:DetectNumberingWithWhitespaces
-            TxtLoadOptions loadOptions = new TxtLoadOptions();
-            loadOptions.DetectNumberingWithWhitespaces = false;
-
-            Document doc = new Document(LoadingSavingDir + "LoadTxt.txt", loadOptions);
-            doc.Save(ArtifactsDir + "DetectNumberingWithWhitespaces.docx");
-            //ExEnd:DetectNumberingWithWhitespaces
-        }
-
-        [Test]
-        public static void HandleSpacesOptions()
-        {
-            //ExStart:HandleSpacesOptions
-            TxtLoadOptions loadOptions = new TxtLoadOptions();
-            loadOptions.LeadingSpacesOptions = TxtLeadingSpacesOptions.Trim;
-            loadOptions.TrailingSpacesOptions = TxtTrailingSpacesOptions.Trim;
-            
-            Document doc = new Document(LoadingSavingDir + "LoadTxt.txt", loadOptions);
-            doc.Save(ArtifactsDir + "HandleSpacesOptions.docx");
-            //ExEnd:HandleSpacesOptions
-        }
-
-        [Test]
-        public static void DocumentTextDirection()
-        {
-            //ExStart:DocumentTextDirection
-            TxtLoadOptions loadOptions = new TxtLoadOptions();
-            loadOptions.DocumentDirection = DocumentDirection.Auto;
-
-            Document doc = new Document(LoadingSavingDir + "Hebrew text.txt", loadOptions);
-
-            Paragraph paragraph = doc.FirstSection.Body.FirstParagraph;
-            Console.WriteLine(paragraph.ParagraphFormat.Bidi);
-
-            doc.Save(ArtifactsDir + "DocumentTextDirection.docx");
-            //ExEnd:DocumentTextDirection
-        }
-
-        [Test]
         public static void ExportHeadersFootersMode()
         {
             //ExStart:ExportHeadersFootersMode

@@ -8,13 +8,13 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
 {
-    class Load_Options : TestDataHelper
+    class LoadOptions : TestDataHelper
     {
         [Test]
         public static void LoadOptionsUpdateDirtyFields()
         {
             //ExStart:LoadOptionsUpdateDirtyFields
-            LoadOptions lo = new LoadOptions();
+            Words.LoadOptions lo = new Words.LoadOptions();
             // Update the fields with the dirty attribute
             lo.UpdateDirtyFields = true;
 
@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void LoadAndSaveEncryptedOdt()
         {
             //ExStart:LoadAndSaveEncryptedODT
-            Document doc = new Document(QuickStartDir + "encrypted.odt", new LoadOptions("password"));
+            Document doc = new Document(QuickStartDir + "encrypted.odt", new Words.LoadOptions("password"));
             doc.Save(ArtifactsDir + "LoadAndSaveEncryptedOdt.odt", new OdtSaveOptions("newpassword"));
             //ExEnd:LoadAndSaveEncryptedODT
         }
@@ -45,7 +45,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void ConvertShapeToOfficeMath()
         {
             //ExStart:ConvertShapeToOfficeMath
-            LoadOptions lo = new LoadOptions();
+            Words.LoadOptions lo = new Words.LoadOptions();
             lo.ConvertShapeToOfficeMath = true;
 
             // Specify load option to use previous default behaviour i.e. convert math shapes to office math ojects on loading stage.
@@ -58,7 +58,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void SetMsWordVersion()
         {
             //ExStart:SetMSWordVersion
-            LoadOptions loadOptions = new LoadOptions();
+            Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.MswVersion = MsWordVersion.Word2003;
             Document doc = new Document(LoadingSavingDir + "document.doc", loadOptions);
 
@@ -70,7 +70,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void SetTempFolder()
         {
             // ExStart:SetTempFolder  
-            LoadOptions lo = new LoadOptions();
+            Words.LoadOptions lo = new Words.LoadOptions();
             lo.TempFolder = ArtifactsDir;
 
             Document doc = new Document(LoadingSavingDir + "document.docx", lo);
@@ -82,7 +82,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         {
             //ExStart:LoadOptionsWarningCallback
             // Create a new LoadOptions object and set its WarningCallback property. 
-            LoadOptions loadOptions = new LoadOptions { WarningCallback = new DocumentLoadingWarningCallback() };
+            Words.LoadOptions loadOptions = new Words.LoadOptions { WarningCallback = new DocumentLoadingWarningCallback() };
  
             Document doc = new Document(LoadingSavingDir + "document.docx", loadOptions);
             //ExEnd:LoadOptionsWarningCallback
@@ -105,7 +105,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         {
             //ExStart:LoadOptionsResourceLoadingCallback
             // Create a new LoadOptions object and set its ResourceLoadingCallback attribute as an instance of our IResourceLoadingCallback implementation
-            LoadOptions loadOptions = new LoadOptions { ResourceLoadingCallback = new HtmlLinkedResourceLoadingCallback() };
+            Words.LoadOptions loadOptions = new Words.LoadOptions { ResourceLoadingCallback = new HtmlLinkedResourceLoadingCallback() };
  
             // When we open an Html document, external resources such as references to CSS stylesheet files and external images
             // will be handled in a custom manner by the loading callback as the document is loaded
@@ -158,7 +158,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         {
             //ExStart:LoadOptionsEncoding
             // Set the Encoding attribute in a LoadOptions object to override the automatically chosen encoding with the one we know to be correct
-            LoadOptions loadOptions = new LoadOptions { Encoding = Encoding.UTF7 };
+            Words.LoadOptions loadOptions = new Words.LoadOptions { Encoding = Encoding.UTF7 };
             Document doc = new Document(LoadingSavingDir + "Encoded in UTF-7.txt", loadOptions);
             //ExEnd:LoadOptionsEncoding
         }

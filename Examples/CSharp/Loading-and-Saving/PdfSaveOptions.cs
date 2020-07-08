@@ -7,15 +7,6 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
     class Doc2Pdf : TestDataHelper
     {
         [Test]
-        public static void SaveDoc2Pdf()
-        {
-            //ExStart:Doc2Pdf
-            Document doc = new Document(LoadingSavingDir + "Rendering.doc");
-            doc.Save(ArtifactsDir + "SaveDoc2Pdf.pdf");
-            //ExEnd:Doc2Pdf
-        }
-
-        [Test]
         public static void DisplayDocTitleInWindowTitlebar()
         {
             //ExStart:DisplayDocTitleInWindowTitlebar
@@ -77,5 +68,23 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             public WarningInfoCollection mWarnings = new WarningInfoCollection();
         }
         //ExEnd:PdfRenderWarnings
+
+        [Test]
+        public static void DigitallySignedPdfUsingCertificateHolder()
+        {
+            //ExStart:DigitallySignedPdfUsingCertificateHolder
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.Writeln("Test Signed PDF.");
+
+            PdfSaveOptions options = new PdfSaveOptions();
+            options.DigitalSignatureDetails = new PdfDigitalSignatureDetails(
+                CertificateHolder.Create(LoadingSavingDir + "CioSrv1.pfx", "cinD96..arellA"), "reason", "location",
+                DateTime.Now);
+
+            doc.Save(ArtifactsDir + "DigitallySignedPdfUsingCertificateHolder.pdf", options);
+            //ExEnd:DigitallySignedPdfUsingCertificateHolder
+        }
     }
 }
