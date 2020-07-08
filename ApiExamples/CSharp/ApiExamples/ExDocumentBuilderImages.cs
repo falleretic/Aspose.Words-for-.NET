@@ -169,8 +169,6 @@ namespace ApiExamples
             Assert.AreEqual(400.0d, imageShape.ImageData.ImageSize.WidthPoints);
         }
 
-        }
-
 #if NETFRAMEWORK
         [Test]
         public void InsertImageFromImageClass()
