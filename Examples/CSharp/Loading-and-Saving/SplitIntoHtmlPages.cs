@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.IO;
+using System.Text;
 using Aspose.Words.MailMerging;
 using Aspose.Words.Saving;
-using System.Text;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class SplitIntoHtmlPages : TestDataHelper
     {
@@ -21,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             string srcFileName = LoadingSavingDir + "SOI 2007-2012-DeeM with footnote added.doc";
             string tocTemplate = LoadingSavingDir + "TocTemplate.doc";
 
-            string outDir = Path.Combine(ArtifactsDir, "SplitIntoHtmlPages_out");
+            string outDir = Path.Combine(ArtifactsDir, "SplitIntoHtmlPages");
             Directory.CreateDirectory(outDir);
 
             // This class does the job
@@ -166,7 +166,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
 
             dummyDoc.BuiltInDocumentProperties.Title = topic.Title;
 
-            HtmlSaveOptions saveOptions = new HtmlSaveOptions();
+            Saving.HtmlSaveOptions saveOptions = new Saving.HtmlSaveOptions();
             saveOptions.PrettyFormat = true;
             // This is to allow headings to appear to the left of main text
             saveOptions.AllowNegativeIndent = true;

@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class WorkingWithDoc : TestDataHelper
     {
@@ -9,12 +9,15 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void EncryptDocumentWithPassword()
         {
             //ExStart:EncryptDocumentWithPassword
-            Document doc = new Document(LoadingSavingDir + "Document.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.Write("Hello world!");
             
             DocSaveOptions docSaveOptions = new DocSaveOptions();
             docSaveOptions.Password = "password";
             
-            doc.Save(ArtifactsDir + "EncryptDocumentWithPassword.docx", docSaveOptions);
+            doc.Save(ArtifactsDir + "DocSaveOptions.EncryptDocumentWithPassword.docx", docSaveOptions);
             //ExEnd:EncryptDocumentWithPassword
         }
 
@@ -22,12 +25,12 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void AlwaysCompressMetafiles()
         {
             //ExStart:AlwaysCompressMetafiles
-            Document doc = new Document(LoadingSavingDir + "Document.doc");
+            Document doc = new Document(LoadingSavingDir + "Microsoft equation object.docx");
             
             DocSaveOptions saveOptions = new DocSaveOptions();
             saveOptions.AlwaysCompressMetafiles = false;
             
-            doc.Save(ArtifactsDir + "AlwaysCompressMetafiles.doc", saveOptions);
+            doc.Save(ArtifactsDir + "DocSaveOptions.AlwaysCompressMetafiles.docx", saveOptions);
             //ExEnd:AlwaysCompressMetafiles
         }
 
@@ -35,12 +38,12 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void SavePictureBullet()
         {
             //ExStart:SavePictureBullet
-            Document doc = new Document(LoadingSavingDir + "Document.doc");
+            Document doc = new Document(LoadingSavingDir + "Image bullet points.docx");
             
             DocSaveOptions saveOptions = (DocSaveOptions) SaveOptions.CreateSaveOptions(SaveFormat.Doc);
             saveOptions.SavePictureBullet = false;
             
-            doc.Save(ArtifactsDir + "SavePictureBullet.doc", saveOptions);
+            doc.Save(ArtifactsDir + "DocSaveOptions.SavePictureBullet.docx", saveOptions);
             //ExEnd:SavePictureBullet
         }
     }

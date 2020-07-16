@@ -1,10 +1,10 @@
-﻿using System.Text;
+﻿using System;
 using System.Collections;
-using System;
+using System.Text;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_With_Document
+namespace Aspose.Words.Examples.CSharp.Tables
 {
     class AddRemoveColumn : TestDataHelper
     {

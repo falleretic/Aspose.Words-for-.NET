@@ -1,9 +1,7 @@
-﻿using Aspose.Words;
-using Aspose.Words.Examples.CSharp;
-using System;
+﻿using System;
 using NUnit.Framework;
 
-namespace CSharp.Quick_Start
+namespace Aspose.Words.Examples.CSharp
 {
     class ApplyMeteredLicense : TestDataHelper
     {

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class WorkingWithRTF : TestDataHelper
     {
@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             RtfLoadOptions loadOptions = new RtfLoadOptions();
             loadOptions.RecognizeUtf8Text = true;
 
-            Document doc = new Document(LoadingSavingDir + "Utf8Text.rtf", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "UTF-8 characters.rtf", loadOptions);
             doc.Save(ArtifactsDir + "RecognizeUtf8Text.rtf");
             //ExEnd:RecognizeUtf8Text
         }

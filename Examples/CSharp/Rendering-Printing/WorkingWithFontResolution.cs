@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Fonts;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class WorkingWithFontResolution : TestDataHelper
     {
@@ -15,7 +15,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             // If "UnknownFont1" font family is not available then substitute it by "Comic Sans MS"
             substitutionRule.AddSubstitutes("UnknownFont1", new string[] { "Comic Sans MS" });
             
-            LoadOptions loadOptions = new LoadOptions();
+            Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.FontSettings = fontSettings;
             
             Document doc = new Document(LoadingSavingDir + "Document.docx", loadOptions);
@@ -29,7 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             FontSettings fontSettings = new FontSettings();
             fontSettings.SetFontsFolder(MailMergeDir + "Fonts", false);
             
-            LoadOptions loadOptions = new LoadOptions();
+            Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.FontSettings = fontSettings;
             
             Document doc = new Document(LoadingSavingDir + "Document.docx", loadOptions);

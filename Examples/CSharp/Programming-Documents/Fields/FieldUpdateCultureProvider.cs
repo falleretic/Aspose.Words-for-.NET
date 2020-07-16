@@ -1,7 +1,7 @@
-﻿using Aspose.Words.Fields;
-using System.Globalization;
+﻿using System.Globalization;
+using Aspose.Words.Fields;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
+namespace Aspose.Words.Examples.CSharp.Fields
 {
     //ExStart:FieldUpdateCultureProviderGetCulture
     class FieldUpdateCultureProvider : IFieldUpdateCultureProvider

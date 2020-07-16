@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class ConvertDocumentToPCL : TestDataHelper
     {
@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void Run()
         {
             //ExStart:ConvertDocumentToPCL
-            Document doc = new Document(LoadingSavingDir + "Test File (docx).docx");
+            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
 
             PclSaveOptions saveOptions = new PclSaveOptions();
             saveOptions.SaveFormat = SaveFormat.Pcl;

@@ -1,8 +1,8 @@
-﻿using Aspose.Words.Fields;
-using System.Text;
+﻿using System.Text;
+using Aspose.Words.Fields;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+namespace Aspose.Words.Examples.CSharp
 {
     class ConvertNumPageFields : TestDataHelper
     {

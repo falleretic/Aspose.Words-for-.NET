@@ -2,7 +2,7 @@
 using System.Collections;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Styles
+namespace Aspose.Words.Examples.CSharp.Styles
 {
     internal class ExtractContentBasedOnStyles : TestDataHelper
     {

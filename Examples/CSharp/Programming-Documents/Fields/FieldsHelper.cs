@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using Aspose.Words.Tables;
-using Aspose.Words.Fields;
 using System.Diagnostics;
 using System.Linq;
+using Aspose.Words.Fields;
+using Aspose.Words.Tables;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
+namespace Aspose.Words.Examples.CSharp.Fields
 {
     // ExStart:FieldsHelper
     public class FieldsHelper

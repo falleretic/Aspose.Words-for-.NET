@@ -1,8 +1,8 @@
-﻿using Aspose.Words.Rendering;
-using System.Drawing.Printing;
+﻿using System.Drawing.Printing;
+using Aspose.Words.Rendering;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class PrintCachePrinterSettings : TestDataHelper
     {

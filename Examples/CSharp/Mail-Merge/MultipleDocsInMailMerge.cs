@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.OleDb;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Mail_Merge
+namespace Aspose.Words.Examples.CSharp
 {
     class MultipleDocsInMailMerge : TestDataHelper
     {

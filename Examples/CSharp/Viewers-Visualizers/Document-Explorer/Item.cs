@@ -1,13 +1,12 @@
 ﻿using System;
-using System.IO;
-using System.Drawing;
-using System.Reflection;
 using System.Collections;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using Aspose.Words;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// Base class to provide GUI representation for document nodes.

@@ -1,19 +1,19 @@
 using System;
 using System.Windows.Forms;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// Lets the user specify the page number to go to.
     /// </summary>
-    public class GoToPageForm : System.Windows.Forms.Form
+    public class GoToPageForm : Form
     {
         private System.ComponentModel.Container components = null;
-        private System.Windows.Forms.Label promptLabel;
-        private System.Windows.Forms.TextBox pageNumberTextBox;
+        private Label promptLabel;
+        private TextBox pageNumberTextBox;
         private int mPageNumber;
-        private System.Windows.Forms.Button okBtn;
-        private System.Windows.Forms.Button cancelBtn;
+        private Button okBtn;
+        private Button cancelBtn;
         private int mMaxPageNumber = 1;
 
         public GoToPageForm()
@@ -120,17 +120,17 @@ namespace DocumentExplorerExample
 
         #endregion
 
-        private void GoToPageForm_Load(object sender, System.EventArgs e)
+        private void GoToPageForm_Load(object sender, EventArgs e)
         {
             promptLabel.Text = string.Format("Enter page number (1-{0})", mMaxPageNumber);
         }
 
-        private void pageNumberTextBox_TextChanged(object sender, System.EventArgs e)
+        private void pageNumberTextBox_TextChanged(object sender, EventArgs e)
         {
             okBtn.Enabled = (pageNumberTextBox.Text.Length > 0);
         }
 
-        private void okButton_Click(object sender, System.EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)
         {
             try
             {

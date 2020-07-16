@@ -1,8 +1,8 @@
-﻿using Aspose.Words.Drawing;
-using System;
+﻿using System;
+using Aspose.Words.Drawing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Linked_Textboxes
+namespace Aspose.Words.Examples.CSharp
 {
     class WorkingWithLinkedTextboxes
     {

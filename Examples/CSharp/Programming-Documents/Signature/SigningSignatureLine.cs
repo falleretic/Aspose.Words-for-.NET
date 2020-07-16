@@ -1,9 +1,9 @@
-﻿using Aspose.Words.Drawing;
-using System;
+﻿using System;
 using System.IO;
+using Aspose.Words.Drawing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Signature
+namespace Aspose.Words.Examples.CSharp.Signature
 {
     class SigningSignatureLine : TestDataHelper
     {

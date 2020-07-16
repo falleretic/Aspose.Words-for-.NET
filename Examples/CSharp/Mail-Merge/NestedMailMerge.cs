@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Mail_Merge
+namespace Aspose.Words.Examples.CSharp
 {
     class NestedMailMerge : TestDataHelper
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class VbaMacros : TestDataHelper
     {
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             // Add module to the VBA project
             doc.VbaProject.Modules.Add(module);
 
-            doc.Save(ArtifactsDir + "VbaProject_out.docm");
+            doc.Save(ArtifactsDir + "VbaMacros.CreateVbaProject.docm");
             //ExEnd:CreateVbaProject
         }
 
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void ReadVbaMacros()
         {
             //ExStart:ReadVbaMacros
-            Document doc = new Document(LoadingSavingDir + "VbaProject_out.docm");
+            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
 
             if (doc.VbaProject != null)
             {
@@ -49,7 +49,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void ModifyVbaMacros()
         {
             //ExStart:ModifyVbaMacros
-            Document doc = new Document(LoadingSavingDir + "VbaProject_out.docm");
+            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
             VbaProject project = doc.VbaProject;
 
             const string newSourceCode = "Test change source code";
@@ -67,7 +67,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void CloneVbaProject()
         {
             //ExStart:CloneVbaProject
-            Document doc = new Document(LoadingSavingDir + "VbaProject_out.docm");
+            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
             Document destDoc = new Document();
 
             // Clone the whole project
@@ -81,7 +81,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void CloneVbaModule()
         {
             //ExStart:CloneVbaModule
-            Document doc = new Document(LoadingSavingDir + "VbaProject_out.docm");
+            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
             Document destDoc = new Document();
 
             destDoc.VbaProject = new VbaProject();

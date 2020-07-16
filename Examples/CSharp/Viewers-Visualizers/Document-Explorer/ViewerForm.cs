@@ -2,46 +2,45 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Aspose.Words;
 using Aspose.Words.Rendering;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// A simple form to show a Word document using Aspose.Words.Viewer.
     /// </summary>
-    public class ViewerForm : System.Windows.Forms.Form
+    public class ViewerForm : Form
     {
         private System.ComponentModel.IContainer components;
-        private System.Windows.Forms.MainMenu mainMenu;
-        private System.Windows.Forms.MenuItem fileMenuItem;
-        private System.Windows.Forms.MenuItem fileOpenMenuItem;
-        private System.Windows.Forms.MenuItem filePrintMenuItem;
-        private System.Windows.Forms.MenuItem separator1MenuItem;
-        private System.Windows.Forms.MenuItem fileExitMenuItem;
-        private System.Windows.Forms.MenuItem navigationPreviousPageMenuItem;
-        private System.Windows.Forms.MenuItem navigationNextPageMenuItem;
-        private System.Windows.Forms.ToolBar toolBar;
-        private System.Windows.Forms.ToolBarButton fileOpenButton;
-        private System.Windows.Forms.ToolBarButton filePrintButton;
-        private System.Windows.Forms.ToolBarButton separator1;
-        private System.Windows.Forms.ToolBarButton navigationPreviousPageButton;
-        private System.Windows.Forms.ToolBarButton navigationNextPageButton;
-        private System.Windows.Forms.ImageList toolBarImages;
-        private System.Windows.Forms.StatusBar statusBar;
-        private System.Windows.Forms.MenuItem separator2;
-        private System.Windows.Forms.ToolBarButton navigationFirstPageButton;
-        private System.Windows.Forms.ToolBarButton navigationLastPageButton;
-        private System.Windows.Forms.MenuItem navigationFirstPageMenuItem;
-        private System.Windows.Forms.MenuItem navigationLastPageMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.PictureBox docPagePictureBox;
-        private System.Windows.Forms.MenuItem separator3;
-        private System.Windows.Forms.MenuItem navigationGoToPageMenuItem;
-        private System.Windows.Forms.ToolBarButton navigationGoToPageButton;
+        private MainMenu mainMenu;
+        private MenuItem fileMenuItem;
+        private MenuItem fileOpenMenuItem;
+        private MenuItem filePrintMenuItem;
+        private MenuItem separator1MenuItem;
+        private MenuItem fileExitMenuItem;
+        private MenuItem navigationPreviousPageMenuItem;
+        private MenuItem navigationNextPageMenuItem;
+        private ToolBar toolBar;
+        private ToolBarButton fileOpenButton;
+        private ToolBarButton filePrintButton;
+        private ToolBarButton separator1;
+        private ToolBarButton navigationPreviousPageButton;
+        private ToolBarButton navigationNextPageButton;
+        private ImageList toolBarImages;
+        private StatusBar statusBar;
+        private MenuItem separator2;
+        private ToolBarButton navigationFirstPageButton;
+        private ToolBarButton navigationLastPageButton;
+        private MenuItem navigationFirstPageMenuItem;
+        private MenuItem navigationLastPageMenuItem;
+        private OpenFileDialog openFileDialog;
+        private Panel mainPanel;
+        private PictureBox docPagePictureBox;
+        private MenuItem separator3;
+        private MenuItem navigationGoToPageMenuItem;
+        private ToolBarButton navigationGoToPageButton;
         private Document mDocument;
-        private System.Windows.Forms.MenuItem viewMenuItem;
+        private MenuItem viewMenuItem;
         private int mPageNumber;
 
         public ViewerForm()
@@ -170,7 +169,7 @@ namespace DocumentExplorerExample
                 mDocument.RenderToScale(pageIndex, gfx, 0, 0, scale);
             }
 
-            docPagePictureBox.Width = Math.Max(img.Width + 100,
+            docPagePictureBox.Width = System.Math.Max(img.Width + 100,
                 SystemInformation.WorkingArea.Width - SystemInformation.VerticalScrollBarWidth);
             docPagePictureBox.Height = img.Height + 100;
             docPagePictureBox.Image = img;

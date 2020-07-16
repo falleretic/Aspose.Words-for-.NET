@@ -1,9 +1,8 @@
 ﻿using System;
-using Aspose.Words.Themes;
 using System.Drawing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Theme
+namespace Aspose.Words.Examples.CSharp.Theme
 {
     class ManipulateThemeProperties : TestDataHelper
     {
@@ -16,7 +15,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Theme
             //ExStart:GetThemeProperties
             Document doc = new Document(ThemeDir + "Document.doc");
             
-            Theme theme = doc.Theme;
+            Themes.Theme theme = doc.Theme;
             // Major (Headings) font for Latin characters
             Console.WriteLine(theme.MajorFonts.Latin);
             // Minor (Body) font for EastAsian characters
@@ -35,7 +34,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Theme
             // ExStart:SetThemeProperties
             Document doc = new Document(ThemeDir + "Document.doc");
             
-            Theme theme = doc.Theme;
+            Themes.Theme theme = doc.Theme;
             // Set Times New Roman font as Body theme font for Latin Character
             theme.MinorFonts.Latin = "Times New Roman";
             // Set Color.Gold for theme color Hyperlink

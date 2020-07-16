@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class TxtLoadOptions : TestDataHelper
     {
@@ -12,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             Words.TxtLoadOptions loadOptions = new Words.TxtLoadOptions();
             loadOptions.DetectNumberingWithWhitespaces = false;
 
-            Document doc = new Document(LoadingSavingDir + "LoadTxt.txt", loadOptions);
+            Document doc = new Document(LoadingSavingDir + "Txt document.txt", loadOptions);
             doc.Save(ArtifactsDir + "DetectNumberingWithWhitespaces.docx");
             //ExEnd:DetectNumberingWithWhitespaces
         }
@@ -21,11 +23,15 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
         public static void HandleSpacesOptions()
         {
             //ExStart:HandleSpacesOptions
+            string textDoc = "      Line 1 \n" +
+                             "    Line 2   \n" +
+                             " Line 3       ";
+            
             Words.TxtLoadOptions loadOptions = new Words.TxtLoadOptions();
             loadOptions.LeadingSpacesOptions = TxtLeadingSpacesOptions.Trim;
             loadOptions.TrailingSpacesOptions = TxtTrailingSpacesOptions.Trim;
             
-            Document doc = new Document(LoadingSavingDir + "LoadTxt.txt", loadOptions);
+            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(textDoc)), loadOptions);
             doc.Save(ArtifactsDir + "HandleSpacesOptions.docx");
             //ExEnd:HandleSpacesOptions
         }

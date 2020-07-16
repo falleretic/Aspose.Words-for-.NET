@@ -1,12 +1,12 @@
-﻿using Aspose.Words.Drawing;
-using Aspose.Words.Saving;
-using Aspose.Words.Settings;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
+using Aspose.Words.Drawing;
+using Aspose.Words.Saving;
+using Aspose.Words.Settings;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Shapes
+namespace Aspose.Words.Examples.CSharp.Shapes
 {
     internal class WorkingWithShapes : TestDataHelper
     {

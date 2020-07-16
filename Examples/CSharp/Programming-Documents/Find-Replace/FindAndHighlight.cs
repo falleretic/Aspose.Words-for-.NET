@@ -1,10 +1,10 @@
-﻿using System.Text.RegularExpressions;
-using System.Collections;
+﻿using System.Collections;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using Aspose.Words.Replacing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
+namespace Aspose.Words.Examples.CSharp
 {
     class FindAndHighlight : TestDataHelper
     {

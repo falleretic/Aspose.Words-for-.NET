@@ -1,8 +1,8 @@
 ﻿using System;
-using Aspose.Words.Loading;
 using System.Net;
+using Aspose.Words.Loading;
 
-namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     //ExStart:ImageLoadingWithCredentialsHandler
     public class ImageLoadingWithCredentialsHandler : IResourceLoadingCallback

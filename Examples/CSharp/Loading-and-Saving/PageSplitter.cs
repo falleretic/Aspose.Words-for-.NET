@@ -1,13 +1,13 @@
-﻿using Aspose.Words.Layout;
-using Aspose.Words.Markup;
-using Aspose.Words.Tables;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Aspose.Words.Layout;
+using Aspose.Words.Markup;
+using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class PageSplitter : TestDataHelper
     {
@@ -413,7 +413,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             return ContinueIfCompositeAcrossPageElseSkip(cell);
         }
 
-        public override VisitorAction VisitStructuredDocumentTagStart(StructuredDocumentTag sdt)
+        public override VisitorAction VisitStructuredDocumentTagStart(Markup.StructuredDocumentTag sdt)
         {
             return ContinueIfCompositeAcrossPageElseSkip(sdt);
         }
@@ -459,7 +459,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
             return VisitorAction.Continue;
         }
 
-        public override VisitorAction VisitStructuredDocumentTagEnd(StructuredDocumentTag sdt)
+        public override VisitorAction VisitStructuredDocumentTagEnd(Markup.StructuredDocumentTag sdt)
         {
             SplitComposite(sdt);
             return VisitorAction.Continue;

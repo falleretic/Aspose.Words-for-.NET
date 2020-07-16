@@ -1,12 +1,12 @@
-﻿using Aspose.Words.MailMerging;
-using System;
+﻿using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
+using Aspose.Words.MailMerging;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Mail_Merge
+namespace Aspose.Words.Examples.CSharp
 {
     class LINQtoXMLMailMerge : TestDataHelper
     {

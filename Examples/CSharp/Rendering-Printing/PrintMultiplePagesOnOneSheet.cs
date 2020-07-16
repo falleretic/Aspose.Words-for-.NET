@@ -4,7 +4,7 @@ using System.Drawing.Printing;
 using System.Windows.Forms;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class PrintMultiplePagesOnOneSheet : TestDataHelper
     {

@@ -1,25 +1,21 @@
-﻿using System;
-using Aspose.Words.Saving;
+﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class WorkingWithTxt : TestDataHelper
     {
         [Test]
-        public static void SaveAsTxt()
-        {
-            //ExStart:SaveAsTxt
-            Document doc = new Document(LoadingSavingDir + "Document.doc");
-            doc.Save(ArtifactsDir + "SaveAsTxt.txt");
-            //ExEnd:SaveAsTxt
-        }
-
-        [Test]
         public static void AddBidiMarks()
         {
             //ExStart:AddBidiMarks
-            Document doc = new Document(LoadingSavingDir + "Input.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Hello world!");
+            builder.ParagraphFormat.Bidi = true;
+            builder.Writeln("שלום עולם!");
+            builder.Writeln("مرحبا بالعالم!");
             
             TxtSaveOptions saveOptions = new TxtSaveOptions();
             saveOptions.AddBidiMarks = true;
@@ -32,7 +28,26 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void ExportHeadersFootersMode()
         {
             //ExStart:ExportHeadersFootersMode
-            Document doc = new Document(LoadingSavingDir + "TxtExportHeadersFootersMode.docx");
+            Document doc = new Document();
+
+            // Insert even and primary headers/footers into the document
+            // The primary header/footers should override the even ones 
+            doc.FirstSection.HeadersFooters.Add(new HeaderFooter(doc, HeaderFooterType.HeaderEven));
+            doc.FirstSection.HeadersFooters[HeaderFooterType.HeaderEven].AppendParagraph("Even header");
+            doc.FirstSection.HeadersFooters.Add(new HeaderFooter(doc, HeaderFooterType.FooterEven));
+            doc.FirstSection.HeadersFooters[HeaderFooterType.FooterEven].AppendParagraph("Even footer");
+            doc.FirstSection.HeadersFooters.Add(new HeaderFooter(doc, HeaderFooterType.HeaderPrimary));
+            doc.FirstSection.HeadersFooters[HeaderFooterType.HeaderPrimary].AppendParagraph("Primary header");
+            doc.FirstSection.HeadersFooters.Add(new HeaderFooter(doc, HeaderFooterType.FooterPrimary));
+            doc.FirstSection.HeadersFooters[HeaderFooterType.FooterPrimary].AppendParagraph("Primary footer");
+
+            // Insert pages that would display these headers and footers
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.Writeln("Page 1");
+            builder.InsertBreak(BreakType.PageBreak);
+            builder.Writeln("Page 2");
+            builder.InsertBreak(BreakType.PageBreak); 
+            builder.Write("Page 3");
 
             TxtSaveOptions options = new TxtSaveOptions();
             options.SaveFormat = SaveFormat.Text;

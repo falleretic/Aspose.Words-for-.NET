@@ -1,9 +1,9 @@
-﻿using Aspose.Words.Replacing;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
+using Aspose.Words.Replacing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_Replace
+namespace Aspose.Words.Examples.CSharp
 {
     class ReplaceInHeaderAndFooter : TestDataHelper
     {

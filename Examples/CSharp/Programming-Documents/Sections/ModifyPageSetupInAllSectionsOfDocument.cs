@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Sections
+namespace Aspose.Words.Examples.CSharp.Sections
 {
     class ModifyPageSetupInAllSectionsOfDocument : TestDataHelper
     {

@@ -1,9 +1,9 @@
-﻿using Aspose.Words.MailMerging;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
+using Aspose.Words.MailMerging;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Mail_Merge
+namespace Aspose.Words.Examples.CSharp
 {
     class RemoveEmptyRegions : TestDataHelper
     {

@@ -1,4 +1,4 @@
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// Shows an About form for this application.

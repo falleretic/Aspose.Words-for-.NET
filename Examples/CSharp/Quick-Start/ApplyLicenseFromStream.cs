@@ -2,7 +2,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace CSharp.Quick_Start
+namespace Aspose.Words.Examples.CSharp
 {
     class ApplyLicenseFromStream
     {
@@ -10,7 +10,7 @@ namespace CSharp.Quick_Start
         public static void Run()
         {
             //ExStart:ApplyLicenseFromStream
-            Aspose.Words.License license = new Aspose.Words.License();
+            License license = new License();
 
             try
             {

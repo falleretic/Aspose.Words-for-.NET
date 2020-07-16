@@ -1,8 +1,7 @@
 ﻿using System;
-using Aspose.Words;
 using NUnit.Framework;
 
-namespace CSharp.Quick_Start
+namespace Aspose.Words.Examples.CSharp
 {
     class ApplyLicenseFromFile
     {

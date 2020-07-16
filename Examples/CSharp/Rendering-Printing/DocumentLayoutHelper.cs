@@ -1,13 +1,13 @@
 ﻿using System;
-using Aspose.Words.Layout;
-using Aspose.Words.Tables;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using Aspose.Words.Layout;
+using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class DocumentLayoutHelper : TestDataHelper
     {

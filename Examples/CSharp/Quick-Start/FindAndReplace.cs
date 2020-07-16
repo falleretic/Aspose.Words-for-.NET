@@ -2,7 +2,7 @@
 using Aspose.Words.Replacing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Quick_Start
+namespace Aspose.Words.Examples.CSharp
 {
     internal class FindAndReplace : TestDataHelper
     {

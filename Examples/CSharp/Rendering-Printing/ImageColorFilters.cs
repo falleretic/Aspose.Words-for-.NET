@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class ImageColorFilters : TestDataHelper
     {
@@ -156,7 +156,7 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExStart:ExposeThresholdControlForTiffBinarization
             Document doc = new Document(RenderingPrintingDir + "TestFile.Colors.docx");
 
-            ImageSaveOptions options = new ImageSaveOptions(Aspose.Words.SaveFormat.Tiff);
+            ImageSaveOptions options = new ImageSaveOptions(SaveFormat.Tiff);
             options.TiffCompression = TiffCompression.Ccitt3;
             options.ImageColorMode = ImageColorMode.Grayscale;
             options.TiffBinarizationMethod = ImageBinarizationMethod.FloydSteinbergDithering;

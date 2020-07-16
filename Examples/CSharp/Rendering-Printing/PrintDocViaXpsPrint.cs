@@ -1,10 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.InteropServices;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class PrintDocViaXpsPrint : TestDataHelper
     {

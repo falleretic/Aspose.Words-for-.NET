@@ -1,9 +1,8 @@
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using Aspose.Words;
 using Aspose.Words.Rendering;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// Provides a utility method to print preview and print an Aspose.Words document.

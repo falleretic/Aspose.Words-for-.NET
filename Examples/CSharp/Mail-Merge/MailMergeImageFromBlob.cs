@@ -1,10 +1,10 @@
-﻿using Aspose.Words.MailMerging;
-using System.Data;
+﻿using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using Aspose.Words.MailMerging;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Mail_Merge
+namespace Aspose.Words.Examples.CSharp
 {
     class MailMergeImageFromBlob : TestDataHelper
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// Provides full information about application exception.

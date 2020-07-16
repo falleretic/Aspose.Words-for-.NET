@@ -1,11 +1,9 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
-using Aspose.Words;
 using Aspose.Words.Saving;
-using Aspose.Words.Examples.CSharp;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     /// <summary>
     /// The main form of the DocumentExplorer demo.
@@ -478,7 +476,7 @@ namespace DocumentExplorerExample
         /// </summary>
         private static void LicenseAsposeWords(string licenseFile)
         {
-            Aspose.Words.License licenseWords = new Aspose.Words.License();
+            License licenseWords = new License();
             licenseWords.SetLicense(licenseFile);
         }
 
@@ -492,12 +490,12 @@ namespace DocumentExplorerExample
             SaveDocument();
         }
 
-        private void menuRender_Click(object sender, System.EventArgs e)
+        private void menuRender_Click(object sender, EventArgs e)
         {
             RenderDocument();
         }
 
-        private void menuPreview_Click(object sender, System.EventArgs e)
+        private void menuPreview_Click(object sender, EventArgs e)
         {
             PrintPreview();
         }

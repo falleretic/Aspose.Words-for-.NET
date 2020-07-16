@@ -1,8 +1,8 @@
-﻿using Aspose.Words.Tables;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
+namespace Aspose.Words.Examples.CSharp.Tables
 {
     class AutoFitTableToContents : TestDataHelper
     {

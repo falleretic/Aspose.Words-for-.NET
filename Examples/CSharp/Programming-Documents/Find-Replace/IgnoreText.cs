@@ -1,9 +1,9 @@
-﻿using Aspose.Words.Replacing;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
+using Aspose.Words.Replacing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Find_and_Replace
+namespace Aspose.Words.Examples.CSharp
 {
     class IgnoreText : TestDataHelper
     {

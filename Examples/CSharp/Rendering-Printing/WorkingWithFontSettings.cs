@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Fonts;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class WorkingWithFontSettings : TestDataHelper
     {
@@ -11,11 +11,11 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             // ExStart:FontSettingsWithLoadOption
             FontSettings fontSettings = new FontSettings();
             // init font settings
-            LoadOptions loadOptions = new LoadOptions();
+            Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.FontSettings = fontSettings;
             Document doc1 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions);
 
-            LoadOptions loadOptions2 = new LoadOptions();
+            Words.LoadOptions loadOptions2 = new Words.LoadOptions();
             loadOptions2.FontSettings = fontSettings;
             Document doc2 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions2);
             // ExEnd:FontSettingsWithLoadOption   
@@ -36,11 +36,11 @@ namespace Aspose.Words.Examples.CSharp.Rendering_Printing
             // ExEnd:FontSettingsFontSource
 
             // init font settings
-            LoadOptions loadOptions = new LoadOptions();
+            Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.FontSettings = fontSettings;
             Document doc1 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions);
 
-            LoadOptions loadOptions2 = new LoadOptions();
+            Words.LoadOptions loadOptions2 = new Words.LoadOptions();
             loadOptions2.FontSettings = fontSettings;
             Document doc2 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions2);
         }

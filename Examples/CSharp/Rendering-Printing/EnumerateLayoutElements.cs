@@ -4,7 +4,7 @@ using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class EnumerateLayoutElements : TestDataHelper
     {

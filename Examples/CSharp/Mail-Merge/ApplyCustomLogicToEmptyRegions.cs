@@ -1,11 +1,11 @@
-﻿using Aspose.Words.MailMerging;
-using Aspose.Words.Tables;
-using System.Collections;
+﻿using System.Collections;
 using System.Data;
+using Aspose.Words.MailMerging;
 using Aspose.Words.Replacing;
+using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Mail_Merge
+namespace Aspose.Words.Examples.CSharp
 {
     class ApplyCustomLogicToEmptyRegions : TestDataHelper
     {

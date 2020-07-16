@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Math;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Fields
+namespace Aspose.Words.Examples.CSharp.Fields
 {
     class UseOfficeMathProperties : TestDataHelper
     {

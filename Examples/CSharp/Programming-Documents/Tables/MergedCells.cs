@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Xml;
-using System.Drawing;
 using Aspose.Words.Tables;
-using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
+namespace Aspose.Words.Examples.CSharp.Tables
 {
     class MergedCells : TestDataHelper
     {
@@ -252,7 +251,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
                 // We will parse HTML to determine rowspan and colspan of each cell
                 MemoryStream htmlStream = new MemoryStream();
 
-                HtmlSaveOptions options = new HtmlSaveOptions();
+                Saving.HtmlSaveOptions options = new Saving.HtmlSaveOptions();
                 options.ImagesFolder = Path.GetTempPath();
 
                 doc.Save(htmlStream, options);

@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using NUnit.Framework;
-using List = Aspose.Words.Lists.List;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+namespace Aspose.Words.Examples.CSharp
 {
     class ListUseDestinationStyles : TestDataHelper
     {
@@ -30,12 +29,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appendi
                     // cause the two lists to run together. Create a copy of the list in the source document instead
                     if (dstDoc.Lists.GetListByListId(listId) != null)
                     {
-                        List currentList;
+                        Lists.List currentList;
                         // A newly copied list already exists for this ID, retrieve the stored list and use it on 
                         // the current paragraph
                         if (newLists.Contains(listId))
                         {
-                            currentList = (List) newLists[listId];
+                            currentList = (Lists.List) newLists[listId];
                         }
                         else
                         {

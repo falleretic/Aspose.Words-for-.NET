@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class MarkdownSaveOptions : TestDataHelper
     {
@@ -15,7 +15,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             // specify MarkDownSaveOptions
             Saving.MarkdownSaveOptions saveOptions = (Saving.MarkdownSaveOptions)SaveOptions.CreateSaveOptions(SaveFormat.Markdown);
             
-            builder.Document.Save(ArtifactsDir + "TestDocument.md", saveOptions);
+            builder.Document.Save(ArtifactsDir + "MarkdownSaveOptions.MarkdownDocument.md", saveOptions);
             //ExEnd:SaveAsMD
         }
 
@@ -36,20 +36,20 @@ namespace Aspose.Words.Examples.CSharp.Loading_and_Saving
             Saving.MarkdownSaveOptions saveOptions = new Saving.MarkdownSaveOptions();
             // Makes all paragraphs inside table to be aligned to Left. 
             saveOptions.TableContentAlignment = TableContentAlignment.Left;
-            builder.Document.Save(ArtifactsDir + "left.md", saveOptions);
+            builder.Document.Save(ArtifactsDir + "LeftTableContentAlignment.md", saveOptions);
 
             // Makes all paragraphs inside table to be aligned to Right. 
             saveOptions.TableContentAlignment = TableContentAlignment.Right;
-            builder.Document.Save(ArtifactsDir + "right.md", saveOptions);
+            builder.Document.Save(ArtifactsDir + "RightTableContentAlignment.md", saveOptions);
 
             // Makes all paragraphs inside table to be aligned to Center. 
             saveOptions.TableContentAlignment = TableContentAlignment.Center;
-            builder.Document.Save(ArtifactsDir + "center.md", saveOptions);
+            builder.Document.Save(ArtifactsDir + "CenterTableContentAlignment.md", saveOptions);
 
             // Makes all paragraphs inside table to be aligned automatically.
             // The alignment in this case will be taken from the first paragraph in corresponding table column.
             saveOptions.TableContentAlignment = TableContentAlignment.Auto;
-            builder.Document.Save(ArtifactsDir + "auto.md", saveOptions);
+            builder.Document.Save(ArtifactsDir + "AutoTableContentAlignment.md", saveOptions);
             // ExEnd:ExportIntoMarkdownWithTableContentAlignment
         }
     }

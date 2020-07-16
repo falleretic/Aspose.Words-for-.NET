@@ -2,7 +2,7 @@
 using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class Doc2Pdf : TestDataHelper
     {
@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void DisplayDocTitleInWindowTitlebar()
         {
             //ExStart:DisplayDocTitleInWindowTitlebar
-            Document doc = new Document(LoadingSavingDir + "Rendering.doc");
+            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
 
             PdfSaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.DisplayDocTitle = true;
@@ -23,7 +23,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         //ExStart:PdfRenderWarnings
         public static void PdfRenderWarnings()
         {
-            Document doc = new Document(LoadingSavingDir + "PdfRenderWarnings.doc");
+            Document doc = new Document(LoadingSavingDir + "WMF with image.docx");
 
             // Set a SaveOptions object to not emulate raster operations
             PdfSaveOptions saveOptions = new PdfSaveOptions();

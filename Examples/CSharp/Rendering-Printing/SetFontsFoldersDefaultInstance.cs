@@ -1,6 +1,6 @@
 ﻿using Aspose.Words.Fonts;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class SetFontsFoldersDefaultInstance : TestDataHelper
     {

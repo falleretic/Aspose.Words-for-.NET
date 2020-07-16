@@ -1,7 +1,7 @@
-﻿using Aspose.Words.Saving;
-using System.IO;
+﻿using System.IO;
+using Aspose.Words.Saving;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class SaveDocumentToJPEG : TestDataHelper
     {

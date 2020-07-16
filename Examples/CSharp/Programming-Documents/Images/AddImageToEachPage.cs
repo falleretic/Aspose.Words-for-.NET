@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using Aspose.Words.Layout;
 using Aspose.Words.Drawing;
+using Aspose.Words.Layout;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
+namespace Aspose.Words.Examples.CSharp.Images
 {
     class AddImageToEachPage : TestDataHelper
     {

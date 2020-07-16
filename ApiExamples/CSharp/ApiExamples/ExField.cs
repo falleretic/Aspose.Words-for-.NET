@@ -415,7 +415,7 @@ namespace ApiExamples
 
             // Since the field's value is out of date, we can mark it as "Dirty"
             field.IsDirty = true;
-            
+
             using (MemoryStream docStream = new MemoryStream())
             {
                 doc.Save(docStream, SaveFormat.Docx);

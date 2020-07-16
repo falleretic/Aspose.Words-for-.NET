@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using Aspose.Words.Drawing;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
-using System.Diagnostics;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Images
+namespace Aspose.Words.Examples.CSharp.Images
 {
     class CompressImages : TestDataHelper
     {

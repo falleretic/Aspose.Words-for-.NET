@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Fonts;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class SetFontsFolders : TestDataHelper
     {

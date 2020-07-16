@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Joining_and_Appending
+namespace Aspose.Words.Examples.CSharp
 {
     class DifferentPageSetup : TestDataHelper
     {

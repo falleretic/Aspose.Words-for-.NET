@@ -1,8 +1,7 @@
-using Aspose.Words;
 using Aspose.Words.Drawing;
 using Aspose.Words.Fields;
 
-namespace DocumentExplorerExample
+namespace Aspose.Words.Examples.CSharp
 {
     // Classes inherited from the Item class provide specialized representation of particular 
     // Document nodes by overriding virtual methods and properties of the base class.

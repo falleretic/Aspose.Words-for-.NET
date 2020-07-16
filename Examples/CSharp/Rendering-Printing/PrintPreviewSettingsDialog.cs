@@ -1,8 +1,8 @@
-﻿using Aspose.Words.Rendering;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Aspose.Words.Rendering;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     class PrintPreviewSettingsDialog : TestDataHelper
     {

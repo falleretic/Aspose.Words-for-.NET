@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp
 {
@@ -36,6 +40,30 @@ namespace Aspose.Words.Examples.CSharp
             MailMergeDir = new Uri(new Uri(MainDataDir), @"Data/Mail-Merge/").LocalPath;
             RenderingPrintingDir = new Uri(new Uri(MainDataDir), @"Data/Rendering-Printing/").LocalPath;
             ViewersVisualizersDir = new Uri(new Uri(MainDataDir), @"Data/Viewers-Visualizers/").LocalPath;
+        }
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
+            if (!Directory.Exists(ArtifactsDir))
+                //Create new empty directory
+                Directory.CreateDirectory(ArtifactsDir);
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            Console.WriteLine($"Clr: {RuntimeInformation.FrameworkDescription}\n");
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            if (Directory.Exists(ArtifactsDir))
+                //Delete all dirs and files from directory
+                Directory.Delete(ArtifactsDir, true);
         }
 
         /// <summary>

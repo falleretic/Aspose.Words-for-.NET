@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Loading_Saving
+namespace Aspose.Words.Examples.CSharp
 {
     class SendToClientBrowser : TestDataHelper
     {
@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Loading_Saving
         public static void Run()
         {
             //ExStart:SendToClientBrowser
-            Document doc = new Document(LoadingSavingDir + "Document.doc");
+            Document doc = new Document(LoadingSavingDir + "Document.docx");
 
             // If this method overload is causing a compiler error then you are using the Client Profile DLL whereas 
             // The Aspose.Words .NET 2.0 DLL must be used instead

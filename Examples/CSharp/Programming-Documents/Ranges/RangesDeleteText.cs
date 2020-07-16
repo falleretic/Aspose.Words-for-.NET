@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Ranges
+namespace Aspose.Words.Examples.CSharp.Ranges
 {
     class RangesDeleteText : TestDataHelper
     {

@@ -1,9 +1,9 @@
-﻿using Aspose.Words.Drawing;
+﻿using System;
+using Aspose.Words.Drawing;
 using Aspose.Words.Tables;
-using System;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Programming_Documents.Working_with_Tables
+namespace Aspose.Words.Examples.CSharp.Tables
 {
     class TablePosition : TestDataHelper
     {

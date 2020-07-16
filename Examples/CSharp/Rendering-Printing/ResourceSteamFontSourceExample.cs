@@ -1,9 +1,9 @@
-﻿using Aspose.Words.Fonts;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
+using Aspose.Words.Fonts;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
+namespace Aspose.Words.Examples.CSharp
 {
     // ExStart:ResourceSteamFontSourceExample
     class ResourceSteamFontSourceExamples : TestDataHelper
