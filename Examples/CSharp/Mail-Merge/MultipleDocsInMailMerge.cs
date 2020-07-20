@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             // Open the database connection
-            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MailMergeDir + "Customers.mdb";
+            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MailMergeDir + "Mail merge data - Customers.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
 
             try
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp
                 da.Fill(data);
 
                 // Open the template document
-                Document doc = new Document(MailMergeDir + "TestFile.Multiple Pages.doc");
+                Document doc = new Document(MailMergeDir + "Mail merge destinations - Registration complete.docx");
 
                 int counter = 1;
                 // Loop though all records in the data source
@@ -38,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp
                     dstDoc.MailMerge.Execute(row);
 
                     // Save the document
-                    dstDoc.Save(string.Format(ArtifactsDir + "TestFile.Multiple Pages_out {0}.doc", counter++));
+                    dstDoc.Save(string.Format(ArtifactsDir + "MailMerge.MultiplePages_{0}.doc", counter++));
                 }
             }
             catch (Exception ex)

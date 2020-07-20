@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:MailMergeFormFields
-            Document doc = new Document(MailMergeDir + "Template.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Fax.docx");
 
             // Setup mail merge event handler to do the custom work
             doc.MailMerge.FieldMergingCallback = new HandleMergeField();

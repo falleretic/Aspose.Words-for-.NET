@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void CleanupParagraphsWithPunctuationMarks()
         {
             //ExStart:CleanupParagraphsWithPunctuationMarks
-            Document doc = new Document(MailMergeDir + "MailMerge.CleanupPunctuationMarks.docx");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Cleanup punctuation marks.docx");
 
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveEmptyParagraphs;
             doc.MailMerge.CleanupParagraphsWithPunctuationMarks = false;

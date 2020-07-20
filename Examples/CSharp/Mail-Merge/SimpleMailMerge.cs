@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:SimpleMailMerge
-            Document doc = new Document(MailMergeDir + "MailMerge.ExecuteArray.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Complex template.docx");
 
             doc.MailMerge.UseNonMergeFields = true;
 

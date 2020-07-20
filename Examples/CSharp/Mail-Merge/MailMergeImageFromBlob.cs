@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:MailMergeImageFromBlob
-            Document doc = new Document(MailMergeDir + "MailMerge.MergeImage.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destination - Northwind employees.docx");
 
             // Set up the event handler for image fields
             doc.MailMerge.FieldMergingCallback = new HandleMergeImageFieldFromBlob();
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp
             // Close the database
             conn.Close();
             
-            doc.Save(ArtifactsDir + "MailMergeImageFromBlob.docx");
+            doc.Save(ArtifactsDir + "MailMerge.ImageFromBlob.docx");
             //ExEnd:MailMergeImageFromBlob
         }
 

@@ -10,7 +10,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:RemoveRowsFromTable
-            Document doc = new Document(MailMergeDir + "RemoveTableRows.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
+            
             DataSet data = new DataSet();
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions |
                                            MailMergeCleanupOptions.RemoveEmptyTableRows;

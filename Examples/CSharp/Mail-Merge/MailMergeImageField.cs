@@ -10,7 +10,12 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             // ExStart:MailMergeImageField       
-            Document doc = new Document(MailMergeDir + "template.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("{{#foreach example}}");
+            builder.Writeln("{{Image(126pt;126pt):stempel}}");
+            builder.Writeln("{{/foreach example}}");
 
             doc.MailMerge.UseNonMergeFields = true;
             doc.MailMerge.TrimWhitespaces = true;
@@ -24,9 +29,10 @@ namespace Aspose.Words.Examples.CSharp
             doc.MailMerge.FieldMergingCallback = new ImageFieldMergingHandler();
             doc.MailMerge.ExecuteWithRegions(new DataSourceRoot());
 
-            doc.Save(ArtifactsDir + "MailMerge.ImageMailMerge_out.doc");
+            doc.Save(ArtifactsDir + "MailMerge.ImageMailMerge.docx");
             // ExEnd:MailMergeImageField
         }
+
         // ExStart:ImageFieldMergingHandler
         private class ImageFieldMergingHandler : IFieldMergingCallback
         {
@@ -42,12 +48,13 @@ namespace Aspose.Words.Examples.CSharp
                 shape.Height = 126;
                 shape.WrapType = WrapType.Square;
 
-                shape.ImageData.SetImage(DocumentDir + "image.png");
+                shape.ImageData.SetImage(MailMergeDir + "Mail merge image.png");
 
                 args.Shape = shape;
             }
         }
         // ExEnd:ImageFieldMergingHandler
+
         // ExStart:DataSourceRoot
         public class DataSourceRoot : IMailMergeDataSourceRoot
         {

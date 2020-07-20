@@ -11,23 +11,23 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:RemoveUnmergedRegions
-            Document doc = new Document(MailMergeDir + "TestFile Empty.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
 
             // Create a dummy data source containing no data
             DataSet data = new DataSet();
             //ExStart:MailMergeCleanupOptions
             // Set the appropriate mail merge clean up options to remove any unused regions from the document
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions;
-            // Doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveContainingFields;
-            // Doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveStaticFields;
-            // Doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveEmptyParagraphs;           
-            // Doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveUnusedFields;
+            // doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveContainingFields;
+            // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveStaticFields;
+            // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveEmptyParagraphs;           
+            // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveUnusedFields;
             //ExEnd:MailMergeCleanupOptions
             // Execute mail merge which will have no effect as there is no data. However the regions found in the document will be removed
             // Automatically as they are unused
             doc.MailMerge.ExecuteWithRegions(data);
 
-            doc.Save(ArtifactsDir + "RemoveEmptyRegions.docx");
+            doc.Save(ArtifactsDir + "MailMerge.RemoveEmptyRegions.docx");
             //ExEnd:RemoveUnmergedRegions
             Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0,
                 "Error: There are still unused regions remaining in the document");

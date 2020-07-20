@@ -14,9 +14,9 @@ namespace Aspose.Words.Examples.CSharp
 
             // Note: The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml
             // To see examples of how to set up relations manually check the corresponding documentation of this sample
-            pizzaDs.ReadXml(MailMergeDir + "CustomerData.xml");
+            pizzaDs.ReadXml(MailMergeDir + "Mail merge data - CustomerData.xml");
 
-            Document doc = new Document(MailMergeDir + "Invoice Template.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Invoice.docx");
 
             // Trim trailing and leading whitespaces mail merge values
             doc.MailMerge.TrimWhitespaces = false;
@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp
             // Execute the nested mail merge with regions
             doc.MailMerge.ExecuteWithRegions(pizzaDs);
 
-            doc.Save(ArtifactsDir + "NestedMailMerge.docx");
+            doc.Save(ArtifactsDir + "MailMerge.NestedMailMerge.docx");
             //ExEnd:NestedMailMerge
             Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0, "There was a problem with mail merge");
         }

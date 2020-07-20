@@ -10,6 +10,28 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:NestedMailMergeCustom
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.InsertField(" MERGEFIELD TableStart:Customer");
+
+            builder.Write("Full name:\t");
+            builder.InsertField(" MERGEFIELD FullName ");
+            builder.Write("\nAddress:\t");
+            builder.InsertField(" MERGEFIELD Address ");
+            builder.Write("\nOrders:\n");
+
+            builder.InsertField(" MERGEFIELD TableStart:Order");
+
+            builder.Write("\tItem name:\t");
+            builder.InsertField(" MERGEFIELD Name ");
+            builder.Write("\n\tQuantity:\t");
+            builder.InsertField(" MERGEFIELD Quantity ");
+            builder.InsertParagraph();
+
+            builder.InsertField(" MERGEFIELD TableEnd:Order");
+
+            builder.InsertField(" MERGEFIELD TableEnd:Customer");
+
             // Create some data that we will use in the mail merge
             CustomerList customers = new CustomerList();
             customers.Add(new Customer("Thomas Hardy", "120 Hanover Sq., London"));
@@ -20,8 +42,6 @@ namespace Aspose.Words.Examples.CSharp
             customers[0].Orders.Add(new Order("Rugby World Cup Ball", 1));
             customers[1].Orders.Add(new Order("Rugby World Cup Guide", 1));
 
-            Document doc = new Document(MailMergeDir + "NestedMailMerge.CustomDataSource.doc");
-
             // To be able to mail merge from your own data source, it must be wrapped
             // Into an object that implements the IMailMergeDataSource interface
             CustomerMailMergeDataSource customersDataSource = new CustomerMailMergeDataSource(customers);
@@ -29,7 +49,7 @@ namespace Aspose.Words.Examples.CSharp
             // Now you can pass your data source into Aspose.Words
             doc.MailMerge.ExecuteWithRegions(customersDataSource);
 
-            doc.Save(ArtifactsDir + "NestedMailMergeCustom.docx");
+            doc.Save(ArtifactsDir + "MailMerge.NestedMailMergeCustom.docx");
             //ExEnd:NestedMailMergeCustom
         }
 

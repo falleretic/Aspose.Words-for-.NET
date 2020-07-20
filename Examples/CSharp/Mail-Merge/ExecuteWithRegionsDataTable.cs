@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:ExecuteWithRegionsDataTable
-            Document doc = new Document(MailMergeDir + "MailMerge.ExecuteWithRegions.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Orders.docx");
 
             const int orderId = 10444;
 
@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp
             // Execute the mail merge operation.
             doc.MailMerge.ExecuteWithRegions(orderDetailsView);
 
-            doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegions.doc");
+            doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegions.docx");
             //ExEnd:ExecuteWithRegionsDataTable
         }
 

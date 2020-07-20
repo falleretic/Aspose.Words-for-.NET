@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:ProduceMultipleDocuments
-            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MailMergeDir + "Customers.mdb";
+            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MailMergeDir + "Mail merge data - Customers.mdb";
             
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
@@ -22,7 +22,7 @@ namespace Aspose.Words.Examples.CSharp
             da.Fill(data);
 
             // Open the template document
-            Document doc = new Document(MailMergeDir + "TestFile.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
 
             int counter = 1;
             // Loop though all records in the data source
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp
                 dstDoc.MailMerge.Execute(row);
 
                 // Save the document
-                dstDoc.Save(string.Format(ArtifactsDir + "TestFile_out{0}.doc", counter++));
+                dstDoc.Save(string.Format(ArtifactsDir + "MailMerge.ProduceMultipleDocuments_{0}.doc", counter++));
             }
             //ExEnd:ProduceMultipleDocuments
         }

@@ -10,10 +10,10 @@ namespace Aspose.Words.Examples.CSharp
     class ApplyCustomLogicToEmptyRegions : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void ExecuteWithRegionsNestedCustom()
         {
             //ExStart:ApplyCustomLogicToEmptyRegions
-            Document doc = new Document(MailMergeDir + "TestFile.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
 
             // Create a data source which has some data missing
             // This will result in some regions that are merged and some that remain after executing mail merge
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp
             // The handler class must implement the IFieldMergingCallback interface
             ExecuteCustomLogicOnEmptyRegions(doc, new EmptyRegionsHandler());
 
-            doc.Save(ArtifactsDir + "TestFile.CustomLogicEmptyRegions1_out.doc");
+            doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegionsNestedCustom_1.docx");
 
             // Reload the original merged document
             doc = mergedDoc.Clone();
@@ -41,7 +41,7 @@ namespace Aspose.Words.Examples.CSharp
             // Apply different logic to unused regions this time
             ExecuteCustomLogicOnEmptyRegions(doc, new EmptyRegionsHandlerMergeTable());
 
-            doc.Save(ArtifactsDir + "TestFile.CustomLogicEmptyRegions2_out.doc");
+            doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegionsNestedCustom_2.docx");
             //ExEnd:ApplyCustomLogicToEmptyRegions
             
             // Reload the original merged document
@@ -55,7 +55,7 @@ namespace Aspose.Words.Examples.CSharp
             ExecuteCustomLogicOnEmptyRegions(doc, new EmptyRegionsHandler(), regions);
             //ExEnd:ContactDetails
 
-            doc.Save(ArtifactsDir + "TestFile.CustomLogicEmptyRegions3_out.doc");
+            doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegionsNestedCustom_3.docx");
         }
 
         //ExStart:CreateDataSourceFromDocumentRegions

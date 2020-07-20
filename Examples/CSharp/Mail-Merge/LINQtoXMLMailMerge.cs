@@ -58,7 +58,7 @@ namespace Aspose.Words.Examples.CSharp
             MyMailMergeDataSource orderItemsDataSource = new MyMailMergeDataSource(orderItems, "Items");
             MyMailMergeDataSource deliveryDataSource = new MyMailMergeDataSource(deliveryAddress);
             //ExStart:LINQToXMLMailMerge
-            Document doc = new Document(MailMergeDir + "TestFile.LINQ.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - LINQ.docx");
 
             // Fill the document with data from our data sources
             // Using mail merge regions for populating the order items table is required
@@ -68,7 +68,7 @@ namespace Aspose.Words.Examples.CSharp
             // The standard mail merge without regions is used for the delivery address
             doc.MailMerge.Execute(deliveryDataSource);
 
-            doc.Save(ArtifactsDir + "TestFile.LINQ.docx");
+            doc.Save(ArtifactsDir + "MailMerge.LINQtoXML.docx");
             //ExEnd:LINQToXMLMailMerge
 #else
             throw new InvalidOperationException("This example requires the .NET Framework v3.5 or above to run." +

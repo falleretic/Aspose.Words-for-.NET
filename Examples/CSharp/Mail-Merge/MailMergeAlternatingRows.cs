@@ -11,10 +11,10 @@ namespace Aspose.Words.Examples.CSharp
     class MailMergeAlternatingRows : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void AlternatingRows()
         {
             //ExStart:MailMergeAlternatingRows
-            Document doc = new Document(MailMergeDir + "MailMerge.AlternatingRows.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destination - Northwind suppliers.docx");
 
             // Add a handler for the MergeField event
             doc.MailMerge.FieldMergingCallback = new HandleMergeFieldAlternatingRows();

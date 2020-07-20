@@ -10,9 +10,9 @@ namespace Aspose.Words.Examples.CSharp
         {
             //ExStart:XMLMailMerge
             DataSet customersDs = new DataSet();
-            customersDs.ReadXml(MailMergeDir + "Customers.xml");
+            customersDs.ReadXml(MailMergeDir + "Mail merge data - Customers.xml");
 
-            Document doc = new Document(MailMergeDir + "TestFile XML.doc");
+            Document doc = new Document(MailMergeDir + "Mail merge destinations - Registration complete.docx");
             // Execute mail merge to fill the template with data from XML using DataTable
             doc.MailMerge.Execute(customersDs.Tables["Customer"]);
 
