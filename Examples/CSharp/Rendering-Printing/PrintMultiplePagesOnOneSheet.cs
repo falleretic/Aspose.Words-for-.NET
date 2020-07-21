@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:PrintMultiplePagesOnOneSheet
-            Document doc = new Document(MailMergeDir + "TestFile.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             
             //ExStart:PrintDialogSettings
             PrintDialog printDlg = new PrintDialog();
@@ -41,7 +41,7 @@ namespace Aspose.Words.Examples.CSharp
             // Specify additional parameters of the Print Preview dialog
             previewDlg.ShowInTaskbar = true;
             previewDlg.MinimizeBox = true;
-            previewDlg.Document.DocumentName = "TestFile.doc";
+            previewDlg.Document.DocumentName = "Rendering.docx";
             previewDlg.WindowState = FormWindowState.Maximized;
             // Show appropriately configured Print Preview dialog
             previewDlg.ShowDialog();

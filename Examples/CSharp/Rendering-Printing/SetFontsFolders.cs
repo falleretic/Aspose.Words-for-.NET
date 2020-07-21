@@ -14,8 +14,8 @@ namespace Aspose.Words.Examples.CSharp
                 new SystemFontSource(), new FolderFontSource("C:\\MyFonts\\", true)
             });
 
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
-            doc.Save(ArtifactsDir + "Rendering.SetFontsFolders_out.pdf");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
             // ExEnd:SetFontsFolders           
         }
     }

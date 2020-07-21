@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document doc = new Document(RenderingPrintingDir + "TestFile.docx");
+            Document doc = new Document(RenderingPrintingDir + "Document layout.docx");
 
             // This sample introduces the RenderedDocument class and other related classes which provide an API wrapper for 
             // The LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API

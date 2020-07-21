@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             // FontSettings.SetFontSources instead
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
                 { new SystemFontSource(), new ResourceSteamFontSource() });

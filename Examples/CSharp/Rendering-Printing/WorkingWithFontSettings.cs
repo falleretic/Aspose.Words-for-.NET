@@ -13,11 +13,11 @@ namespace Aspose.Words.Examples.CSharp
             // init font settings
             Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions);
+            Document doc1 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions);
 
             Words.LoadOptions loadOptions2 = new Words.LoadOptions();
             loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions2);
+            Document doc2 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions2);
             // ExEnd:FontSettingsWithLoadOption   
         }
 
@@ -31,18 +31,18 @@ namespace Aspose.Words.Examples.CSharp
             fontSettings.SetFontsSources(new FontSourceBase[]
              {
                  new SystemFontSource(),
-                 new FolderFontSource("/home/user/MyFonts", true)
+                 new FolderFontSource("C:\\MyFonts\\", true)
              });
             // ExEnd:FontSettingsFontSource
 
             // init font settings
             Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions);
+            Document doc1 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions);
 
             Words.LoadOptions loadOptions2 = new Words.LoadOptions();
             loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(RenderingPrintingDir + "MyDocument.docx", loadOptions2);
+            Document doc2 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions2);
         }
     }
 }

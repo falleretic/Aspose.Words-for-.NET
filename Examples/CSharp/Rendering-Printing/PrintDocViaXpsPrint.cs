@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:PrintDocViaXpsPrint
-            Document document = new Document(MailMergeDir + "TestFile.doc");
+            Document document = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // Specify the name of the printer you want to print to
             const string printerName = @"\\COMPANY\Brother MFC-885CW Printer";

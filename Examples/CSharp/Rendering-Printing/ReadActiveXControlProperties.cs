@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document doc = new Document(RenderingPrintingDir + "ActiveXControl.docx");
+            Document doc = new Document(RenderingPrintingDir + "ActiveX controls.docx");
 
             string properties = "";
             // Retrieve shapes from the document

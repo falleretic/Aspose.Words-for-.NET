@@ -9,7 +9,10 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document doc = new Document(QuickStartDir + "ReplaceSimple.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Hello _CustomerName_,");
 
             // Check the text of the document
             Console.WriteLine("Original document text: " + doc.Range.Text);
@@ -21,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp
             Console.WriteLine("Document text after replace: " + doc.Range.Text);
 
             // Save the modified document
-            doc.Save(ArtifactsDir + "ReplaceSimple.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.Replace.docx");
         }
     }
 }

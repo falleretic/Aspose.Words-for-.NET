@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:PrintProgressDialog
             // Load the documents which store the shapes we want to render
-            Document doc = new Document(RenderingPrintingDir + "TestFile RenderShape.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             // Obtain the settings of the default printer
             System.Drawing.Printing.PrinterSettings settings = new System.Drawing.Printing.PrinterSettings();
 

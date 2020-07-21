@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             // ExStart:PrintPreviewSettingsDialog
-            Document doc = new Document(RenderingPrintingDir + "TestFile.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             PrintDialog printDlg = new PrintDialog();
 

@@ -9,7 +9,12 @@ namespace Aspose.Words.Examples.CSharp
         public static void EscapeUriInPdf()
         {
             //ExStart:EscapeUriInPdf
-            Document doc = new Document(RenderingPrintingDir + "EscapeUri.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.InsertHyperlink("Testlink", "https://www.google.com/search?q=%2Fthe%20test", false);
+            builder.Writeln();
+            builder.InsertHyperlink("https://www.google.com/search?q=%2Fthe%20test", "https://www.google.com/search?q=%2Fthe%20test", false);
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.EscapeUri = false;
@@ -22,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ExportHeaderFooterBookmarks()
         {
             //ExStart:ExportHeaderFooterBookmarks
-            Document doc = new Document(RenderingPrintingDir + "TestFile.docx");
+            Document doc = new Document(RenderingPrintingDir + "Bookmarks in headers and footers.docx");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.OutlineOptions.DefaultBookmarksOutlineLevel = 1;
@@ -36,7 +41,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ScaleWmfFontsToMetafileSize()
         {
             //ExStart:ScaleWmfFontsToMetafileSize
-            Document doc = new Document(RenderingPrintingDir + "MetafileRendering.docx");
+            Document doc = new Document(RenderingPrintingDir + "WMF with text.docx");
 
             MetafileRenderingOptions metafileRenderingOptions = new MetafileRenderingOptions
             {
@@ -55,7 +60,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AdditionalTextPositioning()
         {
             //ExStart:AdditionalTextPositioning
-            Document doc = new Document(RenderingPrintingDir + "TestFile.docx");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.AdditionalTextPositioning = true;
@@ -68,7 +73,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ConversionToPdf17()
         {
             //ExStart:ConversionToPDF17
-            Document originalDoc = new Document(ChartsDir + "Document.docx");
+            Document originalDoc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // Provide PDFSaveOption compliance to PDF17
             // or just convert without SaveOptions
@@ -84,7 +89,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:DownsamplingImages
             // Open a document that contains images 
-            Document doc = new Document(ChartsDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // If we want to convert the document to .pdf, we can use a SaveOptions implementation to customize the saving process
             PdfSaveOptions options = new PdfSaveOptions();
@@ -106,7 +111,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:SaveToPdfWithOutline
             // Open a document
-            Document doc = new Document(ChartsDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             PdfSaveOptions options = new PdfSaveOptions();
             options.OutlineOptions.HeadingsOutlineLevels = 3;
@@ -140,7 +145,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:ExportDocumentStructure
             // Open a document
-            Document doc = new Document(ChartsDir + "Paragraphs.docx");
+            Document doc = new Document(RenderingPrintingDir + "Paragraphs.docx");
 
             // Create a PdfSaveOptions object and configure it to preserve the logical structure that's in the input document
             // The file size will be increased and the structure will be visible in the "Content" navigation pane
@@ -157,7 +162,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:PdfImageComppression
             // Open a document
-            Document doc = new Document(ChartsDir + "SaveOptions.PdfImageCompression.rtf");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             PdfSaveOptions options = new PdfSaveOptions
             {
@@ -186,7 +191,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:UpdateIfLastPrinted
             // Open a document
-            Document doc = new Document(ChartsDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             SaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.UpdateLastPrintedProperty = false;
@@ -200,7 +205,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:EffectsRendering
             // Open a document
-            Document doc = new Document(ChartsDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             SaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.Dml3DEffectsRenderingMode = Dml3DEffectsRenderingMode.Advanced;

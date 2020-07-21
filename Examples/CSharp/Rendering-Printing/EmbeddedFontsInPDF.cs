@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void EmbeddedAllFonts()
         {
             //ExStart:EmbeddAllFonts
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // Aspose.Words embeds full fonts by default when EmbedFullFonts is set to true. The property below can be changed
             // Each time a document is rendered
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void EmbeddedSubsetFonts()
         {
             //ExStart:EmbeddSubsetFonts
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             
             // To subset fonts in the output PDF document, simply create new PdfSaveOptions and set EmbedFullFonts to false
             PdfSaveOptions options = new PdfSaveOptions();
@@ -42,7 +42,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:SetFontEmbeddingMode
             // Load the document to render.
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // To disable embedding standard windows font use the PdfSaveOptions and set the EmbedStandardWindowsFonts property to false.
             PdfSaveOptions options = new PdfSaveOptions();

@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:SetFontsFoldersSystemAndCustomFolder
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             
             FontSettings fontSettings = new FontSettings();
             // Retrieve the array of environment-dependent font sources that are searched by default. For example this will contain a "Windows\Fonts\" source on a Windows machines

@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void CachePrinterSettings()
         {
             //ExStart:CachePrinterSettings
-            Document doc = new Document(MailMergeDir + "TestFile.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // Build layout
             doc.UpdatePageLayout();

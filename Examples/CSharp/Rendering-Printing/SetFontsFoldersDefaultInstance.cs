@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
             FontSettings.DefaultInstance.SetFontsFolder("C:\\MyFonts\\", true);
             // ExEnd:SetFontsFoldersDefaultInstance           
 
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
         }
     }

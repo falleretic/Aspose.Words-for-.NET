@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             // ExStart:SaveDocumentToJPEG
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             // Save as a JPEG image file with default options
             doc.Save(ArtifactsDir + "Rendering.JpegDefaultOptions.jpg");
 

@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AvoidEmbeddingCoreFonts()
         {
             //ExStart:AvoidEmbeddingCoreFonts
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             // To disable embedding of core fonts and substitute PDF type 1 fonts set UseCoreFonts to true
             PdfSaveOptions options = new PdfSaveOptions();
@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void SkipEmbeddedArialAndTimesRomanFonts()
         {
             //ExStart:SkipEmbeddedArialAndTimesRomanFonts
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             
             // To subset fonts in the output PDF document, simply create new PdfSaveOptions and set EmbedFullFonts to false
             // To disable embedding standard windows font use the PdfSaveOptions and set the EmbedStandardWindowsFonts property to false

@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp
             });
             // ExEnd:SetFontsFoldersWithPriority           
 
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
             doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
         }
     }

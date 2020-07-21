@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:SetTrueTypeFontsFolder
-            Document doc = new Document(RenderingPrintingDir + "Rendering.doc");
+            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
             // Note that this setting will override any default font sources that are being searched by default. Now only these folders will be searched for
