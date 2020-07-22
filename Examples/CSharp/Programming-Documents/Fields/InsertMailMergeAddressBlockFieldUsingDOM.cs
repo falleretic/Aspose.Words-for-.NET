@@ -9,11 +9,11 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:InsertMailMergeAddressBlockFieldUsingDOM
-            Document doc = new Document(FieldsDir + "in.doc");
+            Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Get paragraph you want to append this merge field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // Move cursor to this paragraph
             builder.MoveTo(para);

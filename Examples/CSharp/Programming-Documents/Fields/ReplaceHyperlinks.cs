@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:ReplaceHyperlinks
-            Document doc = new Document(HyperlinkDir + "ReplaceHyperlinks.doc");
+            Document doc = new Document(FieldsDir + "Hyperlinks.docx");
 
             // Hyperlinks in a Word documents are fields
             foreach (Field field in doc.Range.Fields)

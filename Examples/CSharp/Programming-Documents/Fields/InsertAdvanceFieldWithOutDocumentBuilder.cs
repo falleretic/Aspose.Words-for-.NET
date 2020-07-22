@@ -9,9 +9,9 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:InsertAdvanceFieldWithOutDocumentBuilder
-            Document doc = new Document(FieldsDir + "in.doc");
+            Document doc = new Document();
             // Get paragraph you want to append this Advance field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert an Advance field like this:
             // { ADVANCE \\d 10 \\l 10 \\r -3.3 \\u 0 \\x 100 \\y 100 }

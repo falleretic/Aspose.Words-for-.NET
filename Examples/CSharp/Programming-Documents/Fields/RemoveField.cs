@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:RemoveField
-            Document doc = new Document(FieldsDir + "Field.RemoveField.doc");
+            Document doc = new Document(FieldsDir + "Various fields.docx");
             
             Field field = doc.Range.Fields[0];
             // Calling this method completely removes the field from the document

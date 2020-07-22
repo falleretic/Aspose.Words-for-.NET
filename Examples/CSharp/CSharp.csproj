@@ -196,7 +196,6 @@
     <Compile Include="Programming-Documents\Fields\EvaluateIFCondition.cs" />
     <Compile Include="Programming-Documents\Fields\FieldDisplayResults.cs" />
     <Compile Include="Programming-Documents\Fields\FieldUpdateCulture.cs" />
-    <Compile Include="Programming-Documents\Fields\FieldUpdateCultureProvider.cs" />
     <Compile Include="Programming-Documents\Fields\GetFieldNames.cs" />
     <Compile Include="Programming-Documents\Fields\InsertFieldNone.cs" />
     <Compile Include="Programming-Documents\Fields\InsertIncludeFieldWithoutDocumentBuilder.cs" />
@@ -213,7 +212,6 @@
     <Compile Include="Programming-Documents\Fields\InsertMergeFieldUsingDOM.cs" />
     <Compile Include="Programming-Documents\Fields\InsertField.cs" />
     <Compile Include="Programming-Documents\Fields\UseOfficeMathProperties.cs" />
-    <Compile Include="Programming-Documents\Fields\UpdateDocFields.cs" />
     <Compile Include="Programming-Documents\Fields\SpecifylocaleAtFieldlevel.cs" />
     <Compile Include="Programming-Documents\Find-Replace\FindReplaceUsingMetaCharacters.cs" />
     <Compile Include="Programming-Documents\Find-Replace\IgnoreText.cs" />
@@ -283,7 +281,6 @@
     <Compile Include="Programming-Documents\Fields\ConvertFieldsInBody.cs" />
     <Compile Include="Programming-Documents\Fields\ConvertFieldsInDocument.cs" />
     <Compile Include="Programming-Documents\Fields\ConvertFieldsInParagraph.cs" />
-    <Compile Include="Programming-Documents\Fields\FieldsHelper.cs" />
     <Compile Include="Programming-Documents\Fields\InsertNestedFields.cs" />
     <Compile Include="Programming-Documents\Fields\RemoveField.cs" />
     <Compile Include="Programming-Documents\Images\AddImageToEachPage.cs" />

@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:RenameMergeFields
-            Document doc = new Document(FieldsDir + "RenameMergeFields.doc");
+            Document doc = new Document(FieldsDir + "Merge fields.docx");
 
             // Select all field start nodes so we can find the merge fields
             NodeCollection fieldStarts = doc.GetChildNodes(NodeType.FieldStart, true);

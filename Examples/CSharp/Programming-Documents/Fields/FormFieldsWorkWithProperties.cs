@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:FormFieldsWorkWithProperties
-            Document doc = new Document(FieldsDir + "FormFields.doc");
+            Document doc = new Document(FieldsDir + "Form fields.docx");
             FormField formField = doc.Range.FormFields[3];
 
             if (formField.Type.Equals(FieldType.FieldFormTextInput))

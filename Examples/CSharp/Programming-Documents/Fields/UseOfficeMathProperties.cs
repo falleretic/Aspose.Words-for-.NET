@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:SpecifylocaleAtFieldlevel
-            Document doc = new Document(FieldsDir + "MathEquations.docx");
+            Document doc = new Document(FieldsDir + "Office math.docx");
             OfficeMath officeMath = (OfficeMath) doc.GetChild(NodeType.OfficeMath, 0, true);
 
             // Gets/sets Office Math display format type which represents whether an equation is displayed inline with the text or displayed on its own line

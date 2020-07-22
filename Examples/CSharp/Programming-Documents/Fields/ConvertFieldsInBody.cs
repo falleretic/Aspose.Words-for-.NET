@@ -1,4 +1,5 @@
-﻿using Aspose.Words.Fields;
+﻿using System.Linq;
+using Aspose.Words.Fields;
 using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Fields
@@ -9,10 +10,10 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:ConvertFieldsInBody
-            Document doc = new Document(FieldsDir + "TestFile.doc");
+            Document doc = new Document(FieldsDir + "Linked fields.docx");
 
             // Pass the appropriate parameters to convert PAGE fields encountered to static text only in the body of the first section
-            FieldsHelper.ConvertFieldsToStaticText(doc.FirstSection.Body, FieldType.FieldPage);
+            doc.FirstSection.Body.Range.Fields.Where(f => f.Type == FieldType.FieldPage).ToList().ForEach(f => f.Unlink());
 
             // Save the document with fields transformed to disk
             doc.Save(ArtifactsDir + "TestFile.doc");

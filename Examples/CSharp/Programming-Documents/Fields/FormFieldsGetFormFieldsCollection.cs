@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:FormFieldsGetFormFieldsCollection
-            Document doc = new Document(FieldsDir + "FormFields.doc");
+            Document doc = new Document(FieldsDir + "Form fields.docx");
             FormFieldCollection formFields = doc.Range.FormFields;
             //ExEnd:FormFieldsGetFormFieldsCollection
         }

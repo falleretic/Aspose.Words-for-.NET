@@ -9,9 +9,9 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             // ExStart:InsertTOAFieldWithoutDocumentBuilder
-            Document doc = new Document(FieldsDir + "in.doc");
+            Document doc = new Document();
             // Get paragraph you want to append this TOA field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert TA and TOA fields like this:
             // { TA  \c 1 \l "Value 0" }

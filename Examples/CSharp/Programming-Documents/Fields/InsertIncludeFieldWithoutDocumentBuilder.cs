@@ -9,9 +9,9 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:InsertFieldIncludeTextWithoutDocumentBuilder
-            Document doc = new Document(FieldsDir + "in.doc");
+            Document doc = new Document();
             // Get paragraph you want to append this INCLUDETEXT field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert an INCLUDETEXT field like this:
             // { INCLUDETEXT  "file path" }

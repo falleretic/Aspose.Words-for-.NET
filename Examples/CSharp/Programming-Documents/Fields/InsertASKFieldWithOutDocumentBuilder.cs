@@ -9,9 +9,9 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void Run()
         {
             //ExStart:InsertASKFieldWithOutDocumentBuilder
-            Document doc = new Document(FieldsDir + "in.doc");
+            Document doc = new Document();
             // Get paragraph you want to append this Ask field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[1];
+            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert an Ask field like this:
             // { ASK \"Test 1\" Test2 \\d Test3 \\o }
