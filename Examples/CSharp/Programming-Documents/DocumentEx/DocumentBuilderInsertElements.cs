@@ -123,7 +123,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             builder.Writeln("Heading 3.2");
             builder.Writeln("Heading 3.3");
 
+            // The newly inserted table of contents will be initially empty
+            // It needs to be populated by updating the fields in the document
+            //ExStart:UpdateFields
             doc.UpdateFields();
+            //ExEnd:UpdateFields
 
             doc.Save(ArtifactsDir + "DocumentBuilderInsertTableOfContents.doc");
             //ExEnd:DocumentBuilderInsertTableOfContents
@@ -148,7 +152,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
             
-            byte[] bs = File.ReadAllBytes(DocumentDir + "input.zip");
+            byte[] bs = File.ReadAllBytes(DocumentDir + "Zip file.zip");
             using (Stream stream = new MemoryStream(bs))
             {
                 Shape shape = builder.InsertOleObject(stream, "Package", true, null);

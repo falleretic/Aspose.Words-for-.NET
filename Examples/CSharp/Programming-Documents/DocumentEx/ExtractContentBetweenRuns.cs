@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentBetweenRuns
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Retrieve a paragraph from the first section
             Paragraph para = (Paragraph) doc.GetChild(NodeType.Paragraph, 7, true);

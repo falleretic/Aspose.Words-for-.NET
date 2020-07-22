@@ -12,11 +12,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:GenerateACustomBarCodeImage
-            Document doc = new Document(DocumentDir + "GenerateACustomBarCodeImage.docx");
+            Document doc = new Document(DocumentDir + "Field sample - BARCODE.docx");
 
             // Set custom barcode generator
             doc.FieldOptions.BarcodeGenerator = new CustomBarcodeGenerator();
-            doc.Save(DocumentDir + "GenerateACustomBarCodeImage.pdf");
+            doc.Save(ArtifactsDir + "GenerateACustomBarCodeImage.pdf");
             //ExEnd:GenerateACustomBarCodeImage
         }
     }

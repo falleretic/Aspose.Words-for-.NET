@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Protect()
         {
             //ExStart:ProtectDocument
-            Document doc = new Document(DocumentDir + "ProtectDocument.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
             doc.Protect(ProtectionType.AllowOnlyFormFields, "password");
             //ExEnd:ProtectDocument
         }
@@ -23,7 +23,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void UnProtect()
         {
             // ExStart:UnProtectDocument
-            Document doc = new Document(DocumentDir + "ProtectDocument.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
             doc.Unprotect();
             // ExEnd:UnProtectDocument
         }
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GetProtectionType()
         {
             //ExStart:GetProtectionType
-            Document doc = new Document(DocumentDir + "ProtectDocument.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
             ProtectionType protectionType = doc.ProtectionType;
             //ExEnd:GetProtectionType
         }

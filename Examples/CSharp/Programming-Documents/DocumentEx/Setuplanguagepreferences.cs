@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             // Set language preferences that will be used when document is loading.
             loadOptions.LanguagePreferences.AddEditingLanguage(EditingLanguage.Japanese);
 
-            Document doc = new Document(DocumentDir + "languagepreferences.docx", loadOptions);
+            Document doc = new Document(DocumentDir + "No default editing language.docx", loadOptions);
 
             int localeIdFarEast = doc.Styles.DefaultFont.LocaleIdFarEast;
             Console.WriteLine(
@@ -30,7 +30,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.LanguagePreferences.DefaultEditingLanguage = EditingLanguage.Russian;
 
-            Document doc = new Document(DocumentDir + @"languagepreferences.docx", loadOptions);
+            Document doc = new Document(DocumentDir + "No default editing language.docx", loadOptions);
 
             int localeId = doc.Styles.DefaultFont.LocaleId;
             Console.WriteLine(

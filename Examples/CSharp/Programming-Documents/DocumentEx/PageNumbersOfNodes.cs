@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         [Test]
         public static void Run()
         {
-            Document doc = new Document(DocumentDir + "TestFile.docx");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Create and attach collector before the document before page layout is built
             LayoutCollector layoutCollector = new LayoutCollector(doc);

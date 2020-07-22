@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:DocumentBuilderCursorPosition
             // Shows how to access the current node in a document builder
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             Node curNode = builder.CurrentNode;
@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToNode()
         {
             //ExStart:DocumentBuilderMoveToNode
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             builder.MoveTo(doc.FirstSection.Body.LastParagraph);
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToDocumentStartEnd()
         {
             //ExStart:DocumentBuilderMoveToDocumentStartEnd
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             builder.MoveToDocumentEnd();
@@ -50,12 +50,15 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToSection()
         {
             //ExStart:DocumentBuilderMoveToSection
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            // Create a blank document and append a section to it, giving it two sections
+            Document doc = new Document();
+            doc.AppendChild(new Section(doc));
+
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Parameters are 0-index. Moves to third section
-            builder.MoveToSection(2);
-            builder.Writeln("This is the 3rd section.");
+            builder.MoveToSection(1);
+            builder.Writeln("This is the 2rd section.");
             //ExEnd:DocumentBuilderMoveToSection               
         }
 
@@ -95,7 +98,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToParagraph()
         {
             //ExStart:DocumentBuilderMoveToParagraph
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document(DocumentDir + "Paragraphs.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Parameters are 0-index. Moves to third paragraph
@@ -108,11 +111,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToTableCell()
         {
             //ExStart:DocumentBuilderMoveToTableCell
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document(DocumentDir + "Tables.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // All parameters are 0-index. Moves to the 2nd table, 3rd row, 5th cell
-            builder.MoveToCell(1, 2, 4, 0);
+            // Move the builder to row 3, cell 4 of the first table
+            builder.MoveToCell(0, 2, 3, 0);
             builder.Writeln("Hello World!");
             //ExEnd:DocumentBuilderMoveToTableCell               
         }
@@ -121,10 +124,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToBookmark()
         {
             //ExStart:DocumentBuilderMoveToBookmark
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document(DocumentDir + "Bookmarks.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            builder.MoveToBookmark("CoolBookmark");
+            builder.MoveToBookmark("MyBookmark1");
             builder.Writeln("This is a very cool bookmark.");
             //ExEnd:DocumentBuilderMoveToBookmark               
         }
@@ -133,10 +136,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToBookmarkEnd()
         {
             //ExStart:DocumentBuilderMoveToBookmarkEnd
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document(DocumentDir + "Bookmarks.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            builder.MoveToBookmark("CoolBookmark", false, true);
+            builder.MoveToBookmark("MyBookmark1", false, true);
             builder.Writeln("This is a very cool bookmark.");
             //ExEnd:DocumentBuilderMoveToBookmarkEnd              
         }
@@ -145,10 +148,13 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MoveToMergeField()
         {
             //ExStart:DocumentBuilderMoveToMergeField
-            Document doc = new Document(DocumentDir + "DocumentBuilder.doc");
+            Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.InsertField(@"MERGEFIELD MyMergeField1 \* MERGEFORMAT");
+            builder.InsertField(@"MERGEFIELD MyMergeField2 \* MERGEFORMAT");
 
-            builder.MoveToMergeField("NiceMergeField");
+            builder.MoveToMergeField("MyMergeField1");
             builder.Writeln("This is a very nice merge field.");
             //ExEnd:DocumentBuilderMoveToMergeField              
         }

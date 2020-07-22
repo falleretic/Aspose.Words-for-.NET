@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentBetweenParagraphs
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Gather the nodes
             // The GetChild method uses 0-based index

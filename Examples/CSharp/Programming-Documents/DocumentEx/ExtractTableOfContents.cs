@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         [Test]
         public static void Run()
         {
-            Document doc = new Document(DocumentDir + "TOC.doc");
+            Document doc = new Document(DocumentDir + "Table of contents.docx");
 
             foreach (Field field in doc.Range.Fields)
             {

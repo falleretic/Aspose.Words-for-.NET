@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SetCurrentStateOfCheckBox
             // Open an existing document
-            Document doc = new Document(DocumentDir + "CheckBoxTypeContentControl.docx");
+            Document doc = new Document(DocumentDir + "Structured document tags.docx");
             
             // Get the first content control from the document
             Markup.StructuredDocumentTag sdtCheckBox =
@@ -30,7 +30,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:ModifyContentControls
             // Open an existing document
-            Document doc = new Document(DocumentDir + "CheckBoxTypeContentControl.docx");
+            Document doc = new Document(DocumentDir + "Structured document tags.docx");
 
             foreach (Markup.StructuredDocumentTag sdt in doc.GetChildNodes(NodeType.StructuredDocumentTag, true))
             {

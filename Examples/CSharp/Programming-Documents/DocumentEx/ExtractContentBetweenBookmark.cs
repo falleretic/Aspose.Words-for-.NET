@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentBetweenBookmark
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             Section section = doc.Sections[0];
             section.PageSetup.LeftMargin = 70.85;

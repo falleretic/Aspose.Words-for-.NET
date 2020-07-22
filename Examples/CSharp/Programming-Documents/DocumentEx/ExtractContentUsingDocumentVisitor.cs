@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentUsingDocumentVisitor
-            Document doc = new Document(DocumentDir + "Visitor.ToText.doc");
+            Document doc = new Document(DocumentDir + "Absolute position tab.docx");
 
             // Create an object that inherits from the DocumentVisitor class
             MyDocToTxtWriter myConverter = new MyDocToTxtWriter();

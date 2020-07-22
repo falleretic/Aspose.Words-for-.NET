@@ -64,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AddRemoveCommentReply()
         {
             //ExStart:AddRemoveCommentReply
-            Document doc = new Document(CommentsDir + "TestFile.doc");
+            Document doc = new Document(CommentsDir + "Comments.docx");
 
             Comment comment = (Comment) doc.GetChild(NodeType.Comment, 0, true);
             // Remove the reply
@@ -80,7 +80,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ProcessComments()
         {
             // ExStart:ProcessComments
-            Document doc = new Document(CommentsDir + "TestFile.doc");
+            Document doc = new Document(CommentsDir + "Comments.docx");
 
             // Extract the information about the comments of all the authors
             foreach (string comment in ExtractComments(doc))

@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentBetweenCommentRange
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // This is a quick way of getting both comment nodes
             // Your code should have a proper method of retrieving each corresponding start and end node

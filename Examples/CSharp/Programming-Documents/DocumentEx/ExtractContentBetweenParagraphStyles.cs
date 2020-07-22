@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentBetweenParagraphStyles
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Gather a list of the paragraphs using the respective heading styles
             ArrayList parasStyleHeading1 = Common.ParagraphsByStyleName(doc, "Heading 1");

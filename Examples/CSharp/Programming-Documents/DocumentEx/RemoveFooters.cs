@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:RemoveFooters
-            Document doc = new Document(DocumentDir + "HeaderFooter.RemoveFooters.doc");
+            Document doc = new Document(DocumentDir + "Header and footer types.docx");
 
             foreach (Section section in doc)
             {
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                 footer?.Remove();
             }
 
-            doc.Save(ArtifactsDir + "HeaderFooter.RemoveFooters.doc");
+            doc.Save(ArtifactsDir + "HeaderFooter.RemoveFooters.docx");
             //ExEnd:RemoveFooters
         }
     }

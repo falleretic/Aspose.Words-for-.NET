@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ExtractContentUsingField
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Use a document builder to retrieve the field start of a merge field
             DocumentBuilder builder = new DocumentBuilder(doc);

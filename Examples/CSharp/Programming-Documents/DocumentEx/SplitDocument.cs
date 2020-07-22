@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentBySections
             // Open a Word document
-            Document doc = new Document(DocumentDir + "TestFile (Split).docx");
+            Document doc = new Document(DocumentDir + "Big document.docx");
 
             for (int i = 0; i < doc.Sections.Count; i++)
             {
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentPageByPage
             // Open a Word document
-            Document doc = new Document(DocumentDir + "TestFile (Split).docx");
+            Document doc = new Document(DocumentDir + "Big document.docx");
 
             // Split nodes in the document into separate pages
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);
@@ -56,10 +56,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void MergeDocuments()
         {
             // Find documents using for merge
-            FileSystemInfo[] documentPaths = new DirectoryInfo(DocumentDir)
+            FileSystemInfo[] documentPaths = new DirectoryInfo(ArtifactsDir)
                 .GetFileSystemInfos("SplitDocumentPageByPageOut_*.docx").OrderBy(f => f.CreationTime).ToArray();
             string sourceDocumentPath =
-                Directory.GetFiles(DocumentDir, "SplitDocumentPageByPageOut_1.docx", SearchOption.TopDirectoryOnly)[0];
+                Directory.GetFiles(ArtifactsDir, "SplitDocumentPageByPageOut_1.docx", SearchOption.TopDirectoryOnly)[0];
 
             // Open the first part of the resulting document
             Document sourceDoc = new Document(sourceDocumentPath);
@@ -89,7 +89,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentByPageRange
             // Open a Word document
-            Document doc = new Document(DocumentDir + "TestFile (Split).docx");
+            Document doc = new Document(DocumentDir + "Big document.docx");
  
             // Split nodes in the document into separate pages
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);

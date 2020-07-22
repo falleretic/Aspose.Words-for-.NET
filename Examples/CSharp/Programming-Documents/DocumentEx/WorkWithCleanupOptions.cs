@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CleanupUnusedStylesandLists()
         {
             // ExStart:CleanupUnusedStylesandLists
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             CleanupOptions cleanupOptions = new CleanupOptions();
             cleanupOptions.UnusedLists = false;
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CleanupDuplicateStyle()
         {
             // ExStart:CleanupDuplicateStyle
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             CleanupOptions options = new CleanupOptions();
             options.DuplicateStyle = true;

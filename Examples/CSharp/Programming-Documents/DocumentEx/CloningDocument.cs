@@ -8,10 +8,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:CloningDocument
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             Document clone = doc.Clone();
-            clone.Save(ArtifactsDir + "TestFile_clone.doc");
+            clone.Save(ArtifactsDir + "CloningDocument.doc");
             //ExEnd:CloningDocument
         }
     }

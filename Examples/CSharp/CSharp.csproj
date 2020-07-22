@@ -172,7 +172,6 @@
     <Compile Include="Programming-Documents\DocumentEx\RemoveTOCFromDocument.cs" />
     <Compile Include="Programming-Documents\DocumentEx\DocumentBuilderInsertTCFieldsAtText.cs" />
     <Compile Include="Programming-Documents\DocumentEx\DocumentBuilderInsertTCField.cs" />
-    <Compile Include="Programming-Documents\DocumentEx\DocumentBuilderInsertTOC.cs" />
     <Compile Include="Programming-Documents\DocumentEx\ExtractTextOnly.cs" />
     <Compile Include="Programming-Documents\DocumentEx\DocumentBuilderMovingCursor.cs" />
     <Compile Include="Programming-Documents\DocumentEx\DocumentBuilderSetFormatting.cs" />

@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AddTextWatermarkWithSpecificOptions()
         {
             //ExStart:AddTextWatermarkWithSpecificOptions
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             TextWatermarkOptions options = new TextWatermarkOptions()
             {
@@ -30,7 +30,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AddImageWatermarkWithSpecificOptions()
         {
             //ExStart:AddImageWatermarkWithSpecificOptions
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             ImageWatermarkOptions options = new ImageWatermarkOptions()
             {
@@ -40,7 +40,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
 
             doc.Watermark.SetImage(Image.FromFile(DocumentDir + "Watermark.png"), options);
 
-            doc.Save(ArtifactsDir + "AddImageWatermark_out.docx");
+            doc.Save(ArtifactsDir + "AddImageWatermark.docx");
             //ExEnd:AddImageWatermarkWithSpecificOptions
         }
 
@@ -48,7 +48,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void RemoveWatermarkFromDocument()
         {
             //ExStart:RemoveWatermarkFromDocument
-            Document doc = new Document(DocumentDir + "AddTextWatermark_out.docx");
+            Document doc = new Document(ArtifactsDir + "AddTextWatermark.docx");
 
             if (doc.Watermark.Type == WatermarkType.Text)
             {

@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             // ExStart: ShowGrammaticalAndSpellingErrors
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             doc.ShowGrammaticalErrors = true;
             doc.ShowSpellingErrors = true;

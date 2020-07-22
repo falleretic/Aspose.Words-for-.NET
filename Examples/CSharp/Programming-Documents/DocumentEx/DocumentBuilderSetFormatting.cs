@@ -28,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetAsianTypographyLinebreakGroupProp()
         {
             //ExStart:SetAsianTypographyLinebreakGroupProp
-            Document doc = new Document(DocumentDir + "Input.docx");
+            Document doc = new Document(DocumentDir + "Asian typography.docx");
 
             ParagraphFormat format = doc.FirstSection.Body.Paragraphs[0].ParagraphFormat;
             format.FarEastLineBreakControl = false;
@@ -236,7 +236,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ChangeAsianParagraphSpacingandIndents()
         {
             // ExStart:ChangeAsianParagraphSpacingandIndents
-            Document doc = new Document(DocumentDir + "Input.docx");
+            Document doc = new Document(DocumentDir + "Asian typography.docx");
 
             ParagraphFormat format = doc.FirstSection.Body.FirstParagraph.ParagraphFormat;
             format.CharacterUnitLeftIndent = 10;       // ParagraphFormat.LeftIndent will be updated

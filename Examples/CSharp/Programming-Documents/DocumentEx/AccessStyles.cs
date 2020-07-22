@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.DocumentEx
 {
@@ -8,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:AccessStyles
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document();
 
             // Get styles collection from document
             StyleCollection styles = doc.Styles;
@@ -20,10 +21,12 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                 if (styleName == "")
                 {
                     styleName = style.Name;
+                    Console.WriteLine(styleName);
                 }
                 else
                 {
                     styleName = styleName + ", " + style.Name;
+                    Console.WriteLine(styleName);
                 }
             }
             //ExEnd:AccessStyles

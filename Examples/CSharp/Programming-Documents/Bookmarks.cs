@@ -12,12 +12,12 @@ namespace Aspose.Words.Examples.CSharp
         public static void AccessBookmarks()
         {
             //ExStart:AccessBookmarks
-            Document doc = new Document(BookmarksDir + "Bookmarks.doc");
+            Document doc = new Document(BookmarksDir + "Bookmarks.docx");
             
             // By index
             Bookmark bookmark1 = doc.Range.Bookmarks[0];
             // By name
-            Bookmark bookmark2 = doc.Range.Bookmarks["Bookmark2"];
+            Bookmark bookmark2 = doc.Range.Bookmarks["MyBookmark3"];
             //ExEnd:AccessBookmarks
         }
 
@@ -25,10 +25,10 @@ namespace Aspose.Words.Examples.CSharp
         public static void BookmarkNameAndText()
         {
             //ExStart:BookmarkNameAndText
-            Document doc = new Document(BookmarksDir + "Bookmark.doc");
+            Document doc = new Document(BookmarksDir + "Bookmarks.docx");
 
             // Use the indexer of the Bookmarks collection to obtain the desired bookmark
-            Bookmark bookmark = doc.Range.Bookmarks["MyBookmark"];
+            Bookmark bookmark = doc.Range.Bookmarks["MyBookmark1"];
 
             // Get the name and text of the bookmark
             string name = bookmark.Name;
@@ -96,7 +96,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void CopyBookmarkedText()
         {
-            Document srcDoc = new Document(BookmarksDir + "Template.doc");
+            Document srcDoc = new Document(BookmarksDir + "Tax bookmarks.doc");
 
             // This is the bookmark whose content we want to copy
             Bookmark srcBookmark = srcDoc.Range.Bookmarks["ntf010145060"];
@@ -189,11 +189,11 @@ namespace Aspose.Words.Examples.CSharp
         public static void ShowHideBookmarks_call()
         {
             //ExStart:ShowHideBookmarks_call
-            Document doc = new Document(BookmarksDir + "Bookmarks.doc");
+            Document doc = new Document(BookmarksDir + "Bookmarks.docx");
 
-            ShowHideBookmarkedContent(doc, "Bookmark2", false);
+            ShowHideBookmarkedContent(doc, "MyBookmark1", false);
             
-            doc.Save(ArtifactsDir + "UpdatedDocument.doc");
+            doc.Save(ArtifactsDir + "UpdatedDocument.docx");
             //ExEnd:ShowHideBookmarks_call
         }
 
@@ -252,7 +252,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void UntangleRowBookmarks()
         {
-            Document doc = new Document(BookmarksDir + "TestDefect1352.doc");
+            Document doc = new Document(BookmarksDir + "Table column bookmarks.docx");
 
             // This perform the custom task of putting the row bookmark ends into the same row with the bookmark starts
             Untangle(doc);

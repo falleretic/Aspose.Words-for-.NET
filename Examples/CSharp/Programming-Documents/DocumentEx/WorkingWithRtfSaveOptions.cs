@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SavingImagesAsWmf()
         {
             //ExStart:SavingImagesAsWmf
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             RtfSaveOptions saveOpts = new RtfSaveOptions();
             saveOpts.SaveImagesAsWmf = true;

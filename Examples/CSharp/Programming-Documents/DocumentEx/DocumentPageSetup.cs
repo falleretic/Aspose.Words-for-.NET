@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:DocumentPageSetup
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Set the layout mode for a section allowing to define the document grid behavior
             // Note that the Document Grid tab becomes visible in the Page Setup dialog of MS Word

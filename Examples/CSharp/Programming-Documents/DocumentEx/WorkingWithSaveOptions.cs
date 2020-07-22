@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void UpdateLastSavedTimeProperty()
         {
             //ExStart:UpdateLastSavedTimeProperty
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             OoxmlSaveOptions options = new OoxmlSaveOptions();
             options.UpdateLastSavedTimeProperty = true;
@@ -23,7 +23,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SetMeasureUnitForODT
             // Load the Word document
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Open Office uses centimeters when specifying lengths, widths and other measurable formatting
             // and content properties in documents whereas MS Office uses inches

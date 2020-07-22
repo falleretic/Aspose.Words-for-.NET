@@ -390,14 +390,14 @@ namespace Aspose.Words.Examples.CSharp
         public static void TickMultiLineLabelAlignment()
         {
             //ExStart:TickMultiLineLabelAlignment
-            Document doc = new Document(ChartsDir + "Document.docx");
+            Document doc = new Document(ChartsDir + "Area chart.docx");
 
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             ChartAxis axis = shape.Chart.AxisX;
             // This property has effect only for multi-line labels
             axis.TickLabelAlignment = ParagraphAlignment.Right;
 
-            doc.Save(ArtifactsDir + "Document.docx");
+            doc.Save(ArtifactsDir + "TickMultiLineLabelAlignment.docx");
             //ExEnd:TickMultiLineLabelAlignment
         }
 

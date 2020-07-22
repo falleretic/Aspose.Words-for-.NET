@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SmartStyleBehavior()
         {
             //ExStart:SmartStyleBehavior
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Source document.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Destination document.docx");
 
             DocumentBuilder builder = new DocumentBuilder(dstDoc);
             builder.MoveToDocumentEnd();
@@ -25,8 +25,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void KeepSourceNumbering()
         {
             //ExStart:KeepSourceNumbering
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Source document.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Destination document.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep source list formatting when importing numbered paragraphs
@@ -50,8 +50,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void IgnoreTextBoxes()
         {
             //ExStart:IgnoreTextBoxes
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Source document.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Destination document.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep the source text boxes formatting when importing
@@ -75,8 +75,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void IgnoreHeaderFooter()
         {
             // ExStart:IgnoreHeaderFooter
-            Document srcDocument = new Document(JoiningAppendingDir + "source.docx");
-            Document dstDocument = new Document(JoiningAppendingDir + "destination.docx");
+            Document srcDocument = new Document(JoiningAppendingDir + "Source document.docx");
+            Document dstDocument = new Document(JoiningAppendingDir + "Destination document.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             importFormatOptions.IgnoreHeaderFooter = false;

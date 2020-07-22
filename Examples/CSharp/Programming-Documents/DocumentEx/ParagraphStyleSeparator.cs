@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:ParagraphStyleSeparator
-            Document doc = new Document(DocumentDir + "TestFile.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             foreach (Paragraph paragraph in doc.GetChildNodes(NodeType.Paragraph, true))
             {

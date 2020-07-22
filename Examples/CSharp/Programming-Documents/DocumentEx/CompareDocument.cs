@@ -6,23 +6,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
     class CompareDocument : TestDataHelper
     {
         [Test]
-        public static void NormalComparison()
-        {
-            //ExStart:NormalComparison
-            Document docA = new Document(DocumentDir + "TestFile.doc");
-            Document docB = new Document(DocumentDir + "TestFile - Copy.doc");
-            
-            // DocA now contains changes as revisions
-            docA.Compare(docB, "user", DateTime.Now);
-            //ExEnd:NormalComparison                     
-        }
-
-        [Test]
         public static void CompareForEqual()
         {
             //ExStart:CompareForEqual
-            Document docA = new Document(DocumentDir + "TestFile.doc");
-            Document docB = new Document(DocumentDir + "TestFile - Copy.doc");
+            Document docA = new Document(DocumentDir + "Document.docx");
+            Document docB = docA.Clone();
             
             // DocA now contains changes as revisions
             docA.Compare(docB, "user", DateTime.Now);
@@ -34,8 +22,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CompareDocumentWithCompareOptions()
         {
             //ExStart:CompareDocumentWithCompareOptions
-            Document docA = new Document(DocumentDir + "TestFile.doc");
-            Document docB = new Document(DocumentDir + "TestFile - Copy.doc");
+            Document docA = new Document(DocumentDir + "Document.docx");
+            Document docB = docA.Clone();
 
             CompareOptions options = new CompareOptions();
             options.IgnoreFormatting = true;
@@ -57,8 +45,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CompareDocumentWithComparisonTarget()
         {
             //ExStart:CompareDocumentWithComparisonTarget
-            Document docA = new Document(DocumentDir + "TestFile.doc");
-            Document docB = new Document(DocumentDir + "TestFile - Copy.doc");
+            Document docA = new Document(DocumentDir + "Document.docx");
+            Document docB = docA.Clone();
 
             CompareOptions options = new CompareOptions();
             options.IgnoreFormatting = true;
@@ -79,10 +67,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             builderA.Writeln("This is A simple word");
             builderB.Writeln("This is B simple words");
 
-            CompareOptions co = new CompareOptions();
-            co.Granularity = Granularity.CharLevel;
+            CompareOptions compareOptions = new CompareOptions();
+            compareOptions.Granularity = Granularity.CharLevel;
 
-            builderA.Document.Compare(builderB.Document, "author", DateTime.Now, co);
+            builderA.Document.Compare(builderB.Document, "author", DateTime.Now, compareOptions);
             // ExEnd:SpecifyComparisonGranularity      
         }
     }

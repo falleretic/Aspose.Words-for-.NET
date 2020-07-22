@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AcceptRevisions()
         {
             //ExStart:AcceptAllRevisions
-            Document doc = new Document(DocumentDir + "Document.doc");
+            Document doc = new Document(DocumentDir + "Document.docx");
 
             // Start tracking and make some revisions
             doc.StartTrackRevisions("Author");
@@ -86,7 +86,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GetRevisionGroupDetails()
         {
             //ExStart:GetRevisionGroupDetails
-            Document doc = new Document(DocumentDir + "TestFormatDescription.docx");
+            Document doc = new Document(DocumentDir + "Revisions.docx");
 
             foreach (Revision revision in doc.Revisions)
             {
@@ -107,7 +107,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AccessRevisedVersion()
         {
             //ExStart:AccessRevisedVersion
-            Document doc = new Document(DocumentDir + "Test.docx");
+            Document doc = new Document(DocumentDir + "Revisions.docx");
             doc.UpdateListLabels();
 
             // Switch to the revised version of the document

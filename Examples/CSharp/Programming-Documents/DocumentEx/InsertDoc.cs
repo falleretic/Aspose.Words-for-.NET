@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void InsertDocumentAtReplace()
         {
             //ExStart:InsertDocumentAtReplace
-            Document mainDoc = new Document(DocumentDir + "InsertDocument1.doc");
+            Document mainDoc = new Document(DocumentDir + "Insert document 1.docx");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new InsertDocumentAtReplaceHandler();
@@ -27,8 +27,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void InsertDocumentAtBookmark()
         {
             //ExStart:InsertDocumentAtBookmark         
-            Document mainDoc = new Document(DocumentDir + "InsertDocument1.doc");
-            Document subDoc = new Document(DocumentDir + "InsertDocument2.doc");
+            Document mainDoc = new Document(DocumentDir + "Insert document 1.docx");
+            Document subDoc = new Document(DocumentDir + "Insert document 2.docx");
 
             Bookmark bookmark = mainDoc.Range.Bookmarks["insertionPlace"];
             InsertDocument(bookmark.BookmarkStart.ParentNode, subDoc);
@@ -42,7 +42,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:InsertDocumentAtMailMerge   
             // Open the main document
-            Document mainDoc = new Document(DocumentDir + "InsertDocument1.doc");
+            Document mainDoc = new Document(DocumentDir + "Insert document 1.docx");
 
             // Add a handler to MergeField event
             mainDoc.MailMerge.FieldMergingCallback = new InsertDocumentAtMailMergeHandler();
@@ -52,7 +52,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             // That should be inserted to this field
             mainDoc.MailMerge.Execute(
                 new[] { "Document_1" },
-                new object[] { DocumentDir + "InsertDocument2.doc" });
+                new object[] { DocumentDir + "Insert document 2.docx" });
             mainDoc.Save(ArtifactsDir + "InsertDocumentAtMailMerge.doc");
             //ExEnd:InsertDocumentAtMailMerge
         }
@@ -242,7 +242,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs e)
             {
-                Document subDoc = new Document(DocumentDir + "InsertDocument2.doc");
+                Document subDoc = new Document(DocumentDir + "Insert document 2.docx");
 
                 // Insert a document after the paragraph, containing the match text
                 Paragraph para = (Paragraph) e.MatchNode.ParentNode;

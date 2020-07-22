@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         //ExStart:RemoveTOCFromDocument
         public static void Run()
         {
-            Document doc = new Document(StyleDir + "Document.TableOfContents.doc");
+            Document doc = new Document(DocumentDir + "Table of contents.docx");
 
             // Remove the first table of contents from the document
             RemoveTableOfContents(doc, 0);
