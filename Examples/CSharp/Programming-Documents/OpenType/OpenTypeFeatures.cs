@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.OpenType
         public static void Run()
         {
             //ExStart:OpenTypeFeatures
-            Document doc = new Document(DocumentDir + "OpenType.Document.docx");
+            Document doc = new Document(DocumentDir + "OpenType text shaping.docx");
 
             // When text shaper factory is set, layout starts to use OpenType features
             // An Instance property returns static BasicTextShaperCache object wrapping HarfBuzzTextShaperFactory

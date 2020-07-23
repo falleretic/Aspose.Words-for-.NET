@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Styles
         public static void Run()
         {
             //ExStart:ChangeTOCTabStops
-            Document doc = new Document(StyleDir + "Document.TableOfContents.doc");
+            Document doc = new Document(StyleDir + "Table of contents.docx");
 
             // Iterate through all paragraphs in the document
             foreach (Paragraph para in doc.GetChildNodes(NodeType.Paragraph, true))

@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
         {
             //ExStart:SimpleDocumentSigning
             CertificateHolder certHolder = CertificateHolder.Create(SignatureDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(SignatureDir + "Document.Signed.docx", ArtifactsDir + "Document.Signed.docx",
+            DigitalSignatureUtil.Sign(SignatureDir + "Digitally signed.docx", ArtifactsDir + "Document.Signed.docx",
                 certHolder);
             //ExEnd:SimpleDocumentSigning
         }
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
             signOptions.DecryptionPassword = "decryptionPassword";
 
             CertificateHolder certHolder = CertificateHolder.Create(SignatureDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(SignatureDir + "Document.Signed.docx", ArtifactsDir + "Document.EncryptedDocument.docx",
+            DigitalSignatureUtil.Sign(SignatureDir + "Digitally signed.docx", ArtifactsDir + "Document.EncryptedDocument.docx",
                 certHolder, signOptions);
             //ExEnd:SigningEncryptedDocument
         }
@@ -38,14 +38,14 @@ namespace Aspose.Words.Examples.CSharp.Signature
             DocumentBuilder builder = new DocumentBuilder(doc);
             SignatureLine signatureLine = builder.InsertSignatureLine(new SignatureLineOptions()).SignatureLine;
             
-            doc.Save(ArtifactsDir + "Document.NewSignatureLine.docx");
+            doc.Save(ArtifactsDir + "Signature line.docx");
 
             SignOptions signOptions = new SignOptions();
             signOptions.SignatureLineId = signatureLine.Id;
             signOptions.SignatureLineImage = File.ReadAllBytes(SignatureDir + "SignatureImage.emf");
 
             CertificateHolder certHolder = CertificateHolder.Create(SignatureDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(SignatureDir + "Document.NewSignatureLine.docx",
+            DigitalSignatureUtil.Sign(SignatureDir + "Signature line.docx",
                 ArtifactsDir + "Document.NewSignatureLine.docx.docx", certHolder, signOptions);
             //ExEnd:CreatingAndSigningNewSignatureLine
         }
@@ -54,7 +54,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
         public static void SigningExistingSignatureLine()
         {
             //ExStart:SigningExistingSignatureLine
-            Document doc = new Document(SignatureDir + "Document.Signed.docx");
+            Document doc = new Document(SignatureDir + "Digitally signed.docx");
             SignatureLine signatureLine =
                 ((Shape) doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
 
@@ -63,7 +63,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
             signOptions.SignatureLineImage = File.ReadAllBytes(SignatureDir + "SignatureImage.emf");
 
             CertificateHolder certHolder = CertificateHolder.Create(SignatureDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(SignatureDir + "Document.Signed.docx",
+            DigitalSignatureUtil.Sign(SignatureDir + "Digitally signed.docx",
                 ArtifactsDir + "Document.Signed.ExistingSignatureLine.docx", certHolder, signOptions);
             //ExEnd:SigningExistingSignatureLine
         }
@@ -72,7 +72,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
         public static void SetSignatureProviderId()
         {
             //ExStart:SetSignatureProviderID
-            Document doc = new Document(SignatureDir + "Document.Signed.docx");
+            Document doc = new Document(SignatureDir + "Digitally signed.docx");
             SignatureLine signatureLine =
                 ((Shape) doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
 
@@ -82,7 +82,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
             signOptions.SignatureLineId = signatureLine.Id;
 
             CertificateHolder certHolder = CertificateHolder.Create(SignatureDir + "signature.pfx", "signature");
-            DigitalSignatureUtil.Sign(SignatureDir + "Document.Signed.docx", ArtifactsDir + "Document.Signed.docx",
+            DigitalSignatureUtil.Sign(SignatureDir + "Digitally signed.docx", ArtifactsDir + "Document.Signed.docx",
                 certHolder, signOptions);
             //ExEnd:SetSignatureProviderID
         }
@@ -91,7 +91,7 @@ namespace Aspose.Words.Examples.CSharp.Signature
         public static void CreateNewSignatureLineAndSetProviderId()
         {
             //ExStart:CreateNewSignatureLineAndSetProviderID
-            Document doc = new Document(SignatureDir + "Document.Signed.docx");
+            Document doc = new Document(SignatureDir + "Digitally signed.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
             SignatureLine signatureLine = builder.InsertSignatureLine(new SignatureLineOptions()).SignatureLine;
             signatureLine.ProviderId = new Guid("{F5AC7D23-DA04-45F5-ABCB-38CE7A982553}");

@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CloneCompleteTable()
         {
             //ExStart:CloneCompleteTable
-            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -38,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CloneLastRow()
         {
             //ExStart:CloneLastRow
-            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);

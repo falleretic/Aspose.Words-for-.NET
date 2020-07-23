@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp.Theme
         public static void GetThemeProperties()
         {
             //ExStart:GetThemeProperties
-            Document doc = new Document(ThemeDir + "Document.doc");
+            Document doc = new Document();
             
             Themes.Theme theme = doc.Theme;
             // Major (Headings) font for Latin characters
@@ -32,7 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Theme
         public static void SetThemeProperties()
         {
             // ExStart:SetThemeProperties
-            Document doc = new Document(ThemeDir + "Document.doc");
+            Document doc = new Document();
             
             Themes.Theme theme = doc.Theme;
             // Set Times New Roman font as Body theme font for Latin Character

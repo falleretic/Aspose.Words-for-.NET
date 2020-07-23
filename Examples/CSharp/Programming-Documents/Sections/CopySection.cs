@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void Run()
         {
             //ExStart:CopySection
-            Document srcDoc = new Document(SectionsDir + "Document.doc");
+            Document srcDoc = new Document(SectionsDir + "Document.docx");
             Document dstDoc = new Document();
 
             Section sourceSection = srcDoc.Sections[0];

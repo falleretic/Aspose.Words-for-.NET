@@ -15,7 +15,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void GetDistanceBetweenTableSurroundingText()
         {
             //ExStart:GetDistancebetweenTableSurroundingText
-            Document doc = new Document(TablesDir + "Table.EmptyTable.doc");
+            Document doc = new Document(TablesDir + "Empty table.docx");
 
             Console.WriteLine("\nGet distance between table left, right, bottom, top and the surrounding text.");
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -34,7 +34,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ApplyOutlineBorder()
         {
             //ExStart:ApplyOutlineBorder
-            Document doc = new Document(TablesDir + "Table.EmptyTable.doc");
+            Document doc = new Document(TablesDir + "Empty table.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Align the table to the center of the page
@@ -62,7 +62,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void BuildTableWithBordersEnabled()
         {
             //ExStart:BuildTableWithBordersEnabled
-            Document doc = new Document(TablesDir + "Table.EmptyTable.doc");
+            Document doc = new Document(TablesDir + "Empty table.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Clear any existing borders from the table
@@ -81,7 +81,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ModifyRowFormatting()
         {
             //ExStart:ModifyRowFormatting
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Retrieve the first row in the table
@@ -156,7 +156,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ModifyCellFormatting()
         {
             //ExStart:ModifyCellFormatting
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
             // Retrieve the first cell in the table
@@ -225,7 +225,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SetTableTitleAndDescription()
         {
             //ExStart:SetTableTitleandDescription
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             table.Title = "Test title";
             table.Description = "Test description";
@@ -246,7 +246,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void AllowCellSpacing()
         {
             //ExStart:AllowCellSpacing
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             table.AllowCellSpacing = true;

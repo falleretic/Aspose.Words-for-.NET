@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Ranges
         public static void Run()
         {
             //ExStart:RangesGetText
-            Document doc = new Document(RangeDir + "Document.doc");
+            Document doc = new Document(RangeDir + "Document.docx");
             string text = doc.Range.Text;
             //ExEnd:RangesGetText
         }

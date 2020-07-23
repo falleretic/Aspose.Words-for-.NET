@@ -11,7 +11,12 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void AddSection()
         {
             //ExStart:AddSection
-            Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Hello1");
+            builder.Writeln("Hello2");
+
             Section sectionToAdd = new Section(doc);
             doc.Sections.Add(sectionToAdd);
             //ExEnd:AddSection
@@ -24,7 +29,14 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void DeleteSection()
         {
             //ExStart:DeleteSection
-            Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Hello1");
+            doc.AppendChild(new Section(doc));
+            builder.Writeln("Hello2");
+            doc.AppendChild(new Section(doc));
+
             doc.Sections.RemoveAt(0);
             //ExEnd:DeleteSection
         }
@@ -36,7 +48,14 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void DeleteAllSections()
         {
             //ExStart:DeleteAllSections
-            Document doc = new Document(SectionsDir + "Section.AddRemove.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Hello1");
+            doc.AppendChild(new Section(doc));
+            builder.Writeln("Hello2");
+            doc.AppendChild(new Section(doc));
+
             doc.Sections.Clear();
             //ExEnd:DeleteAllSections
         }

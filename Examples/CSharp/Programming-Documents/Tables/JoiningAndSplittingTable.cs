@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CombineRows()
         {
             //ExStart:CombineRows
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the first and second table in the document
             // The rows from the second table will be appended to the end of the first table
@@ -38,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SplitTable()
         {
             //ExStart:SplitTable
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the first table in the document
             Table firstTable = (Table) doc.GetChild(NodeType.Table, 0, true);

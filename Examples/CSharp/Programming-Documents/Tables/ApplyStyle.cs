@@ -64,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ExpandFormattingOnCellsAndRowFromStyle()
         {
             //ExStart:ExpandFormattingOnCellsAndRowFromStyle
-            Document doc = new Document(TablesDir + "Table.TableStyle.docx");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the first cell of the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);

@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp.Styles
         public static void Run()
         {
             //ExStart:CopyStylesFromDocument
-            Document doc = new Document(StyleDir + "template.docx");
-            Document target = new Document(StyleDir + "TestFile.doc");
+            Document doc = new Document();
+            Document target = new Document(StyleDir + "Styles.docx");
             
             target.CopyStylesFromTemplate(doc);
             

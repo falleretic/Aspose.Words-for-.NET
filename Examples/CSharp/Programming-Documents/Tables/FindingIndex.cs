@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         [Test]
         public static void Run()
         {
-            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             //ExStart:RetrieveTableIndex
             // Get the first table in the document

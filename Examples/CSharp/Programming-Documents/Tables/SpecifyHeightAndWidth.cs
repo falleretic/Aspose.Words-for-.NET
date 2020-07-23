@@ -78,7 +78,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void RetrievePreferredWidthType()
         {
             //ExStart:RetrievePreferredWidthType
-            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);

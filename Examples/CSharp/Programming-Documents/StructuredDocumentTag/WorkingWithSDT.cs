@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.StructuredDocumentTag
         public static void SetContentControlColor()
         {
             //ExStart:SetContentControlColor
-            Document doc = new Document(SdtDir + "input.docx");
+            Document doc = new Document(SdtDir + "Structured document tags.docx");
             Markup.StructuredDocumentTag sdt = (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Color = Color.Red;
 
@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp.StructuredDocumentTag
         public static void ClearContentsControl()
         {
             //ExStart:ClearContentsControl
-            Document doc = new Document(SdtDir + "input.docx");
+            Document doc = new Document(SdtDir + "Structured document tags.docx");
             Markup.StructuredDocumentTag sdt = (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Clear();
 
@@ -53,7 +53,7 @@ namespace Aspose.Words.Examples.CSharp.StructuredDocumentTag
         public static void SetContentControlStyle()
         {
             //ExStart:SetContentControlStyle
-            Document doc = new Document(SdtDir + "input.docx");
+            Document doc = new Document(SdtDir + "Structured document tags.docx");
             Markup.StructuredDocumentTag sdt = (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             Style style = doc.Styles[StyleIdentifier.Quote];
             sdt.Style = style;

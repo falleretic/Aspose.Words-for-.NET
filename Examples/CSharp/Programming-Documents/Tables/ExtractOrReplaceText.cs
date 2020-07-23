@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ExtractPrintText()
         {
             //ExStart:ExtractText
-            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -39,7 +39,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ReplaceText()
         {
             //ExStart:ReplaceText
-            Document doc = new Document(TablesDir + "Table.SimpleTable.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);

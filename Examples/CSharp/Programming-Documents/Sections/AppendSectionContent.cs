@@ -8,7 +8,17 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void Run()
         {
             //ExStart:AppendSectionContent
-            Document doc = new Document(SectionsDir + "Section.AppendContent.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Hello1");
+            doc.AppendChild(new Section(doc));
+            builder.Writeln("Hello22");
+            doc.AppendChild(new Section(doc));
+            builder.Writeln("Hello3");
+            doc.AppendChild(new Section(doc));
+            builder.Writeln("Hello45");
+
             // This is the section that we will append and prepend to
             Section section = doc.Sections[2];
 

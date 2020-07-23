@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void GetTablePosition()
         {
             //ExStart:GetTablePosition
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -32,7 +32,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void GetFloatingTablePosition()
         {
             //ExStart:GetFloatingTablePosition
-            Document doc = new Document(TablesDir + "FloatingTablePosition.docx");
+            Document doc = new Document(TablesDir + "Floating table position.docx");
             
             foreach (Table table in doc.FirstSection.Body.Tables)
             {
@@ -56,7 +56,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SetFloatingTablePosition()
         {
             //ExStart:SetFloatingTablePosition
-            Document doc = new Document(TablesDir + "FloatingTablePosition.docx");
+            Document doc = new Document(TablesDir + "Floating table position.docx");
 
             Table table = doc.FirstSection.Body.Tables[0];
             // Sets absolute table horizontal position at 10pt
@@ -72,7 +72,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SetRelativeHorizontalOrVerticalPosition()
         {
             // ExStart:SetRelativeHorizontalOrVerticalPosition
-            Document doc = new Document(TablesDir + "FloatingTablePosition.docx");
+            Document doc = new Document(TablesDir + "Floating table position.docx");
             Table table = doc.FirstSection.Body.Tables[0];
 
             table.HorizontalAnchor = RelativeHorizontalPosition.Column;

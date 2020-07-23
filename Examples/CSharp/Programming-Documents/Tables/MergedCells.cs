@@ -29,7 +29,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CheckCellsMerged()
         {
             //ExStart:CheckCellsMerged 
-            Document doc = new Document(TablesDir + "Table.MergedCells.doc");
+            Document doc = new Document(TablesDir + "Table with merged cells.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -129,14 +129,14 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void MergeCellRange()
         {
             //ExStart:MergeCellRange
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Table with merged cells.docx");
 
             // Retrieve the first table in the body of the first section
             Table table = doc.FirstSection.Body.Tables[0];
 
             // We want to merge the range of cells found inbetween these two cells
-            Cell cellStartRange = table.Rows[2].Cells[2];
-            Cell cellEndRange = table.Rows[3].Cells[3];
+            Cell cellStartRange = table.Rows[0].Cells[0];
+            Cell cellEndRange = table.Rows[1].Cells[1];
 
             // Merge all the cells between the two specified cells into one
             MergeCells(cellStartRange, cellEndRange);
@@ -149,7 +149,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void PrintHorizontalAndVerticalMerged()
         {
             //ExStart:PrintHorizontalAndVerticalMerged
-            Document doc = new Document(TablesDir + "Table.MergedCells.doc");
+            Document doc = new Document(TablesDir + "Table with merged cells.docx");
 
             // Create visitor
             SpanVisitor visitor = new SpanVisitor(doc);
@@ -162,7 +162,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ConvertToHorizontallyMergedCells()
         {
             //ExStart:ConvertToHorizontallyMergedCells         
-            Document doc = new Document(TablesDir + "Table.MergedCells.doc");
+            Document doc = new Document(TablesDir + "Table with merged cells.docx");
 
             Table table = doc.FirstSection.Body.Tables[0];
             table.ConvertToHorizontallyMergedCells(); // Now merged cells have appropriate merge flags

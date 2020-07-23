@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void Run()
         {
             // ExStart:AutoFitTableToPageWidth
-            Document doc = new Document(TablesDir + "TestFile.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Autofit the first table to the page width

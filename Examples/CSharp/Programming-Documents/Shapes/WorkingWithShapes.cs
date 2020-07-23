@@ -54,8 +54,21 @@ namespace Aspose.Words.Examples.CSharp.Shapes
         public static void SetShapeLayoutInCell()
         {
             //ExStart:SetShapeLayoutInCell
-            Document doc = new Document(ShapesDir + "LayoutInCell.docx");
+            Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.StartTable();
+            builder.RowFormat.Height = 100;
+            builder.RowFormat.HeightRule = HeightRule.Exactly;
+
+            for (int i = 0; i < 31; i++)
+            {
+                if (i != 0 && i % 7 == 0) builder.EndRow();
+                builder.InsertCell();
+                builder.Write("Cell contents");
+            }
+
+            builder.EndTable();
 
             Shape watermark = new Shape(doc, ShapeType.TextPlainText);
             watermark.RelativeHorizontalPosition = RelativeHorizontalPosition.Page;
@@ -140,7 +153,7 @@ namespace Aspose.Words.Examples.CSharp.Shapes
         public static void DetectSmartArtShape()
         {
             //ExStart:DetectSmartArtShape
-            Document doc = new Document(QuickStartDir + "input.docx");
+            Document doc = new Document(ShapesDir + "SmartArt.docx");
 
             int count = doc.GetChildNodes(NodeType.Shape, true).Cast<Shape>().Count(shape => shape.HasSmartArt);
 

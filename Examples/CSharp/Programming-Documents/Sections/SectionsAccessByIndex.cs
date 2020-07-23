@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void Run()
         {
             //ExStart:SectionsAccessByIndex
-            Document doc = new Document(SectionsDir + "Document.doc");
+            Document doc = new Document(SectionsDir + "Document.docx");
             
             Section section = doc.Sections[0];
             section.PageSetup.LeftMargin = 90; // 3.17 cm

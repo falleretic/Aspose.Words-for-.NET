@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Styles
         public static void Run()
         {
             //ExStart:ExtractContentBasedOnStyles
-            Document doc = new Document(StyleDir + "TestFile.doc");
+            Document doc = new Document(StyleDir + "Styles.docx");
 
             // Define style names as they are specified in the Word document
             const string paraStyle = "Heading 1";

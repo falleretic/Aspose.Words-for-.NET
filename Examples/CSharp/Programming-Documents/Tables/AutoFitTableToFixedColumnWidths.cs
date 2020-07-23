@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void Run()
         {
             //ExStart:AutoFitTableToFixedColumnWidths
-            Document doc = new Document(TablesDir + "TestFile.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Disable autofitting on this table

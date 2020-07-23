@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void RowFormatDisableBreakAcrossPages()
         {
             //ExStart:RowFormatDisableBreakAcrossPages
-            Document doc = new Document(TablesDir + "Table.TableAcrossPage.doc");
+            Document doc = new Document(TablesDir + "Table spanning two pages.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -26,7 +26,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void KeepTableTogether()
         {
             //ExStart:KeepTableTogether
-            Document doc = new Document(TablesDir + "Table.TableAcrossPage.doc");
+            Document doc = new Document(TablesDir + "Table spanning two pages.docx");
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 

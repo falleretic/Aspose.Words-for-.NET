@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void Run()
         {
             //ExStart:CloneSection
-            Document doc = new Document(SectionsDir + "Document.doc");
+            Document doc = new Document(SectionsDir + "Document.docx");
             Section cloneSection = doc.Sections[0].Clone();
             //ExEnd:CloneSection
         }

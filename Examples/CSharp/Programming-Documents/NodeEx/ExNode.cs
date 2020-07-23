@@ -102,7 +102,7 @@ namespace Aspose.Words.Examples.CSharp.NodeEx
         //ExStart:RecurseAllNodes
         public static void RecurseAllNodes()
         {
-            Document doc = new Document(NodeDir + "Node.RecurseAllNodes.doc");
+            Document doc = new Document(NodeDir + "Paragraphs.docx");
 
             // Invoke the recursive function that will walk the tree
             TraverseAllNodes(doc);

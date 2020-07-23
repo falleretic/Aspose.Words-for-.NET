@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void RemoveColumn()
         {
             //ExStart:RemoveColumn
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the second table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 1, true);
@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void InsertBlankColumn()
         {
             //ExStart:InsertBlankColumn
-            Document doc = new Document(TablesDir + "Table.Document.doc");
+            Document doc = new Document(TablesDir + "Tables.docx");
 
             // Get the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
