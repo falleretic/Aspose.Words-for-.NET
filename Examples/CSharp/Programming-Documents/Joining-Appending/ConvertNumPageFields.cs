@@ -10,8 +10,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:ConvertNumPageFields
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
 
             // Restart the page numbering on the start of the source document
             srcDoc.FirstSection.PageSetup.RestartPageNumbering = true;

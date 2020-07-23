@@ -7,8 +7,8 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
 
             // Append the source document to the destination document using no extra options
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);

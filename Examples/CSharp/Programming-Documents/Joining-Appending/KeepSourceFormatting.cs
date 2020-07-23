@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:KeepSourceFormatting
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
 
             // Keep the formatting from the source document when appending it to the destination document
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);

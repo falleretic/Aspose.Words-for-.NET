@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:RemoveSourceHeadersFooters
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
 
             // Remove the headers and footers from each of the sections in the source document
             foreach (Section section in srcDoc.Sections)

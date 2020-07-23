@@ -8,9 +8,9 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:KeepSourceTogether
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.DestinationList.doc");
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
-
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Document destination with list.docx");
+            
             // Set the source document to appear straight after the destination document's content
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.Continuous;
 

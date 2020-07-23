@@ -8,9 +8,9 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:BaseDocument
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
             Document dstDoc = new Document();
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
-
+            
             // The destination document is not actually empty which often causes a blank page to appear before the appended document
             // This is due to the base document having an empty section and the new document being started on the next page
             // Remove all content from the destination document before appending

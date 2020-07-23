@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:AppendDocumentManually
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
             
             // Loop through all sections in the source document
             // Section nodes are immediate children of the Document node so we can just enumerate the Document

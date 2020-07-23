@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:JoinContinuous
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.Destination.doc");
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.Source.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
 
             // Make the document appear straight after the destination documents content
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.Continuous;

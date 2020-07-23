@@ -8,8 +8,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:AppendWithImportFormatOptions
-            Document srcDoc = new Document(JoiningAppendingDir + "TestFile.SourceList.doc");
-            Document dstDoc = new Document(JoiningAppendingDir + "TestFile.DestinationList.doc");
+            Document srcDoc = new Document(JoiningAppendingDir + "Document source with list.docx");
+            Document dstDoc = new Document(JoiningAppendingDir + "Document destination with list.docx");
 
             ImportFormatOptions options = new ImportFormatOptions();
             // Specify that if numbering clashes in source and destination documents,
