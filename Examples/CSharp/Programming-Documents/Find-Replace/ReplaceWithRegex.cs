@@ -10,7 +10,10 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:ReplaceWithRegex
-            Document doc = new Document(FindReplaceDir + "Document.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.Writeln("sad mad bad");
 
             FindReplaceOptions options = new FindReplaceOptions();
 

@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:FindAndHighlight
-            Document doc = new Document(FindReplaceDir + "TestFile.doc");
+            Document doc = new Document(FindReplaceDir + "Find and highlight.docx");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new ReplaceEvaluatorFindAndHighlight();
@@ -22,7 +22,7 @@ namespace Aspose.Words.Examples.CSharp
             Regex regex = new Regex("your document", RegexOptions.IgnoreCase);
             doc.Range.Replace(regex, "", options);
 
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "FindReplaceOptions.FindAndHighlight.docx");
             //ExEnd:FindAndHighlight
         }
 

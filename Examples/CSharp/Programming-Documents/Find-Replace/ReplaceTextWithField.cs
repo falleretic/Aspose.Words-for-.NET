@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document doc = new Document(FindReplaceDir + "Field.ReplaceTextWithFields.doc");
+            Document doc = new Document(FindReplaceDir + "Replace text with fields.docx");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new ReplaceTextWithFieldHandler(FieldType.FieldMergeField);

@@ -10,7 +10,10 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:ReplaceWithEvaluator
-            Document doc = new Document(FindReplaceDir + "Range.ReplaceWithEvaluator.doc");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            
+            builder.Writeln("sad mad bad");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new MyReplaceEvaluator();
