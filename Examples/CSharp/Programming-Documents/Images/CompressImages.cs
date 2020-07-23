@@ -14,10 +14,7 @@ namespace Aspose.Words.Examples.CSharp.Images
         [Test]
         public static void Run()
         {
-            string srcFileName = ImagesDir + "Test.docx";
-
-            Console.WriteLine("Loading {0}. Size {1}.", srcFileName, GetFileSize(srcFileName));
-            Document doc = new Document(srcFileName);
+            Document doc = new Document(ImagesDir + "Images.docx");
 
             // 220ppi Print - said to be excellent on most printers and screens
             // 150ppi Screen - said to be good for web pages and projectors
@@ -44,12 +41,6 @@ namespace Aspose.Words.Examples.CSharp.Images
             double imagePpi = shape.ImageData.ImageSize.WidthPixels / ConvertUtil.PointToInch(shape.SizeInPoints.Width);
 
             Debug.Assert(imagePpi < 150, "Image was not resampled successfully.");
-        }
-
-        public static int GetFileSize(string fileName)
-        {
-            using (Stream stream = File.OpenRead(fileName))
-                return (int) stream.Length;
         }
     }
 

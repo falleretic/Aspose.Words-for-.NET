@@ -10,11 +10,11 @@ namespace Aspose.Words.Examples.CSharp.Images
         [Test]
         public static void Run()
         {
-            Document doc = new Document(ImagesDir + "TestFile.Watermark.doc");
+            Document doc = new Document(ImagesDir + "Document.docx");
             
             InsertWatermarkText(doc, "CONFIDENTIAL");
             
-            doc.Save(ArtifactsDir + "TestFile.Watermark.doc");
+            doc.Save(ArtifactsDir + "TestFile.Watermark.docx");
         }
 
         /// <summary>

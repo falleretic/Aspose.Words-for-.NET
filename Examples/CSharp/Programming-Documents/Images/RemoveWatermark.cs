@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Images
         //ExStart:RemoveWatermark
         public static void Run()
         {
-            Document doc = new Document(ImagesDir + "RemoveWatermark.docx");
+            Document doc = new Document(ArtifactsDir + "TestFile.Watermark.docx");
             
             RemoveWatermarkText(doc);
             

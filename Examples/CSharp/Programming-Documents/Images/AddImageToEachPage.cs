@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.Images
         public static void Run()
         {
             // This a document that we want to add an image and custom text for each page without using the header or footer
-            Document doc = new Document(ImagesDir + "TestFile.doc");
+            Document doc = new Document(ImagesDir + "Document.docx");
 
             // Create and attach collector before the document before page layout is built
             LayoutCollector layoutCollector = new LayoutCollector(doc);

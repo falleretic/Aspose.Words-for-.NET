@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.Images
         public static void Run()
         {
             //ExStart:ExtractImagesToFiles
-            Document doc = new Document(ImagesDir + "Image.SampleImages.doc");
+            Document doc = new Document(ImagesDir + "Images.docx");
 
             NodeCollection shapes = doc.GetChildNodes(NodeType.Shape, true);
             int imageIndex = 0;
