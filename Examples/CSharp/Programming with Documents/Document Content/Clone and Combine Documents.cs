@@ -10,6 +10,17 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
     class InsertDoc : TestDataHelper
     {
         [Test]
+        public static void CloningDocument()
+        {
+            //ExStart:CloningDocument
+            Document doc = new Document(DocumentDir + "Document.docx");
+
+            Document clone = doc.Clone();
+            clone.Save(ArtifactsDir + "CloningDocument.doc");
+            //ExEnd:CloningDocument
+        }
+
+        [Test]
         public static void InsertDocumentAtReplace()
         {
             //ExStart:InsertDocumentAtReplace

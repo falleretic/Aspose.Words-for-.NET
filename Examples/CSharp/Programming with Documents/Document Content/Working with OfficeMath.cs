@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Fields
 {
-    class UseOfficeMathProperties : TestDataHelper
+    class WorkingWithOfficeMath : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void SpecifyLocaleAtFieldlevel()
         {
             //ExStart:SpecifylocaleAtFieldlevel
             Document doc = new Document(FieldsDir + "Office math.docx");

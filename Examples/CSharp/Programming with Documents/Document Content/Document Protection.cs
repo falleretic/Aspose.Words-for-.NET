@@ -2,7 +2,7 @@
 
 namespace Aspose.Words.Examples.CSharp.DocumentEx
 {
-    class ProtectDocument : TestDataHelper
+    class DocumentProtection : TestDataHelper
     {
         /// <summary>
         /// Shows how to protect document.

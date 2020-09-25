@@ -6,10 +6,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.DocumentEx
 {
-    class GenerateACustomBarCodeImage : TestDataHelper
+    class WorkingWithBarcodeGenerator : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void GenerateACustomBarCodeImage()
         {
             //ExStart:GenerateACustomBarCodeImage
             Document doc = new Document(DocumentDir + "Field sample - BARCODE.docx");
