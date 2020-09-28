@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
     class WorkingWithDoc : TestDataHelper
     {
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AlwaysCompressMetafiles()
         {
             //ExStart:AlwaysCompressMetafiles
-            Document doc = new Document(LoadingSavingDir + "Microsoft equation object.docx");
+            Document doc = new Document(MyDir + "Microsoft equation object.docx");
             
             DocSaveOptions saveOptions = new DocSaveOptions();
             saveOptions.AlwaysCompressMetafiles = false;
@@ -38,9 +38,9 @@ namespace Aspose.Words.Examples.CSharp
         public static void SavePictureBullet()
         {
             //ExStart:SavePictureBullet
-            Document doc = new Document(LoadingSavingDir + "Image bullet points.docx");
+            Document doc = new Document(MyDir + "Image bullet points.docx");
             
-            DocSaveOptions saveOptions = (DocSaveOptions) SaveOptions.CreateSaveOptions(SaveFormat.Doc);
+            DocSaveOptions saveOptions = (DocSaveOptions)SaveOptions.CreateSaveOptions(SaveFormat.Doc);
             saveOptions.SavePictureBullet = false;
             
             doc.Save(ArtifactsDir + "DocSaveOptions.SavePictureBullet.docx", saveOptions);

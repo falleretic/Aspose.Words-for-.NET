@@ -4,13 +4,13 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp
 {
-    class OoxmlSaveOptionsEx : TestDataHelper
+    class WorkingWithOoxmlSaveOptionsEx : TestDataHelper
     {
         [Test]
         public static void EncryptDocxWithPassword()
         {
             //ExStart:EncryptDocxWithPassword
-            Document doc = new Document(LoadingSavingDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             
             OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions();
             ooxmlSaveOptions.Password = "password";

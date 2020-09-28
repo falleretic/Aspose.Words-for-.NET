@@ -7,6 +7,37 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
     class SplitDocument : TestDataHelper
     {
         [Test]
+        public static void SplitDocumentByHeadingsHtml()
+        {
+            //ExStart:SplitDocumentByHeadingsHtml
+            // Open a Word document
+            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+ 
+            HtmlSaveOptions options = new HtmlSaveOptions();
+            // Split a document into smaller parts, in this instance split by heading
+            options.DocumentSplitCriteria = DocumentSplitCriteria.HeadingParagraph;
+ 
+            // Save the output file
+            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SplitDocumentByHeadings.html", options);
+            //ExEnd:SplitDocumentByHeadingsHtml
+        }
+
+        [Test]
+        public static void SplitDocumentBySectionsHtml()
+        {
+            // Open a Word document
+            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+ 
+            //ExStart:SplitDocumentBySectionsHtml
+            HtmlSaveOptions options = new HtmlSaveOptions();
+            options.DocumentSplitCriteria = DocumentSplitCriteria.SectionBreak;
+            //ExEnd:SplitDocumentBySectionsHtml
+            
+            // Save the output file
+            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SplitDocumentBySections.html", options);
+        }
+
+        [Test]
         public static void SplitDocumentBySections()
         {
             //ExStart:SplitDocumentBySections

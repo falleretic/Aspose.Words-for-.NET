@@ -2,94 +2,53 @@
 using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class HtmlSaveOptionsEx : TestDataHelper
+    class WorkingWithHtmlSaveOptions : TestDataHelper
     {
         [Test]
         public static void ConvertDocumentToEpub()
         {
-            //ExStart:ConvertDocumentToEPUB
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            //ExStart:ConvertDocumentToEpub
+            Document doc = new Document(MyDir + "Rendering.docx");
 
-            // Create a new instance of HtmlSaveOptions. This object allows us to set options that control
-            // how the output document is saved
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
-            // Specify the desired encoding
             saveOptions.Encoding = System.Text.Encoding.UTF8;
             // Specify at what elements to split the internal HTML at. This creates a new HTML within the EPUB 
             // which allows you to limit the size of each HTML part. This is useful for readers which cannot read 
             // HTML files greater than a certain size e.g 300kb.
             saveOptions.DocumentSplitCriteria = DocumentSplitCriteria.HeadingParagraph;
-            // Specify that we want to export document properties
             saveOptions.ExportDocumentProperties = true;
-            // Specify that we want to save in EPUB format
             saveOptions.SaveFormat = SaveFormat.Epub;
 
-            // Export the document as an EPUB file
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.ConvertDocumentToEPUB.epub", saveOptions);
-            //ExEnd:ConvertDocumentToEPUB
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ConvertDocumentToEpub.epub", saveOptions);
+            //ExEnd:ConvertDocumentToEpub
         }
 
         [Test]
         public static void ExportRoundtripInformation()
         {
-            //ExStart:ConvertDocumentToHtmlWithRoundtrip
-            // Load the document from disk.
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            //ExStart:ExportRoundtripInformation
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             HtmlSaveOptions options = new HtmlSaveOptions();
-            // HtmlSaveOptions.ExportRoundtripInformation property specifies
-            // Whether to write the roundtrip information when saving to HTML, MHTML or EPUB.
-            // Default value is true for HTML and false for MHTML and EPUB.
             options.ExportRoundtripInformation = true;
             
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.ExportRoundtripInformation.html", options);
-            //ExEnd:ConvertDocumentToHtmlWithRoundtrip
-        }
-
-        [Test]
-        public static void SplitDocumentByHeadingsHtml()
-        {
-            //ExStart:SplitDocumentByHeadingsHtml
-            // Open a Word document
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
- 
-            HtmlSaveOptions options = new HtmlSaveOptions();
-            // Split a document into smaller parts, in this instance split by heading
-            options.DocumentSplitCriteria = DocumentSplitCriteria.HeadingParagraph;
- 
-            // Save the output file
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SplitDocumentByHeadings.html", options);
-            //ExEnd:SplitDocumentByHeadingsHtml
-        }
-
-        [Test]
-        public static void SplitDocumentBySectionsHtml()
-        {
-            // Open a Word document
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
- 
-            //ExStart:SplitDocumentBySectionsHtml
-            HtmlSaveOptions options = new HtmlSaveOptions();
-            options.DocumentSplitCriteria = DocumentSplitCriteria.SectionBreak;
-            //ExEnd:SplitDocumentBySectionsHtml
-            
-            // Save the output file
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SplitDocumentBySections.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportRoundtripInformation.html", options);
+            //ExEnd:ExportRoundtripInformation
         }
 
         [Test]
         public static void ExportFontsAsBase64()
         {
             //ExStart:ExportFontsAsBase64
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
             saveOptions.ExportFontResources = true;
             saveOptions.ExportFontsAsBase64 = true;
             
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.ExportFontsAsBase64.html", saveOptions);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportFontsAsBase64.html", saveOptions);
             //ExEnd:ExportFontsAsBase64
         }
 
@@ -97,7 +56,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ExportResources()
         {
             //ExStart:ExportResourcesUsingHtmlSaveOptions
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
             saveOptions.CssStyleSheetType = CssStyleSheetType.External;
@@ -105,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp
             saveOptions.ResourceFolder = ArtifactsDir + "Resources";
             saveOptions.ResourceFolderAlias = "http://example.com/resources";
             
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.ExportResourcesUsingHtmlSaveOptions.html", saveOptions);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportResourcesUsingHtmlSaveOptions.html", saveOptions);
             //ExEnd:ExportResourcesUsingHtmlSaveOptions
         }
 
@@ -129,7 +88,7 @@ namespace Aspose.Words.Examples.CSharp
             HtmlSaveOptions options = new HtmlSaveOptions();
             options.MetafileFormat = HtmlMetafileFormat.EmfOrWmf;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SaveHtmlWithMetafileFormat.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.SaveHtmlWithMetafileFormat.html", options);
             //ExEnd:SaveHtmlWithMetafileFormat
         }
 
@@ -150,60 +109,59 @@ namespace Aspose.Words.Examples.CSharp
             HtmlSaveOptions options = new HtmlSaveOptions();
             options.MetafileFormat = HtmlMetafileFormat.Svg;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.ImportExportSvgInHtml.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ImportExportSvgInHtml.html", options);
             //ExEnd:ImportExportSVGinHTML
         }
 
         [Test]
-        public static void SetCssClassNamePrefix()
+        public static void CssClassNamePrefix()
         {
-            //ExStart:SetCssClassNamePrefix
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            //ExStart:CssClassNamePrefix
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
             saveOptions.CssStyleSheetType = CssStyleSheetType.External;
             saveOptions.CssClassNamePrefix = "pfx_";
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SetCssClassNamePrefix.html", saveOptions);
-            //ExEnd:SetCssClassNamePrefix
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.SetCssClassNamePrefix.html", saveOptions);
+            //ExEnd:CssClassNamePrefix
         }
 
         [Test]
-        public static void SetExportCidUrlsForMhtmlResources()
+        public static void ExportCidUrlsForMhtmlResources()
         {
-            //ExStart:SetExportCidUrlsForMhtmlResources
-            Document doc = new Document(LoadingSavingDir + "Content-ID.docx");
+            //ExStart:ExportCidUrlsForMhtmlResources
+            Document doc = new Document(MyDir + "Content-ID.docx");
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Mhtml);
             saveOptions.PrettyFormat = true;
             saveOptions.ExportCidUrlsForMhtmlResources = true;
             saveOptions.SaveFormat = SaveFormat.Mhtml;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SetExportCidUrlsForMhtmlResources.mhtml", saveOptions);
-            //ExEnd:SetExportCidUrlsForMhtmlResources
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.SetExportCidUrlsForMhtmlResources.mhtml", saveOptions);
+            //ExEnd:ExportCidUrlsForMhtmlResources
         }
 
         [Test]
-        public static void SetResolveFontNames()
+        public static void ResolveFontNames()
         {
-            //ExStart:SetResolveFontNames
-            Document doc = new Document(LoadingSavingDir + "Missing font.docx");
+            //ExStart:ResolveFontNames
+            Document doc = new Document(MyDir + "Missing font.docx");
 
             HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Html);
             saveOptions.PrettyFormat = true;
             saveOptions.ResolveFontNames = true;
 
             doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SetResolveFontNames.html", saveOptions);
-            //ExEnd:SetResolveFontNames
+            //ExEnd:ResolveFontNames
         }
 
         [Test]
         public static void SpecifySaveOption()
         {
             //ExStart:SpecifySaveOption
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
-            // This is the directory we want the exported images to be saved to
             string imagesDir = Path.Combine(ArtifactsDir, "Images");
 
             // The folder specified needs to exist and should be empty
@@ -212,12 +170,12 @@ namespace Aspose.Words.Examples.CSharp
 
             Directory.CreateDirectory(imagesDir);
 
-            // Set an option to export form fields as plain text, not as HTML input elements
+            // Set an option to export form fields as plain text, not as HTML input elements.
             HtmlSaveOptions options = new HtmlSaveOptions(SaveFormat.Html);
             options.ExportTextInputFormFieldAsText = true;
             options.ImagesFolder = imagesDir;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptionsEx.SpecifySaveOption.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.SpecifySaveOption.html", options);
             //ExEnd:SpecifySaveOption
         }
     }

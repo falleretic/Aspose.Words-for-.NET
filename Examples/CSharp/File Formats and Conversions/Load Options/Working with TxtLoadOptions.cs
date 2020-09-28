@@ -3,19 +3,19 @@ using System.IO;
 using System.Text;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 {
-    class TxtLoadOptions : TestDataHelper
+    class WorkingWithTxtLoadOptions : TestDataHelper
     {
         [Test]
         public static void DetectNumberingWithWhitespaces()
         {
             //ExStart:DetectNumberingWithWhitespaces
-            Words.TxtLoadOptions loadOptions = new Words.TxtLoadOptions();
+            TxtLoadOptions loadOptions = new TxtLoadOptions();
             loadOptions.DetectNumberingWithWhitespaces = false;
 
-            Document doc = new Document(LoadingSavingDir + "Txt document.txt", loadOptions);
-            doc.Save(ArtifactsDir + "DetectNumberingWithWhitespaces.docx");
+            Document doc = new Document(MyDir + "Txt document.txt", loadOptions);
+            doc.Save(ArtifactsDir + "TxtLoadOptions.DetectNumberingWithWhitespaces.docx");
             //ExEnd:DetectNumberingWithWhitespaces
         }
 
@@ -23,16 +23,16 @@ namespace Aspose.Words.Examples.CSharp
         public static void HandleSpacesOptions()
         {
             //ExStart:HandleSpacesOptions
-            string textDoc = "      Line 1 \n" +
-                             "    Line 2   \n" +
-                             " Line 3       ";
+            const string textDoc = "      Line 1 \n" +
+                                   "    Line 2   \n" +
+                                   " Line 3       ";
             
-            Words.TxtLoadOptions loadOptions = new Words.TxtLoadOptions();
+            TxtLoadOptions loadOptions = new TxtLoadOptions();
             loadOptions.LeadingSpacesOptions = TxtLeadingSpacesOptions.Trim;
             loadOptions.TrailingSpacesOptions = TxtTrailingSpacesOptions.Trim;
             
             Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(textDoc)), loadOptions);
-            doc.Save(ArtifactsDir + "HandleSpacesOptions.docx");
+            doc.Save(ArtifactsDir + "TxtLoadOptions.HandleSpacesOptions.docx");
             //ExEnd:HandleSpacesOptions
         }
 
@@ -40,15 +40,15 @@ namespace Aspose.Words.Examples.CSharp
         public static void DocumentTextDirection()
         {
             //ExStart:DocumentTextDirection
-            Words.TxtLoadOptions loadOptions = new Words.TxtLoadOptions();
+            TxtLoadOptions loadOptions = new TxtLoadOptions();
             loadOptions.DocumentDirection = DocumentDirection.Auto;
 
-            Document doc = new Document(LoadingSavingDir + "Hebrew text.txt", loadOptions);
+            Document doc = new Document(MyDir + "Hebrew text.txt", loadOptions);
 
             Paragraph paragraph = doc.FirstSection.Body.FirstParagraph;
             Console.WriteLine(paragraph.ParagraphFormat.Bidi);
 
-            doc.Save(ArtifactsDir + "DocumentTextDirection.docx");
+            doc.Save(ArtifactsDir + "TxtLoadOptions.DocumentTextDirection.docx");
             //ExEnd:DocumentTextDirection
         }
     }

@@ -2,14 +2,14 @@
 using System.Text;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 {
-    class WorkingWithHtmlLoadOptions : TestDataHelper
+    internal class WorkingWithHtmlLoadOptions : TestDataHelper
     {
         [Test]
         public static void PreferredControlType()
         {
-            //ExStart:LoadAndSaveHtmlFormFieldasContentControlinDOCX
+            //ExStart:LoadAndSaveHtmlFormFieldAsContentControlInDOCX
             const string html = @"
                 <html>
                     <select name='ComboBox' size='1'>
@@ -23,8 +23,8 @@ namespace Aspose.Words.Examples.CSharp
             htmlLoadOptions.PreferredControlType = HtmlControlType.StructuredDocumentTag;
 
             Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(html)), htmlLoadOptions);
-            doc.Save(ArtifactsDir + "HtmlLoadOptionsEx.PreferredControlType.docx", SaveFormat.Docx);
-            //ExEnd:LoadAndSaveHtmlFormFieldasContentControlinDOCX
+            doc.Save(ArtifactsDir + "HtmlLoadOptions.PreferredControlType.docx", SaveFormat.Docx);
+            //ExEnd:LoadAndSaveHtmlFormFieldAsContentControlInDOCX
         }
     }
 }
