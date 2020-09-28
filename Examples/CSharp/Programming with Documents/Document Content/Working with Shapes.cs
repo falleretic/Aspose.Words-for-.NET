@@ -190,21 +190,5 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Console.WriteLine("The document has {0} shapes with SmartArt.", count);
             //ExEnd:DetectSmartArtShape
         }
-
-        [Test]
-        public static void InsertOleObjectAsIcon()
-        {
-            //ExStart:InsertOLEObjectAsIcon
-            Document doc = new Document();
-
-            DocumentBuilder builder = new DocumentBuilder(doc);
-            builder.InsertOleObjectAsIcon(ShapesDir + "embedded.xlsx", false, ShapesDir + "icon.ico",
-                "My embedded file");
-
-            doc.Save(ArtifactsDir + "EmbeddeWithIcon.docx");
-
-            Console.WriteLine("The document has been saved with OLE Object as an Icon.");
-            //ExEnd:InsertOLEObjectAsIcon
-        }
     }
 }

@@ -234,43 +234,6 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         }
 
         [Test]
-        public static void InsertOleObject()
-        {
-            //ExStart:DocumentBuilderInsertOleObject
-            Document doc = new Document();
-            DocumentBuilder builder = new DocumentBuilder(doc);
-            builder.InsertOleObject("http://www.aspose.com", "htmlfile", true, true, null);
-
-            doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObject.doc");
-            //ExEnd:DocumentBuilderInsertOleObject
-        }
-
-        [Test]
-        public static void InsertOleObjectWithOlePackage()
-        {
-            //ExStart:InsertOleObjectwithOlePackage
-            Document doc = new Document();
-            DocumentBuilder builder = new DocumentBuilder(doc);
-
-            byte[] bs = File.ReadAllBytes(DocumentDir + "Zip file.zip");
-            using (Stream stream = new MemoryStream(bs))
-            {
-                Shape shape = builder.InsertOleObject(stream, "Package", true, null);
-                OlePackage olePackage = shape.OleFormat.OlePackage;
-                olePackage.FileName = "filename.zip";
-                olePackage.DisplayName = "displayname.zip";
-
-                doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObjectOlePackage.doc");
-            }
-            //ExEnd:InsertOleObjectwithOlePackage
-
-            //ExStart:GetAccessToOLEObjectRawData
-            Shape oleShape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
-            byte[] oleRawData = oleShape.OleFormat.GetRawData();
-            //ExEnd:GetAccessToOLEObjectRawData
-        }
-
-        [Test]
         public static void InsertInlineImage()
         {
             //ExStart:DocumentBuilderInsertInlineImage
