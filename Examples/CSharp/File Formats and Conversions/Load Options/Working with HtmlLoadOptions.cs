@@ -19,10 +19,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
                 </html>
             ";
             
-            HtmlLoadOptions htmlLoadOptions = new HtmlLoadOptions();
-            htmlLoadOptions.PreferredControlType = HtmlControlType.StructuredDocumentTag;
+            HtmlLoadOptions loadOptions = new HtmlLoadOptions();
+            loadOptions.PreferredControlType = HtmlControlType.StructuredDocumentTag;
 
-            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(html)), htmlLoadOptions);
+            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(html)), loadOptions);
             doc.Save(ArtifactsDir + "HtmlLoadOptions.PreferredControlType.docx", SaveFormat.Docx);
             //ExEnd:LoadAndSaveHtmlFormFieldAsContentControlInDOCX
         }

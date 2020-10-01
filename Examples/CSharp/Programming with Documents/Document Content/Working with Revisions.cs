@@ -2,7 +2,7 @@
 using Aspose.Words.Layout;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithRevisions : TestDataHelper
     {
@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AcceptRevisions()
         {
             //ExStart:AcceptAllRevisions
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             // Start tracking and make some revisions
             doc.StartTrackRevisions("Author");
@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GetRevisionTypes()
         {
             //ExStart:GetRevisionTypes
-            Document doc = new Document(DocumentDir + "Revisions.docx");
+            Document doc = new Document(MyDir + "Revisions.docx");
 
             ParagraphCollection paragraphs = doc.FirstSection.Body.Paragraphs;
             for (int i = 0; i < paragraphs.Count; i++)
@@ -44,7 +44,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GetRevisionGroups()
         {
             //ExStart:GetRevisionGroups
-            Document doc = new Document(DocumentDir + "Revisions.docx");
+            Document doc = new Document(MyDir + "Revisions.docx");
 
             foreach (RevisionGroup group in doc.Revisions.Groups)
             {
@@ -58,7 +58,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetShowCommentsInPDF()
         {
             //ExStart:SetShowCommentsinPDF
-            Document doc = new Document(DocumentDir + "Revisions.docx");
+            Document doc = new Document(MyDir + "Revisions.docx");
 
             // Do not render the comments in PDF
             doc.LayoutOptions.ShowComments = false;
@@ -70,7 +70,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetShowInBalloons()
         {
             //ExStart:SetShowInBalloons
-            Document doc = new Document(DocumentDir + "Revisions.docx");
+            Document doc = new Document(MyDir + "Revisions.docx");
 
             // Renders insert and delete revisions inline, format revisions in balloons
             doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.Format;
@@ -86,7 +86,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GetRevisionGroupDetails()
         {
             //ExStart:GetRevisionGroupDetails
-            Document doc = new Document(DocumentDir + "Revisions.docx");
+            Document doc = new Document(MyDir + "Revisions.docx");
 
             foreach (Revision revision in doc.Revisions)
             {
@@ -107,7 +107,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AccessRevisedVersion()
         {
             //ExStart:AccessRevisedVersion
-            Document doc = new Document(DocumentDir + "Revisions.docx");
+            Document doc = new Document(MyDir + "Revisions.docx");
             doc.UpdateListLabels();
 
             // Switch to the revised version of the document

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
+using Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
 
-namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine.Helpers
+namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine.Helpers
 {
     class Common : TestDataHelper
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class VbaMacros : TestDataHelper
     {
@@ -33,7 +33,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ReadVbaMacros()
         {
             //ExStart:ReadVbaMacros
-            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
+            Document doc = new Document(MyDir + "VbaMacros.CreateVbaProject.docm");
 
             if (doc.VbaProject != null)
             {
@@ -49,7 +49,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ModifyVbaMacros()
         {
             //ExStart:ModifyVbaMacros
-            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
+            Document doc = new Document(MyDir + "VbaMacros.CreateVbaProject.docm");
             VbaProject project = doc.VbaProject;
 
             const string newSourceCode = "Test change source code";
@@ -67,7 +67,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void CloneVbaProject()
         {
             //ExStart:CloneVbaProject
-            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
+            Document doc = new Document(MyDir + "VbaMacros.CreateVbaProject.docm");
             Document destDoc = new Document();
 
             // Clone the whole project
@@ -81,7 +81,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void CloneVbaModule()
         {
             //ExStart:CloneVbaModule
-            Document doc = new Document(LoadingSavingDir + "VbaMacros.CreateVbaProject.docm");
+            Document doc = new Document(MyDir + "VbaMacros.CreateVbaProject.docm");
             Document destDoc = new Document();
 
             destDoc.VbaProject = new VbaProject();

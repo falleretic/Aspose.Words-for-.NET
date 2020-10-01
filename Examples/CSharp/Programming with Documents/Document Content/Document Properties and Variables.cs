@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Aspose.Words.Properties;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class DocumentPropertiesAndVariables : TestDataHelper
     {
@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GetVariables()
         {
             //ExStart:GetVariables
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             string variables = "";
             foreach (KeyValuePair<string, string> entry in doc.Variables)
             {
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void EnumerateProperties()
         {
             //ExStart:EnumerateProperties            
-            Document doc = new Document(DocumentDir + "Properties.docx");
+            Document doc = new Document(MyDir + "Properties.docx");
             Console.WriteLine("1. Document name: {0}", doc.OriginalFileName);
 
             Console.WriteLine("2. Built-in Properties");
@@ -49,26 +49,26 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         }
 
         [Test]
-        public static void CustomAdd()
+        public static void AddCustomDocumentProperties()
         {
-            //ExStart:CustomAdd            
-            Document doc = new Document(DocumentDir + "Properties.docx");
+            //ExStart:AddCustomDocumentProperties            
+            Document doc = new Document(MyDir + "Properties.docx");
 
-            CustomDocumentProperties props = doc.CustomDocumentProperties;
-            if (props["Authorized"] != null) return;
-            props.Add("Authorized", true);
-            props.Add("Authorized By", "John Smith");
-            props.Add("Authorized Date", DateTime.Today);
-            props.Add("Authorized Revision", doc.BuiltInDocumentProperties.RevisionNumber);
-            props.Add("Authorized Amount", 123.45);
-            //ExEnd:CustomAdd
+            CustomDocumentProperties customDocumentProperties = doc.CustomDocumentProperties;
+            if (customDocumentProperties["Authorized"] != null) return;
+            customDocumentProperties.Add("Authorized", true);
+            customDocumentProperties.Add("Authorized By", "John Smith");
+            customDocumentProperties.Add("Authorized Date", DateTime.Today);
+            customDocumentProperties.Add("Authorized Revision", doc.BuiltInDocumentProperties.RevisionNumber);
+            customDocumentProperties.Add("Authorized Amount", 123.45);
+            //ExEnd:AddCustomDocumentProperties
         }
 
         [Test]
-        public static void CustomRemove()
+        public static void RemoveCustomDocumentProperties()
         {
             //ExStart:CustomRemove            
-            Document doc = new Document(DocumentDir + "Properties.docx");
+            Document doc = new Document(MyDir + "Properties.docx");
             doc.CustomDocumentProperties.Remove("Authorized Date");
             //ExEnd:CustomRemove
         }
@@ -77,7 +77,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void RemovePersonalInformation()
         {
             //ExStart:RemovePersonalInformation            
-            Document doc = new Document(DocumentDir + "Properties.docx");
+            Document doc = new Document(MyDir + "Properties.docx");
             doc.RemovePersonalInformation = true;
 
             doc.Save(ArtifactsDir + "RemovePersonalInformation.docx");

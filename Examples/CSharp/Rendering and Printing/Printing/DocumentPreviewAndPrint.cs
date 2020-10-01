@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Aspose.Words.Rendering;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Printing
 {
     //ExStart:ActivePrintPreviewDialogClass 
     internal class ActivePrintPreviewDialog : PrintPreviewDialog
@@ -26,7 +26,7 @@ namespace Aspose.Words.Examples.CSharp
     {
         public static void Run()
         {
-            Document doc = new Document(MailMergeDir + "TestFile.doc");
+            Document doc = new Document(MyDir + "TestFile.doc");
 
             //ExStart:PrintDialog
             PrintDialog printDlg = new PrintDialog();

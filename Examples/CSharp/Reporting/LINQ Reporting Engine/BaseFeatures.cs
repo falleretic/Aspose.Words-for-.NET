@@ -1,8 +1,8 @@
-﻿using Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
+﻿using Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
 using Aspose.Words.Reporting;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
+namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine
 {
     internal class BaseFeatures : TestDataHelper
     {
@@ -28,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void SingleRow()
         {
             //ExStart:SingleRow
-            Document doc = new Document(LinqDir + "Reporting engine template - Single row.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Single row.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetManager(), "manager");
@@ -41,7 +41,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void CommonMasterDetail()
         {
             //ExStart:CommonMasterDetail
-            Document doc = new Document(LinqDir + "Reporting engine template - Common master detail.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Common master detail.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
@@ -54,7 +54,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void ConditionalBlocks()
         {
             //ExStart:ConditionalBlocks
-            Document doc = new Document(LinqDir + "Reporting engine template - Conditional block.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Conditional block.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetClients(), "clients");
@@ -67,7 +67,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void SettingBackgroundColor()
         {
             //ExStart:SettingBackgroundColor
-            Document doc = new Document(LinqDir + "Reporting engine template - Background color.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Background color.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, new object());

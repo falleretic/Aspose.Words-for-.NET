@@ -2,7 +2,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
 {
     class WorkingWithFileFormat : TestDataHelper
     {
@@ -15,7 +15,7 @@ namespace Aspose.Words.Examples.CSharp
             string encryptedDir = ArtifactsDir + "Encrypted";
             string pre97Dir = ArtifactsDir + "Pre97";
 
-            // Create the directories if they do not already exist
+            // Create the directories if they do not already exist.
             if (Directory.Exists(supportedDir) == false)
                 Directory.CreateDirectory(supportedDir);
             if (Directory.Exists(unknownDir) == false)
@@ -26,16 +26,14 @@ namespace Aspose.Words.Examples.CSharp
                 Directory.CreateDirectory(pre97Dir);
 
             //ExStart:GetListOfFilesInFolder
-            string[] fileList = Directory.GetFiles(LoadingSavingDir);
+            string[] fileList = Directory.GetFiles(MyDir);
             //ExEnd:GetListOfFilesInFolder
-            // Loop through all found files
             foreach (string fileName in fileList)
             {
-                // Extract and display the file name without the path
                 string nameOnly = Path.GetFileName(fileName);
+                
                 Console.Write(nameOnly);
                 //ExStart:DetectFileFormat
-                // Check the file format and move the file to the appropriate folder
                 FileFormatInfo info = FileFormatUtil.DetectFileFormat(fileName);
 
                 // Display the document type
@@ -89,7 +87,6 @@ namespace Aspose.Words.Examples.CSharp
                 }
                 //ExEnd:DetectFileFormat
 
-                // Now copy the document into the appropriate folder
                 if (info.IsEncrypted)
                 {
                     Console.WriteLine("\tAn encrypted document.");
@@ -118,24 +115,24 @@ namespace Aspose.Words.Examples.CSharp
         public static void DetectDocumentSignatures()
         {
             //ExStart:DetectDocumentSignatures
-            FileFormatInfo info = FileFormatUtil.DetectFileFormat(LoadingSavingDir + "Digitally signed.docx");
+            FileFormatInfo info = FileFormatUtil.DetectFileFormat(MyDir + "Digitally signed.docx");
 
             if (info.HasDigitalSignature)
             {
                 Console.WriteLine(
-                    $"Document {Path.GetFileName(LoadingSavingDir + "Digitally signed.docx")} has digital signatures, " +
+                    $"Document {Path.GetFileName(MyDir + "Digitally signed.docx")} has digital signatures, " +
                     "they will be lost if you open/save this document with Aspose.Words.");
             }
             //ExEnd:DetectDocumentSignatures            
         }
 
         [Test]
-        public static void VerifyOdtDocument()
+        public static void VerifyEncryptedDocument()
         {
-            //ExStart:VerifyODTdocument
-            FileFormatInfo info = FileFormatUtil.DetectFileFormat(LoadingSavingDir + "Encrypted.docx");
+            //ExStart:VerifyEncryptedDocument
+            FileFormatInfo info = FileFormatUtil.DetectFileFormat(MyDir + "Encrypted.docx");
             Console.WriteLine(info.IsEncrypted);
-            //ExEnd:VerifyODTdocument
+            //ExEnd:VerifyEncryptedDocument
         }
     }
 }

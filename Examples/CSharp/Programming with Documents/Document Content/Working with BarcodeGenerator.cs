@@ -4,7 +4,7 @@ using Aspose.BarCode.Generation;
 using Aspose.Words.Fields;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithBarcodeGenerator : TestDataHelper
     {
@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void GenerateACustomBarCodeImage()
         {
             //ExStart:GenerateACustomBarCodeImage
-            Document doc = new Document(DocumentDir + "Field sample - BARCODE.docx");
+            Document doc = new Document(MyDir + "Field sample - BARCODE.docx");
 
             // Set custom barcode generator
             doc.FieldOptions.BarcodeGenerator = new CustomBarcodeGenerator();

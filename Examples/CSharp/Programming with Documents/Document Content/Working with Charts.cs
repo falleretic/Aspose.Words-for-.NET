@@ -3,14 +3,14 @@ using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Charts;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithCharts : TestDataHelper
     {
         [Test]
         public static void FormatNumberOfDataLabel()
         {
-            //ExStart:FormatNumberofDataLabel
+            //ExStart:FormatNumberOfDataLabel
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -38,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp
             series1.DataLabels[2].NumberFormat.IsLinkedToSource = true;
 
             doc.Save(ArtifactsDir + "NumberFormat_DataLabel.docx");
-            //ExEnd:FormatNumberofDataLabel
+            //ExEnd:FormatNumberOfDataLabel
         }
 
         [Test]
@@ -390,7 +390,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void TickMultiLineLabelAlignment()
         {
             //ExStart:TickMultiLineLabelAlignment
-            Document doc = new Document(ChartsDir + "Area chart.docx");
+            Document doc = new Document(MyDir + "Area chart.docx");
 
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             ChartAxis axis = shape.Chart.AxisX;

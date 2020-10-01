@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Aspose.Words.Rendering;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Printing
 {
     class PrintCachePrinterSettings : TestDataHelper
     {
@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void CachePrinterSettings()
         {
             //ExStart:CachePrinterSettings
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             // Build layout
             doc.UpdatePageLayout();
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // ExStart:PrintProgressDialog
             // Load the documents which store the shapes we want to render
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             // Obtain the settings of the default printer
             PrinterSettings settings = new PrinterSettings();
 
@@ -54,7 +54,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             // ExStart:PrintPreviewSettingsDialog
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             PrintDialog printDlg = new PrintDialog();
 

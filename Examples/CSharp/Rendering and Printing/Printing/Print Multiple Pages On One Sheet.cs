@@ -4,15 +4,15 @@ using System.Drawing.Printing;
 using System.Windows.Forms;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Printing
 {
     class PrintMultiplePagesOnOneSheet : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void PrintMultiplePages()
         {
             //ExStart:PrintMultiplePagesOnOneSheet
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             //ExStart:PrintDialogSettings
             PrintDialog printDlg = new PrintDialog();

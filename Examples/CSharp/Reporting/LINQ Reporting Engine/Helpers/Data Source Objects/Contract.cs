@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine.Helpers.Data_Source_Objects
+namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine.Helpers.Data_Source_Objects
 {
     //ExStart:Contract
     public class Contract

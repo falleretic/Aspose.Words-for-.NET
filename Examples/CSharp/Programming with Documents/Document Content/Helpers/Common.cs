@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content.Helpers
 {
-    class Common
+    internal class Common
     {
         //ExStart:CommonExtractContent
         public static ArrayList ExtractContent(Node startNode, Node endNode, bool isInclusive)

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Ranges
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithRanges : TestDataHelper
     {
@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.Ranges
         public static void RangesDeleteText()
         {
             //ExStart:RangesDeleteText
-            Document doc = new Document(RangeDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             doc.Sections[0].Range.Delete();
             //ExEnd:RangesDeleteText
         }
@@ -17,7 +17,7 @@ namespace Aspose.Words.Examples.CSharp.Ranges
         public static void RangesGetText()
         {
             //ExStart:RangesGetText
-            Document doc = new Document(RangeDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             string text = doc.Range.Text;
             //ExEnd:RangesGetText
         }

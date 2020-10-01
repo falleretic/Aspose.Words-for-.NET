@@ -5,7 +5,7 @@ using Aspose.Words.MailMerging;
 using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Split_Documents
 {
     class SplitIntoHtmlPages : TestDataHelper
     {
@@ -18,8 +18,8 @@ namespace Aspose.Words.Examples.CSharp
             // Aspose.Words.License license = new Aspose.Words.License();
             // License.SetLicense(@"Aspose.Words.lic");
             
-            string srcFileName = LoadingSavingDir + "SOI 2007-2012-DeeM with footnote added.doc";
-            string tocTemplate = LoadingSavingDir + "TocTemplate.doc";
+            string srcFileName = MyDir + "SOI 2007-2012-DeeM with footnote added.doc";
+            string tocTemplate = MyDir + "TocTemplate.doc";
 
             string outDir = Path.Combine(ArtifactsDir, "SplitIntoHtmlPages");
             Directory.CreateDirectory(outDir);

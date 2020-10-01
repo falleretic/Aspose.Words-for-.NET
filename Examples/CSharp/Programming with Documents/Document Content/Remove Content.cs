@@ -3,7 +3,7 @@ using System.Collections;
 using Aspose.Words.Fields;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class RemoveContent : TestDataHelper
     {
@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void RemovePageBreaks()
         {
             // ExStart:OpenFromFile
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             // ExEnd:OpenFromFile
 
             // Remove the page and section breaks from the document
@@ -65,7 +65,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void RemoveFooters()
         {
             //ExStart:RemoveFooters
-            Document doc = new Document(DocumentDir + "Header and footer types.docx");
+            Document doc = new Document(MyDir + "Header and footer types.docx");
 
             foreach (Section section in doc)
             {
@@ -90,7 +90,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         //ExStart:RemoveTOCFromDocument
         public static void RemoveToc()
         {
-            Document doc = new Document(DocumentDir + "Table of contents.docx");
+            Document doc = new Document(MyDir + "Table of contents.docx");
 
             // Remove the first table of contents from the document
             RemoveTableOfContents(doc, 0);

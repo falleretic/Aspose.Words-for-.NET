@@ -6,7 +6,7 @@ using Aspose.Words.Saving;
 using Aspose.Words.Settings;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithShapes : TestDataHelper
     {
@@ -73,7 +73,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            Shape shape = builder.InsertImage(ShapesDir + "Test.png");
+            Shape shape = builder.InsertImage(ImagesDir + "Test.png");
             shape.AspectRatioLocked = false;
 
             doc.Save(ArtifactsDir + "Shape_AspectRatioLocked.doc");
@@ -154,7 +154,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Document doc = new Document();
             
             DocumentBuilder builder = new DocumentBuilder(doc);
-            Shape shape = builder.InsertImage(ShapesDir + "Test.png");
+            Shape shape = builder.InsertImage(ImagesDir + "Test.png");
             shape.AspectRatioLocked = false;
 
             Console.Write("\nGets the actual bounds of the shape in points: ");
@@ -183,7 +183,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void DetectSmartArtShape()
         {
             //ExStart:DetectSmartArtShape
-            Document doc = new Document(ShapesDir + "SmartArt.docx");
+            Document doc = new Document(MyDir + "SmartArt.docx");
 
             int count = doc.GetChildNodes(NodeType.Shape, true).Cast<Shape>().Count(shape => shape.HasSmartArt);
 

@@ -7,14 +7,14 @@ using Aspose.Words.Layout;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Layout_Helpers
 {
     class DocumentLayoutHelper : TestDataHelper
     {
         [Test]
         public static void Run()
         {
-            Document doc = new Document(RenderingPrintingDir + "Document layout.docx");
+            Document doc = new Document(MyDir + "Document layout.docx");
 
             // This sample introduces the RenderedDocument class and other related classes which provide an API wrapper for 
             // The LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API

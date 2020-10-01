@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class CompareDocument : TestDataHelper
     {
@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CompareForEqual()
         {
             //ExStart:CompareForEqual
-            Document docA = new Document(DocumentDir + "Document.docx");
+            Document docA = new Document(MyDir + "Document.docx");
             Document docB = docA.Clone();
             
             // DocA now contains changes as revisions
@@ -19,10 +19,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         }
 
         [Test]
-        public static void CompareDocumentWithCompareOptions()
+        public static void CompareOptions()
         {
-            //ExStart:CompareDocumentWithCompareOptions
-            Document docA = new Document(DocumentDir + "Document.docx");
+            //ExStart:CompareOptions
+            Document docA = new Document(MyDir + "Document.docx");
             Document docB = docA.Clone();
 
             CompareOptions options = new CompareOptions();
@@ -35,32 +35,31 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             options.IgnoreTextboxes = true;
             options.IgnoreFootnotes = true;
 
-            // DocA now contains changes as revisions
             docA.Compare(docB, "user", DateTime.Now, options);
             Console.WriteLine(docA.Revisions.Count == 0 ? "Documents are equal" : "Documents are not equal");
-            //ExEnd:CompareDocumentWithCompareOptions                     
+            //ExEnd:CompareOptions                     
         }
 
         [Test]
-        public static void CompareDocumentWithComparisonTarget()
+        public static void ComparisonTarget()
         {
-            //ExStart:CompareDocumentWithComparisonTarget
-            Document docA = new Document(DocumentDir + "Document.docx");
+            //ExStart:ComparisonTarget
+            Document docA = new Document(MyDir + "Document.docx");
             Document docB = docA.Clone();
 
             CompareOptions options = new CompareOptions();
             options.IgnoreFormatting = true;
-            // Relates to Microsoft Word "Show changes in" option in "Compare Documents" dialog box
+            // Relates to Microsoft Word "Show changes in" option in "Compare Documents" dialog box.
             options.Target = ComparisonTargetType.New;
 
             docA.Compare(docB, "user", DateTime.Now, options);
-            //ExEnd:CompareDocumentWithComparisonTarget
+            //ExEnd:ComparisonTarget
         }
 
         [Test]
-        public static void SpecifyComparisonGranularity()
+        public static void ComparisonGranularity()
         {
-            // ExStart:SpecifyComparisonGranularity
+            // ExStart:ComparisonGranularity
             DocumentBuilder builderA = new DocumentBuilder(new Document());
             DocumentBuilder builderB = new DocumentBuilder(new Document());
 
@@ -71,7 +70,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             compareOptions.Granularity = Granularity.CharLevel;
 
             builderA.Document.Compare(builderB.Document, "author", DateTime.Now, compareOptions);
-            // ExEnd:SpecifyComparisonGranularity      
+            // ExEnd:ComparisonGranularity      
         }
     }
 }

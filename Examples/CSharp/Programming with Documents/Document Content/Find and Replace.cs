@@ -8,7 +8,7 @@ using Aspose.Words.Fields;
 using Aspose.Words.Replacing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class FindAndReplace : TestDataHelper
     {
@@ -19,35 +19,30 @@ namespace Aspose.Words.Examples.CSharp
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             builder.Writeln("Hello _CustomerName_,");
-
-            // Check the text of the document
             Console.WriteLine("Original document text: " + doc.Range.Text);
 
-            // Replace the text in the document
             doc.Range.Replace("_CustomerName_", "James Bond", new FindReplaceOptions(FindReplaceDirection.Forward));
 
-            // Check the replacement was made
             Console.WriteLine("Document text after replace: " + doc.Range.Text);
 
             // Save the modified document
-            doc.Save(ArtifactsDir + "FindAndReplace.Replace.docx");
+            doc.Save(ArtifactsDir + "FindAndReplace.SimpleFindReplace.docx");
         }
 
         [Test]
         public static void FindAndHighlight()
         {
             //ExStart:FindAndHighlight
-            Document doc = new Document(FindReplaceDir + "Find and highlight.docx");
+            Document doc = new Document(MyDir + "Find and highlight.docx");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new ReplaceEvaluatorFindAndHighlight();
             options.Direction = FindReplaceDirection.Backward;
 
-            // We want the "your document" phrase to be highlighted
             Regex regex = new Regex("your document", RegexOptions.IgnoreCase);
             doc.Range.Replace(regex, "", options);
 
-            doc.Save(ArtifactsDir + "FindReplaceOptions.FindAndHighlight.docx");
+            doc.Save(ArtifactsDir + "FindAndReplace.FindAndHighlight.docx");
             //ExEnd:FindAndHighlight
         }
 
@@ -60,18 +55,18 @@ namespace Aspose.Words.Examples.CSharp
             /// </summary>
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs e)
             {
-                // This is a Run node that contains either the beginning or the complete match
+                // This is a Run node that contains either the beginning or the complete match.
                 Node currentNode = e.MatchNode;
 
                 // The first (and may be the only) run can contain text before the match, 
-                // in this case it is necessary to split the run
+                // in this case it is necessary to split the run.
                 if (e.MatchOffset > 0)
                     currentNode = SplitRun((Run) currentNode, e.MatchOffset);
 
-                // This array is used to store all nodes of the match for further highlighting
+                // This array is used to store all nodes of the match for further highlighting.
                 ArrayList runs = new ArrayList();
 
-                // Find all runs that contain parts of the match string
+                // Find all runs that contain parts of the match string.
                 int remainingLength = e.Match.Value.Length;
                 while (
                     remainingLength > 0 &&
@@ -81,7 +76,7 @@ namespace Aspose.Words.Examples.CSharp
                     runs.Add(currentNode);
                     remainingLength -= currentNode.GetText().Length;
 
-                    // Select the next Run node
+                    // Select the next Run node.
                     // Have to loop because there could be other nodes such as BookmarkStart etc.
                     do
                     {
@@ -89,18 +84,18 @@ namespace Aspose.Words.Examples.CSharp
                     } while (currentNode != null && currentNode.NodeType != NodeType.Run);
                 }
 
-                // Split the last run that contains the match if there is any text left
+                // Split the last run that contains the match if there is any text left.
                 if (currentNode != null && remainingLength > 0)
                 {
                     SplitRun((Run) currentNode, remainingLength);
                     runs.Add(currentNode);
                 }
 
-                // Now highlight all runs in the sequence
+                // Now highlight all runs in the sequence.
                 foreach (Run run in runs)
                     run.Font.HighlightColor = Color.Yellow;
 
-                // Signal to the replace engine to do nothing because we have already done all what we wanted
+                // Signal to the replace engine to do nothing because we have already done all what we wanted.
                 return ReplaceAction.Skip;
             }
         }
@@ -115,8 +110,10 @@ namespace Aspose.Words.Examples.CSharp
         {
             Run afterRun = (Run) run.Clone(true);
             afterRun.Text = run.Text.Substring(position);
+
             run.Text = run.Text.Substring(0, position);
             run.ParentNode.InsertAfter(afterRun, run);
+            
             return afterRun;
         }
         //ExEnd:SplitRun
@@ -133,13 +130,12 @@ namespace Aspose.Words.Examples.CSharp
 
             //ExStart:MetaCharactersInSearchPattern
             Document doc = new Document();
-
-            // Use a document builder to add content to the document
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
             builder.Writeln("This is Line 1");
             builder.Writeln("This is Line 2");
 
-            var findReplaceOptions = new FindReplaceOptions();
+            FindReplaceOptions findReplaceOptions = new FindReplaceOptions();
 
             doc.Range.Replace("This is Line 1&pThis is Line 2", "This is replaced line", findReplaceOptions);
 
@@ -151,14 +147,14 @@ namespace Aspose.Words.Examples.CSharp
             doc.Range.Replace("This is Line 1&mThis is Line 2", "Page break is replaced with new text.",
                 findReplaceOptions);
 
-            doc.Save(ArtifactsDir + "MetaCharactersInSearchPattern.docx");
+            doc.Save(ArtifactsDir + "FindAndReplace.MetaCharactersInSearchPattern.docx");
             //ExEnd:MetaCharactersInSearchPattern
         }
 
         [Test]
         public static void ReplaceTextContainingMetaCharacters()
         {
-            //ExStart:ReplaceTextContaingMetaCharacters
+            //ExStart:ReplaceTextContainingMetaCharacters
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -179,14 +175,14 @@ namespace Aspose.Words.Examples.CSharp
             // Insert section break instead of custom text tag.
             count = doc.Range.Replace("{insert-section}", "&b", options);
 
-            doc.Save(ArtifactsDir + "ReplaceTextContainingMetaCharacters.docx");
-            //ExEnd:ReplaceTextContaingMetaCharacters
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceTextContainingMetaCharacters.docx");
+            //ExEnd:ReplaceTextContainingMetaCharacters
         }
 
         [Test]
         public static void IgnoreTextInsideFields()
         {
-            // ExStart:IgnoreTextInsideFields
+            //ExStart:IgnoreTextInsideFields
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -205,14 +201,13 @@ namespace Aspose.Words.Examples.CSharp
             options.IgnoreFields = false;
             doc.Range.Replace(regex, "*", options);
             Console.WriteLine(doc.GetText()); // The output is: \u0013INCLUDETEXT\u0014T*xt in fi*ld\u0015\f
-            // ExEnd:IgnoreTextInsideFields
+            //ExEnd:IgnoreTextInsideFields
         }
 
         [Test]
         public static void IgnoreTextInsideDeleteRevisions()
         {
-            // ExStart:IgnoreTextInsideDeleteRevisions
-            // Create new document.
+            //ExStart:IgnoreTextInsideDeleteRevisions
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -237,14 +232,13 @@ namespace Aspose.Words.Examples.CSharp
             options.IgnoreDeleted = false;
             doc.Range.Replace(regex, "*", options);
             Console.WriteLine(doc.GetText()); // The output is: D*l*t*d\rT*xt\f
-            // ExEnd:IgnoreTextInsideDeleteRevisions
+            //ExEnd:IgnoreTextInsideDeleteRevisions
         }
 
         [Test]
         public static void IgnoreTextInsideInsertRevisions()
         {
             // ExStart:IgnoreTextInsideInsertRevisions
-            // Create new document.
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -257,15 +251,17 @@ namespace Aspose.Words.Examples.CSharp
             builder.Write("Text");
 
             Regex regex = new Regex("e");
-            FindReplaceOptions options = new FindReplaceOptions();
 
+            FindReplaceOptions options = new FindReplaceOptions();
             // Replace 'e' in document ignoring inserted text.
             options.IgnoreInserted = true;
+            
             doc.Range.Replace(regex, "*", options);
             Console.WriteLine(doc.GetText()); // The output is: Inserted\rT*xt\f
 
             // Replace 'e' in document NOT ignoring inserted text.
             options.IgnoreInserted = false;
+            
             doc.Range.Replace(regex, "*", options);
             Console.WriteLine(doc.GetText()); // The output is: Ins*rt*d\rT*xt\f
             // ExEnd:IgnoreTextInsideInsertRevisions
@@ -277,18 +273,15 @@ namespace Aspose.Words.Examples.CSharp
             //ExStart:ReplaceHtmlTextWithMetaCharacters
             Document doc = new Document();
 
-            // Use a document builder to add content to the document
             DocumentBuilder builder = new DocumentBuilder(doc);
             builder.Write("{PLACEHOLDER}");
 
-            FindReplaceOptions findReplaceOptions = new FindReplaceOptions
-            {
-                ReplacingCallback = new FindAndInsertHtml(),
-            };
-
+            FindReplaceOptions findReplaceOptions = new FindReplaceOptions();
+            findReplaceOptions.ReplacingCallback = new FindAndInsertHtml();
+            
             doc.Range.Replace("{PLACEHOLDER}", "<p>&ldquo;Some Text&rdquo;</p>", findReplaceOptions);
 
-            doc.Save(ArtifactsDir + "ReplaceHtmlTextWithMetaCharacters.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceHtmlTextWithMetaCharacters.docx");
             //ExEnd:ReplaceHtmlTextWithMetaCharacters
         }
 
@@ -297,17 +290,14 @@ namespace Aspose.Words.Examples.CSharp
         {
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs e)
             {
-                // This is a Run node that contains either the beginning or the complete match
                 Node currentNode = e.MatchNode;
 
-                // Create document builder and insert MergeField
                 DocumentBuilder builder = new DocumentBuilder(e.MatchNode.Document as Document);
                 builder.MoveTo(currentNode);
                 builder.InsertHtml(e.Replacement);
 
                 currentNode.Remove();
 
-                // Signal to the replace engine to do nothing because we have already done all what we wanted
                 return ReplaceAction.Skip;
             }
         }
@@ -317,21 +307,18 @@ namespace Aspose.Words.Examples.CSharp
         public static void ReplaceTextInFooter()
         {
             //ExStart:ReplaceTextInFooter
-            // Open the template document, containing obsolete copyright information in the footer
-            Document doc = new Document(DocumentDir + "Footer.docx");
+            Document doc = new Document(MyDir + "Footer.docx");
 
             HeaderFooterCollection headersFooters = doc.FirstSection.HeadersFooters;
             HeaderFooter footer = headersFooters[HeaderFooterType.FooterPrimary];
 
-            FindReplaceOptions options = new FindReplaceOptions
-            {
-                MatchCase = false,
-                FindWholeWordsOnly = false
-            };
+            FindReplaceOptions options = new FindReplaceOptions();
+            options.MatchCase = false;
+            options.FindWholeWordsOnly = false;
 
             footer.Range.Replace("(C) 2006 Aspose Pty Ltd.", "Copyright (C) 2020 by Aspose Pty Ltd.", options);
 
-            doc.Save(ArtifactsDir + "HeaderFooter.ReplaceText.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceTextInFooter.docx");
             //ExEnd:ReplaceTextInFooter
         }
 
@@ -339,24 +326,20 @@ namespace Aspose.Words.Examples.CSharp
         //ExStart:ShowChangesForHeaderAndFooterOrders
         public static void ShowChangesForHeaderAndFooterOrders()
         {
-            Document doc = new Document(DocumentDir + "Footer.docx");
+            Document doc = new Document(MyDir + "Footer.docx");
 
-            // Assert that we use special header and footer for the first page
-            // The order for this: first header\footer, even header\footer, primary header\footer
             Section firstPageSection = doc.FirstSection;
 
             ReplaceLog logger = new ReplaceLog();
-            FindReplaceOptions options = new FindReplaceOptions { ReplacingCallback = logger };
+            FindReplaceOptions options = new FindReplaceOptions();
+            options.ReplacingCallback = logger;
 
             doc.Range.Replace(new Regex("(header|footer)"), "", options);
 
-            doc.Save(ArtifactsDir + "HeaderFooter.HeaderFooterOrder.docx");
+            doc.Save(ArtifactsDir + "FindAndReplace.ShowChangesForHeaderAndFooterOrders.docx");
 
-            // Prepare our string builder for assert results without "DifferentFirstPageHeaderFooter"
             logger.ClearText();
 
-            // Remove special first page
-            // The order for this: primary header, default header, primary footer, default footer, even header\footer
             firstPageSection.PageSetup.DifferentFirstPageHeaderFooter = false;
 
             doc.Range.Replace(new Regex("(header|footer)"), "", options);
@@ -380,17 +363,16 @@ namespace Aspose.Words.Examples.CSharp
         // ExEnd:ShowChangesForHeaderAndFooterOrders
 
         [Test]
-        public static void RReplaceTextWithField()
+        public static void ReplaceTextWithField()
         {
-            Document doc = new Document(FindReplaceDir + "Replace text with fields.docx");
+            Document doc = new Document(MyDir + "Replace text with fields.docx");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new ReplaceTextWithFieldHandler(FieldType.FieldMergeField);
 
-            // Replace any "PlaceHolderX" instances in the document (where X is a number) with a merge field
             doc.Range.Replace(new Regex(@"PlaceHolder(\d+)"), "", options);
 
-            doc.Save(ArtifactsDir + "Field.ReplaceTextWithFields.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceTextWithField.docx");
         }
 
 
@@ -405,23 +387,20 @@ namespace Aspose.Words.Examples.CSharp
             {
                 ArrayList runs = FindAndSplitMatchRuns(args);
 
-                // Create DocumentBuilder which is used to insert the field
                 DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
                 builder.MoveTo((Run) runs[runs.Count - 1]);
 
-                // Calculate the name of the field from the FieldType enumeration by removing the first instance of "Field" from the text
-                // This works for almost all of the field types
+                // Calculate the name of the field from the FieldType enumeration by removing the first instance of "Field" from the text.
+                // This works for almost all of the field types.
                 string fieldName = mFieldType.ToString().ToUpper().Substring(5);
 
-                // Insert the field into the document using the specified field type and the match text as the field name
-                // If the fields you are inserting do not require this extra parameter then it can be removed from the string below
-                builder.InsertField(string.Format("{0} {1}", fieldName, args.Match.Groups[0]));
+                // Insert the field into the document using the specified field type and the match text as the field name.
+                // If the fields you are inserting do not require this extra parameter then it can be removed from the string below.
+                builder.InsertField($"{fieldName} {args.Match.Groups[0]}");
 
-                // Now remove all runs in the sequence
                 foreach (Run run in runs)
                     run.Remove();
 
-                // Signal to the replace engine to do nothing because we have already done all what we wanted
                 return ReplaceAction.Skip;
             }
 
@@ -430,18 +409,18 @@ namespace Aspose.Words.Examples.CSharp
             /// </summary>
             public ArrayList FindAndSplitMatchRuns(ReplacingArgs args)
             {
-                // This is a Run node that contains either the beginning or the complete match
+                // This is a Run node that contains either the beginning or the complete match.
                 Node currentNode = args.MatchNode;
 
                 // The first (and may be the only) run can contain text before the match, 
-                // In this case it is necessary to split the run
+                // In this case it is necessary to split the run.
                 if (args.MatchOffset > 0)
                     currentNode = SplitRun((Run) currentNode, args.MatchOffset);
 
-                // This array is used to store all nodes of the match for further removing
+                // This array is used to store all nodes of the match for further removing.
                 ArrayList runs = new ArrayList();
 
-                // Find all runs that contain parts of the match string
+                // Find all runs that contain parts of the match string.
                 int remainingLength = args.Match.Value.Length;
                 while (
                     remainingLength > 0 &&
@@ -451,15 +430,13 @@ namespace Aspose.Words.Examples.CSharp
                     runs.Add(currentNode);
                     remainingLength -= currentNode.GetText().Length;
 
-                    // Select the next Run node
-                    // Have to loop because there could be other nodes such as BookmarkStart etc.
                     do
                     {
                         currentNode = currentNode.NextSibling;
                     } while (currentNode != null && currentNode.NodeType != NodeType.Run);
                 }
 
-                // Split the last run that contains the match if there is any text left
+                // Split the last run that contains the match if there is any text left.
                 if (currentNode != null && remainingLength > 0)
                 {
                     SplitRun((Run) currentNode, remainingLength);
@@ -482,7 +459,7 @@ namespace Aspose.Words.Examples.CSharp
                 return afterRun;
             }
 
-            private FieldType mFieldType;
+            private readonly FieldType mFieldType;
         }
 
         [Test]
@@ -499,7 +476,7 @@ namespace Aspose.Words.Examples.CSharp
 
             doc.Range.Replace(new Regex("[s|m]ad"), "", options);
 
-            doc.Save(ArtifactsDir + "Range.ReplaceWithEvaluator.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceWithEvaluator.docx");
             //ExEnd:ReplaceWithEvaluator
         }
 
@@ -512,7 +489,7 @@ namespace Aspose.Words.Examples.CSharp
             /// </summary>
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs e)
             {
-                e.Replacement = e.Match.ToString() + mMatchNumber.ToString();
+                e.Replacement = e.Match + mMatchNumber.ToString();
                 mMatchNumber++;
                 return ReplaceAction.Replace;
             }
@@ -535,7 +512,7 @@ namespace Aspose.Words.Examples.CSharp
 
             doc.Range.Replace(new Regex(@" <CustomerName>,"), string.Empty, options);
 
-            doc.Save(ArtifactsDir + "Range.ReplaceWithInsertHtml.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceWithHtml.docx");
         }
 
         private class ReplaceWithHtmlEvaluator : IReplacingCallback
@@ -578,28 +555,26 @@ namespace Aspose.Words.Examples.CSharp
 
             doc.Range.Replace(new Regex("[s|m]ad"), "bad", options);
 
-            doc.Save(ArtifactsDir + "ReplaceWithRegex.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceWithRegex.docx");
             //ExEnd:ReplaceWithRegex
         }
         
         [Test]
         public static void RecognizeAndSubstitutionsWithinReplacementPatterns()
         {
-            // ExStart:RecognizeAndSubstitutionsWithinReplacementPatterns
-            // Create new document.
+            //ExStart:RecognizeAndSubstitutionsWithinReplacementPatterns
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Write some text.
             builder.Write("Jason give money to Paul.");
 
             Regex regex = new Regex(@"([A-z]+) give money to ([A-z]+)");
 
-            // Replace text using substitutions.
             FindReplaceOptions options = new FindReplaceOptions();
             options.UseSubstitutions = true;
+            
             doc.Range.Replace(regex, @"$2 take money from $1", options);
-            // ExEnd:RecognizeAndSubstitutionsWithinReplacementPatterns
+            //ExEnd:RecognizeAndSubstitutionsWithinReplacementPatterns
         }
 
         [Test]
@@ -613,13 +588,13 @@ namespace Aspose.Words.Examples.CSharp
 
             doc.Range.Replace("sad", "bad", new FindReplaceOptions(FindReplaceDirection.Forward));
 
-            doc.Save(ArtifactsDir + "ReplaceWithString.doc");
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceWithString.docx");
             //ExEnd:ReplaceWithString
         }
 
         [Test]
-        //ExStart:FineReplaceUsingLegacyOrder
-        public static void FineReplaceUsingLegacyOrder()
+        //ExStart:UsingLegacyOrder
+        public static void UsingLegacyOrder()
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
@@ -633,12 +608,12 @@ namespace Aspose.Words.Examples.CSharp
             builder.Write("[tag 2]");
 
             FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = new UsingLegacyOrder.ReplacingCallback();
+            options.ReplacingCallback = new ReplacingCallback();
             options.UseLegacyOrder = true;
 
             doc.Range.Replace(new Regex(@"\[(.*?)\]"), "", options);
 
-            doc.Save(ArtifactsDir + "FineReplaceUsingLegacyOrder.docx");
+            doc.Save(ArtifactsDir + "FindAndReplace.UsingLegacyOrder.docx");
         }
 
         private class ReplacingCallback : IReplacingCallback
@@ -649,6 +624,6 @@ namespace Aspose.Words.Examples.CSharp
                 return ReplaceAction.Replace;
             }
         }
-        //ExEnd:FineReplaceUsingLegacyOrder
+        //ExEnd:UsingLegacyOrder
     }
 }

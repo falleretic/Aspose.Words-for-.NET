@@ -7,14 +7,14 @@ using Aspose.Words.Markup;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Split_Documents
 {
     class PageSplitter : TestDataHelper
     {
         [Test]
         public static void SplitDocuments()
         {
-            SplitAllDocumentsToPages(LoadingSavingDir + "Split");
+            SplitAllDocumentsToPages(MyDir + "Split");
         }
 
         public static void SplitDocumentToPages(string docName)

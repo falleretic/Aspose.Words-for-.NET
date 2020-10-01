@@ -2,7 +2,7 @@
 using Aspose.Words.Settings;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class SpecificDocumentOptions : TestDataHelper
     {
@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void OptimizeFor()
         {
             //ExStart:OptimizeFor
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             doc.CompatibilityOptions.OptimizeFor(MsWordVersion.Word2016);
 
             doc.Save(ArtifactsDir + "TestFile.docx");
@@ -21,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ShowGrammaticalAndSpellingErrors()
         {
             // ExStart: ShowGrammaticalAndSpellingErrors
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             doc.ShowGrammaticalErrors = true;
             doc.ShowSpellingErrors = true;
@@ -34,7 +34,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CleanupUnusedStylesandLists()
         {
             // ExStart:CleanupUnusedStylesandLists
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             CleanupOptions cleanupOptions = new CleanupOptions();
             cleanupOptions.UnusedLists = false;
@@ -51,7 +51,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CleanupDuplicateStyle()
         {
             // ExStart:CleanupDuplicateStyle
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             CleanupOptions options = new CleanupOptions();
             options.DuplicateStyle = true;
@@ -67,7 +67,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetViewOption()
         {
             //ExStart:SetViewOption
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             // Set view option
             doc.ViewOptions.ViewType = ViewType.PageLayout;
             doc.ViewOptions.ZoomPercent = 50;
@@ -80,7 +80,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void DocumentPageSetup()
         {
             //ExStart:DocumentPageSetup
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             // Set the layout mode for a section allowing to define the document grid behavior
             // Note that the Document Grid tab becomes visible in the Page Setup dialog of MS Word
@@ -103,7 +103,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             // Set language preferences that will be used when document is loading.
             loadOptions.LanguagePreferences.AddEditingLanguage(EditingLanguage.Japanese);
 
-            Document doc = new Document(DocumentDir + "No default editing language.docx", loadOptions);
+            Document doc = new Document(MyDir + "No default editing language.docx", loadOptions);
 
             int localeIdFarEast = doc.Styles.DefaultFont.LocaleIdFarEast;
             Console.WriteLine(
@@ -120,7 +120,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Words.LoadOptions loadOptions = new Words.LoadOptions();
             loadOptions.LanguagePreferences.DefaultEditingLanguage = EditingLanguage.Russian;
 
-            Document doc = new Document(DocumentDir + "No default editing language.docx", loadOptions);
+            Document doc = new Document(MyDir + "No default editing language.docx", loadOptions);
 
             int localeId = doc.Styles.DefaultFont.LocaleId;
             Console.WriteLine(

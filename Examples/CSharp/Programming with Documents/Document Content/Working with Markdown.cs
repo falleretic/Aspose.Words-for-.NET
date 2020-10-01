@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithMarkdownFeatures : TestDataHelper
     {
@@ -121,7 +121,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:ReadMarkdownDocument
             // This is Markdown document that was produced in example of UC3
-            Document doc = new Document(DocumentDir + "QuotesExample.md");
+            Document doc = new Document(MyDir + "QuotesExample.md");
 
             // Let's remove Heading formatting from a Quote in the very last paragraph
             Paragraph paragraph = doc.FirstSection.Body.LastParagraph;

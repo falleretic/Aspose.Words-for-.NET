@@ -2,7 +2,7 @@
 using System.Collections;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithComments : TestDataHelper
     {
@@ -64,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AddRemoveCommentReply()
         {
             //ExStart:AddRemoveCommentReply
-            Document doc = new Document(CommentsDir + "Comments.docx");
+            Document doc = new Document(MyDir + "Comments.docx");
 
             Comment comment = (Comment) doc.GetChild(NodeType.Comment, 0, true);
             // Remove the reply
@@ -80,7 +80,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ProcessComments()
         {
             // ExStart:ProcessComments
-            Document doc = new Document(CommentsDir + "Comments.docx");
+            Document doc = new Document(MyDir + "Comments.docx");
 
             // Extract the information about the comments of all the authors
             foreach (string comment in ExtractComments(doc))

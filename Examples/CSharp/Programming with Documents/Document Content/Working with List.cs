@@ -3,7 +3,7 @@ using Aspose.Words.Lists;
 using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.ListEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithList : TestDataHelper
     {

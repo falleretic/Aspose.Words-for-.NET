@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
+using Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
 using Aspose.Words.Reporting;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
+namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine
 {
     internal class Charts : TestDataHelper
     {
@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void CreateBubbleChart()
         {
             //ExStart:BubbleChart
-            Document doc = new Document(LinqDir + "Reporting engine template - Bubble chart.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Bubble chart.docx");
 
             // Create a Reporting Engine
             ReportingEngine engine = new ReportingEngine();
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
 
             List<string> seriesNames = new List<string> { "Flow", "Rainfall" };
 
-            Document doc = new Document(LinqDir + "Reporting engine template - Chart.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Chart.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, new object[] { data, seriesNames }, new[] { "data", "seriesNames" });
@@ -48,7 +48,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void ChartWithFilteringGroupingOrdering()
         {
             //ExStart:ChartWithFilteringGroupingOrdering
-            Document doc = new Document(LinqDir + "Reporting engine template - Chart with filtering.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Chart with filtering.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetContracts(), "contracts");
@@ -61,7 +61,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void PieChart()
         {
             //ExStart:PieChart
-            Document doc = new Document(LinqDir + "Reporting engine template - Pie chart.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Pie chart.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
@@ -74,7 +74,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void ScatterChart()
         {
             //ExStart:ScatterChart
-            Document doc = new Document(LinqDir + "Reporting engine template - Scatter chart.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Scatter chart.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetContracts(), "contracts");

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Styles
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithTableOfContent : TestDataHelper
     {
@@ -18,7 +18,7 @@ namespace Aspose.Words.Examples.CSharp.Styles
         public static void ChangeTOCTabStops()
         {
             //ExStart:ChangeTOCTabStops
-            Document doc = new Document(StyleDir + "Table of contents.docx");
+            Document doc = new Document(MyDir + "Table of contents.docx");
 
             // Iterate through all paragraphs in the document
             foreach (Paragraph para in doc.GetChildNodes(NodeType.Paragraph, true))

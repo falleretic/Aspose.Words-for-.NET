@@ -6,7 +6,7 @@ using System.Threading;
 using Aspose.Words.Fields;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Fields
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithFields : TestDataHelper
     {
@@ -51,7 +51,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void ReplaceHyperlinks()
         {
             //ExStart:ReplaceHyperlinks
-            Document doc = new Document(FieldsDir + "Hyperlinks.docx");
+            Document doc = new Document(MyDir + "Hyperlinks.docx");
 
             // Hyperlinks in a Word documents are fields
             foreach (Field field in doc.Range.Fields)
@@ -77,7 +77,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void RenameMergeFields()
         {
             //ExStart:RenameMergeFields
-            Document doc = new Document(FieldsDir + "Merge fields.docx");
+            Document doc = new Document(MyDir + "Merge fields.docx");
 
             // Select all field start nodes so we can find the merge fields
             NodeCollection fieldStarts = doc.GetChildNodes(NodeType.FieldStart, true);
@@ -181,7 +181,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void RemoveField()
         {
             //ExStart:RemoveField
-            Document doc = new Document(FieldsDir + "Various fields.docx");
+            Document doc = new Document(MyDir + "Various fields.docx");
             
             Field field = doc.Range.Fields[0];
             // Calling this method completely removes the field from the document
@@ -349,7 +349,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
             // Create instance of FieldAsk class and lets build the above field code
             FieldIncludeText fieldIncludeText = (FieldIncludeText) para.AppendField(FieldType.FieldIncludeText, false);
             fieldIncludeText.BookmarkName = "bookmark";
-            fieldIncludeText.SourceFullName = FieldsDir + "IncludeText.docx";
+            fieldIncludeText.SourceFullName = MyDir + "IncludeText.docx";
 
             doc.FirstSection.Body.AppendChild(para);
 
@@ -529,7 +529,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void FormFieldsWorkWithProperties()
         {
             //ExStart:FormFieldsWorkWithProperties
-            Document doc = new Document(FieldsDir + "Form fields.docx");
+            Document doc = new Document(MyDir + "Form fields.docx");
             FormField formField = doc.Range.FormFields[3];
 
             if (formField.Type.Equals(FieldType.FieldFormTextInput))
@@ -541,7 +541,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void FormFieldsGetFormFieldsCollection()
         {
             //ExStart:FormFieldsGetFormFieldsCollection
-            Document doc = new Document(FieldsDir + "Form fields.docx");
+            Document doc = new Document(MyDir + "Form fields.docx");
             FormFieldCollection formFields = doc.Range.FormFields;
             //ExEnd:FormFieldsGetFormFieldsCollection
         }
@@ -550,7 +550,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void FormFieldsGetByName()
         {
             //ExStart:FormFieldsGetByName
-            Document doc = new Document(FieldsDir + "Form fields.docx");
+            Document doc = new Document(MyDir + "Form fields.docx");
             FormFieldCollection documentFormFields = doc.Range.FormFields;
 
             FormField formField1 = documentFormFields[3];
@@ -631,7 +631,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         {
             //ExStart:FieldDisplayResults
             //ExStart:UpdateDocFields
-            Document document = new Document(FieldsDir + "Various fields.docx");
+            Document document = new Document(MyDir + "Various fields.docx");
             // This updates all fields in the document
             document.UpdateFields();
             //ExEnd:UpdateDocFields
@@ -657,7 +657,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void ConvertFieldsInParagraph()
         {
             //ExStart:ConvertFieldsInParagraph
-            Document doc = new Document(FieldsDir + "Linked fields.docx");
+            Document doc = new Document(MyDir + "Linked fields.docx");
 
             // Pass the appropriate parameters to convert all IF fields to static text that are encountered only in the last 
             // paragraph of the document
@@ -674,7 +674,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void ConvertFieldsInDocument()
         {
             //ExStart:ConvertFieldsInDocument
-            Document doc = new Document(FieldsDir + "Linked fields.docx");
+            Document doc = new Document(MyDir + "Linked fields.docx");
 
             // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to static text
             doc.Range.Fields.Where(f => f.Type == FieldType.FieldIf).ToList().ForEach(f => f.Unlink());
@@ -688,7 +688,7 @@ namespace Aspose.Words.Examples.CSharp.Fields
         public static void ConvertFieldsInBody()
         {
             //ExStart:ConvertFieldsInBody
-            Document doc = new Document(FieldsDir + "Linked fields.docx");
+            Document doc = new Document(MyDir + "Linked fields.docx");
 
             // Pass the appropriate parameters to convert PAGE fields encountered to static text only in the body of the first section
             doc.FirstSection.Body.Range.Fields.Where(f => f.Type == FieldType.FieldPage).ToList().ForEach(f => f.Unlink());

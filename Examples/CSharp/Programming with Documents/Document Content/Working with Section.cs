@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Sections
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithSection : TestDataHelper
     {
@@ -92,7 +92,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void CloneSection()
         {
             //ExStart:CloneSection
-            Document doc = new Document(SectionsDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             Section cloneSection = doc.Sections[0].Clone();
             //ExEnd:CloneSection
         }
@@ -101,7 +101,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void CopySection()
         {
             //ExStart:CopySection
-            Document srcDoc = new Document(SectionsDir + "Document.docx");
+            Document srcDoc = new Document(MyDir + "Document.docx");
             Document dstDoc = new Document();
 
             Section sourceSection = srcDoc.Sections[0];
@@ -116,7 +116,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void DeleteHeaderFooterContent()
         {
             //ExStart:DeleteHeaderFooterContent
-            Document doc = new Document(SectionsDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             
             Section section = doc.Sections[0];
             section.ClearHeadersFooters();
@@ -127,7 +127,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void DeleteSectionContent()
         {
             //ExStart:DeleteSectionContent
-            Document doc = new Document(SectionsDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             
             Section section = doc.Sections[0];
             section.ClearContent();
@@ -162,7 +162,7 @@ namespace Aspose.Words.Examples.CSharp.Sections
         public static void SectionsAccessByIndex()
         {
             //ExStart:SectionsAccessByIndex
-            Document doc = new Document(SectionsDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             
             Section section = doc.Sections[0];
             section.PageSetup.LeftMargin = 90; // 3.17 cm

@@ -4,7 +4,7 @@ using Aspose.Words.Drawing;
 using Aspose.Words.Drawing.Ole;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithOleObjectsAndActiveX : TestDataHelper
     {
@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            byte[] bs = File.ReadAllBytes(DocumentDir + "Zip file.zip");
+            byte[] bs = File.ReadAllBytes(MyDir + "Zip file.zip");
             using (Stream stream = new MemoryStream(bs))
             {
                 Shape shape = builder.InsertOleObject(stream, "Package", true, null);
@@ -52,7 +52,7 @@ namespace Aspose.Words.Examples.CSharp
             Document doc = new Document();
 
             DocumentBuilder builder = new DocumentBuilder(doc);
-            builder.InsertOleObjectAsIcon(ShapesDir + "embedded.xlsx", false, ShapesDir + "icon.ico",
+            builder.InsertOleObjectAsIcon(MyDir + "embedded.xlsx", false, MyDir + "icon.ico",
                 "My embedded file");
 
             doc.Save(ArtifactsDir + "EmbeddeWithIcon.docx");
@@ -64,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void ReadActiveXControlProperties()
         {
-            Document doc = new Document(RenderingPrintingDir + "ActiveX controls.docx");
+            Document doc = new Document(MyDir + "ActiveX controls.docx");
 
             string properties = "";
             // Retrieve shapes from the document

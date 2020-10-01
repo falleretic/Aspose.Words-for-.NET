@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithFootnotes : TestDataHelper
     {
@@ -8,7 +8,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetFootNoteColumns()
         {
             //ExStart:SetFootNoteColumns
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             // Specify the number of columns with which the footnotes area is formatted
             doc.FootnoteOptions.Columns = 3;
@@ -21,7 +21,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetFootnoteAndEndNotePosition()
         {
             //ExStart:SetFootnoteAndEndNotePosition
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             // Set footnote and endnode position
             doc.FootnoteOptions.Position = FootnotePosition.BeneathText;
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetEndnoteOptions()
         {
             //ExStart:SetEndnoteOptions
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
             
             builder.Write("Some text");

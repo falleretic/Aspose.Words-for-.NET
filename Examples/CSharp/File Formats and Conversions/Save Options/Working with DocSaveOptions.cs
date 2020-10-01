@@ -14,10 +14,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             
             builder.Write("Hello world!");
             
-            DocSaveOptions docSaveOptions = new DocSaveOptions();
-            docSaveOptions.Password = "password";
+            DocSaveOptions saveOptions = new DocSaveOptions();
+            saveOptions.Password = "password";
             
-            doc.Save(ArtifactsDir + "DocSaveOptions.EncryptDocumentWithPassword.docx", docSaveOptions);
+            doc.Save(ArtifactsDir + "DocSaveOptions.EncryptDocumentWithPassword.docx", saveOptions);
             //ExEnd:EncryptDocumentWithPassword
         }
 

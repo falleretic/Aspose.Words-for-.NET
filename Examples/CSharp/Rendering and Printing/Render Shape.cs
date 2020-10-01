@@ -7,14 +7,14 @@ using Aspose.Words.Saving;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
 {
     class RenderShape : TestDataHelper
     {
         [Test]
         public static void Run()
         {
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             // Retrieve the target shape from the document. In our sample document this is the first shape.
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);

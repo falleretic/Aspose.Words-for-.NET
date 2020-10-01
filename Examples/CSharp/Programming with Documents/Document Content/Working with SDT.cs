@@ -5,7 +5,7 @@ using Aspose.Words.Markup;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithSDT : TestDataHelper
     {
@@ -16,7 +16,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            Markup.StructuredDocumentTag sdtCheckBox = new Markup.StructuredDocumentTag(doc, SdtType.Checkbox, MarkupLevel.Inline);
+            StructuredDocumentTag sdtCheckBox = new StructuredDocumentTag(doc, SdtType.Checkbox, MarkupLevel.Inline);
             // Insert content control into the document
             builder.InsertNode(sdtCheckBox);
             
@@ -29,11 +29,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SetCurrentStateOfCheckBox
             // Open an existing document
-            Document doc = new Document(DocumentDir + "Structured document tags.docx");
+            Document doc = new Document(MyDir + "Structured document tags.docx");
             
             // Get the first content control from the document
-            Markup.StructuredDocumentTag sdtCheckBox =
-                (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            StructuredDocumentTag sdtCheckBox =
+                (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
 
             // StructuredDocumentTag.Checked property gets/sets current state of the Checkbox SDT
             if (sdtCheckBox.SdtType == SdtType.Checkbox)
@@ -48,9 +48,9 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:ModifyContentControls
             // Open an existing document
-            Document doc = new Document(DocumentDir + "Structured document tags.docx");
+            Document doc = new Document(MyDir + "Structured document tags.docx");
 
-            foreach (Markup.StructuredDocumentTag sdt in doc.GetChildNodes(NodeType.StructuredDocumentTag, true))
+            foreach (StructuredDocumentTag sdt in doc.GetChildNodes(NodeType.StructuredDocumentTag, true))
             {
                 switch (sdt.SdtType)
                 {
@@ -73,7 +73,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                         Shape shape = (Shape) sdt.GetChild(NodeType.Shape, 0, true);
                         if (shape.HasImage)
                         {
-                            shape.ImageData.SetImage(DocumentDir + "Watermark.png");
+                            shape.ImageData.SetImage(ImagesDir + "Watermark.png");
                         }
 
                         break;
@@ -90,7 +90,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:ComboBoxContentControl
             Document doc = new Document();
-            Markup.StructuredDocumentTag sdt = new Markup.StructuredDocumentTag(doc, SdtType.ComboBox, MarkupLevel.Block);
+            StructuredDocumentTag sdt = new StructuredDocumentTag(doc, SdtType.ComboBox, MarkupLevel.Block);
 
             sdt.ListItems.Add(new SdtListItem("Choose an item", "-1"));
             sdt.ListItems.Add(new SdtListItem("Item 1", "1"));
@@ -106,7 +106,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:RichTextBoxContentControl
             Document doc = new Document();
-            Markup.StructuredDocumentTag sdtRichText = new Markup.StructuredDocumentTag(doc, SdtType.RichText, MarkupLevel.Block);
+            StructuredDocumentTag sdtRichText = new StructuredDocumentTag(doc, SdtType.RichText, MarkupLevel.Block);
 
             Paragraph para = new Paragraph(doc);
             Run run = new Run(doc);
@@ -124,8 +124,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetContentControlColor()
         {
             //ExStart:SetContentControlColor
-            Document doc = new Document(SdtDir + "Structured document tags.docx");
-            Markup.StructuredDocumentTag sdt = (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            Document doc = new Document(MyDir + "Structured document tags.docx");
+            StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Color = Color.Red;
 
             doc.Save(ArtifactsDir + "SetContentControlColor.docx");
@@ -136,8 +136,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ClearContentsControl()
         {
             //ExStart:ClearContentsControl
-            Document doc = new Document(SdtDir + "Structured document tags.docx");
-            Markup.StructuredDocumentTag sdt = (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            Document doc = new Document(MyDir + "Structured document tags.docx");
+            StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             sdt.Clear();
 
             doc.Save(ArtifactsDir + "ClearContentsControl.doc");
@@ -152,7 +152,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             CustomXmlPart xmlPart =
                 doc.CustomXmlParts.Add(Guid.NewGuid().ToString("B"), "<root><text>Hello, World!</text></root>");
 
-            Markup.StructuredDocumentTag sdt = new Markup.StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Block);
+            StructuredDocumentTag sdt = new StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Block);
             doc.FirstSection.Body.AppendChild(sdt);
 
             sdt.XmlMapping.SetMapping(xmlPart, "/root[1]/text[1]", "");
@@ -165,8 +165,8 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetContentControlStyle()
         {
             //ExStart:SetContentControlStyle
-            Document doc = new Document(SdtDir + "Structured document tags.docx");
-            Markup.StructuredDocumentTag sdt = (Markup.StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
+            Document doc = new Document(MyDir + "Structured document tags.docx");
+            StructuredDocumentTag sdt = (StructuredDocumentTag) doc.GetChild(NodeType.StructuredDocumentTag, 0, true);
             Style style = doc.Styles[StyleIdentifier.Quote];
             sdt.Style = style;
 
@@ -197,25 +197,25 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             builder.EndRow();
             builder.EndTable();
 
-            Markup.StructuredDocumentTag repeatingSectionSdt =
-                new Markup.StructuredDocumentTag(doc, SdtType.RepeatingSection, MarkupLevel.Row);
+            StructuredDocumentTag repeatingSectionSdt =
+                new StructuredDocumentTag(doc, SdtType.RepeatingSection, MarkupLevel.Row);
             repeatingSectionSdt.XmlMapping.SetMapping(xmlPart, "/books[1]/book", "");
             table.AppendChild(repeatingSectionSdt);
 
-            Markup.StructuredDocumentTag repeatingSectionItemSdt =
-                new Markup.StructuredDocumentTag(doc, SdtType.RepeatingSectionItem, MarkupLevel.Row);
+            StructuredDocumentTag repeatingSectionItemSdt =
+                new StructuredDocumentTag(doc, SdtType.RepeatingSectionItem, MarkupLevel.Row);
             repeatingSectionSdt.AppendChild(repeatingSectionItemSdt);
 
             Row row = new Row(doc);
             repeatingSectionItemSdt.AppendChild(row);
 
-            Markup.StructuredDocumentTag titleSdt =
-                new Markup.StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Cell);
+            StructuredDocumentTag titleSdt =
+                new StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Cell);
             titleSdt.XmlMapping.SetMapping(xmlPart, "/books[1]/book[1]/title[1]", "");
             row.AppendChild(titleSdt);
 
-            Markup.StructuredDocumentTag authorSdt =
-                new Markup.StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Cell);
+            StructuredDocumentTag authorSdt =
+                new StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Cell);
             authorSdt.XmlMapping.SetMapping(xmlPart, "/books[1]/book[1]/author[1]", "");
             row.AppendChild(authorSdt);
 

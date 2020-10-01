@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Printing
 {
     class PrintDocViaXpsPrint : TestDataHelper
     {
@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:PrintDocViaXpsPrint
-            Document document = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document document = new Document(MyDir + "Rendering.docx");
 
             // Specify the name of the printer you want to print to
             const string printerName = @"\\COMPANY\Brother MFC-885CW Printer";

@@ -1,8 +1,9 @@
 ﻿using System.IO;
 using System.Linq;
+using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Split_Documents
 {
     class SplitDocument : TestDataHelper
     {
@@ -11,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentByHeadingsHtml
             // Open a Word document
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
  
             HtmlSaveOptions options = new HtmlSaveOptions();
             // Split a document into smaller parts, in this instance split by heading
@@ -26,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SplitDocumentBySectionsHtml()
         {
             // Open a Word document
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
  
             //ExStart:SplitDocumentBySectionsHtml
             HtmlSaveOptions options = new HtmlSaveOptions();
@@ -42,7 +43,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentBySections
             // Open a Word document
-            Document doc = new Document(DocumentDir + "Big document.docx");
+            Document doc = new Document(MyDir + "Big document.docx");
 
             for (int i = 0; i < doc.Sections.Count; i++)
             {
@@ -66,7 +67,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentPageByPage
             // Open a Word document
-            Document doc = new Document(DocumentDir + "Big document.docx");
+            Document doc = new Document(MyDir + "Big document.docx");
 
             // Split nodes in the document into separate pages
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);
@@ -120,7 +121,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SplitDocumentByPageRange
             // Open a Word document
-            Document doc = new Document(DocumentDir + "Big document.docx");
+            Document doc = new Document(MyDir + "Big document.docx");
  
             // Split nodes in the document into separate pages
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);

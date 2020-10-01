@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
     class WorkingWithRtfSaveOptions : TestDataHelper
     {
@@ -9,12 +9,12 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SavingImagesAsWmf()
         {
             //ExStart:SavingImagesAsWmf
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
-            RtfSaveOptions saveOpts = new RtfSaveOptions();
-            saveOpts.SaveImagesAsWmf = true;
+            RtfSaveOptions saveOptions = new RtfSaveOptions();
+            saveOptions.SaveImagesAsWmf = true;
 
-            doc.Save(ArtifactsDir + "output.rtf", saveOpts);
+            doc.Save(ArtifactsDir + "RtfSaveOptions.SavingImagesAsWmf.rtf", saveOptions);
             //ExEnd:SavingImagesAsWmf
         }
     }

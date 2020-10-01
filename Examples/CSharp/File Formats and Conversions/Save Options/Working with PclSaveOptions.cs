@@ -1,23 +1,22 @@
 ﻿using Aspose.Words.Saving;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class ConvertDocumentToPCL : TestDataHelper
+    class WorkingWithPclSaveOptions : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void RasterizeTransformedElements()
         {
-            //ExStart:ConvertDocumentToPCL
-            Document doc = new Document(LoadingSavingDir + "Rendering.docx");
+            //ExStart:RasterizeTransformedElements
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             PclSaveOptions saveOptions = new PclSaveOptions();
             saveOptions.SaveFormat = SaveFormat.Pcl;
             saveOptions.RasterizeTransformedElements = false;
 
-            // Export the document as an PCL file
-            doc.Save(ArtifactsDir + "ConvertDocumentToPCL.pcl", saveOptions);
-            //ExEnd:ConvertDocumentToPCL
+            doc.Save(ArtifactsDir + "PclSaveOptions.RasterizeTransformedElements.pcl", saveOptions);
+            //ExEnd:RasterizeTransformedElements
         }
     }
 }

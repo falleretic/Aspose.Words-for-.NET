@@ -4,14 +4,14 @@ using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Layout_Helpers
 {
     class EnumerateLayoutElements : TestDataHelper
     {
         [Test]
         public static void Run()
         {
-            Document doc = new Document(RenderingPrintingDir + "Enumerate layout.docx");
+            Document doc = new Document(MyDir + "Enumerate layout.docx");
 
             // This creates an enumerator which is used to "walk" the elements of a rendered document
             LayoutEnumerator it = new LayoutEnumerator(doc);
@@ -20,7 +20,7 @@ namespace Aspose.Words.Examples.CSharp
             LayoutInfoWriter.Run(it);
 
             // This sample adds a border around each layout element and saves each page as a JPEG image to the data directory
-            OutlineLayoutEntitiesRenderer.Run(doc, it, MailMergeDir);
+            OutlineLayoutEntitiesRenderer.Run(doc, it, MyDir);
         }
     }
 

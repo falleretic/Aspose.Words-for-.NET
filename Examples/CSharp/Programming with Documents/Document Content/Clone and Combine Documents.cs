@@ -5,18 +5,18 @@ using Aspose.Words.MailMerging;
 using Aspose.Words.Replacing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
-    class InsertDoc : TestDataHelper
+    class CloneAndCombineDocuments : TestDataHelper
     {
         [Test]
         public static void CloningDocument()
         {
             //ExStart:CloningDocument
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             Document clone = doc.Clone();
-            clone.Save(ArtifactsDir + "CloningDocument.doc");
+            clone.Save(ArtifactsDir + "CloneAndCombineDocuments.CloningDocument.docx");
             //ExEnd:CloningDocument
         }
 
@@ -24,13 +24,13 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void InsertDocumentAtReplace()
         {
             //ExStart:InsertDocumentAtReplace
-            Document mainDoc = new Document(DocumentDir + "Insert document 1.docx");
+            Document mainDoc = new Document(MyDir + "Insert document 1.docx");
 
             FindReplaceOptions options = new FindReplaceOptions();
             options.ReplacingCallback = new InsertDocumentAtReplaceHandler();
 
             mainDoc.Range.Replace(new Regex("\\[MY_DOCUMENT\\]"), "", options);
-            mainDoc.Save(ArtifactsDir + "InsertDocumentAtReplace.doc");
+            mainDoc.Save(ArtifactsDir + "CloneAndCombineDocuments.InsertDocumentAtReplace.docx");
             //ExEnd:InsertDocumentAtReplace
         }
 
@@ -38,13 +38,13 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void InsertDocumentAtBookmark()
         {
             //ExStart:InsertDocumentAtBookmark         
-            Document mainDoc = new Document(DocumentDir + "Insert document 1.docx");
-            Document subDoc = new Document(DocumentDir + "Insert document 2.docx");
+            Document mainDoc = new Document(MyDir + "Insert document 1.docx");
+            Document subDoc = new Document(MyDir + "Insert document 2.docx");
 
             Bookmark bookmark = mainDoc.Range.Bookmarks["insertionPlace"];
             InsertDocument(bookmark.BookmarkStart.ParentNode, subDoc);
             
-            mainDoc.Save(ArtifactsDir + "InsertDocumentAtBookmark.doc");
+            mainDoc.Save(ArtifactsDir + "CloneAndCombineDocuments.InsertDocumentAtBookmark.docx");
             //ExEnd:InsertDocumentAtBookmark
         }
 
@@ -52,19 +52,17 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void InsertDocumentAtMailMerge()
         {
             //ExStart:InsertDocumentAtMailMerge   
-            // Open the main document
-            Document mainDoc = new Document(DocumentDir + "Insert document 1.docx");
+            Document mainDoc = new Document(MyDir + "Insert document 1.docx");
 
-            // Add a handler to MergeField event
             mainDoc.MailMerge.FieldMergingCallback = new InsertDocumentAtMailMergeHandler();
-
-            // The main document has a merge field in it called "Document_1"
-            // The corresponding data for this field contains fully qualified path to the document
-            // That should be inserted to this field
+            // The main document has a merge field in it called "Document_1".
+            // The corresponding data for this field contains fully qualified path to the document.
+            // That should be inserted to this field.
             mainDoc.MailMerge.Execute(
                 new[] { "Document_1" },
-                new object[] { DocumentDir + "Insert document 2.docx" });
-            mainDoc.Save(ArtifactsDir + "InsertDocumentAtMailMerge.doc");
+                new object[] { MyDir + "Insert document 2.docx" });
+
+            mainDoc.Save(ArtifactsDir + "CloneAndCombineDocuments.InsertDocumentAtMailMerge.doc");
             //ExEnd:InsertDocumentAtMailMerge
         }
 
@@ -78,25 +76,20 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         /// <param name="srcDoc">The document to insert.</param>
         private static void InsertDocument(Node insertAfterNode, Document srcDoc)
         {
-            // Make sure that the node is either a paragraph or table
             if (!insertAfterNode.NodeType.Equals(NodeType.Paragraph) &
                 !insertAfterNode.NodeType.Equals(NodeType.Table))
                 throw new ArgumentException("The destination node should be either a paragraph or table.");
 
-            // We will be inserting into the parent of the destination paragraph
             CompositeNode dstStory = insertAfterNode.ParentNode;
 
-            // This object will be translating styles and lists during the import
             NodeImporter importer =
                 new NodeImporter(srcDoc, insertAfterNode.Document, ImportFormatMode.KeepSourceFormatting);
 
-            // Loop through all sections in the source document
             foreach (Section srcSection in srcDoc.Sections)
             {
-                // Loop through all block level nodes (paragraphs and tables) in the body of the section
                 foreach (Node srcNode in srcSection.Body)
                 {
-                    // Let's skip the node if it is a last empty paragraph in a section
+                    // Let's skip the node if it is a last empty paragraph in a section.
                     if (srcNode.NodeType.Equals(NodeType.Paragraph))
                     {
                         Paragraph para = (Paragraph) srcNode;
@@ -104,10 +97,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                             continue;
                     }
 
-                    // This creates a clone of the node, suitable for insertion into the destination document
+                    // This creates a clone of the node, suitable for insertion into the destination document.
                     Node newNode = importer.ImportNode(srcNode, true);
 
-                    // Insert new node after the reference node
+                    // Insert new node after the reference node.
                     dstStory.InsertAfter(newNode, insertAfterNode);
                     insertAfterNode = newNode;
                 }
@@ -124,29 +117,26 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         /// <param name="srcDoc">The document to insert.</param>
         static void InsertDocumentWithSectionFormatting(Node insertAfterNode, Document srcDoc)
         {
-            // Make sure that the node is either a paragraph or table
             if (!insertAfterNode.NodeType.Equals(NodeType.Paragraph) &
                 !insertAfterNode.NodeType.Equals(NodeType.Table))
                 throw new ArgumentException("The destination node should be either a paragraph or table.");
 
-            // Document to insert srcDoc into
             Document dstDoc = (Document) insertAfterNode.Document;
-            // To retain section formatting, split the current section into two at the marker node and then import the content from srcDoc as whole sections
-            // The section of the node which the insert marker node belongs to
+            // To retain section formatting, split the current section into two at the marker node and then import the content
+            // from srcDoc as whole sections. The section of the node which the insert marker node belongs to.
             Section currentSection = (Section) insertAfterNode.GetAncestor(NodeType.Section);
 
-            // Don't clone the content inside the section, we just want the properties of the section retained
+            // Don't clone the content inside the section, we just want the properties of the section retained.
             Section cloneSection = (Section) currentSection.Clone(false);
 
-            // However make sure the clone section has a body, but no empty first paragraph
+            // However make sure the clone section has a body, but no empty first paragraph.
             cloneSection.EnsureMinimum();
             cloneSection.Body.FirstParagraph.Remove();
 
-            // Insert the cloned section into the document after the original section
             insertAfterNode.Document.InsertAfter(cloneSection, currentSection);
 
-            // Append all nodes after the marker node to the new section. This will split the content at the section level at
-            // The marker so the sections from the other document can be inserted directly
+            // Append all nodes after the marker node to the new section. This will split the content at the section level at.
+            // The marker so the sections from the other document can be inserted directly.
             Node currentNode = insertAfterNode.NextSibling;
             while (currentNode != null)
             {
@@ -155,16 +145,13 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                 currentNode = nextNode;
             }
 
-            // This object will be translating styles and lists during the import
+            // This object will be translating styles and lists during the import.
             NodeImporter importer = new NodeImporter(srcDoc, dstDoc, ImportFormatMode.UseDestinationStyles);
 
-            // Loop through all sections in the source document
             foreach (Section srcSection in srcDoc.Sections)
             {
                 Node newNode = importer.ImportNode(srcSection, true);
 
-                // Append each section to the destination document
-                // Start by inserting it after the split section
                 dstDoc.InsertAfter(newNode, currentSection);
                 currentSection = (Section) newNode;
             }
@@ -183,21 +170,17 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             {
                 if (e.DocumentFieldName == "Document_1")
                 {
-                    // Use document builder to navigate to the merge field with the specified name
                     DocumentBuilder builder = new DocumentBuilder(e.Document);
                     builder.MoveToMergeField(e.DocumentFieldName);
 
-                    // The name of the document to load and insert is stored in the field value
                     Document subDoc = new Document((string) e.FieldValue);
-
-                    // Insert the document
+                    
                     InsertDocument(builder.CurrentParagraph, subDoc);
 
-                    // The paragraph that contained the merge field might be empty now and you probably want to delete it
+                    // The paragraph that contained the merge field might be empty now and you probably want to delete it.
                     if (!builder.CurrentParagraph.HasChildNodes)
                         builder.CurrentParagraph.Remove();
 
-                    // Indicate to the mail merge engine that we have inserted what we wanted
                     e.Text = null;
                 }
             }
@@ -221,22 +204,18 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             {
                 if (e.DocumentFieldName == "Document_1")
                 {
-                    // Use document builder to navigate to the merge field with the specified name
                     DocumentBuilder builder = new DocumentBuilder(e.Document);
                     builder.MoveToMergeField(e.DocumentFieldName);
 
-                    // Load the document from the blob field
                     MemoryStream stream = new MemoryStream((byte[]) e.FieldValue);
                     Document subDoc = new Document(stream);
 
-                    // Insert the document
                     InsertDocument(builder.CurrentParagraph, subDoc);
 
-                    // The paragraph that contained the merge field might be empty now and you probably want to delete it
+                    // The paragraph that contained the merge field might be empty now and you probably want to delete it.
                     if (!builder.CurrentParagraph.HasChildNodes)
                         builder.CurrentParagraph.Remove();
 
-                    // Indicate to the mail merge engine that we have inserted what we wanted
                     e.Text = null;
                 }
             }
@@ -253,13 +232,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             ReplaceAction IReplacingCallback.Replacing(ReplacingArgs e)
             {
-                Document subDoc = new Document(DocumentDir + "Insert document 2.docx");
+                Document subDoc = new Document(MyDir + "Insert document 2.docx");
 
-                // Insert a document after the paragraph, containing the match text
                 Paragraph para = (Paragraph) e.MatchNode.ParentNode;
                 InsertDocument(para, subDoc);
 
-                // Remove the paragraph with the match text
                 para.Remove();
 
                 return ReplaceAction.Skip;

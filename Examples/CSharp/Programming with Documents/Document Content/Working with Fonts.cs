@@ -6,7 +6,7 @@ using System.Reflection;
 using Aspose.Words.Fonts;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithFonts : TestDataHelper
     {
@@ -51,7 +51,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void CheckDMLTextEffect()
         {
             //ExStart:CheckDMLTextEffect
-            Document doc = new Document(DocumentDir + "DrawingML text effects.docx");
+            Document doc = new Document(MyDir + "DrawingML text effects.docx");
             
             RunCollection runs = doc.FirstSection.Body.FirstParagraph.Runs;
             Font runFont = runs[0].Font;
@@ -116,7 +116,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                 new SystemFontSource(), new FolderFontSource("C:\\MyFonts\\", true)
             });
 
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
             // ExEnd:SetFontsFolders           
         }
@@ -125,7 +125,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void EnableDisableFontSubstitution()
         {
             //ExStart:EnableDisableFontSubstitution
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial";
@@ -141,10 +141,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetFontFallbackSettings()
         {
             //ExStart:SetFontFallbackSettings
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
-            fontSettings.FallbackSettings.Load(RenderingPrintingDir + "Fallback.xml");
+            fontSettings.FallbackSettings.Load(MyDir + "Fallback.xml");
             // Set font settings
             doc.FontSettings = fontSettings;
             
@@ -156,7 +156,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetPredefinedFontFallbackSettings()
         {
             //ExStart:SetPredefinedFontFallbackSettings
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.FallbackSettings.LoadNotoFallbackSettings();
@@ -174,7 +174,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             FontSettings.DefaultInstance.SetFontsFolder("C:\\MyFonts\\", true);
             // ExEnd:SetFontsFoldersDefaultInstance           
 
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
         }
 
@@ -182,7 +182,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetFontsFoldersMultipleFolders()
         {
             //ExStart:SetFontsFoldersMultipleFolders
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             FontSettings fontSettings = new FontSettings();
             // Note that this setting will override any default font sources that are being searched by default. Now only these folders will be searched for
@@ -200,7 +200,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void Run()
         {
             //ExStart:SetFontsFoldersSystemAndCustomFolder
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             FontSettings fontSettings = new FontSettings();
             // Retrieve the array of environment-dependent font sources that are searched by default. For example this will contain a "Windows\Fonts\" source on a Windows machines
@@ -231,7 +231,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             });
             // ExEnd:SetFontsFoldersWithPriority           
 
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
         }
 
@@ -239,7 +239,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SetTrueTypeFontsFolder()
         {
             //ExStart:SetTrueTypeFontsFolder
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
             // Note that this setting will override any default font sources that are being searched by default. Now only these folders will be searched for
@@ -257,7 +257,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void SpecifyDefaultFontWhenRendering()
         {
             //ExStart:SpecifyDefaultFontWhenRendering
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
             // If the default font defined here cannot be found during rendering then
@@ -284,7 +284,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
             
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions);
+            Document doc = new Document(MyDir + "Rendering.docx", loadOptions);
             //ExEnd:FontSettingsWithLoadOptions
         }
 
@@ -293,12 +293,12 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:SetFontsFolder
             FontSettings fontSettings = new FontSettings();
-            fontSettings.SetFontsFolder(MailMergeDir + "Fonts", false);
+            fontSettings.SetFontsFolder(MyDir + "Fonts", false);
             
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
             
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions);
+            Document doc = new Document(MyDir + "Rendering.docx", loadOptions);
             //ExEnd:SetFontsFolder
         }
 
@@ -310,11 +310,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             // init font settings
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions);
+            Document doc1 = new Document(MyDir + "Rendering.docx", loadOptions);
 
             LoadOptions loadOptions2 = new LoadOptions();
             loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions2);
+            Document doc2 = new Document(MyDir + "Rendering.docx", loadOptions2);
             // ExEnd:FontSettingsWithLoadOption   
         }
 
@@ -335,11 +335,11 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             // init font settings
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions);
+            Document doc1 = new Document(MyDir + "Rendering.docx", loadOptions);
 
             LoadOptions loadOptions2 = new LoadOptions();
             loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(RenderingPrintingDir + "Rendering.docx", loadOptions2);
+            Document doc2 = new Document(MyDir + "Rendering.docx", loadOptions2);
         }
 
         [Test]
@@ -350,7 +350,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             ArrayList fontSources = new ArrayList(fontSettings.GetFontsSources());
 
             // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts
-            FolderFontSource folderFontSource = new FolderFontSource(MailMergeDir, true);
+            FolderFontSource folderFontSource = new FolderFontSource(MyDir, true);
             // Add the custom folder which contains our fonts to the list of existing font sources
             fontSources.Add(folderFontSource);
 
@@ -371,7 +371,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ReceiveNotificationsOfFonts()
         {
             //ExStart:ReceiveNotificationsOfFonts
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
 
@@ -397,7 +397,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ReceiveWarningNotification()
         {
             //ExStart:ReceiveWarningNotification
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             
             // When you call UpdatePageLayout the document is rendered in memory. Any warnings that occured during rendering
             // Are stored until the document save and then sent to the appropriate WarningCallback
@@ -436,7 +436,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         [Test]
         public static void ResourceSteamFontSourceExample()
         {
-            Document doc = new Document(RenderingPrintingDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Rendering.docx");
             // FontSettings.SetFontSources instead
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
                 { new SystemFontSource(), new ResourceSteamFontSource() });

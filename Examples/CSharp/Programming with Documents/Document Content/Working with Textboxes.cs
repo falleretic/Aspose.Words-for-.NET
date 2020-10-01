@@ -2,7 +2,7 @@
 using Aspose.Words.Drawing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithTextboxes
     {

@@ -9,7 +9,7 @@ using Aspose.Words.Drawing;
 using Aspose.Words.Layout;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Images
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithImages : TestDataHelper
     {
@@ -124,8 +124,7 @@ namespace Aspose.Words.Examples.CSharp.Images
 
             // Insert the barcode, then move to the next line and insert the ID along with the page number
             // Use pageId if you need to insert a different barcode on each page. 0 = First page, 1 = Second page etc.
-            builder.InsertImage(
-                System.Drawing.Image.FromFile(ImagesDir + "Barcode1.png"));
+            builder.InsertImage(Image.FromFile(ImagesDir + "Barcode1.png"));
             builder.Writeln();
             builder.Write("1234567890");
             builder.InsertField("PAGE");

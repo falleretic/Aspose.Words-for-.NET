@@ -2,7 +2,7 @@
 using System.Drawing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithStylesAndThemes : TestDataHelper
     {
@@ -38,7 +38,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:CopyStylesFromDocument
             Document doc = new Document();
-            Document target = new Document(StyleDir + "Styles.docx");
+            Document target = new Document(MyDir + "Styles.docx");
 
             target.CopyStylesFromTemplate(doc);
 

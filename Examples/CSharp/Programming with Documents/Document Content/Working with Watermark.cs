@@ -2,7 +2,7 @@
 using Aspose.Words.Drawing;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkWithWatermark : TestDataHelper
     {
@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AddTextWatermarkWithSpecificOptions()
         {
             //ExStart:AddTextWatermarkWithSpecificOptions
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             TextWatermarkOptions options = new TextWatermarkOptions()
             {
@@ -31,7 +31,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void AddImageWatermarkWithSpecificOptions()
         {
             //ExStart:AddImageWatermarkWithSpecificOptions
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             ImageWatermarkOptions options = new ImageWatermarkOptions()
             {
@@ -39,7 +39,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                 IsWashout = false
             };
 
-            doc.Watermark.SetImage(Image.FromFile(DocumentDir + "Watermark.png"), options);
+            doc.Watermark.SetImage(Image.FromFile(MyDir + "Watermark.png"), options);
 
             doc.Save(ArtifactsDir + "AddImageWatermark.docx");
             //ExEnd:AddImageWatermarkWithSpecificOptions

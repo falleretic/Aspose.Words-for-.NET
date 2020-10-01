@@ -3,30 +3,42 @@ using System.Text;
 using Aspose.Words.Fields;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     internal class JoinAndAppendDocuments : TestDataHelper
     {
         [Test]
+        public static void SimpleAppendDocument()
+        {
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
+
+            // Append the source document to the destination document using no extra options
+            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
+
+            dstDoc.Save(ArtifactsDir + "SimpleAppendDocument.docx");
+        }
+
+        [Test]
         public static void AppendDocument()
         {
             //ExStart:AppendDocumentManually
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
             
-            // Loop through all sections in the source document
-            // Section nodes are immediate children of the Document node so we can just enumerate the Document
+            // Loop through all sections in the source document.
+            // Section nodes are immediate children of the Document node so we can just enumerate the Document.
             foreach (Section srcSection in srcDoc)
             {
                 // Because we are copying a section from one document to another, 
-                // it is required to import the Section node into the destination document
+                // it is required to import the Section node into the destination document.
                 // This adjusts any document-specific references to styles, lists, etc.
                 //
                 // Importing a node creates a copy of the original node, but the copy
-                // Is ready to be inserted into the destination document
+                // ss ready to be inserted into the destination document.
                 Node dstSection = dstDoc.ImportNode(srcSection, true, ImportFormatMode.KeepSourceFormatting);
 
-                // Now the new section node can be appended to the destination document
+                // Now the new section node can be appended to the destination document.
                 dstDoc.AppendChild(dstSection);
             }
 
@@ -38,12 +50,12 @@ namespace Aspose.Words.Examples.CSharp
         public static void BaseDocument()
         {
             //ExStart:BaseDocument
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
             Document dstDoc = new Document();
             
-            // The destination document is not actually empty which often causes a blank page to appear before the appended document
-            // This is due to the base document having an empty section and the new document being started on the next page
-            // Remove all content from the destination document before appending
+            // The destination document is not actually empty which often causes a blank page to appear before the appended document.
+            // This is due to the base document having an empty section and the new document being started on the next page.
+            // Remove all content from the destination document before appending.
             dstDoc.RemoveAllChildren();
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
             
@@ -55,12 +67,12 @@ namespace Aspose.Words.Examples.CSharp
         public static void AppendWithImportFormatOptions()
         {
             //ExStart:AppendWithImportFormatOptions
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source with list.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Document destination with list.docx");
+            Document srcDoc = new Document(MyDir + "Document source with list.docx");
+            Document dstDoc = new Document(MyDir + "Document destination with list.docx");
 
             ImportFormatOptions options = new ImportFormatOptions();
             // Specify that if numbering clashes in source and destination documents,
-            // then a numbering from the source document will be used
+            // then a numbering from the source document will be used.
             options.KeepSourceNumbering = true;
 
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.UseDestinationStyles, options);
@@ -71,21 +83,21 @@ namespace Aspose.Words.Examples.CSharp
         public static void ConvertNumPageFields()
         {
             //ExStart:ConvertNumPageFields
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
-            // Restart the page numbering on the start of the source document
+            // Restart the page numbering on the start of the source document.
             srcDoc.FirstSection.PageSetup.RestartPageNumbering = true;
             srcDoc.FirstSection.PageSetup.PageStartingNumber = 1;
 
-            // Append the source document to the end of the destination document
+            // Append the source document to the end of the destination document.
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
 
-            // After joining the documents the NUMPAGE fields will now display the total number of pages which 
-            // Is undesired behavior. Call this method to fix them by replacing them with PAGEREF fields
+            // After joining the documents the NUMPAGE fields will now display the total number of pages which
+            // is undesired behavior. Call this method to fix them by replacing them with PAGEREF fields,
             ConvertNumPageFieldsToPageRef(dstDoc);
 
-            // This needs to be called in order to update the new fields with page numbers
+            // This needs to be called in order to update the new fields with page numbers.
             dstDoc.UpdatePageLayout();
 
             dstDoc.Save(ArtifactsDir + "ConvertNumPageFields.docx");
@@ -95,29 +107,25 @@ namespace Aspose.Words.Examples.CSharp
         //ExStart:ConvertNumPageFieldsToPageRef
         public static void ConvertNumPageFieldsToPageRef(Document doc)
         {
-            // This is the prefix for each bookmark which signals where page numbering restarts
-            // The underscore "_" at the start inserts this bookmark as hidden in MS Word
+            // This is the prefix for each bookmark which signals where page numbering restarts.
+            // The underscore "_" at the start inserts this bookmark as hidden in MS Word.
             const string bookmarkPrefix = "_SubDocumentEnd";
-            // Field name of the NUMPAGES field
             const string numPagesFieldName = "NUMPAGES";
-            // Field name of the PAGEREF field
             const string pageRefFieldName = "PAGEREF";
 
-            // Create a new DocumentBuilder which is used to insert the bookmarks and replacement fields
             DocumentBuilder builder = new DocumentBuilder(doc);
             // Defines the number of page restarts that have been encountered and therefore the number of "sub" documents
-            // found within this document
+            // found within this document.
             int subDocumentCount = 0;
 
-            // Iterate through all sections in the document
             foreach (Section section in doc.Sections)
             {
-                // This section has it's page numbering restarted so we will treat this as the start of a sub document
-                // Any PAGENUM fields in this inner document must be converted to special PAGEREF fields to correct numbering
+                // This section has it's page numbering restarted so we will treat this as the start of a sub document.
+                // Any PAGENUM fields in this inner document must be converted to special PAGEREF fields to correct numbering.
                 if (section.PageSetup.RestartPageNumbering)
                 {
                     // Don't do anything if this is the first section in the document. This part of the code will insert the bookmark marking
-                    // The end of the previous sub document so therefore it is not applicable for first section in the document
+                    // the end of the previous sub-document so, therefore, it does not apply to the first section in the document.
                     if (!section.Equals(doc.FirstSection))
                     {
                         // Get the previous section and the last node within the body of that section
@@ -220,8 +228,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void DifferentPageSetup()
         {
             //ExStart:DifferentPageSetup
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Set the source document to continue straight after the end of the destination document.
             // If some page setup settings are different then this may not work and the source document will appear 
@@ -246,8 +254,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void JoinContinuous()
         {
             //ExStart:JoinContinuous
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Make the document appear straight after the destination documents content
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.Continuous;
@@ -263,8 +271,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void JoinNewPage()
         {
             //ExStart:JoinNewPage
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Set the appended document to start on a new page
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.NewPage;
@@ -280,8 +288,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void KeepSourceFormatting()
         {
             //ExStart:KeepSourceFormatting
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Keep the formatting from the source document when appending it to the destination document
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
@@ -295,8 +303,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void KeepSourceTogether()
         {
             //ExStart:KeepSourceTogether
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Document destination with list.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Document destination with list.docx");
             
             // Set the source document to appear straight after the destination document's content
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.Continuous;
@@ -317,8 +325,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void LinkHeadersFooters()
         {
             //ExStart:LinkHeadersFooters
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Set the appended document to appear on a new page
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.NewPage;
@@ -337,8 +345,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void ListKeepSourceFormatting()
         {
             //ExStart:ListKeepSourceFormatting
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Document destination with list.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Document destination with list.docx");
 
             // Append the content of the document so it flows continuously
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.Continuous;
@@ -353,8 +361,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void ListUseDestinationStyles()
         {
             //ExStart:ListUseDestinationStyles
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Document destination with list.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Document destination with list.docx");
 
             // Set the source document to continue straight after the end of the destination document
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.Continuous;
@@ -403,8 +411,8 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void PrependDocument()
         {
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Append the source document to the destination document. This causes the result to have line spacing problems
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
@@ -441,8 +449,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void RemoveSourceHeadersFooters()
         {
             //ExStart:RemoveSourceHeadersFooters
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Remove the headers and footers from each of the sections in the source document
             foreach (Section section in srcDoc.Sections)
@@ -465,8 +473,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void RestartPageNumbering()
         {
             //ExStart:RestartPageNumbering
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Set the appended document to appear on the next page
             srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.NewPage;
@@ -480,23 +488,11 @@ namespace Aspose.Words.Examples.CSharp
         }
 
         [Test]
-        public static void SimpleAppendDocument()
-        {
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
-
-            // Append the source document to the destination document using no extra options
-            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
-
-            dstDoc.Save(ArtifactsDir + "SimpleAppendDocument.docx");
-        }
-
-        [Test]
         public static void UnlinkHeadersFooters()
         {
             //ExStart:UnlinkHeadersFooters
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Unlink the headers and footers in the source document to stop this from continuing the headers and footers
             // From the destination document
@@ -512,8 +508,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void UpdatePageLayout()
         {
             //ExStart:UpdatePageLayout
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // If the destination document is rendered to PDF, image etc or UpdatePageLayout is called before the source document 
             // Is appended then any changes made after will not be reflected in the rendered output
@@ -534,8 +530,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void UseDestinationStyles()
         {
             //ExStart:UseDestinationStyles
-            Document srcDoc = new Document(JoiningAppendingDir + "Document source.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Northwind traders.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             // Append the source document using the styles of the destination document
             dstDoc.AppendDocument(srcDoc, ImportFormatMode.UseDestinationStyles);
@@ -548,8 +544,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void SmartStyleBehavior()
         {
             //ExStart:SmartStyleBehavior
-            Document srcDoc = new Document(JoiningAppendingDir + "Source document.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Destination document.docx");
+            Document srcDoc = new Document(MyDir + "Source document.docx");
+            Document dstDoc = new Document(MyDir + "Destination document.docx");
 
             DocumentBuilder builder = new DocumentBuilder(dstDoc);
             builder.MoveToDocumentEnd();
@@ -565,8 +561,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void KeepSourceNumbering()
         {
             //ExStart:KeepSourceNumbering
-            Document srcDoc = new Document(JoiningAppendingDir + "Source document.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Destination document.docx");
+            Document srcDoc = new Document(MyDir + "Source document.docx");
+            Document dstDoc = new Document(MyDir + "Destination document.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep source list formatting when importing numbered paragraphs
@@ -590,8 +586,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void IgnoreTextBoxes()
         {
             //ExStart:IgnoreTextBoxes
-            Document srcDoc = new Document(JoiningAppendingDir + "Source document.docx");
-            Document dstDoc = new Document(JoiningAppendingDir + "Destination document.docx");
+            Document srcDoc = new Document(MyDir + "Source document.docx");
+            Document dstDoc = new Document(MyDir + "Destination document.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep the source text boxes formatting when importing
@@ -615,8 +611,8 @@ namespace Aspose.Words.Examples.CSharp
         public static void IgnoreHeaderFooter()
         {
             // ExStart:IgnoreHeaderFooter
-            Document srcDocument = new Document(JoiningAppendingDir + "Source document.docx");
-            Document dstDocument = new Document(JoiningAppendingDir + "Destination document.docx");
+            Document srcDocument = new Document(MyDir + "Source document.docx");
+            Document dstDocument = new Document(MyDir + "Destination document.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             importFormatOptions.IgnoreHeaderFooter = false;

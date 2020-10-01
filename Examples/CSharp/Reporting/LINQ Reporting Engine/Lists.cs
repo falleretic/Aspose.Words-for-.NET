@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.Reporting;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
+namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine
 {
     internal class Lists : TestDataHelper
     {
@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void CreateBulletedList()
         {
             //ExStart:BulletedList
-            Document doc = new Document(LinqDir + "Reporting engine template - Bulleted list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Bulleted list.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetClients(), "clients");
@@ -22,7 +22,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void CommonList()
         {
             //ExStart:CommonList
-            Document doc = new Document(LinqDir + "Reporting engine template - Common list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Common list.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
@@ -51,7 +51,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void InTableList()
         {
             //ExStart:InTableList
-            Document doc = new Document(LinqDir + "Reporting engine template - Table list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Table list.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
@@ -64,7 +64,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void MulticoloredNumberedList()
         {
             //ExStart:MulticoloredNumberedList
-            Document doc = new Document(LinqDir + "Reporting engine template - Multicolored numbered list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Multicolored numbered list.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetClients(), "clients");
@@ -77,7 +77,7 @@ namespace Aspose.Words.Examples.CSharp.LINQ_Reporting_Engine
         public static void NumberedList()
         {
             //ExStart:NumberedList
-            Document doc = new Document(LinqDir + "Reporting engine template - Numbered list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Numbered list.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetClients(), "clients");

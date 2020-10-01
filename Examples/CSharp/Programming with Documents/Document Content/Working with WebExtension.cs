@@ -1,7 +1,7 @@
 ﻿using Aspose.Words.WebExtensions;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.WebExtensions
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithWebExtension : TestDataHelper
     {

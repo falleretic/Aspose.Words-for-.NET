@@ -12,7 +12,7 @@ using Aspose.Words.Replacing;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.Tables
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithTables : TestDataHelper
     {
@@ -20,7 +20,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void RemoveColumn()
         {
             //ExStart:RemoveColumn
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Get the second table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 1, true);
@@ -35,7 +35,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void InsertBlankColumn()
         {
             //ExStart:InsertBlankColumn
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Get the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -164,7 +164,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void AutoFitTableToContents()
         {
             //ExStart:AutoFitTableToContents
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Auto fit the table to the cell contents
@@ -186,7 +186,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void AutoFitTableToFixedColumnWidths()
         {
             //ExStart:AutoFitTableToFixedColumnWidths
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Disable autofitting on this table
@@ -206,7 +206,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void AutoFitTableToPageWidth()
         {
             // ExStart:AutoFitTableToPageWidth
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
             // Autofit the first table to the page width
@@ -235,7 +235,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
             doc.FirstSection.PageSetup.Orientation = Orientation.Landscape;
 
             DataSet ds = new DataSet();
-            ds.ReadXml(TablesDir + "Employees.xml");
+            ds.ReadXml(MyDir + "Employees.xml");
             // Retrieve the data from our data source which is stored as a DataTable
             DataTable dataTable = ds.Tables[0];
 
@@ -327,7 +327,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CloneCompleteTable()
         {
             //ExStart:CloneCompleteTable
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -353,7 +353,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CloneLastRow()
         {
             //ExStart:CloneLastRow
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -377,7 +377,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ReplaceText()
         {
             //ExStart:ReplaceText
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Get the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -393,7 +393,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         [Test]
         public static void FindingIndex()
         {
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             //ExStart:RetrieveTableIndex
             // Get the first table in the document
@@ -636,7 +636,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CombineRows()
         {
             //ExStart:CombineRows
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Get the first and second table in the document
             // The rows from the second table will be appended to the end of the first table
@@ -662,7 +662,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SplitTable()
         {
             //ExStart:SplitTable
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Get the first table in the document
             Table firstTable = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -695,7 +695,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void RowFormatDisableBreakAcrossPages()
         {
             //ExStart:RowFormatDisableBreakAcrossPages
-            Document doc = new Document(TablesDir + "Table spanning two pages.docx");
+            Document doc = new Document(MyDir + "Table spanning two pages.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -712,7 +712,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void KeepTableTogether()
         {
             //ExStart:KeepTableTogether
-            Document doc = new Document(TablesDir + "Table spanning two pages.docx");
+            Document doc = new Document(MyDir + "Table spanning two pages.docx");
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
@@ -752,7 +752,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void CheckCellsMerged()
         {
             //ExStart:CheckCellsMerged 
-            Document doc = new Document(TablesDir + "Table with merged cells.docx");
+            Document doc = new Document(MyDir + "Table with merged cells.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -852,7 +852,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void MergeCellRange()
         {
             //ExStart:MergeCellRange
-            Document doc = new Document(TablesDir + "Table with merged cells.docx");
+            Document doc = new Document(MyDir + "Table with merged cells.docx");
 
             // Retrieve the first table in the body of the first section
             Table table = doc.FirstSection.Body.Tables[0];
@@ -872,7 +872,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void PrintHorizontalAndVerticalMerged()
         {
             //ExStart:PrintHorizontalAndVerticalMerged
-            Document doc = new Document(TablesDir + "Table with merged cells.docx");
+            Document doc = new Document(MyDir + "Table with merged cells.docx");
 
             // Create visitor
             SpanVisitor visitor = new SpanVisitor(doc);
@@ -885,7 +885,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void ConvertToHorizontallyMergedCells()
         {
             //ExStart:ConvertToHorizontallyMergedCells         
-            Document doc = new Document(TablesDir + "Table with merged cells.docx");
+            Document doc = new Document(MyDir + "Table with merged cells.docx");
 
             Table table = doc.FirstSection.Body.Tables[0];
             table.ConvertToHorizontallyMergedCells(); // Now merged cells have appropriate merge flags
@@ -1159,7 +1159,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void RetrievePreferredWidthType()
         {
             //ExStart:RetrievePreferredWidthType
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -1177,7 +1177,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void GetTablePosition()
         {
             //ExStart:GetTablePosition
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
             // Retrieve the first table in the document
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
@@ -1198,7 +1198,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void GetFloatingTablePosition()
         {
             //ExStart:GetFloatingTablePosition
-            Document doc = new Document(TablesDir + "Floating table position.docx");
+            Document doc = new Document(MyDir + "Floating table position.docx");
             
             foreach (Table table in doc.FirstSection.Body.Tables)
             {
@@ -1222,7 +1222,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SetFloatingTablePosition()
         {
             //ExStart:SetFloatingTablePosition
-            Document doc = new Document(TablesDir + "Floating table position.docx");
+            Document doc = new Document(MyDir + "Floating table position.docx");
 
             Table table = doc.FirstSection.Body.Tables[0];
             // Sets absolute table horizontal position at 10pt
@@ -1238,7 +1238,7 @@ namespace Aspose.Words.Examples.CSharp.Tables
         public static void SetRelativeHorizontalOrVerticalPosition()
         {
             // ExStart:SetRelativeHorizontalOrVerticalPosition
-            Document doc = new Document(TablesDir + "Floating table position.docx");
+            Document doc = new Document(MyDir + "Floating table position.docx");
             Table table = doc.FirstSection.Body.Tables[0];
 
             table.HorizontalAnchor = RelativeHorizontalPosition.Column;

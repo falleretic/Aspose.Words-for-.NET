@@ -2,7 +2,7 @@
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.NodeEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class WorkingWithNode : TestDataHelper
     {
@@ -102,7 +102,7 @@ namespace Aspose.Words.Examples.CSharp.NodeEx
         //ExStart:RecurseAllNodes
         public static void RecurseAllNodes()
         {
-            Document doc = new Document(NodeDir + "Paragraphs.docx");
+            Document doc = new Document(MyDir + "Paragraphs.docx");
 
             // Invoke the recursive function that will walk the tree
             TraverseAllNodes(doc);

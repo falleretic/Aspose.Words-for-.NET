@@ -6,7 +6,7 @@ using Aspose.Words.Fields;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class ExtractContent : TestDataHelper
     {
@@ -14,26 +14,26 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBetweenBlockLevelNodes()
         {
             //ExStart:ExtractContentBetweenBlockLevelNodes
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             Paragraph startPara = (Paragraph) doc.LastSection.GetChild(NodeType.Paragraph, 2, true);
             Table endTable = (Table) doc.LastSection.GetChild(NodeType.Table, 0, true);
 
-            // Extract the content between these nodes in the document. Include these markers in the extraction
-            ArrayList extractedNodes = Common.ExtractContent(startPara, endTable, true);
+            // Extract the content between these nodes in the document. Include these markers in the extraction.
+            ArrayList extractedNodes = Helpers.Common.ExtractContent(startPara, endTable, true);
 
-            // Lets reverse the array to make inserting the content back into the document easier
+            // Lets reverse the array to make inserting the content back into the document easier.
             extractedNodes.Reverse();
 
             while (extractedNodes.Count > 0)
             {
-                // Insert the last node from the reversed list 
+                // Insert the last node from the reversed list.
                 endTable.ParentNode.InsertAfter((Node) extractedNodes[0], endTable);
-                // Remove this node from the list after insertion
+                // Remove this node from the list after insertion.
                 extractedNodes.RemoveAt(0);
             }
 
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenBlockLevelNodes.docx");
             //ExEnd:ExtractContentBetweenBlockLevelNodes
         }
 
@@ -41,27 +41,27 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBetweenBookmark()
         {
             //ExStart:ExtractContentBetweenBookmark
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             Section section = doc.Sections[0];
             section.PageSetup.LeftMargin = 70.85;
 
-            // Retrieve the bookmark from the document
+            // Retrieve the bookmark from the document.
             Bookmark bookmark = doc.Range.Bookmarks["Bookmark1"];
 
-            // We use the BookmarkStart and BookmarkEnd nodes as markers
+            // We use the BookmarkStart and BookmarkEnd nodes as markers.
             BookmarkStart bookmarkStart = bookmark.BookmarkStart;
             BookmarkEnd bookmarkEnd = bookmark.BookmarkEnd;
 
-            // Firstly extract the content between these nodes including the bookmark
-            ArrayList extractedNodesInclusive = Common.ExtractContent(bookmarkStart, bookmarkEnd, true);
-            Document dstDoc = Common.GenerateDocument(doc, extractedNodesInclusive);
-            dstDoc.Save(ArtifactsDir + "TestFile.BookmarkInclusive.doc");
+            // Firstly extract the content between these nodes including the bookmark.
+            ArrayList extractedNodesInclusive = Helpers.Common.ExtractContent(bookmarkStart, bookmarkEnd, true);
+            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesInclusive);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenBookmark.IncludingBookmark.docx");
 
-            // Secondly extract the content between these nodes this time without including the bookmark
-            ArrayList extractedNodesExclusive = Common.ExtractContent(bookmarkStart, bookmarkEnd, false);
-            dstDoc = Common.GenerateDocument(doc, extractedNodesExclusive);
-            dstDoc.Save(ArtifactsDir + "TestFile.BookmarkExclusive.doc");
+            // Secondly extract the content between these nodes this time without including the bookmark.
+            ArrayList extractedNodesExclusive = Helpers.Common.ExtractContent(bookmarkStart, bookmarkEnd, false);
+            dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesExclusive);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenBookmark.WithoutBookmark.docx");
             //ExEnd:ExtractContentBetweenBookmark
         }
 
@@ -69,22 +69,22 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBetweenCommentRange()
         {
             //ExStart:ExtractContentBetweenCommentRange
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
-            // This is a quick way of getting both comment nodes
-            // Your code should have a proper method of retrieving each corresponding start and end node
+            // This is a quick way of getting both comment nodes.
+            // Your code should have a proper method of retrieving each corresponding start and end node.
             CommentRangeStart commentStart = (CommentRangeStart) doc.GetChild(NodeType.CommentRangeStart, 0, true);
             CommentRangeEnd commentEnd = (CommentRangeEnd) doc.GetChild(NodeType.CommentRangeEnd, 0, true);
 
-            // Firstly extract the content between these nodes including the comment as well
-            ArrayList extractedNodesInclusive = Common.ExtractContent(commentStart, commentEnd, true);
-            Document dstDoc = Common.GenerateDocument(doc, extractedNodesInclusive);
-            dstDoc.Save(ArtifactsDir + "TestFile.CommentInclusive.doc");
+            // Firstly extract the content between these nodes including the comment as well.
+            ArrayList extractedNodesInclusive = Helpers.Common.ExtractContent(commentStart, commentEnd, true);
+            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesInclusive);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenCommentRange.IncludingComment.docx");
 
-            // Secondly extract the content between these nodes without the comment
-            ArrayList extractedNodesExclusive = Common.ExtractContent(commentStart, commentEnd, false);
-            dstDoc = Common.GenerateDocument(doc, extractedNodesExclusive);
-            dstDoc.Save(ArtifactsDir + "TestFile.CommentExclusive.doc");
+            // Secondly extract the content between these nodes without the comment.
+            ArrayList extractedNodesExclusive = Helpers.Common.ExtractContent(commentStart, commentEnd, false);
+            dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesExclusive);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenCommentRange.WithoutComment.docx");
             //ExEnd:ExtractContentBetweenCommentRange
         }
 
@@ -92,19 +92,16 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBetweenParagraphs()
         {
             //ExStart:ExtractContentBetweenParagraphs
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
-            // Gather the nodes
-            // The GetChild method uses 0-based index
             Paragraph startPara = (Paragraph) doc.FirstSection.Body.GetChild(NodeType.Paragraph, 6, true);
             Paragraph endPara = (Paragraph) doc.FirstSection.Body.GetChild(NodeType.Paragraph, 10, true);
-            // Extract the content between these nodes in the document
-            // Include these markers in the extraction
-            ArrayList extractedNodes = Common.ExtractContent(startPara, endPara, true);
+            
+            // Extract the content between these nodes in the document. Include these markers in the extraction.
+            ArrayList extractedNodes = Helpers.Common.ExtractContent(startPara, endPara, true);
 
-            // Insert the content into a new separate document and save it to disk
-            Document dstDoc = Common.GenerateDocument(doc, extractedNodes);
-            dstDoc.Save(ArtifactsDir + "TestFile.doc");
+            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodes);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenParagraphs.docx");
             //ExEnd:ExtractContentBetweenParagraphs
         }
 
@@ -112,23 +109,21 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBetweenParagraphStyles()
         {
             //ExStart:ExtractContentBetweenParagraphStyles
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
-            // Gather a list of the paragraphs using the respective heading styles
-            ArrayList parasStyleHeading1 = Common.ParagraphsByStyleName(doc, "Heading 1");
-            ArrayList parasStyleHeading3 = Common.ParagraphsByStyleName(doc, "Heading 3");
+            // Gather a list of the paragraphs using the respective heading styles.
+            ArrayList parasStyleHeading1 = Helpers.Common.ParagraphsByStyleName(doc, "Heading 1");
+            ArrayList parasStyleHeading3 = Helpers.Common.ParagraphsByStyleName(doc, "Heading 3");
 
-            // Use the first instance of the paragraphs with those styles
+            // Use the first instance of the paragraphs with those styles.
             Node startPara1 = (Node) parasStyleHeading1[0];
             Node endPara1 = (Node) parasStyleHeading3[0];
 
-            // Extract the content between these nodes in the document
-            // Don't include these markers in the extraction
-            ArrayList extractedNodes = Common.ExtractContent(startPara1, endPara1, false);
+            // Extract the content between these nodes in the document. Don't include these markers in the extraction.
+            ArrayList extractedNodes = Helpers.Common.ExtractContent(startPara1, endPara1, false);
 
-            // Insert the content into a new separate document and save it to disk
-            Document dstDoc = Common.GenerateDocument(doc, extractedNodes);
-            dstDoc.Save(ArtifactsDir + "TestFile.doc");
+            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodes);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenParagraphStyles.docx");
             //ExEnd:ExtractContentBetweenParagraphStyles
         }
 
@@ -136,23 +131,17 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBetweenRuns()
         {
             //ExStart:ExtractContentBetweenRuns
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
-            // Retrieve a paragraph from the first section
             Paragraph para = (Paragraph) doc.GetChild(NodeType.Paragraph, 7, true);
 
-            // Use some runs for extraction
             Run startRun = para.Runs[1];
             Run endRun = para.Runs[4];
 
-            // Extract the content between these nodes in the document
-            // Include these markers in the extraction
-            ArrayList extractedNodes = Common.ExtractContent(startRun, endRun, true);
+            // Extract the content between these nodes in the document. Include these markers in the extraction.
+            ArrayList extractedNodes = Helpers.Common.ExtractContent(startRun, endRun, true);
 
-            // Get the node from the list
-            // There should only be one paragraph returned in the list
             Node node = (Node) extractedNodes[0];
-            // Print the text of this node to the console
             Console.WriteLine(node.ToString(SaveFormat.Text));
             //ExEnd:ExtractContentBetweenRuns
         }
@@ -161,21 +150,19 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentUsingDocumentVisitor()
         {
             //ExStart:ExtractContentUsingDocumentVisitor
-            Document doc = new Document(DocumentDir + "Absolute position tab.docx");
+            Document doc = new Document(MyDir + "Absolute position tab.docx");
 
-            // Create an object that inherits from the DocumentVisitor class
             MyDocToTxtWriter myConverter = new MyDocToTxtWriter();
 
-            // This is the well known Visitor pattern. Get the model to accept a visitor
-            // The model will iterate through itself by calling the corresponding methods
-            // On the visitor object (this is called visiting)
-            // 
-            // Note that every node in the object model has the Accept method so the visiting
-            // Can be executed not only for the whole document, but for any node in the document
+            // This is the well known Visitor pattern. Get the model to accept a visitor.
+            // The model will iterate through itself by calling the corresponding methods.
+            // On the visitor object (this is called visiting). 
+            // Note that every node in the object model has the accept method so the visiting
+            // can be executed not only for the whole document, but for any node in the document.
             doc.Accept(myConverter);
 
             // Once the visiting is complete, we can retrieve the result of the operation,
-            // That in this example, has accumulated in the visitor
+            // That in this example, has accumulated in the visitor.
             Console.WriteLine(myConverter.GetText());
             //ExEnd:ExtractContentUsingDocumentVisitor
         }
@@ -207,7 +194,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             {
                 AppendText(run.Text);
 
-                // Let the visitor continue visiting other nodes
+                // Let the visitor continue visiting other nodes.
                 return VisitorAction.Continue;
             }
 
@@ -217,11 +204,10 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             public override VisitorAction VisitFieldStart(FieldStart fieldStart)
             {
                 // In Microsoft Word, a field code (such as "MERGEFIELD FieldName") follows
-                // After a field start character. We want to skip field codes and output field 
-                // Result only, therefore we use a flag to suspend the output while inside a field code
-                //
-                // Note this is a very simplistic implementation and will not work very well
-                // If you have nested fields in a document
+                // after a field start character. We want to skip field codes and output field.
+                // Result only, therefore we use a flag to suspend the output while inside a field code.
+                // Note this is a very simplistic implementation and will not work very well.
+                // If you have nested fields in a document.
                 mIsSkipText = true;
 
                 return VisitorAction.Continue;
@@ -233,7 +219,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             public override VisitorAction VisitFieldSeparator(FieldSeparator fieldSeparator)
             {
                 // Once reached a field separator node, we enable the output because we are
-                // Now entering the field result nodes
+                // now entering the field result nodes.
                 mIsSkipText = false;
 
                 return VisitorAction.Continue;
@@ -245,7 +231,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             public override VisitorAction VisitFieldEnd(FieldEnd fieldEnd)
             {
                 // Make sure we enable the output when reached a field end because some fields
-                // Do not have field separator and do not have field result
+                // do not have field separator and do not have field result.
                 mIsSkipText = false;
 
                 return VisitorAction.Continue;
@@ -256,7 +242,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             /// </summary>
             public override VisitorAction VisitParagraphEnd(Paragraph paragraph)
             {
-                // When outputting to plain text we output Cr+Lf characters
+                // When outputting to plain text we output Cr+Lf characters.
                 AppendText(ControlChar.CrLf);
 
                 return VisitorAction.Continue;
@@ -265,7 +251,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             public override VisitorAction VisitBodyStart(Body body)
             {
                 // We can detect beginning and end of all composite nodes such as Section, Body, 
-                // Table, Paragraph etc and provide custom handling for them
+                // Table, Paragraph etc and provide custom handling for them.
                 mBuilder.Append("*** Body Started ***\r\n");
 
                 return VisitorAction.Continue;
@@ -290,7 +276,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             }
 
             /// <summary>
-            /// Adds text to the current output. Honours the enabled/disabled output flag.
+            /// Adds text to the current output. Honors the enabled/disabled output flag.
             /// </summary>
             private void AppendText(string text)
             {
@@ -307,33 +293,29 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentUsingField()
         {
             //ExStart:ExtractContentUsingField
-            Document doc = new Document(DocumentDir + "Document.docx");
-
-            // Use a document builder to retrieve the field start of a merge field
+            Document doc = new Document(MyDir + "Document.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Pass the first boolean parameter to get the DocumentBuilder to move to the FieldStart of the field
-            // We could also get FieldStarts of a field using GetChildNode method as in the other examples
+            // Pass the first boolean parameter to get the DocumentBuilder to move to the FieldStart of the field.
+            // We could also get FieldStarts of a field using GetChildNode method as in the other examples.
             builder.MoveToMergeField("Fullname", false, false);
 
-            // The builder cursor should be positioned at the start of the field
+            // The builder cursor should be positioned at the start of the field.
             FieldStart startField = (FieldStart) builder.CurrentNode;
             Paragraph endPara = (Paragraph) doc.FirstSection.GetChild(NodeType.Paragraph, 5, true);
 
-            // Extract the content between these nodes in the document
-            // Don't include these markers in the extraction
-            ArrayList extractedNodes = Common.ExtractContent(startField, endPara, false);
+            // Extract the content between these nodes in the document. Don't include these markers in the extraction.
+            ArrayList extractedNodes = Helpers.Common.ExtractContent(startField, endPara, false);
 
-            // Insert the content into a new separate document and save it to disk
-            Document dstDoc = Common.GenerateDocument(doc, extractedNodes);
-            dstDoc.Save(ArtifactsDir + "TestFile.doc");
+            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodes);
+            dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentUsingField.docx");
             //ExEnd:ExtractContentUsingField
         }
 
         [Test]
         public static void ExtractTableOfContents()
         {
-            Document doc = new Document(DocumentDir + "Table of contents.docx");
+            Document doc = new Document(MyDir + "Table of contents.docx");
 
             foreach (Field field in doc.Range.Fields)
             {
@@ -348,7 +330,6 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
                         Console.WriteLine("------------------");
 
                         Bookmark bm = doc.Range.Bookmarks[hyperlink.SubAddress];
-                        // Get the location this TOC Item is pointing to
                         Paragraph pointer = (Paragraph) bm.BookmarkStart.GetAncestor(NodeType.Paragraph);
                         
                         Console.WriteLine(pointer.ToString(SaveFormat.Text));
@@ -362,18 +343,16 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         {
             //ExStart:ExtractTextOnly
             Document doc = new Document();
-
-            // Enter a dummy field into the document
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
             builder.InsertField("MERGEFIELD Field");
 
-            // GetText will retrieve all field codes and special characters
             Console.WriteLine("GetText() Result: " + doc.GetText());
 
-            // ToString will export the node to the specified format
+            // ToString will export the node to the specified format.
             // When converted to text it will not retrieve fields code or special characters,
             // but will still contain some natural formatting characters such as paragraph markers etc. 
-            // This is the same as "viewing" the document as if it was opened in a text editor
+            // This is the same as "viewing" the document as if it was opened in a text editor.
             Console.WriteLine("ToString() Result: " + doc.ToString(SaveFormat.Text));
             //ExEnd:ExtractTextOnly            
         }
@@ -382,22 +361,17 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractContentBasedOnStyles()
         {
             //ExStart:ExtractContentBasedOnStyles
-            Document doc = new Document(StyleDir + "Styles.docx");
+            Document doc = new Document(MyDir + "Styles.docx");
 
-            // Define style names as they are specified in the Word document
             const string paraStyle = "Heading 1";
             const string runStyle = "Intense Emphasis";
 
-            // Collect paragraphs with defined styles
-            // Show the number of collected paragraphs and display the text of this paragraphs
             ArrayList paragraphs = ParagraphsByStyleName(doc, paraStyle);
             Console.WriteLine($"Paragraphs with \"{paraStyle}\" styles ({paragraphs.Count}):");
             
             foreach (Paragraph paragraph in paragraphs)
                 Console.Write(paragraph.ToString(SaveFormat.Text));
 
-            // Collect runs with defined styles
-            // Show the number of collected runs and display the text of this runs
             ArrayList runs = RunsByStyleName(doc, runStyle);
             Console.WriteLine($"\nRuns with \"{runStyle}\" styles ({runs.Count}):");
             
@@ -409,12 +383,9 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         //ExStart:ParagraphsByStyleName
         public static ArrayList ParagraphsByStyleName(Document doc, string styleName)
         {
-            // Create an array to collect paragraphs of the specified style
             ArrayList paragraphsWithStyle = new ArrayList();
-            // Get all paragraphs from the document
             NodeCollection paragraphs = doc.GetChildNodes(NodeType.Paragraph, true);
             
-            // Look through all paragraphs to find those with the specified style
             foreach (Paragraph paragraph in paragraphs)
             {
                 if (paragraph.ParagraphFormat.Style.Name == styleName)
@@ -428,12 +399,9 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         //ExStart:RunsByStyleName
         public static ArrayList RunsByStyleName(Document doc, string styleName)
         {
-            // Create an array to collect runs of the specified style
             ArrayList runsWithStyle = new ArrayList();
-            // Get all runs from the document
             NodeCollection runs = doc.GetChildNodes(NodeType.Run, true);
             
-            // Look through all runs to find those with the specified style
             foreach (Run run in runs)
             {
                 if (run.Font.Style.Name == styleName)
@@ -448,25 +416,22 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractPrintText()
         {
             //ExStart:ExtractText
-            Document doc = new Document(TablesDir + "Tables.docx");
+            Document doc = new Document(MyDir + "Tables.docx");
 
-            // Get the first table in the document
+            
             Table table = (Table) doc.GetChild(NodeType.Table, 0, true);
 
-            // The range text will include control characters such as "\a" for a cell
-            // You can call ToString and pass SaveFormat.Text on the desired node to find the plain text content
+            // The range text will include control characters such as "\a" for a cell.
+            // You can call ToString and pass SaveFormat.Text on the desired node to find the plain text content.
 
-            // Print the plain text range of the table to the screen
             Console.WriteLine("Contents of the table: ");
             Console.WriteLine(table.Range.Text);
             //ExEnd:ExtractText   
 
             //ExStart:PrintTextRangeOFRowAndTable
-            // Print the contents of the second row to the screen
             Console.WriteLine("\nContents of the row: ");
             Console.WriteLine(table.Rows[1].Range.Text);
 
-            // Print the contents of the last cell in the table to the screen
             Console.WriteLine("\nContents of the cell: ");
             Console.WriteLine(table.LastRow.LastCell.Range.Text);
             //ExEnd:PrintTextRangeOFRowAndTable
@@ -476,7 +441,7 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
         public static void ExtractImagesToFiles()
         {
             //ExStart:ExtractImagesToFiles
-            Document doc = new Document(ImagesDir + "Images.docx");
+            Document doc = new Document(MyDir + "Images.docx");
 
             NodeCollection shapes = doc.GetChildNodes(NodeType.Shape, true);
             int imageIndex = 0;

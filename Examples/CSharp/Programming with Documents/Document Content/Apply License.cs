@@ -2,7 +2,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class ApplyLicense : TestDataHelper
     {
@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp
 
             // This line attempts to set a license from several locations relative to the executable and Aspose.Words.dll.
             // You can also use the additional overload to load a license from a stream, this is useful for instance when the 
-            // license is stored as an embedded resource
+            // license is stored as an embedded resource.
             try
             {
                 license.SetLicense("Aspose.Words.lic");
@@ -36,8 +36,7 @@ namespace Aspose.Words.Examples.CSharp
 
             try
             {
-                // Initializes a license from a stream 
-                MemoryStream stream = new MemoryStream(File.ReadAllBytes(@"Aspose.Words.lic"));
+                MemoryStream stream = new MemoryStream(File.ReadAllBytes("Aspose.Words.lic"));
                 license.SetLicense(stream);
                 Console.WriteLine("License set successfully.");
             }
@@ -55,15 +54,11 @@ namespace Aspose.Words.Examples.CSharp
             //ExStart:ApplyMeteredLicense
             try
             {
-                // Set metered public and private keys
                 Metered metered = new Metered();
-                // Access the setMeteredKey property and pass public and private keys as parameters
                 metered.SetMeteredKey("*****", "*****");
 
-                // Load the document from disk
-                Document doc = new Document(QuickStartDir + "Template.doc");
+                Document doc = new Document(MyDir + "Template.doc");
 
-                // Get the page count of document
                 Console.WriteLine(doc.PageCount);
             }
             catch (Exception e)

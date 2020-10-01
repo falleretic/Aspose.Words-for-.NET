@@ -4,7 +4,7 @@ using Aspose.Words.Saving;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
     class BookmarksExamples : TestDataHelper
     {
@@ -12,7 +12,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AccessBookmarks()
         {
             //ExStart:AccessBookmarks
-            Document doc = new Document(BookmarksDir + "Bookmarks.docx");
+            Document doc = new Document(MyDir + "Bookmarks.docx");
             
             // By index
             Bookmark bookmark1 = doc.Range.Bookmarks[0];
@@ -25,7 +25,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void BookmarkNameAndText()
         {
             //ExStart:BookmarkNameAndText
-            Document doc = new Document(BookmarksDir + "Bookmarks.docx");
+            Document doc = new Document(MyDir + "Bookmarks.docx");
 
             // Use the indexer of the Bookmarks collection to obtain the desired bookmark
             Bookmark bookmark = doc.Range.Bookmarks["MyBookmark1"];
@@ -96,7 +96,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void CopyBookmarkedText()
         {
-            Document srcDoc = new Document(BookmarksDir + "Tax bookmarks.doc");
+            Document srcDoc = new Document(MyDir + "Tax bookmarks.doc");
 
             // This is the bookmark whose content we want to copy
             Bookmark srcBookmark = srcDoc.Range.Bookmarks["ntf010145060"];
@@ -189,7 +189,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ShowHideBookmarks_call()
         {
             //ExStart:ShowHideBookmarks_call
-            Document doc = new Document(BookmarksDir + "Bookmarks.docx");
+            Document doc = new Document(MyDir + "Bookmarks.docx");
 
             ShowHideBookmarkedContent(doc, "MyBookmark1", false);
             
@@ -252,7 +252,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void UntangleRowBookmarks()
         {
-            Document doc = new Document(BookmarksDir + "Table column bookmarks.docx");
+            Document doc = new Document(MyDir + "Table column bookmarks.docx");
 
             // This perform the custom task of putting the row bookmark ends into the same row with the bookmark starts
             Untangle(doc);

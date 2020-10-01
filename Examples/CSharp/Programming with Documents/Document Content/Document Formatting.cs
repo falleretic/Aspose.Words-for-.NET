@@ -1,19 +1,17 @@
 using System;
-using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace Aspose.Words.Examples.CSharp.DocumentEx
+namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Content
 {
-    class DocumentBuilderSetFormatting : TestDataHelper
+    class DocumentFormatting : TestDataHelper
     {
         [Test]
-        public static void SetSpaceBetweenAsianAndLatinText()
+        public static void SpaceBetweenAsianAndLatinText()
         {
-            //ExStart:DocumentBuilderSetSpacebetweenAsianandLatintext
+            //ExStart:SpaceBetweenAsianAndLatinText
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Set paragraph formatting properties
             ParagraphFormat paragraphFormat = builder.ParagraphFormat;
             paragraphFormat.AddSpaceBetweenFarEastAndAlpha = true;
             paragraphFormat.AddSpaceBetweenFarEastAndDigit = true;
@@ -21,53 +19,51 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             builder.Writeln("Automatically adjust space between Asian and Latin text");
             builder.Writeln("Automatically adjust space between Asian text and numbers");
 
-            doc.Save(ArtifactsDir + "DocumentBuilderSetSpaceBetweenAsianAndLatinText.doc");
-            //ExEnd:DocumentBuilderSetSpacebetweenAsianandLatintext
+            doc.Save(ArtifactsDir + "DocumentFormatting.SpaceBetweenAsianAndLatinText.docx");
+            //ExEnd:SpaceBetweenAsianAndLatinText
         }
 
         [Test]
-        public static void SetAsianTypographyLinebreakGroupProp()
+        public static void AsianTypographyLinebreakGroupProp()
         {
-            //ExStart:SetAsianTypographyLinebreakGroupProp
-            Document doc = new Document(DocumentDir + "Asian typography.docx");
+            //ExStart:AsianTypographyLinebreakGroupProp
+            Document doc = new Document(MyDir + "Asian typography.docx");
 
             ParagraphFormat format = doc.FirstSection.Body.Paragraphs[0].ParagraphFormat;
             format.FarEastLineBreakControl = false;
             format.WordWrap = true;
             format.HangingPunctuation = false;
 
-            doc.Save(ArtifactsDir + "SetAsianTypographyLinebreakGroupProp.docx");
-            //ExEnd:SetAsianTypographyLinebreakGroupProp
+            doc.Save(ArtifactsDir + "DocumentFormatting.AsianTypographyLinebreakGroupProp.docx");
+            //ExEnd:AsianTypographyLinebreakGroupProp
         }
 
         [Test]
-        public static void SetParagraphFormatting()
+        public static void ParagraphFormatting()
         {
-            //ExStart:DocumentBuilderSetParagraphFormatting
+            //ExStart:ParagraphFormatting
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Set paragraph formatting properties
             ParagraphFormat paragraphFormat = builder.ParagraphFormat;
             paragraphFormat.Alignment = ParagraphAlignment.Center;
             paragraphFormat.LeftIndent = 50;
             paragraphFormat.RightIndent = 50;
             paragraphFormat.SpaceAfter = 25;
 
-            // Output text
             builder.Writeln(
                 "I'm a very nice formatted paragraph. I'm intended to demonstrate how the left and right indents affect word wrapping.");
             builder.Writeln(
                 "I'm another nice formatted paragraph. I'm intended to demonstrate how the space after paragraph looks like.");
 
-            doc.Save(ArtifactsDir + "DocumentBuilderSetParagraphFormatting.doc");
-            //ExEnd:DocumentBuilderSetParagraphFormatting
+            doc.Save(ArtifactsDir + "DocumentFormatting.ParagraphFormatting.docx");
+            //ExEnd:ParagraphFormatting
         }
 
         [Test]
-        public static void SetMultilevelListFormatting()
+        public static void MultilevelListFormatting()
         {
-            //ExStart:DocumentBuilderSetMultilevelListFormatting
+            //ExStart:MultilevelListFormatting
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -91,33 +87,31 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
 
             builder.ListFormat.RemoveNumbers();
             
-            doc.Save(ArtifactsDir + "DocumentBuilderSetMultilevelListFormatting.doc");
-            //ExEnd:DocumentBuilderSetMultilevelListFormatting
+            doc.Save(ArtifactsDir + "DocumentFormatting.MultilevelListFormatting.docx");
+            //ExEnd:MultilevelListFormatting
         }
 
         [Test]
         public static void ApplyParagraphStyle()
         {
-            //ExStart:DocumentBuilderApplyParagraphStyle
+            //ExStart:ApplyParagraphStyle
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Set paragraph style
             builder.ParagraphFormat.StyleIdentifier = StyleIdentifier.Title;
             builder.Write("Hello");
             
-            doc.Save(ArtifactsDir + "DocumentBuilderApplyParagraphStyle.doc");
-            //ExEnd:DocumentBuilderApplyParagraphStyle
+            doc.Save(ArtifactsDir + "DocumentFormatting.ApplyParagraphStyle.docx");
+            //ExEnd:ApplyParagraphStyle
         }
 
         [Test]
         public static void ApplyBordersAndShadingToParagraph()
         {
-            //ExStart:DocumentBuilderApplyBordersAndShadingToParagraph
+            //ExStart:ApplyBordersAndShadingToParagraph
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Set paragraph borders
             BorderCollection borders = builder.ParagraphFormat.Borders;
             borders.DistanceFromText = 20;
             borders[BorderType.Left].LineStyle = LineStyle.Double;
@@ -125,7 +119,6 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             borders[BorderType.Top].LineStyle = LineStyle.Double;
             borders[BorderType.Bottom].LineStyle = LineStyle.Double;
 
-            // Set paragraph shading
             Shading shading = builder.ParagraphFormat.Shading;
             shading.Texture = TextureIndex.TextureDiagonalCross;
             shading.BackgroundPatternColor = System.Drawing.Color.LightCoral;
@@ -133,15 +126,15 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
 
             builder.Write("I'm a formatted paragraph with double border and nice shading.");
             
-            doc.Save(ArtifactsDir + "DocumentBuilderApplyBordersAndShadingToParagraph.doc");
-            //ExEnd:DocumentBuilderApplyBordersAndShadingToParagraph
+            doc.Save(ArtifactsDir + "DocumentFormatting.ApplyBordersAndShadingToParagraph.doc");
+            //ExEnd:ApplyBordersAndShadingToParagraph
         }
         
         [Test]
-        public static void ChangeAsianParagraphSpacingandIndents()
+        public static void ChangeAsianParagraphSpacingAndIndents()
         {
-            // ExStart:ChangeAsianParagraphSpacingandIndents
-            Document doc = new Document(DocumentDir + "Asian typography.docx");
+            //ExStart:ChangeAsianParagraphSpacingAndIndents
+            Document doc = new Document(MyDir + "Asian typography.docx");
 
             ParagraphFormat format = doc.FirstSection.Body.FirstParagraph.ParagraphFormat;
             format.CharacterUnitLeftIndent = 10;       // ParagraphFormat.LeftIndent will be updated
@@ -150,29 +143,29 @@ namespace Aspose.Words.Examples.CSharp.DocumentEx
             format.LineUnitBefore = 5;                 // ParagraphFormat.SpaceBefore will be updated
             format.LineUnitAfter = 10;                 // ParagraphFormat.SpaceAfter will be updated
 
-            doc.Save(ArtifactsDir + "ChangeAsianParagraphSpacingandIndents.doc");
-            // ExEnd:ChangeAsianParagraphSpacingandIndents
+            doc.Save(ArtifactsDir + "DocumentFormatting.ChangeAsianParagraphSpacingAndIndents.doc");
+            //ExEnd:ChangeAsianParagraphSpacingAndIndents
         }
 
         [Test]
-        public static void SetSnapToGrid()
+        public static void SnapToGrid()
         {
-            // ExStart:SetSnapToGrid
+            //ExStart:SnapToGrid
             Document doc = new Document();
 
             Paragraph par = doc.FirstSection.Body.FirstParagraph;
             par.ParagraphFormat.SnapToGrid = true;
             par.Runs[0].Font.SnapToGrid = true;
 
-            doc.Save(ArtifactsDir + "SetSnapToGrid.doc");
-            // ExEnd:SetSnapToGrid
+            doc.Save(ArtifactsDir + "DocumentFormatting.SnapToGrid.doc");
+            //ExEnd:SetSnapToGrid
         }
 
         [Test]
         public static void ParagraphStyleSeparator()
         {
             //ExStart:ParagraphStyleSeparator
-            Document doc = new Document(DocumentDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             foreach (Paragraph paragraph in doc.GetChildNodes(NodeType.Paragraph, true))
             {

@@ -31,10 +31,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExStart:ExportRoundtripInformation
             Document doc = new Document(MyDir + "Rendering.docx");
 
-            HtmlSaveOptions options = new HtmlSaveOptions();
-            options.ExportRoundtripInformation = true;
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions();
+            saveOptions.ExportRoundtripInformation = true;
             
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportRoundtripInformation.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportRoundtripInformation.html", saveOptions);
             //ExEnd:ExportRoundtripInformation
         }
 
@@ -85,10 +85,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
                     ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0
                     vr4MkhoXe0rZigAAAABJRU5ErkJggg=="" alt=""Red dot"" />");
             
-            HtmlSaveOptions options = new HtmlSaveOptions();
-            options.MetafileFormat = HtmlMetafileFormat.EmfOrWmf;
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions();
+            saveOptions.MetafileFormat = HtmlMetafileFormat.EmfOrWmf;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.SaveHtmlWithMetafileFormat.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.SaveHtmlWithMetafileFormat.html", saveOptions);
             //ExEnd:SaveHtmlWithMetafileFormat
         }
 
@@ -106,10 +106,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
                     style='fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;' />
             </svg> ");
 
-            HtmlSaveOptions options = new HtmlSaveOptions();
-            options.MetafileFormat = HtmlMetafileFormat.Svg;
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions();
+            saveOptions.MetafileFormat = HtmlMetafileFormat.Svg;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.ImportExportSvgInHtml.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ImportExportSvgInHtml.html", saveOptions);
             //ExEnd:ImportExportSVGinHTML
         }
 
@@ -171,11 +171,11 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             Directory.CreateDirectory(imagesDir);
 
             // Set an option to export form fields as plain text, not as HTML input elements.
-            HtmlSaveOptions options = new HtmlSaveOptions(SaveFormat.Html);
-            options.ExportTextInputFormFieldAsText = true;
-            options.ImagesFolder = imagesDir;
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions(SaveFormat.Html);
+            saveOptions.ExportTextInputFormFieldAsText = true;
+            saveOptions.ImagesFolder = imagesDir;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.SpecifySaveOption.html", options);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.SpecifySaveOption.html", saveOptions);
             //ExEnd:SpecifySaveOption
         }
     }
