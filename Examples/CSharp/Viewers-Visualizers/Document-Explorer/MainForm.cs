@@ -873,6 +873,6 @@ namespace Aspose.Words.Examples.CSharp
         /// <summary>
         /// Last selected directory in the open and save dialogs.
         /// </summary>
-        private string mInitialDirectory = TestDataHelper.ViewersVisualizersDir;
+        private string mInitialDirectory = TestDataHelper.MyDir;
     }
 }

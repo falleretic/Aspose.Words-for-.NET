@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void AlternatingRows()
         {
             //ExStart:MailMergeAlternatingRows
-            Document doc = new Document(MailMergeDir + "Mail merge destination - Northwind suppliers.docx");
+            Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
 
             // Add a handler for the MergeField event
             doc.MailMerge.FieldMergingCallback = new HandleMergeFieldAlternatingRows();

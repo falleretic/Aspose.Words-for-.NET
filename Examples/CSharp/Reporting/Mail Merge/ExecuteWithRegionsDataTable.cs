@@ -10,7 +10,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:ExecuteWithRegionsDataTable
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Orders.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Orders.docx");
 
             const int orderId = 10444;
 
@@ -57,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp
         {
             // Open the database connection.
             string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                                DatabaseDir + "Northwind.mdb";
+                                MyDir + "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 

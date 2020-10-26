@@ -10,10 +10,10 @@ namespace Aspose.Words.Examples.CSharp
         {
             //ExStart:MailMergeUsingMustacheSyntax
             DataSet ds = new DataSet();
-            ds.ReadXml(MailMergeDir + "Mail merge data - Vendors.xml");
+            ds.ReadXml(MyDir + "Mail merge data - Vendors.xml");
 
             // Open a template document
-            Document doc = new Document(MailMergeDir + "VendorTemplate.doc");
+            Document doc = new Document(MyDir + "VendorTemplate.doc");
 
             doc.MailMerge.UseNonMergeFields = true;
 
@@ -28,7 +28,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void UseIfElseMustacheSyntax()
         {
             //ExStart:UseOfifelseMustacheSyntax
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Mustache syntax.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Mustache syntax.docx");
 
             doc.MailMerge.UseNonMergeFields = true;
             doc.MailMerge.Execute(new string[] { "GENDER" }, new object[] { "MALE" });

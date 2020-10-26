@@ -48,7 +48,7 @@ namespace Aspose.Words.Examples.CSharp
                 shape.Height = 126;
                 shape.WrapType = WrapType.Square;
 
-                shape.ImageData.SetImage(MailMergeDir + "Mail merge image.png");
+                shape.ImageData.SetImage(MyDir + "Mail merge image.png");
 
                 args.Shape = shape;
             }

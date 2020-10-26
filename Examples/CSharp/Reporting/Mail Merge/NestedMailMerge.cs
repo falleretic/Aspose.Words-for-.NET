@@ -14,9 +14,9 @@ namespace Aspose.Words.Examples.CSharp
 
             // Note: The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml
             // To see examples of how to set up relations manually check the corresponding documentation of this sample
-            pizzaDs.ReadXml(MailMergeDir + "Mail merge data - CustomerData.xml");
+            pizzaDs.ReadXml(MyDir + "Mail merge data - CustomerData.xml");
 
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Invoice.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Invoice.docx");
 
             // Trim trailing and leading whitespaces mail merge values
             doc.MailMerge.TrimWhitespaces = false;

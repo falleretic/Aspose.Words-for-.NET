@@ -135,7 +135,7 @@ namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine.Helpers
         {
             //ExStart:Photo
             // Load the photo and read all bytes
-            byte[] imgdata = System.IO.File.ReadAllBytes(LinqDir + "photo.png");
+            byte[] imgdata = System.IO.File.ReadAllBytes(MyDir + "photo.png");
             
             return imgdata;
             //ExEnd:Photo

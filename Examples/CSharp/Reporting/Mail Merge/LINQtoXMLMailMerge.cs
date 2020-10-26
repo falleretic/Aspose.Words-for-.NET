@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
 #if !NET20
-            XElement orderXml = XElement.Load(MailMergeDir + "PurchaseOrder.xml");
+            XElement orderXml = XElement.Load(MyDir + "PurchaseOrder.xml");
 
             // Query the purchase order xml file using LINQ to extract the order items 
             // Into an object of an anonymous type. 
@@ -58,7 +58,7 @@ namespace Aspose.Words.Examples.CSharp
             MyMailMergeDataSource orderItemsDataSource = new MyMailMergeDataSource(orderItems, "Items");
             MyMailMergeDataSource deliveryDataSource = new MyMailMergeDataSource(deliveryAddress);
             //ExStart:LINQToXMLMailMerge
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - LINQ.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - LINQ.docx");
 
             // Fill the document with data from our data sources
             // Using mail merge regions for populating the order items table is required

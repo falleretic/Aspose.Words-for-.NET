@@ -13,7 +13,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void ExecuteWithRegionsNestedCustom()
         {
             //ExStart:ApplyCustomLogicToEmptyRegions
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Northwind traders.docx");
 
             // Create a data source which has some data missing
             // This will result in some regions that are merged and some that remain after executing mail merge

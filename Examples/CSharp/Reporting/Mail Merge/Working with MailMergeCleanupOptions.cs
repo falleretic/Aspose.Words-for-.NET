@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void RemoveRowsFromTable()
         {
             //ExStart:RemoveRowsFromTable
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Northwind traders.docx");
             
             DataSet data = new DataSet();
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions |
@@ -27,7 +27,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void CleanupParagraphsWithPunctuationMarks()
         {
             //ExStart:CleanupParagraphsWithPunctuationMarks
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Cleanup punctuation marks.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Cleanup punctuation marks.docx");
 
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveEmptyParagraphs;
             doc.MailMerge.CleanupParagraphsWithPunctuationMarks = false;
@@ -42,7 +42,7 @@ namespace Aspose.Words.Examples.CSharp
         public static void Run()
         {
             //ExStart:RemoveUnmergedRegions
-            Document doc = new Document(MailMergeDir + "Mail merge destinations - Northwind traders.docx");
+            Document doc = new Document(MyDir + "Mail merge destinations - Northwind traders.docx");
 
             // Create a dummy data source containing no data
             DataSet data = new DataSet();

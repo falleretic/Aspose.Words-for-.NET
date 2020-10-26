@@ -9,7 +9,7 @@ namespace Aspose.Words.Examples.CSharp
         [Test]
         public static void Run()
         {
-            Document doc = new Document(MailMergeDir + "MailMergeSwitches.docx");
+            Document doc = new Document(MyDir + "MailMergeSwitches.docx");
 
             doc.MailMerge.FieldMergingCallback = new MailMergeSwitches();
 

@@ -190,7 +190,7 @@
     <Compile Include="Rendering and Printing\Printing\Print Document via XpsPrint.cs" />
     <Compile Include="Programming with Documents\Document Content\Working with Hyphenation.cs" />
     <Compile Include="Rendering and Printing\Printing\Printer Settings.cs" />
-    <Compile Include="Programming with Documents\Document Content\Working with OleObjects And ActiveX.cs" />
+    <Compile Include="Programming with Documents\Document Content\Working with OleObjects and ActiveX.cs" />
     <Compile Include="Rendering and Printing\Layout Helpers\Document Layout Helper.cs" />
     <Compile Include="Rendering and Printing\Printing\DocumentPreviewAndPrint.cs">
       <SubType>Form</SubType>
