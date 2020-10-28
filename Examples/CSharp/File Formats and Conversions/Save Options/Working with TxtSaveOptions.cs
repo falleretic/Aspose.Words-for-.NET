@@ -5,7 +5,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
     class WorkingWithTxt : TestDataHelper
     {
-        [Test]
+        [Test, Description("Shows how to add bi-directional marks.")]
         public static void AddBidiMarks()
         {
             //ExStart:AddBidiMarks
@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:AddBidiMarks
         }
 
-        [Test]
+        [Test, Description("Shows how to specify the way headers and footers are exported.")]
         public static void ExportHeadersFootersMode()
         {
             //ExStart:ExportHeadersFootersMode
@@ -68,7 +68,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:ExportHeadersFootersMode
         }
 
-        [Test]
+        [Test, Description("Shows how to add tab before each list level.")]
         public static void UseTabCharacterPerLevelForListIndentation()
         {
             //ExStart:UseTabCharacterPerLevelForListIndentation
@@ -82,7 +82,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:UseTabCharacterPerLevelForListIndentation
         }
 
-        [Test]
+        [Test, Description("Shows how to add spaces before each list level.")]
         public static void UseSpaceCharacterPerLevelForListIndentation()
         {
             //ExStart:UseSpaceCharacterPerLevelForListIndentation

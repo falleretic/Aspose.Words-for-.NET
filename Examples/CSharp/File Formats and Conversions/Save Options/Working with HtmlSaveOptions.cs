@@ -4,29 +4,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class WorkingWithHtmlSaveOptions : TestDataHelper
+    internal class WorkingWithHtmlSaveOptions : TestDataHelper
     {
-        [Test]
-        public static void ConvertDocumentToEpub()
-        {
-            //ExStart:ConvertDocumentToEpub
-            Document doc = new Document(MyDir + "Rendering.docx");
-
-            HtmlSaveOptions saveOptions = new HtmlSaveOptions();
-            saveOptions.Encoding = System.Text.Encoding.UTF8;
-            // Specify at what elements to split the internal HTML at. This creates a new HTML within the EPUB 
-            // which allows you to limit the size of each HTML part. This is useful for readers which cannot read 
-            // HTML files greater than a certain size e.g 300kb.
-            saveOptions.DocumentSplitCriteria = DocumentSplitCriteria.HeadingParagraph;
-            saveOptions.ExportDocumentProperties = true;
-            saveOptions.SaveFormat = SaveFormat.Epub;
-
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.ConvertDocumentToEpub.epub", saveOptions);
-            //ExEnd:ConvertDocumentToEpub
-        }
-
-        [Test]
-        public static void ExportRoundtripInformation()
+        [Test, Description("Shows how to add roundtrip information as -aw-* for CSS elements.")]
+        public void ExportRoundtripInformation()
         {
             //ExStart:ExportRoundtripInformation
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -38,22 +19,21 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:ExportRoundtripInformation
         }
 
-        [Test]
-        public static void ExportFontsAsBase64()
+        [Test, Description("Shows how to export fonts in Base64 encoding.")]
+        public void ExportFontsAsBase64()
         {
             //ExStart:ExportFontsAsBase64
             Document doc = new Document(MyDir + "Rendering.docx");
             
             HtmlSaveOptions saveOptions = new HtmlSaveOptions();
-            saveOptions.ExportFontResources = true;
             saveOptions.ExportFontsAsBase64 = true;
             
             doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportFontsAsBase64.html", saveOptions);
             //ExEnd:ExportFontsAsBase64
         }
 
-        [Test]
-        public static void ExportResources()
+        [Test, Description("Shows how to export CSS and fonts in external folder.")]
+        public void ExportResources()
         {
             //ExStart:ExportResourcesUsingHtmlSaveOptions
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -68,8 +48,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:ExportResourcesUsingHtmlSaveOptions
         }
 
-        [Test]
-        public static void SaveHtmlWithMetafileFormat()
+        [Test, Description("Shows how to define metafile format when exporting to HTML.")]
+        public void SaveHtmlWithMetafileFormat()
         {
             //ExStart:SaveHtmlWithMetafileFormat
             Document doc = new Document();
@@ -92,8 +72,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:SaveHtmlWithMetafileFormat
         }
 
-        [Test]
-        public static void ImportExportSvgInHtml()
+        [Test, Description("Shows how to define metafile format when exporting to HTML.")]
+        public void ImportExportSvgInHtml()
         {
             //ExStart:ImportExportSVGinHTML
             Document doc = new Document();
@@ -113,8 +93,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:ImportExportSVGinHTML
         }
 
-        [Test]
-        public static void CssClassNamePrefix()
+        [Test, Description("Shows how to specify a prefix added to all CSS class names.")]
+        public void CssClassNamePrefix()
         {
             //ExStart:CssClassNamePrefix
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -123,12 +103,12 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             saveOptions.CssStyleSheetType = CssStyleSheetType.External;
             saveOptions.CssClassNamePrefix = "pfx_";
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.SetCssClassNamePrefix.html", saveOptions);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.CssClassNamePrefix.html", saveOptions);
             //ExEnd:CssClassNamePrefix
         }
 
-        [Test]
-        public static void ExportCidUrlsForMhtmlResources()
+        [Test, Description("Shows how to set references to resource files as CID URLs.")]
+        public void ExportCidUrlsForMhtmlResources()
         {
             //ExStart:ExportCidUrlsForMhtmlResources
             Document doc = new Document(MyDir + "Content-ID.docx");
@@ -138,12 +118,12 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             saveOptions.ExportCidUrlsForMhtmlResources = true;
             saveOptions.SaveFormat = SaveFormat.Mhtml;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.SetExportCidUrlsForMhtmlResources.mhtml", saveOptions);
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportCidUrlsForMhtmlResources.mhtml", saveOptions);
             //ExEnd:ExportCidUrlsForMhtmlResources
         }
 
-        [Test]
-        public static void ResolveFontNames()
+        [Test, Description("Shows how to resolve fonts based on available font family.")]
+        public void ResolveFontNames()
         {
             //ExStart:ResolveFontNames
             Document doc = new Document(MyDir + "Missing font.docx");
@@ -156,10 +136,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:ResolveFontNames
         }
 
-        [Test]
-        public static void SpecifySaveOption()
+        [Test, Description("Shows how to export form fields as plain text.")]
+        public void ExportTextInputFormFieldAsText()
         {
-            //ExStart:SpecifySaveOption
+            //ExStart:ExportTextInputFormFieldAsText
             Document doc = new Document(MyDir + "Rendering.docx");
 
             string imagesDir = Path.Combine(ArtifactsDir, "Images");
@@ -175,8 +155,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             saveOptions.ExportTextInputFormFieldAsText = true;
             saveOptions.ImagesFolder = imagesDir;
 
-            doc.Save(ArtifactsDir + "HtmlSaveOptions.SpecifySaveOption.html", saveOptions);
-            //ExEnd:SpecifySaveOption
+            doc.Save(ArtifactsDir + "HtmlSaveOptions.ExportTextInputFormFieldAsText.html", saveOptions);
+            //ExEnd:ExportTextInputFormFieldAsText
         }
     }
 }

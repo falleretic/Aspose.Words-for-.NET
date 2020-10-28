@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
@@ -8,10 +11,48 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp
 {
-    class LINQtoXMLMailMerge : TestDataHelper
+    class WorkingWithXMLData : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void XmlMailMerge()
+        {
+            //ExStart:XmlMailMerge
+            DataSet customersDs = new DataSet();
+            customersDs.ReadXml(MyDir + "Mail merge data - Customers.xml");
+
+            Document doc = new Document(MyDir + "Mail merge destinations - Registration complete.docx");
+            // Execute mail merge to fill the template with data from XML using DataTable
+            doc.MailMerge.Execute(customersDs.Tables["Customer"]);
+
+            doc.Save(ArtifactsDir + "XmlMailMerge.docx");
+            //ExEnd:XmlMailMerge
+        }
+
+        [Test]
+        public static void NestedMailMerge()
+        {
+            //ExStart:NestedMailMerge
+            DataSet pizzaDs = new DataSet();
+
+            // Note: The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml
+            // To see examples of how to set up relations manually check the corresponding documentation of this sample
+            pizzaDs.ReadXml(MyDir + "Mail merge data - CustomerData.xml");
+
+            Document doc = new Document(MyDir + "Mail merge destinations - Invoice.docx");
+
+            // Trim trailing and leading whitespaces mail merge values
+            doc.MailMerge.TrimWhitespaces = false;
+
+            // Execute the nested mail merge with regions
+            doc.MailMerge.ExecuteWithRegions(pizzaDs);
+
+            doc.Save(ArtifactsDir + "MailMerge.NestedMailMerge.docx");
+            //ExEnd:NestedMailMerge
+            Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0, "There was a problem with mail merge");
+        }
+
+        [Test]
+        public static void LINQtoXmlMailMerge()
         {
 #if !NET20
             XElement orderXml = XElement.Load(MyDir + "PurchaseOrder.xml");

@@ -11,7 +11,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
 {
     class BaseConversions : TestDataHelper
     {
-        [Test]
+        [Test, Description("Shows how to covert DOC to DOCX.")]
         public static void DocToDocx()
         {
             //ExStart:LoadAndSave
@@ -22,7 +22,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:LoadAndSave
         }
 
-        [Test]
+        [Test, Description("Shows how to covert DOCX to RTF.")]
         public static void DocxToRtf()
         {
             //ExStart:LoadAndSaveToStream 
@@ -48,7 +48,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             File.WriteAllBytes(ArtifactsDir + "BaseConversions.DocxToRtf.rtf", dstStream.ToArray());
         }
 
-        [Test]
+        [Test, Description("Shows how to covert DOCX to PDF.")]
         public static void DocxToPdf()
         {
             //ExStart:Doc2Pdf
@@ -57,7 +57,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:Doc2Pdf
         }
 
-        [Test]
+        [Test, Description("Shows how to covert DOCX to Byte.")]
         public static void DocxToByte()
         {
             //ExStart:DocxToByte
@@ -73,7 +73,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:DocxToByte
         }
 
-        [Test]
+        [Test, Description("Shows how to covert DOCX to EPUB.")]
         public static void DocxToEpub()
         {
             //ExStart:DocxToEpub
@@ -82,7 +82,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:DocxToEpub
         }
 
-        [Test, Ignore("Only for example")]
+        [Test, Ignore("Only for example"), Description("Shows how to covert DOCX to MHTML.")]
         public static void DocxToMhtmlAndSendingEmail()
         {
             //ExStart:DocxToMhtmlAndSendingEmail
@@ -107,7 +107,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:DocxToMhtmlAndSendingEmail
         }
 
-        [Test]
+        [Test, Description("Shows how to covert DOCX to TXT.")]
         public static void DocxToTxt()
         {
             //ExStart:DocxToTxt
@@ -116,7 +116,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:DocxToTxt
         }
 
-        [Test]
+        [Test, Description("Shows how to covert TXT to DOCX.")]
         public static void TxtToDocx()
         {
             //ExStart:TxtToDocx
@@ -126,7 +126,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions
             //ExEnd:TxtToDocx
         }
 
-        [Test]
+        [Test, Description("Shows how to covert images to PDF.")]
         public static void ImagesToPdf()
         {
             //ExStart:ImageToPdf

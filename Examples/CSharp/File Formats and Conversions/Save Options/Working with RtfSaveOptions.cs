@@ -5,7 +5,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
     class WorkingWithRtfSaveOptions : TestDataHelper
     {
-        [Test]
+        [Test, Description("Shows how to save images as WMF.")]
         public static void SavingImagesAsWmf()
         {
             //ExStart:SavingImagesAsWmf
@@ -14,7 +14,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             RtfSaveOptions saveOptions = new RtfSaveOptions();
             saveOptions.SaveImagesAsWmf = true;
 
-            doc.Save(ArtifactsDir + "RtfSaveOptions.SavingImagesAsWmf.rtf", saveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithRtfSaveOptions.SavingImagesAsWmf.rtf", saveOptions);
             //ExEnd:SavingImagesAsWmf
         }
     }

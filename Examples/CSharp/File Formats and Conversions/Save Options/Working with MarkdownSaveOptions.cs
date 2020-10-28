@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class WorkingWithMarkdownSaveOptions : TestDataHelper
+    internal class WorkingWithMarkdownSaveOptions : TestDataHelper
     {
-        [Test]
-        public static void SaveToMarkdownDocument()
+        [Test, Description("Shows how to save the document to Markdown format.")]
+        public void SaveToMarkdownDocument()
         {
             //ExStart:SaveToMarkdownDocument
             DocumentBuilder builder = new DocumentBuilder();
@@ -18,8 +18,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:SaveToMarkdownDocument
         }
 
-        [Test]
-        public static void ExportIntoMarkdownWithTableContentAlignment()
+        [Test, Description("Shows how to specify table content alignment.")]
+        public void ExportIntoMarkdownWithTableContentAlignment()
         {
             //ExStart:ExportIntoMarkdownWithTableContentAlignment
             DocumentBuilder builder = new DocumentBuilder();

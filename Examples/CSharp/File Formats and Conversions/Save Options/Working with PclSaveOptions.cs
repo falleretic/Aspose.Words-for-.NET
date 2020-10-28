@@ -5,7 +5,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
     class WorkingWithPclSaveOptions : TestDataHelper
     {
-        [Test]
+        [Test, Description("Shows how not to rasterize transformed elements.")]
         public static void RasterizeTransformedElements()
         {
             //ExStart:RasterizeTransformedElements

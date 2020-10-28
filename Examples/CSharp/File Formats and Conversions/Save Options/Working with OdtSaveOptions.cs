@@ -3,12 +3,12 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class WorkingWithOdtSaveOptions : TestDataHelper
+    internal class WorkingWithOdtSaveOptions : TestDataHelper
     {
-        [Test]
-        public static void MeasureUnit()
+        [Test, Description("Shows how to specify unit of measure.")]
+        public void MeasureUnit()
         {
-            //ExStart:SetMeasureUnitForODT
+            //ExStart:MeasureUnit
             Document doc = new Document(MyDir + "Document.docx");
 
             // Open Office uses centimeters when specifying lengths, widths and other measurable formatting
@@ -17,7 +17,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             saveOptions.MeasureUnit = OdtSaveMeasureUnit.Inches;
 
             doc.Save(ArtifactsDir + "OdtSaveOptions.MeasureUnit.odt", saveOptions);
-            //ExEnd:SetMeasureUnitForODT
+            //ExEnd:MeasureUnit
         }
     }
 }

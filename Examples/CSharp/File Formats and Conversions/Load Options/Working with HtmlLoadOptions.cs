@@ -6,10 +6,10 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 {
     internal class WorkingWithHtmlLoadOptions : TestDataHelper
     {
-        [Test]
-        public static void PreferredControlType()
+        [Test, Description("Shows how to set the preferred type for the imported HTML elements.")]
+        public void PreferredControlType()
         {
-            //ExStart:LoadAndSaveHtmlFormFieldAsContentControlInDOCX
+            //ExStart:LoadHtmlElementsWithPreferredControlType
             const string html = @"
                 <html>
                     <select name='ComboBox' size='1'>
@@ -24,7 +24,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 
             Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(html)), loadOptions);
             doc.Save(ArtifactsDir + "HtmlLoadOptions.PreferredControlType.docx", SaveFormat.Docx);
-            //ExEnd:LoadAndSaveHtmlFormFieldAsContentControlInDOCX
+            //ExEnd:LoadHtmlElementsWithPreferredControlType
         }
     }
 }

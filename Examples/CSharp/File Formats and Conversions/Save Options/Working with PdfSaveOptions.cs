@@ -4,9 +4,9 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class Doc2Pdf : TestDataHelper
+    class WorkingWithPdfSaveOptions : TestDataHelper
     {
-        [Test]
+        [Test, Description("Shows how to display the document title inside window's title bar.")]
         public static void DisplayDocTitleInWindowTitlebar()
         {
             //ExStart:DisplayDocTitleInWindowTitlebar

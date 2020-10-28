@@ -87,7 +87,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Conte
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public Image GetBarcodeImage(Words.Fields.BarcodeParameters parameters)
+        public Image GetBarcodeImage(Fields.BarcodeParameters parameters)
         {
             if (parameters.BarcodeType == null || parameters.BarcodeValue == null)
                 return null;
@@ -186,7 +186,7 @@ namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Conte
             return generator.GenerateBarCodeImage();
         }
 
-        public Image GetOldBarcodeImage(Words.Fields.BarcodeParameters parameters)
+        public Image GetOldBarcodeImage(Fields.BarcodeParameters parameters)
         {
             throw new NotImplementedException();
         }

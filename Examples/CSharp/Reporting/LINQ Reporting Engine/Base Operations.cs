@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Reporting.LINQ_Reporting_Engine
 {
-    internal class BaseFeatures : TestDataHelper
+    internal class BaseOperations : TestDataHelper
     {
         [Test]
         public static void HelloWorld()

@@ -1,13 +1,32 @@
 ﻿using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
 using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp
 {
-    class ExecuteWithRegionsDataTable : TestDataHelper
+    class BaseOperations : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public static void SimpleMailMerge()
+        {
+            //ExStart:SimpleMailMerge
+            Document doc = new Document(MyDir + "Mail merge destinations - Complex template.docx");
+
+            doc.MailMerge.UseNonMergeFields = true;
+
+            // Fill the fields in the document with user data
+            doc.MailMerge.Execute(
+                new string[] { "FullName", "Company", "Address", "Address2", "City" },
+                new object[] { "James Bond", "MI5 Headquarters", "Milbank", "", "London" });
+
+            // Send the document in Word format to the client browser with an option to save to disk or open inside the current browser
+            doc.Save(ArtifactsDir + "SimpleMailMerge.docx");
+            //ExEnd:SimpleMailMerge
+        }
+
+        [Test]
+        public static void ExecuteWithRegionsDataTable()
         {
             //ExStart:ExecuteWithRegionsDataTable
             Document doc = new Document(MyDir + "Mail merge destinations - Orders.docx");
@@ -73,5 +92,39 @@ namespace Aspose.Words.Examples.CSharp
             return table;
         }
         //ExEnd:ExecuteWithRegionsDataTableMethods
+
+        [Test]
+        public static void ProduceMultipleDocuments()
+        {
+            //ExStart:ProduceMultipleDocuments
+            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MyDir + "Mail merge data - Customers.mdb";
+            
+            OleDbConnection conn = new OleDbConnection(connString);
+            conn.Open();
+            // Get data from a database
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM Customers", conn);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            
+            DataTable data = new DataTable();
+            da.Fill(data);
+
+            // Open the template document
+            Document doc = new Document(MyDir + "Mail merge destinations - Northwind traders.docx");
+
+            int counter = 1;
+            // Loop though all records in the data source
+            foreach (DataRow row in data.Rows)
+            {
+                // Clone the template instead of loading it from disk (for speed)
+                Document dstDoc = (Document) doc.Clone(true);
+
+                // Execute mail merge
+                dstDoc.MailMerge.Execute(row);
+
+                // Save the document
+                dstDoc.Save(string.Format(ArtifactsDir + "MailMerge.ProduceMultipleDocuments_{0}.doc", counter++));
+            }
+            //ExEnd:ProduceMultipleDocuments
+        }
     }
 }

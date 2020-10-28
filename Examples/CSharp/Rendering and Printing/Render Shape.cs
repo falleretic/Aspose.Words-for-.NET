@@ -12,26 +12,13 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
     class RenderShape : TestDataHelper
     {
         [Test]
-        public static void Run()
+        public void RenderShapeToDisk()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
             
             // Retrieve the target shape from the document. In our sample document this is the first shape.
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
 
-            // Test rendering of different types of nodes.
-            RenderShapeToDisk(shape);
-            RenderShapeToStream(shape);
-            RenderShapeToGraphics(shape);
-            RenderCellToImage(doc);
-            RenderRowToImage(doc);
-            RenderParagraphToImage(doc);
-            FindShapeSizes(shape);
-            RenderShapeImage(shape);
-        }
-
-        public static void RenderShapeToDisk(Shape shape)
-        {
             //ExStart:RenderShapeToDisk
             ShapeRenderer r = shape.GetShapeRenderer();
 
@@ -45,8 +32,14 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:RenderShapeToDisk
         }
 
-        public static void RenderShapeToStream(Shape shape)
+        [Test]
+        public void RenderShapeToStream()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+            
+            // Retrieve the target shape from the document. In our sample document this is the first shape.
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
+
             //ExStart:RenderShapeToStream
             ShapeRenderer r = new ShapeRenderer(shape);
 
@@ -67,9 +60,15 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:RenderShapeToStream
         }
 
+        [Test]
         //ExStart:RenderShapeToGraphics
-        public static void RenderShapeToGraphics(Shape shape)
+        public void RenderShapeToGraphics()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+            
+            // Retrieve the target shape from the document. In our sample document this is the first shape.
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
+
             ShapeRenderer r = shape.GetShapeRenderer();
 
             // Find the size that the shape will be rendered to at the specified scale and resolution
@@ -103,24 +102,33 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
         }
         //ExEnd:RenderShapeToGraphics
 
-        public static void RenderCellToImage(Document doc)
+        [Test]
+        public void RenderCellToImage()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+
             //ExStart:RenderCellToImage
             Cell cell = (Cell) doc.GetChild(NodeType.Cell, 2, true); // The third cell in the first table
             RenderNode(cell, ArtifactsDir + "RenderCellToImage.png", null);
             //ExEnd:RenderCellToImage
         }
 
-        public static void RenderRowToImage(Document doc)
+        [Test]
+        public void RenderRowToImage()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+
             //ExStart:RenderRowToImage
             Row row = (Row) doc.GetChild(NodeType.Row, 0, true); // The first row in the first table
             RenderNode(row, ArtifactsDir + "RenderRowToImage.png", null);
             //ExEnd:RenderRowToImage
         }
 
-        public static void RenderParagraphToImage(Document doc)
+        [Test]
+        public void RenderParagraphToImage()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+
             //ExStart:RenderParagraphToImage
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
             Paragraph paragraph = shape.LastParagraph;
@@ -133,8 +141,14 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:RenderParagraphToImage
         }
 
-        public static void FindShapeSizes(Shape shape)
+        [Test]
+        public void FindShapeSizes()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+            
+            // Retrieve the target shape from the document. In our sample document this is the first shape.
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
+
             //ExStart:FindShapeSizes
             Size shapeRenderedSize = shape.GetShapeRenderer().GetSizeInPixels(1.0f, 96.0f);
 
@@ -148,8 +162,14 @@ namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing
             //ExEnd:FindShapeSizes
         }
 
-        public static void RenderShapeImage(Shape shape)
+        [Test]
+        public void RenderShapeImage()
         {
+            Document doc = new Document(MyDir + "Rendering.docx");
+            
+            // Retrieve the target shape from the document. In our sample document this is the first shape.
+            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
+
             //ExStart:RenderShapeImage
             // Save the Shape image to disk in JPEG format and using default options
             shape.GetShapeRenderer().Save(ArtifactsDir + "RenderShapeImage.jpg", null);

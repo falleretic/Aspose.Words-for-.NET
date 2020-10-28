@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class WorkingWithDoc : TestDataHelper
+    internal class WorkingWithDocSaveOptions : TestDataHelper
     {
-        [Test]
-        public static void EncryptDocumentWithPassword()
+        [Test, Description("Shows how to encrypt document with password.")]
+        public void EncryptDocumentWithPassword()
         {
             //ExStart:EncryptDocumentWithPassword
             Document doc = new Document();
@@ -21,30 +21,30 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:EncryptDocumentWithPassword
         }
 
-        [Test]
-        public static void AlwaysCompressMetafiles()
+        [Test, Description("Shows how to specify not to compress small metafiles.")]
+        public void DoNotCompressSmallMetafiles()
         {
-            //ExStart:AlwaysCompressMetafiles
+            //ExStart:DoNotCompressSmallMetafiles
             Document doc = new Document(MyDir + "Microsoft equation object.docx");
             
             DocSaveOptions saveOptions = new DocSaveOptions();
             saveOptions.AlwaysCompressMetafiles = false;
             
-            doc.Save(ArtifactsDir + "DocSaveOptions.AlwaysCompressMetafiles.docx", saveOptions);
-            //ExEnd:AlwaysCompressMetafiles
+            doc.Save(ArtifactsDir + "DocSaveOptions.NotCompressSmallMetafiles.docx", saveOptions);
+            //ExEnd:DoNotCompressSmallMetafiles
         }
 
-        [Test]
-        public static void SavePictureBullet()
+        [Test, Description("Shows how to don't save PictureBullet data.")]
+        public void DoNotSavePictureBullet()
         {
-            //ExStart:SavePictureBullet
+            //ExStart:DoNotSavePictureBullet
             Document doc = new Document(MyDir + "Image bullet points.docx");
             
             DocSaveOptions saveOptions = (DocSaveOptions)SaveOptions.CreateSaveOptions(SaveFormat.Doc);
             saveOptions.SavePictureBullet = false;
             
-            doc.Save(ArtifactsDir + "DocSaveOptions.SavePictureBullet.docx", saveOptions);
-            //ExEnd:SavePictureBullet
+            doc.Save(ArtifactsDir + "DocSaveOptions.DoNotSavePictureBullet.docx", saveOptions);
+            //ExEnd:DoNotSavePictureBullet
         }
     }
 }

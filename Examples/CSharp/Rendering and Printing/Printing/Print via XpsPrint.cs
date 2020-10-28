@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.Rendering_and_Printing.Printing
 {
-    class PrintDocViaXpsPrint : TestDataHelper
+    class PrintViaXpsPrint : TestDataHelper
     {
         [Test, Ignore("Run only when a printer driver installed")]
         public static void Run()

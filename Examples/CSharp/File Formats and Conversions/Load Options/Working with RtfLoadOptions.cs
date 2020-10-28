@@ -2,10 +2,10 @@
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 {
-    class WorkingWithRtfLoadOptions : TestDataHelper
+    internal class WorkingWithRtfLoadOptions : TestDataHelper
     {
-        [Test]
-        public static void RecognizeUtf8Text()
+        [Test, Description("Shows how to detect Utf8 characters during the loading document.")]
+        public void RecognizeUtf8Text()
         {
             //ExStart:RecognizeUtf8Text
             RtfLoadOptions loadOptions = new RtfLoadOptions();

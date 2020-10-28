@@ -8,10 +8,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 {
-    class LoadOptionsEx : TestDataHelper
+    internal class LoadOptionsEx : TestDataHelper
     {
-        [Test]
-        public static void UpdateDirtyFields()
+        [Test, Description("Shows how to update the dirty attribute of the fields.")]
+        public void UpdateDirtyFields()
         {
             //ExStart:UpdateDirtyFields
             LoadOptions loadOptions = new LoadOptions();
@@ -22,8 +22,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
             //ExEnd:UpdateDirtyFields
         }
 
-        [Test]
-        public static void LoadAndSaveEncryptedOdt()
+        [Test, Description("Shows how to load DOCX encrypted document and save as an ODT document.")]
+        public void LoadAndSaveEncryptedOdt()
         {
             //ExStart:LoadAndSaveEncryptedODT
             //ExStart:OpenEncryptedDocument
@@ -33,43 +33,43 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
             //ExEnd:LoadAndSaveEncryptedODT
         }
 
-        [Test]
-        public static void ConvertShapeToOfficeMath()
+        [Test, Description("Shows how to convert shapes to OfficeMath objects during the loading document.")]
+        public void ConvertShapeToOfficeMath()
         {
             //ExStart:ConvertShapeToOfficeMath
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.ConvertShapeToOfficeMath = true;
 
             Document doc = new Document(MyDir + "Office math.docx", loadOptions);
-            doc.Save(ArtifactsDir + "ConvertShapeToOfficeMath.docx", SaveFormat.Docx);
+            doc.Save(ArtifactsDir + "LoadOptions.ConvertShapeToOfficeMath.docx", SaveFormat.Docx);
             //ExEnd:ConvertShapeToOfficeMath
         }
 
-        [Test]
-        public static void SetMsWordVersion()
+        [Test, Description("Shows how to set MS Word version for loading document.")]
+        public void SetMsWordVersion()
         {
             //ExStart:SetMSWordVersion
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.MswVersion = MsWordVersion.Word2003;
 
             Document doc = new Document(MyDir + "Document.docx", loadOptions);
-            doc.Save(ArtifactsDir + "SetMsWordVersion.docx");
+            doc.Save(ArtifactsDir + "LoadOptions.SetMsWordVersion.docx");
             //ExEnd:SetMSWordVersion
         }
 
-        [Test]
-        public static void SetTempFolder()
+        [Test, Description("Shows how to use a temporary folder during the loading document.")]
+        public void UseTempFolder()
         {
-            //ExStart:SetTempFolder  
+            //ExStart:UseTempFolder  
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.TempFolder = ArtifactsDir;
 
             Document doc = new Document(MyDir + "Document.docx", loadOptions);
-            //ExEnd:SetTempFolder  
+            //ExEnd:UseTempFolder  
         }
         
-        [Test]
-        public static void WarningCallback()
+        [Test, Description("Shows how to use WarningCallback to get a warnings info during the loading document.")]
+        public void WarningCallback()
         {
             //ExStart:WarningCallback
             LoadOptions loadOptions = new LoadOptions();
@@ -91,8 +91,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
         }
         //ExEnd:DocumentLoadingWarningCallback
         
-        [Test]
-        public static void ResourceLoadingCallback()
+        [Test, Description("Shows how to control external resources using IResourceLoadingCallback.")]
+        public void ResourceLoadingCallback()
         {
             //ExStart:ResourceLoadingCallback
             LoadOptions loadOptions = new LoadOptions();
@@ -123,6 +123,7 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
                     {
                         // Replaces all images with a substitute.
                         Image newImage = Image.FromFile(ImagesDir + "Logo.jpg");
+                        
                         ImageConverter converter = new ImageConverter();
                         byte[] imageBytes = (byte[])converter.ConvertTo(newImage, typeof(byte[]));
 
@@ -145,8 +146,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
         }
         //ExEnd:HtmlLinkedResourceLoadingCallback
 
-        [Test]
-        public static void LoadUsingEncoding()
+        [Test, Description("Shows how to set encoding during the loading HTML/TXT documents.")]
+        public void LoadUsingEncoding()
         {
             //ExStart:LoadUsingEncoding
             LoadOptions loadOptions = new LoadOptions();

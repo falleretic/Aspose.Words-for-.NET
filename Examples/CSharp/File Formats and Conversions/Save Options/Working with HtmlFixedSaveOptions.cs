@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class HtmlFixedSaveOptionsEx : TestDataHelper
+    internal class HtmlFixedSaveOptionsEx : TestDataHelper
     {
-        [Test]
-        public static void UseFontFromTargetMachine()
+        [Test, Description("Shows how to use fonts from the target machine.")]
+        public void UseFontFromTargetMachine()
         {
             //ExStart:UseFontFromTargetMachine
             Document doc = new Document(MyDir + "Bullet points with alternative font.docx");
@@ -18,8 +18,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:UseFontFromTargetMachine
         }
 
-        [Test]
-        public static void WriteAllCssRulesInSingleFile()
+        [Test, Description("Shows how to create separate fontFaces.css.")]
+        public void WriteAllCssRulesInSingleFile()
         {
             //ExStart:WriteAllCssRulesInSingleFile
             Document doc = new Document(MyDir + "Document.docx");

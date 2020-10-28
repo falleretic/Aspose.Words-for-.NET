@@ -5,10 +5,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
 {
-    class WorkingWithTxtLoadOptions : TestDataHelper
+    internal class WorkingWithTxtLoadOptions : TestDataHelper
     {
-        [Test]
-        public static void DetectNumberingWithWhitespaces()
+        [Test, Description("Shows how to convert numbered list items from plain text format.")]
+        public void DetectNumberingWithWhitespaces()
         {
             //ExStart:DetectNumberingWithWhitespaces
             TxtLoadOptions loadOptions = new TxtLoadOptions();
@@ -19,8 +19,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
             //ExEnd:DetectNumberingWithWhitespaces
         }
 
-        [Test]
-        public static void HandleSpacesOptions()
+        [Test, Description("Shows how to handle leading and trailing spaces.")]
+        public void HandleSpacesOptions()
         {
             //ExStart:HandleSpacesOptions
             const string textDoc = "      Line 1 \n" +
@@ -36,8 +36,8 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Load_Options
             //ExEnd:HandleSpacesOptions
         }
 
-        [Test]
-        public static void DocumentTextDirection()
+        [Test, Description("Shows how to specify text direction.")]
+        public void DocumentTextDirection()
         {
             //ExStart:DocumentTextDirection
             TxtLoadOptions loadOptions = new TxtLoadOptions();

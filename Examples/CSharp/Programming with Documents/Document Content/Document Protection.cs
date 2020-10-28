@@ -14,12 +14,12 @@ namespace Aspose.Words.Examples.CSharp.Programming_with_Documents.Document_Conte
         }
 
         [Test]
-        public static void UnProtect()
+        public static void Unprotect()
         {
-            // ExStart:UnProtectDocument
+            // ExStart:UnprotectDocument
             Document doc = new Document(MyDir + "Document.docx");
             doc.Unprotect();
-            // ExEnd:UnProtectDocument
+            // ExEnd:UnprotectDocument
         }
 
         [Test]

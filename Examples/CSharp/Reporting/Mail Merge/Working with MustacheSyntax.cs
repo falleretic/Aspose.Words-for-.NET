@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp
 {
-    class MailMergeUsingMustacheSyntax : TestDataHelper
+    class WorkingWithMustacheSyntax : TestDataHelper
     {
         [Test]
         public static void MustacheSyntax()

@@ -4,102 +4,10 @@ using NUnit.Framework;
 
 namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
 {
-    class ImageColorFilters : TestDataHelper
+    internal class ImageColorFilters : TestDataHelper
     {
-        [Test]
-        public static void TiffCompressionLzw()
-        {
-            Document doc = new Document(MyDir + "Colors.docx");
-
-            ImageSaveOptions imgOpttiff = new ImageSaveOptions(SaveFormat.Tiff);
-            imgOpttiff.Resolution = 100;
-            imgOpttiff.TiffCompression = TiffCompression.Lzw;
-            imgOpttiff.ImageBrightness = 0.8f;
-            imgOpttiff.ImageContrast = 0.8f;
-
-            doc.Save(ArtifactsDir + "ImageSaveOptions.TiffCompressionLzw.tiff", imgOpttiff);
-        }
-
-        [Test]
-        public static void GrayscaleTiffCompressionLzw()
-        {
-            Document doc = new Document(MyDir + "Colors.docx");
-
-            ImageSaveOptions imgOpttiff = new ImageSaveOptions(SaveFormat.Tiff);
-            imgOpttiff.Resolution = 100;
-            imgOpttiff.TiffCompression = TiffCompression.Lzw;
-            imgOpttiff.ImageColorMode = ImageColorMode.Grayscale;
-            imgOpttiff.ImageBrightness = 0.8f;
-            imgOpttiff.ImageContrast = 0.8f;
-
-            doc.Save(ArtifactsDir + "ImageSaveOptions.GrayscaleTiffCompressionLzw.tiff", imgOpttiff);
-        }
-
-        [Test]
-        public static void BlackWhiteTiffCompressionLzw()
-        {
-            Document doc = new Document(MyDir + "Colors.docx");
-
-            ImageSaveOptions imgOpttiff = new ImageSaveOptions(SaveFormat.Tiff);
-            imgOpttiff.Resolution = 100;
-            imgOpttiff.TiffCompression = TiffCompression.Lzw;
-            imgOpttiff.ImageColorMode = ImageColorMode.BlackAndWhite;
-            // Set brightness and contrast according to high sensitivity.
-            imgOpttiff.ImageBrightness = 0.4f;
-            imgOpttiff.ImageContrast = 0.3f;
-            
-            doc.Save(ArtifactsDir + "ImageSaveOptions.BlackWhiteTiffCompressionLzw.tiff", imgOpttiff);
-        }
-
-        [Test]
-        public static void BlackWhiteTiffCompressionCcitt4()
-        {
-            Document doc = new Document(MyDir + "Colors.docx");
-
-            ImageSaveOptions imgOpttiff = new ImageSaveOptions(SaveFormat.Tiff);
-            imgOpttiff.Resolution = 100;
-            imgOpttiff.TiffCompression = TiffCompression.Ccitt4;
-            imgOpttiff.ImageColorMode = ImageColorMode.Grayscale;
-            // Set brightness and contrast according to high sensitivity.
-            imgOpttiff.ImageBrightness = 0.4f;
-            imgOpttiff.ImageContrast = 0.3f;
-            
-            doc.Save(ArtifactsDir + "ImageSaveOptions.BlackWhiteTiffCompressionCcitt4.tiff", imgOpttiff);
-        }
-
-        [Test]
-        public static void BlackWhiteTiffCompressionRle()
-        {
-            Document doc = new Document(MyDir + "Colors.docx");
-
-            ImageSaveOptions imgOpttiff = new ImageSaveOptions(SaveFormat.Tiff);
-            imgOpttiff.Resolution = 100;
-            imgOpttiff.TiffCompression = TiffCompression.Rle;
-            imgOpttiff.ImageColorMode = ImageColorMode.Grayscale;
-            // Set brightness and contrast according to high sensitivity.
-            imgOpttiff.ImageBrightness = 0.4f;
-            imgOpttiff.ImageContrast = 0.3f;
-            
-            doc.Save(ArtifactsDir + "ImageSaveOptions.BlackWhiteTiffCompressionRle.tiff", imgOpttiff);
-        }
-
-        [Test]
-        public static void Format1bppIndexed()
-        {
-            //ExStart:Format1bppIndexed
-            Document doc = new Document(MyDir + "Colors.docx");
-
-            ImageSaveOptions opt = new ImageSaveOptions(SaveFormat.Png);
-            opt.PageIndex = 1;
-            opt.ImageColorMode = ImageColorMode.BlackAndWhite;
-            opt.PixelFormat = ImagePixelFormat.Format1bppIndexed;
-
-            doc.Save(ArtifactsDir + "ImageSaveOptions.Format1bppIndexed.Png", opt);
-            //ExEnd:Format1bppIndexed
-        }
-
-        [Test]
-        public static void ExposeThresholdControlForTiffBinarization()
+        [Test, Description("Shows how to use image optimization when saving to TIFF.")]
+        public void ExposeThresholdControlForTiffBinarization()
         {
             //ExStart:ExposeThresholdControlForTiffBinarization
             Document doc = new Document(MyDir + "Colors.docx");
@@ -114,8 +22,44 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             //ExEnd:ExposeThresholdControlForTiffBinarization
         }
 
-        [Test]
-        public static void SaveDocumentToJpeg()
+        [Test, Description("Shows how to save several pages to TIFF.")]
+        public void SaveAsMultipageTiff()
+        {
+            //ExStart:SaveAsMultipageTiff
+            Document doc = new Document(MyDir + "Rendering.docx");
+            //ExStart:SaveAsTIFF
+            doc.Save(ArtifactsDir + "ImageSaveOptions.MultipageTIFF.tiff");
+            //ExEnd:SaveAsTIFF
+            
+            //ExStart:SaveAsTIFFUsingImageSaveOptions
+            ImageSaveOptions options = new ImageSaveOptions(SaveFormat.Tiff);
+            options.PageIndex = 0;
+            options.PageCount = 2;
+            options.TiffCompression = TiffCompression.Ccitt4;
+            options.Resolution = 160;
+            
+            doc.Save(ArtifactsDir + "ImageSaveOptions.SaveAsMultipageTiff.tiff", options);
+            //ExEnd:SaveAsTIFFUsingImageSaveOptions
+            //ExEnd:SaveAsMultipageTiff
+        }
+
+        [Test, Description("Shows how to set pixel format for the images.")]
+        public void Format1bppIndexed()
+        {
+            //ExStart:Format1bppIndexed
+            Document doc = new Document(MyDir + "Colors.docx");
+
+            ImageSaveOptions opt = new ImageSaveOptions(SaveFormat.Png);
+            opt.PageIndex = 1;
+            opt.ImageColorMode = ImageColorMode.BlackAndWhite;
+            opt.PixelFormat = ImagePixelFormat.Format1bppIndexed;
+
+            doc.Save(ArtifactsDir + "ImageSaveOptions.Format1bppIndexed.Png", opt);
+            //ExEnd:Format1bppIndexed
+        }
+
+        [Test, Description("Shows how to set quality of the JPEG image.")]
+        public void SaveDocumentToJpeg()
         {
             // ExStart:SaveDocumentToJpeg
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -136,27 +80,6 @@ namespace Aspose.Words.Examples.CSharp.File_Formats_and_Conversions.Save_Options
             imageOptions.JpegQuality = 80;
             doc.Save(ArtifactsDir + "ImageSaveOptions.SaveDocumentToJpeg.jpg", imageOptions);
             // ExEnd:SaveDocumentToJpeg
-        }
-
-        [Test]
-        public static void SaveAsMultipageTiff()
-        {
-            //ExStart:SaveAsMultipageTiff
-            Document doc = new Document(MyDir + "Rendering.docx");
-            //ExStart:SaveAsTIFF
-            doc.Save(ArtifactsDir + "ImageSaveOptions.MultipageTIFF.tiff");
-            //ExEnd:SaveAsTIFF
-            
-            //ExStart:SaveAsTIFFUsingImageSaveOptions
-            ImageSaveOptions options = new ImageSaveOptions(SaveFormat.Tiff);
-            options.PageIndex = 0;
-            options.PageCount = 2;
-            options.TiffCompression = TiffCompression.Ccitt4;
-            options.Resolution = 160;
-            
-            doc.Save(ArtifactsDir + "ImageSaveOptions.SaveAsMultipageTiff.tiff", options);
-            //ExEnd:SaveAsTIFFUsingImageSaveOptions
-            //ExEnd:SaveAsMultipageTiff
         }
     }
 }
