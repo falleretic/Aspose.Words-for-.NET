@@ -26,7 +26,9 @@
     <PackageReference Include="Aspose.Email" Version="20.9.1" />
     <PackageReference Include="Aspose.Words" Version="20.10.0" />
     <PackageReference Include="Aspose.Words.Shaping.HarfBuzz" Version="20.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="System.Data.OleDb" Version="4.7.1" />
   </ItemGroup>
 
