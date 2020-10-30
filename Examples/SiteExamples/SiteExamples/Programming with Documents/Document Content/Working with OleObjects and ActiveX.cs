@@ -53,7 +53,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
 
             DocumentBuilder builder = new DocumentBuilder(doc);
-            builder.InsertOleObjectAsIcon(MyDir + "embedded.xlsx", false, MyDir + "icon.ico",
+            builder.InsertOleObjectAsIcon(MyDir + "Presentation.pptx", false, ImagesDir + "Logo icon.ico",
                 "My embedded file");
 
             doc.Save(ArtifactsDir + "EmbeddeWithIcon.docx");

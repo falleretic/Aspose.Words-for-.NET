@@ -146,7 +146,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
-            fontSettings.FallbackSettings.Load(MyDir + "Fallback.xml");
+            fontSettings.FallbackSettings.Load(MyDir + "Font fallback rules.xml");
             // Set font settings
             doc.FontSettings = fontSettings;
             

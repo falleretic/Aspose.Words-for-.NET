@@ -74,7 +74,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            Shape shape = builder.InsertImage(ImagesDir + "Test.png");
+            Shape shape = builder.InsertImage(ImagesDir + "Transparent background logo.png");
             shape.AspectRatioLocked = false;
 
             doc.Save(ArtifactsDir + "Shape_AspectRatioLocked.doc");
@@ -155,7 +155,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             
             DocumentBuilder builder = new DocumentBuilder(doc);
-            Shape shape = builder.InsertImage(ImagesDir + "Test.png");
+            Shape shape = builder.InsertImage(ImagesDir + "Transparent background logo.png");
             shape.AspectRatioLocked = false;
 
             Console.Write("\nGets the actual bounds of the shape in points: ");

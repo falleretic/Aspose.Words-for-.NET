@@ -78,7 +78,10 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void RenameMergeFields()
         {
             //ExStart:RenameMergeFields
-            Document doc = new Document(MyDir + "Merge fields.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+            builder.InsertField(@"MERGEFIELD MyMergeField1 \* MERGEFORMAT");
+            builder.InsertField(@"MERGEFIELD MyMergeField2 \* MERGEFORMAT");
 
             // Select all field start nodes so we can find the merge fields
             NodeCollection fieldStarts = doc.GetChildNodes(NodeType.FieldStart, true);
@@ -195,8 +198,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         {
             // ExStart:InsertTOAFieldWithoutDocumentBuilder
             Document doc = new Document();
-            // Get paragraph you want to append this TOA field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
+            Paragraph para = new Paragraph(doc);
 
             // We want to insert TA and TOA fields like this:
             // { TA  \c 1 \l "Value 0" }
@@ -341,8 +343,8 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:InsertFieldIncludeTextWithoutDocumentBuilder
             Document doc = new Document();
-            // Get paragraph you want to append this INCLUDETEXT field to
-            Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
+
+            Paragraph para = new Paragraph(doc);
 
             // We want to insert an INCLUDETEXT field like this:
             // { INCLUDETEXT  "file path" }
@@ -357,7 +359,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             // Finally update this IncludeText field
             fieldIncludeText.Update();
 
-            doc.Save(ArtifactsDir + "InsertIncludeFieldWithoutDocumentBuilder.doc");
+            doc.Save(ArtifactsDir + "InsertIncludeFieldWithoutDocumentBuilder.docx");
             //ExEnd:InsertFieldIncludeTextWithoutDocumentBuilder
         }
 

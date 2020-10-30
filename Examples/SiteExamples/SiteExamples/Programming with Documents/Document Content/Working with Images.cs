@@ -19,7 +19,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void AddImageToEachPage()
         {
             // This a document that we want to add an image and custom text for each page without using the header or footer
-            Document doc = new Document(ImagesDir + "Document.docx");
+            Document doc = new Document(MyDir + "Document.docx");
 
             // Create and attach collector before the document before page layout is built
             LayoutCollector layoutCollector = new LayoutCollector(doc);
@@ -63,7 +63,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
 
             // Add a logo to the top left of the page
             // The image is placed infront of all other text
-            Shape shape = builder.InsertImage(dataDir + "Aspose Logo.png", RelativeHorizontalPosition.Page, 60,
+            Shape shape = builder.InsertImage(ImagesDir + "Transparent background logo.png", RelativeHorizontalPosition.Page, 60,
                 RelativeVerticalPosition.Page, 60, -1, -1, WrapType.None);
 
             // Add a textbox next to the image which contains some text consisting of the page number
@@ -126,7 +126,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
 
             // Insert the barcode, then move to the next line and insert the ID along with the page number
             // Use pageId if you need to insert a different barcode on each page. 0 = First page, 1 = Second page etc.
-            builder.InsertImage(Image.FromFile(ImagesDir + "Barcode1.png"));
+            builder.InsertImage(Image.FromFile(ImagesDir + "Barcode.png"));
             builder.Writeln();
             builder.Write("1234567890");
             builder.InsertField("PAGE");
@@ -147,7 +147,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         [Test]
         public static void CompressImages()
         {
-            Document doc = new Document(ImagesDir + "Images.docx");
+            Document doc = new Document(MyDir + "Images.docx");
 
             // 220ppi Print - said to be excellent on most printers and screens
             // 150ppi Screen - said to be good for web pages and projectors

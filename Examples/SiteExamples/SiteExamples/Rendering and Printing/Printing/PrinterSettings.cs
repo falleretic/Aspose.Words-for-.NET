@@ -10,7 +10,7 @@ namespace SiteExamples.Rendering_and_Printing.Printing
 {
     class PrintCachePrinterSettings : SiteExamplesBase
     {
-        [Test]
+        [Test, Ignore("Run only when the printer driver is installed")]
         public static void CachePrinterSettings()
         {
             //ExStart:CachePrinterSettings
@@ -32,7 +32,7 @@ namespace SiteExamples.Rendering_and_Printing.Printing
             //ExEnd:CachePrinterSettings
         }
 
-        [Test]
+        [Test, Ignore("Run only when the printer driver is installed")]
         public static void PrintProgressDialog()
         {
             // ExStart:PrintProgressDialog
@@ -53,7 +53,8 @@ namespace SiteExamples.Rendering_and_Printing.Printing
             //ExEnd:PrintProgressDialog
         }
 
-        public static void Run()
+        [Test, Ignore("Run only when the printer driver is installed")]
+        public static void PrintPreviewSettingsDialog()
         {
             // ExStart:PrintPreviewSettingsDialog
             Document doc = new Document(MyDir + "Rendering.docx");

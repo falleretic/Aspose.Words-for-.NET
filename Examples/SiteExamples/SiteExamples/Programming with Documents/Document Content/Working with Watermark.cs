@@ -41,12 +41,11 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
                 IsWashout = false
             };
 
-            doc.Watermark.SetImage(Image.FromFile(MyDir + "Watermark.png"), options);
+            doc.Watermark.SetImage(Image.FromFile(ImagesDir + "Transparent background logo.png"), options);
 
             doc.Save(ArtifactsDir + "AddImageWatermark.docx");
             //ExEnd:AddImageWatermarkWithSpecificOptions
         }
-#endif
 
         [Test]
         public static void RemoveWatermarkFromDocument()
@@ -59,19 +58,22 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
                 doc.Watermark.Remove();
             }
 
-            doc.Save(ArtifactsDir + "RemoveWatermark_out.docx");
+            doc.Save(ArtifactsDir + "RemoveWatermarkFromDocument.docx");
             //ExEnd:RemoveWatermarkFromDocument
         }
+#endif
 
         //ExStart:AddWatermark
         [Test]
-        public static void AddWatermark()
+        public static void AddAndRemoveWatermark()
         {
             Document doc = new Document(MyDir + "Document.docx");
 
             InsertWatermarkText(doc, "CONFIDENTIAL");
-
             doc.Save(ArtifactsDir + "TestFile.Watermark.docx");
+
+            RemoveWatermarkText(doc);
+            doc.Save(ArtifactsDir + "RemoveWatermark.docx");
         }
 
         /// <summary>
@@ -137,18 +139,8 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             header.AppendChild(watermarkPara.Clone(true));
         }
         //ExEnd:AddWatermark
-
-        [Test]
+        
         //ExStart:RemoveWatermark
-        public static void RemoveWatermark()
-        {
-            Document doc = new Document(ArtifactsDir + "TestFile.Watermark.docx");
-            
-            RemoveWatermarkText(doc);
-            
-            doc.Save(ArtifactsDir + "RemoveWatermark.docx");
-        }
-
         private static void RemoveWatermarkText(Document doc)
         {
             foreach (HeaderFooter hf in doc.GetChildNodes(NodeType.HeaderFooter, true))

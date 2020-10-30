@@ -1,4 +1,6 @@
-﻿using Aspose.Words;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using Aspose.Words;
 using Aspose.Words.Reporting;
 using NUnit.Framework;
 using SiteExamples.Reporting.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
@@ -70,10 +72,15 @@ namespace SiteExamples.Reporting.LINQ_Reporting_Engine
             //ExStart:SettingBackgroundColor
             Document doc = new Document(MyDir + "Reporting engine template - Background color.docx");
 
+            List<BackgroundColor> colors = new List<BackgroundColor>();
+            colors.Add(new BackgroundColor { Name = "Black", Color = Color.Black });
+            colors.Add(new BackgroundColor { Name = "Red", Color = Color.FromArgb(255, 0, 0) });
+            colors.Add(new BackgroundColor { Name = "Empty", Color = Color.Empty });
+            
             ReportingEngine engine = new ReportingEngine();
-            engine.BuildReport(doc, new object());
+            engine.BuildReport(doc, colors, "Colors");
 
-            doc.Save(ArtifactsDir + "ReportingEngine.SettingBackgroundColor.docx");
+            doc.Save(ArtifactsDir + "ReportingEngine.BackColor.docx");
             //ExEnd:SettingBackgroundColor
         }
     }

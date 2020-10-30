@@ -23,7 +23,7 @@ namespace SiteExamples.Reporting.LINQ_Reporting_Engine
         public static void CommonList()
         {
             //ExStart:CommonList
-            Document doc = new Document(MyDir + "Reporting engine template - Common list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Common master detail.docx");
 
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
@@ -52,10 +52,10 @@ namespace SiteExamples.Reporting.LINQ_Reporting_Engine
         public static void InTableList()
         {
             //ExStart:InTableList
-            Document doc = new Document(MyDir + "Reporting engine template - Table list.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Contextual object member access.docx");
 
             ReportingEngine engine = new ReportingEngine();
-            engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
+            engine.BuildReport(doc, Helpers.Common.GetManagers(), "Managers");
 
             doc.Save(ArtifactsDir + "ReportingEngine.InTableList.docx");
             //ExEnd:InTableList

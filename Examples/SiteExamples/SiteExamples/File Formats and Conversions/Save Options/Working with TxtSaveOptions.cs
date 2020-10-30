@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace SiteExamples.File_Formats_and_Conversions.Save_Options
 {
-    class WorkingWithTxt : SiteExamplesBase
+    class WorkingWithTxtSaveOptions : SiteExamplesBase
     {
         [Test, Description("Shows how to add bi-directional marks.")]
         public static void AddBidiMarks()
@@ -31,8 +31,8 @@ namespace SiteExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:ExportHeadersFootersMode
             Document doc = new Document();
 
-            // Insert even and primary headers/footers into the document.
-            // The primary header/footers should override the even ones.
+            // Insert even and primary headers/footers into the document
+            // The primary header/footers should override the even ones 
             doc.FirstSection.HeadersFooters.Add(new HeaderFooter(doc, HeaderFooterType.HeaderEven));
             doc.FirstSection.HeadersFooters[HeaderFooterType.HeaderEven].AppendParagraph("Even header");
             doc.FirstSection.HeadersFooters.Add(new HeaderFooter(doc, HeaderFooterType.FooterEven));

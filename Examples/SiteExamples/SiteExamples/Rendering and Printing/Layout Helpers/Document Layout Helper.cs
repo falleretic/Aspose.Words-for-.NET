@@ -13,7 +13,7 @@ namespace SiteExamples.Rendering_and_Printing.Layout_Helpers
     class DocumentLayoutHelper : SiteExamplesBase
     {
         [Test]
-        public static void Run()
+        public static void WrapperToAccessLayoutEntities()
         {
             Document doc = new Document(MyDir + "Document layout.docx");
 

@@ -39,7 +39,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:CopyStylesFromDocument
             Document doc = new Document();
-            Document target = new Document(MyDir + "Styles.docx");
+            Document target = new Document(MyDir + "Rendering.docx");
 
             target.CopyStylesFromTemplate(doc);
 

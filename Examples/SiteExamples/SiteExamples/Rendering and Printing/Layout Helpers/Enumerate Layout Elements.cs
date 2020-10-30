@@ -12,7 +12,7 @@ namespace SiteExamples.Rendering_and_Printing.Layout_Helpers
     class EnumerateLayoutElements : SiteExamplesBase
     {
         [Test]
-        public static void Run()
+        public static void GetLayoutElements()
         {
             Document doc = new Document(MyDir + "Document layout.docx");
 
@@ -23,7 +23,7 @@ namespace SiteExamples.Rendering_and_Printing.Layout_Helpers
             LayoutInfoWriter.Run(it);
 
             // This sample adds a border around each layout element and saves each page as a JPEG image to the data directory
-            OutlineLayoutEntitiesRenderer.Run(doc, it, MyDir);
+            OutlineLayoutEntitiesRenderer.Run(doc, it, ArtifactsDir);
         }
     }
 

@@ -36,7 +36,7 @@ namespace SiteExamples.Reporting.Mail_Merge
 
             // Note: The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml
             // To see examples of how to set up relations manually check the corresponding documentation of this sample
-            pizzaDs.ReadXml(MyDir + "Mail merge data - CustomerData.xml");
+            pizzaDs.ReadXml(MyDir + "Mail merge data - Orders.xml");
 
             Document doc = new Document(MyDir + "Mail merge destinations - Invoice.docx");
 
@@ -48,7 +48,6 @@ namespace SiteExamples.Reporting.Mail_Merge
 
             doc.Save(ArtifactsDir + "MailMerge.NestedMailMerge.docx");
             //ExEnd:NestedMailMerge
-            Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0, "There was a problem with mail merge");
         }
 
         [Test]
@@ -59,7 +58,7 @@ namespace SiteExamples.Reporting.Mail_Merge
             ds.ReadXml(MyDir + "Mail merge data - Vendors.xml");
 
             // Open a template document
-            Document doc = new Document(MyDir + "VendorTemplate.doc");
+            Document doc = new Document(MyDir + "Mail merge destinations - Vendor.docx");
 
             doc.MailMerge.UseNonMergeFields = true;
 
@@ -73,8 +72,7 @@ namespace SiteExamples.Reporting.Mail_Merge
         [Test]
         public static void LINQtoXmlMailMerge()
         {
-#if !NET20
-            XElement orderXml = XElement.Load(MyDir + "PurchaseOrder.xml");
+            XElement orderXml = XElement.Load(MyDir + "Mail merge data - Purchase order.xml");
 
             // Query the purchase order xml file using LINQ to extract the order items 
             // Into an object of an anonymous type. 
@@ -130,10 +128,6 @@ namespace SiteExamples.Reporting.Mail_Merge
 
             doc.Save(ArtifactsDir + "MailMerge.LINQtoXML.docx");
             //ExEnd:LINQToXMLMailMerge
-#else
-            throw new InvalidOperationException("This example requires the .NET Framework v3.5 or above to run." +
-                                   " Make sure that the target framework of this project is set to 3.5 or above.");
-#endif
         }
 
         /// <summary>

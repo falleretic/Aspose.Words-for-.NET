@@ -55,11 +55,12 @@ namespace SiteExamples.Rendering_and_Printing
                 // Reduce the brightness a bit (default is 0.5f)
                 ImageBrightness = 0.45f
             };
-            
-            FileStream stream = new FileStream(ArtifactsDir + "RenderShapeToStream.jpg", FileMode.Create);
 
-            // Save the rendered image to the stream using different options
-            r.Save(stream, imageOptions);
+            using (FileStream stream = new FileStream(ArtifactsDir + "RenderShapeToStream.jpg", FileMode.Create))
+            {
+                // Save the rendered image to the stream using different options
+                r.Save(stream, imageOptions);
+            }
             //ExEnd:RenderShapeToStream
         }
 
@@ -130,17 +131,22 @@ namespace SiteExamples.Rendering_and_Printing
         [Test]
         public void RenderParagraphToImage()
         {
-            Document doc = new Document(MyDir + "Rendering.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
 
             //ExStart:RenderParagraphToImage
-            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
-            Paragraph paragraph = shape.LastParagraph;
+            // Insert a shape that contains a TextBox
+            Shape textBoxShape = builder.InsertShape(ShapeType.TextBox, 150, 100);
+            
+            // Move the document builder to inside the TextBox and write text
+            builder.MoveTo(textBoxShape.LastParagraph);
+            builder.Write("Vertical text");
 
             // Save the node with a light pink background
             ImageSaveOptions options = new ImageSaveOptions(SaveFormat.Png);
             options.PaperColor = Color.LightPink;
             
-            RenderNode(paragraph, ArtifactsDir + "RenderParagraphToImage.png", options);
+            RenderNode(textBoxShape.LastParagraph, ArtifactsDir + "RenderParagraphToImage.png", options);
             //ExEnd:RenderParagraphToImage
         }
 

@@ -172,14 +172,6 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             table.AutoFit(AutoFitBehavior.AutoFitToContents);
 
             doc.Save(ArtifactsDir + "AutoFitTableToContents.docx");
-
-            Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Type == PreferredWidthType.Auto,
-                "PreferredWidth type is not auto");
-            Debug.Assert(
-                doc.FirstSection.Body.Tables[0].FirstRow.FirstCell.CellFormat.PreferredWidth.Type ==
-                PreferredWidthType.Auto, "PrefferedWidth on cell is not auto");
-            Debug.Assert(doc.FirstSection.Body.Tables[0].FirstRow.FirstCell.CellFormat.PreferredWidth.Value == 0,
-                "PreferredWidth value is not 0");
             //ExEnd:AutoFitTableToContents
         }
 
@@ -194,12 +186,6 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             table.AutoFit(AutoFitBehavior.FixedColumnWidths);
 
             doc.Save(ArtifactsDir + "AutoFitTableToFixedColumnWidths.docx");
-            
-            Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Type == PreferredWidthType.Auto,
-                "PreferredWidth type is not auto");
-            Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Value == 0, "PreferredWidth value is not 0");
-            Debug.Assert(doc.FirstSection.Body.Tables[0].FirstRow.FirstCell.CellFormat.Width == 69.2,
-                "Cell width is not correct.");
             //ExEnd:AutoFitTableToFixedColumnWidths
         }
 
@@ -214,11 +200,6 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             table.AutoFit(AutoFitBehavior.AutoFitToWindow);
 
             doc.Save(ArtifactsDir + "AutoFitTableToWindow.docx");
-
-            Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Type == PreferredWidthType.Percent,
-                "PreferredWidth type is not percent");
-            Debug.Assert(doc.FirstSection.Body.Tables[0].PreferredWidth.Value == 100,
-                "PreferredWidth value is different than 100");
             //ExEnd:AutoFitTableToPageWidth
         }
 
@@ -236,7 +217,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
             doc.FirstSection.PageSetup.Orientation = Orientation.Landscape;
 
             DataSet ds = new DataSet();
-            ds.ReadXml(MyDir + "Employees.xml");
+            ds.ReadXml(MyDir + "List of people.xml");
             // Retrieve the data from our data source which is stored as a DataTable
             DataTable dataTable = ds.Tables[0];
 
@@ -1199,7 +1180,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void GetFloatingTablePosition()
         {
             //ExStart:GetFloatingTablePosition
-            Document doc = new Document(MyDir + "Floating table position.docx");
+            Document doc = new Document(MyDir + "Table wrapped by text.docx");
             
             foreach (Table table in doc.FirstSection.Body.Tables)
             {
@@ -1223,7 +1204,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void SetFloatingTablePosition()
         {
             //ExStart:SetFloatingTablePosition
-            Document doc = new Document(MyDir + "Floating table position.docx");
+            Document doc = new Document(MyDir + "Table wrapped by text.docx");
 
             Table table = doc.FirstSection.Body.Tables[0];
             // Sets absolute table horizontal position at 10pt
@@ -1239,7 +1220,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void SetRelativeHorizontalOrVerticalPosition()
         {
             // ExStart:SetRelativeHorizontalOrVerticalPosition
-            Document doc = new Document(MyDir + "Floating table position.docx");
+            Document doc = new Document(MyDir + "Table wrapped by text.docx");
             Table table = doc.FirstSection.Body.Tables[0];
 
             table.HorizontalAnchor = RelativeHorizontalPosition.Column;

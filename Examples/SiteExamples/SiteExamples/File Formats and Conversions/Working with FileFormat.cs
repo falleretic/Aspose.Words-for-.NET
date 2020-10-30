@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Aspose.Words;
@@ -28,7 +29,7 @@ namespace SiteExamples.File_Formats_and_Conversions
                 Directory.CreateDirectory(pre97Dir);
 
             //ExStart:GetListOfFilesInFolder
-            string[] fileList = Directory.GetFiles(MyDir);
+            IEnumerable<string> fileList = Directory.GetFiles(MyDir).Where(name => !name.EndsWith("Corrupted document.docx"));
             //ExEnd:GetListOfFilesInFolder
             foreach (string fileName in fileList)
             {

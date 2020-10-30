@@ -74,8 +74,6 @@ namespace SiteExamples.Reporting.Mail_Merge
 
             doc.Save(ArtifactsDir + "MailMerge.RemoveEmptyRegions.docx");
             //ExEnd:RemoveUnmergedRegions
-            Debug.Assert(doc.MailMerge.GetFieldNames().Length == 0,
-                "Error: There are still unused regions remaining in the document");
         }
     }
 }

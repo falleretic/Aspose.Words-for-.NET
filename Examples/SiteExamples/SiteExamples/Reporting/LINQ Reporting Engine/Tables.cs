@@ -10,10 +10,10 @@ namespace SiteExamples.Reporting.LINQ_Reporting_Engine
         public static void InTableAlternateContent()
         {
             //ExStart:InTableAlternateContent
-            Document doc = new Document(MyDir + "Reporting engine template - Table alternate content.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Total.docx");
 
             ReportingEngine engine = new ReportingEngine();
-            engine.BuildReport(doc, Helpers.Common.GetContracts(), "contracts");
+            engine.BuildReport(doc, Helpers.Common.GetContracts(), "Contracts");
 
             doc.Save(ArtifactsDir + "ReportingEngine.InTableAlternateContent.docx");
             //ExEnd:InTableAlternateContent
@@ -23,10 +23,10 @@ namespace SiteExamples.Reporting.LINQ_Reporting_Engine
         public static void InTableMasterDetail()
         {
             //ExStart:InTableMasterDetail
-            Document doc = new Document(MyDir + "Reporting engine template - Table master detail.docx");
+            Document doc = new Document(MyDir + "Reporting engine template - Nested data table.docx");
 
             ReportingEngine engine = new ReportingEngine();
-            engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
+            engine.BuildReport(doc, Helpers.Common.GetManagers(), "Managers");
 
             doc.Save(ArtifactsDir + "ReportingEngine.InTableMasterDetail.docx");
             //ExEnd:InTableMasterDetail

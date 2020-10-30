@@ -10,7 +10,7 @@ namespace SiteExamples.Rendering_and_Printing.Printing
     class PrintViaXpsPrint : SiteExamplesBase
     {
         [Test, Ignore("Run only when a printer driver installed")]
-        public static void Run()
+        public static void UseXpsPrintHelper()
         {
             //ExStart:PrintDocViaXpsPrint
             Document document = new Document(MyDir + "Rendering.docx");

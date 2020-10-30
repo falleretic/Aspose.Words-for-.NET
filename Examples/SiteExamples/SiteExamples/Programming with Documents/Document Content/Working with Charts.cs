@@ -391,9 +391,10 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void TickMultiLineLabelAlignment()
         {
             //ExStart:TickMultiLineLabelAlignment
-            Document doc = new Document(MyDir + "Area chart.docx");
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
 
-            Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
+            Shape shape = builder.InsertChart(ChartType.Scatter, 450, 250);
             ChartAxis axis = shape.Chart.AxisX;
             // This property has effect only for multi-line labels
             axis.TickLabelAlignment = ParagraphAlignment.Right;

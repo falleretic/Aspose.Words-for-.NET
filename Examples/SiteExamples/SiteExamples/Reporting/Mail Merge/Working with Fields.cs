@@ -225,7 +225,7 @@ namespace SiteExamples.Reporting.Mail_Merge
             doc.MailMerge.FieldMergingCallback = new HandleMergeImageFieldFromBlob();
 
             // Open a database connection
-            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MyDir + "Northwind.mdb";
+            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
@@ -269,14 +269,16 @@ namespace SiteExamples.Reporting.Mail_Merge
         [Test]
         public static void HandleMailMergeSwitches()
         {
-            Document doc = new Document(MyDir + "MailMergeSwitches.docx");
+            Document doc = new Document(MyDir + "Field sample - MERGEFIELD.docx");
 
             doc.MailMerge.FieldMergingCallback = new MailMergeSwitches();
 
-            // Fill the fields in the document with user data
-            doc.MailMerge.Execute(
-                new string[] { "HTML_Name" },
-                new object[] { "James Bond" });
+            const string html = @"<html>
+                    <h1>Hello world!</h1>
+            </html>";
+
+            // Execute mail merge
+            doc.MailMerge.Execute(new string[] { "htmlField1" }, new object[] { html });
 
             doc.Save(ArtifactsDir + "HandleMailMergeSwitches.docx");
         }

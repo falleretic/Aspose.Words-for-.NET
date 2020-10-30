@@ -105,6 +105,21 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         }
 
         [Test]
+        public static void ReadMarkdownDocument()
+        {
+            //ExStart:ReadMarkdownDocument
+            // This is Markdown document that was produced in example of UC3
+            Document doc = new Document(MyDir + "Quotes.md");
+
+            // Let's remove Heading formatting from a Quote in the very last paragraph
+            Paragraph paragraph = doc.FirstSection.Body.LastParagraph;
+            paragraph.ParagraphFormat.Style = doc.Styles["Quote"];
+
+            doc.Save(ArtifactsDir + "QuotesModifiedExample.md");
+            //ExEnd:ReadMarkdownDocument
+        }
+
+        [Test]
         public static void MarkdownDocumentWithHorizontalRule()
         {
             //ExStart:MarkdownDocumentWithHorizontalRule
@@ -115,21 +130,6 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
 
             builder.Document.Save(ArtifactsDir + "HorizontalRuleExample.md");
             // ExEnd: MarkdownDocumentWithHorizontalRule
-        }
-
-        [Test]
-        public static void ReadMarkdownDocument()
-        {
-            //ExStart:ReadMarkdownDocument
-            // This is Markdown document that was produced in example of UC3
-            Document doc = new Document(MyDir + "QuotesExample.md");
-
-            // Let's remove Heading formatting from a Quote in the very last paragraph
-            Paragraph paragraph = doc.FirstSection.Body.LastParagraph;
-            paragraph.ParagraphFormat.Style = doc.Styles["Quote"];
-
-            doc.Save(ArtifactsDir + "QuotesModifiedExample.md");
-            //ExEnd:ReadMarkdownDocument
         }
     }
 }

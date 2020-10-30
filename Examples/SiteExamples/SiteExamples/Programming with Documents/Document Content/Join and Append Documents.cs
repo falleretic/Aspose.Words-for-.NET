@@ -545,8 +545,8 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void SmartStyleBehavior()
         {
             //ExStart:SmartStyleBehavior
-            Document srcDoc = new Document(MyDir + "Source document.docx");
-            Document dstDoc = new Document(MyDir + "Destination document.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             DocumentBuilder builder = new DocumentBuilder(dstDoc);
             builder.MoveToDocumentEnd();
@@ -562,8 +562,8 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void KeepSourceNumbering()
         {
             //ExStart:KeepSourceNumbering
-            Document srcDoc = new Document(MyDir + "Source document.docx");
-            Document dstDoc = new Document(MyDir + "Destination document.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep source list formatting when importing numbered paragraphs
@@ -587,8 +587,8 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void IgnoreTextBoxes()
         {
             //ExStart:IgnoreTextBoxes
-            Document srcDoc = new Document(MyDir + "Source document.docx");
-            Document dstDoc = new Document(MyDir + "Destination document.docx");
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             // Keep the source text boxes formatting when importing
@@ -612,8 +612,8 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void IgnoreHeaderFooter()
         {
             // ExStart:IgnoreHeaderFooter
-            Document srcDocument = new Document(MyDir + "Source document.docx");
-            Document dstDocument = new Document(MyDir + "Destination document.docx");
+            Document srcDocument = new Document(MyDir + "Document source.docx");
+            Document dstDocument = new Document(MyDir + "Northwind traders.docx");
 
             ImportFormatOptions importFormatOptions = new ImportFormatOptions();
             importFormatOptions.IgnoreHeaderFooter = false;

@@ -10,7 +10,7 @@ namespace SiteExamples.Rendering_and_Printing.Printing
 {
     class PrintMultiplePagesOnOneSheet : SiteExamplesBase
     {
-        [Test]
+        [Test, Ignore("Run only when the printer driver is installed")]
         public static void PrintMultiplePages()
         {
             //ExStart:PrintMultiplePagesOnOneSheet

@@ -89,7 +89,7 @@ namespace SiteExamples.Reporting.Mail_Merge
         {
             // Open the database connection.
             string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                                MyDir + "Northwind.mdb";
+                                DatabaseDir + "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
@@ -110,7 +110,7 @@ namespace SiteExamples.Reporting.Mail_Merge
         public static void ProduceMultipleDocuments()
         {
             //ExStart:ProduceMultipleDocuments
-            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MyDir + "Mail merge data - Customers.mdb";
+            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
             
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
@@ -122,7 +122,7 @@ namespace SiteExamples.Reporting.Mail_Merge
             da.Fill(data);
 
             // Open the template document
-            Document doc = new Document(MyDir + "Mail merge destinations - Northwind traders.docx");
+            Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
 
             int counter = 1;
             // Loop though all records in the data source

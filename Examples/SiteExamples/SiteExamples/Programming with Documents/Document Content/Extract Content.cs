@@ -15,7 +15,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentBetweenBlockLevelNodes()
         {
             //ExStart:ExtractContentBetweenBlockLevelNodes
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
 
             Paragraph startPara = (Paragraph) doc.LastSection.GetChild(NodeType.Paragraph, 2, true);
             Table endTable = (Table) doc.LastSection.GetChild(NodeType.Table, 0, true);
@@ -42,7 +42,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentBetweenBookmark()
         {
             //ExStart:ExtractContentBetweenBookmark
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
 
             Section section = doc.Sections[0];
             section.PageSetup.LeftMargin = 70.85;
@@ -70,7 +70,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentBetweenCommentRange()
         {
             //ExStart:ExtractContentBetweenCommentRange
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
 
             // This is a quick way of getting both comment nodes.
             // Your code should have a proper method of retrieving each corresponding start and end node.
@@ -93,7 +93,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentBetweenParagraphs()
         {
             //ExStart:ExtractContentBetweenParagraphs
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
 
             Paragraph startPara = (Paragraph) doc.FirstSection.Body.GetChild(NodeType.Paragraph, 6, true);
             Paragraph endPara = (Paragraph) doc.FirstSection.Body.GetChild(NodeType.Paragraph, 10, true);
@@ -110,7 +110,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentBetweenParagraphStyles()
         {
             //ExStart:ExtractContentBetweenParagraphStyles
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
 
             // Gather a list of the paragraphs using the respective heading styles.
             ArrayList parasStyleHeading1 = Helpers.Common.ParagraphsByStyleName(doc, "Heading 1");
@@ -132,7 +132,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentBetweenRuns()
         {
             //ExStart:ExtractContentBetweenRuns
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
 
             Paragraph para = (Paragraph) doc.GetChild(NodeType.Paragraph, 7, true);
 
@@ -294,7 +294,7 @@ namespace SiteExamples.Programming_with_Documents.Document_Content
         public static void ExtractContentUsingField()
         {
             //ExStart:ExtractContentUsingField
-            Document doc = new Document(MyDir + "Document.docx");
+            Document doc = new Document(MyDir + "Extract content.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             // Pass the first boolean parameter to get the DocumentBuilder to move to the FieldStart of the field.
