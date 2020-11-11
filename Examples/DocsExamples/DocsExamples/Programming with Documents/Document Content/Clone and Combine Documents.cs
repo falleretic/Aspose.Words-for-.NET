@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class CloneAndCombineDocuments : DocsExamplesBase
+    internal class CloneAndCombineDocuments : DocsExamplesBase
     {
         [Test]
         public static void CloningDocument()
@@ -27,10 +27,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:InsertDocumentAtReplace
             Document mainDoc = new Document(MyDir + "Document insertion 1.docx");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = new InsertDocumentAtReplaceHandler();
+            FindReplaceOptions options = new FindReplaceOptions { ReplacingCallback = new InsertDocumentAtReplaceHandler() };
 
             mainDoc.Range.Replace(new Regex("\\[MY_DOCUMENT\\]"), "", options);
+
             mainDoc.Save(ArtifactsDir + "CloneAndCombineDocuments.InsertDocumentAtReplace.docx");
             //ExEnd:InsertDocumentAtReplace
         }
@@ -57,11 +57,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             mainDoc.MailMerge.FieldMergingCallback = new InsertDocumentAtMailMergeHandler();
             // The main document has a merge field in it called "Document_1".
-            // The corresponding data for this field contains fully qualified path to the document.
+            // The corresponding data for this field contains a fully qualified path to the document.
             // That should be inserted to this field.
-            mainDoc.MailMerge.Execute(
-                new[] { "Document_1" },
-                new object[] { MyDir + "Document insertion 2.docx" });
+            mainDoc.MailMerge.Execute(new[] { "Document_1" }, new object[] { MyDir + "Document insertion 2.docx" });
 
             mainDoc.Save(ArtifactsDir + "CloneAndCombineDocuments.InsertDocumentAtMailMerge.doc");
             //ExEnd:InsertDocumentAtMailMerge
@@ -90,7 +88,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             {
                 foreach (Node srcNode in srcSection.Body)
                 {
-                    // Let's skip the node if it is a last empty paragraph in a section.
+                    // Let's skip the node if it is the last empty paragraph in a section.
                     if (srcNode.NodeType.Equals(NodeType.Paragraph))
                     {
                         Paragraph para = (Paragraph) srcNode;
@@ -101,7 +99,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                     // This creates a clone of the node, suitable for insertion into the destination document.
                     Node newNode = importer.ImportNode(srcNode, true);
 
-                    // Insert new node after the reference node.
+                    // Insert a new node after the reference node.
                     dstStory.InsertAfter(newNode, insertAfterNode);
                     insertAfterNode = newNode;
                 }
@@ -124,13 +122,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             Document dstDoc = (Document) insertAfterNode.Document;
             // To retain section formatting, split the current section into two at the marker node and then import the content
-            // from srcDoc as whole sections. The section of the node which the insert marker node belongs to.
+            // from srcDoc as whole sections. The section of the node to which the insert marker node belongs.
             Section currentSection = (Section) insertAfterNode.GetAncestor(NodeType.Section);
 
             // Don't clone the content inside the section, we just want the properties of the section retained.
             Section cloneSection = (Section) currentSection.Clone(false);
 
-            // However make sure the clone section has a body, but no empty first paragraph.
+            // However, make sure the clone section has a body but no empty first paragraph.
             cloneSection.EnsureMinimum();
             cloneSection.Body.FirstParagraph.Remove();
 
@@ -178,7 +176,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                     
                     InsertDocument(builder.CurrentParagraph, subDoc);
 
-                    // The paragraph that contained the merge field might be empty now and you probably want to delete it.
+                    // The paragraph that contained the merge field might be empty now, and you probably want to delete it.
                     if (!builder.CurrentParagraph.HasChildNodes)
                         builder.CurrentParagraph.Remove();
 
@@ -213,7 +211,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
                     InsertDocument(builder.CurrentParagraph, subDoc);
 
-                    // The paragraph that contained the merge field might be empty now and you probably want to delete it.
+                    // The paragraph that contained the merge field might be empty now, and you probably want to delete it.
                     if (!builder.CurrentParagraph.HasChildNodes)
                         builder.CurrentParagraph.Remove();
 
@@ -223,7 +221,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                // Do nothing
+                // Do nothing.
             }
         }
         //ExEnd:InsertDocumentAtMailMergeBlobHandler

@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class RemoveContent : DocsExamplesBase
+    internal class RemoveContent : DocsExamplesBase
     {
         [Test]
         public static void RemovePageBreaks()
@@ -15,29 +15,26 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Document.docx");
             // ExEnd:OpenFromFile
 
-            // Remove the page and section breaks from the document
-            // In Aspose.Words section breaks are represented as separate Section nodes in the document
-            // To remove these separate sections the sections are combined
+            // In Aspose.Words section breaks are represented as separate Section nodes in the document.
+            // To remove these separate sections, the sections are combined.
             RemovePageBreaks(doc);
             RemoveSectionBreaks(doc);
 
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "RemoveContent.RemovePageBreaks.docx");
         }
 
         //ExStart:RemovePageBreaks
         private static void RemovePageBreaks(Document doc)
         {
-            // Retrieve all paragraphs in the document
             NodeCollection paragraphs = doc.GetChildNodes(NodeType.Paragraph, true);
 
-            // Iterate through all paragraphs
             foreach (Paragraph para in paragraphs)
             {
-                // If the paragraph has a page break before set then clear it
+                // If the paragraph has a page break before the set, then clear it.
                 if (para.ParagraphFormat.PageBreakBefore)
                     para.ParagraphFormat.PageBreakBefore = false;
 
-                // Check all runs in the paragraph for page breaks and remove them
+                // Check all runs in the paragraph for page breaks and remove them.
                 foreach (Run run in para.Runs)
                 {
                     if (run.Text.Contains(ControlChar.PageBreak))
@@ -50,13 +47,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         //ExStart:RemoveSectionBreaks
         private static void RemoveSectionBreaks(Document doc)
         {
-            // Loop through all sections starting from the section that precedes the last one 
-            // And moving to the first section
+            // Loop through all sections starting from the section that precedes the last one and moving to the first section.
             for (int i = doc.Sections.Count - 2; i >= 0; i--)
             {
-                // Copy the content of the current section to the beginning of the last section
+                // Copy the content of the current section to the beginning of the last section.
                 doc.LastSection.PrependContent(doc.Sections[i]);
-                // Remove the copied section
+                // Remove the copied section.
                 doc.Sections[i].Remove();
             }
         }
@@ -71,11 +67,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             foreach (Section section in doc)
             {
                 // Up to three different footers are possible in a section (for first, even and odd pages)
-                // We check and delete all of them
+                // we check and delete all of them.
                 HeaderFooter footer = section.HeadersFooters[HeaderFooterType.FooterFirst];
                 footer?.Remove();
 
-                // Primary footer is the footer used for odd pages
+                // Primary footer is the footer used for odd pages.
                 footer = section.HeadersFooters[HeaderFooterType.FooterPrimary];
                 footer?.Remove();
 
@@ -83,7 +79,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 footer?.Remove();
             }
 
-            doc.Save(ArtifactsDir + "HeaderFooter.RemoveFooters.docx");
+            doc.Save(ArtifactsDir + "RemoveContent.RemoveFooters.docx");
             //ExEnd:RemoveFooters
         }
 
@@ -93,10 +89,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             Document doc = new Document(MyDir + "Table of contents.docx");
 
-            // Remove the first table of contents from the document
+            // Remove the first table of contents from the document.
             RemoveTableOfContents(doc, 0);
 
-            doc.Save(ArtifactsDir + "Document.TableOfContentsRemoveToc.doc");
+            doc.Save(ArtifactsDir + "RemoveContent.RemoveToc.doc");
         }
 
         /// <summary>
@@ -106,37 +102,34 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         /// <param name="index">The zero-based index of the TOC to remove.</param>
         public static void RemoveTableOfContents(Document doc, int index)
         {
-            // Store the FieldStart nodes of TOC fields in the document for quick access
+            // Store the FieldStart nodes of TOC fields in the document for quick access.
             ArrayList fieldStarts = new ArrayList();
-            // This is a list to store the nodes found inside the specified TOC. They will be removed
-            // At the end of this method
+            // This is a list to store the nodes found inside the specified TOC. They will be removed at the end of this method.
             ArrayList nodeList = new ArrayList();
 
             foreach (FieldStart start in doc.GetChildNodes(NodeType.FieldStart, true))
             {
                 if (start.FieldType == FieldType.FieldTOC)
                 {
-                    // Add all FieldStarts which are of type FieldTOC
                     fieldStarts.Add(start);
                 }
             }
 
-            // Ensure the TOC specified by the passed index exists
+            // Ensure the TOC specified by the passed index exists.
             if (index > fieldStarts.Count - 1)
                 throw new ArgumentOutOfRangeException("TOC index is out of range");
 
             bool isRemoving = true;
-            // Get the FieldStart of the specified TOC
+            
             Node currentNode = (Node) fieldStarts[index];
-
             while (isRemoving)
             {
-                // It is safer to store these nodes and delete them all at once later
+                // It is safer to store these nodes and delete them all at once later.
                 nodeList.Add(currentNode);
                 currentNode = currentNode.NextPreOrder(doc);
 
-                // Once we encounter a FieldEnd node of type FieldTOC then we know we are at the end
-                // Of the current TOC and we can stop here
+                // Once we encounter a FieldEnd node of type FieldTOC,
+                // we know we are at the end of the current TOC and stop here.
                 if (currentNode.NodeType == NodeType.FieldEnd)
                 {
                     FieldEnd fieldEnd = (FieldEnd) currentNode;
@@ -145,7 +138,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 }
             }
 
-            // Remove all nodes found in the specified TOC
             foreach (Node node in nodeList)
             {
                 node.Remove();

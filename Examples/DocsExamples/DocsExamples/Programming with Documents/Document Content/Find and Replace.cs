@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class FindAndReplace : DocsExamplesBase
+    internal class FindAndReplace : DocsExamplesBase
     {
         [Test]
         public static void SimpleFindReplace()
@@ -36,9 +36,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:FindAndHighlight
             Document doc = new Document(MyDir + "Find and highlight.docx");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = new ReplaceEvaluatorFindAndHighlight();
-            options.Direction = FindReplaceDirection.Backward;
+            FindReplaceOptions options = new FindReplaceOptions
+            {
+                ReplacingCallback = new ReplaceEvaluatorFindAndHighlight(), Direction = FindReplaceDirection.Backward
+            };
 
             Regex regex = new Regex("your document", RegexOptions.IgnoreCase);
             doc.Range.Replace(regex, "", options);
@@ -136,17 +137,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Writeln("This is Line 1");
             builder.Writeln("This is Line 2");
 
-            FindReplaceOptions findReplaceOptions = new FindReplaceOptions();
-
-            doc.Range.Replace("This is Line 1&pThis is Line 2", "This is replaced line", findReplaceOptions);
+            doc.Range.Replace("This is Line 1&pThis is Line 2", "This is replaced line");
 
             builder.MoveToDocumentEnd();
             builder.Write("This is Line 1");
             builder.InsertBreak(BreakType.PageBreak);
             builder.Writeln("This is Line 2");
 
-            doc.Range.Replace("This is Line 1&mThis is Line 2", "Page break is replaced with new text.",
-                findReplaceOptions);
+            doc.Range.Replace("This is Line 1&mThis is Line 2", "Page break is replaced with new text.");
 
             doc.Save(ArtifactsDir + "FindAndReplace.MetaCharactersInSearchPattern.docx");
             //ExEnd:MetaCharactersInSearchPattern
@@ -167,14 +165,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Writeln("Second section");
             builder.Writeln("  1st paragraph");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ApplyParagraphFormat.Alignment = ParagraphAlignment.Center;
+            FindReplaceOptions findReplaceOptions = new FindReplaceOptions();
+            findReplaceOptions.ApplyParagraphFormat.Alignment = ParagraphAlignment.Center;
 
             // Double each paragraph break after word "section", add kind of underline and make it centered.
-            int count = doc.Range.Replace("section&p", "section&p----------------------&p", options);
+            int count = doc.Range.Replace("section&p", "section&p----------------------&p", findReplaceOptions);
 
             // Insert section break instead of custom text tag.
-            count = doc.Range.Replace("{insert-section}", "&b", options);
+            count = doc.Range.Replace("{insert-section}", "&b", findReplaceOptions);
 
             doc.Save(ArtifactsDir + "FindAndReplace.ReplaceTextContainingMetaCharacters.docx");
             //ExEnd:ReplaceTextContainingMetaCharacters
@@ -189,19 +187,18 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             // Insert field with text inside.
             builder.InsertField("INCLUDETEXT", "Text in field");
-
+            
+            FindReplaceOptions options = new FindReplaceOptions { IgnoreFields = true };
+            
             Regex regex = new Regex("e");
-            FindReplaceOptions options = new FindReplaceOptions();
-
-            // Replace 'e' in document ignoring text inside field.
-            options.IgnoreFields = true;
             doc.Range.Replace(regex, "*", options);
-            Console.WriteLine(doc.GetText()); // The output is: \u0013INCLUDETEXT\u0014Text in field\u0015\f
+            
+            Console.WriteLine(doc.GetText());
 
-            // Replace 'e' in document NOT ignoring text inside field.
             options.IgnoreFields = false;
             doc.Range.Replace(regex, "*", options);
-            Console.WriteLine(doc.GetText()); // The output is: \u0013INCLUDETEXT\u0014T*xt in fi*ld\u0015\f
+            
+            Console.WriteLine(doc.GetText());
             //ExEnd:IgnoreTextInsideFields
         }
 
@@ -221,18 +218,17 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             doc.FirstSection.Body.FirstParagraph.Remove();
             doc.StopTrackRevisions();
 
+            FindReplaceOptions options = new FindReplaceOptions { IgnoreDeleted = true };
+
             Regex regex = new Regex("e");
-            FindReplaceOptions options = new FindReplaceOptions();
-
-            // Replace 'e' in document ignoring deleted text.
-            options.IgnoreDeleted = true;
             doc.Range.Replace(regex, "*", options);
-            Console.WriteLine(doc.GetText()); // The output is: Deleted\rT*xt\f
 
-            // Replace 'e' in document NOT ignoring deleted text.
+            Console.WriteLine(doc.GetText());
+
             options.IgnoreDeleted = false;
             doc.Range.Replace(regex, "*", options);
-            Console.WriteLine(doc.GetText()); // The output is: D*l*t*d\rT*xt\f
+
+            Console.WriteLine(doc.GetText());
             //ExEnd:IgnoreTextInsideDeleteRevisions
         }
 
@@ -251,20 +247,17 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // Insert non-revised text.
             builder.Write("Text");
 
+            FindReplaceOptions options = new FindReplaceOptions { IgnoreInserted = true };
+
             Regex regex = new Regex("e");
-
-            FindReplaceOptions options = new FindReplaceOptions();
-            // Replace 'e' in document ignoring inserted text.
-            options.IgnoreInserted = true;
-            
             doc.Range.Replace(regex, "*", options);
-            Console.WriteLine(doc.GetText()); // The output is: Inserted\rT*xt\f
+            
+            Console.WriteLine(doc.GetText());
 
-            // Replace 'e' in document NOT ignoring inserted text.
             options.IgnoreInserted = false;
-            
             doc.Range.Replace(regex, "*", options);
-            Console.WriteLine(doc.GetText()); // The output is: Ins*rt*d\rT*xt\f
+            
+            Console.WriteLine(doc.GetText());
             // ExEnd:IgnoreTextInsideInsertRevisions
         }
 
@@ -273,13 +266,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:ReplaceHtmlTextWithMetaCharacters
             Document doc = new Document();
-
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
             builder.Write("{PLACEHOLDER}");
 
-            FindReplaceOptions findReplaceOptions = new FindReplaceOptions();
-            findReplaceOptions.ReplacingCallback = new FindAndInsertHtml();
-            
+            FindReplaceOptions findReplaceOptions = new FindReplaceOptions { ReplacingCallback = new FindAndInsertHtml() };
+
             doc.Range.Replace("{PLACEHOLDER}", "<p>&ldquo;Some Text&rdquo;</p>", findReplaceOptions);
 
             doc.Save(ArtifactsDir + "FindAndReplace.ReplaceHtmlTextWithMetaCharacters.docx");
@@ -313,9 +305,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             HeaderFooterCollection headersFooters = doc.FirstSection.HeadersFooters;
             HeaderFooter footer = headersFooters[HeaderFooterType.FooterPrimary];
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.MatchCase = false;
-            options.FindWholeWordsOnly = false;
+            FindReplaceOptions options = new FindReplaceOptions { MatchCase = false, FindWholeWordsOnly = false };
 
             footer.Range.Replace("(C) 2006 Aspose Pty Ltd.", "Copyright (C) 2020 by Aspose Pty Ltd.", options);
 
@@ -327,16 +317,15 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         //ExStart:ShowChangesForHeaderAndFooterOrders
         public static void ShowChangesForHeaderAndFooterOrders()
         {
-            Document doc = new Document(MyDir + "Footer.docx");
-
-            Section firstPageSection = doc.FirstSection;
-
             ReplaceLog logger = new ReplaceLog();
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = logger;
+            
+            Document doc = new Document(MyDir + "Footer.docx");
+            Section firstPageSection = doc.FirstSection;
+            
+            FindReplaceOptions options = new FindReplaceOptions { ReplacingCallback = logger };
 
             doc.Range.Replace(new Regex("(header|footer)"), "", options);
-
+            
             doc.Save(ArtifactsDir + "FindAndReplace.ShowChangesForHeaderAndFooterOrders.docx");
 
             logger.ClearText();
@@ -368,8 +357,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             Document doc = new Document(MyDir + "Replace text with fields.docx");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = new ReplaceTextWithFieldHandler(FieldType.FieldMergeField);
+            FindReplaceOptions options = new FindReplaceOptions
+            {
+                ReplacingCallback = new ReplaceTextWithFieldHandler(FieldType.FieldMergeField)
+            };
 
             doc.Range.Replace(new Regex(@"PlaceHolder(\d+)"), "", options);
 
@@ -391,12 +382,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
                 builder.MoveTo((Run) runs[runs.Count - 1]);
 
-                // Calculate the name of the field from the FieldType enumeration by removing the first instance of "Field" from the text.
-                // This works for almost all of the field types.
+                // Calculate the field's name from the FieldType enumeration by removing
+                // the first instance of "Field" from the text. This works for almost all of the field types.
                 string fieldName = mFieldType.ToString().ToUpper().Substring(5);
 
-                // Insert the field into the document using the specified field type and the match text as the field name.
-                // If the fields you are inserting do not require this extra parameter then it can be removed from the string below.
+                // Insert the field into the document using the specified field type and the matched text as the field name.
+                // If the fields you are inserting do not require this extra parameter, it can be removed from the string below.
                 builder.InsertField($"{fieldName} {args.Match.Groups[0]}");
 
                 foreach (Run run in runs)
@@ -454,9 +445,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             private static Run SplitRun(Run run, int position)
             {
                 Run afterRun = (Run) run.Clone(true);
+                
                 afterRun.Text = run.Text.Substring(position);
                 run.Text = run.Text.Substring(0, position);
+                
                 run.ParentNode.InsertAfter(afterRun, run);
+                
                 return afterRun;
             }
 
@@ -472,8 +466,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             
             builder.Writeln("sad mad bad");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = new MyReplaceEvaluator();
+            FindReplaceOptions options = new FindReplaceOptions { ReplacingCallback = new MyReplaceEvaluator() };
 
             doc.Range.Replace(new Regex("[s|m]ad"), "", options);
 
@@ -492,6 +485,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             {
                 e.Replacement = e.Match + mMatchNumber.ToString();
                 mMatchNumber++;
+                
                 return ReplaceAction.Replace;
             }
 
@@ -571,9 +565,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             Regex regex = new Regex(@"([A-z]+) give money to ([A-z]+)");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.UseSubstitutions = true;
-            
+            FindReplaceOptions options = new FindReplaceOptions { UseSubstitutions = true };
+
             doc.Range.Replace(regex, @"$2 take money from $1", options);
             //ExEnd:RecognizeAndSubstitutionsWithinReplacementPatterns
         }
@@ -600,7 +593,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert 3 tags to appear in sequential order, the second of which will be inside a text box
             builder.Writeln("[tag 1]");
             Shape textBox = builder.InsertShape(ShapeType.TextBox, 100, 50);
             builder.Writeln("[tag 3]");
@@ -608,9 +600,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.MoveTo(textBox.FirstParagraph);
             builder.Write("[tag 2]");
 
-            FindReplaceOptions options = new FindReplaceOptions();
-            options.ReplacingCallback = new ReplacingCallback();
-            options.UseLegacyOrder = true;
+            FindReplaceOptions options = new FindReplaceOptions
+            {
+                ReplacingCallback = new ReplacingCallback(), UseLegacyOrder = true
+            };
 
             doc.Range.Replace(new Regex(@"\[(.*?)\]"), "", options);
 

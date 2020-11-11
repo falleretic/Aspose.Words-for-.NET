@@ -21,9 +21,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Table endTable = (Table) doc.LastSection.GetChild(NodeType.Table, 0, true);
 
             // Extract the content between these nodes in the document. Include these markers in the extraction.
-            ArrayList extractedNodes = Helpers.Common.ExtractContent(startPara, endTable, true);
+            ArrayList extractedNodes = Helpers.ExtractContentHelper.ExtractContent(startPara, endTable, true);
 
-            // Lets reverse the array to make inserting the content back into the document easier.
+            // Let's reverse the array to make inserting the content back into the document easier.
             extractedNodes.Reverse();
 
             while (extractedNodes.Count > 0)
@@ -49,19 +49,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             // Retrieve the bookmark from the document.
             Bookmark bookmark = doc.Range.Bookmarks["Bookmark1"];
-
             // We use the BookmarkStart and BookmarkEnd nodes as markers.
             BookmarkStart bookmarkStart = bookmark.BookmarkStart;
             BookmarkEnd bookmarkEnd = bookmark.BookmarkEnd;
 
-            // Firstly extract the content between these nodes including the bookmark.
-            ArrayList extractedNodesInclusive = Helpers.Common.ExtractContent(bookmarkStart, bookmarkEnd, true);
-            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesInclusive);
+            // Firstly, extract the content between these nodes, including the bookmark.
+            ArrayList extractedNodesInclusive = Helpers.ExtractContentHelper.ExtractContent(bookmarkStart, bookmarkEnd, true);
+            
+            Document dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodesInclusive);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenBookmark.IncludingBookmark.docx");
 
-            // Secondly extract the content between these nodes this time without including the bookmark.
-            ArrayList extractedNodesExclusive = Helpers.Common.ExtractContent(bookmarkStart, bookmarkEnd, false);
-            dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesExclusive);
+            // Secondly, extract the content between these nodes this time without including the bookmark.
+            ArrayList extractedNodesExclusive = Helpers.ExtractContentHelper.ExtractContent(bookmarkStart, bookmarkEnd, false);
+            
+            dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodesExclusive);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenBookmark.WithoutBookmark.docx");
             //ExEnd:ExtractContentBetweenBookmark
         }
@@ -77,14 +78,16 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             CommentRangeStart commentStart = (CommentRangeStart) doc.GetChild(NodeType.CommentRangeStart, 0, true);
             CommentRangeEnd commentEnd = (CommentRangeEnd) doc.GetChild(NodeType.CommentRangeEnd, 0, true);
 
-            // Firstly extract the content between these nodes including the comment as well.
-            ArrayList extractedNodesInclusive = Helpers.Common.ExtractContent(commentStart, commentEnd, true);
-            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesInclusive);
+            // Firstly, extract the content between these nodes including the comment as well.
+            ArrayList extractedNodesInclusive = Helpers.ExtractContentHelper.ExtractContent(commentStart, commentEnd, true);
+            
+            Document dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodesInclusive);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenCommentRange.IncludingComment.docx");
 
-            // Secondly extract the content between these nodes without the comment.
-            ArrayList extractedNodesExclusive = Helpers.Common.ExtractContent(commentStart, commentEnd, false);
-            dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodesExclusive);
+            // Secondly, extract the content between these nodes without the comment.
+            ArrayList extractedNodesExclusive = Helpers.ExtractContentHelper.ExtractContent(commentStart, commentEnd, false);
+            
+            dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodesExclusive);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenCommentRange.WithoutComment.docx");
             //ExEnd:ExtractContentBetweenCommentRange
         }
@@ -99,9 +102,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Paragraph endPara = (Paragraph) doc.FirstSection.Body.GetChild(NodeType.Paragraph, 10, true);
             
             // Extract the content between these nodes in the document. Include these markers in the extraction.
-            ArrayList extractedNodes = Helpers.Common.ExtractContent(startPara, endPara, true);
+            ArrayList extractedNodes = Helpers.ExtractContentHelper.ExtractContent(startPara, endPara, true);
 
-            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodes);
+            Document dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodes);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenParagraphs.docx");
             //ExEnd:ExtractContentBetweenParagraphs
         }
@@ -113,17 +116,17 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Extract content.docx");
 
             // Gather a list of the paragraphs using the respective heading styles.
-            ArrayList parasStyleHeading1 = Helpers.Common.ParagraphsByStyleName(doc, "Heading 1");
-            ArrayList parasStyleHeading3 = Helpers.Common.ParagraphsByStyleName(doc, "Heading 3");
+            ArrayList parasStyleHeading1 = Helpers.ExtractContentHelper.ParagraphsByStyleName(doc, "Heading 1");
+            ArrayList parasStyleHeading3 = Helpers.ExtractContentHelper.ParagraphsByStyleName(doc, "Heading 3");
 
             // Use the first instance of the paragraphs with those styles.
             Node startPara1 = (Node) parasStyleHeading1[0];
             Node endPara1 = (Node) parasStyleHeading3[0];
 
             // Extract the content between these nodes in the document. Don't include these markers in the extraction.
-            ArrayList extractedNodes = Helpers.Common.ExtractContent(startPara1, endPara1, false);
+            ArrayList extractedNodes = Helpers.ExtractContentHelper.ExtractContent(startPara1, endPara1, false);
 
-            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodes);
+            Document dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodes);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentBetweenParagraphStyles.docx");
             //ExEnd:ExtractContentBetweenParagraphStyles
         }
@@ -140,7 +143,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Run endRun = para.Runs[4];
 
             // Extract the content between these nodes in the document. Include these markers in the extraction.
-            ArrayList extractedNodes = Helpers.Common.ExtractContent(startRun, endRun, true);
+            ArrayList extractedNodes = Helpers.ExtractContentHelper.ExtractContent(startRun, endRun, true);
 
             Node node = (Node) extractedNodes[0];
             Console.WriteLine(node.ToString(SaveFormat.Text));
@@ -306,9 +309,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Paragraph endPara = (Paragraph) doc.FirstSection.GetChild(NodeType.Paragraph, 5, true);
 
             // Extract the content between these nodes in the document. Don't include these markers in the extraction.
-            ArrayList extractedNodes = Helpers.Common.ExtractContent(startField, endPara, false);
+            ArrayList extractedNodes = Helpers.ExtractContentHelper.ExtractContent(startField, endPara, false);
 
-            Document dstDoc = Helpers.Common.GenerateDocument(doc, extractedNodes);
+            Document dstDoc = Helpers.ExtractContentHelper.GenerateDocument(doc, extractedNodes);
             dstDoc.Save(ArtifactsDir + "ExtractContent.ExtractContentUsingField.docx");
             //ExEnd:ExtractContentUsingField
         }
@@ -350,7 +353,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             Console.WriteLine("GetText() Result: " + doc.GetText());
 
-            // ToString will export the node to the specified format.
             // When converted to text it will not retrieve fields code or special characters,
             // but will still contain some natural formatting characters such as paragraph markers etc. 
             // This is the same as "viewing" the document as if it was opened in a text editor.
@@ -451,9 +453,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             {
                 if (shape.HasImage)
                 {
-                    string imageFileName = string.Format(
-                        "Image.ExportImages.{0}_out{1}", imageIndex,
-                        FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType));
+                    string imageFileName =
+                        $"Image.ExportImages.{imageIndex}_{FileFormatUtil.ImageTypeToExtension(shape.ImageData.ImageType)}";
 
                     shape.ImageData.Save(ArtifactsDir + imageFileName);
                     imageIndex++;

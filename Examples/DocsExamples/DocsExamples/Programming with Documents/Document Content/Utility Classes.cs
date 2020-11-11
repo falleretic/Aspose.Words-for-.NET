@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class UtilityClasses
+    internal class UtilityClasses
     {
         [Test]
         public static void ConvertBetweenMeasurementUnits()
@@ -27,7 +27,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:UseControlCharacters
             const string text = "test\r";
-            // Replace "\r" control character with "\r\n"
+            // Replace "\r" control character with "\r\n".
             string replace = text.Replace(ControlChar.Cr, ControlChar.CrLf);
             //ExEnd:UseControlCharacters
         }

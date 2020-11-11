@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithCharts : DocsExamplesBase
+    internal class WorkingWithCharts : DocsExamplesBase
     {
         [Test]
         public static void FormatNumberOfDataLabel()
@@ -15,15 +15,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Add chart with default data
             Shape shape = builder.InsertChart(ChartType.Line, 432, 252);
             Chart chart = shape.Chart;
             chart.Title.Text = "Data Labels With Different Number Format";
 
-            // Delete default generated series
+            // Delete default generated series.
             chart.Series.Clear();
 
-            // Add new series
             ChartSeries series1 = chart.Series.Add("AW Series 1", 
                 new string[] { "AW0", "AW1", "AW2" }, 
                 new double[] { 2.5, 1.5, 3.5 });
@@ -38,7 +36,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // in this case NumberFormat will be reset to general and inherited from a source cell.
             series1.DataLabels[2].NumberFormat.IsLinkedToSource = true;
 
-            doc.Save(ArtifactsDir + "NumberFormat_DataLabel.docx");
+            doc.Save(ArtifactsDir + "WorkingWithCharts.FormatNumberOfDataLabel.docx");
             //ExEnd:FormatNumberOfDataLabel
         }
 

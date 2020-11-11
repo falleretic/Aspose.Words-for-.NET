@@ -48,7 +48,7 @@ namespace DocsExamples
         {
             Uri uri = new Uri(assembly.CodeBase);
             string mainFolder = Path.GetDirectoryName(uri.LocalPath)
-                ?.Substring(0, uri.LocalPath.IndexOf("SiteExamples", StringComparison.Ordinal));
+                ?.Substring(0, uri.LocalPath.IndexOf("DocsExamples", StringComparison.Ordinal));
             
             return mainFolder;
         }

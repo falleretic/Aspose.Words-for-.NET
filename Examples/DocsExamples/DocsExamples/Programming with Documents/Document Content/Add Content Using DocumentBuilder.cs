@@ -11,8 +11,23 @@ using Font = Aspose.Words.Font;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class AddContentUsingDocumentBuilder : DocsExamplesBase
+    internal class AddContentUsingDocumentBuilder : DocsExamplesBase
     {
+        [Test]
+        public static void DocumentBuilderInsertBookmark()
+        {
+            //ExStart:DocumentBuilderInsertBookmark
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.StartBookmark("FineBookmark");
+            builder.Writeln("This is just a fine bookmark.");
+            builder.EndBookmark("FineBookmark");
+
+            doc.Save(ArtifactsDir + "WorkingWithBookmarks.DocumentBuilderInsertBookmark.docx");
+            //ExEnd:DocumentBuilderInsertBookmark
+        }
+
         [Test]
         public static void BuildTable()
         {
@@ -46,7 +61,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.EndRow();
             builder.EndTable();
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.BuildTable.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.BuildTable.docx");
             //ExEnd:BuildTable
         }
 
@@ -60,7 +75,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Writeln("Insert a horizontal rule shape into the document.");
             builder.InsertHorizontalRule();
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertHorizontalRule.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertHorizontalRule.docx");
             //ExEnd:InsertHorizontalRule
         }
 
@@ -79,7 +94,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             horizontalRuleFormat.Color = Color.Blue;
             horizontalRuleFormat.NoShade = true;
 
-            builder.Document.Save(ArtifactsDir + "DocumentBuilder.HorizontalRuleFormat.docx");
+            builder.Document.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.HorizontalRuleFormat.docx");
             //ExEnd:HorizontalRuleFormat
         }
 
@@ -97,7 +112,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.InsertBreak(BreakType.PageBreak);
 
             builder.Writeln("This is page 3.");
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertBreak.docx");
+
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertBreak.docx");
             //ExEnd:InsertBreak
         }
 
@@ -110,7 +126,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             
             builder.InsertTextInput("TextInput", TextFormFieldType.Regular, "", "Hello", 0);
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertTextInputFormField.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertTextInputFormField.docx");
             //ExEnd:InsertTextInputFormField
         }
 
@@ -123,7 +139,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             
             builder.InsertCheckBox("CheckBox", true, true, 0);
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertCheckBoxFormField.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertCheckBoxFormField.docx");
             //ExEnd:InsertCheckBoxFormField
         }
 
@@ -138,7 +154,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.InsertComboBox("DropDown", items, 0);
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertComboBoxFormField.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertComboBoxFormField.docx");
             //ExEnd:InsertComboBoxFormField
         }
 
@@ -148,13 +164,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:InsertHtml
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+            
             builder.InsertHtml(
                 "<P align='right'>Paragraph right</P>" +
                 "<b>Implicit paragraph left</b>" +
                 "<div align='center'>Div center</div>" +
                 "<h1 align='left'>Heading 1 left.</h1>");
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertHtml.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertHtml.docx");
             //ExEnd:InsertHtml
         }
 
@@ -174,7 +191,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Font.ClearFormatting();
             builder.Write(" for more information.");
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertHyperlink.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertHyperlink.docx");
             //ExEnd:InsertHyperlink
         }
 
@@ -186,6 +203,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             DocumentBuilder builder = new DocumentBuilder(doc);
             
             builder.InsertTableOfContents("\\o \"1-3\" \\h \\z \\u");
+            
             // Start the actual document content on the second page.
             builder.InsertBreak(BreakType.PageBreak);
 
@@ -224,7 +242,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             doc.UpdateFields();
             //ExEnd:UpdateFields
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertTableOfContents.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertTableOfContents.docx");
             //ExEnd:InsertTableOfContents
         }
 
@@ -237,7 +255,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.InsertImage(ImagesDir + "Transparent background logo.png");
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertInlineImage.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertInlineImage.docx");
             //ExEnd:InsertInlineImage
         }
 
@@ -257,7 +275,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 100,
                 WrapType.Square);
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertFloatingImage.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertFloatingImage.docx");
             //ExEnd:InsertFloatingImage
         }
 
@@ -282,7 +300,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.Writeln("A whole paragraph.");
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertParagraph.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertParagraph.docx");
             //ExEnd:InsertParagraph
         }
 
@@ -295,7 +313,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.InsertField("TC \"Entry Text\" \\f t");
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.InsertTCField.docx");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.InsertTCField.docx");
             //ExEnd:InsertTCField
         }
 
@@ -334,8 +352,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 DocumentBuilder builder = new DocumentBuilder((Document) args.MatchNode.Document);
                 builder.MoveTo(args.MatchNode);
 
-                // If the user specified text to be used in the field as display text then use that, otherwise use the 
-                // match string as the display text.
+                // If the user-specified text to be used in the field as display text, then use that,
+                // otherwise use the match string as the display text.
                 string insertText = !string.IsNullOrEmpty(mFieldText) ? mFieldText : args.Match.Value;
 
                 builder.InsertField($"TC \"{insertText}\" {mFieldSwitches}");
@@ -377,11 +395,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            builder.MoveToDocumentEnd();
-            Console.WriteLine("\nThis is the end of the document.");
-
             builder.MoveToDocumentStart();
             Console.WriteLine("\nThis is the beginning of the document.");
+            
+            builder.MoveToDocumentEnd();
+            Console.WriteLine("\nThis is the end of the document.");
             //ExEnd:MoveToDocumentStartEnd            
         }
 
@@ -394,7 +412,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Parameters are 0-index. Moves to third section.
             builder.MoveToSection(1);
             builder.Writeln("This is the 2rd section.");
             //ExEnd:MoveToSection               
@@ -424,7 +441,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.InsertBreak(BreakType.PageBreak);
             builder.Writeln("Page3");
 
-            doc.Save(ArtifactsDir + "DocumentBuilder.HeadersAndFooters.doc");
+            doc.Save(ArtifactsDir + "AddContentUsingDocumentBuilder.HeadersAndFooters.doc");
             //ExEnd:HeadersAndFooters
         }
 
@@ -435,7 +452,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Paragraphs.docx");
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Parameters are 0-index. Moves to third paragraph.
             builder.MoveToParagraph(2, 0);
             builder.Writeln("This is the 3rd paragraph.");
             //ExEnd:MoveToParagraph               
@@ -462,7 +478,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             builder.MoveToBookmark("MyBookmark1");
-            builder.Writeln("This is a very cool bookmark.");
+            builder.Writeln("This is a bookmark.");
             //ExEnd:MoveToBookmark               
         }
 
@@ -474,7 +490,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             DocumentBuilder builder = new DocumentBuilder(doc);
 
             builder.MoveToBookmark("MyBookmark1", false, true);
-            builder.Writeln("This is a very cool bookmark.");
+            builder.Writeln("This is a bookmark.");
             //ExEnd:MoveToBookmarkEnd              
         }
 
@@ -489,12 +505,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.InsertField(@"MERGEFIELD MyMergeField2 \* MERGEFORMAT");
 
             builder.MoveToMergeField("MyMergeField1");
-            builder.Writeln("This is a very nice merge field.");
+            builder.Writeln("This is a merge field.");
             //ExEnd:MoveToMergeField              
         }
 
         [Test]
-        public static void CreateHeaderFooterUsingDocBuilder()
+        public static void CreateHeaderFooter()
         {
             //ExStart:CreateHeaderFooterUsingDocBuilder
             Document doc = new Document();
@@ -503,8 +519,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Section currentSection = builder.CurrentSection;
             PageSetup pageSetup = currentSection.PageSetup;
             // Specify if we want headers/footers of the first page to be different from other pages.
-            // You can also use PageSetup.OddAndEvenPagesHeaderFooter property to specify.
-            // Different headers/footers for odd and even pages.
+            // You can also use PageSetup.OddAndEvenPagesHeaderFooter property to specify
+            // different headers/footers for odd and even pages.
             pageSetup.DifferentFirstPageHeaderFooter = true;
             pageSetup.HeaderDistance = 20;
 
@@ -520,7 +536,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             pageSetup.HeaderDistance = 20;
             builder.MoveToHeaderFooter(HeaderFooterType.HeaderPrimary);
 
-            // Insert absolutely positioned image into the top/left corner of the header.
+            // Insert a positioned image into the top/left corner of the header.
             // Distance from the top/left edges of the page is set to 10 points.
             builder.InsertImage(ImagesDir + "Graphics Interchange Format.gif", RelativeHorizontalPosition.Page, 10, 
                 RelativeVerticalPosition.Page, 10, 50, 50, WrapType.Through);
@@ -531,7 +547,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.MoveToHeaderFooter(HeaderFooterType.FooterPrimary);
 
-            // We use table with two cells to make one part of the text on the line (with page numbering).
+            // We use a table with two cells to make one part of the text on the line (with page numbering).
             // To be aligned left, and the other part of the text (with copyright) to be aligned right.
             builder.StartTable();
 
@@ -541,7 +557,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.CellFormat.PreferredWidth = PreferredWidth.FromPercent(100 / 3);
 
-            // It uses PAGE and NUMPAGES fields to auto calculate current page number and total number of pages.
+            // It uses PAGE and NUMPAGES fields to auto calculate the current page number and many pages.
             builder.Write("Page ");
             builder.InsertField("PAGE", "");
             builder.Write(" of ");
@@ -562,26 +578,24 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.MoveToDocumentEnd();
             
-            // Make page break to create a second page on which the primary headers/footers will be seen.
+            // Make a page break to create a second page on which the primary headers/footers will be seen.
             builder.InsertBreak(BreakType.PageBreak);
             builder.InsertBreak(BreakType.SectionBreakNewPage);
 
             currentSection = builder.CurrentSection;
             pageSetup = currentSection.PageSetup;
             pageSetup.Orientation = Orientation.Landscape;
-            // This section does not need different first page header/footer
-            // we need only one title page in the document and the header/footer for this page
-            // has already been defined in the previous section.
+            // This section does not need a different first-page header/footer we need only one title page in the document,
+            // and the header/footer for this page has already been defined in the previous section.
             pageSetup.DifferentFirstPageHeaderFooter = false;
 
-            // This section displays headers/footers from the previous section by default
-            // call currentSection.HeadersFooters.LinkToPrevious(false) to cancel this
-            // page width is different for the new section and therefore we need to set 
-            // a different cell widths for a footer table.
+            // This section displays headers/footers from the previous section
+            // by default call currentSection.HeadersFooters.LinkToPrevious(false) to cancel this page width
+            // is different for the new section, and therefore we need to set different cell widths for a footer table.
             currentSection.HeadersFooters.LinkToPrevious(false);
 
             // If we want to use the already existing header/footer set for this section.
-            // But with some minor modifications then it may be expedient to copy headers/footers
+            // But with some minor modifications, then it may be expedient to copy headers/footers
             // from the previous section and apply the necessary modifications where we want them.
             CopyHeadersFootersFromPreviousSection(currentSection);
 

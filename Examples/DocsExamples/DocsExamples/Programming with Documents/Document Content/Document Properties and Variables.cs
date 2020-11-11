@@ -6,13 +6,14 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class DocumentPropertiesAndVariables : DocsExamplesBase
+    internal class DocumentPropertiesAndVariables : DocsExamplesBase
     {
         [Test]
         public static void GetVariables()
         {
             //ExStart:GetVariables
             Document doc = new Document(MyDir + "Document.docx");
+            
             string variables = "";
             foreach (KeyValuePair<string, string> entry in doc.Variables)
             {
@@ -37,13 +38,15 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:EnumerateProperties            
             Document doc = new Document(MyDir + "Properties.docx");
+            
             Console.WriteLine("1. Document name: {0}", doc.OriginalFileName);
-
             Console.WriteLine("2. Built-in Properties");
+            
             foreach (DocumentProperty prop in doc.BuiltInDocumentProperties)
                 Console.WriteLine("{0} : {1}", prop.Name, prop.Value);
 
             Console.WriteLine("3. Custom Properties");
+            
             foreach (DocumentProperty prop in doc.CustomDocumentProperties)
                 Console.WriteLine("{0} : {1}", prop.Name, prop.Value);
             //ExEnd:EnumerateProperties
@@ -56,7 +59,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Properties.docx");
 
             CustomDocumentProperties customDocumentProperties = doc.CustomDocumentProperties;
+            
             if (customDocumentProperties["Authorized"] != null) return;
+            
             customDocumentProperties.Add("Authorized", true);
             customDocumentProperties.Add("Authorized By", "John Smith");
             customDocumentProperties.Add("Authorized Date", DateTime.Today);
@@ -78,10 +83,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         public static void RemovePersonalInformation()
         {
             //ExStart:RemovePersonalInformation            
-            Document doc = new Document(MyDir + "Properties.docx");
-            doc.RemovePersonalInformation = true;
+            Document doc = new Document(MyDir + "Properties.docx") { RemovePersonalInformation = true };
 
-            doc.Save(ArtifactsDir + "RemovePersonalInformation.docx");
+            doc.Save(ArtifactsDir + "DocumentPropertiesAndVariables.RemovePersonalInformation.docx");
             //ExEnd:RemovePersonalInformation
         }
 
@@ -96,19 +100,17 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Writeln("Text inside a bookmark.");
             builder.EndBookmark("MyBookmark");
 
-            // Retrieve a list of all custom document properties from the file
+            // Retrieve a list of all custom document properties from the file.
             CustomDocumentProperties customProperties = doc.CustomDocumentProperties;
-            // Add linked to content property
+            // Add linked to content property.
             DocumentProperty customProperty = customProperties.AddLinkToContent("Bookmark", "MyBookmark");
-            // Also, accessing the custom document property can be performed by using the property name
             customProperty = customProperties["Bookmark"];
 
-            // Check whether the property is linked to content
             bool isLinkedToContent = customProperty.IsLinkToContent;
-            // Get the source of the property
-            string source = customProperty.LinkSource;
-            // Get the value of the property
-            string value = customProperty.Value.ToString();
+            
+            string linkSource = customProperty.LinkSource;
+            
+            string customPropertyValue = customProperty.Value.ToString();
             //ExEnd:ConfiguringLinkToContent
         }
     }

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class CompareDocument : DocsExamplesBase
+    internal class CompareDocument : DocsExamplesBase
     {
         [Test]
         public static void CompareForEqual()
@@ -13,8 +13,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document docA = new Document(MyDir + "Document.docx");
             Document docB = docA.Clone();
             
-            // DocA now contains changes as revisions
+            // DocA now contains changes as revisions.
             docA.Compare(docB, "user", DateTime.Now);
+
             Console.WriteLine(docA.Revisions.Count == 0 ? "Documents are equal" : "Documents are not equal");
             //ExEnd:CompareForEqual                     
         }
@@ -26,17 +27,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document docA = new Document(MyDir + "Document.docx");
             Document docB = docA.Clone();
 
-            CompareOptions options = new CompareOptions();
-            options.IgnoreFormatting = true;
-            options.IgnoreHeadersAndFooters = true;
-            options.IgnoreCaseChanges = true;
-            options.IgnoreTables = true;
-            options.IgnoreFields = true;
-            options.IgnoreComments = true;
-            options.IgnoreTextboxes = true;
-            options.IgnoreFootnotes = true;
+            CompareOptions options = new CompareOptions
+            {
+                IgnoreFormatting = true,
+                IgnoreHeadersAndFooters = true,
+                IgnoreCaseChanges = true,
+                IgnoreTables = true,
+                IgnoreFields = true,
+                IgnoreComments = true,
+                IgnoreTextboxes = true,
+                IgnoreFootnotes = true
+            };
 
             docA.Compare(docB, "user", DateTime.Now, options);
+
             Console.WriteLine(docA.Revisions.Count == 0 ? "Documents are equal" : "Documents are not equal");
             //ExEnd:CompareOptions                     
         }
@@ -48,10 +52,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document docA = new Document(MyDir + "Document.docx");
             Document docB = docA.Clone();
 
-            CompareOptions options = new CompareOptions();
-            options.IgnoreFormatting = true;
             // Relates to Microsoft Word "Show changes in" option in "Compare Documents" dialog box.
-            options.Target = ComparisonTargetType.New;
+            CompareOptions options = new CompareOptions { IgnoreFormatting = true, Target = ComparisonTargetType.New };
 
             docA.Compare(docB, "user", DateTime.Now, options);
             //ExEnd:ComparisonTarget
@@ -67,8 +69,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builderA.Writeln("This is A simple word");
             builderB.Writeln("This is B simple words");
 
-            CompareOptions compareOptions = new CompareOptions();
-            compareOptions.Granularity = Granularity.CharLevel;
+            CompareOptions compareOptions = new CompareOptions { Granularity = Granularity.CharLevel };
 
             builderA.Document.Compare(builderB.Document, "author", DateTime.Now, compareOptions);
             // ExEnd:ComparisonGranularity      

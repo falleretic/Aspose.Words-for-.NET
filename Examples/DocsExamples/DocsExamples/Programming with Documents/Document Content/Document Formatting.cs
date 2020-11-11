@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class DocumentFormatting : DocsExamplesBase
+    internal class DocumentFormatting : DocsExamplesBase
     {
         [Test]
         public static void SpaceBetweenAsianAndLatinText()
@@ -25,9 +25,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         [Test]
-        public static void AsianTypographyLinebreakGroupProp()
+        public static void AsianTypographyLineBreakGroup()
         {
-            //ExStart:AsianTypographyLinebreakGroupProp
+            //ExStart:AsianTypographyLineBreakGroup
             Document doc = new Document(MyDir + "Asian typography.docx");
 
             ParagraphFormat format = doc.FirstSection.Body.Paragraphs[0].ParagraphFormat;
@@ -35,8 +35,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             format.WordWrap = true;
             format.HangingPunctuation = false;
 
-            doc.Save(ArtifactsDir + "DocumentFormatting.AsianTypographyLinebreakGroupProp.docx");
-            //ExEnd:AsianTypographyLinebreakGroupProp
+            doc.Save(ArtifactsDir + "DocumentFormatting.AsianTypographyLineBreakGroup.docx");
+            //ExEnd:AsianTypographyLineBreakGroup
         }
 
         [Test]
@@ -153,15 +153,15 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:SnapToGrid
             Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            // Optimize the layout when typing in Asian characters.
             Paragraph par = doc.FirstSection.Body.FirstParagraph;
-            // Set 'SnapToGrid' to true if need optimize the layout when typing in Asian characters
-            // Use 'SnapToGrid' for the whole paragraph
             par.ParagraphFormat.SnapToGrid = true;
             
-            DocumentBuilder builder = new DocumentBuilder(doc);
             builder.Writeln("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
                             "tempor incididunt ut labore et dolore magna aliqua.");
-            // Use 'SnapToGrid' for the specific run
+            
             par.Runs[0].Font.SnapToGrid = true;
 
             doc.Save(ArtifactsDir + "Paragraph.SnapToGrid.docx");
@@ -169,9 +169,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         [Test]
-        public static void ParagraphStyleSeparator()
+        public static void GetParagraphStyleSeparator()
         {
-            //ExStart:ParagraphStyleSeparator
+            //ExStart:GetParagraphStyleSeparator
             Document doc = new Document(MyDir + "Document.docx");
 
             foreach (Paragraph paragraph in doc.GetChildNodes(NodeType.Paragraph, true))
@@ -181,7 +181,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                     Console.WriteLine("Separator Found!");
                 }
             }
-            //ExEnd:ParagraphStyleSeparator
+            //ExEnd:GetParagraphStyleSeparator
         }
     }
 }

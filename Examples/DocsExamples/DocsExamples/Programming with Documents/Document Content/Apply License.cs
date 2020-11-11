@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class ApplyLicense : DocsExamplesBase
+    internal class ApplyLicense : DocsExamplesBase
     {
         [Test]
         public static void ApplyLicenseFromFile()
@@ -14,16 +14,18 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             License license = new License();
 
             // This line attempts to set a license from several locations relative to the executable and Aspose.Words.dll.
-            // You can also use the additional overload to load a license from a stream, this is useful for instance when the 
-            // license is stored as an embedded resource.
+            // You can also use the additional overload to load a license from a stream, this is useful,
+            // for instance, when the license is stored as an embedded resource.
             try
             {
                 license.SetLicense("Aspose.Words.lic");
+                
                 Console.WriteLine("License set successfully.");
             }
             catch (Exception e)
             {
-                // We do not ship any license with this example, visit the Aspose site to obtain either a temporary or permanent license. 
+                // We do not ship any license with this example,
+                // visit the Aspose site to obtain either a temporary or permanent license. 
                 Console.WriteLine("\nThere was an error setting the license: " + e.Message);
             }
             //ExEnd:ApplyLicenseFromFile
@@ -37,13 +39,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             try
             {
-                MemoryStream stream = new MemoryStream(File.ReadAllBytes("Aspose.Words.lic"));
-                license.SetLicense(stream);
+                license.SetLicense(new MemoryStream(File.ReadAllBytes("Aspose.Words.lic")));
+                
                 Console.WriteLine("License set successfully.");
             }
             catch (Exception e)
             {
-                // We do not ship any license with this example, visit the Aspose site to obtain either a temporary or permanent license. 
+                // We do not ship any license with this example,
+                // visit the Aspose site to obtain either a temporary or permanent license. 
                 Console.WriteLine("\nThere was an error setting the license: " + e.Message);
             }
             //ExEnd:ApplyLicenseFromStream
@@ -58,7 +61,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 Metered metered = new Metered();
                 metered.SetMeteredKey("*****", "*****");
 
-                Document doc = new Document(MyDir + "Template.doc");
+                Document doc = new Document(MyDir + "Document.docx");
 
                 Console.WriteLine(doc.PageCount);
             }

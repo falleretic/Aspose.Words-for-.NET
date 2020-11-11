@@ -6,26 +6,27 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class SigningSignatureLine : DocsExamplesBase
+    internal class SignDocuments : DocsExamplesBase
     {
         [Test]
-        public static void SimpleDocumentSigning()
+        public static void SignDocument()
         {
-            //ExStart:SimpleDocumentSigning
+            //ExStart:SingDocument
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
+            
             DigitalSignatureUtil.Sign(MyDir + "Digitally signed.docx", ArtifactsDir + "Document.Signed.docx",
                 certHolder);
-            //ExEnd:SimpleDocumentSigning
+            //ExEnd:SingDocument
         }
 
         [Test]
         public static void SigningEncryptedDocument()
         {
             //ExStart:SigningEncryptedDocument
-            SignOptions signOptions = new SignOptions();
-            signOptions.DecryptionPassword = "decryptionPassword";
+            SignOptions signOptions = new SignOptions { DecryptionPassword = "decryptionPassword" };
 
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
+            
             DigitalSignatureUtil.Sign(MyDir + "Digitally signed.docx", ArtifactsDir + "Document.EncryptedDocument.docx",
                 certHolder, signOptions);
             //ExEnd:SigningEncryptedDocument
@@ -40,15 +41,18 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             SignatureLine signatureLine = builder.InsertSignatureLine(new SignatureLineOptions()).SignatureLine;
             
-            doc.Save(ArtifactsDir + "Signature line.docx");
+            doc.Save(ArtifactsDir + "SignDocuments.SignatureLine.docx");
 
-            SignOptions signOptions = new SignOptions();
-            signOptions.SignatureLineId = signatureLine.Id;
-            signOptions.SignatureLineImage = File.ReadAllBytes(ImagesDir + "Enhanced Windows MetaFile.emf");
+            SignOptions signOptions = new SignOptions
+            {
+                SignatureLineId = signatureLine.Id,
+                SignatureLineImage = File.ReadAllBytes(ImagesDir + "Enhanced Windows MetaFile.emf")
+            };
 
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
-            DigitalSignatureUtil.Sign(ArtifactsDir + "Signature line.docx",
-                ArtifactsDir + "Document.NewSignatureLine.docx.docx", certHolder, signOptions);
+            
+            DigitalSignatureUtil.Sign(ArtifactsDir + "SignDocuments.SignatureLine.docx",
+                ArtifactsDir + "SignDocuments.NewSignatureLine.docx", certHolder, signOptions);
             //ExEnd:CreatingAndSigningNewSignatureLine
         }
 
@@ -57,16 +61,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:SigningExistingSignatureLine
             Document doc = new Document(MyDir + "Signature line.docx");
+            
             SignatureLine signatureLine =
                 ((Shape) doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
 
-            SignOptions signOptions = new SignOptions();
-            signOptions.SignatureLineId = signatureLine.Id;
-            signOptions.SignatureLineImage = File.ReadAllBytes(ImagesDir + "Enhanced Windows MetaFile.emf");
+            SignOptions signOptions = new SignOptions
+            {
+                SignatureLineId = signatureLine.Id,
+                SignatureLineImage = File.ReadAllBytes(ImagesDir + "Enhanced Windows MetaFile.emf")
+            };
 
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
+            
             DigitalSignatureUtil.Sign(MyDir + "Digitally signed.docx",
-                ArtifactsDir + "Document.Signed.ExistingSignatureLine.docx", certHolder, signOptions);
+                ArtifactsDir + "SignDocuments.SigningExistingSignatureLine.docx", certHolder, signOptions);
             //ExEnd:SigningExistingSignatureLine
         }
 
@@ -75,17 +83,19 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:SetSignatureProviderID
             Document doc = new Document(MyDir + "Signature line.docx");
+
             SignatureLine signatureLine =
                 ((Shape) doc.FirstSection.Body.GetChild(NodeType.Shape, 0, true)).SignatureLine;
 
-            // Set signature and signature line provider ID
-            SignOptions signOptions = new SignOptions();
-            signOptions.ProviderId = signatureLine.ProviderId;
-            signOptions.SignatureLineId = signatureLine.Id;
+            SignOptions signOptions = new SignOptions
+            {
+                ProviderId = signatureLine.ProviderId, SignatureLineId = signatureLine.Id
+            };
 
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
-            DigitalSignatureUtil.Sign(MyDir + "Digitally signed.docx", ArtifactsDir + "Document.Signed.docx",
-                certHolder, signOptions);
+
+            DigitalSignatureUtil.Sign(MyDir + "Digitally signed.docx",
+                ArtifactsDir + "SignDocuments.SetSignatureProviderId.docx", certHolder, signOptions);
             //ExEnd:SetSignatureProviderID
         }
 
@@ -110,7 +120,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             SignatureLine signatureLine = builder.InsertSignatureLine(signatureLineOptions).SignatureLine;
             signatureLine.ProviderId = Guid.Parse("CF5A7BB4-8F3C-4756-9DF6-BEF7F13259A2");
             
-            doc.Save(ArtifactsDir + "DocumentBuilder.SignatureLineProviderId.docx");
+            doc.Save(ArtifactsDir + "SignDocuments.SignatureLineProviderId.docx");
 
             SignOptions signOptions = new SignOptions
             {
@@ -122,8 +132,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
 
-            DigitalSignatureUtil.Sign(ArtifactsDir + "DocumentBuilder.SignatureLineProviderId.docx", 
-                ArtifactsDir + "DocumentBuilder.SignatureLineProviderId.Signed.docx", certHolder, signOptions);
+            DigitalSignatureUtil.Sign(ArtifactsDir + "SignDocuments.SignatureLineProviderId.docx", 
+                ArtifactsDir + "SignDocuments.CreateNewSignatureLineAndSetProviderId.docx", certHolder, signOptions);
             //ExEnd:CreateNewSignatureLineAndSetProviderID
         }
 
@@ -137,7 +147,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             {
                 Console.WriteLine("*** Signature Found ***");
                 Console.WriteLine("Is valid: " + signature.IsValid);
-                // This property is available in MS Word documents only
+                // This property is available in MS Word documents only.
                 Console.WriteLine("Reason for signing: " + signature.Comments); 
                 Console.WriteLine("Time of signing: " + signature.SignTime);
                 Console.WriteLine("Subject name: " + signature.CertificateHolder.Certificate.SubjectName.Name);
