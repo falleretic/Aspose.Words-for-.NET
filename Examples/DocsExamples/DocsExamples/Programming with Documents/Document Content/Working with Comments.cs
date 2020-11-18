@@ -14,15 +14,18 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // ExStart:CreateSimpleDocumentUsingDocumentBuilder
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.Write("Some text is added.");
             //ExEnd:CreateSimpleDocumentUsingDocumentBuilder
             
             Comment comment = new Comment(doc, "Awais Hafeez", "AH", DateTime.Today);
+
             builder.CurrentParagraph.AppendChild(comment);
+
             comment.Paragraphs.Add(new Paragraph(doc));
             comment.FirstParagraph.Runs.Add(new Run(doc, "Comment text."));
 
-            doc.Save(ArtifactsDir + "Comments.doc");
+            doc.Save(ArtifactsDir + "WorkingWithComments.AddComments.docx");
             //ExEnd:AddComments
         }
 
@@ -57,7 +60,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             run3.ParentNode.InsertAfter(commentRangeEnd, run3);
             commentRangeEnd.ParentNode.InsertAfter(comment, commentRangeEnd);
 
-            doc.Save(ArtifactsDir + "Anchor.Comment.doc");
+            doc.Save(ArtifactsDir + "WorkingWithComments.AnchorComment.doc");
             //ExEnd:AnchorComment
         }
 
@@ -68,12 +71,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Comments.docx");
 
             Comment comment = (Comment) doc.GetChild(NodeType.Comment, 0, true);
-            // Remove the reply
             comment.RemoveReply(comment.Replies[0]);
-            // Add a reply to comment
+
             comment.AddReply("John Doe", "JD", new DateTime(2017, 9, 25, 12, 15, 0), "New reply");
 
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithComments.AddRemoveCommentReply.docx");
             //ExEnd:AddRemoveCommentReply
         }
 
@@ -83,26 +85,26 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // ExStart:ProcessComments
             Document doc = new Document(MyDir + "Comments.docx");
 
-            // Extract the information about the comments of all the authors
+            // Extract the information about the comments of all the authors.
             foreach (string comment in ExtractComments(doc))
                 Console.Write(comment);
 
-            // Remove comments by the "pm" author
+            // Remove comments by the "pm" author.
             RemoveComments(doc, "pm");
             Console.WriteLine("Comments from \"pm\" are removed!");
 
-            // Extract the information about the comments of the "ks" author
+            // Extract the information about the comments of the "ks" author.
             foreach (string comment in ExtractComments(doc, "ks"))
                 Console.Write(comment);
 
-            //Read the comment's reply and resolve them
+            // Read the comment's reply and resolve them.
             CommentResolvedAndReplies(doc);
 
-            // Remove all comments
+            // Remove all comments.
             RemoveComments(doc);
             Console.WriteLine("All comments are removed!");
 
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithComments.ProcessComments.docx");
             //ExEnd:ProcessComments
         }
 
@@ -110,10 +112,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         static ArrayList ExtractComments(Document doc)
         {
             ArrayList collectedComments = new ArrayList();
-            // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
 
-            // Look through all comments and gather information about them
             foreach (Comment comment in comments)
             {
                 collectedComments.Add(comment.Author + " " + comment.DateTime + " " +
@@ -128,10 +128,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         static ArrayList ExtractComments(Document doc, string authorName)
         {
             ArrayList collectedComments = new ArrayList();
-            // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
 
-            // Look through all comments and gather information about those written by the authorName author
             foreach (Comment comment in comments)
             {
                 if (comment.Author == authorName)
@@ -146,9 +144,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         //ExStart:RemoveComments
         static void RemoveComments(Document doc)
         {
-            // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            // Remove all comments
+
             comments.Clear();
         }
         //ExEnd:RemoveComments
@@ -156,10 +153,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         //ExStart:RemoveCommentsByAuthor
         static void RemoveComments(Document doc, string authorName)
         {
-            // Collect all comments in the document
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
 
-            // Look through all comments and remove those written by the authorName author
+            // Look through all comments and remove those written by the authorName.
             for (int i = comments.Count - 1; i >= 0; i--)
             {
                 Comment comment = (Comment) comments[i];
@@ -173,15 +169,15 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         static void CommentResolvedAndReplies(Document doc)
         {
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
-            Comment parentComment = (Comment) comments[0];
 
+            Comment parentComment = (Comment) comments[0];
             foreach (Comment childComment in parentComment.Replies)
             {
-                // Get comment parent and status
+                // Get comment parent and status.
                 Console.WriteLine(childComment.Ancestor.Id);
                 Console.WriteLine(childComment.Done);
 
-                // And update comment Done mark
+                // And update comment Done mark.
                 childComment.Done = true;
             }
         }

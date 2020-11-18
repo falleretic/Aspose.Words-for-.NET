@@ -12,14 +12,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
     class WorkingWithFields : DocsExamplesBase
     {
         [Test]
-        public static void DocumentBuilderInsertField()
+        public static void ChangeFieldUpdateCultureSource()
         {
             //ExStart:ChangeFieldUpdateCultureSource
             //ExStart:DocumentBuilderInsertField
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert content with German locale
+            // Insert content with German locale.
             builder.Font.LocaleId = 1031;
             builder.InsertField("MERGEFIELD Date1 \\@ \"dddd, d MMMM yyyy\"");
             builder.Write(" - ");
@@ -27,16 +27,16 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExEnd:DocumentBuilderInsertField
 
             // Shows how to specify where the culture used for date formatting during field update and mail merge is chosen from
-            // Set the culture used during field update to the culture used by the field
+            // set the culture used during field update to the culture used by the field.
             doc.FieldOptions.FieldUpdateCultureSource = FieldUpdateCultureSource.FieldCode;
             doc.MailMerge.Execute(new string[] { "Date2" }, new object[] { new DateTime(2011, 1, 01) });
             
-            doc.Save(ArtifactsDir + "Field.ChangeFieldUpdateCultureSource.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.ChangeFieldUpdateCultureSource.docx");
             //ExEnd:ChangeFieldUpdateCultureSource
         }
 
         [Test]
-        public static void SpecifylocaleAtFieldlevel()
+        public static void SpecifyLocaleAtFieldLevel()
         {
             //ExStart:SpecifylocaleAtFieldlevel
             DocumentBuilder builder = new DocumentBuilder();
@@ -44,7 +44,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Field field = builder.InsertField(FieldType.FieldDate, true);
             field.LocaleId = 1049;
             
-            builder.Document.Save(ArtifactsDir + "SpecifylocaleAtFieldlevel.docx");
+            builder.Document.Save(ArtifactsDir + "WorkingWithFields.SpecifylocaleAtFieldlevel.docx");
             //ExEnd:SpecifylocaleAtFieldlevel
         }
 
@@ -54,14 +54,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:ReplaceHyperlinks
             Document doc = new Document(MyDir + "Hyperlinks.docx");
 
-            // Hyperlinks in a Word documents are fields
             foreach (Field field in doc.Range.Fields)
             {
                 if (field.Type == FieldType.FieldHyperlink)
                 {
                     FieldHyperlink hyperlink = (FieldHyperlink) field;
 
-                    // Some hyperlinks can be local (links to bookmarks inside the document), ignore these
+                    // Some hyperlinks can be local (links to bookmarks inside the document), ignore these.
                     if (hyperlink.SubAddress != null)
                         continue;
 
@@ -70,7 +69,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 }
             }
 
-            doc.Save(ArtifactsDir + "ReplaceHyperlinks.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.ReplaceHyperlinks.docx");
             //ExEnd:ReplaceHyperlinks
         }
 
@@ -80,10 +79,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:RenameMergeFields
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.InsertField(@"MERGEFIELD MyMergeField1 \* MERGEFORMAT");
             builder.InsertField(@"MERGEFIELD MyMergeField2 \* MERGEFORMAT");
 
-            // Select all field start nodes so we can find the merge fields
+            // Select all field start nodes so we can find the merge fields.
             NodeCollection fieldStarts = doc.GetChildNodes(NodeType.FieldStart, true);
             foreach (FieldStart fieldStart in fieldStarts)
             {
@@ -94,7 +94,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 }
             }
 
-            doc.Save(ArtifactsDir + "RenameMergeFields.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.RenameMergeFields.doc");
             //ExEnd:RenameMergeFields
         }
 
@@ -113,7 +113,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
                 mFieldStart = fieldStart;
 
-                // Find the field separator node
+                // Find the field separator node.
                 mFieldSeparator = fieldStart.GetField().Separator;
                 if (mFieldSeparator == null)
                     throw new InvalidOperationException("Cannot find field separator.");
@@ -130,11 +130,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 set
                 {
                     // Merge field name is stored in the field result which is a Run
-                    // node between field separator and field end
+                    // node between field separator and field end.
                     Run fieldResult = (Run) mFieldSeparator.NextSibling;
                     fieldResult.Text = string.Format("«{0}»", value);
 
-                    // But sometimes the field result can consist of more than one run, delete these runs
+                    // But sometimes the field result can consist of more than one run, delete these runs.
                     RemoveSameParent(fieldResult.NextSibling, mFieldEnd);
 
                     UpdateFieldCode(value);
@@ -143,7 +143,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             private void UpdateFieldCode(string fieldName)
             {
-                // Field code is stored in a Run node between field start and field separator
+                // Field code is stored in a Run node between field start and field separator.
                 Run fieldCode = (Run) mFieldStart.NextSibling;
 
                 Match match = gRegex.Match(((FieldStart) mFieldStart).GetField().GetFieldCode());
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 string newFieldCode = string.Format(" {0}{1} ", match.Groups["start"].Value, fieldName);
                 fieldCode.Text = newFieldCode;
 
-                // But sometimes the field code can consist of more than one run, delete these runs
+                // But sometimes the field code can consist of more than one run, delete these runs.
                 RemoveSameParent(fieldCode.NextSibling, mFieldSeparator);
             }
 
@@ -188,7 +188,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Various fields.docx");
             
             Field field = doc.Range.Fields[0];
-            // Calling this method completely removes the field from the document
             field.Remove();
             //ExEnd:RemoveField
         }
@@ -204,7 +203,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // { TA  \c 1 \l "Value 0" }
             // { TOA  \c 1 }
 
-            // Create instance of FieldAsk class and lets build the above field code
             FieldTA fieldTA = (FieldTA) para.AppendField(FieldType.FieldTOAEntry, false);
             fieldTA.EntryCategory = "1";
             fieldTA.LongCitation = "Value 0";
@@ -213,15 +211,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             para = new Paragraph(doc);
 
-            // Create instance of FieldToa class
             FieldToa fieldToa = (FieldToa) para.AppendField(FieldType.FieldTOA, false);
             fieldToa.EntryCategory = "1";
             doc.FirstSection.Body.AppendChild(para);
 
-            // Finally update this TOA field
             fieldToa.Update();
 
-            doc.Save(ArtifactsDir + "InsertTOAFieldWithoutDocumentBuilder.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertTOAFieldWithoutDocumentBuilder.docx");
             //ExEnd:InsertTOAFieldWithoutDocumentBuilder
         }
 
@@ -232,11 +228,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert a few page breaks (just for testing)
             for (int i = 0; i < 5; i++)
                 builder.InsertBreak(BreakType.PageBreak);
 
-            // Move the DocumentBuilder cursor into the primary footer.
             builder.MoveToHeaderFooter(HeaderFooterType.FooterPrimary);
 
             // We want to insert a field like this:
@@ -248,11 +242,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.InsertField("NUMPAGES");
             builder.Write(" \"See Next Page\" \"Last Page\" ");
 
-            // Finally update the outer field to recalcaluate the final value. Doing this will automatically update
-            // The inner fields at the same time.
             field.Update();
 
-            doc.Save(ArtifactsDir + "InsertNestedFields.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertNestedFields.docx");
             //ExEnd:InsertNestedFields
         }
 
@@ -263,16 +255,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Get paragraph you want to append this merge field to
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
-            // Move cursor to this paragraph
             builder.MoveTo(para);
 
             // We want to insert a merge field like this:
             // { " MERGEFIELD Test1 \\b Test2 \\f Test3 \\m \\v" }
 
-            // Create instance of FieldMergeField class and lets build the above field code
             FieldMergeField field = (FieldMergeField) builder.InsertField(FieldType.FieldMergeField, false);
 
             // { " MERGEFIELD Test1" }
@@ -293,7 +282,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // Finally update this merge field
             field.Update();
 
-            doc.Save(ArtifactsDir + "InsertMergeFieldUsingDOM.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertMergeFieldUsingDOM.docx");
             //ExEnd:InsertMergeFieldUsingDOM
         }
 
@@ -304,16 +293,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Get paragraph you want to append this merge field to
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
-            // Move cursor to this paragraph
             builder.MoveTo(para);
 
             // We want to insert a mail merge address block like this:
             // { ADDRESSBLOCK \\c 1 \\d \\e Test2 \\f Test3 \\l \"Test 4\" }
 
-            // Create instance of FieldAddressBlock class and lets build the above field code
             FieldAddressBlock field = (FieldAddressBlock) builder.InsertField(FieldType.FieldAddressBlock, false);
 
             // { ADDRESSBLOCK \\c 1" }
@@ -331,10 +317,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // { ADDRESSBLOCK \\c 1 \\d \\e Test2 \\f Test3 \\l \"Test 4\" }
             field.LanguageId = "Test 4";
 
-            // Finally update this merge field
             field.Update();
 
-            doc.Save(ArtifactsDir + "InsertMailMergeAddressBlockFieldUsingDOM.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertMailMergeAddressBlockFieldUsingDOM.docx");
             //ExEnd:InsertMailMergeAddressBlockFieldUsingDOM
         }
 
@@ -349,17 +334,15 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // We want to insert an INCLUDETEXT field like this:
             // { INCLUDETEXT  "file path" }
 
-            // Create instance of FieldAsk class and lets build the above field code
             FieldIncludeText fieldIncludeText = (FieldIncludeText) para.AppendField(FieldType.FieldIncludeText, false);
             fieldIncludeText.BookmarkName = "bookmark";
             fieldIncludeText.SourceFullName = MyDir + "IncludeText.docx";
 
             doc.FirstSection.Body.AppendChild(para);
 
-            // Finally update this IncludeText field
             fieldIncludeText.Update();
 
-            doc.Save(ArtifactsDir + "InsertIncludeFieldWithoutDocumentBuilder.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertIncludeFieldWithoutDocumentBuilder.docx");
             //ExEnd:InsertFieldIncludeTextWithoutDocumentBuilder
         }
 
@@ -384,7 +367,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             FieldUnknown field = (FieldUnknown) builder.InsertField(FieldType.FieldNone, false);
 
-            doc.Save(ArtifactsDir + "InsertFieldNone.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertFieldNone.docx");
             //ExEnd:InsertFieldNone
         }
 
@@ -397,7 +380,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             
             builder.InsertField(@"MERGEFIELD MyFieldName \* MERGEFORMAT");
             
-            doc.Save(ArtifactsDir + "InsertField.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertField.docx");
             //ExEnd:InsertField
         }
 
@@ -406,22 +389,18 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             // ExStart:InsertAuthorField
             Document doc = new Document();
-            // Get paragraph you want to append this AUTHOR field to
+
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert an AUTHOR field like this:
             // { AUTHOR Test1 }
 
-            // Create instance of FieldAuthor class and lets build the above field code
-            FieldAuthor field = (FieldAuthor) para.AppendField(FieldType.FieldAuthor, false);
+            FieldAuthor field = (FieldAuthor) para.AppendField(FieldType.FieldAuthor, false);            
+            field.AuthorName = "Test1"; // { AUTHOR Test1 }
 
-            // { AUTHOR Test1 }
-            field.AuthorName = "Test1";
-
-            // Finally update this AUTHOR field
             field.Update();
 
-            doc.Save(ArtifactsDir + "InsertAuthorField.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertAuthorField.docx");
             //ExEnd:InsertAuthorField
         }
 
@@ -430,13 +409,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:InsertASKFieldWithOutDocumentBuilder
             Document doc = new Document();
-            // Get paragraph you want to append this Ask field to
+
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert an Ask field like this:
             // { ASK \"Test 1\" Test2 \\d Test3 \\o }
 
-            // Create instance of FieldAsk class and lets build the above field code
             FieldAsk field = (FieldAsk) para.AppendField(FieldType.FieldAsk, false);
 
             // { ASK \"Test 1\" " }
@@ -451,10 +429,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // { ASK \"Test 1\" Test2 \\d Test3 \\o }
             field.PromptOnceOnMailMerge = true;
 
-            // Finally update this Ask field
             field.Update();
 
-            doc.Save(ArtifactsDir + "InsertASKFieldWithOutDocumentBuilder.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertASKFieldWithOutDocumentBuilder.docx");
             //ExEnd:InsertASKFieldWithOutDocumentBuilder
         }
 
@@ -463,13 +440,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:InsertAdvanceFieldWithOutDocumentBuilder
             Document doc = new Document();
-            // Get paragraph you want to append this Advance field to
+
             Paragraph para = (Paragraph) doc.GetChildNodes(NodeType.Paragraph, true)[0];
 
             // We want to insert an Advance field like this:
             // { ADVANCE \\d 10 \\l 10 \\r -3.3 \\u 0 \\x 100 \\y 100 }
 
-            // Create instance of FieldAdvance class and lets build the above field code
             FieldAdvance field = (FieldAdvance) para.AppendField(FieldType.FieldAdvance, false);
             
             // { ADVANCE \\d 10 " }
@@ -490,10 +466,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // { ADVANCE \\d 10 \\l 10 \\r -3.3 \\u 0 \\x 100 \\y 100 }
             field.VerticalPosition = "100";
 
-            // Finally update this Advance field
             field.Update();
 
-            doc.Save(ArtifactsDir + "InsertAdvanceFieldWithOutDocumentBuilder.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.InsertAdvanceFieldWithOutDocumentBuilder.docx");
             //ExEnd:InsertAdvanceFieldWithOutDocumentBuilder
         }
 
@@ -502,7 +477,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:GetFieldNames
             Document doc = new Document();
-            // Shows how to get names of all merge fields in a document
+
             string[] fieldNames = doc.MailMerge.GetFieldNames();
             //ExEnd:GetFieldNames
             Console.WriteLine("\nDocument have " + fieldNames.Length + " fields.");
@@ -513,7 +488,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:MappedDataFields
             Document doc = new Document();
-            // Shows how to add a mapping when a merge field in a document and a data field in a data source have different names
+
             doc.MailMerge.MappedDataFields.Add("MyFieldName_InDocument", "MyFieldName_InDataSource");
             //ExEnd:MappedDataFields
         }
@@ -523,7 +498,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:DeleteFields
             Document doc = new Document();
-            // Shows how to delete all merge fields from a document without executing mail merge
+
             doc.MailMerge.DeleteFields();
             //ExEnd:DeleteFields
         }
@@ -545,6 +520,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:FormFieldsGetFormFieldsCollection
             Document doc = new Document(MyDir + "Form fields.docx");
+            
             FormFieldCollection formFields = doc.Range.FormFields;
             //ExEnd:FormFieldsGetFormFieldsCollection
         }
@@ -554,6 +530,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:FormFieldsGetByName
             Document doc = new Document(MyDir + "Form fields.docx");
+
             FormFieldCollection documentFormFields = doc.Range.FormFields;
 
             FormField formField1 = documentFormFields[3];
@@ -573,7 +550,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             doc.FieldOptions.FieldUpdateCultureSource = FieldUpdateCultureSource.FieldCode;
             doc.FieldOptions.FieldUpdateCultureProvider = new FieldUpdateCultureProvider();
 
-            doc.Save(ArtifactsDir + "Field.FieldUpdateCultureProvider.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFields.FieldUpdateCulture.pdf");
             //ExEnd:FieldUpdateCultureProvider
         }
 
@@ -635,7 +612,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:FieldDisplayResults
             //ExStart:UpdateDocFields
             Document document = new Document(MyDir + "Various fields.docx");
-            // This updates all fields in the document
+
             document.UpdateFields();
             //ExEnd:UpdateDocFields
 
@@ -649,9 +626,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:EvaluateIFCondition
             DocumentBuilder builder = new DocumentBuilder();
-            FieldIf field = (FieldIf) builder.InsertField("IF 1 = 1", null);
 
+            FieldIf field = (FieldIf) builder.InsertField("IF 1 = 1", null);
             FieldIfComparisonResult actualResult = field.EvaluateCondition();
+
             Console.WriteLine(actualResult);
             //ExEnd:EvaluateIFCondition
         }
@@ -663,13 +641,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Linked fields.docx");
 
             // Pass the appropriate parameters to convert all IF fields to static text that are encountered only in the last 
-            // paragraph of the document
+            // paragraph of the document.
             doc.FirstSection.Body.LastParagraph.Range.Fields.Where(f => f.Type == FieldType.FieldIf).ToList()
                 .ForEach(f => f.Unlink());
 
-
-            // Save the document with fields transformed to disk
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.TestFile.docx");
             //ExEnd:ConvertFieldsInParagraph
         }
 
@@ -679,11 +655,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:ConvertFieldsInDocument
             Document doc = new Document(MyDir + "Linked fields.docx");
 
-            // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to static text
+            // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to static text.
             doc.Range.Fields.Where(f => f.Type == FieldType.FieldIf).ToList().ForEach(f => f.Unlink());
 
             // Save the document with fields transformed to disk
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.ConvertFieldsInDocument.docx");
             //ExEnd:ConvertFieldsInDocument
         }
 
@@ -693,11 +669,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:ConvertFieldsInBody
             Document doc = new Document(MyDir + "Linked fields.docx");
 
-            // Pass the appropriate parameters to convert PAGE fields encountered to static text only in the body of the first section
+            // Pass the appropriate parameters to convert PAGE fields encountered to static text only in the body of the first section.
             doc.FirstSection.Body.Range.Fields.Where(f => f.Type == FieldType.FieldPage).ToList().ForEach(f => f.Unlink());
 
-            // Save the document with fields transformed to disk
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.ConvertFieldsInBody.docx");
             //ExEnd:ConvertFieldsInBody
         }
 
@@ -707,20 +682,19 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:ChangeLocale
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.InsertField("MERGEFIELD Date");
 
-            // Store the current culture so it can be set back once mail merge is complete
+            // Store the current culture so it can be set back once mail merge is complete.
             CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
-            // Set to German language so dates and numbers are formatted using this culture during mail merge
+            // Set to German language so dates and numbers are formatted using this culture during mail merge.
             Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
 
-            // Execute mail merge
             doc.MailMerge.Execute(new[] { "Date" }, new object[] { DateTime.Now });
             
-            // Restore the original culture
             Thread.CurrentThread.CurrentCulture = currentCulture;
             
-            doc.Save(ArtifactsDir + "Field.ChangeLocale.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.ChangeLocale.docx");
             //ExEnd:ChangeLocale
         }
     }
