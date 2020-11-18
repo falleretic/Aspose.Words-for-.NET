@@ -13,13 +13,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
     class WorkingWithFonts : DocsExamplesBase
     {
         [Test]
-        public static void WriteAndFont()
+        public static void FontFormatting()
         {
             //ExStart:WriteAndFont
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Specify font formatting before adding text
             Font font = builder.Font;
             font.Size = 16;
             font.Bold = true;
@@ -29,7 +28,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             builder.Write("Sample text.");
             
-            doc.Save(ArtifactsDir + "WriteAndFont.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.FontFormatting.docx");
             //ExEnd:WriteAndFont
         }
 
@@ -43,7 +42,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Font.Name = "Calibri";
             builder.Writeln("qText");
 
-            // Obtain line spacing
             Font font = builder.Document.FirstSection.Body.FirstParagraph.Runs[0].Font;
             Console.WriteLine($"lineSpacing = {font.LineSpacing}");
             //ExEnd:GetFontLineSpacing
@@ -58,7 +56,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             RunCollection runs = doc.FirstSection.Body.FirstParagraph.Runs;
             Font runFont = runs[0].Font;
 
-            // One run might have several Dml text effects applied
+            // One run might have several Dml text effects applied.
             Console.WriteLine(runFont.HasDmlEffect(TextDmlEffect.Shadow));
             Console.WriteLine(runFont.HasDmlEffect(TextDmlEffect.Effect3D));
             Console.WriteLine(runFont.HasDmlEffect(TextDmlEffect.Reflection));
@@ -74,7 +72,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Set font formatting properties
             Font font = builder.Font;
             font.Bold = true;
             font.Color = Color.DarkBlue;
@@ -84,10 +81,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             font.Spacing = 5;
             font.Underline = Underline.Double;
 
-            // Output formatted text
             builder.Writeln("I'm a very nice formatted string.");
             
-            doc.Save(ArtifactsDir + "DocumentBuilderSetFontFormatting.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontFormatting.docx");
             //ExEnd:DocumentBuilderSetFontFormatting
         }
 
@@ -105,7 +101,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.Font.ClearFormatting();
             builder.Write("Simple text");
 
-            document.Save(ArtifactsDir + "FontEmphasisMark.doc");
+            document.Save(ArtifactsDir + "WorkingWithFonts.SetFontEmphasisMark.docx");
             // ExEnd:SetFontEmphasisMark
         }
 
@@ -119,7 +115,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             });
 
             Document doc = new Document(MyDir + "Rendering.docx");
-            doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontsFolders.pdf");
             // ExEnd:SetFontsFolders           
         }
 
@@ -132,10 +128,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             FontSettings fontSettings = new FontSettings();
             fontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial";
             fontSettings.SubstitutionSettings.FontInfoSubstitution.Enabled = false;
-            // Set font settings
+            
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "EnableDisableFontSubstitution.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.EnableDisableFontSubstitution.pdf");
             //ExEnd:EnableDisableFontSubstitution
         }
 
@@ -147,25 +143,25 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.FallbackSettings.Load(MyDir + "Font fallback rules.xml");
-            // Set font settings
+            
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "SetFontFallbackSettings.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontFallbackSettings.pdf");
             //ExEnd:SetFontFallbackSettings
         }
 
         [Test]
-        public static void SetPredefinedFontFallbackSettings()
+        public static void NotoFallbackSettings()
         {
             //ExStart:SetPredefinedFontFallbackSettings
             Document doc = new Document(MyDir + "Rendering.docx");
 
             FontSettings fontSettings = new FontSettings();
             fontSettings.FallbackSettings.LoadNotoFallbackSettings();
-            // Set font settings
+            
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "SetPredefinedFontFallbackSettings.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.NotoFallbackSettings.pdf");
             //ExEnd:SetPredefinedFontFallbackSettings
         }
 
@@ -177,7 +173,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // ExEnd:SetFontsFoldersDefaultInstance           
 
             Document doc = new Document(MyDir + "Rendering.docx");
-            doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontsFoldersDefaultInstance.pdf");
         }
 
         [Test]
@@ -188,38 +184,40 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             
             FontSettings fontSettings = new FontSettings();
             // Note that this setting will override any default font sources that are being searched by default. Now only these folders will be searched for
-            // Fonts when rendering or embedding fonts. To add an extra font source while keeping system font sources then use both FontSettings.GetFontSources and
-            // FontSettings.SetFontSources instead
+            // fonts when rendering or embedding fonts. To add an extra font source while keeping system font sources then use both FontSettings.GetFontSources and
+            // FontSettings.SetFontSources instead.
             fontSettings.SetFontsFolders(new[] { @"C:\MyFonts\", @"D:\Misc\Fonts\" }, true);
-            // Set font settings
+            
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "SetFontsFoldersMultipleFolders.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontsFoldersMultipleFolders.pdf");
             //ExEnd:SetFontsFoldersMultipleFolders           
         }
 
         [Test]
-        public static void Run()
+        public static void SetFontsFoldersSystemAndCustomFolder()
         {
             //ExStart:SetFontsFoldersSystemAndCustomFolder
             Document doc = new Document(MyDir + "Rendering.docx");
             
             FontSettings fontSettings = new FontSettings();
-            // Retrieve the array of environment-dependent font sources that are searched by default. For example this will contain a "Windows\Fonts\" source on a Windows machines
-            // We add this array to a new ArrayList to make adding or removing font entries much easier
+            // Retrieve the array of environment-dependent font sources that are searched by default.
+            // For example this will contain a "Windows\Fonts\" source on a Windows machines.
+            // We add this array to a new ArrayList to make adding or removing font entries much easier.
             ArrayList fontSources = new ArrayList(fontSettings.GetFontsSources());
-            // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts
+
+            // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts.
             FolderFontSource folderFontSource = new FolderFontSource("C:\\MyFonts\\", true);
-            // Add the custom folder which contains our fonts to the list of existing font sources
+
+            // Add the custom folder which contains our fonts to the list of existing font sources.
             fontSources.Add(folderFontSource);
-            // Convert the ArrayList of source back into a primitive array of FontSource objects
+
             FontSourceBase[] updatedFontSources = (FontSourceBase[]) fontSources.ToArray(typeof(FontSourceBase));
-            // Apply the new set of font sources to use
             fontSettings.SetFontsSources(updatedFontSources);
-            // Set font settings
+            
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "SetFontsFoldersSystemAndCustomFolder.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontsFoldersSystemAndCustomFolder.pdf");
             //ExEnd:SetFontsFoldersSystemAndCustomFolder
         }
 
@@ -234,7 +232,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // ExEnd:SetFontsFoldersWithPriority           
 
             Document doc = new Document(MyDir + "Rendering.docx");
-            doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontsFoldersWithPriority.pdf");
         }
 
         [Test]
@@ -251,7 +249,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // Set font settings
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "SetTrueTypeFontsFolder.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetTrueTypeFontsFolder.pdf");
             //ExEnd:SetTrueTypeFontsFolder
         }
 
@@ -263,13 +261,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             FontSettings fontSettings = new FontSettings();
             // If the default font defined here cannot be found during rendering then
-            // the closest font on the machine is used instead
+            // the closest font on the machine is used instead.
             fontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial Unicode MS";
-            // Set font settings
+            
             doc.FontSettings = fontSettings;
             
-            // Now the set default font is used in place of any missing fonts during any rendering calls
-            doc.Save(ArtifactsDir + "SpecifyDefaultFontWhenRendering.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SpecifyDefaultFontWhenRendering.pdf");
             //ExEnd:SpecifyDefaultFontWhenRendering
         }
 
@@ -308,15 +305,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         public static void FontSettingsWithLoadOption()
         {
             // ExStart:FontSettingsWithLoadOption
-            FontSettings fontSettings = new FontSettings();
-            // init font settings
             LoadOptions loadOptions = new LoadOptions();
-            loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(MyDir + "Rendering.docx", loadOptions);
+            loadOptions.FontSettings = new FontSettings();
 
-            LoadOptions loadOptions2 = new LoadOptions();
-            loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(MyDir + "Rendering.docx", loadOptions2);
+            Document doc = new Document(MyDir + "Rendering.docx", loadOptions);
             // ExEnd:FontSettingsWithLoadOption   
         }
 
@@ -334,14 +326,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             });
             // ExEnd:FontSettingsFontSource
 
-            // init font settings
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.FontSettings = fontSettings;
-            Document doc1 = new Document(MyDir + "Rendering.docx", loadOptions);
-
-            LoadOptions loadOptions2 = new LoadOptions();
-            loadOptions2.FontSettings = fontSettings;
-            Document doc2 = new Document(MyDir + "Rendering.docx", loadOptions2);
+            Document doc = new Document(MyDir + "Rendering.docx", loadOptions);
         }
 
         [Test]
@@ -351,12 +338,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             FontSettings fontSettings = new FontSettings();
             ArrayList fontSources = new ArrayList(fontSettings.GetFontsSources());
 
-            // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts
+            // Add a new folder source which will instruct Aspose.Words to search the following folder for fonts.
             FolderFontSource folderFontSource = new FolderFontSource(MyDir, true);
-            // Add the custom folder which contains our fonts to the list of existing font sources
+            // Add the custom folder which contains our fonts to the list of existing font sources.
             fontSources.Add(folderFontSource);
 
-            // Convert the ArrayList of source back into a primitive array of FontSource objects
             FontSourceBase[] updatedFontSources = (FontSourceBase[]) fontSources.ToArray(typeof(FontSourceBase));
 
             foreach (PhysicalFontInfo fontInfo in updatedFontSources[0].GetAvailableFonts())
@@ -380,18 +366,17 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             // We can choose the default font to use in the case of any missing fonts.
             fontSettings.SubstitutionSettings.DefaultFontSubstitution.DefaultFontName = "Arial";
             // For testing we will set Aspose.Words to look for fonts only in a folder which doesn't exist. Since Aspose.Words won't
-            // Find any fonts in the specified directory, then during rendering the fonts in the document will be subsuited with the default
-            // Font specified under FontSettings.DefaultFontName. We can pick up on this subsuition using our callback
+            // find any fonts in the specified directory, then during rendering the fonts in the document will be subsuited with the default
+            // font specified under FontSettings.DefaultFontName. We can pick up on this subsuition using our callback.
             fontSettings.SetFontsFolder(string.Empty, false);
 
-            // Create a new class implementing IWarningCallback which collect any warnings produced during document save
+            // Create a new class implementing IWarningCallback which collect any warnings produced during document save.
             HandleDocumentWarnings callback = new HandleDocumentWarnings();
 
             doc.WarningCallback = callback;
-            // Set font settings
             doc.FontSettings = fontSettings;
             
-            doc.Save(ArtifactsDir + "ReceiveNotificationsOfFonts.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.ReceiveNotificationsOfFonts.pdf");
             //ExEnd:ReceiveNotificationsOfFonts
         }
 
@@ -402,16 +387,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Rendering.docx");
             
             // When you call UpdatePageLayout the document is rendered in memory. Any warnings that occured during rendering
-            // Are stored until the document save and then sent to the appropriate WarningCallback
+            // are stored until the document save and then sent to the appropriate WarningCallback.
             doc.UpdatePageLayout();
 
-            // Create a new class implementing IWarningCallback and assign it to the PdfSaveOptions class
             HandleDocumentWarnings callback = new HandleDocumentWarnings();
-
             doc.WarningCallback = callback;
             
-            // Even though the document was rendered previously, any save warnings are notified to the user during document save
-            doc.Save(ArtifactsDir + "ReceiveWarningNotification.pdf");
+            // Even though the document was rendered previously, any save warnings are notified to the user during document save.
+            doc.Save(ArtifactsDir + "WorkingWithFonts.ReceiveWarningNotification.pdf");
             //ExEnd:ReceiveWarningNotification  
         }
 
@@ -425,7 +408,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             /// </summary>
             public void Warning(WarningInfo info)
             {
-                // We are only interested in fonts being substituted
+                // We are only interested in fonts being substituted.
                 if (info.WarningType == WarningType.FontSubstitution)
                 {
                     Console.WriteLine("Font substitution: " + info.Description);
@@ -439,7 +422,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         public static void ResourceSteamFontSourceExample()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
-            // FontSettings.SetFontSources instead
+            
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
                 { new SystemFontSource(), new ResourceSteamFontSource() });
 
