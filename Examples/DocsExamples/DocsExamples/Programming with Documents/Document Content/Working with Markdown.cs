@@ -6,42 +6,50 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
     class WorkingWithMarkdownFeatures : DocsExamplesBase
     {
         [Test]
-        public static void MarkdownDocumentWithEmphases()
+        public static void Emphases()
         {
-            //ExStart:MarkdownDocumentWithEmphases
+            //ExStart:Emphases
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.Writeln("Markdown treats asterisks (*) and underscores (_) as indicators of emphasis.");
             builder.Write("You can write ");
+
             builder.Font.Bold = true;
             builder.Write("bold");
+
             builder.Font.Bold = false;
             builder.Write(" or ");
+
             builder.Font.Italic = true;
             builder.Write("italic");
+
             builder.Font.Italic = false;
             builder.Writeln(" text. ");
+
             builder.Write("You can also write ");
             builder.Font.Bold = true;
+
             builder.Font.Italic = true;
             builder.Write("BoldItalic");
+
             builder.Font.Bold = false;
             builder.Font.Italic = false;
             builder.Write("text.");
 
-            builder.Document.Save(ArtifactsDir + "EmphasesExample.md");
-            //ExEnd:MarkdownDocumentWithEmphases
+            builder.Document.Save(ArtifactsDir + "WorkingWithMarkdownFeatures.Emphases.md");
+            //ExEnd:Emphases
         }
 
         [Test]
-        public static void MarkdownDocumentWithHeadings()
+        public static void Headings()
         {
-            //ExStart:MarkdownDocumentWithHeadings
+            //ExStart:Headings
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // By default Heading styles in Word may have bold and italic formatting
-            // If we do not want text to be emphasized, set these properties explicitly to false
+            // By default Heading styles in Word may have bold and italic formatting.
+            // If we do not want the text to be emphasized, set these properties explicitly to false.
             builder.Font.Bold = false;
             builder.Font.Italic = false;
 
@@ -59,19 +67,19 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.ParagraphFormat.Style = doc.Styles["Heading 6"];
             builder.Writeln("Heading6");
 
-            // Note, emphases are also allowed inside Headings
+            // Note that the emphases are also allowed inside Headings.
             builder.Font.Bold = true;
             builder.ParagraphFormat.Style = doc.Styles["Heading 1"];
             builder.Writeln("Bold Heading1");
 
-            doc.Save(ArtifactsDir + "HeadingsExample.md");
-            //ExEnd:MarkdownDocumentWithHeadings
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownFeatures.Headings.md");
+            //ExEnd:Headings
         }
 
         [Test]
-        public static void MarkdownDocumentWithBlockQuotes()
+        public static void BlockQuotes()
         {
-            //ExStart:MarkdownDocumentWithBlockQuotes
+            //ExStart:BlockQuotes
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -100,36 +108,35 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             builder.ParagraphFormat.Style = quoteLevel1WithHeading;
             builder.Write("Headings are allowed inside Quotes");
 
-            doc.Save(ArtifactsDir + "QuotesExample.md");
-            //ExEnd:MarkdownDocumentWithBlockQuotes
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownFeatures.BlockQuotes.md");
+            //ExEnd:BlockQuotes
         }
 
         [Test]
         public static void ReadMarkdownDocument()
         {
             //ExStart:ReadMarkdownDocument
-            // This is Markdown document that was produced in example of UC3
             Document doc = new Document(MyDir + "Quotes.md");
 
-            // Let's remove Heading formatting from a Quote in the very last paragraph
+            // Let's remove Heading formatting from a Quote in the very last paragraph.
             Paragraph paragraph = doc.FirstSection.Body.LastParagraph;
             paragraph.ParagraphFormat.Style = doc.Styles["Quote"];
 
-            doc.Save(ArtifactsDir + "QuotesModifiedExample.md");
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownFeatures.ReadMarkdownDocument.md");
             //ExEnd:ReadMarkdownDocument
         }
 
         [Test]
-        public static void MarkdownDocumentWithHorizontalRule()
+        public static void HorizontalRule()
         {
-            //ExStart:MarkdownDocumentWithHorizontalRule
+            //ExStart:HorizontalRule
             DocumentBuilder builder = new DocumentBuilder(new Document());
 
             builder.Writeln("We support Horizontal rules (Thematic breaks) in Markdown:");
             builder.InsertHorizontalRule();
 
-            builder.Document.Save(ArtifactsDir + "HorizontalRuleExample.md");
-            // ExEnd: MarkdownDocumentWithHorizontalRule
+            builder.Document.Save(ArtifactsDir + "WorkingWithMarkdownFeatures.HorizontalRuleExample.md");
+            //ExEnd:HorizontalRule
         }
     }
 }

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class VbaMacros : DocsExamplesBase
+    internal class WorkingWithVbaMacros : DocsExamplesBase
     {
         [Test]
         public static void CreateVbaProject()
@@ -12,21 +12,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:CreateVbaProject
             Document doc = new Document();
 
-            // Create a new VBA project
             VbaProject project = new VbaProject();
             project.Name = "AsposeProject";
             doc.VbaProject = project;
 
-            // Create a new module and specify a macro source code
+            // Create a new module and specify a macro source code.
             VbaModule module = new VbaModule();
             module.Name = "AsposeModule";
             module.Type = VbaModuleType.ProceduralModule;
             module.SourceCode = "New source code";
 
-            // Add module to the VBA project
+            // Add module to the VBA project.
             doc.VbaProject.Modules.Add(module);
 
-            doc.Save(ArtifactsDir + "VbaMacros.CreateVbaProject.docm");
+            doc.Save(ArtifactsDir + "WorkingWithVbaMacros.CreateVbaProject.docm");
             //ExEnd:CreateVbaProject
         }
 
@@ -51,16 +50,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:ModifyVbaMacros
             Document doc = new Document(MyDir + "VBA project.docm");
+
             VbaProject project = doc.VbaProject;
 
             const string newSourceCode = "Test change source code";
-
-            // Choose a module, and set a new source code
             project.Modules[0].SourceCode = newSourceCode;
             //ExEnd:ModifyVbaMacros
-
-
-            doc.Save(ArtifactsDir + "VbaProject_out.docm");
+            
+            doc.Save(ArtifactsDir + "WorkingWithVbaMacros.ModifyVbaMacros.docm");
             //ExEnd:ModifyVbaMacros
         }
 
@@ -69,12 +66,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:CloneVbaProject
             Document doc = new Document(MyDir + "VBA project.docm");
-            Document destDoc = new Document();
+            Document destDoc = new Document { VbaProject = doc.VbaProject.Clone() };
 
-            // Clone the whole project
-            destDoc.VbaProject = doc.VbaProject.Clone();
-
-            destDoc.Save(ArtifactsDir + "output.docm");
+            destDoc.Save(ArtifactsDir + "WorkingWithVbaMacros.CloneVbaProject.docm");
             //ExEnd:CloneVbaProject
         }
 
@@ -83,14 +77,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:CloneVbaModule
             Document doc = new Document(MyDir + "VBA project.docm");
-            Document destDoc = new Document();
-
-            destDoc.VbaProject = new VbaProject();
-            // Clone a single module
+            Document destDoc = new Document { VbaProject = new VbaProject() };
+            
             VbaModule copyModule = doc.VbaProject.Modules["Module1"].Clone();
             destDoc.VbaProject.Modules.Add(copyModule);
 
-            destDoc.Save(ArtifactsDir + "output.docm");
+            destDoc.Save(ArtifactsDir + "WorkingWithVbaMacros.CloneVbaModule.docm");
             //ExEnd:CloneVbaModule
         }
     }

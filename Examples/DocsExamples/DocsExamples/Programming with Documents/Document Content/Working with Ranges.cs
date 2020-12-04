@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithRanges : DocsExamplesBase
+    internal class WorkingWithRanges : DocsExamplesBase
     {
         [Test]
         public static void RangesDeleteText()

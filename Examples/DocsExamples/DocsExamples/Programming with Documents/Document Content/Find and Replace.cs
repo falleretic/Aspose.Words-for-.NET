@@ -7,6 +7,7 @@ using Aspose.Words;
 using Aspose.Words.Drawing;
 using Aspose.Words.Fields;
 using Aspose.Words.Replacing;
+using Aspose.Words.Tables;
 using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
@@ -619,5 +620,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             }
         }
         //ExEnd:UsingLegacyOrder
+
+        [Test]
+        public static void ReplaceTextInTable()
+        {
+            //ExStart:ReplaceText
+            Document doc = new Document(MyDir + "Tables.docx");
+
+            Table table = (Table)doc.GetChild(NodeType.Table, 0, true);
+
+            table.Range.Replace("Carrots", "Eggs", new FindReplaceOptions(FindReplaceDirection.Forward));
+            table.LastRow.LastCell.Range.Replace("50", "20", new FindReplaceOptions(FindReplaceDirection.Forward));
+
+            doc.Save(ArtifactsDir + "FindAndReplace.ReplaceTextInTable.docx");
+            //ExEnd:ReplaceText
+        }
     }
 }

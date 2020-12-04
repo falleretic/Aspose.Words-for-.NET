@@ -403,8 +403,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             /// <summary>
             /// Our callback only needs to implement the "Warning" method. This method is called whenever there is a
-            /// Potential issue during document procssing. The callback can be set to listen for warnings generated during document
-            /// Load and/or document save.
+            /// Potential issue during document procssing. The callback can be set to listen for warnings generated
+            /// during document load and/or document save.
             /// </summary>
             public void Warning(WarningInfo info)
             {

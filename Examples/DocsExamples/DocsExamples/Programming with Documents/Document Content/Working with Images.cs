@@ -1,4 +1,4 @@
-﻿
+﻿#if NET462
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -8,33 +8,30 @@ using Aspose.Words;
 using Aspose.Words.Drawing;
 using Aspose.Words.Layout;
 using NUnit.Framework;
-#if NET462
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithImages : DocsExamplesBase
+    internal class WorkingWithImages : DocsExamplesBase
     {
         [Test]
         public static void AddImageToEachPage()
         {
-            // This a document that we want to add an image and custom text for each page without using the header or footer
             Document doc = new Document(MyDir + "Document.docx");
 
-            // Create and attach collector before the document before page layout is built
+            // Create and attach collector before the document before page layout is built.
             LayoutCollector layoutCollector = new LayoutCollector(doc);
 
-            // Images in a document are added to paragraphs, so to add an image to every page we need to find at any paragraph 
-            // Belonging to each page
+            // Images in a document are added to paragraphs to add an image to every page we need
+            // to find at any paragraph belonging to each page.
             IEnumerator enumerator = doc.SelectNodes("// Body/Paragraph").GetEnumerator();
 
-            // Loop through each document page
             for (int page = 1; page <= doc.PageCount; page++)
             {
                 while (enumerator.MoveNext())
                 {
-                    // Check if the current paragraph belongs to the target page
+                    // Check if the current paragraph belongs to the target page.
                     Paragraph paragraph = (Paragraph) enumerator.Current;
                     if (layoutCollector.GetStartPageIndex(paragraph) == page)
                     {
@@ -44,10 +41,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 }
             }
 
-            // Call UpdatePageLayout() method if file is to be saved as PDF or image format
+            // If we need to save the document as a PDF or image, call UpdatePageLayout() method.
             doc.UpdatePageLayout();
 
-            doc.Save(ArtifactsDir + "AddImageToEachPage.docx");
+            doc.Save(ArtifactsDir + "WorkingWithImages.AddImageToEachPage.docx");
         }
 
         /// <summary>
@@ -55,33 +52,30 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         /// </summary>
         /// <param name="para">The paragraph to an an image to.</param>
         /// <param name="page">The page number the paragraph appears on.</param>
-        public static void AddImageToPage(Paragraph para, int page, string dataDir)
+        public static void AddImageToPage(Paragraph para, int page, string imagesDir)
         {
             Document doc = (Document) para.Document;
 
             DocumentBuilder builder = new DocumentBuilder(doc);
             builder.MoveTo(para);
 
-            // Add a logo to the top left of the page
-            // The image is placed infront of all other text
-            Shape shape = builder.InsertImage(ImagesDir + "Transparent background logo.png", RelativeHorizontalPosition.Page, 60,
+            // Insert a logo to the top left of the page to place it in front of all other text.
+            builder.InsertImage(ImagesDir + "Transparent background logo.png", RelativeHorizontalPosition.Page, 60,
                 RelativeVerticalPosition.Page, 60, -1, -1, WrapType.None);
 
-            // Add a textbox next to the image which contains some text consisting of the page number
+            // Insert a textbox next to the image which contains some text consisting of the page number.
             Shape textBox = new Shape(doc, ShapeType.TextBox);
 
-            // We want a floating shape relative to the page
+            // We want a floating shape relative to the page.
             textBox.WrapType = WrapType.None;
             textBox.RelativeHorizontalPosition = RelativeHorizontalPosition.Page;
             textBox.RelativeVerticalPosition = RelativeVerticalPosition.Page;
 
-            // Set the textbox position
             textBox.Height = 30;
             textBox.Width = 200;
             textBox.Left = 150;
             textBox.Top = 80;
 
-            // Add the textbox and set text
             textBox.AppendChild(new Paragraph(doc));
             builder.InsertNode(textBox);
             builder.MoveTo(textBox.FirstChild);
@@ -121,23 +115,23 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         private static void InsertBarcodeIntoFooter(DocumentBuilder builder, Section section,
             HeaderFooterType footerType)
         {
-            // Move to the footer type in the specific section
+            // Move to the footer type in the specific section.
             builder.MoveToSection(section.Document.IndexOf(section));
             builder.MoveToHeaderFooter(footerType);
 
-            // Insert the barcode, then move to the next line and insert the ID along with the page number
+            // Insert the barcode, then move to the next line and insert the ID along with the page number.
             // Use pageId if you need to insert a different barcode on each page. 0 = First page, 1 = Second page etc.
             builder.InsertImage(Image.FromFile(ImagesDir + "Barcode.png"));
             builder.Writeln();
             builder.Write("1234567890");
             builder.InsertField("PAGE");
 
-            // Create a right aligned tab at the right margin
+            // Create a right-aligned tab at the right margin.
             double tabPos = section.PageSetup.PageWidth - section.PageSetup.RightMargin - section.PageSetup.LeftMargin;
             builder.CurrentParagraph.ParagraphFormat.TabStops.Add(new TabStop(tabPos, TabAlignment.Right,
                 TabLeader.None));
 
-            // Move to the right hand side of the page and insert the page and page total
+            // Move to the right-hand side of the page and insert the page and page total.
             builder.Write(ControlChar.Tab);
             builder.InsertField("PAGE");
             builder.Write(" of ");
@@ -150,15 +144,15 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             Document doc = new Document(MyDir + "Images.docx");
 
-            // 220ppi Print - said to be excellent on most printers and screens
-            // 150ppi Screen - said to be good for web pages and projectors
-            // 96ppi Email - said to be good for minimal document size and sharing
+            // 220ppi Print - said to be excellent on most printers and screens.
+            // 150ppi Screen - said to be good for web pages and projectors.
+            // 96ppi Email - said to be good for minimal document size and sharing.
             const int desiredPpi = 150;
 
-            // In .NET this seems to be a good compression / quality setting
+            // In .NET this seems to be a good compression/quality setting.
             const int jpegQuality = 90;
 
-            // Resample images to desired ppi and save
+            // Resample images to the desired PPI and save.
             int count = Resampler.Resample(doc, desiredPpi, jpegQuality);
 
             Console.WriteLine("Resampled {0} images.", count);
@@ -167,8 +161,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 Console.WriteLine("We expected to have only 1 image resampled in this test document!");
 
             doc.Save(ArtifactsDir + "CompressImages.docx");
-            
-            // Verify that the first image was compressed by checking the new Ppi
+
+            // Verify that the first image was compressed by checking the new PPI.
             doc = new Document(ArtifactsDir + "CompressImages.docx");
 
             Shape shape = (Shape) doc.GetChild(NodeType.Shape, 0, true);
@@ -178,11 +172,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
     }
 
-    public partial class Resampler
+    public class Resampler
     {
         /// <summary>
         /// Resamples all images in the document that are greater than the specified PPI (pixels per inch) to the specified PPI
-        /// And converts them to JPEG with the specified quality setting.
+        /// and converts them to JPEG with the specified quality setting.
         /// </summary>
         /// <param name="doc">The document to process.</param>
         /// <param name="desiredPpi">Desired pixels per inch. 220 high quality. 150 screen quality. 96 email quality.</param>
@@ -192,11 +186,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             int count = 0;
 
-            // Convert VML shapes
             foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
             {
-                // It is important to use this method to correctly get the picture shape size in points
-                // even if the picture is inside a group shape
+                // It is important to use this method to get the picture shape size in points correctly,
+                // even if it is inside a group shape.
                 SizeF shapeSizeInPoints = shape.SizeInPoints;
 
                 if (ResampleCore(shape.ImageData, shapeSizeInPoints, desiredPpi, jpegQuality))
@@ -207,22 +200,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         /// <summary>
-        /// Resamples one VML or DrawingML image
+        /// Resamples one VML or DrawingML image.
         /// </summary>
         private static bool ResampleCore(ImageData imageData, SizeF shapeSizeInPoints, int ppi, int jpegQuality)
         {
-            // The are actually several shape types that can have an image (picture, ole object, ole control),
-            // let's skip other shapes
+            // The are several shape types that can have an image (picture, ole object, ole control), let's skip other shapes.
             if (imageData == null)
                 return false;
 
-            // An image can be stored in the shape or linked from somewhere else
-            // Let's skip images that do not store bytes in the shape
+            // An image can be stored in shape or linked somewhere else, let's skip images that do not store bytes in shape.
             byte[] originalBytes = imageData.ImageBytes;
             if (originalBytes == null)
                 return false;
 
-            // Ignore metafiles, they are vector drawings and we don't want to resample them
+            // Ignore metafiles, they are vector drawings, and we don't want to resample them.
             ImageType imageType = imageData.ImageType;
             if (imageType.Equals(ImageType.Wmf) || imageType.Equals(ImageType.Emf))
                 return false;
@@ -232,14 +223,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 double shapeWidthInches = ConvertUtil.PointToInch(shapeSizeInPoints.Width);
                 double shapeHeightInches = ConvertUtil.PointToInch(shapeSizeInPoints.Height);
 
-                // Calculate the current PPI of the image
+                // Calculate the current PPI of the image.
                 ImageSize imageSize = imageData.ImageSize;
                 double currentPpiX = imageSize.WidthPixels / shapeWidthInches;
                 double currentPpiY = imageSize.HeightPixels / shapeHeightInches;
 
                 Console.Write("Image PpiX:{0}, PpiY:{1}. ", (int) currentPpiX, (int) currentPpiY);
 
-                // Let's resample only if the current PPI is higher than the requested PPI (e.g. we have extra data we can get rid of)
+                // Let's resample only if the current PPI is higher than the requested PPI (e.g., we have extra data we can get rid of).
                 if (currentPpiX <= ppi || currentPpiY <= ppi)
                 {
                     Console.WriteLine("Skipping.");
@@ -248,28 +239,28 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
                 using (Image srcImage = imageData.ToImage())
                 {
-                    // Create a new image of such size that it will hold only the pixels required by the desired ppi
+                    // Create a new image of such size that it will hold only the pixels required by the desired PPI.
                     int dstWidthPixels = (int) (shapeWidthInches * ppi);
                     int dstHeightPixels = (int) (shapeHeightInches * ppi);
                     using (Bitmap dstImage = new Bitmap(dstWidthPixels, dstHeightPixels))
                     {
-                        // Drawing the source image to the new image scales it to the new size
+                        // Drawing the source image to the new image scales it to the new size.
                         using (Graphics gr = Graphics.FromImage(dstImage))
                         {
                             gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
                             gr.DrawImage(srcImage, 0, 0, dstWidthPixels, dstHeightPixels);
                         }
 
-                        // Create JPEG encoder parameters with the quality setting
+                        // Create JPEG encoder parameters with the quality setting.
                         ImageCodecInfo encoderInfo = GetEncoderInfo(ImageFormat.Jpeg);
                         EncoderParameters encoderParams = new EncoderParameters();
                         encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, jpegQuality);
 
-                        // Save the image as JPEG to a memory stream
+                        // Save the image as JPEG to a memory stream.
                         MemoryStream dstStream = new MemoryStream();
                         dstImage.Save(dstStream, encoderInfo, encoderParams);
 
-                        // If the image saved as JPEG is smaller than the original, store it in the shape
+                        // If the image saved as JPEG is smaller than the original, store it in shape.
                         Console.WriteLine("Original size {0}, new size {1}.", originalBytes.Length, dstStream.Length);
                         if (dstStream.Length < originalBytes.Length)
                         {
@@ -282,7 +273,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             }
             catch (Exception e)
             {
-                // Catch an exception, log an error and continue if cannot process one of the images for whatever reason
+                // Catch an exception, log an error, and continue to process one of the images for whatever reason.
                 Console.WriteLine("Error processing an image, ignoring. " + e.Message);
             }
 
@@ -290,7 +281,8 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         /// <summary>
-        /// Gets the codec info for the specified image format. Throws if cannot find.
+        /// Gets the codec info for the specified image format.
+        /// Throws if cannot find.
         /// </summary>
         private static ImageCodecInfo GetEncoderInfo(ImageFormat format)
         {

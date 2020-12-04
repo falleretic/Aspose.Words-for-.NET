@@ -11,10 +11,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:SetFootNoteColumns
             Document doc = new Document(MyDir + "Document.docx");
 
-            // Specify the number of columns with which the footnotes area is formatted
+            // Specify the number of columns with which the footnotes area is formatted.
             doc.FootnoteOptions.Columns = 3;
             
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFootnotes.SetFootNoteColumns.docx");
             //ExEnd:SetFootNoteColumns
         }
 
@@ -24,11 +24,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:SetFootnoteAndEndNotePosition
             Document doc = new Document(MyDir + "Document.docx");
 
-            // Set footnote and endnode position
             doc.FootnoteOptions.Position = FootnotePosition.BeneathText;
             doc.EndnoteOptions.Position = EndnotePosition.EndOfSection;
             
-            doc.Save(ArtifactsDir + "TestFile_Out.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFootnotes.SetFootnoteAndEndNotePosition.docx");
             //ExEnd:SetFootnoteAndEndNotePosition
         }
 
@@ -46,7 +45,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             option.RestartRule = FootnoteNumberingRule.RestartPage;
             option.Position = EndnotePosition.EndOfSection;
 
-            doc.Save(ArtifactsDir + "TestFile.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFootnotes.SetEndnoteOptions.docx");
             //ExEnd:SetEndnoteOptions
         }
     }

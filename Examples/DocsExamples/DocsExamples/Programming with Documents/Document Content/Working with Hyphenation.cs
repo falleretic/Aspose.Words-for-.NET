@@ -10,13 +10,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         public static void HyphenateWordsOfLanguages()
         {
             //ExStart:HyphenateWordsOfLanguages
-            // Load the documents which store the shapes we want to render
             Document doc = new Document(MyDir + "German text.docx");
 
             Hyphenation.RegisterDictionary("en-US", MyDir + "hyph_en_US.dic");
             Hyphenation.RegisterDictionary("de-CH", MyDir + "hyph_de_CH.dic");
 
-            doc.Save(ArtifactsDir + "Hyphenation.Dictionary.Registered.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithHyphenation.HyphenateWordsOfLanguages.pdf");
             //ExEnd:HyphenateWordsOfLanguages
         }
 
@@ -24,13 +23,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         public static void LoadHyphenationDictionaryForLanguage()
         {
             //ExStart:LoadHyphenationDictionaryForLanguage
-            // Load the documents which store the shapes we want to render
             Document doc = new Document(MyDir + "German text.docx");
             
             Stream stream = File.OpenRead(MyDir + "hyph_de_CH.dic");
             Hyphenation.RegisterDictionary("de-CH", stream);
 
-            doc.Save(ArtifactsDir + "Hyphenation.Stream.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithHyphenation.LoadHyphenationDictionaryForLanguage.pdf");
             //ExEnd:LoadHyphenationDictionaryForLanguage
         }
     }

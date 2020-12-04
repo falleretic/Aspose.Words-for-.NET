@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithWebExtension : DocsExamplesBase
+    internal class WorkingWithWebExtension : DocsExamplesBase
     {
         [Test]
         public static void UsingWebExtensionTaskPanes()
@@ -27,7 +27,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             taskPane.WebExtension.Bindings.Add(new WebExtensionBinding("UnnamedBinding_0_1506535429545",
                 WebExtensionBindingType.Text, "194740422"));
 
-            doc.Save(ArtifactsDir + "output.docx");
+            doc.Save(ArtifactsDir + "WorkingWithWebExtension.UsingWebExtensionTaskPanes.docx");
             //ExEnd:UsingWebExtensionTaskPanes
         }
     }

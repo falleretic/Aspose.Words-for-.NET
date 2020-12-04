@@ -11,12 +11,11 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:OpenTypeFeatures
             Document doc = new Document(MyDir + "OpenType text shaping.docx");
 
-            // When text shaper factory is set, layout starts to use OpenType features
-            // An Instance property returns static BasicTextShaperCache object wrapping HarfBuzzTextShaperFactory
+            // When we set the text shaper factory, the layout starts to use OpenType features.
+            // An Instance property returns static BasicTextShaperCache object wrapping HarfBuzzTextShaperFactory.
             doc.LayoutOptions.TextShaperFactory = Aspose.Words.Shaping.HarfBuzz.HarfBuzzTextShaperFactory.Instance;
 
-            // Render the document to PDF format
-            doc.Save(ArtifactsDir + "OpenType.Document.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithHarfBuzz.OpenTypeFeatures.pdf");
             //ExEnd:OpenTypeFeatures
         }
     }

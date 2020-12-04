@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithRevisions : DocsExamplesBase
+    internal class WorkingWithRevisions : DocsExamplesBase
     {
         [Test]
         public static void AcceptRevisions()
@@ -13,14 +13,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:AcceptAllRevisions
             Document doc = new Document(MyDir + "Document.docx");
 
-            // Start tracking and make some revisions
             doc.StartTrackRevisions("Author");
             doc.FirstSection.Body.AppendParagraph("Hello world!");
 
-            // Revisions will now show up as normal text in the output document
+            // Revisions will now show up as normal text in the output document.
             doc.AcceptAllRevisions();
             
-            doc.Save(ArtifactsDir + "Document.AcceptedRevisions.doc");
+            doc.Save(ArtifactsDir + "WorkingWithRevisions.AcceptRevisions.docx");
             //ExEnd:AcceptAllRevisions
         }
 
@@ -56,31 +55,32 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         [Test]
-        public static void SetShowCommentsInPDF()
+        public static void RemoveCommentsInPdf()
         {
-            //ExStart:SetShowCommentsinPDF
+            //ExStart:RemoveCommentsInPDF
             Document doc = new Document(MyDir + "Revisions.docx");
 
-            // Do not render the comments in PDF
+            // Do not render the comments in PDF.
             doc.LayoutOptions.ShowComments = false;
-            doc.Save(ArtifactsDir + "RemoveCommentsInPDF.pdf");
-            //ExEnd:SetShowCommentsinPDF
+
+            doc.Save(ArtifactsDir + "WorkingWithRevisions.RemoveCommentsInPdf.pdf");
+            //ExEnd:RemoveCommentsInPDF
         }
 
         [Test]
-        public static void SetShowInBalloons()
+        public static void ShowRevisionsInBalloons()
         {
-            //ExStart:SetShowInBalloons
+            //ExStart:ShowRevisionsInBalloons
             Document doc = new Document(MyDir + "Revisions.docx");
 
-            // Renders insert and delete revisions inline, format revisions in balloons
+            // Renders insert and delete revisions inline, format revisions in balloons.
             doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.Format;
 
-            // Renders insert revisions inline, delete and format revisions in balloons
+            // Renders insert revisions inline, delete and format revisions in balloons.
             //doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.FormatAndDelete;
 
-            doc.Save(ArtifactsDir + "SetShowInBalloons.pdf");
-            //ExEnd:SetShowInBalloons
+            doc.Save(ArtifactsDir + "WorkingWithRevisions.ShowRevisionsInBalloons.pdf");
+            //ExEnd:ShowRevisionsInBalloons
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "Revisions.docx");
             doc.UpdateListLabels();
 
-            // Switch to the revised version of the document
+            // Switch to the revised version of the document.
             doc.RevisionsView = RevisionsView.Final;
 
             foreach (Revision revision in doc.Revisions)
@@ -121,7 +121,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                     Paragraph paragraph = (Paragraph) revision.ParentNode;
                     if (paragraph.IsListItem)
                     {
-                        // Print revised version of LabelString and ListLevel
                         Console.WriteLine(paragraph.ListLabel.LabelString);
                         Console.WriteLine(paragraph.ListFormat.ListLevel);
                     }

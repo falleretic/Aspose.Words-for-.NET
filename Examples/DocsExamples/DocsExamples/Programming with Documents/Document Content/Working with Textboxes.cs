@@ -5,13 +5,14 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithTextboxes
+    internal class WorkingWithTextboxes
     {
         [Test]
         public static void CreateALink()
         {
             //ExStart:CreateALink
             Document doc = new Document();
+
             Shape shape1 = new Shape(doc, ShapeType.TextBox);
             Shape shape2 = new Shape(doc, ShapeType.TextBox);
 
@@ -28,6 +29,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:CheckSequence
             Document doc = new Document();
+
             Shape shape = new Shape(doc, ShapeType.TextBox);
             TextBox textBox = shape.TextBox;
 
@@ -53,16 +55,17 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:BreakALink
             Document doc = new Document();
+
             Shape shape = new Shape(doc, ShapeType.TextBox);
             TextBox textBox = shape.TextBox;
 
-            // Break a forward link
+            // Break a forward link.
             textBox.BreakForwardLink();
 
-            // Break a forward link by setting a null
+            // Break a forward link by setting a null.
             textBox.Next = null;
 
-            // Break a link, which leads to this textbox
+            // Break a link, which leads to this textbox.
             textBox.Previous?.BreakForwardLink();
             //ExEnd:BreakALink
         }

@@ -3,11 +3,8 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithSection : DocsExamplesBase
+    internal class WorkingWithSection : DocsExamplesBase
     {
-        /// <summary>
-        /// Shows how to add a section to the end of the document.
-        /// </summary>
         [Test]
         public static void AddSection()
         {
@@ -23,9 +20,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExEnd:AddSection
         }
 
-        /// <summary>
-        /// Shows how to remove a section at the specified index.
-        /// </summary>
         [Test]
         public static void DeleteSection()
         {
@@ -42,9 +36,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExEnd:DeleteSection
         }
 
-        /// <summary>
-        /// Shows how to remove all sections from a document.
-        /// </summary>
         [Test]
         public static void DeleteAllSections()
         {
@@ -76,14 +67,14 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             doc.AppendChild(new Section(doc));
             builder.Writeln("Hello45");
 
-            // This is the section that we will append and prepend to
+            // This is the section that we will append and prepend to.
             Section section = doc.Sections[2];
 
-            // This copies content of the 1st section and inserts it at the beginning of the specified section
+            // This copies the content of the 1st section and inserts it at the beginning of the specified section.
             Section sectionToPrepend = doc.Sections[0];
             section.PrependContent(sectionToPrepend);
 
-            // This copies content of the 2nd section and inserts it at the end of the specified section
+            // This copies the content of the 2nd section and inserts it at the end of the specified section.
             Section sectionToAppend = doc.Sections[1];
             section.AppendContent(sectionToAppend);
             //ExEnd:AppendSectionContent
@@ -109,7 +100,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Section newSection = (Section) dstDoc.ImportNode(sourceSection, true);
             dstDoc.Sections.Add(newSection);
             
-            dstDoc.Save(ArtifactsDir + "CopySection.docx");
+            dstDoc.Save(ArtifactsDir + "WorkingWithSection.CopySection.docx");
             //ExEnd:CopySection
         }
 
@@ -136,9 +127,9 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         [Test]
-        public static void ModifyPageSetupInAllSectionsOfDocument()
+        public static void ModifyPageSetupInAllSections()
         {
-            //ExStart:ModifyPageSetupInAllSectionsOfDocument
+            //ExStart:ModifyPageSetupInAllSections
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
@@ -150,13 +141,13 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             doc.AppendChild(new Section(doc));
             builder.Writeln("Hello45");
 
-            // It is important to understand that a document can contain many sections and each
-            // section has its own page setup. In this case we want to modify them all
+            // It is important to understand that a document can contain many sections,
+            // and each section has its page setup. In this case, we want to modify them all.
             foreach (Section section in doc)
                 section.PageSetup.PaperSize = PaperSize.Letter;
 
-            doc.Save(ArtifactsDir + "ModifyPageSetupInAllSections.doc");
-            //ExEnd:ModifyPageSetupInAllSectionsOfDocument
+            doc.Save(ArtifactsDir + "WorkingWithSection.ModifyPageSetupInAllSections.doc");
+            //ExEnd:ModifyPageSetupInAllSections
         }
 
         [Test]

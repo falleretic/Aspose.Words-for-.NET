@@ -15,9 +15,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             //ExStart:DocumentBuilderInsertOleObject
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.InsertOleObject("http://www.aspose.com", "htmlfile", true, true, null);
 
-            doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObject.doc");
+            doc.Save(ArtifactsDir + "WorkingWithOleObjectsAndActiveX.InsertOleObject.docx");
             //ExEnd:DocumentBuilderInsertOleObject
         }
 
@@ -36,7 +37,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 olePackage.FileName = "filename.zip";
                 olePackage.DisplayName = "displayname.zip";
 
-                doc.Save(ArtifactsDir + "DocumentBuilderInsertOleObjectOlePackage.doc");
+                doc.Save(ArtifactsDir + "WorkingWithOleObjectsAndActiveX.InsertOleObjectWithOlePackage.docx");
             }
             //ExEnd:InsertOleObjectwithOlePackage
 
@@ -51,14 +52,12 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:InsertOLEObjectAsIcon
             Document doc = new Document();
-
             DocumentBuilder builder = new DocumentBuilder(doc);
+
             builder.InsertOleObjectAsIcon(MyDir + "Presentation.pptx", false, ImagesDir + "Logo icon.ico",
                 "My embedded file");
 
-            doc.Save(ArtifactsDir + "EmbeddeWithIcon.docx");
-
-            Console.WriteLine("The document has been saved with OLE Object as an Icon.");
+            doc.Save(ArtifactsDir + "WorkingWithOleObjectsAndActiveX.InsertOleObjectAsIcon.docx");
             //ExEnd:InsertOLEObjectAsIcon
         }
 
@@ -68,7 +67,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             Document doc = new Document(MyDir + "ActiveX controls.docx");
 
             string properties = "";
-            // Retrieve shapes from the document
             foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
             {
                 if (shape.OleFormat is null) break;
