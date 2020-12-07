@@ -155,7 +155,7 @@ namespace DocsExamples.Rendering_and_Printing
 
             using (Bitmap image = new Bitmap(shapeRenderedSize.Width, shapeRenderedSize.Height))
             {
-                using (Graphics g = Graphics.FromImage(image))
+                using (Graphics graphics = Graphics.FromImage(image))
                 {
                     // Render shape onto the graphics object using the RenderToScale or RenderToSize methods of ShapeRenderer class.
                 }
@@ -192,7 +192,8 @@ namespace DocsExamples.Rendering_and_Printing
             imageOptions.PaperColor = Color.Transparent;
 
             // There a bug which affects the cache of a cloned node.
-            // To avoid this, we clone the entire document, including all nodes, finding the matching node in the cloned document and rendering that instead.
+            // To avoid this, we clone the entire document, including all nodes,
+            // finding the matching node in the cloned document and rendering that instead.
             Document doc = (Document) node.Document.Clone(true);
             node = doc.GetChild(NodeType.Any, node.Document.GetChildNodes(NodeType.Any, true).IndexOf(node), true);
 
@@ -209,9 +210,10 @@ namespace DocsExamples.Rendering_and_Printing
             // Don't draw a surronding line on the shape.
             shape.Stroked = false;
 
-            // Move up through the DOM until we find a suitable node to insert into a Shape (a node with a parent can contain paragraphs, tables the same as a shape).
-            // Each parent node is cloned on the way up so even a descendant node passed to this method can be rendered.
-            // Since we are working with the actual nodes of the document we need to clone the target node into the temporary shape.
+            // Move up through the DOM until we find a suitable node to insert into a Shape
+            // (a node with a parent can contain paragraphs, tables the same as a shape). Each parent node is cloned
+            // on the way up so even a descendant node passed to this method can be rendered. Since we are working
+            // with the actual nodes of the document we need to clone the target node into the temporary shape.
             Node currentNode = node;
             while (!(currentNode.ParentNode is InlineStory || currentNode.ParentNode is Story ||
                      currentNode.ParentNode is ShapeBase))
