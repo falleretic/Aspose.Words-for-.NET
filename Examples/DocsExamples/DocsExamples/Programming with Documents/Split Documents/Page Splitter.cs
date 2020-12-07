@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Split_Documents
 {
-    class PageSplitter : DocsExamplesBase
+    internal class PageSplitter : DocsExamplesBase
     {
         [Test]
         public static void SplitDocuments()
@@ -27,10 +27,10 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
             Document doc = new Document(docName);
 
-            // Split nodes in the document into separate pages
+            // Split nodes in the document into separate pages.
             DocumentPageSplitter splitter = new DocumentPageSplitter(doc);
 
-            // Save each page to the disk as a separate document
+            // Save each page to the disk as a separate document.
             for (int page = 1; page <= doc.PageCount; page++)
             {
                 Document pageDoc = splitter.GetDocumentOfPage(page);
@@ -62,7 +62,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         /// This method splits the document into sections so that each page begins and ends at a section boundary.
         /// It is recommended not to modify the document afterwards.
         /// </summary>
-        /// <param name="source">source document</param>
+        /// <param name="source">Source document</param>
         public DocumentPageSplitter(Document source)
         {
             pageNumberFinder = PageNumberFinderFactory.Create(source);
@@ -117,19 +117,19 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
     /// </summary>
     public class PageNumberFinder
     {
-        // Maps node to a start/end page numbers
-        // This is used to override baseline page numbers provided by collector when document is split
+        // Maps node to a start/end page numbers.
+        // This is used to override baseline page numbers provided by the collector when the document is split.
         private readonly IDictionary<Node, int> nodeStartPageLookup = new Dictionary<Node, int>();
         private readonly IDictionary<Node, int> nodeEndPageLookup = new Dictionary<Node, int>();
         private readonly LayoutCollector collector;
 
-        // Maps page number to a list of nodes found on that page
+        // Maps page number to a list of nodes found on that page.
         private IDictionary<int, IList<Node>> reversePageLookup;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PageNumberFinder"/> class.
         /// </summary>
-        /// <param name="collector">A collector instance which has layout model records for the document.</param>
+        /// <param name="collector">A collector instance that has layout model records for the document.</param>
         public PageNumberFinder(LayoutCollector collector)
         {
             this.collector = collector;
@@ -218,7 +218,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             IList<Node> pageNodes = new List<Node>();
             for (int page = startPage; page <= endPage; page++)
             {
-                // Some pages can be empty
+                // Some pages can be empty.
                 if (!reversePageLookup.ContainsKey(page))
                 {
                     continue;
@@ -239,7 +239,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
 
         /// <summary>
-        /// Splits nodes which appear over two or more pages into separate nodes so that they still appear in the same way
+        /// Splits nodes that appear over two or more pages into separate nodes so that they still appear in the same way
         /// but no longer appear across a page.
         /// </summary>
         public void SplitNodesAcrossPages()
@@ -254,7 +254,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
             ClearCollector();
 
-            // Visit any composites which are possibly split across pages and split them into separate nodes
+            // Visit any composites which are possibly split across pages and split them into separate nodes.
             Document.Accept(new SectionSplitter(this));
         }
 
@@ -297,11 +297,10 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
             reversePageLookup = new Dictionary<int, IList<Node>>();
 
-            // Add each node to a list which represent the nodes found on each page
+            // Add each node to a list that represent the nodes found on each page.
             foreach (Node node in Document.GetChildNodes(NodeType.Any, true))
             {
-                // Headers/Footers follow sections
-                // They are not split by themselves
+                // Headers/Footers follow sections and are not split by themselves.
                 if (IsHeaderFooterType(node))
                 {
                     continue;
@@ -414,7 +413,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             return ContinueIfCompositeAcrossPageElseSkip(cell);
         }
 
-        public override VisitorAction VisitStructuredDocumentTagStart(Aspose.Words.Markup.StructuredDocumentTag sdt)
+        public override VisitorAction VisitStructuredDocumentTagStart(StructuredDocumentTag sdt)
         {
             return ContinueIfCompositeAcrossPageElseSkip(sdt);
         }
@@ -428,8 +427,8 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         {
             Section previousSection = (Section) section.PreviousSibling;
 
-            // If there is a previous section attempt to copy any linked header footers otherwise they will not appear in an 
-            // extracted document if the previous section is missing
+            // If there is a previous section, attempt to copy any linked header footers.
+            // Otherwise, they will not appear in an extracted document if the previous section is missing.
             if (previousSection != null)
             {
                 HeaderFooterCollection previousHeaderFooters = previousSection.HeadersFooters;
@@ -460,7 +459,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             return VisitorAction.Continue;
         }
 
-        public override VisitorAction VisitStructuredDocumentTagEnd(Aspose.Words.Markup.StructuredDocumentTag sdt)
+        public override VisitorAction VisitStructuredDocumentTagEnd(StructuredDocumentTag sdt)
         {
             SplitComposite(sdt);
             return VisitorAction.Continue;
@@ -486,7 +485,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
         public override VisitorAction VisitParagraphEnd(Paragraph paragraph)
         {
-            // If paragraph contains only section break, add fake run into 
+            // If the paragraph contains only section break, add fake run into.
             if (paragraph.IsEndOfSection && paragraph.ChildNodes.Count == 1 &&
                 paragraph.ChildNodes[0].GetText() == "\f")
             {
@@ -499,7 +498,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             foreach (Paragraph clonePara in SplitComposite(paragraph))
             {
                 // Remove list numbering from the cloned paragraph but leave the indent the same 
-                // as the paragraph is supposed to be part of the item before
+                // as the paragraph is supposed to be part of the item before.
                 if (paragraph.IsListItem)
                 {
                     double textPosition = clonePara.ListFormat.ListLevel.TextPosition;
@@ -507,7 +506,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                     clonePara.ParagraphFormat.LeftIndent = textPosition;
                 }
 
-                // Reset spacing of split paragraphs in tables as additional spacing may cause them to look different
+                // Reset spacing of split paragraphs in tables as additional spacing may cause them to look different.
                 if (paragraph.IsInCell)
                 {
                     clonePara.ParagraphFormat.SpaceBefore = 0;
@@ -529,14 +528,13 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                                                              section.Document.IndexOf(section));
                 cloneSection.PageSetup.DifferentFirstPageHeaderFooter = false;
 
-                // Corrects page break on end of the section
+                // Corrects page break at the end of the section.
                 SplitPageBreakCorrector.ProcessSection(cloneSection);
             }
 
-            // Corrects page break on end of the section
             SplitPageBreakCorrector.ProcessSection(section);
 
-            // Add new page numbering for the body of the section as well
+            // Add new page numbering for the body of the section as well.
             pageNumberFinder.AddPageNumbersForNode(section.Body, pageNumberFinder.GetPage(section),
                 pageNumberFinder.GetPageEnd(section));
             return VisitorAction.Continue;
@@ -562,7 +560,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
         private IEnumerable<Node> FindChildSplitPositions(CompositeNode node)
         {
-            // A node may span across multiple pages so a list of split positions is returned.
+            // A node may span across multiple pages, so a list of split positions is returned.
             // The split node is the first node on the next page.
             List<Node> splitList = new List<Node>();
 
@@ -580,8 +578,8 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                     pageNum = pageNumberFinder.GetPageEnd(childNode);
                 }
 
-                // If the page of the child node has changed then this is the split position
-                // Add this to the list
+                // If the page of the child node has changed, then this is the split position.
+                // Add this to the list.
                 if (pageNum > startingPage)
                 {
                     splitList.Add(childNode);
@@ -594,7 +592,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                 }
             }
 
-            // Split composites backward so the cloned nodes are inserted in the right order
+            // Split composites backward, so the cloned nodes are inserted in the right order.
             splitList.Reverse();
             return splitList;
         }
@@ -605,7 +603,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             Node node = targetNode;
             int currentPageNum = pageNumberFinder.GetPage(baseNode);
 
-            // Move all nodes found on the next page into the copied node. Handle row nodes separately
+            // Move all nodes found on the next page into the copied node. Handle row nodes separately.
             if (baseNode.NodeType != NodeType.Row)
             {
                 CompositeNode composite = cloneNode;
@@ -626,7 +624,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             }
             else
             {
-                // If we are dealing with a row then we need to add in dummy cells for the cloned row
+                // If we are dealing with a row, we need to add dummy cells for the cloned row.
                 int targetPageNum = pageNumberFinder.GetPage(targetNode);
                 
                 Node[] childNodes = baseNode.ChildNodes.ToArray();
@@ -656,11 +654,11 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                 }
             }
 
-            // Insert the split node after the original
+            // Insert the split node after the original.
             baseNode.ParentNode.InsertAfter(cloneNode, baseNode);
 
-            // Update the new page numbers of the base node and the clone node including its descendents
-            // This will only be a single page as the cloned composite is split to be on one page
+            // Update the new page numbers of the base node and the cloned node, including its descendants.
+            // This will only be a single page as the cloned composite is split to be on one page.
             int currentEndPageNum = pageNumberFinder.GetPageEnd(baseNode);
             pageNumberFinder.AddPageNumbersForNode(baseNode, currentPageNum, currentEndPageNum - 1);
             pageNumberFinder.AddPageNumbersForNode(cloneNode, currentEndPageNum, currentEndPageNum);

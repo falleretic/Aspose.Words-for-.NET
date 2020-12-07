@@ -8,39 +8,31 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Split_Documents
 {
-    class SplitIntoHtmlPages : DocsExamplesBase
+    internal class SplitIntoHtmlPages : DocsExamplesBase
     {
         [Test]
-        public static void SplitDocumentToHtmlPages()
+        public static void HtmlPages()
         {
-            // You need to have a valid license for Aspose.Words.
-            // The best way is to embed the license as a resource into the project
-            // And specify only file name without path in the following call.
-            // Aspose.Words.License license = new Aspose.Words.License();
-            // License.SetLicense(@"Aspose.Words.lic");
-            
             string srcFileName = MyDir + "Footnotes and endnotes.docx";
             string tocTemplate = MyDir + "Table of content template.docx";
 
-            string outDir = Path.Combine(ArtifactsDir, "SplitIntoHtmlPages");
+            string outDir = Path.Combine(ArtifactsDir, "HtmlPages");
             Directory.CreateDirectory(outDir);
 
-            // This class does the job
-            Worker w = new Worker();
+            WordToHtmlConverter w = new WordToHtmlConverter();
             w.Execute(srcFileName, tocTemplate, outDir);
         }
     }
 
-    internal class Worker
+    internal class WordToHtmlConverter
     {
         /// <summary>
         /// Performs the Word to HTML conversion.
         /// </summary>
         /// <param name="srcFileName">The MS Word file to convert.</param>
-        /// <param name="tocTemplate">An MS Word file that is used as a template to build
-        /// A table of contents. This file needs to have a mail merge region called "TOC" defined
-        /// And one mail merge field called "TocEntry".</param>
-        /// <param name="dstDir">The output directory where to write HTML files. Must exist.</param>
+        /// <param name="tocTemplate">An MS Word file that is used as a template to build a table of contents.
+        /// This file needs to have a mail merge region called "TOC" defined and one mail merge field called "TocEntry".</param>
+        /// <param name="dstDir">The output directory where to write HTML files.</param>
         internal void Execute(string srcFileName, string tocTemplate, string dstDir)
         {
             mDoc = new Document(srcFileName);
@@ -55,7 +47,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
         /// <summary>
         /// Selects heading paragraphs that must become topic starts.
-        /// We can't modify them in this loop, we have to remember them in an array first.
+        /// We can't modify them in this loop, so we need to remember them in an array first.
         /// </summary>
         private ArrayList SelectTopicStarts()
         {
@@ -73,7 +65,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
 
         /// <summary>
-        /// Inserts section breaks before the specified paragraphs.
+        /// Insert section breaks before the specified paragraphs.
         /// </summary>
         private void InsertSectionBreaks(ArrayList topicStartParas)
         {
@@ -82,14 +74,14 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             {
                 Section section = para.ParentSection;
 
-                // Insert section break if the paragraph is not at the beginning of a section already
+                // Insert section break if the paragraph is not at the beginning of a section already.
                 if (para != section.Body.FirstParagraph)
                 {
                     builder.MoveTo(para.FirstChild);
                     builder.InsertBreak(BreakType.SectionBreakNewPage);
 
-                    // This is the paragraph that was inserted at the end of the now old section
-                    // We don't really need the extra paragraph, we just needed the section
+                    // This is the paragraph that was inserted at the end of the now old section.
+                    // We don't really need the extra paragraph, we just needed the section.
                     section.Body.LastParagraph.Remove();
                 }
             }
@@ -97,7 +89,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
         /// <summary>
         /// Splits the current document into one topic per section and saves each topic
-        /// As an HTML file. Returns a collection of Topic objects.
+        /// as an HTML file. Returns a collection of Topic objects.
         /// </summary>
         private ArrayList SaveHtmlTopics()
         {
@@ -108,14 +100,14 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
                 string paraText = section.Body.FirstParagraph.GetText();
 
-                // The text of the heading paragaph is used to generate the HTML file name
+                // Use the text of the heading paragraph to generate the HTML file name.
                 string fileName = MakeTopicFileName(paraText);
                 if (fileName == "")
                     fileName = "UNTITLED SECTION " + sectionIdx;
 
                 fileName = Path.Combine(mDstDir, fileName + ".html");
 
-                // The text of the heading paragraph is also used to generate the title for the TOC
+                // Use the text of the heading paragraph to generate the title for the TOC.
                 string title = MakeTopicTitle(paraText);
                 if (title == "")
                     title = "UNTITLED SECTION " + sectionIdx;
@@ -167,25 +159,26 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
             dummyDoc.BuiltInDocumentProperties.Title = topic.Title;
 
-            Aspose.Words.Saving.HtmlSaveOptions saveOptions = new Aspose.Words.Saving.HtmlSaveOptions();
-            saveOptions.PrettyFormat = true;
-            // This is to allow headings to appear to the left of main text
-            saveOptions.AllowNegativeIndent = true;
-            saveOptions.ExportHeadersFootersMode = ExportHeadersFootersMode.None;
+            HtmlSaveOptions saveOptions = new HtmlSaveOptions
+            {
+                PrettyFormat = true,
+                AllowNegativeIndent = true, // This is to allow headings to appear to the left of the main text.
+                ExportHeadersFootersMode = ExportHeadersFootersMode.None
+            };
 
             dummyDoc.Save(topic.FileName, saveOptions);
         }
 
         /// <summary>
-        /// Generates a table of contents for the topics and saves to contents.html.
+        /// Generates a table of contents for the topics and saves to contents .html.
         /// </summary>
         private void SaveTableOfContents(ArrayList topics)
         {
             Document tocDoc = new Document(mTocTemplate);
 
-            // We use a custom mail merge even handler defined below
+            // We use a custom mail merge event handler defined below,
+            // and a custom mail merge data source based on collecting the topics we created.
             tocDoc.MailMerge.FieldMergingCallback = new HandleTocMergeField();
-            // We use a custom mail merge data source based on the collection of the topics we created
             tocDoc.MailMerge.ExecuteWithRegions(new TocMailMergeDataSource(topics));
 
             tocDoc.Save(Path.Combine(mDstDir, "contents.html"));
@@ -198,21 +191,19 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                 if (mBuilder == null)
                     mBuilder = new DocumentBuilder(e.Document);
 
-                // Our custom data source returns topic objects
+                // Our custom data source returns topic objects.
                 Topic topic = (Topic) e.FieldValue;
 
-                // We use the document builder to move to the current merge field and insert a hyperlink
                 mBuilder.MoveToMergeField(e.FieldName);
                 mBuilder.InsertHyperlink(topic.Title, topic.FileName, false);
 
-                // Signal to the mail merge engine that it does not need to insert text into the field
-                // As we've done it already
+                // Signal to the mail merge engine that it does not need to insert text into the field.
                 e.Text = "";
             }
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                // Do nothing
+                // Do nothing.
             }
 
             private DocumentBuilder mBuilder;
@@ -241,7 +232,6 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         internal TocMailMergeDataSource(ArrayList topics)
         {
             mTopics = topics;
-            // Initialize to BOF
             mIndex = -1;
         }
 
@@ -253,7 +243,6 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
                 return true;
             }
 
-            // Reached EOF, return false
             return false;
         }
 
@@ -261,7 +250,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         {
             if (fieldName == "TocEntry")
             {
-                // The template document is supposed to have only one field called "TocEntry"
+                // The template document is supposed to have only one field called "TocEntry".
                 fieldValue = mTopics[mIndex];
                 return true;
             }
