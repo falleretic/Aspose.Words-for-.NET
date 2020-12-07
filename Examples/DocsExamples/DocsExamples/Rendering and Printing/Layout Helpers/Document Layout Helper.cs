@@ -10,41 +10,38 @@ using NUnit.Framework;
 
 namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
 {
-    class DocumentLayoutHelper : DocsExamplesBase
+    internal class DocumentLayoutHelper : DocsExamplesBase
     {
         [Test]
         public static void WrapperToAccessLayoutEntities()
         {
+            // This sample introduces the RenderedDocument class and other related classes which provide an API wrapper for 
+            // the LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API.
             Document doc = new Document(MyDir + "Document layout.docx");
 
-            // This sample introduces the RenderedDocument class and other related classes which provide an API wrapper for 
-            // The LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API
-
-            // Create a new RenderedDocument class from a Document object
             RenderedDocument layoutDoc = new RenderedDocument(doc);
 
-            // The following examples demonstrate how to use the wrapper API
-            // This snippet returns the third line of the first page and prints the line of text to the console
+            // Get access to the line of the first page and print to the console.
             RenderedLine line = layoutDoc.Pages[0].Columns[0].Lines[2];
             Console.WriteLine("Line: " + line.Text);
 
-            // With a rendered line the original paragraph in the document object model can be returned
+            // With a rendered line, the original paragraph in the document object model can be returned.
             Paragraph para = line.Paragraph;
             Console.WriteLine("Paragraph text: " + para.Range.Text);
 
-            // Retrieve all the text that appears of the first page in plain text format (including headers and footers)
+            // Retrieve all the text that appears on the first page in plain text format (including headers and footers).
             string pageText = layoutDoc.Pages[0].Text;
             Console.WriteLine();
 
-            // Loop through each page in the document and print how many lines appear on each page
+            // Loop through each page in the document and print how many lines appear on each page.
             foreach (RenderedPage page in layoutDoc.Pages)
             {
                 LayoutCollection<LayoutEntity> lines = page.GetChildEntities(LayoutEntityType.Line, true);
                 Console.WriteLine("Page {0} has {1} lines.", page.PageIndex, lines.Count);
             }
 
-            // This method provides a reverse lookup of layout entities for any given node (with the exception of runs and nodes in the
-            // header and footer)
+            // This method provides a reverse lookup of layout entities for any given node
+            // (except runs and nodes in the header and footer).
             Console.WriteLine();
             Console.WriteLine("The lines of the second paragraph:");
             foreach (RenderedLine paragraphLine in layoutDoc.GetLayoutEntitiesOfNode(
@@ -58,8 +55,8 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
     }
 
     /// <summary>
-    /// Provides an API wrapper for the LayoutEnumerator class to access the page layout entities of a document presented in
-    /// A object model like design.
+    /// Provides an API wrapper for the LayoutEnumerator class to access the page layout
+    /// of a document presented in an object model like the design.
     /// </summary>
     public class RenderedDocument : LayoutEntity
     {
@@ -67,12 +64,15 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
         /// Creates a new instance from the supplied Document class.
         /// </summary>
         /// <param name="doc">A document whose page layout model to enumerate.</param>
-        /// <remarks><para>If page layout model of the document hasn't been built the enumerator calls <see cref="Document.UpdatePageLayout"/> to build it.</para>
-        /// <para>Whenever document is updated and new page layout model is created, a new RenderedDocument instance must be used to access the changes.</para></remarks>
+        /// <remarks><para>If page layout model of the document hasn't been built the enumerator calls
+        /// <see cref="Document.UpdatePageLayout"/> to build it.</para>
+        /// <para>Whenever document is updated and new page layout model is created,
+        /// a new RenderedDocument instance must be used to access the changes.</para></remarks>
         public RenderedDocument(Document doc)
         {
             mLayoutCollector = new LayoutCollector(doc);
             mEnumerator = new LayoutEnumerator(doc);
+
             ProcessLayoutElements(this);
             LinkLayoutMarkersToNodes(doc);
             CollectLinesAndAddToMarkers();
@@ -97,13 +97,13 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
 
             List<LayoutEntity> entities = new List<LayoutEntity>();
 
-            // Retrieve all entities from the layout document (inversion of LayoutEntityType.None)
+            // Retrieve all entities from the layout document (inversion of LayoutEntityType.None).
             foreach (LayoutEntity entity in GetChildEntities(~LayoutEntityType.None, true))
             {
                 if (entity.ParentNode == node)
                     entities.Add(entity);
 
-                // There is no table entity in rendered output so manually check if rows belong to a table node
+                // There is no table entity in rendered output, so manually check if rows belong to a table node.
                 if (entity.Type == LayoutEntityType.Row)
                 {
                     RenderedRow row = (RenderedRow) entity;
@@ -241,7 +241,8 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        /// <remarks>This property may return null for spans that originate from Run nodes or nodes that are inside the header or footer.</remarks>
+        /// <remarks>This property may return null for spans that originate
+        /// from Run nodes or nodes inside the header or footer.</remarks>
         public virtual Node ParentNode => mParentNode;
 
         /// <summary>
@@ -327,7 +328,8 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
         /// Returns a collection of child entities which match the specified type.
         /// </summary>
         /// <param name="type">Specifies the type of entities to select.</param>
-        /// <param name="isDeep">True to select from all child entities recursively. False to select only among immediate children</param>
+        /// <param name="isDeep">True to select from all child entities recursively.
+        /// False to select only among immediate children</param>
         public LayoutCollection<LayoutEntity> GetChildEntities(LayoutEntityType type, bool isDeep)
         {
             List<LayoutEntity> childList = new List<LayoutEntity>();
@@ -404,7 +406,8 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
         /// Retrieves the entity at the given index. 
         /// </summary>
         /// <remarks><para>The index is zero-based.</para>
-        /// <para>If index is greater than or equal to the number of items in the list, this returns a null reference.</para></remarks>
+        /// <para>If index is greater than or equal to the number of items in the list,
+        /// this returns a null reference.</para></remarks>
         public T this[int index] => index < mBaseList.Count ? mBaseList[index] : default;
 
         /// <summary>
@@ -484,7 +487,8 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
         /// <summary>
         /// Returns the node that corresponds to this layout entity.  
         /// </summary>
-        /// <remarks>This property returns null for spans that originate from Run nodes or nodes that are inside the header or footer.</remarks>
+        /// <remarks>This property returns null for spans that originate from Run nodes
+        /// or nodes that are inside the header or footer.</remarks>
         public override Node ParentNode => mParentNode;
     }
 

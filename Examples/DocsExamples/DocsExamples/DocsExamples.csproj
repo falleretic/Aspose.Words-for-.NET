@@ -37,8 +37,4 @@
     <Reference Include="System.Windows.Forms" Condition="'$(TargetFramework)' == 'net462'" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Rendering and Printing\Printing\DocumentPreviewAndPrint.cs" />
-  </ItemGroup>
-
 </Project>

@@ -1,65 +1,65 @@
-﻿using System;
+﻿#if NET462
+using System;
 using System.Drawing;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
 using NUnit.Framework;
-#if NET462
 using Aspose.Words;
 
 namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
 {
-    class EnumerateLayoutElements : DocsExamplesBase
+    internal class EnumerateLayoutElements : DocsExamplesBase
     {
         [Test]
         public static void GetLayoutElements()
         {
             Document doc = new Document(MyDir + "Document layout.docx");
 
-            // This creates an enumerator which is used to "walk" the elements of a rendered document
-            LayoutEnumerator it = new LayoutEnumerator(doc);
+            // Enumerator which is used to "walk" the elements of a rendered document.
+            LayoutEnumerator layoutEnumerator = new LayoutEnumerator(doc);
 
-            // This sample uses the enumerator to write information about each layout element to the console
-            LayoutInfoWriter.Run(it);
+            // Use the enumerator to write information about each layout element to the console.
+            LayoutInfoWriter.Run(layoutEnumerator);
 
-            // This sample adds a border around each layout element and saves each page as a JPEG image to the data directory
-            OutlineLayoutEntitiesRenderer.Run(doc, it, ArtifactsDir);
+            // Adds a border around each layout element and saves each page as a JPEG image to the data directory.
+            OutlineLayoutEntitiesRenderer.Run(doc, layoutEnumerator, ArtifactsDir);
         }
     }
 
     internal class LayoutInfoWriter
     {
-        public static void Run(LayoutEnumerator it)
+        public static void Run(LayoutEnumerator layoutEnumerator)
         {
-            DisplayLayoutElements(it, string.Empty);
+            DisplayLayoutElements(layoutEnumerator, string.Empty);
         }
 
         /// <summary>
         /// Enumerates forward through each layout element in the document and prints out details of each element. 
         /// </summary>
-        private static void DisplayLayoutElements(LayoutEnumerator it, string padding)
+        private static void DisplayLayoutElements(LayoutEnumerator layoutEnumerator, string padding)
         {
             do
             {
-                DisplayEntityInfo(it, padding);
+                DisplayEntityInfo(layoutEnumerator, padding);
 
-                if (it.MoveFirstChild())
+                if (layoutEnumerator.MoveFirstChild())
                 {
                     // Recurse into this child element.
-                    DisplayLayoutElements(it, AddPadding(padding));
-                    it.MoveParent();
+                    DisplayLayoutElements(layoutEnumerator, AddPadding(padding));
+                    layoutEnumerator.MoveParent();
                 }
-            } while (it.MoveNext());
+            } while (layoutEnumerator.MoveNext());
         }
 
         /// <summary>
         /// Displays information about the current layout entity to the console.
         /// </summary>
-        private static void DisplayEntityInfo(LayoutEnumerator it, string padding)
+        private static void DisplayEntityInfo(LayoutEnumerator layoutEnumerator, string padding)
         {
-            Console.Write(padding + it.Type + " - " + it.Kind);
+            Console.Write(padding + layoutEnumerator.Type + " - " + layoutEnumerator.Kind);
 
-            if (it.Type == LayoutEntityType.Span)
-                Console.Write(" - " + it.Text);
+            if (layoutEnumerator.Type == LayoutEntityType.Span)
+                Console.Write(" - " + layoutEnumerator.Text);
 
             Console.WriteLine();
         }
@@ -75,14 +75,14 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
 
     internal class OutlineLayoutEntitiesRenderer
     {
-        public static void Run(Document doc, LayoutEnumerator it, string folderPath)
+        public static void Run(Document doc, LayoutEnumerator layoutEnumerator, string folderPath)
         {
-            // Make sure the enumerator is at the beginning of the document
-            it.Reset();
+            // Make sure the enumerator is at the beginning of the document.
+            layoutEnumerator.Reset();
 
             for (int pageIndex = 0; pageIndex < doc.PageCount; pageIndex++)
             {
-                // Use the document class to find information about the current page
+                // Use the document class to find information about the current page.
                 PageInfo pageInfo = doc.GetPageInfo(pageIndex);
 
                 const float resolution = 150.0f;
@@ -94,19 +94,19 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
 
                     using (Graphics g = Graphics.FromImage(img))
                     {
-                        // Make the background white
+                        // Make the background white.
                         g.Clear(Color.White);
 
-                        // Render the page to the graphics
+                        // Render the page to the graphics.
                         doc.RenderToScale(pageIndex, g, 0.0f, 0.0f, 1.0f);
 
-                        // Add an outline around each element on the page using the graphics object
-                        AddBoundingBoxToElementsOnPage(it, g);
+                        // Add an outline around each element on the page using the graphics object.
+                        AddBoundingBoxToElementsOnPage(layoutEnumerator, g);
 
-                        // Move the enumerator to the next page if there is one
-                        it.MoveNext();
+                        // Move the enumerator to the next page if there is one.
+                        layoutEnumerator.MoveNext();
 
-                        img.Save(folderPath + $"TestFile Page {pageIndex + 1} Out.png");
+                        img.Save(folderPath + $"EnumerateLayoutElements.Page_{pageIndex + 1}.png");
                     }
                 }
             }
@@ -115,30 +115,30 @@ namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
         /// <summary>
         /// Adds a colored border around each layout element on the page.
         /// </summary>
-        private static void AddBoundingBoxToElementsOnPage(LayoutEnumerator it, Graphics g)
+        private static void AddBoundingBoxToElementsOnPage(LayoutEnumerator layoutEnumerator, Graphics g)
         {
             do
             {
-                // This time instead of MoveFirstChild and MoveNext, we use MoveLastChild and MovePrevious to enumerate from last to first
-                // Enumeration is done backward so the lines of child entities are drawn first and don't overlap the lines of the parent
-                if (it.MoveLastChild())
+                // Use MoveLastChild and MovePrevious to enumerate from last to the first enumeration is done backward,
+                // so the lines of child entities are drawn first and don't overlap the parent's lines.
+                if (layoutEnumerator.MoveLastChild())
                 {
-                    AddBoundingBoxToElementsOnPage(it, g);
-                    it.MoveParent();
+                    AddBoundingBoxToElementsOnPage(layoutEnumerator, g);
+                    layoutEnumerator.MoveParent();
                 }
 
-                // Convert the rectangle representing the position of the layout entity on the page from points to pixels
-                RectangleF rectF = it.Rectangle;
+                // Convert the rectangle representing the position of the layout entity on the page from points to pixels.
+                RectangleF rectF = layoutEnumerator.Rectangle;
                 Rectangle rect = new Rectangle(PointToPixel(rectF.Left, g.DpiX), PointToPixel(rectF.Top, g.DpiY),
                     PointToPixel(rectF.Width, g.DpiX), PointToPixel(rectF.Height, g.DpiY));
 
-                // Draw a line around the layout entity on the page
-                g.DrawRectangle(GetColoredPenFromType(it.Type), rect);
+                // Draw a line around the layout entity on the page.
+                g.DrawRectangle(GetColoredPenFromType(layoutEnumerator.Type), rect);
 
-                // Stop after all elements on the page have been procesed
-                if (it.Type == LayoutEntityType.Page)
+                // Stop after all elements on the page have been processed.
+                if (layoutEnumerator.Type == LayoutEntityType.Page)
                     return;
-            } while (it.MovePrevious());
+            } while (layoutEnumerator.MovePrevious());
         }
 
         /// <summary>

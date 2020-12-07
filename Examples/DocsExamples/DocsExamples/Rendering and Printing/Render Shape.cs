@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿#if NET462
+using System.Drawing;
 using System.Drawing.Imaging;
 using Aspose.Words;
 using Aspose.Words.Drawing;
@@ -6,7 +7,6 @@ using Aspose.Words.Rendering;
 using Aspose.Words.Saving;
 using Aspose.Words.Tables;
 using NUnit.Framework;
-#if NET462
 using System.IO;
 
 namespace DocsExamples.Rendering_and_Printing
