@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Reporting.Mail_Merge
 {
-    class WorkingWithXMLData : DocsExamplesBase
+    internal class WorkingWithXmlData : DocsExamplesBase
     {
         [Test]
         public static void XmlMailMerge()
@@ -20,10 +20,9 @@ namespace DocsExamples.Reporting.Mail_Merge
             customersDs.ReadXml(MyDir + "Mail merge data - Customers.xml");
 
             Document doc = new Document(MyDir + "Mail merge destinations - Registration complete.docx");
-            // Execute mail merge to fill the template with data from XML using DataTable
             doc.MailMerge.Execute(customersDs.Tables["Customer"]);
 
-            doc.Save(ArtifactsDir + "XmlMailMerge.docx");
+            doc.Save(ArtifactsDir + "WorkingWithXmlData.XmlMailMerge.docx");
             //ExEnd:XmlMailMerge
         }
 
@@ -33,19 +32,17 @@ namespace DocsExamples.Reporting.Mail_Merge
             //ExStart:NestedMailMerge
             DataSet pizzaDs = new DataSet();
 
-            // Note: The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml
-            // To see examples of how to set up relations manually check the corresponding documentation of this sample
+            // Note that the 'Datatable.TableNames' and the 'DataSet.Relations' are defined implicitly by .NET through ReadXml.
+            // To see examples of how to set up relations manually, check the corresponding documentation of this sample.
             pizzaDs.ReadXml(MyDir + "Mail merge data - Orders.xml");
 
             Document doc = new Document(MyDir + "Mail merge destinations - Invoice.docx");
 
-            // Trim trailing and leading whitespaces mail merge values
             doc.MailMerge.TrimWhitespaces = false;
 
-            // Execute the nested mail merge with regions
             doc.MailMerge.ExecuteWithRegions(pizzaDs);
 
-            doc.Save(ArtifactsDir + "MailMerge.NestedMailMerge.docx");
+            doc.Save(ArtifactsDir + "WorkingWithXmlData.NestedMailMerge.docx");
             //ExEnd:NestedMailMerge
         }
 
@@ -56,15 +53,13 @@ namespace DocsExamples.Reporting.Mail_Merge
             DataSet ds = new DataSet();
             ds.ReadXml(MyDir + "Mail merge data - Vendors.xml");
 
-            // Open a template document
             Document doc = new Document(MyDir + "Mail merge destinations - Vendor.docx");
 
             doc.MailMerge.UseNonMergeFields = true;
 
-            // Execute mail merge to fill the template with data from XML using DataSet
             doc.MailMerge.ExecuteWithRegions(ds);
             
-            doc.Save(ArtifactsDir + "MailMerge.UsingMustacheSyntax.docx");
+            doc.Save(ArtifactsDir + "WorkingWithXmlData.MustacheSyntax.docx");
             //ExEnd:MailMergeUsingMustacheSyntax
         }
 
@@ -73,15 +68,14 @@ namespace DocsExamples.Reporting.Mail_Merge
         {
             XElement orderXml = XElement.Load(MyDir + "Mail merge data - Purchase order.xml");
 
-            // Query the purchase order xml file using LINQ to extract the order items 
-            // Into an object of an anonymous type. 
+            // Query the purchase order XML file using LINQ to extract the order items into an object of an unknown type.
             //
-            // Make sure you give the properties of the anonymous type the same names as 
-            // The MERGEFIELD fields in the document.
+            // Ensure you give the unknown type properties the same names as the MERGEFIELD fields in the document.
             //
-            // To pass the actual values stored in the XML element or attribute to Aspose.Words, 
-            // we need to cast them to string. This is to prevent the XML tags being inserted into the final document when
-            // The XElement or XAttribute objects are passed to Aspose.Words.
+            // To pass the actual values stored in the XML element or attribute to Aspose.Words,
+            // we need to cast them to string. This prevents the XML tags from being inserted into the final document
+            // when the XElement or XAttribute objects are passed to Aspose.Words.
+
             //ExStart:LINQtoXMLMailMergeorderItems
             var orderItems =
                 from order in orderXml.Descendants("Item")
@@ -111,31 +105,29 @@ namespace DocsExamples.Reporting.Mail_Merge
                 };
             //ExEnd:LINQToXMLQueryForDeliveryAddress
 
-            // Create custom Aspose.Words mail merge data sources based on the LINQ queries
             MyMailMergeDataSource orderItemsDataSource = new MyMailMergeDataSource(orderItems, "Items");
             MyMailMergeDataSource deliveryDataSource = new MyMailMergeDataSource(deliveryAddress);
+            
             //ExStart:LINQToXMLMailMerge
             Document doc = new Document(MyDir + "Mail merge destinations - LINQ.docx");
 
-            // Fill the document with data from our data sources
-            // Using mail merge regions for populating the order items table is required
-            // Because it allows the region to be repeated in the document for each order item
+            // Fill the document with data from our data sources using mail merge regions for populating the order items
+            // table is required because it allows the region to be repeated in the document for each order item.
             doc.MailMerge.ExecuteWithRegions(orderItemsDataSource);
 
-            // The standard mail merge without regions is used for the delivery address
             doc.MailMerge.Execute(deliveryDataSource);
 
-            doc.Save(ArtifactsDir + "MailMerge.LINQtoXML.docx");
+            doc.Save(ArtifactsDir + "WorkingWithXmlData.LINQtoXmlMailMerge.docx");
             //ExEnd:LINQToXMLMailMerge
         }
 
         /// <summary>
-        /// Aspose.Words does not accept LINQ queries as an input for mail merge directly, 
-        /// But provides a generic mechanism which allows mail merges from any data source.
+        /// Aspose.Words do not accept LINQ queries as input for mail merge directly
+        /// but provide a generic mechanism that allows mail merges from any data source.
         /// 
-        /// This class is a simple implementation of the Aspose.Words custom mail merge data source 
-        /// Interface that accepts a LINQ query (in fact any IEnumerable object).
-        /// Aspose.Words calls this class during the mail merge to retrieve the data.
+        /// This class is a simple implementation of the Aspose.Words custom mail merge data source
+        /// interface that accepts a LINQ query (any IEnumerable object).
+        /// Aspose.Words call this class during the mail merge to retrieve the data.
         /// </summary>
         //ExStart:MyMailMergeDataSource 
         public class MyMailMergeDataSource : IMailMergeDataSource
@@ -156,8 +148,8 @@ namespace DocsExamples.Reporting.Mail_Merge
             /// Creates a new instance of a custom mail merge data source, for mail merge with regions.
             /// </summary>
             /// <param name="data">Data returned from a LINQ query.</param>
-            /// <param name="tableName">Name of the data source is only used when you perform mail merge with regions. 
-            /// If you prefer to use the simple mail merge then use constructor with one parameter.</param>          
+            /// <param name="tableName">The name of the data source is only used when you perform a mail merge with regions. 
+            /// If you prefer to use the simple mail merge, then use the constructor with one parameter.</param>          
             //ExStart:MyMailMergeDataSourceConstructorWithDataTable
             public MyMailMergeDataSource(IEnumerable data, string tableName)
             {
@@ -167,29 +159,27 @@ namespace DocsExamples.Reporting.Mail_Merge
             //ExEnd:MyMailMergeDataSourceConstructorWithDataTable
 
             /// <summary>
-            /// Aspose.Words calls this method to get a value for every data field.
+            /// Aspose.Words call this method to get a value for every data field.
             /// 
-            /// This is a simple "generic" implementation of a data source that can work over 
-            /// Any IEnumerable collection. This implementation assumes that the merge field
-            /// Name in the document matches the name of a public property on the object
-            /// In the collection and uses reflection to get the value of the property.
+            /// This is a simple "generic" implementation of a data source that can work over any IEnumerable collection.
+            /// This implementation assumes that the merge field name in the document matches the public property's name
+            /// on the object in the collection and uses reflection to get the property's value.
             /// </summary>
             //ExStart:MyMailMergeDataSourceGetValue
             public bool GetValue(string fieldName, out object fieldValue)
             {
-                // Use reflection to get the property by name from the current object
+                // Use reflection to get the property by name from the current object.
                 object obj = mEnumerator.Current;
-
                 Type currentRecordType = obj.GetType();
+
                 PropertyInfo property = currentRecordType.GetProperty(fieldName);
                 if (property != null)
                 {
                     fieldValue = property.GetValue(obj, null);
                     return true;
                 }
-
-                // Return False to the Aspose.Words mail merge engine to indicate the field was not found
                 fieldValue = null;
+
                 return false;
             }
             //ExEnd:MyMailMergeDataSourceGetValue

@@ -8,7 +8,7 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
     class NestedMailMergeCustom : DocsExamplesBase
     {
         [Test]
-        public static void Run()
+        public static void CustomMailMerge()
         {
             //ExStart:NestedMailMergeCustom
             Document doc = new Document();
@@ -33,21 +33,20 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
 
             builder.InsertField(" MERGEFIELD TableEnd:Customer");
 
-            // Create some data that we will use in the mail merge
-            CustomerList customers = new CustomerList();
-            customers.Add(new Customer("Thomas Hardy", "120 Hanover Sq., London"));
-            customers.Add(new Customer("Paolo Accorti", "Via Monte Bianco 34, Torino"));
+            CustomerList customers = new CustomerList
+            {
+                new Customer("Thomas Hardy", "120 Hanover Sq., London"),
+                new Customer("Paolo Accorti", "Via Monte Bianco 34, Torino")
+            };
 
-            // Create some data for nesting in the mail merge
             customers[0].Orders.Add(new Order("Rugby World Cup Cap", 2));
             customers[0].Orders.Add(new Order("Rugby World Cup Ball", 1));
             customers[1].Orders.Add(new Order("Rugby World Cup Guide", 1));
 
-            // To be able to mail merge from your own data source, it must be wrapped
-            // Into an object that implements the IMailMergeDataSource interface
+            // To be able to mail merge from your data source,
+            // it must be wrapped into an object that implements the IMailMergeDataSource interface.
             CustomerMailMergeDataSource customersDataSource = new CustomerMailMergeDataSource(customers);
 
-            // Now you can pass your data source into Aspose.Words
             doc.MailMerge.ExecuteWithRegions(customersDataSource);
 
             doc.Save(ArtifactsDir + "MailMerge.NestedMailMergeCustom.docx");
@@ -111,8 +110,8 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
         }
 
         /// <summary>
-        /// A custom mail merge data source that you implement to allow Aspose.Words 
-        /// To mail merge data from your Customer objects into Microsoft Word documents.
+        /// A custom mail merge data source that you implement to allow Aspose.Words
+        /// to mail merge data from your Customer objects into Microsoft Word documents.
         /// </summary>
         public class CustomerMailMergeDataSource : IMailMergeDataSource
         {
@@ -120,7 +119,7 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
             {
                 mCustomers = customers;
 
-                // When the data source is initialized, it must be positioned before the first record
+                // When the data source is initialized, it must be positioned before the first record.
                 mRecordIndex = -1;
             }
 
@@ -146,8 +145,6 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
                         fieldValue = mCustomers[mRecordIndex].Orders;
                         return true;
                     default:
-                        // A field with this name was not found,
-                        // Return false to the Aspose.Words mail merge engine
                         fieldValue = null;
                         return false;
                 }
@@ -190,7 +187,7 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
             {
                 mOrders = orders;
 
-                // When the data source is initialized, it must be positioned before the first record
+                // When the data source is initialized, it must be positioned before the first record.
                 mRecordIndex = -1;
             }
 
@@ -213,8 +210,6 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
                         fieldValue = mOrders[mRecordIndex].Quantity;
                         return true;
                     default:
-                        // A field with this name was not found,
-                        // Return false to the Aspose.Words mail merge engine
                         fieldValue = null;
                         return false;
                 }
@@ -231,9 +226,9 @@ namespace DocsExamples.Reporting.Mail_Merge.Custom_examples
                 return !IsEof;
             }
 
-            // Return null because we haven't any child elements for this sort of object
             public IMailMergeDataSource GetChildDataSource(string tableName)
             {
+                // Return null because we haven't any child elements for this sort of object.
                 return null;
             }
 

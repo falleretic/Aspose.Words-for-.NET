@@ -13,10 +13,8 @@ namespace DocsExamples.Reporting.LINQ_Reporting_Engine
             //ExStart:BubbleChart
             Document doc = new Document(MyDir + "Reporting engine template - Bubble chart.docx");
 
-            // Create a Reporting Engine
             ReportingEngine engine = new ReportingEngine();
-            // Execute the build report
-            engine.BuildReport(doc, Helpers.Common.GetManagers(), "managers");
+            engine.BuildReport(doc, Common.GetManagers(), "managers");
             
             doc.Save(ArtifactsDir + "ReportingEngine.CreateBubbleChart.docx");
             //ExEnd:BubbleChart

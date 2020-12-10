@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Reporting.Mail_Merge
 {
-    class WorkingWithMailMergeCleanupOptions : DocsExamplesBase
+    internal class WorkingWithCleanupOptions : DocsExamplesBase
     {
         [Test]
         public static void RemoveRowsFromTable()
@@ -20,7 +20,7 @@ namespace DocsExamples.Reporting.Mail_Merge
             doc.MailMerge.MergeDuplicateRegions = true;
             doc.MailMerge.ExecuteWithRegions(data);
 
-            doc.Save(ArtifactsDir + "RemoveRowsFromTable.docx");
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveRowsFromTable.docx");
             //ExEnd:RemoveRowsFromTable
         }
 
@@ -34,20 +34,20 @@ namespace DocsExamples.Reporting.Mail_Merge
             FieldMergeField mergeFieldOption1 = (FieldMergeField) builder.InsertField("MERGEFIELD", "Option_1");
             mergeFieldOption1.FieldName = "Option_1";
 
-            // Here is the complete list of cleanable punctuation marks: ! , . : ; ? ¡ ¿
+            // Here is the complete list of cleanable punctuation marks: ! , . : ; ? ¡ ¿.
             builder.Write(" ?  ");
 
             FieldMergeField mergeFieldOption2 = (FieldMergeField) builder.InsertField("MERGEFIELD", "Option_2");
             mergeFieldOption2.FieldName = "Option_2";
 
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveEmptyParagraphs;
-            // The default value of the option is true which means that the behaviour was changed to mimic MS Word
-            // If you rely on the old behavior are able to revert it by setting the option to false
+            // The option's default value is true, which means that the behavior was changed to mimic MS Word.
+            // If you rely on the old behavior can revert it by setting the option to false.
             doc.MailMerge.CleanupParagraphsWithPunctuationMarks = true;
 
             doc.MailMerge.Execute(new[] { "Option_1", "Option_2" }, new object[] { null, null });
 
-            doc.Save(ArtifactsDir + "MailMerge.RemoveColonBetweenEmptyMergeFields.docx");
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.CleanupParagraphsWithPunctuationMarks.docx");
             //ExEnd:CleanupParagraphsWithPunctuationMarks
         }
 
@@ -57,21 +57,20 @@ namespace DocsExamples.Reporting.Mail_Merge
             //ExStart:RemoveUnmergedRegions
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
 
-            // Create a dummy data source containing no data
             DataSet data = new DataSet();
             //ExStart:MailMergeCleanupOptions
-            // Set the appropriate mail merge clean up options to remove any unused regions from the document
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions;
             // doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveContainingFields;
             // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveStaticFields;
             // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveEmptyParagraphs;           
             // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveUnusedFields;
             //ExEnd:MailMergeCleanupOptions
-            // Execute mail merge which will have no effect as there is no data. However the regions found in the document will be removed
-            // Automatically as they are unused
+
+            // Execute mail merge, which will not affect as there is no data.
+            // However, the regions found in the document will be removed automatically as they are unused.
             doc.MailMerge.ExecuteWithRegions(data);
 
-            doc.Save(ArtifactsDir + "MailMerge.RemoveEmptyRegions.docx");
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveUnmergedRegions.docx");
             //ExEnd:RemoveUnmergedRegions
         }
     }

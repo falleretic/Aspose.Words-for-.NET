@@ -72,11 +72,13 @@ namespace DocsExamples.Reporting.LINQ_Reporting_Engine
             //ExStart:SettingBackgroundColor
             Document doc = new Document(MyDir + "Reporting engine template - Background color.docx");
 
-            List<BackgroundColor> colors = new List<BackgroundColor>();
-            colors.Add(new BackgroundColor { Name = "Black", Color = Color.Black });
-            colors.Add(new BackgroundColor { Name = "Red", Color = Color.FromArgb(255, 0, 0) });
-            colors.Add(new BackgroundColor { Name = "Empty", Color = Color.Empty });
-            
+            List<BackgroundColor> colors = new List<BackgroundColor>
+            {
+                new BackgroundColor {Name = "Black", Color = Color.Black},
+                new BackgroundColor {Name = "Red", Color = Color.FromArgb(255, 0, 0)},
+                new BackgroundColor {Name = "Empty", Color = Color.Empty}
+            };
+
             ReportingEngine engine = new ReportingEngine();
             engine.BuildReport(doc, colors, "Colors");
 

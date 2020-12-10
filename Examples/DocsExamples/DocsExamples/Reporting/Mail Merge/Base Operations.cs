@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Reporting.Mail_Merge
 {
-    class BaseOperations : DocsExamplesBase
+    internal class BaseOperations : DocsExamplesBase
     {
         [Test]
         public static void SimpleMailMerge()
@@ -15,26 +15,24 @@ namespace DocsExamples.Reporting.Mail_Merge
 
             doc.MailMerge.UseNonMergeFields = true;
 
-            // Fill the fields in the document with user data
             doc.MailMerge.Execute(
-                new string[] { "FullName", "Company", "Address", "Address2", "City" },
+                new[] { "FullName", "Company", "Address", "Address2", "City" },
                 new object[] { "James Bond", "MI5 Headquarters", "Milbank", "", "London" });
 
-            // Send the document in Word format to the client browser with an option to save to disk or open inside the current browser
-            doc.Save(ArtifactsDir + "SimpleMailMerge.docx");
+            doc.Save(ArtifactsDir + "BaseOperations.SimpleMailMerge.docx");
             //ExEnd:SimpleMailMerge
         }
 
         [Test]
-        public static void UseIfElseMustacheSyntax()
+        public static void UseIfElseMustache()
         {
             //ExStart:UseOfifelseMustacheSyntax
             Document doc = new Document(MyDir + "Mail merge destinations - Mustache syntax.docx");
 
             doc.MailMerge.UseNonMergeFields = true;
-            doc.MailMerge.Execute(new string[] { "GENDER" }, new object[] { "MALE" });
+            doc.MailMerge.Execute(new[] { "GENDER" }, new object[] { "MALE" });
 
-            doc.Save(ArtifactsDir + "MailMerge.IfElseMustacheSyntax.docx");
+            doc.Save(ArtifactsDir + "BaseOperations.IfElseMustache.docx");
             //ExEnd:UseOfifelseMustacheSyntax
         }
 
@@ -46,17 +44,15 @@ namespace DocsExamples.Reporting.Mail_Merge
 
             const int orderId = 10444;
 
-            // Perform several mail merge operations populating only part of the document each time
+            // Perform several mail merge operations populating only part of the document each time.
 
-            // Use DataTable as a data source
             DataTable orderTable = GetTestOrder(orderId);
             doc.MailMerge.ExecuteWithRegions(orderTable);
 
-            // Instead of using DataTable you can create a DataView for custom sort or filter and then mail merge
+            // Instead of using DataTable you can create a DataView for custom sort or filter and then mail merge.
             DataView orderDetailsView = new DataView(GetTestOrderDetails(orderId));
             orderDetailsView.Sort = "ExtendedPrice DESC";
  
-            // Execute the mail merge operation.
             doc.MailMerge.ExecuteWithRegions(orderDetailsView);
 
             doc.Save(ArtifactsDir + "MailMerge.ExecuteWithRegions.docx");
@@ -82,24 +78,21 @@ namespace DocsExamples.Reporting.Mail_Merge
         }
 
         /// <summary>
-        /// Utility function that creates a connection, command, 
-        /// Executes the command and return the result in a DataTable.
+        /// Utility function that creates a connection, command, executes the command and returns the result in a DataTable.
         /// </summary>
         private static DataTable ExecuteDataTable(string commandText)
         {
-            // Open the database connection.
-            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +
-                                DatabaseDir + "Northwind.mdb";
+            string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
+
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
-            // Create and execute a command
             OleDbCommand cmd = new OleDbCommand(commandText, conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
             DataTable table = new DataTable();
             da.Fill(table);
 
-            // Close the database
             conn.Close();
 
             return table;
@@ -114,28 +107,23 @@ namespace DocsExamples.Reporting.Mail_Merge
             
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
-            // Get data from a database
+            
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM Customers", conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             
             DataTable data = new DataTable();
             da.Fill(data);
 
-            // Open the template document
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
 
             int counter = 1;
-            // Loop though all records in the data source
             foreach (DataRow row in data.Rows)
             {
-                // Clone the template instead of loading it from disk (for speed)
                 Document dstDoc = (Document) doc.Clone(true);
 
-                // Execute mail merge
                 dstDoc.MailMerge.Execute(row);
 
-                // Save the document
-                dstDoc.Save(string.Format(ArtifactsDir + "MailMerge.ProduceMultipleDocuments_{0}.doc", counter++));
+                dstDoc.Save(string.Format(ArtifactsDir + "BaseOperations.ProduceMultipleDocuments_{0}.docx", counter++));
             }
             //ExEnd:ProduceMultipleDocuments
         }

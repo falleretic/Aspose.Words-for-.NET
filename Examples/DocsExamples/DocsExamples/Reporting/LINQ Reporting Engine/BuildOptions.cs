@@ -11,8 +11,8 @@ namespace DocsExamples.Reporting.LINQ_Reporting_Engine
         {
             //ExStart:RemoveEmptyParagraphs
             Document doc = new Document(MyDir + "Reporting engine template - Remove empty paragraphs.docx");
+
             ReportingEngine engine = new ReportingEngine { Options = ReportBuildOptions.RemoveEmptyParagraphs };
-            
             engine.BuildReport(doc, Helpers.Common.GetManagers(), "Managers");
 
             doc.Save(ArtifactsDir + "ReportingEngine.RemoveEmptyParagraphs.docx");

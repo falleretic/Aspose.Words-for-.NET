@@ -4,10 +4,10 @@ using DocsExamples.Reporting.LINQ_Reporting_Engine.Helpers.Data_Source_Objects;
 
 namespace DocsExamples.Reporting.LINQ_Reporting_Engine.Helpers
 {
-    class Common : DocsExamplesBase
+    internal class Common : DocsExamplesBase
     {
         /// <summary>
-        /// Return first manager from Managers which is an enumeration of instances of the Manager class. 
+        /// Return the first manager from Managers, which is an enumeration of instances of the Manager class. 
         /// </summary>        
         public static Manager GetManager()
         {
@@ -135,9 +135,9 @@ namespace DocsExamples.Reporting.LINQ_Reporting_Engine.Helpers
         {
             //ExStart:Photo
             // Load the photo and read all bytes
-            byte[] imgdata = System.IO.File.ReadAllBytes(ImagesDir + "Logo.jpg");
+            byte[] logo = System.IO.File.ReadAllBytes(ImagesDir + "Logo.jpg");
             
-            return imgdata;
+            return logo;
             //ExEnd:Photo
         }
 

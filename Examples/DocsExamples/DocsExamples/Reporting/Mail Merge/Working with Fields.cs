@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Reporting.Mail_Merge
 {
-    class WorkingWithFields : DocsExamplesBase
+    internal class WorkingWithFields : DocsExamplesBase
     {
         [Test]
         public static void MailMergeFormFields()
@@ -18,13 +18,11 @@ namespace DocsExamples.Reporting.Mail_Merge
             //ExStart:MailMergeFormFields
             Document doc = new Document(MyDir + "Mail merge destinations - Fax.docx");
 
-            // Setup mail merge event handler to do the custom work
+            // Setup mail merge event handler to do the custom work.
             doc.MailMerge.FieldMergingCallback = new HandleMergeField();
-
-            // Trim trailing and leading whitespaces mail merge values
+            // Trim trailing and leading whitespaces mail merge values.
             doc.MailMerge.TrimWhitespaces = false;
 
-            // This is the data for mail merge
             string[] fieldNames = {
                 "RecipientName", "SenderName", "FaxNumber", "PhoneNumber",
                 "Subject", "Body", "Urgent", "ForReview", "PleaseComment"
@@ -35,10 +33,9 @@ namespace DocsExamples.Reporting.Mail_Merge
                 "<b>HTML Body Test message 1</b>", true, false, true
             };
 
-            // Execute the mail merge
             doc.MailMerge.Execute(fieldNames, fieldValues);
 
-            doc.Save(ArtifactsDir + "MailMergeFormFields.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.MailMergeFormFields.docx");
             //ExEnd:MailMergeFormFields
         }
 
@@ -47,37 +44,32 @@ namespace DocsExamples.Reporting.Mail_Merge
         {
             /// <summary>
             /// This handler is called for every mail merge field found in the document,
-            ///  for every record found in the data source.
+            /// for every record found in the data source.
             /// </summary>
             void IFieldMergingCallback.FieldMerging(FieldMergingArgs e)
             {
                 if (mBuilder == null)
                     mBuilder = new DocumentBuilder(e.Document);
 
-                // We decided that we want all boolean values to be output as check box form fields
+                // We decided that we want all boolean values to be output as check box form fields.
                 if (e.FieldValue is bool)
                 {
-                    // Move the "cursor" to the current merge field
+                    // Move the "cursor" to the current merge field.
                     mBuilder.MoveToMergeField(e.FieldName);
 
-                    // It is nice to give names to check boxes. Lets generate a name such as MyField21 or so
                     string checkBoxName = $"{e.FieldName}{e.RecordIndex}";
 
-                    // Insert a check box
                     mBuilder.InsertCheckBox(checkBoxName, (bool) e.FieldValue, 0);
 
-                    // Nothing else to do for this field
                     return;
                 }
 
                 switch (e.FieldName)
                 {
-                    // We want to insert html during mail merge
                     case "Body":
                         mBuilder.MoveToMergeField(e.FieldName);
                         mBuilder.InsertHtml((string) e.FieldValue);
                         break;
-                    // Another example, we want the Subject field to come out as text input form field
                     case "Subject":
                     {
                         mBuilder.MoveToMergeField(e.FieldName);
@@ -90,7 +82,7 @@ namespace DocsExamples.Reporting.Mail_Merge
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                // Do nothing
+                // Do nothing.
             }
 
             private DocumentBuilder mBuilder;
@@ -116,11 +108,10 @@ namespace DocsExamples.Reporting.Mail_Merge
                     | MailMergeCleanupOptions.RemoveUnusedRegions
                     | MailMergeCleanupOptions.RemoveUnusedFields;
 
-            // Add a handler for the MergeField event.
             doc.MailMerge.FieldMergingCallback = new ImageFieldMergingHandler();
             doc.MailMerge.ExecuteWithRegions(new DataSourceRoot());
 
-            doc.Save(ArtifactsDir + "MailMerge.ImageMailMerge.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.MailMergeImageField.docx");
             // ExEnd:MailMergeImageField
         }
 
@@ -134,10 +125,10 @@ namespace DocsExamples.Reporting.Mail_Merge
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                Shape shape = new Shape(args.Document, ShapeType.Image);
-                shape.Width = 126;
-                shape.Height = 126;
-                shape.WrapType = WrapType.Square;
+                Shape shape = new Shape(args.Document, ShapeType.Image)
+                {
+                    Width = 126, Height = 126, WrapType = WrapType.Square
+                };
 
                 shape.ImageData.SetImage(MyDir + "Mail merge image.png");
 
@@ -193,25 +184,25 @@ namespace DocsExamples.Reporting.Mail_Merge
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 
-            // Insert a MERGEFIELD nested inside an IF field
-            // Since the statement of the IF field is false, the result of the inner MERGEFIELD will not be displayed
-            // and the MERGEFIELD will not receive any data during a mail merge
+            // Insert a MERGEFIELD nested inside an IF field.
+            // Since the IF field statement is false, the result of the inner MERGEFIELD will not be displayed,
+            // and the MERGEFIELD will not receive any data during a mail merge.
             FieldIf fieldIf = (FieldIf)builder.InsertField(" IF 1 = 2 ");
             builder.MoveTo(fieldIf.Separator);
             builder.InsertField(" MERGEFIELD  FullName ");
 
-            // We can still count MERGEFIELDs inside false-statement IF fields if we set this flag to true
+            // We can still count MERGEFIELDs inside false-statement IF fields if we set this flag to true.
             doc.MailMerge.UnconditionalMergeFieldsAndRegions = true;
 
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("FullName");
             dataTable.Rows.Add("James Bond");
 
-            // Execute the mail merge
             doc.MailMerge.Execute(dataTable);
 
-            // The result will not be visible in the document because the IF field is false, but the inner MERGEFIELD did indeed receive data
-            doc.Save(ArtifactsDir + "MailMerge.UnconditionalMergeFieldsAndRegions.docx");
+            // The result will not be visible in the document because the IF field is false,
+            // but the inner MERGEFIELD did indeed receive data.
+            doc.Save(ArtifactsDir + "WorkingWithFields.MailMergeAndConditionalField.docx");
             //ExEnd:MailMergeAndConditionalField
         }
 
@@ -221,26 +212,20 @@ namespace DocsExamples.Reporting.Mail_Merge
             //ExStart:MailMergeImageFromBlob
             Document doc = new Document(MyDir + "Mail merge destination - Northwind employees.docx");
 
-            // Set up the event handler for image fields
             doc.MailMerge.FieldMergingCallback = new HandleMergeImageFieldFromBlob();
 
-            // Open a database connection
             string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
-            // Open the data reader
-            // It needs to be in the normal mode that reads all record at once
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM Employees", conn);
             IDataReader dataReader = cmd.ExecuteReader();
 
-            // Perform mail merge
             doc.MailMerge.ExecuteWithRegions(dataReader, "Employees");
 
-            // Close the database
             conn.Close();
             
-            doc.Save(ArtifactsDir + "MailMerge.ImageFromBlob.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.MailMergeImageFromBlob.docx");
             //ExEnd:MailMergeImageFromBlob
         }
 
@@ -249,18 +234,18 @@ namespace DocsExamples.Reporting.Mail_Merge
         {
             void IFieldMergingCallback.FieldMerging(FieldMergingArgs args)
             {
-                // Do nothing
+                // Do nothing.
             }
 
             /// <summary>
             /// This is called when mail merge engine encounters Image:XXX merge field in the document.
-            /// You have a chance to return an Image object, file name or a stream that contains the image.
+            /// You have a chance to return an Image object, file name, or a stream that contains the image.
             /// </summary>
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs e)
             {
-                // The field value is a byte array, just cast it and create a stream on it
+                // The field value is a byte array, just cast it and create a stream on it.
                 MemoryStream imageStream = new MemoryStream((byte[]) e.FieldValue);
-                // Now the mail merge engine will retrieve the image from the stream
+                // Now the mail merge engine will retrieve the image from the stream.
                 e.ImageStream = imageStream;
             }
         }
@@ -277,10 +262,9 @@ namespace DocsExamples.Reporting.Mail_Merge
                     <h1>Hello world!</h1>
             </html>";
 
-            // Execute mail merge
             doc.MailMerge.Execute(new string[] { "htmlField1" }, new object[] { html });
 
-            doc.Save(ArtifactsDir + "HandleMailMergeSwitches.docx");
+            doc.Save(ArtifactsDir + "WorkingWithFields.HandleMailMergeSwitches.docx");
         }
 
         //ExStart:HandleMailMergeSwitches
@@ -316,14 +300,12 @@ namespace DocsExamples.Reporting.Mail_Merge
             //ExStart:MailMergeAlternatingRows
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
 
-            // Add a handler for the MergeField event
             doc.MailMerge.FieldMergingCallback = new HandleMergeFieldAlternatingRows();
 
-            // Execute mail merge with regions
             DataTable dataTable = GetSuppliersDataTable();
             doc.MailMerge.ExecuteWithRegions(dataTable);
             
-            doc.Save(ArtifactsDir + "MailMerge.AlternatingRows.doc");
+            doc.Save(ArtifactsDir + "WorkingWithFields.AlternatingRows.doc");
             //ExEnd:MailMergeAlternatingRows
         }
 
@@ -332,24 +314,22 @@ namespace DocsExamples.Reporting.Mail_Merge
         {
             /// <summary>
             /// Called for every merge field encountered in the document.
-            /// We can either return some data to the mail merge engine or do something
-            /// Else with the document. In this case we modify cell formatting.
+            /// We can either return some data to the mail merge engine or do something else with the document.
+            /// In this case we modify cell formatting.
             /// </summary>
             void IFieldMergingCallback.FieldMerging(FieldMergingArgs e)
             {
                 if (mBuilder == null)
                     mBuilder = new DocumentBuilder(e.Document);
 
-                // This way we catch the beginning of a new row
                 if (e.FieldName.Equals("CompanyName"))
                 {
-                    // Select the color depending on whether the row number is even or odd
+                    // Select the color depending on whether the row number is even or odd.
                     Color rowColor = IsOdd(mRowIdx) 
                         ? Color.FromArgb(213, 227, 235) 
                         : Color.FromArgb(242, 242, 242);
 
-                    // There is no way to set cell properties for the whole row at the moment,
-                    // So we have to iterate over all cells in the row
+                    // There is no way to set cell properties for the whole row at the moment, so we have to iterate over all cells in the row.
                     for (int colIdx = 0; colIdx < 4; colIdx++)
                     {
                         mBuilder.MoveToCell(0, mRowIdx, colIdx, 0);
@@ -362,7 +342,7 @@ namespace DocsExamples.Reporting.Mail_Merge
 
             void IFieldMergingCallback.ImageFieldMerging(ImageFieldMergingArgs args)
             {
-                // Do nothing
+                // Do nothing.
             }
 
             private DocumentBuilder mBuilder;
@@ -374,7 +354,6 @@ namespace DocsExamples.Reporting.Mail_Merge
         /// </summary>
         private static bool IsOdd(int value)
         {
-            // The code is a bit complex, but otherwise automatic conversion to VB does not work
             return (value / 2 * 2).Equals(value);
         }
 
@@ -385,11 +364,14 @@ namespace DocsExamples.Reporting.Mail_Merge
         private static DataTable GetSuppliersDataTable()
         {
             DataTable dataTable = new DataTable("Suppliers");
+
             dataTable.Columns.Add("CompanyName");
             dataTable.Columns.Add("ContactName");
+
             for (int i = 0; i < 10; i++)
             {
                 DataRow datarow = dataTable.NewRow();
+
                 dataTable.Rows.Add(datarow);
                 datarow[0] = "Company " + i;
                 datarow[1] = "Contact " + i;
