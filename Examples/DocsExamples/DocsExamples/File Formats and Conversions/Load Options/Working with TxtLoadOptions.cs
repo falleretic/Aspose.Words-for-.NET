@@ -35,10 +35,11 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
             // The fourth list, with whitespace inbetween the list number and list item contents,
             // will only be detected as a list if "DetectNumberingWithWhitespaces" in a LoadOptions object is set to true,
             // to avoid paragraphs that start with numbers being mistakenly detected as lists.
-            TxtLoadOptions txtLoadOptions = new TxtLoadOptions { DetectNumberingWithWhitespaces = true };
+            TxtLoadOptions loadOptions = new TxtLoadOptions { DetectNumberingWithWhitespaces = true };
 
             // Load the document while applying LoadOptions as a parameter and verify the result.
-            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(textDoc)), txtLoadOptions);
+            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(textDoc)), loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithTxtLoadOptions.DetectNumberingWithWhitespaces.docx");
             //ExEnd:DetectNumberingWithWhitespaces
         }
@@ -51,13 +52,14 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
                                    "    Line 2   \n" +
                                    " Line 3       ";
 
-            TxtLoadOptions txtLoadOptions = new TxtLoadOptions
+            TxtLoadOptions loadOptions = new TxtLoadOptions
             {
                 LeadingSpacesOptions = TxtLeadingSpacesOptions.Trim,
                 TrailingSpacesOptions = TxtTrailingSpacesOptions.Trim
             };
 
-            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(textDoc)), txtLoadOptions);
+            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(textDoc)), loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithTxtLoadOptions.HandleSpacesOptions.docx");
             //ExEnd:HandleSpacesOptions
         }
@@ -66,9 +68,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         public void DocumentTextDirection()
         {
             //ExStart:DocumentTextDirection
-            TxtLoadOptions txtLoadOptions = new TxtLoadOptions { DocumentDirection = DocumentDirection.Auto };
+            TxtLoadOptions loadOptions = new TxtLoadOptions { DocumentDirection = DocumentDirection.Auto };
 
-            Document doc = new Document(MyDir + "Hebrew text.txt", txtLoadOptions);
+            Document doc = new Document(MyDir + "Hebrew text.txt", loadOptions);
 
             Paragraph paragraph = doc.FirstSection.Body.FirstParagraph;
             Console.WriteLine(paragraph.ParagraphFormat.Bidi);

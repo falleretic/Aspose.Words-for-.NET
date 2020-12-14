@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithFootnotes : DocsExamplesBase
+    internal class WorkingWithFootnotes : DocsExamplesBase
     {
         [Test]
         public static void SetFootNoteColumns()

@@ -15,9 +15,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             
             builder.Write("Hello world!");
 
-            DocSaveOptions docSaveOptions = new DocSaveOptions { Password = "password" };
+            DocSaveOptions saveOptions = new DocSaveOptions { Password = "password" };
 
-            doc.Save(ArtifactsDir + "WorkingWithDocSaveOptions.EncryptDocumentWithPassword.docx", docSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithDocSaveOptions.EncryptDocumentWithPassword.docx", saveOptions);
             //ExEnd:EncryptDocumentWithPassword
         }
 
@@ -27,9 +27,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:DoNotCompressSmallMetafiles
             Document doc = new Document(MyDir + "Microsoft equation object.docx");
 
-            DocSaveOptions docSaveOptions = new DocSaveOptions { AlwaysCompressMetafiles = false };
+            DocSaveOptions saveOptions = new DocSaveOptions { AlwaysCompressMetafiles = false };
 
-            doc.Save(ArtifactsDir + "WorkingWithDocSaveOptions.NotCompressSmallMetafiles.docx", docSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithDocSaveOptions.NotCompressSmallMetafiles.docx", saveOptions);
             //ExEnd:DoNotCompressSmallMetafiles
         }
 
@@ -39,9 +39,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:DoNotSavePictureBullet
             Document doc = new Document(MyDir + "Image bullet points.docx");
 
-            DocSaveOptions docSaveOptions = new DocSaveOptions { SavePictureBullet = false };
+            DocSaveOptions saveOptions = new DocSaveOptions { SavePictureBullet = false };
 
-            doc.Save(ArtifactsDir + "WorkingWithDocSaveOptions.DoNotSavePictureBullet.docx", docSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithDocSaveOptions.DoNotSavePictureBullet.docx", saveOptions);
             //ExEnd:DoNotSavePictureBullet
         }
     }

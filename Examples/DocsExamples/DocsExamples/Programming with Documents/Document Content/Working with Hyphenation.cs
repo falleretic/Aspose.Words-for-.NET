@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithHyphenation : DocsExamplesBase
+    internal class WorkingWithHyphenation : DocsExamplesBase
     {
         [Test]
         public static void HyphenateWordsOfLanguages()

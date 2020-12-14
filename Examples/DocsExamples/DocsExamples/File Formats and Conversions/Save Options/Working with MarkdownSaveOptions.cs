@@ -22,21 +22,21 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             builder.Write("Cell2");
 
             // Makes all paragraphs inside the table to be aligned.
-            MarkdownSaveOptions markdownSaveOptions = new MarkdownSaveOptions
+            MarkdownSaveOptions saveOptions = new MarkdownSaveOptions
             {
                 TableContentAlignment = TableContentAlignment.Left
             };
-            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.LeftTableContentAlignment.md", markdownSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.LeftTableContentAlignment.md", saveOptions);
 
-            markdownSaveOptions.TableContentAlignment = TableContentAlignment.Right;
-            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.RightTableContentAlignment.md", markdownSaveOptions);
+            saveOptions.TableContentAlignment = TableContentAlignment.Right;
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.RightTableContentAlignment.md", saveOptions);
 
-            markdownSaveOptions.TableContentAlignment = TableContentAlignment.Center;
-            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.CenterTableContentAlignment.md", markdownSaveOptions);
+            saveOptions.TableContentAlignment = TableContentAlignment.Center;
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.CenterTableContentAlignment.md", saveOptions);
 
             // The alignment in this case will be taken from the first paragraph in corresponding table column.
-            markdownSaveOptions.TableContentAlignment = TableContentAlignment.Auto;
-            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.AutoTableContentAlignment.md", markdownSaveOptions);
+            saveOptions.TableContentAlignment = TableContentAlignment.Auto;
+            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.AutoTableContentAlignment.md", saveOptions);
             //ExEnd:ExportIntoMarkdownWithTableContentAlignment
         }
 

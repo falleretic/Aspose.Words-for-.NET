@@ -19,6 +19,7 @@ namespace DocsExamples.File_Formats_and_Conversions
             //ExStart:OpenDocument
             Document doc = new Document(MyDir + "Document.doc");
             //ExEnd:OpenDocument
+
             doc.Save(ArtifactsDir + "BaseConversions.DocToDocx.docx");
             //ExEnd:LoadAndSave
         }

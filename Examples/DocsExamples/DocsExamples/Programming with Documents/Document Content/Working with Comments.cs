@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithComments : DocsExamplesBase
+    internal class WorkingWithComments : DocsExamplesBase
     {
         [Test]
         public static void AddComments()

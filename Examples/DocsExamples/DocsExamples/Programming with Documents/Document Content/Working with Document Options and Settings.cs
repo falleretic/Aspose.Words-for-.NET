@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithDocumentOptionsAndSettings : DocsExamplesBase
+    internal class WorkingWithDocumentOptionsAndSettings : DocsExamplesBase
     {
         [Test]
         public static void OptimizeForMsWord()

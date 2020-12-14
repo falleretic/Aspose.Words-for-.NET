@@ -20,9 +20,10 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
                 </html>
             ";
 
-            HtmlLoadOptions htmlLoadOptions = new HtmlLoadOptions { PreferredControlType = HtmlControlType.StructuredDocumentTag };
+            HtmlLoadOptions loadOptions = new HtmlLoadOptions { PreferredControlType = HtmlControlType.StructuredDocumentTag };
 
-            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(html)), htmlLoadOptions);
+            Document doc = new Document(new MemoryStream(Encoding.UTF8.GetBytes(html)), loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithHtmlLoadOptions.PreferredControlType.docx", SaveFormat.Docx);
             //ExEnd:LoadHtmlElementsWithPreferredControlType
         }

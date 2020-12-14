@@ -18,17 +18,19 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
             LoadOptions loadOptions = new LoadOptions { UpdateDirtyFields = true };
 
             Document doc = new Document(MyDir + "Dirty field.docx", loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithLoadOptions.UpdateDirtyFields.docx");
             //ExEnd:UpdateDirtyFields
         }
 
         [Test]
-        public void LoadSaveEncryptedDoc()
+        public void LoadEncryptedDocument()
         {
             //ExStart:LoadSaveEncryptedDoc
             //ExStart:OpenEncryptedDocument
             Document doc = new Document(MyDir + "Encrypted.docx", new LoadOptions("docPassword"));
             //ExEnd:OpenEncryptedDocument
+
             doc.Save(ArtifactsDir + "WorkingWithLoadOptions.LoadAndSaveEncryptedOdt.odt", new OdtSaveOptions("newPassword"));
             //ExEnd:LoadSaveEncryptedDoc
         }
@@ -40,6 +42,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
             LoadOptions loadOptions = new LoadOptions { ConvertShapeToOfficeMath = true };
 
             Document doc = new Document(MyDir + "Office math.docx", loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithLoadOptions.ConvertShapeToOfficeMath.docx", SaveFormat.Docx);
             //ExEnd:ConvertShapeToOfficeMath
         }
@@ -48,12 +51,12 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         public void SetMsWordVersion()
         {
             //ExStart:SetMSWordVersion
-            // Create a new LoadOptions object, which will load documents according to MS Word 2019 specification by default.
-            LoadOptions loadOptions = new LoadOptions();
-            // Change the loading version to Microsoft Word 2010.
-            loadOptions.MswVersion = MsWordVersion.Word2010;
-
+            // Create a new LoadOptions object, which will load documents according to MS Word 2019 specification by default
+            // and change the loading version to Microsoft Word 2010.
+            LoadOptions loadOptions = new LoadOptions { MswVersion = MsWordVersion.Word2010 };
+            
             Document doc = new Document(MyDir + "Document.docx", loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithLoadOptions.SetMsWordVersion.docx");
             //ExEnd:SetMSWordVersion
         }
@@ -100,6 +103,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
             // When we open an Html document, external resources such as references to CSS stylesheet files
             // and external images will be handled customarily by the loading callback as the document is loaded.
             Document doc = new Document(MyDir + "Images.html", loadOptions);
+
             doc.Save(ArtifactsDir + "WorkingWithLoadOptions.ResourceLoadingCallback.pdf");
             //ExEnd:ResourceLoadingCallback
         }

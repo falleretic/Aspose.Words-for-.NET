@@ -18,9 +18,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             builder.Writeln("שלום עולם!");
             builder.Writeln("مرحبا بالعالم!");
 
-            TxtSaveOptions txtSaveOptions = new TxtSaveOptions { AddBidiMarks = true };
+            TxtSaveOptions saveOptions = new TxtSaveOptions { AddBidiMarks = true };
 
-            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.AddBidiMarks.txt", txtSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.AddBidiMarks.txt", saveOptions);
             //ExEnd:AddBidiMarks
         }
 
@@ -50,19 +50,19 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             builder.Write("Page 3");
 
             // All headers and footers are placed at the very end of the output document.
-            TxtSaveOptions txtSaveOptions = new TxtSaveOptions
+            TxtSaveOptions saveOptions = new TxtSaveOptions
             {
                 SaveFormat = SaveFormat.Text, ExportHeadersFootersMode = TxtExportHeadersFootersMode.AllAtEnd
             };
-            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.ExportHeadersFootersAllAtEnd.txt", txtSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.ExportHeadersFootersAllAtEnd.txt", saveOptions);
 
             // Only primary headers and footers are exported at the beginning and end of each section.
-            txtSaveOptions.ExportHeadersFootersMode = TxtExportHeadersFootersMode.PrimaryOnly;
-            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.ExportHeadersFootersPrimaryOnly.txt", txtSaveOptions);
+            saveOptions.ExportHeadersFootersMode = TxtExportHeadersFootersMode.PrimaryOnly;
+            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.ExportHeadersFootersPrimaryOnly.txt", saveOptions);
 
             // No headers and footers are exported.
-            txtSaveOptions.ExportHeadersFootersMode = TxtExportHeadersFootersMode.None;
-            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.DoNotExportHeadersFooters.txt", txtSaveOptions);
+            saveOptions.ExportHeadersFootersMode = TxtExportHeadersFootersMode.None;
+            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.DoNotExportHeadersFooters.txt", saveOptions);
             //ExEnd:ExportHeadersFootersMode
         }
 
@@ -81,11 +81,11 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             builder.ListFormat.ListIndent(); 
             builder.Write("Item 3");
 
-            TxtSaveOptions txtSaveOptions = new TxtSaveOptions();
-            txtSaveOptions.ListIndentation.Count = 1;
-            txtSaveOptions.ListIndentation.Character = '\t';
+            TxtSaveOptions saveOptions = new TxtSaveOptions();
+            saveOptions.ListIndentation.Count = 1;
+            saveOptions.ListIndentation.Character = '\t';
 
-            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.UseTabCharacterPerLevelForListIndentation.txt", txtSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.UseTabCharacterPerLevelForListIndentation.txt", saveOptions);
             //ExEnd:UseTabCharacterPerLevelForListIndentation
         }
 
@@ -104,11 +104,11 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             builder.ListFormat.ListIndent(); 
             builder.Write("Item 3");
 
-            TxtSaveOptions txtSaveOptions = new TxtSaveOptions();
-            txtSaveOptions.ListIndentation.Count = 3;
-            txtSaveOptions.ListIndentation.Character = ' ';
+            TxtSaveOptions saveOptions = new TxtSaveOptions();
+            saveOptions.ListIndentation.Count = 3;
+            saveOptions.ListIndentation.Character = ' ';
 
-            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.UseSpaceCharacterPerLevelForListIndentation.txt", txtSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithTxtSaveOptions.UseSpaceCharacterPerLevelForListIndentation.txt", saveOptions);
             //ExEnd:UseSpaceCharacterPerLevelForListIndentation
         }
     }

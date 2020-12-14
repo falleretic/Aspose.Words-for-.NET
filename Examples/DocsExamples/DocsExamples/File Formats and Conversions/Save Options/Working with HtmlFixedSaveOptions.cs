@@ -12,9 +12,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:UseFontFromTargetMachine
             Document doc = new Document(MyDir + "Bullet points with alternative font.docx");
 
-            HtmlFixedSaveOptions htmlFixedSaveOptions = new HtmlFixedSaveOptions { UseTargetMachineFonts = true };
+            HtmlFixedSaveOptions saveOptions = new HtmlFixedSaveOptions { UseTargetMachineFonts = true };
 
-            doc.Save(ArtifactsDir + "WorkingWithHtmlFixedSaveOptions.UseFontFromTargetMachine.html", htmlFixedSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithHtmlFixedSaveOptions.UseFontFromTargetMachine.html", saveOptions);
             //ExEnd:UseFontFromTargetMachine
         }
 
@@ -26,9 +26,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 
             // Setting this property to true restores the old behavior (separate files) for compatibility with legacy code.
             // All CSS rules are written into single file "styles.css.
-            HtmlFixedSaveOptions htmlFixedSaveOptions = new HtmlFixedSaveOptions { SaveFontFaceCssSeparately = false };
+            HtmlFixedSaveOptions saveOptions = new HtmlFixedSaveOptions { SaveFontFaceCssSeparately = false };
             
-            doc.Save(ArtifactsDir + "WorkingWithHtmlFixedSaveOptions.WriteAllCssRulesInSingleFile.html", htmlFixedSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithHtmlFixedSaveOptions.WriteAllCssRulesInSingleFile.html", saveOptions);
             //ExEnd:WriteAllCssRulesInSingleFile
         }
     }

@@ -13,9 +13,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:EncryptDocxWithPassword
             Document doc = new Document(MyDir + "Document.docx");
 
-            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions { Password = "password" };
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions { Password = "password" };
 
-            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.EncryptDocxWithPassword.docx", ooxmlSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.EncryptDocxWithPassword.docx", saveOptions);
             //ExEnd:EncryptDocxWithPassword
         }
 
@@ -27,9 +27,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 
             doc.CompatibilityOptions.OptimizeFor(MsWordVersion.Word2016);
             
-            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions() { Compliance = OoxmlCompliance.Iso29500_2008_Strict };
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions() { Compliance = OoxmlCompliance.Iso29500_2008_Strict };
 
-            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.OoxmlComplianceIso29500_2008_Strict.docx", ooxmlSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.OoxmlComplianceIso29500_2008_Strict.docx", saveOptions);
             //ExEnd:OoxmlComplianceIso29500_2008_Strict
         }
 
@@ -39,9 +39,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:UpdateLastSavedTimeProperty
             Document doc = new Document(MyDir + "Document.docx");
 
-            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions { UpdateLastSavedTimeProperty = true };
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions { UpdateLastSavedTimeProperty = true };
 
-            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.UpdateLastSavedTimeProperty.docx", ooxmlSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.UpdateLastSavedTimeProperty.docx", saveOptions);
             //ExEnd:UpdateLastSavedTimeProperty
         }
 
@@ -51,9 +51,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             //ExStart:KeepLegacyControlChars
             Document doc = new Document(MyDir + "Legacy control character.doc");
 
-            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions(SaveFormat.FlatOpc) { KeepLegacyControlChars = true };
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions(SaveFormat.FlatOpc) { KeepLegacyControlChars = true };
 
-            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.KeepLegacyControlChars.docx", ooxmlSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.KeepLegacyControlChars.docx", saveOptions);
             //ExEnd:KeepLegacyControlChars
         }
 
@@ -63,9 +63,9 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             // ExStart:SetCompressionLevel
             Document doc = new Document(MyDir + "Document.docx");
 
-            OoxmlSaveOptions ooxmlSaveOptions = new OoxmlSaveOptions { CompressionLevel = CompressionLevel.SuperFast };
+            OoxmlSaveOptions saveOptions = new OoxmlSaveOptions { CompressionLevel = CompressionLevel.SuperFast };
 
-            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.SetCompressionLevel.docx", ooxmlSaveOptions);
+            doc.Save(ArtifactsDir + "WorkingWithOoxmlSaveOptions.SetCompressionLevel.docx", saveOptions);
             // ExEnd:SetCompressionLevel
         }
     }

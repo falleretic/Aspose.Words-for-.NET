@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithHarfBuzz : DocsExamplesBase
+    internal class WorkingWithHarfBuzz : DocsExamplesBase
     {
         [Test]
         public static void OpenTypeFeatures()

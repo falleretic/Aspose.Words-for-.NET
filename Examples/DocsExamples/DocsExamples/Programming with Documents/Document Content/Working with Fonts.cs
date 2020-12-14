@@ -10,7 +10,7 @@ using Font = Aspose.Words.Font;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithFonts : DocsExamplesBase
+    internal class WorkingWithFonts : DocsExamplesBase
     {
         [Test]
         public static void FontFormatting()
