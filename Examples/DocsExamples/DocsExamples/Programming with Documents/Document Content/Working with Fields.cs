@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -528,6 +529,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         [Test]
         public static void FormFieldsGetByName()
         {
+            //ExStart:FormFieldsFontFormatting
             //ExStart:FormFieldsGetByName
             Document doc = new Document(MyDir + "Form fields.docx");
 
@@ -536,6 +538,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             FormField formField1 = documentFormFields[3];
             FormField formField2 = documentFormFields["Text2"];
             //ExEnd:FormFieldsGetByName
+
+            formField1.Font.Size = 20;
+            formField2.Font.Color = Color.Red;
+            //ExEnd:FormFieldsFontFormatting
         }
 
         [Test]

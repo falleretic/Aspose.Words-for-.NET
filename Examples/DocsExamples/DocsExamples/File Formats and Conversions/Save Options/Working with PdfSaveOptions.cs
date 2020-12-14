@@ -342,13 +342,13 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         [Test]
         public static void InterpolateImages()
         {
-            //ExStart:InterpolateImages
+            //ExStart:SetImageInterpolation
             Document doc = new Document(MyDir + "Rendering.docx");
 
             PdfSaveOptions pdfSaveOptions = new PdfSaveOptions { InterpolateImages = true };
 
             doc.Save(ArtifactsDir + "WorkingWithPdfSaveOptions.InterpolateImages.pdf", pdfSaveOptions);
-            //ExEnd:InterpolateImages
+            //ExEnd:SetImageInterpolation
         }
     }
 }

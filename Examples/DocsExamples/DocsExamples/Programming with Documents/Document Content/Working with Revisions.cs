@@ -1,5 +1,6 @@
 ﻿using System;
 using Aspose.Words;
+using Aspose.Words.Drawing;
 using Aspose.Words.Layout;
 using NUnit.Framework;
 
@@ -71,15 +72,23 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         public static void ShowRevisionsInBalloons()
         {
             //ExStart:ShowRevisionsInBalloons
+            //ExStart:SetMeasurementUnit
+            //ExStart:SetRevisionBarsPosition
             Document doc = new Document(MyDir + "Revisions.docx");
 
             // Renders insert and delete revisions inline, format revisions in balloons.
             doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.Format;
+            doc.LayoutOptions.RevisionOptions.MeasurementUnit = MeasurementUnits.Inches;
+            
+            // Renders revision bars on the right side of a page.
+            doc.LayoutOptions.RevisionOptions.RevisionBarsPosition = HorizontalAlignment.Right;
 
             // Renders insert revisions inline, delete and format revisions in balloons.
             //doc.LayoutOptions.RevisionOptions.ShowInBalloons = ShowInBalloons.FormatAndDelete;
 
             doc.Save(ArtifactsDir + "WorkingWithRevisions.ShowRevisionsInBalloons.pdf");
+            //ExEnd:SetRevisionBarsPosition
+            //ExEnd:SetMeasurementUnit
             //ExEnd:ShowRevisionsInBalloons
         }
 

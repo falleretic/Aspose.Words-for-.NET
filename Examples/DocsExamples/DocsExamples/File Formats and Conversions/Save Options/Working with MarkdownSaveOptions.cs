@@ -1,4 +1,5 @@
-﻿using Aspose.Words;
+﻿using System.IO;
+using Aspose.Words;
 using Aspose.Words.Saving;
 using NUnit.Framework;
 
@@ -6,19 +7,6 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
     internal class WorkingWithMarkdownSaveOptions : DocsExamplesBase
     {
-        [Test]
-        public void SaveToMarkdownDocument()
-        {
-            //ExStart:SaveToMarkdownDocument
-            Document doc = new Document();
-            DocumentBuilder builder = new DocumentBuilder(doc);
-            
-            builder.Writeln("Some text!");
-
-            doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.MarkdownDocument.md", new MarkdownSaveOptions());
-            //ExEnd:SaveToMarkdownDocument
-        }
-
         [Test]
         public void ExportIntoMarkdownWithTableContentAlignment()
         {
@@ -50,6 +38,19 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
             markdownSaveOptions.TableContentAlignment = TableContentAlignment.Auto;
             doc.Save(ArtifactsDir + "WorkingWithMarkdownSaveOptions.AutoTableContentAlignment.md", markdownSaveOptions);
             //ExEnd:ExportIntoMarkdownWithTableContentAlignment
+        }
+
+        [Test]
+        public static void SetImagesFolder()
+        {
+            // ExStart:SetImagesFolder
+            Document doc = new Document(MyDir + "Image bullet points.docx");
+
+            MarkdownSaveOptions saveOptions = new MarkdownSaveOptions { ImagesFolder = ArtifactsDir + "Images" };
+
+            using (MemoryStream stream = new MemoryStream())
+                doc.Save(stream, saveOptions);
+            // ExEnd:SetImagesFolder
         }
     }
 }

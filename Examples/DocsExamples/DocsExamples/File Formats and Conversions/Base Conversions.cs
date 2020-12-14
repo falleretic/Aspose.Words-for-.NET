@@ -111,6 +111,19 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
+        public void DocxToMarkdown()
+        {
+            //ExStart:SaveToMarkdownDocument
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            builder.Writeln("Some text!");
+
+            doc.Save(ArtifactsDir + "BaseConversions.DocxToMarkdown.md");
+            //ExEnd:SaveToMarkdownDocument
+        }
+
+        [Test]
         public static void DocxToTxt()
         {
             //ExStart:DocxToTxt

@@ -426,7 +426,7 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
                 { new SystemFontSource(), new ResourceSteamFontSource() });
 
-            doc.Save(ArtifactsDir + "Rendering.SetFontsFolders.pdf");
+            doc.Save(ArtifactsDir + "WorkingWithFonts.SetFontsFolders.pdf");
         }
 
         internal class ResourceSteamFontSource : StreamFontSource
@@ -437,5 +437,47 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
             }
         }
         // ExEnd:ResourceSteamFontSourceExample
+
+        //ExStart:GetSubstitutionWithoutSuffixes
+        [Test]
+        public static void GetSubstitutionWithoutSuffixes()
+        {
+            Document doc = new Document(MyDir + "Rendering.docx");
+
+            DocumentSubstitutionWarnings substitutionWarningHandler = new DocumentSubstitutionWarnings();
+            doc.WarningCallback = substitutionWarningHandler;
+
+            ArrayList fontSources = new ArrayList(FontSettings.DefaultInstance.GetFontsSources());
+
+            FolderFontSource folderFontSource = new FolderFontSource(MyDir + "Fonts", true);
+            fontSources.Add(folderFontSource);
+
+            FontSourceBase[] updatedFontSources = (FontSourceBase[])fontSources.ToArray(typeof(FontSourceBase));
+            FontSettings.DefaultInstance.SetFontsSources(updatedFontSources);
+
+            doc.Save(ArtifactsDir + "WorkingWithFonts.GetSubstitutionWithoutSuffixes.pdf");
+
+            Assert.AreEqual(
+                "Font 'DINOT-Regular' has not been found. Using 'DINOT' font instead. Reason: font name substitution.",
+                substitutionWarningHandler.FontWarnings[0].Description);
+        }
+
+        public class DocumentSubstitutionWarnings : IWarningCallback
+        {
+            /// <summary>
+            /// Our callback only needs to implement the "Warning" method.
+            /// This method is called whenever there is a potential issue during document processing.
+            /// The callback can be set to listen for warnings generated during document load and/or document save.
+            /// </summary>
+            public void Warning(WarningInfo info)
+            {
+                // We are only interested in fonts being substituted.
+                if (info.WarningType == WarningType.FontSubstitution)
+                    FontWarnings.Warning(info);
+            }
+
+            public WarningInfoCollection FontWarnings = new WarningInfoCollection();
+        }
+        //ExEnd:GetSubstitutionWithoutSuffixes
     }
 }

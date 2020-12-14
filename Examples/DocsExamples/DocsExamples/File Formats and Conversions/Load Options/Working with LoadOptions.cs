@@ -48,7 +48,10 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         public void SetMsWordVersion()
         {
             //ExStart:SetMSWordVersion
-            LoadOptions loadOptions = new LoadOptions { MswVersion = MsWordVersion.Word2003 };
+            // Create a new LoadOptions object, which will load documents according to MS Word 2019 specification by default.
+            LoadOptions loadOptions = new LoadOptions();
+            // Change the loading version to Microsoft Word 2010.
+            loadOptions.MswVersion = MsWordVersion.Word2010;
 
             Document doc = new Document(MyDir + "Document.docx", loadOptions);
             doc.Save(ArtifactsDir + "WorkingWithLoadOptions.SetMsWordVersion.docx");
@@ -151,6 +154,36 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
 
             Document doc = new Document(MyDir + "Encoded in UTF-7.txt", loadOptions);
             //ExEnd:LoadWithEncoding
+        }
+
+        [Test]
+        public static void SkipPdfImages()
+        {
+            //ExStart:SkipPdfImages
+            PdfLoadOptions loadOptions = new PdfLoadOptions { SkipPdfImages = true };
+
+            Document doc = new Document(MyDir + "Pdf Document.pdf", loadOptions);
+            //ExEnd:SkipPdfImages
+        }
+
+        [Test]
+        public static void ConvertMetafilesToPng()
+        {
+            //ExStart:ConvertMetafilesToPng
+            LoadOptions loadOptions = new LoadOptions { ConvertMetafilesToPng = true };
+
+            Document doc = new Document(MyDir + "WMF with image.docx", loadOptions);
+            //ExEnd:ConvertMetafilesToPng
+        }
+
+        [Test]
+        public static void LoadChm()
+        {
+            // ExStart:LoadCHM
+            LoadOptions loadOptions = new LoadOptions { Encoding = Encoding.GetEncoding("windows-1251") };
+
+            Document doc = new Document(MyDir + "HTML help.chm", loadOptions);
+            // ExEnd:LoadCHM
         }
     }
 }

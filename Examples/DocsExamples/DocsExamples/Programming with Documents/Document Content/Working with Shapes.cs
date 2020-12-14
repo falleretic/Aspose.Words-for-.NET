@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using Aspose.Words;
 using Aspose.Words.Drawing;
@@ -189,6 +190,18 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
 
             Console.WriteLine("The document has {0} shapes with SmartArt.", count);
             //ExEnd:DetectSmartArtShape
+        }
+
+        [Test]
+        public static void UpdateSmartArtDrawing()
+        {
+            Document doc = new Document(MyDir + "SmartArt.docx");
+
+            //ExStart:UpdateSmartArtDrawing
+            foreach (Shape shape in doc.GetChildNodes(NodeType.Shape, true))
+                if (shape.HasSmartArt)
+                    shape.UpdateSmartArtDrawing();
+            //ExEnd:UpdateSmartArtDrawing
         }
     }
 }

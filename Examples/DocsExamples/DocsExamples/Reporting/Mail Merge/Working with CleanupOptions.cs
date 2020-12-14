@@ -17,6 +17,7 @@ namespace DocsExamples.Reporting.Mail_Merge
             DataSet data = new DataSet();
             doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedRegions |
                                            MailMergeCleanupOptions.RemoveEmptyTableRows;
+
             doc.MailMerge.MergeDuplicateRegions = true;
             doc.MailMerge.ExecuteWithRegions(data);
 
@@ -66,12 +67,72 @@ namespace DocsExamples.Reporting.Mail_Merge
             // doc.MailMerge.CleanupOptions |= MailMergeCleanupOptions.RemoveUnusedFields;
             //ExEnd:MailMergeCleanupOptions
 
-            // Execute mail merge, which will not affect as there is no data.
-            // However, the regions found in the document will be removed automatically as they are unused.
+            // Merge the data with the document by executing mail merge which will have no effect as there is no data.
+            // However the regions found in the document will be removed automatically as they are unused.
             doc.MailMerge.ExecuteWithRegions(data);
 
             doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveUnmergedRegions.docx");
             //ExEnd:RemoveUnmergedRegions
+        }
+
+        [Test]
+        public static void RemoveEmptyParagraphs()
+        {
+            //ExStart:RemoveEmptyParagraphs
+            Document doc = new Document(MyDir + "Table with fields.docx");
+
+            doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveEmptyParagraphs;
+
+            doc.MailMerge.Execute(new string[] { "FullName", "Company", "Address", "Address2", "City" },
+                new object[] { "James Bond", "MI5 Headquarters", "Milbank", "", "London" });
+
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveEmptyParagraphs.docx");
+            //ExEnd:RemoveEmptyParagraphs
+        }
+
+        [Test]
+        public static void RemoveUnusedFields()
+        {
+            //ExStart:RemoveUnusedFields
+            Document doc = new Document(MyDir + "Table with fields.docx");
+
+            doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveUnusedFields;
+
+            doc.MailMerge.Execute(new string[] { "FullName", "Company", "Address", "Address2", "City" },
+                new object[] { "James Bond", "MI5 Headquarters", "Milbank", "", "London" });
+
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveUnusedFields.docx");
+            //ExEnd:RemoveUnusedFields
+        }
+
+        [Test]
+        public static void RemoveContainingFields()
+        {
+            //ExStart:RemoveContainingFields
+            Document doc = new Document(MyDir + "Table with fields.docx");
+
+            doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveContainingFields;
+
+            doc.MailMerge.Execute(new string[] { "FullName", "Company", "Address", "Address2", "City" },
+                new object[] { "James Bond", "MI5 Headquarters", "Milbank", "", "London" });
+
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveContainingFields.docx");
+            //ExEnd:RemoveContainingFields
+        }
+
+        [Test]
+        public static void RemoveEmptyTableRows()
+        {
+            //ExStart:RemoveEmptyTableRows
+            Document doc = new Document(MyDir + "Table with fields.docx");
+
+            doc.MailMerge.CleanupOptions = MailMergeCleanupOptions.RemoveEmptyTableRows;
+
+            doc.MailMerge.Execute(new string[] { "FullName", "Company", "Address", "Address2", "City" },
+                new object[] { "James Bond", "MI5 Headquarters", "Milbank", "", "London" });
+
+            doc.Save(ArtifactsDir + "WorkingWithCleanupOptions.RemoveEmptyTableRows.docx");
+            //ExEnd:RemoveEmptyTableRows
         }
     }
 }

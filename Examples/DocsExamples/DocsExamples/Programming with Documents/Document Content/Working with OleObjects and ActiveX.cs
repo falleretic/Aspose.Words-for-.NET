@@ -62,6 +62,20 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         }
 
         [Test]
+        public static void InsertOleObjectAsIconUsingStream()
+        {
+            //ExStart:InsertOLEObjectAsIconUsingStream
+            Document doc = new Document();
+            DocumentBuilder builder = new DocumentBuilder(doc);
+
+            using (MemoryStream stream = new MemoryStream(File.ReadAllBytes(MyDir + "Presentation.pptx")))
+                builder.InsertOleObjectAsIcon(stream, "Package", ImagesDir + "Logo icon.ico", "My embedded file");
+
+            doc.Save(ArtifactsDir + "WorkingWithOleObjectsAndActiveX.InsertOleObjectAsIconUsingStream.docx");
+            //ExEnd:InsertOLEObjectAsIconUsingStream
+        }
+
+        [Test]
         public static void ReadActiveXControlProperties()
         {
             Document doc = new Document(MyDir + "ActiveX controls.docx");

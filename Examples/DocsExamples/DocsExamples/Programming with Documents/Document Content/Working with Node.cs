@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Document_Content
 {
-    class WorkingWithNode : DocsExamplesBase
+    internal class WorkingWithNode : DocsExamplesBase
     {
         [Test]
         public static void UseNodeType()

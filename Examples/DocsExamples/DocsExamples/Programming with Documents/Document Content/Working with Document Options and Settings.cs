@@ -97,7 +97,10 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
         {
             //ExStart:AddJapaneseAsEditinglanguages
             LoadOptions loadOptions = new LoadOptions();
+            
+            // Set language preferences that will be used when document is loading.
             loadOptions.LanguagePreferences.AddEditingLanguage(EditingLanguage.Japanese);
+            //ExEnd:AddJapaneseAsEditinglanguages
 
             Document doc = new Document(MyDir + "No default editing language.docx", loadOptions);
 
@@ -106,7 +109,6 @@ namespace DocsExamples.Programming_with_Documents.Document_Content
                 localeIdFarEast == (int) EditingLanguage.Japanese
                     ? "The document either has no any FarEast language set in defaults or it was set to Japanese originally."
                     : "The document default FarEast language was set to another than Japanese language originally, so it is not overridden.");
-            //ExEnd:AddJapaneseAsEditinglanguages
         }
 
         [Test]

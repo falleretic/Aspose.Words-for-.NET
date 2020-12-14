@@ -30,14 +30,13 @@ namespace DocsExamples.Reporting.Mail_Merge
         public static void NestedMailMerge()
         {
             //ExStart:NestedMailMerge
+            // The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml.
             DataSet pizzaDs = new DataSet();
-
-            // Note that the 'Datatable.TableNames' and the 'DataSet.Relations' are defined implicitly by .NET through ReadXml.
-            // To see examples of how to set up relations manually, check the corresponding documentation of this sample.
             pizzaDs.ReadXml(MyDir + "Mail merge data - Orders.xml");
-
+            
             Document doc = new Document(MyDir + "Mail merge destinations - Invoice.docx");
 
+            // Trim trailing and leading whitespaces mail merge values.
             doc.MailMerge.TrimWhitespaces = false;
 
             doc.MailMerge.ExecuteWithRegions(pizzaDs);
@@ -47,7 +46,7 @@ namespace DocsExamples.Reporting.Mail_Merge
         }
 
         [Test]
-        public static void MustacheSyntax()
+        public static void MustacheSyntaxUsingDataSet()
         {
             //ExStart:MailMergeUsingMustacheSyntax
             DataSet ds = new DataSet();
@@ -59,7 +58,7 @@ namespace DocsExamples.Reporting.Mail_Merge
 
             doc.MailMerge.ExecuteWithRegions(ds);
             
-            doc.Save(ArtifactsDir + "WorkingWithXmlData.MustacheSyntax.docx");
+            doc.Save(ArtifactsDir + "WorkingWithXmlData.MustacheSyntaxUsingDataSet.docx");
             //ExEnd:MailMergeUsingMustacheSyntax
         }
 
