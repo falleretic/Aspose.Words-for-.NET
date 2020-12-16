@@ -6,7 +6,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
     class DocumentProtection : DocsExamplesBase
     {
         [Test]
-        public static void Protect()
+        public void Protect()
         {
             //ExStart:ProtectDocument
             Document doc = new Document(MyDir + "Document.docx");
@@ -15,7 +15,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void Unprotect()
+        public void Unprotect()
         {
             // ExStart:UnprotectDocument
             Document doc = new Document(MyDir + "Document.docx");
@@ -24,7 +24,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void GetProtectionType()
+        public void GetProtectionType()
         {
             //ExStart:GetProtectionType
             Document doc = new Document(MyDir + "Document.docx");

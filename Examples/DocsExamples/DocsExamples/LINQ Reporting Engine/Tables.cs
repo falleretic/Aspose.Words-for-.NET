@@ -7,7 +7,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
     internal class Tables : DocsExamplesBase
     {
         [Test]
-        public static void InTableAlternateContent()
+        public void InTableAlternateContent()
         {
             //ExStart:InTableAlternateContent
             Document doc = new Document(MyDir + "Reporting engine template - Total.docx");
@@ -20,7 +20,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void InTableMasterDetail()
+        public void InTableMasterDetail()
         {
             //ExStart:InTableMasterDetail
             Document doc = new Document(MyDir + "Reporting engine template - Nested data table.docx");
@@ -33,7 +33,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void InTableWithFilteringGroupingSorting()
+        public void InTableWithFilteringGroupingSorting()
         {
             //ExStart:InTableWithFilteringGroupingSorting
             Document doc = new Document(MyDir + "Reporting engine template - Table with filtering.docx");

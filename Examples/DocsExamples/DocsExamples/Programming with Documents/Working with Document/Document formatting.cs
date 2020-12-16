@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Aspose.Words;
 using NUnit.Framework;
 
@@ -7,7 +7,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class DocumentFormatting : DocsExamplesBase
     {
         [Test]
-        public static void SpaceBetweenAsianAndLatinText()
+        public void SpaceBetweenAsianAndLatinText()
         {
             //ExStart:SpaceBetweenAsianAndLatinText
             Document doc = new Document();
@@ -25,7 +25,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void AsianTypographyLineBreakGroup()
+        public void AsianTypographyLineBreakGroup()
         {
             //ExStart:AsianTypographyLineBreakGroup
             Document doc = new Document(MyDir + "Asian typography.docx");
@@ -40,7 +40,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ParagraphFormatting()
+        public void ParagraphFormatting()
         {
             //ExStart:ParagraphFormatting
             Document doc = new Document();
@@ -62,7 +62,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MultilevelListFormatting()
+        public void MultilevelListFormatting()
         {
             //ExStart:MultilevelListFormatting
             Document doc = new Document();
@@ -93,7 +93,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ApplyParagraphStyle()
+        public void ApplyParagraphStyle()
         {
             //ExStart:ApplyParagraphStyle
             Document doc = new Document();
@@ -107,7 +107,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ApplyBordersAndShadingToParagraph()
+        public void ApplyBordersAndShadingToParagraph()
         {
             //ExStart:ApplyBordersAndShadingToParagraph
             Document doc = new Document();
@@ -132,7 +132,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
         
         [Test]
-        public static void ChangeAsianParagraphSpacingAndIndents()
+        public void ChangeAsianParagraphSpacingAndIndents()
         {
             //ExStart:ChangeAsianParagraphSpacingAndIndents
             Document doc = new Document(MyDir + "Asian typography.docx");
@@ -149,7 +149,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void SnapToGrid()
+        public void SnapToGrid()
         {
             //ExStart:SetSnapToGrid
             Document doc = new Document();
@@ -170,7 +170,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void GetParagraphStyleSeparator()
+        public void GetParagraphStyleSeparator()
         {
             //ExStart:GetParagraphStyleSeparator
             Document doc = new Document(MyDir + "Document.docx");

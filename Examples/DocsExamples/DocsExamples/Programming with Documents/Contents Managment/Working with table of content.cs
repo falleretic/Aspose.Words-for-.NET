@@ -6,7 +6,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     class WorkingWithTableOfContent : DocsExamplesBase
     {
         [Test]
-        public static void ChangeStyleOfTocLevel()
+        public void ChangeStyleOfTocLevel()
         {
             //ExStart:ChangeStyleOfTOCLevel
             Document doc = new Document();
@@ -16,7 +16,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ChangeTocTabStops()
+        public void ChangeTocTabStops()
         {
             //ExStart:ChangeTOCTabStops
             Document doc = new Document(MyDir + "Table of contents.docx");

@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithPclSaveOptions : DocsExamplesBase
+    public class WorkingWithPclSaveOptions : DocsExamplesBase
     {
         [Test]
-        public static void RasterizeTransformedElements()
+        public void RasterizeTransformedElements()
         {
             //ExStart:RasterizeTransformedElements
             Document doc = new Document(MyDir + "Rendering.docx");

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithOdtSaveOptions : DocsExamplesBase
+    public class WorkingWithOdtSaveOptions : DocsExamplesBase
     {
         [Test]
         public void MeasureUnit()

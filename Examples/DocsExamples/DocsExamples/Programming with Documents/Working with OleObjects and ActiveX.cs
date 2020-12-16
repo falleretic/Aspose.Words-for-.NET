@@ -10,7 +10,7 @@ namespace DocsExamples.Programming_with_Documents
     class WorkingWithOleObjectsAndActiveX : DocsExamplesBase
     {
         [Test]
-        public static void InsertOleObject()
+        public void InsertOleObject()
         {
             //ExStart:DocumentBuilderInsertOleObject
             Document doc = new Document();
@@ -23,7 +23,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertOleObjectWithOlePackage()
+        public void InsertOleObjectWithOlePackage()
         {
             //ExStart:InsertOleObjectwithOlePackage
             Document doc = new Document();
@@ -48,7 +48,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertOleObjectAsIcon()
+        public void InsertOleObjectAsIcon()
         {
             //ExStart:InsertOLEObjectAsIcon
             Document doc = new Document();
@@ -62,7 +62,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertOleObjectAsIconUsingStream()
+        public void InsertOleObjectAsIconUsingStream()
         {
             //ExStart:InsertOLEObjectAsIconUsingStream
             Document doc = new Document();
@@ -76,7 +76,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ReadActiveXControlProperties()
+        public void ReadActiveXControlProperties()
         {
             Document doc = new Document(MyDir + "ActiveX controls.docx");
 

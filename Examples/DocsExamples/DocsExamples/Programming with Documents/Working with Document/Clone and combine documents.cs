@@ -11,7 +11,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class CloneAndCombineDocuments : DocsExamplesBase
     {
         [Test]
-        public static void CloningDocument()
+        public void CloningDocument()
         {
             //ExStart:CloningDocument
             Document doc = new Document(MyDir + "Document.docx");
@@ -22,7 +22,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertDocumentAtReplace()
+        public void InsertDocumentAtReplace()
         {
             //ExStart:InsertDocumentAtReplace
             Document mainDoc = new Document(MyDir + "Document insertion 1.docx");
@@ -36,7 +36,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertDocumentAtBookmark()
+        public void InsertDocumentAtBookmark()
         {
             //ExStart:InsertDocumentAtBookmark         
             Document mainDoc = new Document(MyDir + "Document insertion 1.docx");
@@ -50,7 +50,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertDocumentAtMailMerge()
+        public void InsertDocumentAtMailMerge()
         {
             //ExStart:InsertDocumentAtMailMerge   
             Document mainDoc = new Document(MyDir + "Document insertion 1.docx");
@@ -114,7 +114,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         /// <param name="insertAfterNode">Node in the destination document after which the content
         /// Should be inserted. This node should be a block level node (paragraph or table).</param>
         /// <param name="srcDoc">The document to insert.</param>
-        static void InsertDocumentWithSectionFormatting(Node insertAfterNode, Document srcDoc)
+        void InsertDocumentWithSectionFormatting(Node insertAfterNode, Document srcDoc)
         {
             if (!insertAfterNode.NodeType.Equals(NodeType.Paragraph) &
                 !insertAfterNode.NodeType.Equals(NodeType.Table))

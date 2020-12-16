@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     internal class RemoveContent : DocsExamplesBase
     {
         [Test]
-        public static void RemovePageBreaks()
+        public void RemovePageBreaks()
         {
             // ExStart:OpenFromFile
             Document doc = new Document(MyDir + "Document.docx");
@@ -24,7 +24,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         //ExStart:RemovePageBreaks
-        private static void RemovePageBreaks(Document doc)
+        private void RemovePageBreaks(Document doc)
         {
             NodeCollection paragraphs = doc.GetChildNodes(NodeType.Paragraph, true);
 
@@ -45,7 +45,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:RemovePageBreaks
 
         //ExStart:RemoveSectionBreaks
-        private static void RemoveSectionBreaks(Document doc)
+        private void RemoveSectionBreaks(Document doc)
         {
             // Loop through all sections starting from the section that precedes the last one and moving to the first section.
             for (int i = doc.Sections.Count - 2; i >= 0; i--)
@@ -59,7 +59,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:RemoveSectionBreaks
 
         [Test]
-        public static void RemoveFooters()
+        public void RemoveFooters()
         {
             //ExStart:RemoveFooters
             Document doc = new Document(MyDir + "Header and footer types.docx");
@@ -85,7 +85,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
 
         [Test]
         //ExStart:RemoveTOCFromDocument
-        public static void RemoveToc()
+        public void RemoveToc()
         {
             Document doc = new Document(MyDir + "Table of contents.docx");
 
@@ -100,7 +100,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         /// </summary>
         /// <param name="doc">The document to remove the field from.</param>
         /// <param name="index">The zero-based index of the TOC to remove.</param>
-        public static void RemoveTableOfContents(Document doc, int index)
+        public void RemoveTableOfContents(Document doc, int index)
         {
             // Store the FieldStart nodes of TOC fields in the document for quick access.
             ArrayList fieldStarts = new ArrayList();

@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
     internal class WorkingWithDigitalSinatures : DocsExamplesBase
     {
         [Test]
-        public static void SignDocument()
+        public void SignDocument()
         {
             //ExStart:SingDocument
             CertificateHolder certHolder = CertificateHolder.Create(MyDir + "morzal.pfx", "aw");
@@ -20,7 +20,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void SigningEncryptedDocument()
+        public void SigningEncryptedDocument()
         {
             //ExStart:SigningEncryptedDocument
             SignOptions signOptions = new SignOptions { DecryptionPassword = "decryptionPassword" };
@@ -33,7 +33,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void CreatingAndSigningNewSignatureLine()
+        public void CreatingAndSigningNewSignatureLine()
         {
             //ExStart:CreatingAndSigningNewSignatureLine
             Document doc = new Document();
@@ -57,7 +57,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void SigningExistingSignatureLine()
+        public void SigningExistingSignatureLine()
         {
             //ExStart:SigningExistingSignatureLine
             Document doc = new Document(MyDir + "Signature line.docx");
@@ -79,7 +79,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void SetSignatureProviderId()
+        public void SetSignatureProviderId()
         {
             //ExStart:SetSignatureProviderID
             Document doc = new Document(MyDir + "Signature line.docx");
@@ -100,7 +100,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void CreateNewSignatureLineAndSetProviderId()
+        public void CreateNewSignatureLineAndSetProviderId()
         {
             //ExStart:CreateNewSignatureLineAndSetProviderID
             Document doc = new Document();
@@ -138,7 +138,7 @@ namespace DocsExamples.Programming_with_Documents.Protect_or_Encrypt_Document
         }
 
         [Test]
-        public static void AccessAndVerifySignature()
+        public void AccessAndVerifySignature()
         {
             //ExStart:AccessAndVerifySignature
             Document doc = new Document(MyDir + "Digitally signed.docx");

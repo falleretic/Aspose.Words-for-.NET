@@ -10,7 +10,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
     internal class BaseOperations : DocsExamplesBase
     {
         [Test]
-        public static void SimpleMailMerge()
+        public void SimpleMailMerge()
         {
             //ExStart:SimpleMailMerge
             // Include the code for our template.
@@ -33,7 +33,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void UseIfElseMustache()
+        public void UseIfElseMustache()
         {
             //ExStart:UseOfifelseMustacheSyntax
             Document doc = new Document(MyDir + "Mail merge destinations - Mustache syntax.docx");
@@ -46,7 +46,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void MustacheSyntaxUsingDataTable()
+        public void MustacheSyntaxUsingDataTable()
         {
             //ExStart:MustacheSyntaxUsingDataTable
             Document doc = new Document(MyDir + "Mail merge destinations - Vendor.docx");
@@ -71,7 +71,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void ExecuteWithRegionsDataTable()
+        public void ExecuteWithRegionsDataTable()
         {
             //ExStart:ExecuteWithRegionsDataTable
             Document doc = new Document(MyDir + "Mail merge destinations - Orders.docx");
@@ -93,7 +93,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         //ExStart:ExecuteWithRegionsDataTableMethods
-        private static DataTable GetTestOrder(int orderId)
+        private DataTable GetTestOrder(int orderId)
         {
             DataTable table = ExecuteDataTable($"SELECT * FROM AsposeWordOrders WHERE OrderId = {orderId}");
             table.TableName = "Orders";
@@ -101,7 +101,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
             return table;
         }
 
-        private static DataTable GetTestOrderDetails(int orderId)
+        private DataTable GetTestOrderDetails(int orderId)
         {
             DataTable table = ExecuteDataTable(
                 $"SELECT * FROM AsposeWordOrderDetails WHERE OrderId = {orderId} ORDER BY ProductID");
@@ -113,7 +113,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         /// <summary>
         /// Utility function that creates a connection, command, executes the command and returns the result in a DataTable.
         /// </summary>
-        private static DataTable ExecuteDataTable(string commandText)
+        private DataTable ExecuteDataTable(string commandText)
         {
             string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
 
@@ -133,7 +133,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         //ExEnd:ExecuteWithRegionsDataTableMethods
 
         [Test]
-        public static void ProduceMultipleDocuments()
+        public void ProduceMultipleDocuments()
         {
             //ExStart:ProduceMultipleDocuments
             string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + DatabaseDir + "Northwind.mdb";
@@ -211,7 +211,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         //ExEnd:MailMergeWithRegions
 
         //ExStart:CreateDataSet
-        private static DataSet CreateDataSet()
+        private DataSet CreateDataSet()
         {
             // Create the customers table.
             DataTable tableCustomers = new DataTable("Customers");
@@ -242,7 +242,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         //ExEnd:CreateDataSet
 
         [Test]
-        public static void GetRegionsByName()
+        public void GetRegionsByName()
         {
             //ExStart:GetRegionsByName
             Document doc = new Document(MyDir + "Mail merge regions.docx");

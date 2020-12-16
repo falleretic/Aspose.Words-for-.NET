@@ -16,7 +16,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
     internal class WorkingWithTables : DocsExamplesBase
     {
         [Test]
-        public static void RemoveColumn()
+        public void RemoveColumn()
         {
             //ExStart:RemoveColumn
             Document doc = new Document(MyDir + "Tables.docx");
@@ -29,7 +29,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void InsertBlankColumn()
+        public void InsertBlankColumn()
         {
             //ExStart:InsertBlankColumn
             Document doc = new Document(MyDir + "Tables.docx");
@@ -156,7 +156,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         //ExEnd:ColumnClass
 
         [Test]
-        public static void AutoFitTableToContents()
+        public void AutoFitTableToContents()
         {
             //ExStart:AutoFitTableToContents
             Document doc = new Document(MyDir + "Tables.docx");
@@ -169,7 +169,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void AutoFitTableToFixedColumnWidths()
+        public void AutoFitTableToFixedColumnWidths()
         {
             //ExStart:AutoFitTableToFixedColumnWidths
             Document doc = new Document(MyDir + "Tables.docx");
@@ -183,7 +183,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void AutoFitTableToPageWidth()
+        public void AutoFitTableToPageWidth()
         {
             // ExStart:AutoFitTableToPageWidth
             Document doc = new Document(MyDir + "Tables.docx");
@@ -197,7 +197,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void BuildTableFromDataTable()
+        public void BuildTableFromDataTable()
         {
             //ExStart:BuildTableFromDataTable
             Document doc = new Document();
@@ -231,7 +231,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         /// Imports the content from the specified DataTable into a new Aspose.Words Table object.
         /// The table is inserted at the document builder's current position and using the current builder's formatting if any is defined.
         /// </summary>
-        public static Table ImportTableFromDataTable(DocumentBuilder builder, DataTable dataTable,
+        public Table ImportTableFromDataTable(DocumentBuilder builder, DataTable dataTable,
             bool importColumnHeadings)
         {
             Table table = builder.StartTable();
@@ -294,7 +294,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         //ExEnd:ImportTableFromDataTable
 
         [Test]
-        public static void CloneCompleteTable()
+        public void CloneCompleteTable()
         {
             //ExStart:CloneCompleteTable
             Document doc = new Document(MyDir + "Tables.docx");
@@ -314,7 +314,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void CloneLastRow()
+        public void CloneLastRow()
         {
             //ExStart:CloneLastRow
             Document doc = new Document(MyDir + "Tables.docx");
@@ -333,7 +333,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
         
         [Test]
-        public static void FindingIndex()
+        public void FindingIndex()
         {
             Document doc = new Document(MyDir + "Tables.docx");
 
@@ -358,7 +358,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void InsertTableDirectly()
+        public void InsertTableDirectly()
         {
             //ExStart:InsertTableDirectly
             Document doc = new Document();
@@ -400,7 +400,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void InsertTableFromHtml()
+        public void InsertTableFromHtml()
         {
             //ExStart:InsertTableFromHtml
             Document doc = new Document();
@@ -423,7 +423,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void CreateSimpleTable()
+        public void CreateSimpleTable()
         {
             //ExStart:CreateSimpleTable
             Document doc = new Document();
@@ -458,7 +458,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void FormattedTable()
+        public void FormattedTable()
         {
             //ExStart:FormattedTable
             Document doc = new Document();
@@ -532,7 +532,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void NestedTable()
+        public void NestedTable()
         {
             //ExStart:NestedTable
             Document doc = new Document();
@@ -563,7 +563,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void CombineRows()
+        public void CombineRows()
         {
             //ExStart:CombineRows
             Document doc = new Document(MyDir + "Tables.docx");
@@ -584,7 +584,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void SplitTable()
+        public void SplitTable()
         {
             //ExStart:SplitTable
             Document doc = new Document(MyDir + "Tables.docx");
@@ -616,7 +616,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void RowFormatDisableBreakAcrossPages()
+        public void RowFormatDisableBreakAcrossPages()
         {
             //ExStart:RowFormatDisableBreakAcrossPages
             Document doc = new Document(MyDir + "Table spanning two pages.docx");
@@ -632,7 +632,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void KeepTableTogether()
+        public void KeepTableTogether()
         {
             //ExStart:KeepTableTogether
             Document doc = new Document(MyDir + "Table spanning two pages.docx");
@@ -655,7 +655,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void CheckCellsMerged()
+        public void CheckCellsMerged()
         {
             //ExStart:CheckCellsMerged 
             Document doc = new Document(MyDir + "Table with merged cells.docx");
@@ -673,7 +673,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         //ExStart:PrintCellMergeType 
-        public static string PrintCellMergeType(Cell cell)
+        public string PrintCellMergeType(Cell cell)
         {
             bool isHorizontallyMerged = cell.CellFormat.HorizontalMerge != CellMerge.None;
             bool isVerticallyMerged = cell.CellFormat.VerticalMerge != CellMerge.None;
@@ -695,7 +695,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         //ExEnd:PrintCellMergeType
         
         [Test]
-        public static void VerticalMerge()
+        public void VerticalMerge()
         {
             //ExStart:VerticalMerge           
             Document doc = new Document();
@@ -725,7 +725,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void HorizontalMerge()
+        public void HorizontalMerge()
         {
             //ExStart:HorizontalMerge         
             Document doc = new Document();
@@ -754,7 +754,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void MergeCellRange()
+        public void MergeCellRange()
         {
             //ExStart:MergeCellRange
             Document doc = new Document(MyDir + "Table with merged cells.docx");
@@ -773,7 +773,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void PrintHorizontalAndVerticalMerged()
+        public void PrintHorizontalAndVerticalMerged()
         {
             //ExStart:PrintHorizontalAndVerticalMerged
             Document doc = new Document(MyDir + "Table with merged cells.docx");
@@ -784,7 +784,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void ConvertToHorizontallyMergedCells()
+        public void ConvertToHorizontallyMergedCells()
         {
             //ExStart:ConvertToHorizontallyMergedCells         
             Document doc = new Document(MyDir + "Table with merged cells.docx");
@@ -796,7 +796,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         //ExStart:MergeCells
-        internal static void MergeCells(Cell startCell, Cell endCell)
+        internal void MergeCells(Cell startCell, Cell endCell)
         {
             Table parentTable = startCell.ParentRow.ParentTable;
 
@@ -950,7 +950,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         //ExEnd:HorizontalAndVerticalMergeHelperClasses
 
         [Test]
-        public static void RepeatRowsOnSubsequentPages()
+        public void RepeatRowsOnSubsequentPages()
         {
             //ExStart:RepeatRowsOnSubsequentPages
             Document doc = new Document();
@@ -985,7 +985,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void AutoFitToPageWidth()
+        public void AutoFitToPageWidth()
         {
             //ExStart:AutoFitToPageWidth
             Document doc = new Document();
@@ -1009,7 +1009,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void PreferredWidthSettings()
+        public void PreferredWidthSettings()
         {
             //ExStart:PreferredWidthSettings
             Document doc = new Document();
@@ -1043,7 +1043,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void RetrievePreferredWidthType()
+        public void RetrievePreferredWidthType()
         {
             //ExStart:RetrievePreferredWidthType
             Document doc = new Document(MyDir + "Tables.docx");
@@ -1060,7 +1060,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void GetTablePosition()
+        public void GetTablePosition()
         {
             //ExStart:GetTablePosition
             Document doc = new Document(MyDir + "Tables.docx");
@@ -1080,7 +1080,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void GetFloatingTablePosition()
+        public void GetFloatingTablePosition()
         {
             //ExStart:GetFloatingTablePosition
             Document doc = new Document(MyDir + "Table wrapped by text.docx");
@@ -1104,7 +1104,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void FloatingTablePosition()
+        public void FloatingTablePosition()
         {
             //ExStart:FloatingTablePosition
             Document doc = new Document(MyDir + "Table wrapped by text.docx");
@@ -1118,7 +1118,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void SetRelativeHorizontalOrVerticalPosition()
+        public void SetRelativeHorizontalOrVerticalPosition()
         {
             // ExStart:SetRelativeHorizontalOrVerticalPosition
             Document doc = new Document(MyDir + "Table wrapped by text.docx");

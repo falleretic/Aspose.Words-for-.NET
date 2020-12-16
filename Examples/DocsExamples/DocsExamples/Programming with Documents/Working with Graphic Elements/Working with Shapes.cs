@@ -12,7 +12,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
     internal class WorkingWithShapes : DocsExamplesBase
     {
         [Test]
-        public static void AddGroupShape()
+        public void AddGroupShape()
         {
             //ExStart:AddGroupShape
             Document doc = new Document();
@@ -40,7 +40,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertShape()
+        public void InsertShape()
         {
             //ExStart:InsertShape
             Document doc = new Document();
@@ -65,7 +65,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void AspectRatioLocked()
+        public void AspectRatioLocked()
         {
             //ExStart:AspectRatioLocked
             Document doc = new Document();
@@ -79,7 +79,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void LayoutInCell()
+        public void LayoutInCell()
         {
             //ExStart:LayoutInCell
             Document doc = new Document();
@@ -130,7 +130,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void AddCornersSnipped()
+        public void AddCornersSnipped()
         {
             //ExStart:AddCornersSnipped
             Document doc = new Document();
@@ -148,7 +148,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void GetActualShapeBoundsPoints()
+        public void GetActualShapeBoundsPoints()
         {
             //ExStart:GetActualShapeBoundsPoints
             Document doc = new Document();
@@ -163,7 +163,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void VerticalAnchor()
+        public void VerticalAnchor()
         {
             //ExStart:VerticalAnchor
             Document doc = new Document();
@@ -180,7 +180,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void DetectSmartArtShape()
+        public void DetectSmartArtShape()
         {
             //ExStart:DetectSmartArtShape
             Document doc = new Document(MyDir + "SmartArt.docx");
@@ -192,7 +192,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void UpdateSmartArtDrawing()
+        public void UpdateSmartArtDrawing()
         {
             Document doc = new Document(MyDir + "SmartArt.docx");
 

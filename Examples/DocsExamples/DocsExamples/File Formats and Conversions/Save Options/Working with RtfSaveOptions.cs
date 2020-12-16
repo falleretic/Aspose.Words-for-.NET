@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithRtfSaveOptions : DocsExamplesBase
+    public class WorkingWithRtfSaveOptions : DocsExamplesBase
     {
         [Test]
-        public static void SavingImagesAsWmf()
+        public void SavingImagesAsWmf()
         {
             //ExStart:SavingImagesAsWmf
             Document doc = new Document(MyDir + "Document.docx");

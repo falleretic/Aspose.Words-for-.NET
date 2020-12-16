@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class WorkingWithDocumentOptionsAndSettings : DocsExamplesBase
     {
         [Test]
-        public static void OptimizeForMsWord()
+        public void OptimizeForMsWord()
         {
             //ExStart:OptimizeForMsWord
             Document doc = new Document(MyDir + "Document.docx");
@@ -20,7 +20,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ShowGrammaticalAndSpellingErrors()
+        public void ShowGrammaticalAndSpellingErrors()
         {
             // ExStart:ShowGrammaticalAndSpellingErrors
             Document doc = new Document(MyDir + "Document.docx");
@@ -33,7 +33,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void CleanupUnusedStylesAndLists()
+        public void CleanupUnusedStylesAndLists()
         {
             // ExStart:CleanupUnusedStylesandLists
             Document doc = new Document(MyDir + "Document.docx");
@@ -48,7 +48,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void CleanupDuplicateStyle()
+        public void CleanupDuplicateStyle()
         {
             // ExStart:CleanupDuplicateStyle
             Document doc = new Document(MyDir + "Document.docx");
@@ -63,7 +63,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ViewOptions()
+        public void ViewOptions()
         {
             //ExStart:SetViewOption
             Document doc = new Document(MyDir + "Document.docx");
@@ -76,7 +76,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void DocumentPageSetup()
+        public void DocumentPageSetup()
         {
             //ExStart:DocumentPageSetup
             Document doc = new Document(MyDir + "Document.docx");
@@ -93,7 +93,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void AddJapaneseAsEditingLanguages()
+        public void AddJapaneseAsEditingLanguages()
         {
             //ExStart:AddJapaneseAsEditinglanguages
             LoadOptions loadOptions = new LoadOptions();
@@ -112,7 +112,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void SetRussianAsDefaultEditingLanguage()
+        public void SetRussianAsDefaultEditingLanguage()
         {
             //ExStart:SetRussianAsDefaultEditingLanguage
             LoadOptions loadOptions = new LoadOptions();
@@ -129,7 +129,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void SetPageSetupAndSectionFormatting()
+        public void SetPageSetupAndSectionFormatting()
         {
             //ExStart:DocumentBuilderSetPageSetupAndSectionFormatting
             Document doc = new Document();

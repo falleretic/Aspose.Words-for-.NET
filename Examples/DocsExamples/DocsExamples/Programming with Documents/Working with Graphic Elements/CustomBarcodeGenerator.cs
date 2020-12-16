@@ -19,7 +19,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             /// </summary>
             /// <param name="heightInTwipsString"></param>
             /// <returns></returns>
-            private static float ConvertSymbolHeight(string heightInTwipsString)
+            private float ConvertSymbolHeight(string heightInTwipsString)
             {
                 // Input value is in 1/1440 inches (twips).
                 int heightInTwips = TryParseInt(heightInTwipsString);
@@ -36,7 +36,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             /// </summary>
             /// <param name="inputColor"></param>
             /// <returns></returns>
-            private static Color ConvertColor(string inputColor)
+            private Color ConvertColor(string inputColor)
             {
                 // Input should be from "0x000000" to "0xFFFFFF".
                 int color = TryParseHex(inputColor.Replace("0x", ""));
@@ -55,7 +55,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             /// </summary>
             /// <param name="scalingFactor"></param>
             /// <returns></returns>
-            private static float ConvertScalingFactor(string scalingFactor)
+            private float ConvertScalingFactor(string scalingFactor)
             {
                 bool isParsed = false;
                 int percents = TryParseInt(scalingFactor);
@@ -206,7 +206,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             /// Allows leading sign.
             /// Allows leading and trailing spaces.
             /// </summary>
-            public static int TryParseInt(string s)
+            public int TryParseInt(string s)
             {
                 return double.TryParse(s, NumberStyles.Integer, CultureInfo.InvariantCulture, out double temp)
                     ? CastDoubleToInt(temp)
@@ -216,7 +216,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             /// <summary>
             /// Casts a double to int32 in a way that uint32 are "correctly" casted too (they become negative numbers).
             /// </summary>
-            public static int CastDoubleToInt(double value)
+            public int CastDoubleToInt(double value)
             {
                 long temp = (long) value;
                 return (int) temp;
@@ -226,7 +226,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             /// Try parses a hex String into an integer value.
             /// on error return int.MinValue
             /// </summary>
-            public static int TryParseHex(string s)
+            public int TryParseHex(string s)
             {
                 return int.TryParse(s, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int result)
                     ? result

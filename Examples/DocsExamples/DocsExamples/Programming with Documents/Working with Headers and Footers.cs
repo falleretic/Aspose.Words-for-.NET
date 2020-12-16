@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithHeadersAndFooters : DocsExamplesBase
     {
         [Test]
-        public static void CreateHeaderFooter()
+        public void CreateHeaderFooter()
         {
             //ExStart:CreateHeaderFooterUsingDocBuilder
             Document doc = new Document();
@@ -111,7 +111,7 @@ namespace DocsExamples.Programming_with_Documents
         /// <summary>
         /// Clones and copies headers/footers form the previous section to the specified section.
         /// </summary>
-        private static void CopyHeadersFootersFromPreviousSection(Section section)
+        private void CopyHeadersFootersFromPreviousSection(Section section)
         {
             Section previousSection = (Section)section.PreviousSibling;
 

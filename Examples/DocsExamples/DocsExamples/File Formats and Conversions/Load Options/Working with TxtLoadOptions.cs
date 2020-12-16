@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Load_Options
 {
-    internal class WorkingWithTxtLoadOptions : DocsExamplesBase
+    public class WorkingWithTxtLoadOptions : DocsExamplesBase
     {
         [Test]
         public void DetectNumberingWithWhitespaces()

@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithFormFields : DocsExamplesBase
     {
         [Test]
-        public static void InsertFormFields()
+        public void InsertFormFields()
         {
             //ExStart:InsertFormFields
             Document doc = new Document();
@@ -20,7 +20,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FormFieldsWorkWithProperties()
+        public void FormFieldsWorkWithProperties()
         {
             //ExStart:FormFieldsWorkWithProperties
             Document doc = new Document(MyDir + "Form fields.docx");
@@ -32,7 +32,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FormFieldsGetFormFieldsCollection()
+        public void FormFieldsGetFormFieldsCollection()
         {
             //ExStart:FormFieldsGetFormFieldsCollection
             Document doc = new Document(MyDir + "Form fields.docx");
@@ -42,7 +42,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FormFieldsGetByName()
+        public void FormFieldsGetByName()
         {
             //ExStart:FormFieldsFontFormatting
             //ExStart:FormFieldsGetByName

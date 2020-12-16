@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
     internal class WorkWithWatermark : DocsExamplesBase
     {
         [Test]
-        public static void AddTextWatermarkWithSpecificOptions()
+        public void AddTextWatermarkWithSpecificOptions()
         {
             //ExStart:AddTextWatermarkWithSpecificOptions
             Document doc = new Document(MyDir + "Document.docx");
@@ -30,7 +30,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
 
 #if NET462
         [Test]
-        public static void AddImageWatermarkWithSpecificOptions()
+        public void AddImageWatermarkWithSpecificOptions()
         {
             //ExStart:AddImageWatermarkWithSpecificOptions
             Document doc = new Document(MyDir + "Document.docx");
@@ -48,7 +48,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void RemoveWatermarkFromDocument()
+        public void RemoveWatermarkFromDocument()
         {
             //ExStart:RemoveWatermarkFromDocument
             Document doc = new Document(ArtifactsDir + "AddTextWatermark.docx");
@@ -65,7 +65,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
 
         //ExStart:AddWatermark
         [Test]
-        public static void AddAndRemoveWatermark()
+        public void AddAndRemoveWatermark()
         {
             Document doc = new Document(MyDir + "Document.docx");
 
@@ -81,7 +81,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         /// </summary>
         /// <param name="doc">The input document.</param>
         /// <param name="watermarkText">Text of the watermark.</param>
-        private static void InsertWatermarkText(Document doc, string watermarkText)
+        private void InsertWatermarkText(Document doc, string watermarkText)
         {
             // Create a watermark shape, this will be a WordArt shape.
             Shape watermark = new Shape(doc, ShapeType.TextPlainText) { Name = "Watermark" };
@@ -120,7 +120,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
             }
         }
 
-        private static void InsertWatermarkIntoHeader(Paragraph watermarkPara, Section sect,
+        private void InsertWatermarkIntoHeader(Paragraph watermarkPara, Section sect,
             HeaderFooterType headerType)
         {
             HeaderFooter header = sect.HeadersFooters[headerType];
@@ -138,7 +138,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         //ExEnd:AddWatermark
         
         //ExStart:RemoveWatermark
-        private static void RemoveWatermarkText(Document doc)
+        private void RemoveWatermarkText(Document doc)
         {
             foreach (HeaderFooter hf in doc.GetChildNodes(NodeType.HeaderFooter, true))
             {

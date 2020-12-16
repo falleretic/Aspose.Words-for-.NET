@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class JoinAndAppendDocuments : DocsExamplesBase
     {
         [Test]
-        public static void SimpleAppendDocument()
+        public void SimpleAppendDocument()
         {
             Document srcDoc = new Document(MyDir + "Document source.docx");
             Document dstDoc = new Document(MyDir + "Northwind traders.docx");
@@ -21,7 +21,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void AppendDocument()
+        public void AppendDocument()
         {
             //ExStart:AppendDocumentManually
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -48,7 +48,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void AppendDocumentToBlank()
+        public void AppendDocumentToBlank()
         {
             //ExStart:AppendDocumentToBlank
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -65,7 +65,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void AppendWithImportFormatOptions()
+        public void AppendWithImportFormatOptions()
         {
             //ExStart:AppendWithImportFormatOptions
             Document srcDoc = new Document(MyDir + "Document source with list.docx");
@@ -80,7 +80,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ConvertNumPageFields()
+        public void ConvertNumPageFields()
         {
             //ExStart:ConvertNumPageFields
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -105,7 +105,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         //ExStart:ConvertNumPageFieldsToPageRef
-        public static void ConvertNumPageFieldsToPageRef(Document doc)
+        public void ConvertNumPageFieldsToPageRef(Document doc)
         {
             // This is the prefix for each bookmark, which signals where page numbering restarts.
             // The underscore "_" at the start inserts this bookmark as hidden in MS Word.
@@ -197,7 +197,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         //ExEnd:ConvertNumPageFieldsToPageRef
         
         //ExStart:GetRemoveField
-        private static void RemoveField(FieldStart fieldStart)
+        private void RemoveField(FieldStart fieldStart)
         {
             bool isRemoving = true;
             
@@ -213,7 +213,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
             }
         }
 
-        private static string GetFieldCode(FieldStart fieldStart)
+        private string GetFieldCode(FieldStart fieldStart)
         {
             StringBuilder builder = new StringBuilder();
 
@@ -232,7 +232,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         //ExEnd:GetRemoveField
 
         [Test]
-        public static void DifferentPageSetup()
+        public void DifferentPageSetup()
         {
             //ExStart:DifferentPageSetup
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -257,7 +257,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void JoinContinuous()
+        public void JoinContinuous()
         {
             //ExStart:JoinContinuous
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -273,7 +273,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void JoinNewPage()
+        public void JoinNewPage()
         {
             //ExStart:JoinNewPage
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -289,7 +289,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void KeepSourceFormatting()
+        public void KeepSourceFormatting()
         {
             //ExStart:KeepSourceFormatting
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -303,7 +303,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void KeepSourceTogether()
+        public void KeepSourceTogether()
         {
             //ExStart:KeepSourceTogether
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -324,7 +324,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }        
 
         [Test]
-        public static void ListKeepSourceFormatting()
+        public void ListKeepSourceFormatting()
         {
             //ExStart:ListKeepSourceFormatting
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -340,7 +340,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ListUseDestinationStyles()
+        public void ListUseDestinationStyles()
         {
             //ExStart:ListUseDestinationStyles
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -390,7 +390,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void RestartPageNumbering()
+        public void RestartPageNumbering()
         {
             //ExStart:RestartPageNumbering
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -406,7 +406,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void UpdatePageLayout()
+        public void UpdatePageLayout()
         {
             //ExStart:UpdatePageLayout
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -428,7 +428,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void UseDestinationStyles()
+        public void UseDestinationStyles()
         {
             //ExStart:UseDestinationStyles
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -442,7 +442,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void SmartStyleBehavior()
+        public void SmartStyleBehavior()
         {
             //ExStart:SmartStyleBehavior
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -459,7 +459,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void KeepSourceNumbering()
+        public void KeepSourceNumbering()
         {
             //ExStart:KeepSourceNumbering
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -483,7 +483,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void IgnoreTextBoxes()
+        public void IgnoreTextBoxes()
         {
             //ExStart:IgnoreTextBoxes
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -507,7 +507,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void IgnoreHeaderFooter()
+        public void IgnoreHeaderFooter()
         {
             // ExStart:IgnoreHeaderFooter
             Document srcDocument = new Document(MyDir + "Document source.docx");
@@ -522,7 +522,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void LinkHeadersFooters()
+        public void LinkHeadersFooters()
         {
             //ExStart:LinkHeadersFooters
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -541,7 +541,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void RemoveSourceHeadersFooters()
+        public void RemoveSourceHeadersFooters()
         {
             //ExStart:RemoveSourceHeadersFooters
             Document srcDoc = new Document(MyDir + "Document source.docx");
@@ -565,7 +565,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void UnlinkHeadersFooters()
+        public void UnlinkHeadersFooters()
         {
             //ExStart:UnlinkHeadersFooters
             Document srcDoc = new Document(MyDir + "Document source.docx");

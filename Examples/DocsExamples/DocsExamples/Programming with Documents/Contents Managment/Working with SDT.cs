@@ -12,7 +12,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     internal class WorkingWithSdt : DocsExamplesBase
     {
         [Test]
-        public static void CheckBoxTypeContentControl()
+        public void CheckBoxTypeContentControl()
         {
             //ExStart:CheckBoxTypeContentControl
             Document doc = new Document();
@@ -26,7 +26,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void CurrentStateOfCheckBox()
+        public void CurrentStateOfCheckBox()
         {
             //ExStart:SetCurrentStateOfCheckBox
             Document doc = new Document(MyDir + "Structured document tags.docx");
@@ -43,7 +43,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ModifyContentControls()
+        public void ModifyContentControls()
         {
             //ExStart:ModifyContentControls
             Document doc = new Document(MyDir + "Structured document tags.docx");
@@ -84,7 +84,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ComboBoxContentControl()
+        public void ComboBoxContentControl()
         {
             //ExStart:ComboBoxContentControl
             Document doc = new Document();
@@ -100,7 +100,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void RichTextBoxContentControl()
+        public void RichTextBoxContentControl()
         {
             //ExStart:RichTextBoxContentControl
             Document doc = new Document();
@@ -120,7 +120,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void SetContentControlColor()
+        public void SetContentControlColor()
         {
             //ExStart:SetContentControlColor
             Document doc = new Document(MyDir + "Structured document tags.docx");
@@ -133,7 +133,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ClearContentsControl()
+        public void ClearContentsControl()
         {
             //ExStart:ClearContentsControl
             Document doc = new Document(MyDir + "Structured document tags.docx");
@@ -146,7 +146,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void BindSdTtoCustomXmlPart()
+        public void BindSdTtoCustomXmlPart()
         {
             //ExStart:BindSDTtoCustomXmlPart
             Document doc = new Document();
@@ -163,7 +163,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void SetContentControlStyle()
+        public void SetContentControlStyle()
         {
             //ExStart:SetContentControlStyle
             Document doc = new Document(MyDir + "Structured document tags.docx");
@@ -177,7 +177,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void CreatingTableRepeatingSectionMappedToCustomXmlPart()
+        public void CreatingTableRepeatingSectionMappedToCustomXmlPart()
         {
             //ExStart:CreatingTableRepeatingSectionMappedToCustomXmlPart
             Document doc = new Document();
@@ -226,7 +226,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void MultiSection()
+        public void MultiSection()
         {
             // ExStart:MultiSectionSDT
             Document doc = new Document(MyDir + "Multi-section structured document tags.docx");
@@ -239,7 +239,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void StructuredDocumentTagRangeStartXmlMapping()
+        public void StructuredDocumentTagRangeStartXmlMapping()
         {
             // ExStart:StructuredDocumentTagRangeStartXmlMapping
             Document doc = new Document(MyDir + "Multi-section structured document tags.docx");

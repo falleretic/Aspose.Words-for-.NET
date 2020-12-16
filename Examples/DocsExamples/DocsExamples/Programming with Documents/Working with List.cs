@@ -10,7 +10,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithList : DocsExamplesBase
     {
         [Test]
-        public static void RestartListAtEachSection()
+        public void RestartListAtEachSection()
         {
             //ExStart:RestartListAtEachSection
             Document doc = new Document();
@@ -39,7 +39,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SpecifyListLevel()
+        public void SpecifyListLevel()
         {
             //ExStart:SpecifyListLevel
             Document doc = new Document();
@@ -74,7 +74,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void RestartListNumber()
+        public void RestartListNumber()
         {
             //ExStart:RestartListNumber
             Document doc = new Document();

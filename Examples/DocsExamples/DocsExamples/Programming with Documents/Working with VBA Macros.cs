@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithVba : DocsExamplesBase
     {
         [Test]
-        public static void CreateVbaProject()
+        public void CreateVbaProject()
         {
             //ExStart:CreateVbaProject
             Document doc = new Document();
@@ -31,7 +31,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ReadVbaMacros()
+        public void ReadVbaMacros()
         {
             //ExStart:ReadVbaMacros
             Document doc = new Document(MyDir + "VBA project.docm");
@@ -47,7 +47,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ModifyVbaMacros()
+        public void ModifyVbaMacros()
         {
             //ExStart:ModifyVbaMacros
             Document doc = new Document(MyDir + "VBA project.docm");
@@ -63,7 +63,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CloneVbaProject()
+        public void CloneVbaProject()
         {
             //ExStart:CloneVbaProject
             Document doc = new Document(MyDir + "VBA project.docm");
@@ -74,7 +74,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CloneVbaModule()
+        public void CloneVbaModule()
         {
             //ExStart:CloneVbaModule
             Document doc = new Document(MyDir + "VBA project.docm");
@@ -88,7 +88,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void RemoveBrokenRef()
+        public void RemoveBrokenRef()
         {
             //ExStart:RemoveReferenceFromCollectionOfReferences
             Document doc = new Document(MyDir + "VbaProject.docm");
@@ -112,7 +112,7 @@ namespace DocsExamples.Programming_with_Documents
         /// <summary>
         /// Returns string representing LibId path of a specified reference. 
         /// </summary>
-        private static string GetLibIdPath(VbaReference reference)
+        private string GetLibIdPath(VbaReference reference)
         {
             switch (reference.Type)
             {
@@ -133,7 +133,7 @@ namespace DocsExamples.Programming_with_Documents
         /// <remarks>
         /// Please see details for the syntax at [MS-OVBA], 2.1.1.8 LibidReference. 
         /// </remarks>
-        private static string GetLibIdReferencePath(string libIdReference)
+        private string GetLibIdReferencePath(string libIdReference)
         {
             if (libIdReference != null)
             {
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents
         /// <remarks>
         /// Please see details for the syntax at [MS-OVBA], 2.1.1.12 ProjectReference. 
         /// </remarks>
-        private static string GetLibIdProjectPath(string libIdProject)
+        private string GetLibIdProjectPath(string libIdProject)
         {
             return (libIdProject != null) ? libIdProject.Substring(3) : "";
         }

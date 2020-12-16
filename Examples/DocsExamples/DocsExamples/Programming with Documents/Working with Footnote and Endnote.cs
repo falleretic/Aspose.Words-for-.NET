@@ -6,7 +6,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithFootnotes : DocsExamplesBase
     {
         [Test]
-        public static void SetFootNoteColumns()
+        public void SetFootNoteColumns()
         {
             //ExStart:SetFootNoteColumns
             Document doc = new Document(MyDir + "Document.docx");
@@ -19,7 +19,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFootnoteAndEndNotePosition()
+        public void SetFootnoteAndEndNotePosition()
         {
             //ExStart:SetFootnoteAndEndNotePosition
             Document doc = new Document(MyDir + "Document.docx");
@@ -32,7 +32,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetEndnoteOptions()
+        public void SetEndnoteOptions()
         {
             //ExStart:SetEndnoteOptions
             Document doc = new Document(MyDir + "Document.docx");

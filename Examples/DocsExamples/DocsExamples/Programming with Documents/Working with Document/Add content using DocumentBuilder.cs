@@ -14,7 +14,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class AddContentUsingDocumentBuilder : DocsExamplesBase
     {
         [Test]
-        public static void DocumentBuilderInsertBookmark()
+        public void DocumentBuilderInsertBookmark()
         {
             //ExStart:DocumentBuilderInsertBookmark
             Document doc = new Document();
@@ -29,7 +29,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void BuildTable()
+        public void BuildTable()
         {
             //ExStart:BuildTable
             Document doc = new Document();
@@ -66,7 +66,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertHorizontalRule()
+        public void InsertHorizontalRule()
         {
             //ExStart:InsertHorizontalRule
             Document doc = new Document();
@@ -80,7 +80,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void HorizontalRuleFormat()
+        public void HorizontalRuleFormat()
         {
             //ExStart:HorizontalRuleFormat
             DocumentBuilder builder = new DocumentBuilder();
@@ -99,7 +99,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertBreak()
+        public void InsertBreak()
         {
             //ExStart:InsertBreak
             Document doc = new Document();
@@ -118,7 +118,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertTextInputFormField()
+        public void InsertTextInputFormField()
         {
             //ExStart:InsertTextInputFormField
             Document doc = new Document();
@@ -131,7 +131,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertCheckBoxFormField()
+        public void InsertCheckBoxFormField()
         {
             //ExStart:InsertCheckBoxFormField
             Document doc = new Document();
@@ -144,7 +144,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertComboBoxFormField()
+        public void InsertComboBoxFormField()
         {
             //ExStart:InsertComboBoxFormField
             string[] items = { "One", "Two", "Three" };
@@ -159,7 +159,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertHtml()
+        public void InsertHtml()
         {
             //ExStart:InsertHtml
             Document doc = new Document();
@@ -176,7 +176,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertHyperlink()
+        public void InsertHyperlink()
         {
             //ExStart:InsertHyperlink
             Document doc = new Document();
@@ -196,7 +196,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertTableOfContents()
+        public void InsertTableOfContents()
         {
             //ExStart:InsertTableOfContents
             Document doc = new Document();
@@ -247,7 +247,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertInlineImage()
+        public void InsertInlineImage()
         {
             //ExStart:InsertInlineImage
             Document doc = new Document();
@@ -260,7 +260,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertFloatingImage()
+        public void InsertFloatingImage()
         {
             //ExStart:InsertFloatingImage
             Document doc = new Document();
@@ -280,7 +280,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertParagraph()
+        public void InsertParagraph()
         {
             //ExStart:InsertParagraph
             Document doc = new Document();
@@ -305,7 +305,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertTCField()
+        public void InsertTCField()
         {
             //ExStart:InsertTCField
             Document doc = new Document();
@@ -318,7 +318,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void InsertTCFieldsAtText()
+        public void InsertTCFieldsAtText()
         {
             //ExStart:InsertTCFieldsAtText
             Document doc = new Document();
@@ -364,7 +364,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         //ExEnd:InsertTCFieldHandler
         
         [Test]
-        public static void CursorPosition()
+        public void CursorPosition()
         {
             //ExStart:CursorPosition
             Document doc = new Document();
@@ -378,7 +378,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToNode()
+        public void MoveToNode()
         {
             //ExStart:MoveToNode
             Document doc = new Document();
@@ -389,7 +389,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToDocumentStartEnd()
+        public void MoveToDocumentStartEnd()
         {
             //ExStart:MoveToDocumentStartEnd
             Document doc = new Document();
@@ -404,7 +404,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToSection()
+        public void MoveToSection()
         {
             //ExStart:MoveToSection
             Document doc = new Document();
@@ -418,7 +418,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void HeadersAndFooters()
+        public void HeadersAndFooters()
         {
             //ExStart:HeadersAndFooters
             Document doc = new Document();
@@ -446,7 +446,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToParagraph()
+        public void MoveToParagraph()
         {
             //ExStart:MoveToParagraph
             Document doc = new Document(MyDir + "Paragraphs.docx");
@@ -458,7 +458,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToTableCell()
+        public void MoveToTableCell()
         {
             //ExStart:MoveToTableCell
             Document doc = new Document(MyDir + "Tables.docx");
@@ -471,7 +471,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToBookmark()
+        public void MoveToBookmark()
         {
             //ExStart:MoveToBookmark
             Document doc = new Document(MyDir + "Bookmarks.docx");
@@ -483,7 +483,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToBookmarkEnd()
+        public void MoveToBookmarkEnd()
         {
             //ExStart:MoveToBookmarkEnd
             Document doc = new Document(MyDir + "Bookmarks.docx");
@@ -495,7 +495,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void MoveToMergeField()
+        public void MoveToMergeField()
         {
             //ExStart:MoveToMergeField
             Document doc = new Document();

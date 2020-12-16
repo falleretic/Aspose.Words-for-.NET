@@ -12,7 +12,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithFields : DocsExamplesBase
     {
         [Test]
-        public static void ChangeFieldUpdateCultureSource()
+        public void ChangeFieldUpdateCultureSource()
         {
             //ExStart:ChangeFieldUpdateCultureSource
             //ExStart:DocumentBuilderInsertField
@@ -36,7 +36,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SpecifyLocaleAtFieldLevel()
+        public void SpecifyLocaleAtFieldLevel()
         {
             //ExStart:SpecifylocaleAtFieldlevel
             DocumentBuilder builder = new DocumentBuilder();
@@ -49,7 +49,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ReplaceHyperlinks()
+        public void ReplaceHyperlinks()
         {
             //ExStart:ReplaceHyperlinks
             Document doc = new Document(MyDir + "Hyperlinks.docx");
@@ -74,7 +74,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void RenameMergeFields()
+        public void RenameMergeFields()
         {
             //ExStart:RenameMergeFields
             Document doc = new Document();
@@ -159,7 +159,7 @@ namespace DocsExamples.Programming_with_Documents
             /// Removes nodes from start up to but not including the end node.
             /// Start and end are assumed to have the same parent.
             /// </summary>
-            private static void RemoveSameParent(Node startNode, Node endNode)
+            private void RemoveSameParent(Node startNode, Node endNode)
             {
                 if (endNode != null && startNode.ParentNode != endNode.ParentNode)
                     throw new ArgumentException("Start and end nodes are expected to have the same parent.");
@@ -177,12 +177,12 @@ namespace DocsExamples.Programming_with_Documents
             private readonly Node mFieldSeparator;
             private readonly Node mFieldEnd;
 
-            private static readonly Regex gRegex = new Regex(@"\s*(?<start>MERGEFIELD\s|)(\s|)(?<name>\S+)\s+");
+            private readonly Regex gRegex = new Regex(@"\s*(?<start>MERGEFIELD\s|)(\s|)(?<name>\S+)\s+");
         }
         //ExEnd:MergeField
 
         [Test]
-        public static void RemoveField()
+        public void RemoveField()
         {
             //ExStart:RemoveField
             Document doc = new Document(MyDir + "Various fields.docx");
@@ -193,7 +193,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertTOAFieldWithoutDocumentBuilder()
+        public void InsertTOAFieldWithoutDocumentBuilder()
         {
             // ExStart:InsertTOAFieldWithoutDocumentBuilder
             Document doc = new Document();
@@ -222,7 +222,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertNestedFields()
+        public void InsertNestedFields()
         {
             // ExStart:InsertNestedFields
             Document doc = new Document();
@@ -249,7 +249,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertMergeFieldUsingDOM()
+        public void InsertMergeFieldUsingDOM()
         {
             //ExStart:InsertMergeFieldUsingDOM
             Document doc = new Document();
@@ -287,7 +287,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertMailMergeAddressBlockFieldUsingDOM()
+        public void InsertMailMergeAddressBlockFieldUsingDOM()
         {
             //ExStart:InsertMailMergeAddressBlockFieldUsingDOM
             Document doc = new Document();
@@ -324,7 +324,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertFieldIncludeTextWithoutDocumentBuilder()
+        public void InsertFieldIncludeTextWithoutDocumentBuilder()
         {
             //ExStart:InsertFieldIncludeTextWithoutDocumentBuilder
             Document doc = new Document();
@@ -347,7 +347,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertFieldNone()
+        public void InsertFieldNone()
         {
             //ExStart:InsertFieldNone
             Document doc = new Document();
@@ -360,7 +360,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertField()
+        public void InsertField()
         {
             //ExStart:InsertField
             Document doc = new Document();
@@ -373,7 +373,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertAuthorField()
+        public void InsertAuthorField()
         {
             // ExStart:InsertAuthorField
             Document doc = new Document();
@@ -393,7 +393,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertASKFieldWithOutDocumentBuilder()
+        public void InsertASKFieldWithOutDocumentBuilder()
         {
             //ExStart:InsertASKFieldWithOutDocumentBuilder
             Document doc = new Document();
@@ -424,7 +424,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void InsertAdvanceFieldWithOutDocumentBuilder()
+        public void InsertAdvanceFieldWithOutDocumentBuilder()
         {
             //ExStart:InsertAdvanceFieldWithOutDocumentBuilder
             Document doc = new Document();
@@ -461,7 +461,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetMailMergeFieldNames()
+        public void GetMailMergeFieldNames()
         {
             //ExStart:GetFieldNames
             Document doc = new Document();
@@ -472,7 +472,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void MappedDataFields()
+        public void MappedDataFields()
         {
             //ExStart:MappedDataFields
             Document doc = new Document();
@@ -482,7 +482,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void DeleteFields()
+        public void DeleteFields()
         {
             //ExStart:DeleteFields
             Document doc = new Document();
@@ -492,7 +492,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FieldUpdateCulture()
+        public void FieldUpdateCulture()
         {
             //ExStart:FieldUpdateCultureProvider
             Document doc = new Document();
@@ -560,7 +560,7 @@ namespace DocsExamples.Programming_with_Documents
         //ExEnd:FieldUpdateCultureProviderGetCulture
 
         [Test]
-        public static void FieldDisplayResults()
+        public void FieldDisplayResults()
         {
             //ExStart:FieldDisplayResults
             //ExStart:UpdateDocFields
@@ -575,7 +575,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void EvaluateIFCondition()
+        public void EvaluateIFCondition()
         {
             //ExStart:EvaluateIFCondition
             DocumentBuilder builder = new DocumentBuilder();
@@ -588,12 +588,12 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ConvertFieldsInParagraph()
+        public void ConvertFieldsInParagraph()
         {
             //ExStart:ConvertFieldsInParagraph
             Document doc = new Document(MyDir + "Linked fields.docx");
 
-            // Pass the appropriate parameters to convert all IF fields to static text that are encountered only in the last 
+            // Pass the appropriate parameters to convert all IF fields to text that are encountered only in the last 
             // paragraph of the document.
             doc.FirstSection.Body.LastParagraph.Range.Fields.Where(f => f.Type == FieldType.FieldIf).ToList()
                 .ForEach(f => f.Unlink());
@@ -603,12 +603,12 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ConvertFieldsInDocument()
+        public void ConvertFieldsInDocument()
         {
             //ExStart:ConvertFieldsInDocument
             Document doc = new Document(MyDir + "Linked fields.docx");
 
-            // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to static text.
+            // Pass the appropriate parameters to convert all IF fields encountered in the document (including headers and footers) to text.
             doc.Range.Fields.Where(f => f.Type == FieldType.FieldIf).ToList().ForEach(f => f.Unlink());
 
             // Save the document with fields transformed to disk
@@ -617,12 +617,12 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ConvertFieldsInBody()
+        public void ConvertFieldsInBody()
         {
             //ExStart:ConvertFieldsInBody
             Document doc = new Document(MyDir + "Linked fields.docx");
 
-            // Pass the appropriate parameters to convert PAGE fields encountered to static text only in the body of the first section.
+            // Pass the appropriate parameters to convert PAGE fields encountered to text only in the body of the first section.
             doc.FirstSection.Body.Range.Fields.Where(f => f.Type == FieldType.FieldPage).ToList().ForEach(f => f.Unlink());
 
             doc.Save(ArtifactsDir + "WorkingWithFields.ConvertFieldsInBody.docx");
@@ -630,7 +630,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ChangeLocale()
+        public void ChangeLocale()
         {
             //ExStart:ChangeLocale
             Document doc = new Document();

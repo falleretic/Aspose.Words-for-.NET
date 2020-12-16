@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithDocSaveOptions : DocsExamplesBase
+    public class WorkingWithDocSaveOptions : DocsExamplesBase
     {
         [Test]
         public void EncryptDocumentWithPassword()

@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Load_Options
 {
-    internal class WorkingWithPdfLoadOptions : DocsExamplesBase
+    public class WorkingWithPdfLoadOptions : DocsExamplesBase
     {
         [Test]
-        public static void LoadEncryptedPdf()
+        public void LoadEncryptedPdf()
         {
             //ExStart:LoadEncryptedPdf  
             Document doc = new Document(MyDir + "Pdf Document.pdf");
@@ -26,7 +26,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         }
 
         [Test]
-        public static void LoadPageRangeOfPdf()
+        public void LoadPageRangeOfPdf()
         {
             //ExStart:LoadPageRangeOfPdf  
             PdfLoadOptions loadOptions = new PdfLoadOptions { PageIndex = 0, PageCount = 1 };

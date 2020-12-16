@@ -132,7 +132,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentBetweenRuns()
+        public void ExtractContentBetweenRuns()
         {
             //ExStart:ExtractContentBetweenRuns
             Document doc = new Document(MyDir + "Extract content.docx");
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentUsingDocumentVisitor()
+        public void ExtractContentUsingDocumentVisitor()
         {
             //ExStart:ExtractContentUsingDocumentVisitor
             Document doc = new Document(MyDir + "Absolute position tab.docx");
@@ -294,7 +294,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:MyDocToTxtWriter
         
         [Test]
-        public static void ExtractContentUsingField()
+        public void ExtractContentUsingField()
         {
             //ExStart:ExtractContentUsingField
             Document doc = new Document(MyDir + "Extract content.docx");
@@ -317,7 +317,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractTableOfContents()
+        public void ExtractTableOfContents()
         {
             Document doc = new Document(MyDir + "Table of contents.docx");
 
@@ -343,7 +343,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractTextOnly()
+        public void ExtractTextOnly()
         {
             //ExStart:ExtractTextOnly
             Document doc = new Document();
@@ -361,7 +361,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentBasedOnStyles()
+        public void ExtractContentBasedOnStyles()
         {
             //ExStart:ExtractContentBasedOnStyles
             Document doc = new Document(MyDir + "Styles.docx");
@@ -384,7 +384,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         //ExStart:ParagraphsByStyleName
-        public static ArrayList ParagraphsByStyleName(Document doc, string styleName)
+        public ArrayList ParagraphsByStyleName(Document doc, string styleName)
         {
             ArrayList paragraphsWithStyle = new ArrayList();
             NodeCollection paragraphs = doc.GetChildNodes(NodeType.Paragraph, true);
@@ -400,7 +400,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:ParagraphsByStyleName
         
         //ExStart:RunsByStyleName
-        public static ArrayList RunsByStyleName(Document doc, string styleName)
+        public ArrayList RunsByStyleName(Document doc, string styleName)
         {
             ArrayList runsWithStyle = new ArrayList();
             NodeCollection runs = doc.GetChildNodes(NodeType.Run, true);
@@ -416,7 +416,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:RunsByStyleName
 
         [Test]
-        public static void ExtractPrintText()
+        public void ExtractPrintText()
         {
             //ExStart:ExtractText
             Document doc = new Document(MyDir + "Tables.docx");
@@ -441,7 +441,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractImagesToFiles()
+        public void ExtractImagesToFiles()
         {
             //ExStart:ExtractImagesToFiles
             Document doc = new Document(MyDir + "Images.docx");

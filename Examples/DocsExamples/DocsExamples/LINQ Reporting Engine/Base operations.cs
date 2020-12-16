@@ -7,10 +7,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.LINQ_Reporting_Engine
 {
-    internal class BaseOperations : DocsExamplesBase
+    public class BaseOperations : DocsExamplesBase
     {
         [Test]
-        public static void HelloWorld()
+        public void HelloWorld()
         {
             //ExStart:HelloWorld
             Document doc = new Document();
@@ -28,7 +28,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void SingleRow()
+        public void SingleRow()
         {
             //ExStart:SingleRow
             Document doc = new Document(MyDir + "Reporting engine template - Table row.docx");
@@ -41,7 +41,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void CommonMasterDetail()
+        public void CommonMasterDetail()
         {
             //ExStart:CommonMasterDetail
             Document doc = new Document(MyDir + "Reporting engine template - Common master detail.docx");
@@ -54,7 +54,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void ConditionalBlocks()
+        public void ConditionalBlocks()
         {
             //ExStart:ConditionalBlocks
             Document doc = new Document(MyDir + "Reporting engine template - Table row conditional blocks.docx");
@@ -67,7 +67,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void SettingBackgroundColor()
+        public void SettingBackgroundColor()
         {
             //ExStart:SettingBackgroundColor
             Document doc = new Document(MyDir + "Reporting engine template - Background color.docx");

@@ -6,7 +6,7 @@ namespace Docker
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Create document and save it in all available formats.
             Document doc = new Document();

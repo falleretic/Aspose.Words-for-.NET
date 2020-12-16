@@ -11,7 +11,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
     internal class SplitIntoHtmlPages : DocsExamplesBase
     {
         [Test]
-        public static void HtmlPages()
+        public void HtmlPages()
         {
             string srcFileName = MyDir + "Footnotes and endnotes.docx";
             string tocTemplate = MyDir + "Table of content template.docx";
@@ -125,7 +125,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         /// Leaves alphanumeric characters, replaces white space with underscore
         /// And removes all other characters from a string.
         /// </summary>
-        private static string MakeTopicFileName(string paraText)
+        private string MakeTopicFileName(string paraText)
         {
             StringBuilder b = new StringBuilder();
             foreach (char c in paraText)
@@ -142,7 +142,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         /// <summary>
         /// Removes the last character (which is a paragraph break character from the given string).
         /// </summary>
-        private static string MakeTopicTitle(string paraText)
+        private string MakeTopicTitle(string paraText)
         {
             return paraText.Substring(0, paraText.Length - 1);
         }
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         /// Saves one section of a document as an HTML file.
         /// Any embedded images are saved as separate files in the same folder as the HTML file.
         /// </summary>
-        private static void SaveHtmlTopic(Section section, Topic topic)
+        private void SaveHtmlTopic(Section section, Topic topic)
         {
             Document dummyDoc = new Document();
             dummyDoc.RemoveAllChildren();

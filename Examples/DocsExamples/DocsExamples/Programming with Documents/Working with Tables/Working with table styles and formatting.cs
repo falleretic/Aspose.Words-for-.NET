@@ -10,7 +10,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
     internal class WorkingWithTableStylesAndFormatting : DocsExamplesBase
     {
         [Test]
-        public static void GetDistanceBetweenTableSurroundingText()
+        public void GetDistanceBetweenTableSurroundingText()
         {
             //ExStart:GetDistancebetweenTableSurroundingText
             Document doc = new Document(MyDir + "Tables.docx");
@@ -26,7 +26,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void ApplyOutlineBorder()
+        public void ApplyOutlineBorder()
         {
             //ExStart:ApplyOutlineBorder
             Document doc = new Document(MyDir + "Tables.docx");
@@ -51,7 +51,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void BuildTableWithBorders()
+        public void BuildTableWithBorders()
         {
             //ExStart:BuildTableWithBorders
             Document doc = new Document(MyDir + "Tables.docx");
@@ -69,7 +69,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void ModifyRowFormatting()
+        public void ModifyRowFormatting()
         {
             //ExStart:ModifyRowFormatting
             Document doc = new Document(MyDir + "Tables.docx");
@@ -85,7 +85,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void ApplyRowFormatting()
+        public void ApplyRowFormatting()
         {
             //ExStart:ApplyRowFormatting
             Document doc = new Document();
@@ -114,7 +114,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void SetCellPadding()
+        public void SetCellPadding()
         {
             //ExStart:SetCellPadding
             Document doc = new Document();
@@ -138,7 +138,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         /// Shows how to modify formatting of a table cell.
         /// </summary>
         [Test]
-        public static void ModifyCellFormatting()
+        public void ModifyCellFormatting()
         {
             //ExStart:ModifyCellFormatting
             Document doc = new Document(MyDir + "Tables.docx");
@@ -152,7 +152,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void FormatTableAndCellWithDifferentBorders()
+        public void FormatTableAndCellWithDifferentBorders()
         {
             //ExStart:FormatTableAndCellWithDifferentBorders
             Document doc = new Document();
@@ -198,7 +198,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void SetTableTitleAndDescription()
+        public void SetTableTitleAndDescription()
         {
             //ExStart:SetTableTitleAndDescription
             Document doc = new Document(MyDir + "Tables.docx");
@@ -216,7 +216,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void AllowCellSpacing()
+        public void AllowCellSpacing()
         {
             //ExStart:AllowCellSpacing
             Document doc = new Document(MyDir + "Tables.docx");
@@ -230,7 +230,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void BuildTableWithStyle()
+        public void BuildTableWithStyle()
         {
             //ExStart:BuildTableWithStyle
             Document doc = new Document();
@@ -278,7 +278,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void ExpandFormattingOnCellsAndRowFromStyle()
+        public void ExpandFormattingOnCellsAndRowFromStyle()
         {
             //ExStart:ExpandFormattingOnCellsAndRowFromStyle
             Document doc = new Document(MyDir + "Tables.docx");
@@ -302,7 +302,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void CreateTableStyle()
+        public void CreateTableStyle()
         {
             //ExStart:CreateTableStyle
             Document doc = new Document();
@@ -333,7 +333,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void DefineConditionalFormatting()
+        public void DefineConditionalFormatting()
         {
             //ExStart:DefineConditionalFormatting
             Document doc = new Document();
@@ -360,7 +360,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void SetTableCellFormatting()
+        public void SetTableCellFormatting()
         {
             //ExStart:DocumentBuilderSetTableCellFormatting
             Document doc = new Document();
@@ -386,7 +386,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Tables
         }
 
         [Test]
-        public static void SetTableRowFormatting()
+        public void SetTableRowFormatting()
         {
             //ExStart:DocumentBuilderSetTableRowFormatting
             Document doc = new Document();

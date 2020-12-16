@@ -7,7 +7,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
     internal class WorkingWithOfficeMath : DocsExamplesBase
     {
         [Test]
-        public static void MathEquations()
+        public void MathEquations()
         {
             //ExStart:MathEquations
             Document doc = new Document(MyDir + "Office math.docx");

@@ -6,7 +6,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithSection : DocsExamplesBase
     {
         [Test]
-        public static void AddSection()
+        public void AddSection()
         {
             //ExStart:AddSection
             Document doc = new Document();
@@ -21,7 +21,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void DeleteSection()
+        public void DeleteSection()
         {
             //ExStart:DeleteSection
             Document doc = new Document();
@@ -37,7 +37,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void DeleteAllSections()
+        public void DeleteAllSections()
         {
             //ExStart:DeleteAllSections
             Document doc = new Document();
@@ -53,7 +53,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void AppendSectionContent()
+        public void AppendSectionContent()
         {
             //ExStart:AppendSectionContent
             Document doc = new Document();
@@ -81,7 +81,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CloneSection()
+        public void CloneSection()
         {
             //ExStart:CloneSection
             Document doc = new Document(MyDir + "Document.docx");
@@ -90,7 +90,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CopySection()
+        public void CopySection()
         {
             //ExStart:CopySection
             Document srcDoc = new Document(MyDir + "Document.docx");
@@ -105,7 +105,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void DeleteHeaderFooterContent()
+        public void DeleteHeaderFooterContent()
         {
             //ExStart:DeleteHeaderFooterContent
             Document doc = new Document(MyDir + "Document.docx");
@@ -116,7 +116,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void DeleteSectionContent()
+        public void DeleteSectionContent()
         {
             //ExStart:DeleteSectionContent
             Document doc = new Document(MyDir + "Document.docx");
@@ -127,7 +127,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ModifyPageSetupInAllSections()
+        public void ModifyPageSetupInAllSections()
         {
             //ExStart:ModifyPageSetupInAllSections
             Document doc = new Document();
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SectionsAccessByIndex()
+        public void SectionsAccessByIndex()
         {
             //ExStart:SectionsAccessByIndex
             Document doc = new Document(MyDir + "Document.docx");

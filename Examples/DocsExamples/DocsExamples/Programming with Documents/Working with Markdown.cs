@@ -7,7 +7,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithMarkdown : DocsExamplesBase
     {
         [Test]
-        public static void CreateMarkdownDocument()
+        public void CreateMarkdownDocument()
         {
             //ExStart:CreateMarkdownDocument
             Document doc = new Document();
@@ -78,7 +78,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ReadMarkdownDocument()
+        public void ReadMarkdownDocument()
         {
             //ExStart:ReadMarkdownDocument
             Document doc = new Document(MyDir + "Quotes.md");
@@ -92,7 +92,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void Emphases()
+        public void Emphases()
         {
             //ExStart:Emphases
             Document doc = new Document();
@@ -128,7 +128,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void Headings()
+        public void Headings()
         {
             //ExStart:Headings
             Document doc = new Document();
@@ -163,7 +163,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void BlockQuotes()
+        public void BlockQuotes()
         {
             //ExStart:BlockQuotes
             Document doc = new Document();
@@ -199,7 +199,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void HorizontalRule()
+        public void HorizontalRule()
         {
             //ExStart:HorizontalRule
             DocumentBuilder builder = new DocumentBuilder(new Document());
@@ -212,7 +212,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void UseWarningSource()
+        public void UseWarningSource()
         {
             //ExStart:UseWarningSourceMarkdown
             Document doc = new Document(MyDir + "Borders.docx");

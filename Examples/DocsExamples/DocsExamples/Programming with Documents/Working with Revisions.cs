@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithRevisions : DocsExamplesBase
     {
         [Test]
-        public static void AcceptRevisions()
+        public void AcceptRevisions()
         {
             //ExStart:AcceptAllRevisions
             Document doc = new Document(MyDir + "Document.docx");
@@ -25,7 +25,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetRevisionTypes()
+        public void GetRevisionTypes()
         {
             //ExStart:GetRevisionTypes
             Document doc = new Document(MyDir + "Revisions.docx");
@@ -42,7 +42,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetRevisionGroups()
+        public void GetRevisionGroups()
         {
             //ExStart:GetRevisionGroups
             Document doc = new Document(MyDir + "Revisions.docx");
@@ -56,7 +56,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void RemoveCommentsInPdf()
+        public void RemoveCommentsInPdf()
         {
             //ExStart:RemoveCommentsInPDF
             Document doc = new Document(MyDir + "Revisions.docx");
@@ -69,7 +69,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ShowRevisionsInBalloons()
+        public void ShowRevisionsInBalloons()
         {
             //ExStart:ShowRevisionsInBalloons
             //ExStart:SetMeasurementUnit
@@ -93,7 +93,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetRevisionGroupDetails()
+        public void GetRevisionGroupDetails()
         {
             //ExStart:GetRevisionGroupDetails
             Document doc = new Document(MyDir + "Revisions.docx");
@@ -114,7 +114,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void AccessRevisedVersion()
+        public void AccessRevisedVersion()
         {
             //ExStart:AccessRevisedVersion
             Document doc = new Document(MyDir + "Revisions.docx");

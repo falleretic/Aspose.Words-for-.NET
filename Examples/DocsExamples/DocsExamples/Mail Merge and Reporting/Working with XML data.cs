@@ -13,7 +13,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
     internal class WorkingWithXmlData : DocsExamplesBase
     {
         [Test]
-        public static void XmlMailMerge()
+        public void XmlMailMerge()
         {
             //ExStart:XmlMailMerge
             DataSet customersDs = new DataSet();
@@ -27,7 +27,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void NestedMailMerge()
+        public void NestedMailMerge()
         {
             //ExStart:NestedMailMerge
             // The Datatable.TableNames and the DataSet.Relations are defined implicitly by .NET through ReadXml.
@@ -46,7 +46,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void MustacheSyntaxUsingDataSet()
+        public void MustacheSyntaxUsingDataSet()
         {
             //ExStart:MailMergeUsingMustacheSyntax
             DataSet ds = new DataSet();
@@ -63,7 +63,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void LINQtoXmlMailMerge()
+        public void LINQtoXmlMailMerge()
         {
             XElement orderXml = XElement.Load(MyDir + "Mail merge data - Purchase order.xml");
 

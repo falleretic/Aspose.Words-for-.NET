@@ -13,12 +13,12 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
     internal class PageSplitter : DocsExamplesBase
     {
         [Test]
-        public static void SplitDocuments()
+        public void SplitDocuments()
         {
             SplitAllDocumentsToPages(MyDir);
         }
 
-        public static void SplitDocumentToPages(string docName)
+        public void SplitDocumentToPages(string docName)
         {
             string fileName = Path.GetFileNameWithoutExtension(docName);
             string extensionName = Path.GetExtension(docName);
@@ -39,7 +39,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             }
         }
 
-        public static void SplitAllDocumentsToPages(string folderName)
+        public void SplitAllDocumentsToPages(string folderName)
         {
             string[] fileNames = Directory.GetFiles(folderName, "*.doc", SearchOption.TopDirectoryOnly);
 
@@ -283,7 +283,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             }
         }
 
-        private static bool IsHeaderFooterType(Node node)
+        private bool IsHeaderFooterType(Node node)
         {
             return node.NodeType == NodeType.HeaderFooter || node.GetAncestor(NodeType.HeaderFooter) != null;
         }
@@ -333,7 +333,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             }
         }
 
-        private static void SplitRunByWords(Run run)
+        private void SplitRunByWords(Run run)
         {
             IEnumerable<string> words = run.Text.Split(' ').Reverse();
 
@@ -351,7 +351,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         /// Splits text of the specified run into two runs.
         /// Inserts the new run just after the specified run.
         /// </summary>
-        private static void SplitRun(Run run, int position)
+        private void SplitRun(Run run, int position)
         {
             Run afterRun = (Run) run.Clone(true);
             afterRun.Text = run.Text.Substring(position);
@@ -369,7 +369,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
     }
 
-    internal static class PageNumberFinderFactory
+    internal class PageNumberFinderFactory
     {
         public static PageNumberFinder Create(Document document)
         {
@@ -694,7 +694,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             }
         }
 
-        public static void RemovePageBreakFromParagraph(Paragraph paragraph)
+        public void RemovePageBreakFromParagraph(Paragraph paragraph)
         {
             Run run = (Run) paragraph.FirstChild;
             if (run.Text.Equals(PageBreakStr))
@@ -703,7 +703,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
             }
         }
 
-        private static void ProcessLastParagraph(Paragraph paragraph)
+        private void ProcessLastParagraph(Paragraph paragraph)
         {
             Node lastNode = paragraph.ChildNodes[paragraph.ChildNodes.Count - 1];
             if (lastNode.NodeType != NodeType.Run)

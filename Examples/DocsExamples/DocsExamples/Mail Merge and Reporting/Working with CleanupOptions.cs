@@ -9,7 +9,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
     internal class WorkingWithCleanupOptions : DocsExamplesBase
     {
         [Test]
-        public static void RemoveRowsFromTable()
+        public void RemoveRowsFromTable()
         {
             //ExStart:RemoveRowsFromTable
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
@@ -26,7 +26,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void CleanupParagraphsWithPunctuationMarks()
+        public void CleanupParagraphsWithPunctuationMarks()
         {
             //ExStart:CleanupParagraphsWithPunctuationMarks
             Document doc = new Document();
@@ -53,7 +53,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void RemoveUnmergedRegions()
+        public void RemoveUnmergedRegions()
         {
             //ExStart:RemoveUnmergedRegions
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
@@ -76,7 +76,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void RemoveEmptyParagraphs()
+        public void RemoveEmptyParagraphs()
         {
             //ExStart:RemoveEmptyParagraphs
             Document doc = new Document(MyDir + "Table with fields.docx");
@@ -91,7 +91,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void RemoveUnusedFields()
+        public void RemoveUnusedFields()
         {
             //ExStart:RemoveUnusedFields
             Document doc = new Document(MyDir + "Table with fields.docx");
@@ -106,7 +106,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void RemoveContainingFields()
+        public void RemoveContainingFields()
         {
             //ExStart:RemoveContainingFields
             Document doc = new Document(MyDir + "Table with fields.docx");
@@ -121,7 +121,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void RemoveEmptyTableRows()
+        public void RemoveEmptyTableRows()
         {
             //ExStart:RemoveEmptyTableRows
             Document doc = new Document(MyDir + "Table with fields.docx");

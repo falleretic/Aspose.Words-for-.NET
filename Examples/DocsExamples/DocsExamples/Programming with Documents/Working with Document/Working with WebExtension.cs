@@ -7,7 +7,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class WorkingWithWebExtension : DocsExamplesBase
     {
         [Test]
-        public static void UsingWebExtensionTaskPanes()
+        public void UsingWebExtensionTaskPanes()
         {
             //ExStart:UsingWebExtensionTaskPanes
             Document doc = new Document();

@@ -7,10 +7,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.Complex_examples_and_helpers
 {
-    internal class WorkingWithDocumentInDatabase : DocsExamplesBase
+    public class WorkingWithDocumentInDatabase : DocsExamplesBase
     {
         [Test, Ignore("Uses Microsoft.Jet.OLEDB.4.0")]
-        public static void LoadAndSaveDocToDatabase()
+        public void LoadAndSaveDocToDatabase()
         {
             Document doc = new Document(MyDir + "Document.docx");
             //ExStart:OpenDatabaseConnection 
@@ -24,7 +24,7 @@ namespace DocsExamples.Complex_examples_and_helpers
             StoreToDatabase(doc, connection);
             
             Document dbDoc = ReadFromDatabase("Document.docx", connection);
-            dbDoc.Save(ArtifactsDir + "LoadAndSaveDocToDatabase.docx");
+            dbDoc.Save(ArtifactsDir + "WorkingWithDocumentInDatabase.LoadAndSaveDocToDatabase.docx");
 
             DeleteFromDatabase("Document.docx", connection);
 
@@ -33,7 +33,7 @@ namespace DocsExamples.Complex_examples_and_helpers
         }
 
         //ExStart:StoreToDatabase 
-        public static void StoreToDatabase(Document doc, OleDbConnection connection)
+        public void StoreToDatabase(Document doc, OleDbConnection connection)
         {
             MemoryStream stream = new MemoryStream();
             doc.Save(stream, SaveFormat.Docx);
@@ -48,7 +48,7 @@ namespace DocsExamples.Complex_examples_and_helpers
         //ExEnd:StoreToDatabase
         
         //ExStart:ReadFromDatabase 
-        public static Document ReadFromDatabase(string fileName, OleDbConnection connection)
+        public Document ReadFromDatabase(string fileName, OleDbConnection connection)
         {
             string commandString = "SELECT * FROM Documents WHERE Name='" + fileName + "'";
             
@@ -75,7 +75,7 @@ namespace DocsExamples.Complex_examples_and_helpers
         //ExEnd:ReadFromDatabase
         
         //ExStart:DeleteFromDatabase 
-        public static void DeleteFromDatabase(string fileName, OleDbConnection connection)
+        public void DeleteFromDatabase(string fileName, OleDbConnection connection)
         {
             string commandString = "DELETE * FROM Documents WHERE Name='" + fileName + "'";
             

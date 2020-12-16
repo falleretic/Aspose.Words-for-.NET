@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithHtmlSaveOptions : DocsExamplesBase
+    public class WorkingWithHtmlSaveOptions : DocsExamplesBase
     {
         [Test]
         public void ExportRoundtripInformation()

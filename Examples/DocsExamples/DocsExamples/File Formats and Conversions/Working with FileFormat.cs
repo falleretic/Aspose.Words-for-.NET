@@ -7,10 +7,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions
 {
-    internal class WorkingWithFileFormat : DocsExamplesBase
+    public class WorkingWithFileFormat : DocsExamplesBase
     {
         [Test]
-        public static void DetectFileFormat()
+        public void DetectFileFormat()
         {
             //ExStart:CheckFormatCompatibility
             string supportedDir = ArtifactsDir + "Supported";
@@ -115,7 +115,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void DetectDocumentSignatures()
+        public void DetectDocumentSignatures()
         {
             //ExStart:DetectDocumentSignatures
             FileFormatInfo info = FileFormatUtil.DetectFileFormat(MyDir + "Digitally signed.docx");
@@ -130,7 +130,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void VerifyEncryptedDocument()
+        public void VerifyEncryptedDocument()
         {
             //ExStart:VerifyEncryptedDocument
             FileFormatInfo info = FileFormatUtil.DetectFileFormat(MyDir + "Encrypted.docx");

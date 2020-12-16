@@ -8,10 +8,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.Complex_examples_and_helpers
 {
-    internal class EnumerateLayoutElements : DocsExamplesBase
+    public class EnumerateLayoutElements : DocsExamplesBase
     {
         [Test]
-        public static void GetLayoutElements()
+        public void GetLayoutElements()
         {
             Document doc = new Document(MyDir + "Document layout.docx");
 

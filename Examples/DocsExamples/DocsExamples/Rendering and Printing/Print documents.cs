@@ -15,7 +15,7 @@ namespace DocsExamples.Rendering_and_Printing
     internal class PrintDocuments : DocsExamplesBase
     {
         [Test, Ignore("Run only when the printer driver is installed")]
-        public static void CachePrinterSettings()
+        public void CachePrinterSettings()
         {
             //ExStart:CachePrinterSettings
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -39,7 +39,7 @@ namespace DocsExamples.Rendering_and_Printing
         }
 
         [Test, Ignore("Run only when the printer driver is installed")]
-        public static void Print()
+        public void Print()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
 
@@ -84,7 +84,7 @@ namespace DocsExamples.Rendering_and_Printing
         }
 
         [Test, Ignore("Run only when the printer driver is installed")]
-        public static void PrintMultiplePages()
+        public void PrintMultiplePages()
         {
             //ExStart:PrintMultiplePagesOnOneSheet
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -129,7 +129,7 @@ namespace DocsExamples.Rendering_and_Printing
         }
 
         [Test, Ignore("Run only when a printer driver installed")]
-        public static void UseXpsPrintHelper()
+        public void UseXpsPrintHelper()
         {
             //ExStart:PrintDocViaXpsPrint
             Document document = new Document(MyDir + "Rendering.docx");
@@ -262,7 +262,7 @@ namespace DocsExamples.Rendering_and_Printing
         /// Converts hundredths of inches to points.
         /// </summary>
         //ExStart:HundredthsInchToPoint
-        private static float HundredthsInchToPoint(float value)
+        private float HundredthsInchToPoint(float value)
         {
             return (float)ConvertUtil.InchToPoint(value / 100);
         }

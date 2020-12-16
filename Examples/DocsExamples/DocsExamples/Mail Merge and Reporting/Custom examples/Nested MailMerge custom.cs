@@ -8,7 +8,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
     class NestedMailMergeCustom : DocsExamplesBase
     {
         [Test]
-        public static void CustomMailMerge()
+        public void CustomMailMerge()
         {
             //ExStart:NestedMailMergeCustom
             Document doc = new Document();

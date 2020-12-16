@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithComments : DocsExamplesBase
     {
         [Test]
-        public static void AddComments()
+        public void AddComments()
         {
             //ExStart:AddComments
             //ExStart:CreateSimpleDocumentUsingDocumentBuilder
@@ -30,7 +30,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void AnchorComment()
+        public void AnchorComment()
         {
             //ExStart:AnchorComment
             Document doc = new Document();
@@ -65,7 +65,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void AddRemoveCommentReply()
+        public void AddRemoveCommentReply()
         {
             //ExStart:AddRemoveCommentReply
             Document doc = new Document(MyDir + "Comments.docx");
@@ -80,7 +80,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ProcessComments()
+        public void ProcessComments()
         {
             // ExStart:ProcessComments
             Document doc = new Document(MyDir + "Comments.docx");
@@ -109,7 +109,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         //ExStart:ExtractComments
-        static ArrayList ExtractComments(Document doc)
+        ArrayList ExtractComments(Document doc)
         {
             ArrayList collectedComments = new ArrayList();
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
@@ -125,7 +125,7 @@ namespace DocsExamples.Programming_with_Documents
         //ExEnd:ExtractComments
 
         //ExStart:ExtractCommentsByAuthor
-        static ArrayList ExtractComments(Document doc, string authorName)
+        ArrayList ExtractComments(Document doc, string authorName)
         {
             ArrayList collectedComments = new ArrayList();
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
@@ -142,7 +142,7 @@ namespace DocsExamples.Programming_with_Documents
         //ExEnd:ExtractCommentsByAuthor
 
         //ExStart:RemoveComments
-        static void RemoveComments(Document doc)
+        void RemoveComments(Document doc)
         {
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
 
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents
         //ExEnd:RemoveComments
 
         //ExStart:RemoveCommentsByAuthor
-        static void RemoveComments(Document doc, string authorName)
+        void RemoveComments(Document doc, string authorName)
         {
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
 
@@ -166,7 +166,7 @@ namespace DocsExamples.Programming_with_Documents
         //ExEnd:RemoveCommentsByAuthor
 
         //ExStart:CommentResolvedandReplies
-        static void CommentResolvedAndReplies(Document doc)
+        void CommentResolvedAndReplies(Document doc)
         {
             NodeCollection comments = doc.GetChildNodes(NodeType.Comment, true);
 

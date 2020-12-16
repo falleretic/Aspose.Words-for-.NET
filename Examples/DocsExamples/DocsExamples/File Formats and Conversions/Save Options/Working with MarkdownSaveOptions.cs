@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithMarkdownSaveOptions : DocsExamplesBase
+    public class WorkingWithMarkdownSaveOptions : DocsExamplesBase
     {
         [Test]
         public void ExportIntoMarkdownWithTableContentAlignment()
@@ -41,7 +41,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void SetImagesFolder()
+        public void SetImagesFolder()
         {
             // ExStart:SetImagesFolder
             Document doc = new Document(MyDir + "Image bullet points.docx");

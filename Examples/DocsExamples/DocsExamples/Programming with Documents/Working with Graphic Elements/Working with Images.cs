@@ -16,7 +16,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
     internal class WorkingWithImages : DocsExamplesBase
     {
         [Test]
-        public static void AddImageToEachPage()
+        public void AddImageToEachPage()
         {
             Document doc = new Document(MyDir + "Document.docx");
 
@@ -52,7 +52,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         /// </summary>
         /// <param name="para">The paragraph to an an image to.</param>
         /// <param name="page">The page number the paragraph appears on.</param>
-        public static void AddImageToPage(Paragraph para, int page, string imagesDir)
+        public void AddImageToPage(Paragraph para, int page, string imagesDir)
         {
             Document doc = (Document) para.Document;
 
@@ -83,7 +83,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertBarcodeImage()
+        public void InsertBarcodeImage()
         {
             //ExStart:InsertBarcodeImage
             Document doc = new Document();
@@ -112,7 +112,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         //ExStart:InsertBarcodeIntoFooter
-        private static void InsertBarcodeIntoFooter(DocumentBuilder builder, Section section,
+        private void InsertBarcodeIntoFooter(DocumentBuilder builder, Section section,
             HeaderFooterType footerType)
         {
             // Move to the footer type in the specific section.
@@ -140,7 +140,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         //ExEnd:InsertBarcodeIntoFooter
 
         [Test]
-        public static void CompressImages()
+        public void CompressImages()
         {
             Document doc = new Document(MyDir + "Images.docx");
 

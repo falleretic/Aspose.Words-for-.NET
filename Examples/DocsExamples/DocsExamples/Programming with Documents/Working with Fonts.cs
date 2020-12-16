@@ -13,7 +13,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithFonts : DocsExamplesBase
     {
         [Test]
-        public static void FontFormatting()
+        public void FontFormatting()
         {
             //ExStart:WriteAndFont
             Document doc = new Document();
@@ -33,7 +33,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetFontLineSpacing()
+        public void GetFontLineSpacing()
         {
             //ExStart:GetFontLineSpacing
             Document doc = new Document();
@@ -48,7 +48,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CheckDMLTextEffect()
+        public void CheckDMLTextEffect()
         {
             //ExStart:CheckDMLTextEffect
             Document doc = new Document(MyDir + "DrawingML text effects.docx");
@@ -66,7 +66,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontFormatting()
+        public void SetFontFormatting()
         {
             //ExStart:DocumentBuilderSetFontFormatting
             Document doc = new Document();
@@ -88,7 +88,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontEmphasisMark()
+        public void SetFontEmphasisMark()
         {
             // ExStart:SetFontEmphasisMark
             Document document = new Document();
@@ -106,7 +106,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontsFolders()
+        public void SetFontsFolders()
         {
             // ExStart:SetFontsFolders
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
@@ -120,7 +120,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void EnableDisableFontSubstitution()
+        public void EnableDisableFontSubstitution()
         {
             //ExStart:EnableDisableFontSubstitution
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -136,7 +136,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontFallbackSettings()
+        public void SetFontFallbackSettings()
         {
             //ExStart:SetFontFallbackSettings
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -151,7 +151,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void NotoFallbackSettings()
+        public void NotoFallbackSettings()
         {
             //ExStart:SetPredefinedFontFallbackSettings
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -166,7 +166,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontsFoldersDefaultInstance()
+        public void SetFontsFoldersDefaultInstance()
         {
             // ExStart:SetFontsFoldersDefaultInstance
             FontSettings.DefaultInstance.SetFontsFolder("C:\\MyFonts\\", true);
@@ -177,7 +177,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontsFoldersMultipleFolders()
+        public void SetFontsFoldersMultipleFolders()
         {
             //ExStart:SetFontsFoldersMultipleFolders
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -195,7 +195,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontsFoldersSystemAndCustomFolder()
+        public void SetFontsFoldersSystemAndCustomFolder()
         {
             //ExStart:SetFontsFoldersSystemAndCustomFolder
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -222,7 +222,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontsFoldersWithPriority()
+        public void SetFontsFoldersWithPriority()
         {
             // ExStart:SetFontsFoldersWithPriority
             FontSettings.DefaultInstance.SetFontsSources(new FontSourceBase[]
@@ -236,7 +236,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetTrueTypeFontsFolder()
+        public void SetTrueTypeFontsFolder()
         {
             //ExStart:SetTrueTypeFontsFolder
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -254,7 +254,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SpecifyDefaultFontWhenRendering()
+        public void SpecifyDefaultFontWhenRendering()
         {
             //ExStart:SpecifyDefaultFontWhenRendering
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -271,7 +271,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FontSettingsWithLoadOptions()
+        public void FontSettingsWithLoadOptions()
         {
             //ExStart:FontSettingsWithLoadOptions
             FontSettings fontSettings = new FontSettings();
@@ -288,7 +288,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void SetFontsFolder()
+        public void SetFontsFolder()
         {
             //ExStart:SetFontsFolder
             FontSettings fontSettings = new FontSettings();
@@ -302,7 +302,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FontSettingsWithLoadOption()
+        public void FontSettingsWithLoadOption()
         {
             // ExStart:FontSettingsWithLoadOption
             LoadOptions loadOptions = new LoadOptions();
@@ -313,7 +313,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void FontSettingsDefaultInstance()
+        public void FontSettingsDefaultInstance()
         {
             // ExStart:FontSettingsFontSource
             // ExStart:FontSettingsDefaultInstance
@@ -332,7 +332,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetListOfAvailableFonts()
+        public void GetListOfAvailableFonts()
         {
             //ExStart:GetListOfAvailableFonts
             FontSettings fontSettings = new FontSettings();
@@ -356,7 +356,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ReceiveNotificationsOfFonts()
+        public void ReceiveNotificationsOfFonts()
         {
             //ExStart:ReceiveNotificationsOfFonts
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -381,7 +381,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ReceiveWarningNotification()
+        public void ReceiveWarningNotification()
         {
             //ExStart:ReceiveWarningNotification
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -419,7 +419,7 @@ namespace DocsExamples.Programming_with_Documents
 
         // ExStart:ResourceSteamFontSourceExample
         [Test]
-        public static void ResourceSteamFontSourceExample()
+        public void ResourceSteamFontSourceExample()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
             
@@ -440,7 +440,7 @@ namespace DocsExamples.Programming_with_Documents
 
         //ExStart:GetSubstitutionWithoutSuffixes
         [Test]
-        public static void GetSubstitutionWithoutSuffixes()
+        public void GetSubstitutionWithoutSuffixes()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
 

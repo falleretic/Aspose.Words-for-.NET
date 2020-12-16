@@ -10,7 +10,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     internal class WorkingWithBookmarks : DocsExamplesBase
     {
         [Test]
-        public static void AccessBookmarks()
+        public void AccessBookmarks()
         {
             //ExStart:AccessBookmarks
             Document doc = new Document(MyDir + "Bookmarks.docx");
@@ -23,7 +23,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void UpdateBookmarkData()
+        public void UpdateBookmarkData()
         {
             //ExStart:UpdateBookmarkData
             Document doc = new Document(MyDir + "Bookmarks.docx");
@@ -39,7 +39,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void BookmarkTableColumns()
+        public void BookmarkTableColumns()
         {
             //ExStart:BookmarkTable
             Document doc = new Document();
@@ -85,7 +85,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void CopyBookmarkedText()
+        public void CopyBookmarkedText()
         {
             Document srcDoc = new Document(MyDir + "Bookmarks.docx");
 
@@ -113,7 +113,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         /// <param name="importer">Maintains the import context.</param>
         /// <param name="srcBookmark">The input bookmark.</param>
         /// <param name="dstNode">Must be a node that can contain paragraphs (such as a Story).</param>
-        private static void AppendBookmarkedText(NodeImporter importer, Bookmark srcBookmark, CompositeNode dstNode)
+        private void AppendBookmarkedText(NodeImporter importer, Bookmark srcBookmark, CompositeNode dstNode)
         {
             // This is the paragraph that contains the beginning of the bookmark.
             Paragraph startPara = (Paragraph) srcBookmark.BookmarkStart.ParentNode;
@@ -145,7 +145,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void CreateBookmark()
+        public void CreateBookmark()
         {
             //ExStart:CreateBookmark
             Document doc = new Document();
@@ -170,7 +170,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ShowHideBookmarks()
+        public void ShowHideBookmarks()
         {
             //ExStart:ShowHideBookmarks
             Document doc = new Document(MyDir + "Bookmarks.docx");
@@ -182,7 +182,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         //ExStart:ShowHideBookmarkedContent
-        public static void ShowHideBookmarkedContent(Document doc, string bookmarkName, bool showHide)
+        public void ShowHideBookmarkedContent(Document doc, string bookmarkName, bool showHide)
         {
             Bookmark bm = doc.Range.Bookmarks[bookmarkName];
 
@@ -231,7 +231,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:ShowHideBookmarkedContent
 
         [Test]
-        public static void UntangleRowBookmarks()
+        public void UntangleRowBookmarks()
         {
             Document doc = new Document(MyDir + "Table column bookmarks.docx");
 
@@ -248,7 +248,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
             doc.Save(ArtifactsDir + "WorkingWithBookmarks.UntangleRowBookmarks.docx");
         }
 
-        private static void Untangle(Document doc)
+        private void Untangle(Document doc)
         {
             foreach (Bookmark bookmark in doc.Range.Bookmarks)
             {
@@ -263,7 +263,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
             }
         }
 
-        private static void DeleteRowByBookmark(Document doc, string bookmarkName)
+        private void DeleteRowByBookmark(Document doc, string bookmarkName)
         {
             Bookmark bookmark = doc.Range.Bookmarks[bookmarkName];
 

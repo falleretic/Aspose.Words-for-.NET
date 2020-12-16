@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     internal class WorkingWithStylesAndThemes : DocsExamplesBase
     {
         [Test]
-        public static void AccessStyles()
+        public void AccessStyles()
         {
             //ExStart:AccessStyles
             Document doc = new Document();
@@ -34,7 +34,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void CopyStyles()
+        public void CopyStyles()
         {
             //ExStart:CopyStyles
             Document doc = new Document();
@@ -47,7 +47,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void GetThemeProperties()
+        public void GetThemeProperties()
         {
             //ExStart:GetThemeProperties
             Document doc = new Document();
@@ -61,7 +61,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void SetThemeProperties()
+        public void SetThemeProperties()
         {
             //ExStart:SetThemeProperties
             Document doc = new Document();
@@ -73,7 +73,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void InsertStyleSeparator()
+        public void InsertStyleSeparator()
         {
             //ExStart:InsertStyleSeparator
             Document doc = new Document();

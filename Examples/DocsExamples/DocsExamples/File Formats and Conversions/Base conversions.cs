@@ -10,10 +10,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions
 {
-    internal class BaseConversions : DocsExamplesBase
+    public class BaseConversions : DocsExamplesBase
     {
         [Test]
-        public static void DocToDocx()
+        public void DocToDocx()
         {
             //ExStart:LoadAndSave
             //ExStart:OpenDocument
@@ -25,7 +25,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void DocxToRtf()
+        public void DocxToRtf()
         {
             //ExStart:LoadAndSaveToStream 
             //ExStart:OpeningFromStream
@@ -51,7 +51,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void DocxToPdf()
+        public void DocxToPdf()
         {
             //ExStart:Doc2Pdf
             Document doc = new Document(MyDir + "Document.docx");
@@ -61,7 +61,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void DocxToByte()
+        public void DocxToByte()
         {
             //ExStart:DocxToByte
             Document doc = new Document(MyDir + "Document.docx");
@@ -77,7 +77,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void DocxToEpub()
+        public void DocxToEpub()
         {
             //ExStart:DocxToEpub
             Document doc = new Document(MyDir + "Document.docx");
@@ -87,7 +87,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test, Ignore("Only for example")]
-        public static void DocxToMhtmlAndSendingEmail()
+        public void DocxToMhtmlAndSendingEmail()
         {
             //ExStart:DocxToMhtmlAndSendingEmail
             Document doc = new Document(MyDir + "Document.docx");
@@ -125,7 +125,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void DocxToTxt()
+        public void DocxToTxt()
         {
             //ExStart:DocxToTxt
             Document doc = new Document(MyDir + "Document.docx");
@@ -135,7 +135,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         }
 
         [Test]
-        public static void TxtToDocx()
+        public void TxtToDocx()
         {
             //ExStart:TxtToDocx
             // The encoding of the text file is automatically detected.
@@ -147,7 +147,7 @@ namespace DocsExamples.File_Formats_and_Conversions
 
 #if NET462
         [Test]
-        public static void ImagesToPdf()
+        public void ImagesToPdf()
         {
             //ExStart:ImageToPdf
             ConvertImageToPdf(ImagesDir + "Logo.jpg", ArtifactsDir + "BaseConversions.JpgToPdf.pdf");
@@ -163,7 +163,7 @@ namespace DocsExamples.File_Formats_and_Conversions
         /// </summary>
         /// <param name="inputFileName">File name of input image file.</param>
         /// <param name="outputFileName">Output PDF file name.</param>
-        public static void ConvertImageToPdf(string inputFileName, string outputFileName)
+        public void ConvertImageToPdf(string inputFileName, string outputFileName)
         {
             Console.WriteLine("Converting " + inputFileName + " to PDF ....");
 

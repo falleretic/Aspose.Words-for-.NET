@@ -5,10 +5,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithPdfSaveOptions : DocsExamplesBase
+    public class WorkingWithPdfSaveOptions : DocsExamplesBase
     {
         [Test]
-        public static void DisplayDocTitleInWindowTitlebar()
+        public void DisplayDocTitleInWindowTitlebar()
         {
             //ExStart:DisplayDocTitleInWindowTitlebar
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -21,7 +21,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 
         [Test]
         //ExStart:PdfRenderWarnings
-        public static void PdfRenderWarnings()
+        public void PdfRenderWarnings()
         {
             Document doc = new Document(MyDir + "WMF with image.docx");
 
@@ -71,7 +71,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         //ExEnd:PdfRenderWarnings
 
         [Test]
-        public static void DigitallySignedPdfUsingCertificateHolder()
+        public void DigitallySignedPdfUsingCertificateHolder()
         {
             //ExStart:DigitallySignedPdfUsingCertificateHolder
             Document doc = new Document();
@@ -91,7 +91,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void EmbeddedAllFonts()
+        public void EmbeddedAllFonts()
         {
             //ExStart:EmbeddAllFonts
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -104,7 +104,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void EmbeddedSubsetFonts()
+        public void EmbeddedSubsetFonts()
         {
             //ExStart:EmbeddSubsetFonts
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -118,7 +118,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void DisableEmbedWindowsFonts()
+        public void DisableEmbedWindowsFonts()
         {
             // ExStart:DisableEmbedWindowsFonts
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -131,7 +131,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void SkipEmbeddedArialAndTimesRomanFonts()
+        public void SkipEmbeddedArialAndTimesRomanFonts()
         {
             //ExStart:SkipEmbeddedArialAndTimesRomanFonts
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -143,7 +143,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void AvoidEmbeddingCoreFonts()
+        public void AvoidEmbeddingCoreFonts()
         {
             //ExStart:AvoidEmbeddingCoreFonts
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -156,7 +156,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
         
         [Test]
-        public static void EscapeUri()
+        public void EscapeUri()
         {
             //ExStart:EscapeUri
             Document doc = new Document();
@@ -175,7 +175,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void ExportHeaderFooterBookmarks()
+        public void ExportHeaderFooterBookmarks()
         {
             //ExStart:ExportHeaderFooterBookmarks
             Document doc = new Document(MyDir + "Bookmarks in headers and footers.docx");
@@ -189,7 +189,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void ScaleWmfFontsToMetafileSize()
+        public void ScaleWmfFontsToMetafileSize()
         {
             //ExStart:ScaleWmfFontsToMetafileSize
             Document doc = new Document(MyDir + "WMF with text.docx");
@@ -208,7 +208,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void AdditionalTextPositioning()
+        public void AdditionalTextPositioning()
         {
             //ExStart:AdditionalTextPositioning
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -220,7 +220,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void ConversionToPdf17()
+        public void ConversionToPdf17()
         {
             //ExStart:ConversionToPDF17
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -232,7 +232,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void DownsamplingImages()
+        public void DownsamplingImages()
         {
             //ExStart:DownsamplingImages
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -249,7 +249,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void SetOutlineOptions()
+        public void SetOutlineOptions()
         {
             //ExStart:SetOutlineOptions
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -263,7 +263,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void CustomPropertiesExport()
+        public void CustomPropertiesExport()
         {
             //ExStart:CustomPropertiesExport
             Document doc = new Document();
@@ -276,7 +276,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void ExportDocumentStructure()
+        public void ExportDocumentStructure()
         {
             //ExStart:ExportDocumentStructure
             Document doc = new Document(MyDir + "Paragraphs.docx");
@@ -290,7 +290,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void PdfImageComppression()
+        public void PdfImageComppression()
         {
             //ExStart:PdfImageComppression
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -316,7 +316,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void UpdateLastPrintedProperty()
+        public void UpdateLastPrintedProperty()
         {
             //ExStart:UpdateIfLastPrinted
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -328,7 +328,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void Dml3DEffectsRendering()
+        public void Dml3DEffectsRendering()
         {
             //ExStart:Dml3DEffectsRendering
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -340,7 +340,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void InterpolateImages()
+        public void InterpolateImages()
         {
             //ExStart:SetImageInterpolation
             Document doc = new Document(MyDir + "Rendering.docx");

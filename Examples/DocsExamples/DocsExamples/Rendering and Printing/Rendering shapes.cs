@@ -181,7 +181,7 @@ namespace DocsExamples.Rendering_and_Printing
         /// <param name="node">The node to render.</param>
         /// <param name="filePath">The path to save the rendered image to.</param>
         /// <param name="imageOptions">The image options to use during rendering. This can be null.</param>
-        public static void RenderNode(Node node, string filePath, ImageSaveOptions imageOptions)
+        public void RenderNode(Node node, string filePath, ImageSaveOptions imageOptions)
         {
             if (imageOptions == null)
                 imageOptions = new ImageSaveOptions(FileFormatUtil.ExtensionToSaveFormat(Path.GetExtension(filePath)));
@@ -258,7 +258,7 @@ namespace DocsExamples.Rendering_and_Printing
         /// <summary>
         /// Finds the minimum bounding box around non-transparent pixels in a Bitmap.
         /// </summary>
-        public static Rectangle FindBoundingBoxAroundNode(Bitmap originalBitmap)
+        public Rectangle FindBoundingBoxAroundNode(Bitmap originalBitmap)
         {
             Point min = new Point(int.MaxValue, int.MaxValue);
             Point max = new Point(int.MinValue, int.MinValue);

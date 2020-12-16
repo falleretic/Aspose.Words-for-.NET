@@ -6,7 +6,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
     internal class WorkingWithBarcodeGenerator : DocsExamplesBase
     {
         [Test]
-        public static void GenerateACustomBarCodeImage()
+        public void GenerateACustomBarCodeImage()
         {
             //ExStart:GenerateACustomBarCodeImage
             Document doc = new Document(MyDir + "Field sample - BARCODE.docx");

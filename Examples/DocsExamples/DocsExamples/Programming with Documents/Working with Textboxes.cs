@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithTextboxes
     {
         [Test]
-        public static void CreateALink()
+        public void CreateALink()
         {
             //ExStart:CreateALink
             Document doc = new Document();
@@ -25,7 +25,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CheckSequence()
+        public void CheckSequence()
         {
             //ExStart:CheckSequence
             Document doc = new Document();
@@ -51,7 +51,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void BreakALink()
+        public void BreakALink()
         {
             //ExStart:BreakALink
             Document doc = new Document();

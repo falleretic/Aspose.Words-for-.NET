@@ -6,7 +6,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     internal class WorkingWithRanges : DocsExamplesBase
     {
         [Test]
-        public static void RangesDeleteText()
+        public void RangesDeleteText()
         {
             //ExStart:RangesDeleteText
             Document doc = new Document(MyDir + "Document.docx");
@@ -15,7 +15,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void RangesGetText()
+        public void RangesGetText()
         {
             //ExStart:RangesGetText
             Document doc = new Document(MyDir + "Document.docx");

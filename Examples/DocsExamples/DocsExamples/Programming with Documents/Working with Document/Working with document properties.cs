@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class DocumentPropertiesAndVariables : DocsExamplesBase
     {
         [Test]
-        public static void GetVariables()
+        public void GetVariables()
         {
             //ExStart:GetVariables
             Document doc = new Document(MyDir + "Document.docx");
@@ -34,7 +34,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void EnumerateProperties()
+        public void EnumerateProperties()
         {
             //ExStart:EnumerateProperties            
             Document doc = new Document(MyDir + "Properties.docx");
@@ -53,7 +53,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void AddCustomDocumentProperties()
+        public void AddCustomDocumentProperties()
         {
             //ExStart:AddCustomDocumentProperties            
             Document doc = new Document(MyDir + "Properties.docx");
@@ -71,7 +71,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void RemoveCustomDocumentProperties()
+        public void RemoveCustomDocumentProperties()
         {
             //ExStart:CustomRemove            
             Document doc = new Document(MyDir + "Properties.docx");
@@ -80,7 +80,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void RemovePersonalInformation()
+        public void RemovePersonalInformation()
         {
             //ExStart:RemovePersonalInformation            
             Document doc = new Document(MyDir + "Properties.docx") { RemovePersonalInformation = true };
@@ -90,7 +90,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ConfiguringLinkToContent()
+        public void ConfiguringLinkToContent()
         {
             //ExStart:ConfiguringLinkToContent            
             Document doc = new Document();
@@ -115,7 +115,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ConvertBetweenMeasurementUnits()
+        public void ConvertBetweenMeasurementUnits()
         {
             //ExStart:ConvertBetweenMeasurementUnits
             Document doc = new Document();
@@ -132,7 +132,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void UseControlCharacters()
+        public void UseControlCharacters()
         {
             //ExStart:UseControlCharacters
             const string text = "test\r";

@@ -13,7 +13,7 @@ namespace DocsExamples.Complex_examples_and_helpers
     internal class DocumentLayoutHelper : DocsExamplesBase
     {
         [Test]
-        public static void WrapperToAccessLayoutEntities()
+        public void WrapperToAccessLayoutEntities()
         {
             // This sample introduces the RenderedDocument class and other related classes which provide an API wrapper for 
             // the LayoutEnumerator. This allows you to access the layout entities of a document using a DOM style API.
@@ -192,7 +192,7 @@ namespace DocsExamples.Complex_examples_and_helpers
         private readonly LayoutCollector mLayoutCollector;
         private readonly LayoutEnumerator mEnumerator;
 
-        private static readonly Dictionary<object, Node> mLayoutToNodeLookup =
+        private readonly Dictionary<object, Node> mLayoutToNodeLookup =
             new Dictionary<object, Node>();
     }
 

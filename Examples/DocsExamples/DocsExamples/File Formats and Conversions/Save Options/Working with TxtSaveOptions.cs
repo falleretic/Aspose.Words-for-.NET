@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithTxtSaveOptions : DocsExamplesBase
+    public class WorkingWithTxtSaveOptions : DocsExamplesBase
     {
         [Test]
-        public static void AddBidiMarks()
+        public void AddBidiMarks()
         {
             //ExStart:AddBidiMarks
             Document doc = new Document();
@@ -25,7 +25,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void ExportHeadersFootersMode()
+        public void ExportHeadersFootersMode()
         {
             //ExStart:ExportHeadersFootersMode
             Document doc = new Document();
@@ -67,7 +67,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void UseTabCharacterPerLevelForListIndentation()
+        public void UseTabCharacterPerLevelForListIndentation()
         {
             //ExStart:UseTabCharacterPerLevelForListIndentation
             Document doc = new Document();
@@ -90,7 +90,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Save_Options
         }
 
         [Test]
-        public static void UseSpaceCharacterPerLevelForListIndentation()
+        public void UseSpaceCharacterPerLevelForListIndentation()
         {
             //ExStart:UseSpaceCharacterPerLevelForListIndentation
             Document doc = new Document();

@@ -15,7 +15,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
     internal class FindAndReplace : DocsExamplesBase
     {
         [Test]
-        public static void SimpleFindReplace()
+        public void SimpleFindReplace()
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
@@ -32,7 +32,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void FindAndHighlight()
+        public void FindAndHighlight()
         {
             //ExStart:FindAndHighlight
             Document doc = new Document(MyDir + "Find and highlight.docx");
@@ -122,7 +122,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:SplitRun
 
         [Test]
-        public static void MetaCharactersInSearchPattern()
+        public void MetaCharactersInSearchPattern()
         {
             /* meta-characters
             &p - paragraph break
@@ -152,7 +152,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ReplaceTextContainingMetaCharacters()
+        public void ReplaceTextContainingMetaCharacters()
         {
             //ExStart:ReplaceTextContainingMetaCharacters
             Document doc = new Document();
@@ -180,7 +180,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void IgnoreTextInsideFields()
+        public void IgnoreTextInsideFields()
         {
             //ExStart:IgnoreTextInsideFields
             Document doc = new Document();
@@ -204,7 +204,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void IgnoreTextInsideDeleteRevisions()
+        public void IgnoreTextInsideDeleteRevisions()
         {
             //ExStart:IgnoreTextInsideDeleteRevisions
             Document doc = new Document();
@@ -234,7 +234,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void IgnoreTextInsideInsertRevisions()
+        public void IgnoreTextInsideInsertRevisions()
         {
             // ExStart:IgnoreTextInsideInsertRevisions
             Document doc = new Document();
@@ -263,7 +263,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ReplaceHtmlTextWithMetaCharacters()
+        public void ReplaceHtmlTextWithMetaCharacters()
         {
             //ExStart:ReplaceHtmlTextWithMetaCharacters
             Document doc = new Document();
@@ -298,7 +298,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:ReplaceHtmlFindAndInsertHtml
 
         [Test]
-        public static void ReplaceTextInFooter()
+        public void ReplaceTextInFooter()
         {
             //ExStart:ReplaceTextInFooter
             Document doc = new Document(MyDir + "Footer.docx");
@@ -316,7 +316,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
 
         [Test]
         //ExStart:ShowChangesForHeaderAndFooterOrders
-        public static void ShowChangesForHeaderAndFooterOrders()
+        public void ShowChangesForHeaderAndFooterOrders()
         {
             ReplaceLog logger = new ReplaceLog();
             
@@ -354,7 +354,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         // ExEnd:ShowChangesForHeaderAndFooterOrders
 
         [Test]
-        public static void ReplaceTextWithField()
+        public void ReplaceTextWithField()
         {
             Document doc = new Document(MyDir + "Replace text with fields.docx");
 
@@ -443,7 +443,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
             /// Splits text of the specified run into two runs.
             /// Inserts the new run just after the specified run.
             /// </summary>
-            private static Run SplitRun(Run run, int position)
+            private Run SplitRun(Run run, int position)
             {
                 Run afterRun = (Run) run.Clone(true);
                 
@@ -459,7 +459,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ReplaceWithEvaluator()
+        public void ReplaceWithEvaluator()
         {
             //ExStart:ReplaceWithEvaluator
             Document doc = new Document();
@@ -496,7 +496,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
 
         [Test]
         // ExStart:ReplaceWithHtml
-        public static void ReplaceWithHtml()
+        public void ReplaceWithHtml()
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
@@ -539,7 +539,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:ReplaceWithHtml
 
         [Test]
-        public static void ReplaceWithRegex()
+        public void ReplaceWithRegex()
         {
             //ExStart:ReplaceWithRegex
             Document doc = new Document();
@@ -556,7 +556,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
         
         [Test]
-        public static void RecognizeAndSubstitutionsWithinReplacementPatterns()
+        public void RecognizeAndSubstitutionsWithinReplacementPatterns()
         {
             //ExStart:RecognizeAndSubstitutionsWithinReplacementPatterns
             Document doc = new Document();
@@ -573,7 +573,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ReplaceWithString()
+        public void ReplaceWithString()
         {
             //ExStart:ReplaceWithString
             Document doc = new Document();
@@ -589,7 +589,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
 
         [Test]
         //ExStart:UsingLegacyOrder
-        public static void UsingLegacyOrder()
+        public void UsingLegacyOrder()
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
@@ -622,7 +622,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         //ExEnd:UsingLegacyOrder
 
         [Test]
-        public static void ReplaceTextInTable()
+        public void ReplaceTextInTable()
         {
             //ExStart:ReplaceText
             Document doc = new Document(MyDir + "Tables.docx");

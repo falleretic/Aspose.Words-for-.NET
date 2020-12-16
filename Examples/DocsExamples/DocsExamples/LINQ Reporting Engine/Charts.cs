@@ -5,10 +5,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.LINQ_Reporting_Engine
 {
-    internal class Charts : DocsExamplesBase
+    public class Charts : DocsExamplesBase
     {
         [Test]
-        public static void CreateBubbleChart()
+        public void CreateBubbleChart()
         {
             //ExStart:BubbleChart
             Document doc = new Document(MyDir + "Reporting engine template - Bubble chart.docx");
@@ -21,7 +21,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void SetChartSeriesNameDynamically()
+        public void SetChartSeriesNameDynamically()
         {
             //ExStart:SetChartSeriesNameDynamically
             Document doc = new Document(MyDir + "Reporting engine template - Chart.docx");
@@ -34,7 +34,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void ChartWithFilteringGroupingOrdering()
+        public void ChartWithFilteringGroupingOrdering()
         {
             //ExStart:ChartWithFilteringGroupingOrdering
             Document doc = new Document(MyDir + "Reporting engine template - Chart with filtering.docx");
@@ -47,7 +47,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void PieChart()
+        public void PieChart()
         {
             //ExStart:PieChart
             Document doc = new Document(MyDir + "Reporting engine template - Pie chart.docx");
@@ -60,7 +60,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void ScatterChart()
+        public void ScatterChart()
         {
             //ExStart:ScatterChart
             Document doc = new Document(MyDir + "Reporting engine template - Scatter chart.docx");

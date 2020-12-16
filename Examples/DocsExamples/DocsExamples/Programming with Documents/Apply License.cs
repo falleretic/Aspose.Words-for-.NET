@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class ApplyLicense : DocsExamplesBase
     {
         [Test]
-        public static void ApplyLicenseFromFile()
+        public void ApplyLicenseFromFile()
         {
             //ExStart:ApplyLicenseFromFile
             License license = new License();
@@ -32,7 +32,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ApplyLicenseFromStream()
+        public void ApplyLicenseFromStream()
         {
             //ExStart:ApplyLicenseFromStream
             License license = new License();
@@ -53,7 +53,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void ApplyMeteredLicense()
+        public void ApplyMeteredLicense()
         {
             //ExStart:ApplyMeteredLicense
             try

@@ -8,7 +8,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithNode : DocsExamplesBase
     {
         [Test]
-        public static void UseNodeType()
+        public void UseNodeType()
         {
             //ExStart:UseNodeType            
             Document doc = new Document();
@@ -18,7 +18,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void GetParentNode()
+        public void GetParentNode()
         {
             //ExStart:GetParentNode           
             Document doc = new Document();
@@ -32,7 +32,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void OwnerDocument()
+        public void OwnerDocument()
         {
             //ExStart:OwnerDocument
             Document doc = new Document();
@@ -59,7 +59,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void EnumerateChildNodes()
+        public void EnumerateChildNodes()
         {
             //ExStart:EnumerateChildNodes 
             Document doc = new Document();
@@ -80,7 +80,7 @@ namespace DocsExamples.Programming_with_Documents
 
         [Test]
         //ExStart:RecurseAllNodes
-        public static void RecurseAllNodes()
+        public void RecurseAllNodes()
         {
             Document doc = new Document(MyDir + "Paragraphs.docx");
 
@@ -92,7 +92,7 @@ namespace DocsExamples.Programming_with_Documents
         /// A simple function that will walk through all children of a specified node recursively 
         /// and print the type of each node to the screen.
         /// </summary>
-        public static void TraverseAllNodes(CompositeNode parentNode)
+        public void TraverseAllNodes(CompositeNode parentNode)
         {
             // This is the most efficient way to loop through immediate children of a node.
             for (Node childNode = parentNode.FirstChild; childNode != null; childNode = childNode.NextSibling)
@@ -107,7 +107,7 @@ namespace DocsExamples.Programming_with_Documents
         //ExEnd:RecurseAllNodes
 
         [Test]
-        public static void TypedAccess()
+        public void TypedAccess()
         {
             //ExStart:TypedAccess
             Document doc = new Document();
@@ -130,7 +130,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void CreateAndAddParagraphNode()
+        public void CreateAndAddParagraphNode()
         {
             //ExStart:CreateAndAddParagraphNode
             Document doc = new Document();

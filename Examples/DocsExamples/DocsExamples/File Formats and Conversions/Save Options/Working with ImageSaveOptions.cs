@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithImageSaveOptions : DocsExamplesBase
+    public class WorkingWithImageSaveOptions : DocsExamplesBase
     {
         [Test]
         public void ExposeThresholdControlForTiffBinarization()

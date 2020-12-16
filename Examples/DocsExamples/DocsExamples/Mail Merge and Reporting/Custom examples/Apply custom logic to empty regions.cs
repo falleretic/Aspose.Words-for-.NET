@@ -11,7 +11,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
     internal class ApplyCustomLogicToEmptyRegions : DocsExamplesBase
     {
         [Test]
-        public static void ExecuteWithRegionsNestedCustom()
+        public void ExecuteWithRegionsNestedCustom()
         {
             //ExStart:ApplyCustomLogicToEmptyRegions
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
@@ -61,7 +61,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
         /// If regionsList is null all regions found within the document are included. If an ArrayList instance is present,
         /// the only regions specified in the list found in the document are added.
         /// </summary>
-        private static DataSet CreateDataSourceFromDocumentRegions(Document doc, ArrayList regionsList)
+        private DataSet CreateDataSourceFromDocumentRegions(Document doc, ArrayList regionsList)
         {
             const string tableStartMarker = "TableStart:";
             DataSet dataSet = new DataSet();
@@ -106,7 +106,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
         /// <param name="doc">The document containing unused regions.</param>
         /// <param name="handler">The handler which implements the IFieldMergingCallback interface
         /// and defines the logic to be applied to each unmerged region.</param>
-        public static void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler)
+        public void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler)
         {
             // Pass null to handle all regions found in the document.
             ExecuteCustomLogicOnEmptyRegions(doc, handler, null); 
@@ -121,7 +121,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
         /// the logic to be applied to each unmerged region.</param>
         /// <param name="regionsList">A list of strings corresponding to the region names that are to be handled
         /// by the supplied handler class. Other regions encountered will not be handled and are removed automatically.</param>
-        public static void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler,
+        public void ExecuteCustomLogicOnEmptyRegions(Document doc, IFieldMergingCallback handler,
             ArrayList regionsList)
         {
             // Certain regions can be skipped from applying logic to by not adding
@@ -182,7 +182,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
             /// <summary>
             /// Returns true if the paragraph uses any Heading style, e.g., Heading 1 to Heading 9.
             /// </summary>
-            private static bool IsHeadingParagraph(Paragraph para)
+            private bool IsHeadingParagraph(Paragraph para)
             {
                 return para.ParagraphFormat.StyleIdentifier >= StyleIdentifier.Heading1 &&
                        para.ParagraphFormat.StyleIdentifier <= StyleIdentifier.Heading9;
@@ -266,7 +266,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
         /// Returns the data used to merge the document.
         /// This dataset purposely contains only rows for the StoreDetails region and only a select few for the child region. 
         /// </summary>
-        private static DataSet GetDataSource()
+        private DataSet GetDataSource()
         {
             DataSet data = new DataSet();
             DataTable storeDetails = new DataTable("StoreDetails");
@@ -297,10 +297,10 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
             return data;
         }
 
-        private static readonly DataTable orderTable = null;
-        private static readonly DataTable itemTable = null;
+        private readonly DataTable orderTable = null;
+        private readonly DataTable itemTable = null;
 
-        private static void DisableForeignKeyConstraints(DataSet dataSet)
+        private void DisableForeignKeyConstraints(DataSet dataSet)
         {
             //ExStart:DisableForeignKeyConstraints
             dataSet.Relations.Add(new DataRelation("OrderToItem", orderTable.Columns["Order_Id"],
@@ -308,7 +308,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
             //ExEnd:DisableForeignKeyConstraints
         }
 
-        private static void CreateDataRelation(DataSet dataSet)
+        private void CreateDataRelation(DataSet dataSet)
         {
             //ExStart:CreateDataRelation
             dataSet.Relations.Add(new DataRelation("OrderToItem", orderTable.Columns["Order_Id"],

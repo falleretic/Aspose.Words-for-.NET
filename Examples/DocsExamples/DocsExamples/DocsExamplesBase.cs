@@ -20,7 +20,7 @@ namespace DocsExamples
         }
 
         [OneTimeSetUp]
-        public void OneTimeSetUp()
+        public static void OneTimeSetUp()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -29,13 +29,13 @@ namespace DocsExamples
         }
 
         [SetUp]
-        public void SetUp()
+        public static void SetUp()
         {
             Console.WriteLine($"Clr: {RuntimeInformation.FrameworkDescription}\n");
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown()
+        public static void OneTimeTearDown()
         {
             if (Directory.Exists(ArtifactsDir))
                 Directory.Delete(ArtifactsDir, true);

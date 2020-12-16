@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.LINQ_Reporting_Engine
 {
-    internal class Lists : DocsExamplesBase
+    public class Lists : DocsExamplesBase
     {
         [Test]
-        public static void CreateBulletedList()
+        public void CreateBulletedList()
         {
             //ExStart:BulletedList
             Document doc = new Document(MyDir + "Reporting engine template - Bulleted list.docx");
@@ -20,7 +20,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void CommonList()
+        public void CommonList()
         {
             //ExStart:CommonList
             Document doc = new Document(MyDir + "Reporting engine template - Common master detail.docx");
@@ -33,7 +33,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void InParagraphList()
+        public void InParagraphList()
         {
             //ExStart:InParagraphList
             Document doc = new Document();
@@ -49,7 +49,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void InTableList()
+        public void InTableList()
         {
             //ExStart:InTableList
             Document doc = new Document(MyDir + "Reporting engine template - Contextual object member access.docx");
@@ -62,7 +62,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void MulticoloredNumberedList()
+        public void MulticoloredNumberedList()
         {
             //ExStart:MulticoloredNumberedList
             Document doc = new Document(MyDir + "Reporting engine template - Multicolored numbered list.docx");
@@ -75,7 +75,7 @@ namespace DocsExamples.LINQ_Reporting_Engine
         }
 
         [Test]
-        public static void NumberedList()
+        public void NumberedList()
         {
             //ExStart:NumberedList
             Document doc = new Document(MyDir + "Reporting engine template - Numbered list.docx");

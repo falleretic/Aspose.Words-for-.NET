@@ -7,7 +7,7 @@ namespace DocsExamples.Programming_with_Documents
     internal class WorkingWithHyphenation : DocsExamplesBase
     {
         [Test]
-        public static void HyphenateWordsOfLanguages()
+        public void HyphenateWordsOfLanguages()
         {
             //ExStart:HyphenateWordsOfLanguages
             Document doc = new Document(MyDir + "German text.docx");
@@ -20,7 +20,7 @@ namespace DocsExamples.Programming_with_Documents
         }
 
         [Test]
-        public static void LoadHyphenationDictionaryForLanguage()
+        public void LoadHyphenationDictionaryForLanguage()
         {
             //ExStart:LoadHyphenationDictionaryForLanguage
             Document doc = new Document(MyDir + "German text.docx");

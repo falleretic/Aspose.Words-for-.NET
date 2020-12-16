@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Load_Options
 {
-    internal class WorkingWithLoadOptions : DocsExamplesBase
+    public class WorkingWithLoadOptions : DocsExamplesBase
     {
         [Test]
         public void UpdateDirtyFields()
@@ -161,7 +161,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         }
 
         [Test]
-        public static void SkipPdfImages()
+        public void SkipPdfImages()
         {
             //ExStart:SkipPdfImages
             PdfLoadOptions loadOptions = new PdfLoadOptions { SkipPdfImages = true };
@@ -171,7 +171,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         }
 
         [Test]
-        public static void ConvertMetafilesToPng()
+        public void ConvertMetafilesToPng()
         {
             //ExStart:ConvertMetafilesToPng
             LoadOptions loadOptions = new LoadOptions { ConvertMetafilesToPng = true };
@@ -181,7 +181,7 @@ namespace DocsExamples.File_Formats_and_Conversions.Load_Options
         }
 
         [Test]
-        public static void LoadChm()
+        public void LoadChm()
         {
             // ExStart:LoadCHM
             LoadOptions loadOptions = new LoadOptions { Encoding = Encoding.GetEncoding("windows-1251") };

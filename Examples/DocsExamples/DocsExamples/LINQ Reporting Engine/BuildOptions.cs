@@ -4,10 +4,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.LINQ_Reporting_Engine
 {
-    internal class BuildOptions : DocsExamplesBase
+    public class BuildOptions : DocsExamplesBase
     {
         [Test]
-        public static void RemoveEmptyParagraphs()
+        public void RemoveEmptyParagraphs()
         {
             //ExStart:RemoveEmptyParagraphs
             Document doc = new Document(MyDir + "Reporting engine template - Remove empty paragraphs.docx");

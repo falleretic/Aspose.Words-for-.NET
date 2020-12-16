@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Load_Options
 {
-    internal class WorkingWithRtfLoadOptions : DocsExamplesBase
+    public class WorkingWithRtfLoadOptions : DocsExamplesBase
     {
         [Test]
         public void RecognizeUtf8Text()

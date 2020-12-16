@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
     internal class WorkingWithCharts : DocsExamplesBase
     {
         [Test]
-        public static void FormatNumberOfDataLabel()
+        public void FormatNumberOfDataLabel()
         {
             //ExStart:FormatNumberOfDataLabel
             Document doc = new Document();
@@ -42,7 +42,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void CreateChartUsingShape()
+        public void CreateChartUsingShape()
         {
             //ExStart:CreateChartUsingShape
             Document doc = new Document();
@@ -65,7 +65,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertSimpleColumnChart()
+        public void InsertSimpleColumnChart()
         {
             //ExStart:InsertSimpleColumnChart
             Document doc = new Document();
@@ -99,7 +99,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertColumnChart()
+        public void InsertColumnChart()
         {
             //ExStart:InsertColumnChart
             Document doc = new Document();
@@ -115,7 +115,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertAreaChart()
+        public void InsertAreaChart()
         {
             //ExStart:InsertAreaChart
             Document doc = new Document();
@@ -139,7 +139,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertBubbleChart()
+        public void InsertBubbleChart()
         {
             //ExStart:InsertBubbleChart
             Document doc = new Document();
@@ -156,7 +156,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void InsertScatterChart()
+        public void InsertScatterChart()
         {
             //ExStart:InsertScatterChart
             Document doc = new Document();
@@ -172,7 +172,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void DefineXYAxisProperties()
+        public void DefineXYAxisProperties()
         {
             //ExStart:DefineXYAxisProperties
             Document doc = new Document();
@@ -217,7 +217,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void DateTimeValuesToAxis()
+        public void DateTimeValuesToAxis()
         {
             //ExStart:SetDateTimeValuesToAxis
             Document doc = new Document();
@@ -251,7 +251,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void NumberFormatForAxis()
+        public void NumberFormatForAxis()
         {
             //ExStart:SetNumberFormatForAxis
             Document doc = new Document();
@@ -274,7 +274,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void BoundsOfAxis()
+        public void BoundsOfAxis()
         {
             //ExStart:SetboundsOfAxis
             Document doc = new Document();
@@ -298,7 +298,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void IntervalUnitBetweenLabelsOnAxis()
+        public void IntervalUnitBetweenLabelsOnAxis()
         {
             //ExStart:SetIntervalUnitBetweenLabelsOnAxis
             Document doc = new Document();
@@ -321,7 +321,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void HideChartAxis()
+        public void HideChartAxis()
         {
             //ExStart:HideChartAxis
             Document doc = new Document();
@@ -344,7 +344,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void TickMultiLineLabelAlignment()
+        public void TickMultiLineLabelAlignment()
         {
             //ExStart:TickMultiLineLabelAlignment
             Document doc = new Document();
@@ -361,7 +361,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void ChartDataLabel()
+        public void ChartDataLabel()
         {
             //ExStart:WorkWithChartDataLabel
             Document doc = new Document();
@@ -390,7 +390,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void DefaultOptionsForDataLabels()
+        public void DefaultOptionsForDataLabels()
         {
             //ExStart:DefaultOptionsForDataLabels
             Document doc = new Document();
@@ -417,7 +417,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void SingleChartDataPoint()
+        public void SingleChartDataPoint()
         {
             //ExStart:WorkWithSingleChartDataPoint
             Document doc = new Document();
@@ -450,7 +450,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Graphic_Elements
         }
 
         [Test]
-        public static void SingleChartSeries()
+        public void SingleChartSeries()
         {
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);

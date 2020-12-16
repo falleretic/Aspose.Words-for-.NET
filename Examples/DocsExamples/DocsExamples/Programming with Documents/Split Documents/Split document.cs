@@ -9,7 +9,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
     internal class SplitDocument : DocsExamplesBase
     {
         [Test]
-        public static void ByHeadingsHtml()
+        public void ByHeadingsHtml()
         {
             //ExStart:SplitDocumentByHeadingsHtml
             Document doc = new Document(MyDir + "Rendering.docx");
@@ -26,7 +26,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
 
         [Test]
-        public static void BySectionsHtml()
+        public void BySectionsHtml()
         {
             Document doc = new Document(MyDir + "Rendering.docx");
  
@@ -38,7 +38,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
 
         [Test]
-        public static void BySections()
+        public void BySections()
         {
             //ExStart:SplitDocumentBySections
             Document doc = new Document(MyDir + "Big document.docx");
@@ -61,7 +61,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
 
         [Test]
-        public static void PageByPage()
+        public void PageByPage()
         {
             //ExStart:SplitDocumentPageByPage
             Document doc = new Document(MyDir + "Big document.docx");
@@ -81,7 +81,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         }
 
         //ExStart:MergeSplitDocuments
-        private static void MergeDocuments()
+        private void MergeDocuments()
         {
             // Find documents using for merge.
             FileSystemInfo[] documentPaths = new DirectoryInfo(ArtifactsDir)
@@ -112,7 +112,7 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         //ExEnd:MergeSplitDocuments
 
         [Test]
-        public static void ByPageRange()
+        public void ByPageRange()
         {
             //ExStart:SplitDocumentByPageRange
             Document doc = new Document(MyDir + "Big document.docx");

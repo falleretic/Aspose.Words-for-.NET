@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace DocsExamples.File_Formats_and_Conversions.Save_Options
 {
-    internal class WorkingWithOoxmlSaveOptions : DocsExamplesBase
+    public class WorkingWithOoxmlSaveOptions : DocsExamplesBase
     {
         [Test]
         public void EncryptDocxWithPassword()

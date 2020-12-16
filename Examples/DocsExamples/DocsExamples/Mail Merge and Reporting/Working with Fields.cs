@@ -13,7 +13,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
     internal class WorkingWithFields : DocsExamplesBase
     {
         [Test]
-        public static void MailMergeFormFields()
+        public void MailMergeFormFields()
         {
             //ExStart:MailMergeFormFields
             Document doc = new Document(MyDir + "Mail merge destinations - Fax.docx");
@@ -94,7 +94,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         //ExEnd:HandleMergeField
 
         [Test]
-        public static void MailMergeImageField()
+        public void MailMergeImageField()
         {
             // ExStart:MailMergeImageField       
             Document doc = new Document();
@@ -155,7 +155,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
 
                 string IMailMergeDataSource.TableName => TableName();
 
-                private static string TableName()
+                private string TableName()
                 {
                     return "example";
                 }
@@ -182,7 +182,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         // ExEnd:DataSourceRoot
 
         [Test]
-        public static void MailMergeAndConditionalField()
+        public void MailMergeAndConditionalField()
         {
             //ExStart:MailMergeAndConditionalField
             Document doc = new Document();
@@ -211,7 +211,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         }
 
         [Test]
-        public static void MailMergeImageFromBlob()
+        public void MailMergeImageFromBlob()
         {
             //ExStart:MailMergeImageFromBlob
             Document doc = new Document(MyDir + "Mail merge destination - Northwind employees.docx");
@@ -256,7 +256,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         //ExEnd:HandleMergeImageFieldFromBlob
 
         [Test]
-        public static void HandleMailMergeSwitches()
+        public void HandleMailMergeSwitches()
         {
             Document doc = new Document(MyDir + "Field sample - MERGEFIELD.docx");
 
@@ -299,7 +299,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         //ExEnd:HandleMailMergeSwitches
 
         [Test]
-        public static void AlternatingRows()
+        public void AlternatingRows()
         {
             //ExStart:MailMergeAlternatingRows
             Document doc = new Document(MyDir + "Mail merge destination - Northwind suppliers.docx");
@@ -365,7 +365,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting
         /// Create DataTable and fill it with data.
         /// In real life this DataTable should be filled from a database.
         /// </summary>
-        private static DataTable GetSuppliersDataTable()
+        private DataTable GetSuppliersDataTable()
         {
             DataTable dataTable = new DataTable("Suppliers");
 

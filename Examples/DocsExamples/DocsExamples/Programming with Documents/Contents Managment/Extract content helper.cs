@@ -183,7 +183,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
             return FindNextNode(nodeType, fromNode.NextSibling);
         }
 
-        private static bool IsInline(Node node)
+        private bool IsInline(Node node)
         {
             // Test if the node is a descendant of a Paragraph or Table node and is not a paragraph
             // or a table a paragraph inside a comment class that is decent of a paragraph is possible.

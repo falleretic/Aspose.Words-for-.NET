@@ -7,7 +7,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
     internal class CompareDocument : DocsExamplesBase
     {
         [Test]
-        public static void CompareForEqual()
+        public void CompareForEqual()
         {
             //ExStart:CompareForEqual
             Document docA = new Document(MyDir + "Document.docx");
@@ -21,7 +21,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void CompareOptions()
+        public void CompareOptions()
         {
             //ExStart:CompareOptions
             Document docA = new Document(MyDir + "Document.docx");
@@ -46,7 +46,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ComparisonTarget()
+        public void ComparisonTarget()
         {
             //ExStart:ComparisonTarget
             Document docA = new Document(MyDir + "Document.docx");
@@ -60,7 +60,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void ComparisonGranularity()
+        public void ComparisonGranularity()
         {
             // ExStart:ComparisonGranularity
             DocumentBuilder builderA = new DocumentBuilder(new Document());
