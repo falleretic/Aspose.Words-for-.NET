@@ -8,7 +8,7 @@ using Aspose.Words.Layout;
 using Aspose.Words.Tables;
 using NUnit.Framework;
 
-namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
+namespace DocsExamples.Complex_examples_and_helpers
 {
     internal class DocumentLayoutHelper : DocsExamplesBase
     {

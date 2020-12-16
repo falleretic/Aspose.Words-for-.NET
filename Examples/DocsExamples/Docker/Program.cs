@@ -1,10 +1,10 @@
-﻿// ExStart:AsposeWordsDockerTest
-using Aspose.Words;
+﻿//ExStart:AsposeWordsDockerTest
 using System;
+using Aspose.Words;
 
-namespace AsposeWordsDockerTest
+namespace Docker
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -20,7 +20,7 @@ namespace AsposeWordsDockerTest
                 {
                     try
                     {
-                        doc.Save(string.Format("out{0}", FileFormatUtil.SaveFormatToExtension(sf)), sf);
+                        doc.Save($"out{FileFormatUtil.SaveFormatToExtension(sf)}", sf);
                         Console.WriteLine("Saving {0}\t\t[OK]", sf);
                     }
                     catch
@@ -32,4 +32,4 @@ namespace AsposeWordsDockerTest
         }
     }
 }
-// ExEnd:AsposeWordsDockerTest
+//ExEnd:AsposeWordsDockerTest

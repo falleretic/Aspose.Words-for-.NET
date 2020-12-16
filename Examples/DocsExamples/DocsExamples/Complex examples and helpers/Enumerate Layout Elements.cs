@@ -1,12 +1,12 @@
 ﻿#if NET462
 using System;
 using System.Drawing;
+using Aspose.Words;
 using Aspose.Words.Layout;
 using Aspose.Words.Rendering;
 using NUnit.Framework;
-using Aspose.Words;
 
-namespace DocsExamples.Rendering_and_Printing.Layout_Helpers
+namespace DocsExamples.Complex_examples_and_helpers
 {
     internal class EnumerateLayoutElements : DocsExamplesBase
     {

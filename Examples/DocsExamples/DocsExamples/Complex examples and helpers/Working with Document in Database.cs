@@ -5,7 +5,7 @@ using System.IO;
 using Aspose.Words;
 using NUnit.Framework;
 
-namespace DocsExamples.File_Formats_and_Conversions
+namespace DocsExamples.Complex_examples_and_helpers
 {
     internal class WorkingWithDocumentInDatabase : DocsExamplesBase
     {
