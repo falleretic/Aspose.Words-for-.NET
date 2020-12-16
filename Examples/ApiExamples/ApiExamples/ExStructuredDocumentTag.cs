@@ -113,8 +113,8 @@ namespace ApiExamples
             Assert.That(sdt.XmlMapping.StoreItemId, Is.Empty); //Assert that this sdt has no StoreItemId
         }
 
-#if NET462 || NETCOREAPP2_1 || JAVA // because of xamarin bug with CultureInfo (https://xamarin.github.io/bugzilla-archives/59/59077/bug.html)
-        [Test]
+#if NET462 || NETCOREAPP2_1 || JAVA // because of a Xamarin bug with CultureInfo (https://xamarin.github.io/bugzilla-archives/59/59077/bug.html)
+        [Test, Category("SkipMono")]
         public void Date()
         {
             //ExStart
@@ -198,7 +198,7 @@ namespace ApiExamples
             tag.ContentsFont.Name = "Arial";
 
             // Set the font for the text at the end of the StructuredDocumentTag
-            // Any text that's typed in the document body after moving out of the tag with arrow keys will keep this font
+            // Any text that is typed in the document body after moving out of the tag with arrow keys will keep this font
             tag.EndCharacterFont.Name = "Arial Black";
 
             // By default, this is false and pressing enter while inside a StructuredDocumentTag does nothing
@@ -245,7 +245,7 @@ namespace ApiExamples
             StructuredDocumentTag tag = new StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Inline);
 
             // If we set its Temporary attribute to true, as soon as we start typing,
-            // the tag will disappear and its contents will be assimilated into the parent Paragraph
+            // the tag will disappear, and its contents will be assimilated into the parent Paragraph
             tag.IsTemporary = true;
 
             // Insert the StructuredDocumentTag with a DocumentBuilder
@@ -284,7 +284,7 @@ namespace ApiExamples
             StructuredDocumentTag tag = new StructuredDocumentTag(doc, SdtType.PlainText, MarkupLevel.Inline);
 
             // We can substitute that default placeholder with a custom phrase, which will be drawn from a BuildingBlock
-            // First we will need to create the BuildingBlock, give it content and add it to the GlossaryDocument
+            // First, we will need to create the BuildingBlock, give it content and add it to the GlossaryDocument
             GlossaryDocument glossaryDoc = doc.GlossaryDocument;
 
             BuildingBlock substituteBlock = new BuildingBlock(glossaryDoc);
@@ -388,16 +388,16 @@ namespace ApiExamples
             //ExFor:SdtListItemCollection.SelectedValue
             //ExFor:StructuredDocumentTag.ListItems
             //ExSummary:Shows how to work with StructuredDocumentTag nodes of the DropDownList type.
-            // Create a blank document and insert a StructuredDocumentTag that will contain a drop down list
+            // Create a blank document and insert a StructuredDocumentTag that will contain a drop-down list
             Document doc = new Document();
             StructuredDocumentTag tag = new StructuredDocumentTag(doc, SdtType.DropDownList, MarkupLevel.Block);
             doc.FirstSection.Body.AppendChild(tag);
 
-            // A drop down list needs elements, each of which will be a SdtListItem
+            // A drop-down list needs elements, each of which will be a SdtListItem
             SdtListItemCollection listItems = tag.ListItems;
             listItems.Add(new SdtListItem("Value 1"));
 
-            // Each SdtListItem has text that will be displayed when the drop down list is opened, and also a value
+            // Each SdtListItem has text that will be displayed when the drop-down list is opened, and also a value
             // When we initialize with one string, we are providing just the value
             // Accordingly, value is passed as DisplayText and will consequently be displayed on the screen
             Assert.AreEqual(listItems[0].DisplayText, listItems[0].Value);
@@ -407,7 +407,7 @@ namespace ApiExamples
             listItems.Add(new SdtListItem("Item 3", "Value 3"));
             listItems.Add(new SdtListItem("Item 4", "Value 4"));
 
-            // We can obtain a count of the SdtListItems and also set the drop down list's SelectedValue attribute to
+            // We can obtain a count of the SdtListItems and also set the drop-down list's SelectedValue attribute to
             // automatically have one of them pre-selected when we open the document in Microsoft Word
             Assert.AreEqual(4, listItems.Count);
             listItems.SelectedValue = listItems[3];
@@ -465,7 +465,7 @@ namespace ApiExamples
             Document doc = new Document();
 
             // Construct an XML part that contains data and add it to the document's collection
-            // Once the "Developer" tab in Mircosoft Word is enabled,
+            // Once the "Developer" tab in Microsoft Word is enabled,
             // we can find elements from this collection as well as a couple defaults in the "XML Mapping Pane" 
             string xmlPartId = Guid.NewGuid().ToString("B");
             string xmlPartContent = "<root><text>Hello world!</text></root>";
@@ -587,6 +587,32 @@ namespace ApiExamples
         }
 
         [Test]
+        public void XmlMappingForStructuredDocumentTagRangeStart()
+        {
+            //ExStart
+            //ExFor:StructuredDocumentTagRangeStart.XmlMapping
+            //ExSummary:Shows how to set XML mappings for StructuredDocumentTagRangeStart.
+            Document doc = new Document(MyDir + "Multi-section structured document tags.docx");
+
+            // Construct an XML part that contains data and add it to the document's CustomXmlPart collection.
+            string xmlPartId = Guid.NewGuid().ToString("B");
+            string xmlPartContent = "<root><text>Text element #1</text><text>Text element #2</text></root>";
+            CustomXmlPart xmlPart = doc.CustomXmlParts.Add(xmlPartId, xmlPartContent);
+            Console.WriteLine(Encoding.UTF8.GetString(xmlPart.Data));
+
+            // Create a StructuredDocumentTag that will display the contents of our CustomXmlPart in the document.
+            StructuredDocumentTagRangeStart sdtRangeStart = (StructuredDocumentTagRangeStart)doc.GetChild(NodeType.StructuredDocumentTagRangeStart, 0, true);
+
+            // If we set a mapping for our StructuredDocumentTag,
+            // it will only display a part of the CustomXmlPart that the XPath points to.
+            // This XPath will point to the contents second "<text>" element of the first "<root>" element of our CustomXmlPart.
+            sdtRangeStart.XmlMapping.SetMapping(xmlPart, "/root[1]/text[2]", null);
+
+            doc.Save(ArtifactsDir + "StructuredDocumentTag.XmlMappingForStructuredDocumentTagRangeStart.docx");
+            //ExEnd
+        }
+
+        [Test]
         public void CustomXmlSchemaCollection()
         {
             //ExStart
@@ -612,7 +638,7 @@ namespace ApiExamples
             // and perform other collection-related operations on the list of schemas for this part
             xmlPart.Schemas.Add("http://www.w3.org/2001/XMLSchema");
 
-            // Collections can be cloned and elements can be added
+            // Collections can be cloned, and elements can be added
             CustomXmlSchemaCollection schemas = xmlPart.Schemas.Clone();
             schemas.Add("http://www.w3.org/2001/XMLSchema-instance");
             schemas.Add("http://schemas.microsoft.com/office/2006/metadata/contentType");
@@ -779,7 +805,7 @@ namespace ApiExamples
             //ExSummary:Shows how structured document tags can be updated while saving to .pdf.
             Document doc = new Document();
 
-            // Insert two StructuredDocumentTags; a date and a drop down list 
+            // Insert two StructuredDocumentTags; a date and a drop-down list 
             StructuredDocumentTag tag = new StructuredDocumentTag(doc, SdtType.Date, MarkupLevel.Block);
             tag.FullDate = DateTime.Now;
 
@@ -807,7 +833,7 @@ namespace ApiExamples
             TextAbsorber textAbsorber = new TextAbsorber();
             textAbsorber.Visit(pdfDoc);
 
-            Assert.AreEqual(updateSdtContent ? "Value 2" : "Click here to enter a date.\r\nChoose an item.",
+            Assert.AreEqual(updateSdtContent ? "Value 2" : $"Click here to enter a date.{Environment.NewLine}Choose an item.",
                 textAbsorber.Text);
 #endif
         }
@@ -886,7 +912,7 @@ namespace ApiExamples
             Assert.AreEqual("Title\u0007Author\u0007\u0007" +
                             "Everyday Italian\u0007Giada De Laurentiis\u0007\u0007" +
                             "Harry Potter\u0007J. K. Rowling\u0007\u0007" +
-                            "Learning XML\u0007Erik T. Ray\u0007\u0007", doc.GetChild(NodeType.Table, 0, true).GetText().Trim());
+                            "Learning XML\u0007Erik T. Ray\u0007\u0007", doc.FirstSection.Body.Tables[0].GetText().Trim());
         }
 
         [Test]
@@ -918,6 +944,53 @@ namespace ApiExamples
 
             // Add the StructuredDocumentTag to the document to display the element in the text 
             doc.FirstSection.Body.AppendChild(sdt);
+        }
+
+        [Test]
+        public void MultiSectionTags()
+        {
+            //ExStart
+            //ExFor:StructuredDocumentTagRangeStart
+            //ExFor:StructuredDocumentTagRangeStart.Id
+            //ExFor:StructuredDocumentTagRangeStart.Title
+            //ExFor:StructuredDocumentTagRangeStart.IsShowingPlaceholderText
+            //ExFor:StructuredDocumentTagRangeStart.LockContentControl
+            //ExFor:StructuredDocumentTagRangeStart.LockContents
+            //ExFor:StructuredDocumentTagRangeStart.Level
+            //ExFor:StructuredDocumentTagRangeStart.RangeEnd
+            //ExFor:StructuredDocumentTagRangeStart.SdtType
+            //ExFor:StructuredDocumentTagRangeStart.Tag
+            //ExFor:StructuredDocumentTagRangeEnd
+            //ExFor:StructuredDocumentTagRangeEnd.Id
+            //ExSummary:Shows how to get multi-section structured document tags properties.
+            Document doc = new Document(MyDir + "Multi-section structured document tags.docx");
+
+            // Note that these nodes can be a child of NodeType.Body node only and all properties of these nodes are read-only.
+            StructuredDocumentTagRangeStart rangeStartTag =
+                doc.GetChildNodes(NodeType.StructuredDocumentTagRangeStart, true)[0] as StructuredDocumentTagRangeStart;
+            StructuredDocumentTagRangeEnd rangeEndTag =
+                doc.GetChildNodes(NodeType.StructuredDocumentTagRangeEnd, true)[0] as StructuredDocumentTagRangeEnd;
+
+            Assert.AreEqual(rangeStartTag.Id, rangeEndTag.Id); //ExSkip
+            Assert.AreEqual(NodeType.StructuredDocumentTagRangeStart, rangeStartTag.NodeType); //ExSkip
+            Assert.AreEqual(NodeType.StructuredDocumentTagRangeEnd, rangeEndTag.NodeType); //ExSkip
+
+            Console.WriteLine("StructuredDocumentTagRangeStart values:");
+            Console.WriteLine($"\t|Id: {rangeStartTag.Id}");
+            Console.WriteLine($"\t|Title: {rangeStartTag.Title}");
+            Console.WriteLine($"\t|IsShowingPlaceholderText: {rangeStartTag.IsShowingPlaceholderText}");
+            Console.WriteLine($"\t|LockContentControl: {rangeStartTag.LockContentControl}");
+            Console.WriteLine($"\t|LockContents: {rangeStartTag.LockContents}");
+            Console.WriteLine($"\t|Level: {rangeStartTag.Level}");
+            Console.WriteLine($"\t|NodeType: {rangeStartTag.NodeType}");
+            Console.WriteLine($"\t|RangeEnd: {rangeStartTag.RangeEnd}");
+            Console.WriteLine($"\t|SdtType: {rangeStartTag.SdtType}");
+            Console.WriteLine($"\t|Tag: {rangeStartTag.Tag}\n");
+
+            Console.WriteLine("StructuredDocumentTagRangeEnd values:");
+            Console.WriteLine($"\t|Id: {rangeEndTag.Id}");
+            Console.WriteLine($"\t|NodeType: {rangeEndTag.NodeType}");
+            //ExEnd
         }
     }
 }
