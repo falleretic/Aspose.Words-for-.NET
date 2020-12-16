@@ -11,7 +11,7 @@ namespace DocsExamples.Programming_with_Documents
         public static void AddComments()
         {
             //ExStart:AddComments
-            // ExStart:CreateSimpleDocumentUsingDocumentBuilder
+            //ExStart:CreateSimpleDocumentUsingDocumentBuilder
             Document doc = new Document();
             DocumentBuilder builder = new DocumentBuilder(doc);
 

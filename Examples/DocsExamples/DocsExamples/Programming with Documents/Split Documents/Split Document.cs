@@ -13,11 +13,14 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
         {
             //ExStart:SplitDocumentByHeadingsHtml
             Document doc = new Document(MyDir + "Rendering.docx");
- 
-            HtmlSaveOptions options = new HtmlSaveOptions();
-            // Split a document into smaller parts, in this instance split by heading.
-            options.DocumentSplitCriteria = DocumentSplitCriteria.HeadingParagraph;
- 
+
+            HtmlSaveOptions options = new HtmlSaveOptions
+            {
+                // Split a document into smaller parts, in this instance split by heading.
+                DocumentSplitCriteria = DocumentSplitCriteria.HeadingParagraph
+            };
+            
+
             doc.Save(ArtifactsDir + "SplitDocument.ByHeadingsHtml.html", options);
             //ExEnd:SplitDocumentByHeadingsHtml
         }

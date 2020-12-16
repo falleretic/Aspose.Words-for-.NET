@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace DocsExamples
 {
-    internal class DocsExamplesBase
+    public class DocsExamplesBase
     {
         static DocsExamplesBase()
         {

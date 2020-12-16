@@ -11,7 +11,7 @@ using System.IO;
 
 namespace DocsExamples.Rendering_and_Printing
 {
-    internal class RenderShape : DocsExamplesBase
+    internal class RenderingShapes : DocsExamplesBase
     {
         [Test]
         public void RenderShapeAsEmf()

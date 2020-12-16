@@ -9,10 +9,10 @@ using NUnit.Framework;
 
 namespace DocsExamples.Programming_with_Documents.Contents_Managment
 {
-    class ExtractContent : DocsExamplesBase
+    public class ExtractContent : DocsExamplesBase
     {
         [Test]
-        public static void ExtractContentBetweenBlockLevelNodes()
+        public void ExtractContentBetweenBlockLevelNodes()
         {
             //ExStart:ExtractContentBetweenBlockLevelNodes
             Document doc = new Document(MyDir + "Extract content.docx");
@@ -39,7 +39,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentBetweenBookmark()
+        public void ExtractContentBetweenBookmark()
         {
             //ExStart:ExtractContentBetweenBookmark
             Document doc = new Document(MyDir + "Extract content.docx");
@@ -68,7 +68,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentBetweenCommentRange()
+        public void ExtractContentBetweenCommentRange()
         {
             //ExStart:ExtractContentBetweenCommentRange
             Document doc = new Document(MyDir + "Extract content.docx");
@@ -93,7 +93,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentBetweenParagraphs()
+        public void ExtractContentBetweenParagraphs()
         {
             //ExStart:ExtractContentBetweenParagraphs
             Document doc = new Document(MyDir + "Extract content.docx");
@@ -110,7 +110,7 @@ namespace DocsExamples.Programming_with_Documents.Contents_Managment
         }
 
         [Test]
-        public static void ExtractContentBetweenParagraphStyles()
+        public void ExtractContentBetweenParagraphStyles()
         {
             //ExStart:ExtractContentBetweenParagraphStyles
             Document doc = new Document(MyDir + "Extract content.docx");
