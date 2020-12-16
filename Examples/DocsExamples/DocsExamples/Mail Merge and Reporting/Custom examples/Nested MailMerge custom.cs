@@ -49,7 +49,7 @@ namespace DocsExamples.Mail_Merge_and_Reporting.Custom_examples
 
             doc.MailMerge.ExecuteWithRegions(customersDataSource);
 
-            doc.Save(ArtifactsDir + "MailMerge.NestedMailMergeCustom.docx");
+            doc.Save(ArtifactsDir + "NestedMailMergeCustom.CustomMailMerge.docx");
             //ExEnd:NestedMailMergeCustom
         }
 

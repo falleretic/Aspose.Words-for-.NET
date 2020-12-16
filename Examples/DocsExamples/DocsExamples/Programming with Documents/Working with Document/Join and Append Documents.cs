@@ -321,26 +321,7 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
             
             dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.KeepSourceTogether.docx");
             //ExEnd:KeepSourceTogether
-        }
-
-        [Test]
-        public static void LinkHeadersFooters()
-        {
-            //ExStart:LinkHeadersFooters
-            Document srcDoc = new Document(MyDir + "Document source.docx");
-            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
-
-            // Set the appended document to appear on a new page.
-            srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.NewPage;
-            // Link the headers and footers in the source document to the previous section.
-            // This will override any headers or footers already found in the source document.
-            srcDoc.FirstSection.HeadersFooters.LinkToPrevious(true);
-
-            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
-            
-            dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.LinkHeadersFooters.docx");
-            //ExEnd:LinkHeadersFooters
-        }
+        }        
 
         [Test]
         public static void ListKeepSourceFormatting()
@@ -409,30 +390,6 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
         }
 
         [Test]
-        public static void RemoveSourceHeadersFooters()
-        {
-            //ExStart:RemoveSourceHeadersFooters
-            Document srcDoc = new Document(MyDir + "Document source.docx");
-            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
-
-            // Remove the headers and footers from each of the sections in the source document.
-            foreach (Section section in srcDoc.Sections)
-            {
-                section.ClearHeadersFooters();
-            }
-
-            // Even after the headers and footers are cleared from the source document, the "LinkToPrevious" setting 
-            // for HeadersFooters can still be set. This will cause the headers and footers to continue from the destination 
-            // document. This should set to false to avoid this behavior.
-            srcDoc.FirstSection.HeadersFooters.LinkToPrevious(false);
-
-            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
-            
-            dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.RemoveSourceHeadersFooters.docx");
-            //ExEnd:RemoveSourceHeadersFooters
-        }
-
-        [Test]
         public static void RestartPageNumbering()
         {
             //ExStart:RestartPageNumbering
@@ -446,23 +403,6 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
             
             dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.RestartPageNumbering.docx");
             //ExEnd:RestartPageNumbering
-        }
-
-        [Test]
-        public static void UnlinkHeadersFooters()
-        {
-            //ExStart:UnlinkHeadersFooters
-            Document srcDoc = new Document(MyDir + "Document source.docx");
-            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
-
-            // Unlink the headers and footers in the source document to stop this
-            // from continuing the destination document's headers and footers.
-            srcDoc.FirstSection.HeadersFooters.LinkToPrevious(false);
-
-            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
-            
-            dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.UnlinkHeadersFooters.docx");
-            //ExEnd:UnlinkHeadersFooters
         }
 
         [Test]
@@ -579,6 +519,66 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
             
             dstDocument.Save(ArtifactsDir + "JoinAndAppendDocuments.IgnoreHeaderFooter.docx");
             // ExEnd:IgnoreHeaderFooter
+        }
+
+        [Test]
+        public static void LinkHeadersFooters()
+        {
+            //ExStart:LinkHeadersFooters
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
+
+            // Set the appended document to appear on a new page.
+            srcDoc.FirstSection.PageSetup.SectionStart = SectionStart.NewPage;
+            // Link the headers and footers in the source document to the previous section.
+            // This will override any headers or footers already found in the source document.
+            srcDoc.FirstSection.HeadersFooters.LinkToPrevious(true);
+
+            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
+
+            dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.LinkHeadersFooters.docx");
+            //ExEnd:LinkHeadersFooters
+        }
+
+        [Test]
+        public static void RemoveSourceHeadersFooters()
+        {
+            //ExStart:RemoveSourceHeadersFooters
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
+
+            // Remove the headers and footers from each of the sections in the source document.
+            foreach (Section section in srcDoc.Sections)
+            {
+                section.ClearHeadersFooters();
+            }
+
+            // Even after the headers and footers are cleared from the source document, the "LinkToPrevious" setting 
+            // for HeadersFooters can still be set. This will cause the headers and footers to continue from the destination 
+            // document. This should set to false to avoid this behavior.
+            srcDoc.FirstSection.HeadersFooters.LinkToPrevious(false);
+
+            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
+
+            dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.RemoveSourceHeadersFooters.docx");
+            //ExEnd:RemoveSourceHeadersFooters
+        }
+
+        [Test]
+        public static void UnlinkHeadersFooters()
+        {
+            //ExStart:UnlinkHeadersFooters
+            Document srcDoc = new Document(MyDir + "Document source.docx");
+            Document dstDoc = new Document(MyDir + "Northwind traders.docx");
+
+            // Unlink the headers and footers in the source document to stop this
+            // from continuing the destination document's headers and footers.
+            srcDoc.FirstSection.HeadersFooters.LinkToPrevious(false);
+
+            dstDoc.AppendDocument(srcDoc, ImportFormatMode.KeepSourceFormatting);
+
+            dstDoc.Save(ArtifactsDir + "JoinAndAppendDocuments.UnlinkHeadersFooters.docx");
+            //ExEnd:UnlinkHeadersFooters
         }
     }
 }
