@@ -1,6 +1,6 @@
 ## Aspose.Words for .NET API Examples
 
-This repository contains C# and Xamarin examples/tests projects for [Aspose.Words for .NET API](https://apireference.aspose.com/words/net) which will help you learn Aspose.Words for .NET and write your own applications.
+This repository contains C# and Xamarin examples/tests for [Aspose.Words for .NET API](https://apireference.aspose.com/words/net) which will help you learn Aspose.Words for .NET and write your own applications.
 
 
 <p align="center">
