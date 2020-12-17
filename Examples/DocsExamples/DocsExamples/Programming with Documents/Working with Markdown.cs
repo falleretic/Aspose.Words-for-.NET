@@ -215,7 +215,7 @@ namespace DocsExamples.Programming_with_Documents
         public void UseWarningSource()
         {
             //ExStart:UseWarningSourceMarkdown
-            Document doc = new Document(MyDir + "Borders.docx");
+            Document doc = new Document(MyDir + "Emphases markdown warning.docx");
 
             WarningInfoCollection warnings = new WarningInfoCollection();
             doc.WarningCallback = warnings;

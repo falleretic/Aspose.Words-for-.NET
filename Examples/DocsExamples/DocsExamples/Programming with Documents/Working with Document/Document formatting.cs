@@ -158,7 +158,6 @@ namespace DocsExamples.Programming_with_Documents.Working_with_Document
             // Optimize the layout when typing in Asian characters.
             Paragraph par = doc.FirstSection.Body.FirstParagraph;
             par.ParagraphFormat.SnapToGrid = true;
-            par.Runs[0].Font.SnapToGrid = true;
 
             builder.Writeln("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
                             "tempor incididunt ut labore et dolore magna aliqua.");

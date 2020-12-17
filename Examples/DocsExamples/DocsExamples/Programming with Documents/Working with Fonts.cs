@@ -442,14 +442,14 @@ namespace DocsExamples.Programming_with_Documents
         [Test]
         public void GetSubstitutionWithoutSuffixes()
         {
-            Document doc = new Document(MyDir + "Rendering.docx");
+            Document doc = new Document(MyDir + "Get substitution without suffixes.docx");
 
             DocumentSubstitutionWarnings substitutionWarningHandler = new DocumentSubstitutionWarnings();
             doc.WarningCallback = substitutionWarningHandler;
 
             ArrayList fontSources = new ArrayList(FontSettings.DefaultInstance.GetFontsSources());
 
-            FolderFontSource folderFontSource = new FolderFontSource(MyDir + "Fonts", true);
+            FolderFontSource folderFontSource = new FolderFontSource(FontsDir, true);
             fontSources.Add(folderFontSource);
 
             FontSourceBase[] updatedFontSources = (FontSourceBase[])fontSources.ToArray(typeof(FontSourceBase));

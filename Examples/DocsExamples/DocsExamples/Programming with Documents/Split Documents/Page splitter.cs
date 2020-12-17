@@ -41,7 +41,8 @@ namespace DocsExamples.Programming_with_Documents.Split_Documents
 
         public void SplitAllDocumentsToPages(string folderName)
         {
-            string[] fileNames = Directory.GetFiles(folderName, "*.doc", SearchOption.TopDirectoryOnly);
+            List<string> fileNames = Directory.GetFiles(folderName, "*.doc", SearchOption.TopDirectoryOnly)
+                .Where(item => item.EndsWith(".doc")).ToList();
 
             foreach (string fileName in fileNames)
             {

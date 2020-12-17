@@ -91,7 +91,7 @@ namespace DocsExamples.Programming_with_Documents
         public void RemoveBrokenRef()
         {
             //ExStart:RemoveReferenceFromCollectionOfReferences
-            Document doc = new Document(MyDir + "VbaProject.docm");
+            Document doc = new Document(MyDir + "VBA project.docm");
 
             // Find and remove the reference with some LibId path.
             const string brokenPath = "brokenPath.dll";

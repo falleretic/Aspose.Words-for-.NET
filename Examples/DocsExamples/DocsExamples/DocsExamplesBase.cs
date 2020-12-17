@@ -17,6 +17,7 @@ namespace DocsExamples
             MyDir = new Uri(new Uri(MainDataDir), @"Data/").LocalPath;
             ImagesDir = new Uri(new Uri(MainDataDir), @"Data/Images/").LocalPath;
             DatabaseDir = new Uri(new Uri(MainDataDir), @"Data/Database/").LocalPath;
+            FontsDir = new Uri(new Uri(MainDataDir), @"Data/MyFonts/").LocalPath;
         }
 
         [OneTimeSetUp]
@@ -77,5 +78,10 @@ namespace DocsExamples
         /// Gets the path to the artifacts used by the code examples.
         /// </summary>
         internal static string ArtifactsDir { get; }
+
+        /// <summary>
+        /// Gets the path of the free fonts. Ends with a back slash.
+        /// </summary>
+        internal static string FontsDir { get; }
     }
 }
